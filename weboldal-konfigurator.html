@@ -94,9 +94,9 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .rh::after{content:'⋮⋮';font-family:var(--mono);font-size:.7rem;line-height:1.1;color:rgba(255,255,255,.35);letter-spacing:-2px;writing-mode:vertical-rl;transition:color .15s;z-index:1}
 .rh:hover::before{background:rgba(0,240,255,.15);border-color:rgba(0,240,255,.55);box-shadow:0 0 12px rgba(0,240,255,.35)}
 .rh:hover::after{color:var(--cyan)}
-/* Hover-toolbar: 3 preset gomb a kétfelet-választó vonalon */
-.rh-tools{position:absolute;top:50%;left:50%;transform:translate(-50%,calc(-50% + 50px));display:none;flex-direction:column;gap:4px;background:rgba(10,10,10,.96);border:1px solid var(--gb);border-radius:6px;padding:5px;box-shadow:0 8px 22px rgba(0,0,0,.6);z-index:11}
-.rh:hover .rh-tools,.rh-tools:hover{display:flex}
+/* Hover-toolbar: position:fixed, JS-ből pozícionálva — kikerül minden stacking-contextből és overflow-clippingből */
+.rh-tools{position:fixed;display:none;flex-direction:column;gap:4px;background:rgba(10,10,10,.96);border:1px solid var(--gb);border-radius:6px;padding:5px;box-shadow:0 8px 22px rgba(0,0,0,.6);z-index:9000;pointer-events:auto}
+.rh-tools.show{display:flex}
 .rh-tools button{width:28px;height:28px;border:1px solid var(--gb);background:rgba(255,255,255,.04);color:var(--white);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;line-height:1;transition:all .15s;padding:0}
 .rh-tools button:hover{border-color:var(--cyan);background:rgba(0,240,255,.1);color:var(--cyan)}
 .rh-tools button.act{border-color:var(--cyan);background:rgba(0,240,255,.18);color:var(--cyan)}
@@ -804,6 +804,29 @@ document.getElementById('mobPv').addEventListener('click',()=>{$pv.classList.tog
             applySplit(pct);saveSplit();render();
         });
     })}
+    // Toolbar pozícionálás + show/hide — fixed position miatt JS-ből
+    if(tools){
+        let hideTimer=null;
+        const showTools=()=>{
+            if(hideTimer){clearTimeout(hideTimer);hideTimer=null}
+            const r=h.getBoundingClientRect();
+            // A handle közepétől kicsit lefelé, és középre igazítva
+            tools.style.top=(r.top+r.height/2+30)+'px';
+            tools.style.left=(r.left+r.width/2)+'px';
+            tools.style.transform='translateX(-50%)';
+            tools.classList.add('show');
+        };
+        const hideTools=()=>{
+            hideTimer=setTimeout(()=>tools.classList.remove('show'),150);
+        };
+        h.addEventListener('mouseenter',showTools);
+        h.addEventListener('mouseleave',hideTools);
+        tools.addEventListener('mouseenter',()=>{if(hideTimer){clearTimeout(hideTimer);hideTimer=null}});
+        tools.addEventListener('mouseleave',hideTools);
+        // Scroll/resize esetén újra-pozícionálás ha látható
+        window.addEventListener('scroll',()=>{if(tools.classList.contains('show'))showTools()},{passive:true});
+        window.addEventListener('resize',()=>{if(tools.classList.contains('show'))showTools()});
+    }
     // Window resize: az arány-százalék újraszámolása (relatív arány marad)
     window.addEventListener('resize',()=>{
         if(innerWidth<=1024){app.style.gridTemplateColumns='';$nav.style.width='';return}
