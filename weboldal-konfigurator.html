@@ -53,6 +53,24 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .upl input{display:none}.upl img{width:36px;height:24px;object-fit:contain;border-radius:3px;flex-shrink:0}
 .upl .x{width:18px;height:18px;border-radius:3px;background:rgba(255,80,80,.15);color:#f55;display:flex;align-items:center;justify-content:center;font-size:.6rem;cursor:pointer;flex-shrink:0;margin-left:auto}
 
+/* ─── Pulse border — sequential focus highlighter ─── */
+@property --pb-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
+.pb-wrap{position:relative;border-radius:4px;display:flex;isolation:isolate}
+.pb-wrap>input{flex:1;width:100%;min-width:0;padding:4px 8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:inherit;color:var(--white);font-size:.72rem;font-family:var(--fm)}
+.pb-wrap>input:focus{outline:none;border-color:var(--cyan)}
+.pb-wrap>input::placeholder{color:var(--dim)}
+.pb-wrap.pb-active::before,.upl.pb-active::after{content:'';position:absolute;inset:0;padding:1.5px;border-radius:inherit;background:conic-gradient(from var(--pb-angle),transparent 0%,transparent 62%,var(--cyan) 78%,var(--mag) 92%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;animation:pbSpin 3s linear infinite;z-index:2}
+.upl.pb-active{position:relative;isolation:isolate}
+@keyframes pbSpin{to{--pb-angle:360deg}}
+
+/* Tooltip — egyszerű, on-hover */
+.pb-wrap[data-pbtip],.upl[data-pbtip]{cursor:pointer}
+.pb-wrap[data-pbtip]:hover::after,.upl[data-pbtip]:hover::before{content:attr(data-pbtip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(10,10,10,.96);color:var(--white);padding:.45rem .7rem;border-radius:4px;font-size:.65rem;line-height:1.4;white-space:nowrap;border:1px solid var(--cyan);box-shadow:0 4px 14px rgba(0,0,0,.5);z-index:50;pointer-events:none;font-family:var(--fm);max-width:280px;white-space:normal;width:max-content}
+.pb-wrap[data-pbtip]:hover::after{bottom:auto;top:calc(100% + 8px)}
+@media(prefers-reduced-motion:reduce){
+    .pb-wrap.pb-active::before,.upl.pb-active::after{animation:none;background:linear-gradient(135deg,rgba(0,240,255,.3),rgba(191,0,255,.3))}
+}
+
 /* Preview body — NO TRANSFORM SCALE, renders at actual width */
 .pv-body{flex:1;overflow:auto;background:#0d0d0d;display:flex;justify-content:center}
 .pv-body::-webkit-scrollbar{width:3px}
@@ -513,14 +531,14 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
             </div>
         </div>
         <div class="pv-inputs">
-            <label for="iBrand">NÉV</label><input type="text" id="iBrand" placeholder="Cégnév" maxlength="30" style="max-width:120px">
-            <label for="iTag">SZLOGEN</label><input type="text" id="iTag" placeholder="Szlogen/alcím" maxlength="60">
-            <label for="iCta">CTA</label><input type="text" id="iCta" placeholder="CTA gomb" maxlength="20" style="max-width:100px">
+            <label for="iBrand">NÉV</label><div class="pb-wrap" id="pbBrand" data-pbtip="A cégneved — ez jelenik meg a header-ben és a footer-ben" style="max-width:120px;flex:1;min-width:80px"><input type="text" id="iBrand" placeholder="Cégnév" maxlength="30"></div>
+            <label for="iTag">SZLOGEN</label><div class="pb-wrap" id="pbTag" data-pbtip="Szlogen vagy alcím — egy rövid, meggyőző mondat a hero alatt" style="flex:2;min-width:140px"><input type="text" id="iTag" placeholder="Szlogen/alcím" maxlength="60"></div>
+            <label for="iCta">CTA</label><div class="pb-wrap" id="pbCta" data-pbtip="A CTA gomb szövege — pl. „Ajánlatkérés", „Foglalás", „Megveszem"" style="max-width:100px;flex:1;min-width:80px"><input type="text" id="iCta" placeholder="CTA gomb" maxlength="20"></div>
             <label for="fsSlider">MÉRET</label><input type="range" id="fsSlider" min="70" max="140" value="100" step="5" style="width:60px"><output id="fsVal" style="font-family:var(--mono);font-size:.6rem;color:var(--cyan);width:28px">100%</output>
         </div>
         <div class="pv-uploads">
-            <div class="upl" id="uLogo" role="button" tabindex="0" aria-label="Logó feltöltése — maximum 500 kilobájt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Logó (max 500KB)</span><input type="file" accept="image/*"></div>
-            <div class="upl" id="uHero" role="button" tabindex="0" aria-label="Hero kép feltöltése — maximum 2 megabájt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 15l5-5 5 5 3-3 7 7"/></svg><span>Hero kép (max 2MB)</span><input type="file" accept="image/*"></div>
+            <div class="upl" id="uLogo" role="button" tabindex="0" aria-label="Logó feltöltése — maximum 500 kilobájt" data-pbtip="Tölts fel logót — automatikusan a logó színeiből javasolt színvilágot is felkínál"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Logó (max 500KB)</span><input type="file" accept="image/*"></div>
+            <div class="upl" id="uHero" role="button" tabindex="0" aria-label="Hero kép feltöltése — maximum 2 megabájt" data-pbtip="Hero háttérkép — a fejléc fölötti nagy képnek (minimum 1200×600px ajánlott)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 15l5-5 5 5 3-3 7 7"/></svg><span>Hero kép (max 2MB)</span><input type="file" accept="image/*"></div>
         </div>
         <button type="button" class="logo-suggest" id="logoSuggest" style="display:none" aria-label="Javasolt téma a logód színe alapján">
             <span class="ls-dot" id="lsDot" aria-hidden="true"></span>
@@ -1239,6 +1257,47 @@ document.getElementById('scopeForm').addEventListener('submit',function(){
     });
 })();
 load();if(S.features)S.features=S.features.filter(f=>f!=='configurator');restoreUI();up();if(S.logo)setTimeout(showLogoSuggest,200);
+// ── Pulse border sequence — figyelemfelhívás a brand-mezőkre ──
+(function(){
+    const targets=[
+        {id:'pbBrand',isInput:true,inputId:'iBrand'},
+        {id:'pbTag',isInput:true,inputId:'iTag'},
+        {id:'pbCta',isInput:true,inputId:'iCta'},
+        {id:'uLogo',isInput:false},
+        {id:'uHero',isInput:false}
+    ];
+    let idx=0,timer=null,stopped=false;
+    const STOP_AFTER_MS=30000; // 30 mp után minden megáll
+    const STEP_MS=3000; // 3 mp egy mezőn
+    const isFilled=(t)=>{
+        if(t.isInput){const inp=document.getElementById(t.inputId);return inp&&inp.value.trim().length>0}
+        return t.id==='uLogo'?!!S.logo:!!S.hero_img;
+    };
+    const isFocused=(t)=>{
+        if(!t.isInput)return false;
+        const inp=document.getElementById(t.inputId);
+        return inp===document.activeElement;
+    };
+    const clearAll=()=>targets.forEach(t=>{const el=document.getElementById(t.id);if(el)el.classList.remove('pb-active')});
+    const tick=()=>{
+        if(stopped){clearAll();return}
+        clearAll();
+        let attempts=0;
+        while(attempts<targets.length&&(isFilled(targets[idx])||isFocused(targets[idx]))){
+            idx=(idx+1)%targets.length;
+            attempts++;
+        }
+        if(attempts>=targets.length){clearAll();return} // mindegyik kitöltve — nincs mit jelölni
+        const el=document.getElementById(targets[idx].id);
+        if(el)el.classList.add('pb-active');
+        idx=(idx+1)%targets.length;
+        timer=setTimeout(tick,STEP_MS);
+    };
+    // Auto-stop 30 mp után
+    setTimeout(()=>{stopped=true;clearAll();if(timer)clearTimeout(timer)},STOP_AFTER_MS);
+    // Indítás kis késleltetéssel (a welcome eltűnése után)
+    setTimeout(tick,1200);
+})();
 // Keyboard delegation for role=button divs (Enter/Space)
 document.addEventListener('keydown',function(e){
     const t=e.target;
