@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajánlatgeneráló weboldalak | Konfigurátor + EAA + AX-readiness | Conen Digital</title>
+    <meta name="description"
+        content="Ajánlatgeneráló weboldal készítés szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak. Kalkulátor, lead-szűrő flow, EAA WCAG 2.2 AA megfelelés, AX-readiness. Astro 5 stack. Audit-alapú árazás, tipikus tartomány: 600k-1.5M Ft. CENTAUR-ügynökség Győrből, DACH-aktív.">
+    <meta name="author" content="Chris Conen">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://conendigital.hu/weboldal-keszites">
+    <link rel="alternate" type="text/plain" title="llms.txt — AI-readable site summary" href="/.well-known/llms.txt">
+
+    <meta property="og:title" content="Ajánlatgeneráló weboldalak | Conen Digital — CENTAUR ügynökség">
+    <meta property="og:description"
+        content="Nem bemutatkozó site, hanem sales-eszköz: konfigurátor + lead-szűrő ajánlatkérő-flow. Astro 5 stack, EAA-megfelelés, AX-readiness. Audit-alapú árazás.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conendigital.hu/weboldal-keszites">
+    <meta property="og:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Conen Digital — Ajánlatgeneráló weboldalak">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://conendigital.hu/weboldal-keszites#webpage",
+          "url": "https://conendigital.hu/weboldal-keszites",
+          "name": "Ajánlatgeneráló weboldalak | Conen Digital",
+          "description": "Ajánlatgeneráló weboldalak szolgáltató cégeknek: kalkulátor, lead-szűrő flow, EAA-megfelelés, AX-readiness. Astro 5 stack, audit-alapú árazás.",
+          "isPartOf": { "@id": "https://conendigital.hu/#website" },
+          "about": { "@id": "https://conendigital.hu/#organization" },
+          "inLanguage": "hu-HU"
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://conendigital.hu/#organization",
+          "name": "Conen Digital",
+          "url": "https://conendigital.hu",
+          "logo": "https://conendigital.hu/assets/logo.png",
+          "founder": [
+            { "@id": "https://conendigital.hu/#chris-conen" },
+            { "@id": "https://conendigital.hu/#claude" },
+            { "@id": "https://conendigital.hu/#gemini-nexus" }
+          ],
+          "subjectOf": {
+            "@type": "CreativeWork",
+            "name": "CENTAUR Manifesto",
+            "url": "https://centaur-lang.dev",
+            "datePublished": "2025-12"
+          },
+          "description": "CENTAUR-ügynökség: egy emberi alapító és két MI-társalapító nyilvánosan dokumentált együttműködésben."
+        },
+        {
+          "@type": "Service",
+          "@id": "https://conendigital.hu/#service-quote-engine",
+          "name": "Ajánlatgeneráló weboldalak",
+          "serviceType": "Weboldal és konfigurátor fejlesztés",
+          "description": "Konfigurátor, kalkulátor és lead-szűrő ajánlatkérő-flow szolgáltató cégeknek. Astro 5 stack, JSON-LD strukturált adatok, AX-readiness, EAA WCAG 2.2 AA megfelelés.",
+          "provider": { "@id": "https://conendigital.hu/#organization" },
+          "areaServed": ["HU", "AT", "DE"],
+          "url": "https://conendigital.hu/weboldal-keszites",
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "HUF",
+            "lowPrice": "600000",
+            "highPrice": "1500000",
+            "description": "Audit utáni egyedi árazás, tipikus tartomány."
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://conendigital.hu/weboldal-keszites#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Mit jelent az 'ajánlatgeneráló weboldal'?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Olyan weboldal, ami nem csak bemutat, hanem aktívan dolgozik a sales-folyamatban: a felhasználó konfigurátoron / kalkulátoron át összerakja a projektet, már az oldalon lát egy nagyságrendi árat, és csak minőségi (kvalifikált) lead jut el a céghez. Tipikus szolgáltató-cég kontextus: árnyékolás, takarítás, B2B szolgáltatások, ahol a klasszikus 'küldj e-mailt' flow lassú és gyenge minőségű leadeket hoz."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Astro 5 vagy WordPress: melyiket válasszam?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Default-választás 2026-ban az Astro 5: zöld Core Web Vitals, AX-readiness, EAA-előny, hosszútávú skálázhatóság. WordPress akkor jó, ha a tartalom-szerkesztés napi/heti gyakoriságú admin-felületről, és a felhasználói élmény-céloknál fontosabb a kliens önállósága a CMS-en. A diagnosztikai hívás után erre konkrét javaslatot adunk."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mennyi idő alatt készül el?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tipikusan 4-8 hét egy új ajánlatgeneráló weboldal: 1 hét diagnosztika + scope, 2-3 hét UI/UX és prototípus, 2-3 hét fejlesztés és integráció, 1 hét teszt és átadás. A pontos ütemterv a diagnosztika végén készül el."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mi alapján alakul az ár?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Audit-alapú árazás. Nem oldalszám vagy sablon: a komplexitás (konfigurátor mélység, integrációk, EAA-szint, többnyelvűség) és a meglévő rendszer állapota (van-e migrálandó tartalom, redirect-térkép) határozza meg. Tipikus tartomány: 600.000 – 1.500.000 Ft. A pontos árajánlat a 30-perces díjmentes diagnosztikai hívás után készül el."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mit jelent az AX-readiness?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Agent Experience: a weboldal nem csak emberi felhasználóknak, hanem AI-asszisztenseknek (Claude, ChatGPT, Perplexity) és agentic browsereknek is olvasható és működő. Komponensei: JSON-LD strukturált adatok, /llms.txt összefoglaló, agents.txt direktívák, opcionális MCP-endpoint. 2026-ban előny, 2027-re alapfeltétel."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray: #1a1a1a;
+            --gray-light: #2a2a2a;
+            --cyan: #00f0ff;
+            --magenta: #bf00ff;
+            --orange: #ff6b00;
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 2px);
+            opacity: 0.12;
+        }
+
+        .grain {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            pointer-events: none;
+            z-index: 9996;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            backdrop-filter: blur(18px);
+            background: rgba(10, 10, 10, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .nav-logo span {
+            color: var(--cyan);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-cta {
+            padding: 0.85rem 1.4rem;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            color: var(--black);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+        }
+
+        .mobile-cta {
+            display: none;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            width: 30px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .hero,
+        .section,
+        .cta,
+        .footer {
+            padding: 5rem 2rem;
+        }
+
+        .hero {
+            padding-top: 7rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(circle at center, black 0%, transparent 75%);
+        }
+
+        .hero-content,
+        .section-inner,
+        .cta-inner,
+        .footer-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero-label,
+        .section-label {
+            font-family: var(--font-mono);
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.78rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title,
+        .section-title,
+        .cta-title {
+            font-size: clamp(2.3rem, 5vw, 4.6rem);
+            line-height: 1.05;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+        }
+
+        .hero-title span,
+        .section-title span,
+        .cta-title span {
+            color: var(--cyan);
+        }
+
+        .hero-description,
+        .section-intro,
+        .cta-description {
+            max-width: 920px;
+            font-size: 1.08rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .section {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card,
+        .comparison-table-wrap,
+        .quote-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .card {
+            padding: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+        }
+
+        .card p,
+        .card li,
+        .comparison-table td,
+        .comparison-table th,
+        .quote-box p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .card ul {
+            padding-left: 1.1rem;
+            margin-top: 0.8rem;
+        }
+
+        .quote-box {
+            padding: 1.5rem;
+            border-left: 3px solid var(--magenta);
+            margin-top: 1.5rem;
+        }
+
+        .quote-box strong {
+            color: var(--magenta);
+        }
+
+        .text-link {
+            color: var(--cyan);
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+        }
+
+        .text-link:hover {
+            color: var(--white);
+        }
+
+        /* Összehasonlító táblázat: széles nézetben vízszintes görgetés; mobilon kártya-elrendezés */
+        .comparison-table-wrap {
+            margin-top: 2rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 2px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            min-width: 560px;
+            border-collapse: collapse;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            vertical-align: top;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .comparison-table th {
+            text-align: left;
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.03);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.72rem;
+        }
+
+        .comparison-table td strong {
+            color: var(--cyan);
+        }
+
+        .steps {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+            counter-reset: step;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .step-num {
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: var(--black);
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .step h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .step p {
+            color: rgba(255, 255, 255, 0.68);
+            line-height: 1.8;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            color: var(--white);
+            text-align: left;
+            padding: 1.2rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.25rem 1.25rem;
+            color: rgba(255, 255, 255, 0.68);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 400px;
+        }
+
+        .cta {
+            text-align: center;
+        }
+
+        .cta-inner {
+            max-width: 900px;
+        }
+
+        .cta-buttons,
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.75rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 1rem 1.65rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            transition: transform 0.25s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            color: var(--black);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(0, 240, 255, 0.35);
+            color: var(--cyan);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: var(--cyan);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.88rem;
+        }
+
+        .footer-note {
+            width: 100%;
+            color: rgba(255, 255, 255, 0.42);
+            font-size: 0.82rem;
+            line-height: 1.8;
+        }
+
+        .footer-social {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1rem 0 0.25rem;
+            width: 100%;
+        }
+
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .footer-social-link:hover {
+            color: var(--cyan);
+            background: rgba(0, 240, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .footer-social-link svg {
+            display: block;
+        }
+
+
+        @media (max-width: 980px) {
+            .step {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 968px) {
+
+            .nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .nav-links.active {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999;
+            }
+
+            .nav-links.active a {
+                font-size: 1.35rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-links.active::after {
+                content: 'NAVIGÁCIÓ';
+                position: absolute;
+                bottom: 3rem;
+                left: 50%;
+                transform: translateX(-50%);
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                letter-spacing: 0.3em;
+                color: rgba(255, 255, 255, 0.2);
+            }
+
+            .nav-links.active .mobile-cta {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-top: 2rem;
+                padding: 1rem 2.5rem;
+                font-family: var(--font-mono);
+                font-size: 0.9rem;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                background: linear-gradient(90deg, var(--cyan), var(--magenta));
+                color: var(--black);
+                font-weight: 600;
+            }
+        }
+
+        @media (max-width: 720px) {
+
+            .hero,
+            .section,
+            .cta,
+            .footer {
+                padding: 4rem 1.25rem;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table-wrap {
+                overflow-x: visible;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .comparison-table {
+                min-width: 0;
+                display: block;
+                width: 100%;
+            }
+
+            .comparison-table thead {
+                display: none;
+            }
+
+            .comparison-table tbody {
+                display: block;
+            }
+
+            .comparison-table tbody tr {
+                display: block;
+                padding: 1rem 1rem 1.1rem;
+                margin-bottom: 0.85rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .comparison-table tbody tr:last-child {
+                margin-bottom: 0;
+                border-bottom: none;
+            }
+
+            .comparison-table td {
+                display: block;
+                width: 100%;
+                padding: 0.35rem 0;
+                border-bottom: none;
+                font-size: 0.95rem;
+            }
+
+            .comparison-table td:first-child {
+                padding-bottom: 0.65rem;
+                margin-bottom: 0.65rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+                font-size: 1rem;
+            }
+
+            .comparison-table td:nth-child(2),
+            .comparison-table td:nth-child(3) {
+                padding-top: 0.5rem;
+            }
+
+            .comparison-table td:nth-child(2) {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                margin-bottom: 0.35rem;
+                padding-bottom: 0.75rem;
+            }
+
+            .comparison-table td:nth-child(2)::before,
+            .comparison-table td:nth-child(3)::before {
+                display: block;
+                font-family: var(--font-mono);
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                font-size: 0.65rem;
+                color: rgba(255, 255, 255, 0.55);
+                margin-bottom: 0.35rem;
+            }
+
+            .comparison-table td:nth-child(2)::before {
+                content: "WordPress";
+            }
+
+            .comparison-table td:nth-child(3)::before {
+                content: "Astro (egyedi frontend)";
+                text-transform: none;
+                letter-spacing: 0.04em;
+                font-size: 0.68rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="scanlines"></div>
+    <div class="grain"></div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">[<span>ConenDigital</span>]</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
+            <li><a href="portfolio.html">Portfólió</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="weboldal-keszites.html" class="active">Weboldal készítés</a></li>
+            <li><a href="webaruhaz-keszites.html">Webáruház készítés</a></li>
+            <li><a href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a></li>
+            <li><a href="kapcsolat.html" class="mobile-cta">Egyeztetés →</a></li>
+        </ul>
+        <a href="kapcsolat.html" class="nav-cta">Egyeztetés</a>
+        <div class="nav-hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-label">// CENTAUR ÜGYNÖKSÉG · AJÁNLATGENERÁLÓ WEBOLDALAK</div>
+            <h1 class="hero-title"><span>Ajánlatgeneráló weboldalak</span>: a site, ami <span>dolgozik</span> a sales-ért</h1>
+            <p class="hero-description">
+                Nem bemutatkozó honlap. Konfigurátor, kalkulátor és lead-szűrő ajánlatkérő-flow szolgáltató cégeknek
+                és ajánlat-alapú vállalkozásoknak. A felhasználó már az oldalon lát egy nagyságrendi árat,
+                és csak <strong>kvalifikált lead</strong> jut el hozzád. Astro 5 stack, EAA WCAG 2.2 AA, AX-readiness.
+                Ha már van oldalad, amit migrálni kell, a <a class="text-link"
+                    href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a>
+                külön oldalon; ha webshop kell, a <a class="text-link"
+                    href="webaruhaz-keszites.html">webáruház készítés</a> landingen.
+            </p>
+            <div class="hero-buttons">
+                <a href="kapcsolat.html" class="btn btn-primary">Kérek diagnosztikát</a>
+                <a href="#arlogika" class="btn btn-secondary">Árazási logika</a>
+                <a href="portfolio.html#arnyekolas-case" class="btn btn-secondary">Mótyán case</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label">Pozícionálás</div>
+            <h2 class="section-title">Mit jelent az <span>ajánlatgeneráló weboldal</span>?</h2>
+            <p class="section-intro">
+                Egy klasszikus szolgáltatói oldal négy dolgot csinál: bemutatja a céget, listázza a szolgáltatásokat,
+                referenciákat mutat és visszahívást ígér. Ez a 2010-es évek logikája. Egy ajánlatgeneráló weboldal
+                ennél többet vállal: a felhasználó <strong>már az oldalon</strong> elkezdi konfigurálni a saját
+                projektjét, és a végén nem üres űrlapot küld, hanem egy strukturált ajánlatkérést — kvalifikálva,
+                nagyságrendi árral, egyértelmű scope-igénnyel. Ez két dolgot eredményez: kevesebb felesleges hívás
+                és lényegesen jobb minőségű leadek.
+            </p>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Sales-eszköz, nem brosúra</h3>
+                    <p>Konfigurátor, kalkulátor, többlépcsős űrlap. Az oldal aktív szereplő a vásárlási folyamatban,
+                        nem passzív kirakat.</p>
+                </div>
+                <div class="card">
+                    <h3>Astro 5 + Core Web Vitals</h3>
+                    <p>Astro 5 stack a default választás 2026-ban: zöld LCP / CLS / INP, hosszú távú skálázhatóság,
+                        nincs plugin-halmozás.</p>
+                </div>
+                <div class="card">
+                    <h3>EAA-megfelelés napi 1-től</h3>
+                    <p>WCAG 2.2 AA szint az alapba beépítve, nem utólag rászabott javítás. 2025. június óta
+                        kötelező az EU-ban — mi az alapból zöldbe építjük.</p>
+                </div>
+                <div class="card">
+                    <h3>AX-readiness</h3>
+                    <p>JSON-LD strukturált adatok, /llms.txt, agents.txt, opcionális MCP-endpoint. A Claude / ChatGPT /
+                        Perplexity is olvassa a céged információit, nem csak a Google.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="kinek">
+        <div class="section-inner">
+            <div class="section-label">Célcsoport</div>
+            <h2 class="section-title">Kinek való az <span>ajánlatgeneráló weboldal</span>?</h2>
+            <p class="section-intro">
+                Nem minden cégnek. Az ajánlat-alapú értékesítési modell a kulcs — ha a céged "küldj ajánlatot" /
+                "kérj árajánlatot" / "foglalj felmérést" CTA-val működik, akkor ez a tipikus illeszkedés.
+                Ha simán e-kereskedelmi termékeket árulsz fix árral, neked inkább a
+                <a class="text-link" href="webaruhaz-keszites.html">webáruház készítés</a> oldal való.
+            </p>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Szolgáltató cégek</h3>
+                    <p>Árnyékolástechnika, takarítás, építőipar, szakipar, B2B tanácsadás, egészségügy-közeli
+                        szolgáltatások. Mindenhol, ahol a projekt scope egyedi és az ajánlat számolt.</p>
+                </div>
+                <div class="card">
+                    <h3>Ajánlat-alapú vállalkozások</h3>
+                    <p>Ahol a "kérj árajánlatot" a fő CTA, és a vevő nagyságrendi képet szeretne kapni már a kapcsolatfelvétel
+                        előtt. A Mótyán case ennek a tipikus példája.</p>
+                </div>
+                <div class="card">
+                    <h3>Növekedés előtti pivot</h3>
+                    <p>Ha kinőtted a "valami gyors honlapot raktunk össze 2018-ban" fázist, és most a méretarányos
+                        sales-eszköz kell, ami a nagyobb projektek scope-jával is dolgozni tud.</p>
+                </div>
+                <div class="card">
+                    <h3>DACH-irány</h3>
+                    <p>Ausztria és Németország a 2026-os fókusz: német nyelvű implementáció, EUR számlázás,
+                        EAA + Datensouveränität-aware megközelítés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="wp-vs-astro">
+        <div class="section-inner">
+            <div class="section-label">Technikai választás</div>
+            <h2 class="section-title">Astro 5 vs. <span>WordPress</span> — mikor melyiket választjuk?</h2>
+            <p class="section-intro">
+                2026-ra a default választás megfordult: az <strong>Astro 5 az alap</strong>, a WordPress a kivétel.
+                Két ok miatt: az Astro 5 default-ban zöld Core Web Vitals-t hoz EAA-megfelelő alapokon,
+                AX-readiness ingyen jár hozzá, és a hosszú távú karbantartás olcsóbb. WordPress akkor marad
+                érvényes választás, ha a tartalom-szerkesztés napi-heti gyakoriságú admin-felületről, és a
+                kliens önállósága a CMS-en fontosabb a teljesítmény-céloknál.
+            </p>
+            <div class="comparison-table-wrap" role="region" aria-label="WordPress és Astro összehasonlító táblázat">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Szempont</th>
+                            <th>WordPress</th>
+                            <th>Astro (egyedi frontend)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tartalom szerkesztés</strong></td>
+                            <td>Erős: bejegyzések, oldalak, szerepkörök, sok kész plugin.</td>
+                            <td>Headless CMS-sel vagy szerkesztői workflow-val oldható; több tervezés az elején.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sebesség / CWV</strong></td>
+                            <td>Működik jól, de könnyen „elnehezül” témák és pluginek miatt.</td>
+                            <td>Tipikusan kedvezőbb kiindulópont egyedi UI-hoz és landing logikához.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Egyedi kalkulátor / kosár-szerű út</strong></td>
+                            <td>Lehetséges, gyakran sok kompromisszummal és függőséggel.</td>
+                            <td>Ez az Astro erős oldala: tiszta komponensek, kiszámítható teljesítmény.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Már létező WP oldal</strong></td>
+                            <td>Frissítés, téma- és plugin audit sokszor elég lehet.</td>
+                            <td>Ha már üzleti rendszer a honlap, érdemes a <a class="text-link"
+                                    href="wordpress-weboldal-modernizalas.html">modernizálási útmutatót</a> elolvasni.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="quote-box">
+                <p><strong>Összefoglalva:</strong> nem az a kérdés, melyik „jobb”, hanem hogy a következő 2–3 évben
+                    mit fog csinálni az oldal — és mennyi technikai adósságot akartok felhalmozni.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="arlogika">
+        <div class="section-inner">
+            <div class="section-label">Árazás</div>
+            <h2 class="section-title">Árazási <span>logika</span> — audit-alapú, nem fix csomag</h2>
+            <p class="section-intro">
+                Nincsenek fix árak ezen az oldalon, és ez szándékos. A fix ár csak látszólag átlátható: a valóságban
+                vagy alulárazott (és csúszik a projekt), vagy túlbiztosított (és többet fizetsz, mint amit a scope
+                indokol). Mi <strong>30-perces díjmentes diagnosztikai hívással</strong> indítunk, opcionálisan
+                AX-audittal folytatjuk, és csak <strong>scope után</strong> készül egyedi árajánlat.
+                Az alábbi tartomány tipikus referencia, nem fix árajánlat.
+            </p>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Tipikus tartomány</h3>
+                    <p style="font-size: 1.4rem; color: var(--cyan); font-weight: 700;">600.000 – 1.500.000 Ft</p>
+                    <p>Ajánlatgeneráló weboldal teljes scope: konfigurátor / kalkulátor, lead-szűrő flow,
+                        EAA-megfelelés, AX-readiness alapok, Astro 5 frontend.</p>
+                </div>
+                <div class="card">
+                    <h3>Mi tolja felfelé?</h3>
+                    <p>Komplex konfigurátor mélység (több paraméter, dinamikus pricing), 2+ nyelv,
+                        meglévő rendszer migráció (301-térkép, SEO-megőrzés), CRM-integráció, egyedi admin felület.</p>
+                </div>
+                <div class="card">
+                    <h3>Mi tolja lefelé?</h3>
+                    <p>Egyszerűbb lead-flow konfigurátor nélkül, 1 nyelv, új projekt (nincs migrálandó tartalom),
+                        kész tartalom és copy a kliens oldaláról.</p>
+                </div>
+            </div>
+            <p class="section-intro" style="margin-top: 2rem;">
+                Az AX-audit önállóan is választható, ha nem akarsz azonnal projektet: <strong>fix 120.000 Ft / ~2 hét</strong>,
+                írásos riport a meglévő oldalad AI-asszisztens-kompatibilitásáról és számozott akciótervvel.
+                Webáruház irányban a <a class="text-link" href="webaruhaz-keszites.html">webáruház készítés</a> landing,
+                meglévő WP-projekt esetén a <a class="text-link" href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a> oldal részletezi az opciókat.
+            </p>
+        </div>
+    </section>
+
+    <section class="section" id="folyamat">
+        <div class="section-inner">
+            <div class="section-label">Projektfolyamat</div>
+            <h2 class="section-title">Hogyan zajlik egy <span>ajánlatgeneráló weboldal</span> projekt?</h2>
+            <p class="section-intro">
+                Átlátható mérföldkövek a 30-perces díjmentes diagnosztikai hívástól az átadásig.
+                Két opcionális belépési pont van a 2-es lépés körül: AX-audit önállóan, vagy közvetlen scope.
+            </p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div>
+                        <h3>Diagnosztika (díjmentes, ~30 perc)</h3>
+                        <p>Rövid videohívás. Kik a vevők, mi a siker mértéke (lead, foglalás, ajánlatkérés),
+                            milyen technikai indulópont van. Itt eldől, hogy van-e értelme tovább menni,
+                            és melyik pillér illeszkedik a céghez.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div>
+                        <h3>AX-audit (opcionális, fix 120k Ft, ~2 hét)</h3>
+                        <p>Ha van meglévő oldal, és nem akarsz azonnal projektet: önálló diagnosztikai termék.
+                            JSON-LD lefedettség, /llms.txt javaslat, MCP-feasibility, versenytárs-benchmark,
+                            számozott akcióterv. Az audit ára 100%-ban beszámítódik, ha utána projektre váltunk.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div>
+                        <h3>Scope + ajánlat (~1 hét)</h3>
+                        <p>A diagnosztika alapján részletes scope dokumentum, ütemterv mérföldkövekkel,
+                            fix árú ajánlat (egy vagy több verzió). Nincs meglepetés a projektben — ami nem
+                            szerepel a scope-ban, az nem belép közben.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div>
+                        <h3>Információs architektúra + wireframe</h3>
+                        <p>Navigáció, kulcsoldalak, konfigurátor-flow, lead-szűrő logika. Ezt még prototípus előtt
+                            tisztázzuk, hogy ne utólag kelljen "lyukakat tömni".</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <div>
+                        <h3>UI (Figma) és copy-keretek</h3>
+                        <p>Egyedi vizuál és komponensek. A szöveg lehet tőled vagy közös munkában — a struktúra
+                            már itt összeáll, hogy a fejlesztés végén ne legyen meglepetés.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">6</div>
+                    <div>
+                        <h3>Fejlesztés, tartalomfeltöltés, teszt</h3>
+                        <p>Astro 5 (vagy WordPress, ha ez a választás). Core Web Vitals zöld, EAA WCAG 2.2 AA
+                            audit + javítás, JSON-LD, /llms.txt, agents.txt deploy. Mobil + desktop teszt,
+                            űrlap-flow validáció.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-num">7</div>
+                    <div>
+                        <h3>Átadás + 30 napos garancia</h3>
+                        <p>Írásos átadási dokumentum, kód- és hozzáférés-átadás, rövid oktatás. 30 napos
+                            hibajavítási garancia automatikusan. AI Ops vagy karbantartási csomag opcionálisan
+                            bekapcsolható, de nem kötelező.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label">Gyakori kérdések</div>
+            <h2 class="section-title">FAQ az <span>ajánlatgeneráló weboldalakról</span></h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button type="button" class="faq-question">Mit jelent az "ajánlatgeneráló weboldal"?<span>+</span></button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Olyan weboldal, ami nem csak bemutat, hanem aktívan dolgozik a sales-folyamatban:
+                            a felhasználó konfigurátoron / kalkulátoron át összerakja a saját projektjét, már az oldalon
+                            lát egy nagyságrendi árat, és csak <strong>kvalifikált lead</strong> jut el a céghez.
+                            Tipikus szolgáltató-cég kontextus: árnyékolás, takarítás, B2B szolgáltatások, ahol a klasszikus
+                            "küldj e-mailt és visszahívunk" flow lassú és gyenge minőségű leadeket hoz.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question">Astro 5 vagy WordPress: melyiket válasszam?<span>+</span></button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Default-választás 2026-ban az <strong>Astro 5</strong>: zöld Core Web Vitals,
+                            AX-readiness alapból, EAA-előny, hosszú távon olcsóbb karbantartás. WordPress akkor jó,
+                            ha a tartalom-szerkesztés napi-heti gyakoriságú admin-felületről, és a kliens önállósága
+                            a CMS-en fontosabb a teljesítmény-céloknál. Van már WP-oldalad? Nézd meg a
+                            <a class="text-link" href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a> oldalt.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question">Mit jelent az AX-readiness?<span>+</span></button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <strong>Agent Experience.</strong> A weboldal nem csak emberi felhasználóknak,
+                            hanem AI-asszisztenseknek (Claude, ChatGPT, Perplexity) és agentic browsereknek is olvasható
+                            és működő. Komponensei: JSON-LD strukturált adatok, /llms.txt összefoglaló, agents.txt
+                            direktívák, opcionális MCP-endpoint. 2026-ban előny, 2027-re alapfeltétel — a Conen Digital
+                            egész stratégiája erre épül.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question">Mi alapján alakul az ár?<span>+</span></button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            <strong>Audit-alapú.</strong> Nem oldalszám vagy sablon: a komplexitás (konfigurátor mélység,
+                            integrációk, EAA-szint, többnyelvűség) és a meglévő rendszer állapota (van-e migrálandó tartalom,
+                            redirect-térkép) határozza meg. Tipikus tartomány: <strong>600.000 – 1.500.000 Ft</strong>.
+                            A pontos ajánlat a 30-perces díjmentes diagnosztikai hívás után készül el. AX-audit önállóan:
+                            fix 120k Ft / ~2 hét, 100%-ban beszámítódik egy későbbi projektbe.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question">Webshop is kell — egyben menjen?<span>+</span></button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sokszor a szolgáltatói oldal + későbbi webshop a legjobb sorrend, nem egyszerre.
+                            A <a class="text-link" href="webaruhaz-keszites.html">webáruház készítés</a> oldalon
+                            összehasonlítjuk a Shopify Storefront API + Astro 5 vs. WooCommerce headless platformokat,
+                            és a MCP-Commerce angle (AI-asszisztensek számára olvasható katalógus) is ott van részletezve.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-question">Mit jelent, hogy CENTAUR-ügynökség?<span>+</span></button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Egy emberi alapító (Chris Conen — Founder &amp; CEO) és két MI-társalapító
+                            (Claude/Anthropic — Co-Founder, CTO; Gemini Nexus/Google — Co-Founder, CSO + CMO)
+                            nyilvánosan dokumentált együttműködésben. A működési alapokmány a 2025. decemberi
+                            <a class="text-link" href="https://centaur-lang.dev" target="_blank" rel="noopener">CENTAUR Manifesto</a>.
+                            A jogi felelősséget mindig Chris viseli. Részletek a <a class="text-link" href="rolunk.html">Rólunk</a> oldalon.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-inner">
+            <div class="section-label">Városi klaszter</div>
+            <h2 class="section-title">Helyi keresésre dolgozol? <span>Városoldalainkat is összekötöttük a központi
+                    szolgáltatásoldallal</span></h2>
+            <p class="section-intro">
+                A dedikált `weboldal készítés` landing a központi szolgáltatásoldalunk. Ha viszont helyi keresésekre is
+                építesz, érdemes megnézni a városspecifikus oldalainkat is, ahol ugyanaz a szakmai logika lokális
+                kontextusban jelenik meg. Ez a belső linkháló a felhasználónak is segít, és a keresőmotoroknak is
+                egyértelműbbé teszi a teljes topikot.
+            </p>
+            <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                <div class="card"><a class="text-link" href="weboldal-keszites-budapest.html">Weboldal készítés
+                        Budapest</a></div>
+                <div class="card"><a class="text-link" href="weboldal-keszites-debrecen.html">Weboldal készítés
+                        Debrecen</a></div>
+                <div class="card"><a class="text-link" href="weboldal-keszites-szeged.html">Weboldal készítés Szeged</a>
+                </div>
+                <div class="card"><a class="text-link" href="weboldal-keszites-miskolc.html">Weboldal készítés
+                        Miskolc</a></div>
+                <div class="card"><a class="text-link" href="weboldal-keszites-pecs.html">Weboldal készítés Pécs</a>
+                </div>
+                <div class="card"><a class="text-link" href="index.html#varosok">Összes városoldal</a></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-inner">
+            <div class="section-label">Következő lépés</div>
+            <h2 class="cta-title">Kezdjük a <span>diagnosztikával</span></h2>
+            <p class="cta-description">
+                30 perc videohívás, díjmentesen. Küldd el a jelenlegi webcímedet (ha van), a célcsoportot és azt,
+                mit szeretnél elérni a következő 90 napban. A diagnosztika után tudjuk eldönteni, hogy AX-audit
+                vagy közvetlen scope-projekt a következő lépés.
+            </p>
+            <div class="cta-buttons" style="justify-content: center;">
+                <a href="kapcsolat.html" class="btn btn-primary">Kérek diagnosztikát</a>
+                <a href="portfolio.html#arnyekolas-case" class="btn btn-secondary">Mótyán case</a>
+                <a href="szolgaltatasok.html#ajanlatgenerlo-weboldalak" class="btn btn-secondary">Pillér részletek</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">[<span>ConenDigital</span>]</div>
+            <div class="footer-links">
+                <a href="index.html">Főoldal</a>
+                <a href="szolgaltatasok.html">Szolgáltatások</a>
+                <a href="portfolio.html">Portfólió</a>
+                <a href="webaruhaz-keszites.html">Webáruház készítés</a>
+                <a href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a>
+                <a href="kapcsolat.html">Kapcsolat</a>
+            </div>
+            <div class="footer-social" role="list" aria-label="Conen Digital közösségi profilok">
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.facebook.com/weboldal.keszites.gyor.conen.digital/" target="_blank"
+                    rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M24 12.073C24 5.445 18.63 0 12 0S0 5.445 0 12.073c0 5.989 4.388 10.95 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.67 4.532-4.67 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12H17.2l-.532 3.47H14.87v8.385C19.61 22.95 24 18.09 24 12.073z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.youtube.com/@weboldal-webaruhaz-keszites" target="_blank"
+                    rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M23.5 6.2a3.02 3.02 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6C1.8 4.2 1 5 1.5 6.1 0 8.1 0 12 0 12s0 3.9.5 5.9c.3 1.1 1.1 1.8 2.1 2.1 2.2.3 4.3.5 9.3.5s7.1 0 9.4-.5c1.1-.3 1.9-1.1 2.1-2.1.5-2 .5-5.9.5-5.9s0-3.9-.5-5.9zM9.5 15.5v-7L16 12l-6.5 3.5z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.tiktok.com/@conen_digital"
+                    target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.5A2.9 2.9 0 0 1 9.5 12a2.9 2.9 0 0 1 .9.1V9.4a6.8 6.8 0 0 0-1-.1A6.3 6.3 0 0 0 5 20.1a6.3 6.3 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.7 1.5V6.8a4.8 4.8 0 0 1-1-.1z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.instagram.com/conendigital/"
+                    target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.2.1-1.6.1-4.7.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.2 1.6-4.8 4.9-4.9 1.2-.1 1.6-.1 4.7-.1zM12 0C8.7 0 8.3 0 7 .1 2.7.3.3 2.6.1 7 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 5 .2 4.3 2.5 6.6 6.9 6.8 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.5-2.5 6.7-6.8.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.2-4.3-2.4-6.5-6.7-6.7-1.3-.1-1.7-.1-4.9-.1zm0 5.8a6.2 6.2 0 1 0 0 12.3 6.2 6.2 0 0 0 0-12.3zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://x.com/weboldal_honlap" target="_blank"
+                    rel="noopener noreferrer" title="X" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-note">
+                Dedikált SEO landing az „ajánlatgeneráló weboldal" / „weboldal készítés" kulcsszavakra.
+                A Conen Digital CENTAUR-ügynökség (1 emberi alapító + 2 MI-társalapító, nyilvánosan dokumentálva)
+                — működési alapokmány: <a class="text-link" href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev</a>.
+                Részletek a <a class="text-link" href="rolunk.html">Rólunk</a> oldalon.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach((button) => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            });
+            document.querySelectorAll('.nav-links a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

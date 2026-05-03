@@ -1,0 +1,2848 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólió | CENTAUR-ügynökség referenciái — Mótyán case + Astro 5 projektek | Conen Digital</title>
+    <meta name="description"
+        content="Conen Digital portfólió: a Mótyán-féle ajánlatgeneráló konfigurátor (WP→Astro 5 migráció + EAA), nemzetközi projektek (Ausztrália, Ausztria), karbantartási referenciák. CENTAUR-ügynökség (1 emberi alapító + 2 MI-társalapító) — működési alapokmány: centaur-lang.dev.">
+    <meta name="author" content="Chris Conen">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://conendigital.hu/portfolio">
+    <link rel="alternate" type="text/plain" title="llms.txt — AI-readable site summary" href="/.well-known/llms.txt">
+
+    <meta property="og:title" content="Portfólió | CENTAUR-ügynökség referenciái — Conen Digital">
+    <meta property="og:description"
+        content="Mótyán ajánlatgeneráló konfigurátor (WP→Astro 5), nemzetközi projektek, karbantartási referenciák. CENTAUR-ügynökség Győrből.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conendigital.hu/portfolio">
+    <meta property="og:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Conen Digital — Portfólió">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://conendigital.hu/portfolio#collectionpage",
+          "url": "https://conendigital.hu/portfolio",
+          "name": "Portfólió — Conen Digital CENTAUR-ügynökség",
+          "description": "Válogatott referenciák: Mótyán ajánlatgeneráló konfigurátor (WP→Astro 5 + EAA), nemzetközi webfejlesztési projektek, karbantartási referenciák.",
+          "isPartOf": { "@id": "https://conendigital.hu/#website" },
+          "about": { "@id": "https://conendigital.hu/#organization" },
+          "inLanguage": "hu-HU",
+          "mainEntity": { "@id": "https://conendigital.hu/portfolio#arnyekolas-case" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://conendigital.hu/#organization",
+          "name": "Conen Digital",
+          "url": "https://conendigital.hu",
+          "logo": "https://conendigital.hu/assets/logo.png",
+          "founder": [
+            { "@id": "https://conendigital.hu/#chris-conen" },
+            { "@id": "https://conendigital.hu/#claude" },
+            { "@id": "https://conendigital.hu/#gemini-nexus" }
+          ],
+          "subjectOf": {
+            "@type": "CreativeWork",
+            "name": "CENTAUR Manifesto",
+            "url": "https://centaur-lang.dev",
+            "datePublished": "2025-12"
+          },
+          "description": "CENTAUR-ügynökség: egy emberi alapító és két MI-társalapító nyilvánosan dokumentált együttműködésben."
+        },
+        {
+          "@type": "Article",
+          "@id": "https://conendigital.hu/portfolio#arnyekolas-case",
+          "headline": "Mótyán Árnyékolás: WordPress → Astro 5 migráció + ajánlatgeneráló konfigurátor",
+          "description": "WordPress oldal modernizálása Astro 5 alapú ajánlatgeneráló sales-eszközre. Egyedi konfigurátor, kosárlogika, kvalifikált ajánlatkérő űrlap. PageSpeed mobil 57→99, LCP 13,5mp→1,8mp.",
+          "url": "https://conendigital.hu/portfolio#arnyekolas-case",
+          "image": "https://conendigital.hu/images/redony-reluxa-zsaluzia-rovarhalo-tata-tatabanya-komarom.webp",
+          "author": { "@id": "https://conendigital.hu/#organization" },
+          "publisher": { "@id": "https://conendigital.hu/#organization" },
+          "about": [
+            { "@id": "https://conendigital.hu/#service-quote-engine" },
+            { "@id": "https://conendigital.hu/#service-eaa-renovation" }
+          ],
+          "mentions": {
+            "@type": "Organization",
+            "name": "Mótyán Árnyékolás",
+            "url": "https://motyanarnyekolas.hu/"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray: #1a1a1a;
+            --gray-light: #2a2a2a;
+            --cyan: #00f0ff;
+            --magenta: #bf00ff;
+            --orange: #ff6b00;
+            --gold: #C9A962;
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            body {
+                cursor: none;
+            }
+        }
+
+        @media (hover: none),
+        (pointer: coarse) {
+
+            .cursor,
+            #cursorTrailContainer {
+                display: none !important;
+            }
+        }
+
+        ::selection {
+            background: var(--cyan);
+            color: var(--black);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Effects */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
+            opacity: 0.15;
+        }
+
+        .grain {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            pointer-events: none;
+            z-index: 9996;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            animation: grain 0.5s steps(1) infinite;
+        }
+
+        @keyframes grain {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-5%, -10%);
+            }
+
+            30% {
+                transform: translate(7%, -25%);
+            }
+
+            50% {
+                transform: translate(-15%, 10%);
+            }
+
+            70% {
+                transform: translate(0%, 15%);
+            }
+
+            90% {
+                transform: translate(-10%, 10%);
+            }
+        }
+
+        /* Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            border-color: var(--magenta);
+            background: rgba(191, 0, 255, 0.1);
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--black);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-terminal {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--cyan);
+            text-align: left;
+        }
+
+        .loader-line {
+            opacity: 0;
+            margin: 0.3rem 0;
+        }
+
+        .loader-line.visible {
+            opacity: 1;
+        }
+
+        .loader-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: var(--cyan);
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo-bracket {
+            color: var(--cyan);
+        }
+
+        .nav-logo-text {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '//';
+            margin-right: 0.3rem;
+            color: var(--cyan);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            opacity: 1;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-cta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .nav-cta:hover {
+            color: var(--black);
+            border-color: transparent;
+        }
+
+        .nav-cta:hover::before {
+            left: 0;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            width: 30px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-cta {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10rem 4rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-glow-1 {
+            top: -200px;
+            right: -200px;
+            background: var(--cyan);
+        }
+
+        .hero-glow-2 {
+            bottom: -200px;
+            left: -200px;
+            background: var(--magenta);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        .hero-label-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--cyan);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero-title-gradient {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.7s;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.9s;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-mono);
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Filter Section */
+        .filter {
+            padding: 2rem 4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 80px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+        }
+
+        .filter-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        /* Section Styles */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title span {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Featured Projects */
+        .featured {
+            padding: 6rem 4rem;
+        }
+
+        .featured-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .featured-item {
+            position: relative;
+            background: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .featured-item:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .featured-image {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--gray-light), var(--gray));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.05), rgba(191, 0, 255, 0.05));
+        }
+
+        .featured-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .featured-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-url {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .featured-content {
+            padding: 2.5rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-flag {
+            font-size: 1.25rem;
+        }
+
+        .featured-category {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .featured-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .featured-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 0.4rem 0.8rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .featured-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .featured-link:hover {
+            gap: 1rem;
+        }
+
+        /* Flagship Case Study */
+        .flagship-case {
+            padding: 6rem 4rem;
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.03), rgba(191, 0, 255, 0.02));
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .flagship-case-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .flagship-case-header {
+            text-align: center;
+            max-width: 960px;
+            margin: 0 auto 3rem;
+        }
+
+        .flagship-case-intro {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.68);
+            margin-top: 1.5rem;
+        }
+
+        .flagship-case-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 2rem;
+            align-items: stretch;
+            margin-bottom: 2rem;
+        }
+
+        .flagship-case-panel {
+            background: rgba(10, 10, 10, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 2rem;
+        }
+
+        .flagship-case-panel h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .flagship-case-panel p {
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .flagship-case-highlights {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .flagship-case-highlight {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .flagship-case-highlight strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--cyan);
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.55rem;
+        }
+
+        .flagship-case-highlight span {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .flagship-case-visual {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .flagship-case-hero-shot,
+        .flagship-case-proof,
+        .flagship-case-result {
+            background: rgba(10, 10, 10, 0.78);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .flagship-case-hero-shot {
+            padding: 1rem;
+        }
+
+        .flagship-case-hero-shot img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .flagship-case-hero-shot p {
+            margin-top: 0.85rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .flagship-case-proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .flagship-case-proof {
+            padding: 1rem;
+        }
+
+        .flagship-case-proof-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 0.75rem;
+        }
+
+        .flagship-case-proof img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .flagship-case-proof small {
+            display: block;
+            margin-top: 0.75rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.58);
+            font-size: 0.82rem;
+        }
+
+        .flagship-case-results {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .flagship-case-result {
+            padding: 1.15rem;
+        }
+
+        .flagship-case-result strong {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.6rem;
+        }
+
+        .flagship-case-result span {
+            display: block;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .flagship-case-result p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.62);
+            line-height: 1.7;
+        }
+
+        .flagship-case-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .flagship-case-note {
+            text-align: center;
+            max-width: 900px;
+            margin: 1.5rem auto 0;
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.52);
+            line-height: 1.8;
+        }
+
+        /* Portfolio Grid */
+        .portfolio {
+            padding: 6rem 4rem;
+            background: var(--gray);
+        }
+
+        .portfolio-container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .portfolio-item:hover {
+            border-color: rgba(0, 240, 255, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .portfolio-image {
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--gray-light), var(--gray));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.03), rgba(191, 0, 255, 0.03));
+        }
+
+        .screenshot-window {
+            width: 100%;
+            height: 100%;
+            max-height: 683px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.03);
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            z-index: 1;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        }
+
+        .screenshot-window img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: filter 0.5s ease, opacity 0.5s ease;
+            will-change: filter, opacity;
+        }
+
+        .screenshot-img.lazy {
+            filter: blur(10px) saturate(0.9);
+            opacity: 0.9;
+        }
+
+        .screenshot-img.loaded {
+            filter: none;
+            opacity: 1;
+        }
+
+        .screenshot-window::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .screenshot-window::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        .screenshot-window::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.22), rgba(201, 169, 98, 0.18));
+            border-radius: 8px;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .screenshot-window::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.32), rgba(201, 169, 98, 0.28));
+        }
+
+        .screenshot-window {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 240, 255, 0.22) rgba(0, 0, 0, 0.06);
+            -ms-overflow-style: auto;
+        }
+
+        .portfolio-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-url {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-flag {
+            font-size: 1rem;
+        }
+
+        .portfolio-category {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .portfolio-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .portfolio-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-link {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--magenta);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            color: var(--cyan);
+        }
+
+        /* Maintenance Section */
+        .maintenance {
+            padding: 6rem 4rem;
+        }
+
+        .maintenance-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .maintenance-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .maintenance-intro {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+        }
+
+        .maintenance-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .maintenance-card {
+            background: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .maintenance-card:hover {
+            border-color: rgba(255, 107, 0, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .maintenance-icon {
+            display: inline-flex;
+            width: 48px;
+            height: 48px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--cyan);
+        }
+
+        .maintenance-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .maintenance-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .maintenance-url {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+
+        .maintenance-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+        }
+
+        .maintenance-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .modernization-series-intro {
+            max-width: 820px;
+            margin: 0 auto 2rem;
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: rgba(255, 255, 255, 0.63);
+            text-align: center;
+        }
+
+        .maintenance-service {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            padding: 0.3rem 0.6rem;
+            background: rgba(255, 107, 0, 0.1);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            color: var(--orange);
+            text-transform: uppercase;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 4rem;
+            background: var(--gray);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(180deg, var(--white), rgba(255, 255, 255, 0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 6rem 4rem;
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -1rem;
+            top: 3rem;
+            font-size: 1.5rem;
+            color: var(--cyan);
+            opacity: 0.3;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .process-number {
+            font-family: var(--font-mono);
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+        }
+
+        .process-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 10rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(200px);
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-title span {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-desc {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 1.25rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            color: var(--black);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-copyright {
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-copyright a {
+            color: var(--cyan);
+        }
+
+        .footer-social {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1rem 0 0.25rem;
+            width: 100%;
+        }
+
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .footer-social-link:hover {
+            color: var(--cyan);
+            background: rgba(0, 240, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .footer-social-link svg {
+            display: block;
+        }
+
+
+        /* Centaur Footer Badge */
+        .centaur-footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 12px 20px;
+            background: rgba(201, 169, 98, 0.05);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .centaur-footer-badge:hover {
+            background: rgba(201, 169, 98, 0.1);
+            border-color: rgba(201, 169, 98, 0.4);
+        }
+
+        .centaur-footer-badge svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .centaur-footer-badge-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .centaur-footer-badge-label {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8A8A8F;
+        }
+
+        .centaur-footer-badge-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.08em;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .flagship-case-grid,
+            .flagship-case-results {
+                grid-template-columns: 1fr;
+            }
+
+            .flagship-case-proof-grid,
+            .flagship-case-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .nav-links.active {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999;
+            }
+
+            .nav-links.active a {
+                font-size: 1.5rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-links.active a::before {
+                opacity: 1;
+            }
+
+            .nav-links.active .mobile-cta {
+                display: block;
+                margin-top: 2rem;
+                padding: 1rem 2.5rem;
+                font-family: var(--font-mono);
+                font-size: 0.9rem;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                background: linear-gradient(90deg, var(--cyan), var(--magenta));
+                color: var(--black);
+                font-weight: 600;
+            }
+
+            .hero,
+            .featured,
+            .flagship-case,
+            .portfolio,
+            .maintenance,
+            .stats,
+            .process,
+            .cta {
+                padding: 5rem 2rem;
+            }
+
+            .filter {
+                padding: 1.5rem 2rem;
+                top: 70px;
+            }
+
+            .portfolio-grid,
+            .flagship-case-results,
+            .maintenance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .nav-links.active a {
+                font-size: 1.25rem;
+            }
+
+            .hero {
+                padding: 7rem 1.25rem 3rem;
+            }
+
+            .hero-label {
+                font-size: 0.75rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .hero-stat-number {
+                font-size: 2.5rem;
+            }
+
+            .filter {
+                padding: 1rem 1.25rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.65rem;
+            }
+
+            .featured,
+            .flagship-case,
+            .portfolio,
+            .maintenance,
+            .stats,
+            .process,
+            .cta {
+                padding: 3.5rem 1.25rem;
+            }
+
+            .featured-content {
+                padding: 1.5rem;
+            }
+
+            .featured-title {
+                font-size: 1.4rem;
+            }
+
+            .featured-desc {
+                font-size: 0.9rem;
+            }
+
+            .portfolio-content {
+                padding: 1.25rem;
+            }
+
+            .flagship-case-panel,
+            .flagship-case-proof,
+            .flagship-case-result,
+            .flagship-case-hero-shot {
+                padding: 1.25rem;
+            }
+
+            .portfolio-title {
+                font-size: 1rem;
+            }
+
+            .maintenance-card {
+                padding: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .process-step {
+                padding: 1.5rem;
+            }
+
+            .process-number {
+                font-size: 2.5rem;
+            }
+
+            .cta-title {
+                font-size: 1.75rem;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.8rem;
+            }
+
+            .footer {
+                padding: 2.5rem 1.25rem;
+            }
+
+            .footer-logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .filter-inner {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.6rem;
+            }
+
+            .featured-title {
+                font-size: 1.25rem;
+            }
+
+            .featured-icon {
+                font-size: 3rem;
+            }
+
+            .portfolio-icon {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-terminal">
+            <div class="loader-line" id="line1">> Projektek betöltése...</div>
+            <div class="loader-line" id="line2">> 13 referencia renderelése...</div>
+            <div class="loader-line" id="line3">> 3 kontinens szinkronizálása...</div>
+            <div class="loader-line" id="line4">> Sikeres betöltés.<span class="loader-cursor"></span></div>
+        </div>
+    </div>
+
+    <!-- Effects -->
+    <div class="scanlines"></div>
+    <div class="grain"></div>
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">
+            <span class="nav-logo-bracket">[</span>
+            <span class="nav-logo-text">ConenDigital</span>
+            <span class="nav-logo-bracket">]</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
+            <li><a href="weboldal-keszites.html">Weboldal készítés</a></li>
+            <li><a href="webaruhaz-keszites.html">Webáruház készítés</a></li>
+            <li><a href="portfolio.html" class="active">Portfólió</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="index.html#varosok">Városok</a></li>
+            <li><a href="kapcsolat.html" class="mobile-cta">Ajánlatkérés →</a></li>
+        </ul>
+        <a href="weboldal-konfigurator.html" class="nav-cta">Konfigurátor</a>
+        <div class="nav-hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-label">
+                <span class="hero-label-dot"></span>
+                // CENTAUR ÜGYNÖKSÉG · PORTFÓLIÓ
+            </div>
+            <h1 class="hero-title">
+                Referenciák<br>
+                <span class="hero-title-gradient">és case study-k</span>
+            </h1>
+            <p class="hero-description">
+                A CENTAUR-ügynökség nyilvánosan dokumentált munkái — Mótyán-féle ajánlatgeneráló konfigurátor
+                (WP→Astro 5 + EAA), nemzetközi projektek Ausztráliától Ausztriáig, karbantartási referenciák.
+                A Mótyán case a flagship: a 3 fő pillérünkből (Ajánlatgeneráló weboldalak, Felújítás+EAA, AI Ops)
+                az első kettő ötvözve, mérhető eredménnyel. Működési alapokmány:
+                <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--cyan);">centaur-lang.dev</a>.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">13+</div>
+                    <div class="hero-stat-label">Projekt</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">3</div>
+                    <div class="hero-stat-label">Kontinens</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">5</div>
+                    <div class="hero-stat-label">Ország</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter">
+        <div class="filter-inner">
+            <button class="filter-btn active" data-filter="all">Összes</button>
+            <button class="filter-btn" data-filter="agency">Ügynökségek</button>
+            <button class="filter-btn" data-filter="ecommerce">Webshopok</button>
+            <button class="filter-btn" data-filter="service">Szolgáltatások</button>
+            <button class="filter-btn" data-filter="maintenance">Karbantartás</button>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured">
+        <div class="featured-container">
+            <div class="featured-header reveal">
+                <div class="section-label">Kiemelt projektek</div>
+                <h2 class="section-title">Zászlóshajó <span>projektek</span></h2>
+            </div>
+
+            <div class="featured-grid">
+                <!-- Australian Web Agency -->
+                <div class="featured-item reveal" data-category="agency">
+                    <div class="featured-image">
+                        <div class="featured-placeholder">
+                            <img src="images/webdesign-sydney-australia.webp"
+                                alt="AWA - Australian Web Agency | Website Design Sydney" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="featured-content">
+                        <div class="featured-meta">
+                            <span class="featured-flag">🇦🇺</span>
+                            <span class="featured-category">Web Ügynökség</span>
+                        </div>
+                        <h3 class="featured-title">Australian Web Agency</h3>
+                        <p class="featured-desc">
+                            Prémium webdesign szolgáltatások a Sydney-i piacra. Luxury gold és fekete esztétika,
+                            bento grid layout-ok, és 90%+ PageSpeed eredmények. A "spec work" stratégiával
+                            megvalósított első demo projekt a V Hair Salon Bondi volt.
+                        </p>
+                        <div class="featured-tags">
+                            <span class="featured-tag">Next.js</span>
+                            <span class="featured-tag">Tailwind CSS</span>
+                            <span class="featured-tag">GSAP</span>
+                            <span class="featured-tag">90+ PageSpeed</span>
+                        </div>
+                        <a href="https://australianweb.agency" class="featured-link" target="_blank">
+                            Megtekintés →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PIXELLA.at -->
+                <div class="featured-item reveal" data-category="agency">
+                    <div class="featured-image">
+                        <div class="featured-placeholder">
+                            <img src="images/pixella-webdesign-wien.webp" alt="PIXELLA - webdesign Wien" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="featured-content">
+                        <div class="featured-meta">
+                            <span class="featured-flag">🇦🇹</span>
+                            <span class="featured-category">«Élő weboldal» koncepció</span>
+                        </div>
+                        <h3 class="featured-title">PIXELLA.at</h3>
+                        <p class="featured-desc">
+                            A PIXELLA.at «Living Website» irányú koncepciója — Digital DNA technológia,
+                            ami valós időben alkalmazkodik minden látogatóhoz. Interaktív DNA Playground,
+                            egyedi CENTAUR szekció, és teljesen reszponzív 17 aloldallal.
+                        </p>
+                        <div class="featured-tags">
+                            <span class="featured-tag">Digital DNA</span>
+                            <span class="featured-tag">GSAP ScrollTrigger</span>
+                            <span class="featured-tag">Canvas API</span>
+                            <span class="featured-tag">Schema.org</span>
+                        </div>
+                        <a href="https://pixella.at" class="featured-link" target="_blank">
+                            Megtekintés →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flagship Case Study -->
+    <section class="flagship-case" id="arnyekolas-case">
+        <div class="flagship-case-container">
+            <div class="flagship-case-header reveal">
+                <div class="section-label">// FLAGSHIP CASE · 2 PILLÉR EGYÜTT</div>
+                <h2 class="section-title">Mótyán Árnyékolás: <span>WP→Astro 5 + ajánlatgeneráló konfigurátor</span></h2>
+                <p class="flagship-case-intro">
+                    A flagship referencia pontosan azt mutatja, amit a Conen Digital ma csinál: a 3 fő pillérünkből kettő
+                    egyetlen projektben ötvözve. <strong>Felújítás + EAA-megfelelés</strong> (WordPress → Astro 5 migráció,
+                    Core Web Vitals zöldbe) és <strong>Ajánlatgeneráló weboldalak</strong> (egyedi konfigurátor, kosárlogika,
+                    kvalifikált ajánlatkérő flow). A klasszikus "küldjön e-mailt és visszahívjuk" CTA helyét átvette egy
+                    vizuális tervező, ami az érdeklődő számára azonnal nagyságrendi árat mutat — és a Mótyán üzleti oldalról
+                    nézve: kevesebb felesleges hívás, jobb minőségű leadek.
+                </p>
+            </div>
+
+            <div class="flagship-case-grid">
+                <div class="flagship-case-panel reveal">
+                    <h3>Kiindulási helyzet és üzleti probléma</h3>
+                    <p>
+                        A korábbi WordPress-oldal jelenlétet biztosított, de három konkrét szempontból nem teljesítette
+                        a 2026-os elvárásokat: <strong>Core Web Vitals piros</strong> mobilon (LCP 13,5 mp), nem volt
+                        <strong>EAA WCAG 2.2 AA megfelelő</strong>, és a sales-flow passzív "kérjen visszahívást" típusú
+                        volt, ami egyszerre lassú és gyenge minőségű leadeket termelt — a látogató nem kapott képet arról,
+                        milyen rendszerekből áll össze egy redőny, zsaluzia vagy ZIP Screen beruházás, és mennyi lehet a
+                        várható költségszint.
+                    </p>
+                    <p>
+                        Tipikus helyzet: a régi WP-oldal elinduláskor még megfelelő, de pluginhalmozással elnehezül,
+                        EAA-szempontból nem javítható helyben, és nem támogatja az ajánlatgeneráló sales-logikát,
+                        ami egy projekt-jellegű szolgáltatói cégnél ma alapelvárás.
+                    </p>
+                    <p>
+                        A modernizáció célja ezért hármas volt: <strong>technikai alap</strong> (Astro 5 + zöld CWV),
+                        <strong>jogi megfelelés</strong> (EAA WCAG 2.2 AA audit + javítás), és <strong>sales-eszköz</strong>
+                        (ajánlatgeneráló konfigurátor, ami előszűri, edukálja és tereli az érdeklődőt még az ajánlatkérés
+                        előtt). Vagyis nem csak szebb weboldal készült, hanem jobb konverziós logika és jogilag megfelelő
+                        alap egyszerre.
+                    </p>
+
+                    <div class="flagship-case-highlights">
+                        <div class="flagship-case-highlight">
+                            <strong>Modernizáció</strong>
+                            <span>WordPress → Astro 5 statikus build, minimális JS, automatikus képoptimalizálás.
+                                Karbantartás nélkül is zöld CWV.</span>
+                        </div>
+                        <div class="flagship-case-highlight">
+                            <strong>Ajánlatgeneráló</strong>
+                            <span>Egyedi árkalkulátor kosárlogikával. Az érdeklődő az oldalon összerakja a saját
+                                projektjét és nagyságrendi árat lát — a 4-es pillér működése.</span>
+                        </div>
+                        <div class="flagship-case-highlight">
+                            <strong>EAA-megfelelés</strong>
+                            <span>WCAG 2.2 AA audit + javítás: kontraszt, billentyűzet-navigáció, ARIA-szerepek,
+                                képernyőolvasó-kompatibilitás. Dokumentált teszt.</span>
+                        </div>
+                        <div class="flagship-case-highlight">
+                            <strong>AX-readiness alap</strong>
+                            <span>JSON-LD strukturált adatok minden szolgáltatáshoz, /llms.txt, agents.txt deploy.
+                                AI-asszisztens-olvasható alapszint.</span>
+                        </div>
+                        <div class="flagship-case-highlight">
+                            <strong>Konverziós logika</strong>
+                            <span>A látogató nem böngészik, hanem konfigurál és kvalifikált ajánlatkérést küld.
+                                Mótyán oldaláról: kevesebb felesleges hívás, jobb leadek.</span>
+                        </div>
+                        <div class="flagship-case-highlight">
+                            <strong>Mintaprojekt</strong>
+                            <span>Tipikus szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak: árnyékolás, takarítás,
+                                B2B szolgáltatások, ahol a projekt scope egyedi.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flagship-case-visual reveal">
+                    <div class="flagship-case-hero-shot">
+                        <img src="images/redony-reluxa-zsaluzia-rovarhalo-tata-tatabanya-komarom.webp"
+                            alt="Mótyán Árnyékolás — Astro 5 ajánlatgeneráló konfigurátor (Tata, Tatabánya, Komárom térsége)">
+                        <p>
+                            A redesign vizuális frissítés csak a felszín. A valódi érték: az alatta futó konfigurátor +
+                            kosár + ajánlatkérő rendszer, ami webáruház-szerű élményt ad egy szolgáltatói oldalon —
+                            EAA-megfelelő alapokon és AX-readable infrastruktúrával.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flagship-case-proof-grid">
+                <div class="flagship-case-proof reveal">
+                    <div class="flagship-case-proof-label">Előtte · mobil</div>
+                    <img src="images/weboldal-pagescore-javitas-elott-mobil.webp"
+                        alt="PageSpeed eredmény a modernizáció előtt mobilon">
+                    <small>57 pontos PageSpeed, 13,5 mp LCP. Ez az a tartomány, ahol a Google rangsorolásilag büntet,
+                        és a felhasználói türelem is sérül.</small>
+                </div>
+                <div class="flagship-case-proof reveal">
+                    <div class="flagship-case-proof-label">Előtte · asztal</div>
+                    <img src="images/weboldal-pagescore-javitas-elott-desktop.webp"
+                        alt="PageSpeed eredmény a modernizáció előtt asztali nézetben">
+                    <small>Asztali nézetben jobb volt a kiindulási állapot, de a projekt nem itt dőlt el: a mobilos
+                        kiszolgálás és az EAA-megfelelés voltak a kritikus szempontok.</small>
+                </div>
+                <div class="flagship-case-proof reveal">
+                    <div class="flagship-case-proof-label">Utána · mobil</div>
+                    <img src="images/weboldal-pagescore-javitas-utan-mobil.webp"
+                        alt="PageSpeed eredmény a modernizáció után mobilon">
+                    <small>99 pontos PageSpeed, 1,8 mp LCP. A gyorsulás nem esztétikai extra, hanem közvetlen
+                        konverziós előny és SEO-pozíció-javulás.</small>
+                </div>
+                <div class="flagship-case-proof reveal">
+                    <div class="flagship-case-proof-label">Utána · asztal</div>
+                    <img src="images/weboldal-pagescore-javitas-utan-desktop.webp"
+                        alt="PageSpeed eredmény a modernizáció után asztali nézetben">
+                    <small>100 pontos PageSpeed. Astro 5 default-ban ezt hozza, és karbantartás nélkül is zöld marad —
+                        nincs plugin-frissítés-kockázat.</small>
+                </div>
+            </div>
+
+            <div class="flagship-case-results">
+                <div class="flagship-case-result reveal">
+                    <strong>Mobil PageSpeed</strong>
+                    <span>57 → 99</span>
+                    <p>Ott történt a legnagyobb váltás, ahol az érdeklődők többsége először találkozik az oldallal:
+                        mobilon, lassabb hálózaton, gyors döntési helyzetben.</p>
+                </div>
+                <div class="flagship-case-result reveal">
+                    <strong>Asztali PageSpeed</strong>
+                    <span>89 → 100</span>
+                    <p>Technikailag tisztább, jobban mérhető és üzletileg stabilabb alap. Astro 5-ön ez nem extra,
+                        hanem default állapot.</p>
+                </div>
+                <div class="flagship-case-result reveal">
+                    <strong>LCP (mobil)</strong>
+                    <span>13,5 mp → 1,8 mp</span>
+                    <p>A legfontosabb vizuális tartalom megjelenése radikálisan felgyorsult. Közvetlenül javítja
+                        a felhasználói élményt és a Google-rangsorolást.</p>
+                </div>
+                <div class="flagship-case-result reveal">
+                    <strong>EAA-státusz</strong>
+                    <span>nem-megfelelő → WCAG 2.2 AA</span>
+                    <p>Akadálymentesítési audit + javítás dokumentálva. NAH-bejelentés-kockázat lekerült, és a
+                        látogatók ~8%-ának (vakok, képernyőolvasósok) is hozzáférhető lett az oldal.</p>
+                </div>
+                <div class="flagship-case-result reveal">
+                    <strong>Sales-flow</strong>
+                    <span>passzív → ajánlatgeneráló</span>
+                    <p>Az árkalkulátor és kosárlogika előszűri a leadeket: a Mótyán oldaláról kevesebb felesleges
+                        hívás, jobb minőségű ajánlatkérések.</p>
+                </div>
+                <div class="flagship-case-result reveal">
+                    <strong>AX-readiness</strong>
+                    <span>0% → alap</span>
+                    <p>JSON-LD Service schema, /llms.txt deploy. Az AI-asszisztensek (Claude, ChatGPT) is olvashatják
+                        a Mótyán katalógusát, nem csak a Google. 2027-re alapfeltétel.</p>
+                </div>
+            </div>
+
+            <div class="flagship-case-cta reveal">
+                <a href="https://motyanarnyekolas.hu/" class="btn" target="_blank" rel="noopener">Élő projekt megtekintése →</a>
+                <a href="wordpress-weboldal-modernizalas.html" class="btn">WordPress modernizálás (pillér 2) →</a>
+                <a href="weboldal-keszites.html" class="btn">Ajánlatgeneráló weboldalak (pillér 1) →</a>
+                <a href="kapcsolat.html" class="btn">Hasonló projektet szeretnék →</a>
+            </div>
+
+            <p class="flagship-case-note reveal">
+                Ez a projekt mutatja a CENTAUR-ügynökség működését a gyakorlatban: a 3 pillérünkből kettő
+                (Felújítás + EAA, és Ajánlatgeneráló weboldalak) ötvözve egyetlen projektben, mérhető eredménnyel.
+                Nem a redesign önmaga, hanem a technikai alap (Astro 5), a jogi megfelelés (EAA WCAG 2.2 AA), az
+                AX-readable infrastruktúra (JSON-LD, /llms.txt) és az egyedi konfigurátor együttese adja az értéket.
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio">
+        <div class="portfolio-container">
+            <div class="portfolio-header reveal">
+                <div class="section-label">Összes projekt</div>
+                <h2 class="section-title">Teljes <span>portfólió</span></h2>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Pannonia Personal -->
+                <div class="portfolio-item reveal" data-category="service">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                                data-src="images/ausztriai-allasok-mukalehetosegek.webp"
+                                alt="Ausztriai állások és munkalehetőségek" width="1598" height="4481"
+                                class="screenshot-img lazy" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇦🇹</span> / <span class="portfolio-flag">🇭🇺</span>
+                            <span class="portfolio-category">Állásportál</span>
+                        </div>
+                        <h3 class="portfolio-title">Pannonia Personal</h3>
+                        <p class="portfolio-desc">
+                            Álláskereső weboldal AI támogatással. Munkakereső és szakember közvetítő platform
+                            Ausztriában.
+                        </p>
+                        <a href="https://pannonia-personal.at/hu/ausztriai-allasok/" class="portfolio-link"
+                            target="_blank">
+                            Megtekintés →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ECO Clean kárpittisztítás HU -->
+                <div class="portfolio-item reveal" data-category="service">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <img src="images/karpittisztitas.webp" alt="ECO Clean kárpittisztítás" width="774"
+                                height="3327" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇭🇺</span>
+                            <span class="portfolio-category">Szolgáltatás</span>
+                        </div>
+                        <h3 class="portfolio-title">ECO Clean kárpittisztítás</h3>
+                        <p class="portfolio-desc">
+                            Vegyszermentes kárpittisztítás, foglalási rendszer AI és n8n
+                            automatizációval.
+                        </p>
+                        <a href="https://ecocleantisztito.hu" class="portfolio-link" target="_blank">
+                            Megtekintés →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- AeroScan drón -->
+                <div class="portfolio-item reveal" data-category="service">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <img src="images/dronos-foto-video.webp" alt="Drónos fotó és videó, épületfelmérés"
+                                width="774" height="3327" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇭🇺</span>
+                            <span class="portfolio-category">Szolgáltatás</span>
+                        </div>
+                        <h3 class="portfolio-title">AeroScan drónos szolgáltatások</h3>
+                        <p class="portfolio-desc">
+                            Drónos fotók és videók, épületfelmérés, keresés és mentés,
+                            járőrözés.
+                        </p>
+                        <a href="https://aeroscan.hu" class="portfolio-link" target="_blank">
+                            Megtekintés →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Eladó PRÉMIUM lakások -->
+                <div class="portfolio-item reveal" data-category="service">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                                data-src="images/elado-ingatlanok-lakasok.webp"
+                                alt="Eladó lakások, új építésű ingatlanok" width="1598" height="4481"
+                                class="screenshot-img lazy" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇭🇺</span>
+                            <span class="portfolio-category">Ingatlan</span>
+                        </div>
+                        <h3 class="portfolio-title">Eladó PRÉMIUM lakások, ingatlanok</h3>
+                        <p class="portfolio-desc">
+                            PRÉMIUM ingatlan értékesítő weboldal modern keresővel és
+                            virtuális túrákkal.
+                        </p>
+                        <a href="https://tophome24.hu" class="portfolio-link" target="_blank">
+                            Megtekintés →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ECO Clean Ausztria -->
+                <div class="portfolio-item reveal" data-category="service">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <!-- PLACEHOLDER: screenshot készül -->
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                                data-src="images/polsterreinigung.webp" alt="Polsterreinigung" width="1598"
+                                height="4481" class="screenshot-img lazy" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇦🇹</span>
+                            <span class="portfolio-category">Szolgáltatás</span>
+                        </div>
+                        <h3 class="portfolio-title">ECO Clean Ausztria</h3>
+                        <p class="portfolio-desc">
+                            Környezetbarát kárpittisztítás Burgenlandban.
+                            Német nyelvű, SEO optimalizált, 12+ aloldallal.
+                        </p>
+                        <a href="https://ecocleanpolsterreinigung.at" class="portfolio-link" target="_blank">
+                            Megtekintés →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Demó webáruház v1 -->
+                <div class="portfolio-item reveal" data-category="ecommerce">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <img src="images/webaruhaz-keszites-gyor_1.webp"
+                                alt="Webáruház készítés – Shopify API integráció, ASTRO 5.X keretrendszer" width="774"
+                                height="2621" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇭🇺</span>
+                            <span class="portfolio-category">E-commerce</span>
+                        </div>
+                        <h3 class="portfolio-title">Demó webáruház – ASTRO 5.X</h3>
+                        <p class="portfolio-desc">
+                            Headless webáruház Shopify API integrációval és ASTRO 5.X
+                            keretrendszerrel – villámgyors, SEO-optimalizált frontend.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Demó webáruház v2 -->
+                <div class="portfolio-item reveal" data-category="ecommerce">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <img src="images/webaruhaz-keszites-gyor_2.webp"
+                                alt="Webáruház készítés – Shopify API integráció, ASTRO 5.X keretrendszer" width="774"
+                                height="3005" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇭🇺</span>
+                            <span class="portfolio-category">E-commerce</span>
+                        </div>
+                        <h3 class="portfolio-title">Demó webáruház – ASTRO 5.X</h3>
+                        <p class="portfolio-desc">
+                            Teljes körű e-commerce megoldás Shopify backend és ASTRO 5.X
+                            frontend kombinációjával – dinamikus termékkezelés, gyors betöltés.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Árnyékolástechnikai modernizáció -->
+                <div class="portfolio-item reveal" data-category="service">
+                    <div class="portfolio-image">
+                        <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                            <img src="images/redony-reluxa-zsaluzia-rovarhalo-tata-tatabanya-komarom.webp"
+                                alt="Redőny Reluxa Zsaluzia Rovarháló Tata, Tatabánya, Komárom" width="774"
+                                height="3005" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <div class="portfolio-meta">
+                            <span class="portfolio-flag">🇭🇺</span>
+                            <span class="portfolio-category">Modernizációs esettanulmány</span>
+                        </div>
+                        <h3 class="portfolio-title">Mótyán Árnyékolás — Astro 5 + EAA</h3>
+                        <p class="portfolio-desc">
+                            WordPress oldal modernizálása Astro 5-re, ajánlatgeneráló konfigurátor + kosárlogika +
+                            EAA WCAG 2.2 AA. PageSpeed mobil 57→99, LCP 13,5mp→1,8mp. Tata, Tatabánya, Komárom és
+                            környéke piacára. <a href="#arnyekolas-case" style="color: var(--cyan);">Részletes case →</a>
+                        </p>
+                        <a href="https://motyanarnyekolas.hu/" class="portfolio-link" target="_blank" rel="noopener">
+                            Élő projekt →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance Projects -->
+    <section class="maintenance">
+        <div class="maintenance-container">
+            <div class="maintenance-header reveal">
+                <div class="section-label">További modernizációs projektek</div>
+                <h2 class="section-title">Nem egyszeri siker, hanem <span>rendszerszintű megközelítés</span></h2>
+                <p class="modernization-series-intro">
+                    A redőnyös Astro-esettanulmány a legerősebb bizonyítékunk, de nem egyetlen példa. Több olyan
+                    projektünk is fut, ahol régebbi oldalakból gyorsabb, jobban mérhető és üzletileg használhatóbb
+                    rendszereket építünk folyamatos fejlesztéssel.
+                </p>
+                <p class="maintenance-intro">
+                    Ezeknél a projekteknél a hangsúly a fokozatos modernizáción, a teljesítményen, a funkcionalitáson
+                    és a hosszú távú technikai stabilitáson van.
+                </p>
+            </div>
+
+            <div class="maintenance-grid">
+                <!-- acs22.hu -->
+                <div class="maintenance-card reveal" data-category="maintenance">
+                    <span class="maintenance-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </span>
+                    <h3 class="maintenance-title">ACS22</h3>
+                    <a href="https://acs22.hu" class="maintenance-url" target="_blank">acs22.hu</a>
+                    <p class="maintenance-desc">
+                        Folyamatos WordPress modernizáció, biztonsági frissítések és teljesítményjavítás.
+                        A cél: stabilabb alap és gyorsabban kezelhető jelenlét.
+                    </p>
+                    <div class="maintenance-services">
+                        <span class="maintenance-service">WordPress</span>
+                        <span class="maintenance-service">Biztonsági frissítések</span>
+                        <span class="maintenance-service">Backup</span>
+                    </div>
+                </div>
+
+                <!-- kreativkonyhastudio.hu -->
+                <div class="maintenance-card reveal" data-category="maintenance">
+                    <span class="maintenance-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 11h18"/>
+                            <path d="M5 11V8a7 7 0 0 1 14 0v3"/>
+                            <path d="M5 11v6a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-6"/>
+                            <line x1="9" y1="14" x2="9" y2="18"/>
+                            <line x1="12" y1="14" x2="12" y2="18"/>
+                            <line x1="15" y1="14" x2="15" y2="18"/>
+                        </svg>
+                    </span>
+                    <h3 class="maintenance-title">Kreatív Konyha Stúdió</h3>
+                    <a href="https://kreativkonyhastudio.hu" class="maintenance-url"
+                        target="_blank">kreativkonyhastudio.hu</a>
+                    <p class="maintenance-desc">
+                        Tartalomközpontú WordPress fejlesztés, SEO-frissítés és folyamatos finomhangolás.
+                        Itt a modernizáció inkább a strukturán és a keresőből érkező forgalom minőségén dolgozik.
+                    </p>
+                    <div class="maintenance-services">
+                        <span class="maintenance-service">WordPress</span>
+                        <span class="maintenance-service">SEO</span>
+                        <span class="maintenance-service">Tartalom</span>
+                    </div>
+                </div>
+
+                <!-- balterbau.hu -->
+                <div class="maintenance-card reveal" data-category="maintenance">
+                    <span class="maintenance-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V7l7-4 7 4v14"/>
+                            <path d="M9 21v-6h6v6"/>
+                            <line x1="9" y1="11" x2="9" y2="11.01"/>
+                            <line x1="15" y1="11" x2="15" y2="11.01"/>
+                        </svg>
+                    </span>
+                    <h3 class="maintenance-title">Balter Bau</h3>
+                    <a href="https://balterbau.hu" class="maintenance-url" target="_blank">balterbau.hu</a>
+                    <p class="maintenance-desc">
+                        Építőipari weboldal folyamatos modernizációja: portfóliófrissítés, új funkciók,
+                        jobb bemutatási logika és technikai karbantartás.
+                    </p>
+                    <div class="maintenance-services">
+                        <span class="maintenance-service">WordPress</span>
+                        <span class="maintenance-service">Portfólió</span>
+                        <span class="maintenance-service">Fejlesztés</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number">13+</div>
+                    <div class="stat-label">Befejezett projekt</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Ország</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number">90%+</div>
+                    <div class="stat-label">PageSpeed átlag</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Támogatás</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="process-container">
+            <div class="process-header reveal">
+                <div class="section-label">Hogyan dolgozunk</div>
+                <h2 class="section-title">A <span>folyamatunk röviden</span></h2>
+                <p style="text-align: center; color: rgba(255,255,255,0.6); font-size: 1rem; margin-top: 1rem; max-width: 720px; margin-left: auto; margin-right: auto;">
+                    A 4 fő lépést itt összefoglaljuk. A teljes 7-lépéses projektfolyamat (diagnosztika + AX-audit
+                    opt. + scope + IA + UI + dev + átadás) a
+                    <a href="szolgaltatasok.html" style="color: var(--cyan);">szolgáltatások</a> oldalon olvasható.
+                </p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="process-number">01</div>
+                    <h3 class="process-title">Diagnosztika</h3>
+                    <p class="process-desc">
+                        30-perces díjmentes videohívás. Megértjük az igényt, célokat és technikai indulópontot.
+                        Itt eldől, hogy értelme van-e tovább menni — és melyik pillér illeszkedik a céghez.
+                    </p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-number">02</div>
+                    <h3 class="process-title">Scope + ajánlat</h3>
+                    <p class="process-desc">
+                        Részletes scope dokumentum, ütemterv mérföldkövekkel, fix árú ajánlat. Opcionálisan
+                        AX-audit (120k Ft / ~2 hét) közbeiktatva, ha mélyebb diagnosztika szükséges.
+                    </p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-number">03</div>
+                    <h3 class="process-title">Tervezés + fejlesztés</h3>
+                    <p class="process-desc">
+                        IA + wireframe → Figma UI → Astro 5 implementáció. CENTAUR-stílusú munkamódszer:
+                        emberi döntés és kódszemle minden lépésben, MI-társalapítók a sebességért és minőségért.
+                    </p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-number">04</div>
+                    <h3 class="process-title">Átadás + 30 napos garancia</h3>
+                    <p class="process-desc">
+                        Tesztelés, EAA-validáció, élesítés. 30 napos hibajavítási garancia automatikusan.
+                        AI Ops vagy karbantartási csomag opcionálisan bekapcsolható.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-glow"></div>
+        <div class="cta-content reveal">
+            <h2 class="cta-title">Hasonló <span>case study-t</span> szeretnél?</h2>
+            <p class="cta-desc">
+                A Mótyán-projekt nem unikális — ez a CENTAUR-ügynökség működése. A 3 pillérünkből 1, 2 vagy mindhárom
+                ötvözhető a projekted scope-jától függően. Indítsuk a 30-perces díjmentes diagnosztikával.
+            </p>
+            <a href="kapcsolat.html" class="btn">
+                Kérek diagnosztikát
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    
+    <!-- Vizuális konfigurátor CTA -->
+    <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
+        <div style="max-width: 640px; margin: 0 auto;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.15em; margin-bottom: 1rem;">// VIZUÁLIS TERVEZŐ</div>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
+            <a href="weboldal-konfigurator.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                [<span>ConenDigital</span>]
+                <div style="margin-top: 20px">
+                    <a href="https://centaur-lang.dev" class="centaur-footer-badge" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="cfb1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4A90A4" />
+                                    <stop offset="50%" style="stop-color:#C9A962" />
+                                    <stop offset="100%" style="stop-color:#9B59B6" />
+                                </linearGradient>
+                                <linearGradient id="cfb2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E8D5A3" />
+                                    <stop offset="100%" style="stop-color:#C9A962" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(32, 32)">
+                                <path d="M 0 -24 A 24 24 0 0 0 0 24" fill="none" stroke="#4A90A4" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <path d="M 0 -24 A 24 24 0 0 1 0 24" fill="none" stroke="#9B59B6" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <circle cx="0" cy="0" r="7" fill="url(#cfb1)" />
+                                <circle cx="0" cy="0" r="3" fill="#F5F5F0" />
+                                <circle cx="0" cy="-24" r="3" fill="url(#cfb2)" />
+                                <circle cx="0" cy="24" r="3" fill="url(#cfb2)" />
+                            </g>
+                        </svg>
+                        <div class="centaur-footer-badge-text">
+                            <span class="centaur-footer-badge-label">EMBER + MI CO-FOUNDER PARTNERSÉG</span>
+                            <span class="centaur-footer-badge-name">CENTAUR PROJEKT</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="szolgaltatasok.html">Szolgáltatások</a>
+                <a href="weboldal-keszites.html">Weboldal készítés</a>
+                <a href="webaruhaz-keszites.html">Webáruház készítés</a>
+                <a href="portfolio.html">Portfólió</a>
+                <a href="rolunk.html">Rólunk</a>
+                <a href="kapcsolat.html">Kapcsolat</a>
+            </div>
+            <div class="footer-social" role="list" aria-label="Conen Digital közösségi profilok">
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.facebook.com/weboldal.keszites.gyor.conen.digital/" target="_blank"
+                    rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M24 12.073C24 5.445 18.63 0 12 0S0 5.445 0 12.073c0 5.989 4.388 10.95 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.67 4.532-4.67 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12H17.2l-.532 3.47H14.87v8.385C19.61 22.95 24 18.09 24 12.073z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.youtube.com/@weboldal-webaruhaz-keszites" target="_blank"
+                    rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M23.5 6.2a3.02 3.02 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6C1.8 4.2 1 5 1.5 6.1 0 8.1 0 12 0 12s0 3.9.5 5.9c.3 1.1 1.1 1.8 2.1 2.1 2.2.3 4.3.5 9.3.5s7.1 0 9.4-.5c1.1-.3 1.9-1.1 2.1-2.1.5-2 .5-5.9.5-5.9s0-3.9-.5-5.9zM9.5 15.5v-7L16 12l-6.5 3.5z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.tiktok.com/@conen_digital"
+                    target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.5A2.9 2.9 0 0 1 9.5 12a2.9 2.9 0 0 1 .9.1V9.4a6.8 6.8 0 0 0-1-.1A6.3 6.3 0 0 0 5 20.1a6.3 6.3 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.7 1.5V6.8a4.8 4.8 0 0 1-1-.1z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.instagram.com/conendigital/"
+                    target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.2.1-1.6.1-4.7.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.2 1.6-4.8 4.9-4.9 1.2-.1 1.6-.1 4.7-.1zM12 0C8.7 0 8.3 0 7 .1 2.7.3.3 2.6.1 7 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 5 .2 4.3 2.5 6.6 6.9 6.8 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.5-2.5 6.7-6.8.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.2-4.3-2.4-6.5-6.7-6.7-1.3-.1-1.7-.1-4.9-.1zm0 5.8a6.2 6.2 0 1 0 0 12.3 6.2 6.2 0 0 0 0-12.3zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://x.com/weboldal_honlap" target="_blank"
+                    rel="noopener noreferrer" title="X" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+            <div style="width: 100%; margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center;">
+                Fő profilunk: Személyre szabott <a href="index.html"
+                    style="color: var(--cyan); text-decoration: none; font-weight: 500;">Weboldal készítés Győr</a> |
+                Professzionális <a href="webaruhaz-keszites.html"
+                    style="color: var(--magenta); text-decoration: none; font-weight: 500;">Webáruház készítés Győr</a>
+                | Prémium <a href="webaruhaz-keszites.html"
+                    style="color: var(--orange); text-decoration: none; font-weight: 500;">Webshop készítés Győr</a>
+            </div>
+            <div
+                style="width: 100%; margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 2;">
+                Weboldal készítés:
+                <a href="index.html" style="color: rgba(0,240,255,0.5); text-decoration: none;">Győr</a> ·
+                <a href="weboldal-keszites-budapest.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Budapest</a> ·
+                <a href="weboldal-keszites-debrecen.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Debrecen</a> ·
+                <a href="weboldal-keszites-szeged.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szeged</a> ·
+                <a href="weboldal-keszites-miskolc.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Miskolc</a> ·
+                <a href="weboldal-keszites-pecs.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Pécs</a> ·
+                <a href="weboldal-keszites-nyiregyhaza.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Nyíregyháza</a> ·
+                <a href="weboldal-keszites-kecskemet.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kecskemét</a> ·
+                <a href="weboldal-keszites-szekesfehervar.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Székesfehérvár</a> ·
+                <a href="weboldal-keszites-szombathely.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szombathely</a> ·
+                <a href="weboldal-keszites-sopron.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Sopron</a> ·
+                <a href="weboldal-keszites-szolnok.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szolnok</a> ·
+                <a href="weboldal-keszites-eger.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Eger</a> ·
+                <a href="weboldal-keszites-veszprem.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Veszprém</a> ·
+                <a href="weboldal-keszites-zalaegerszeg.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Zalaegerszeg</a> ·
+                <a href="weboldal-keszites-kaposvar.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kaposvár</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 ConenDigital. Chris Conen; a kivitelezésben AI-eszközöket is használunk (pl. <a
+                    href="https://anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a>) emberi felügyelet
+                mellett.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        const loader = document.getElementById('loader');
+        const lines = ['line1', 'line2', 'line3', 'line4'];
+        lines.forEach((id, index) => {
+            setTimeout(() => {
+                document.getElementById(id).classList.add('visible');
+            }, index * 400);
+        });
+        window.addEventListener('load', () => {
+            setTimeout(() => { loader.classList.add('hidden'); }, 2000);
+        });
+
+        // Cursor (only on desktop)
+        const cursor = document.getElementById('cursor');
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+            document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+            document.querySelectorAll('a, button, .portfolio-item, .featured-item, .maintenance-card, .process-step').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+
+        // Navigation
+        const nav = document.getElementById('nav');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ESC key to close menu
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                document.querySelectorAll('[data-category]').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = '';
+                        item.classList.add('reveal', 'active');
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        function revealOnScroll() {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Lazy loading for data-src images
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    img.addEventListener('load', () => {
+                        img.classList.remove('lazy');
+                        img.classList.add('loaded');
+                    });
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '200px' });
+        lazyImages.forEach(img => imageObserver.observe(img));
+    </script>
+</body>
+
+</html>

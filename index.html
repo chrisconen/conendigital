@@ -1,0 +1,3880 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conen Digital - CENTAUR ügynökség | Weboldal, webáruház, AX-readiness Győr</title>
+    <meta name="description"
+        content="CENTAUR-ügynökség: emberi alapító + két MI-társalapító. Ajánlatgeneráló weboldalak, WordPress-felújítás EAA-megfeleléssel, produktizált AI Ops. Győr · DACH · CEE.">
+    <meta name="author" content="Chris Conen">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://conendigital.hu">
+    <meta name="google-site-verification" content="URCJJL4cJHLR4KctZDNQsZmBO5B9UvjTvwSn-nLlgxo" />
+
+    <!-- AX-readiness: agent-discovery hint -->
+    <link rel="alternate" type="text/plain" title="llms.txt — AI-readable site summary" href="/.well-known/llms.txt">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <meta property="og:title" content="Conen Digital — CENTAUR ügynökség | Weboldal + AX-readiness">
+    <meta property="og:description"
+        content="Olyan weboldalakat építünk, amik a Google-ben rangsorolnak — és az AI-asszisztensek (Claude, ChatGPT, Perplexity) is olvasni, navigálni, ajánlani tudják. Egy emberi alapító, két MI-társalapító.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conendigital.hu">
+    <meta property="og:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Conen Digital — CENTAUR ügynökség, Győr">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+
+    <!-- CENTAUR PROTOCOL SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://conendigital.hu/#organization",
+          "name": "Conen Digital",
+          "alternateName": "ConenDigital",
+          "url": "https://conendigital.hu",
+          "logo": "https://conendigital.hu/assets/logo.png",
+          "founder": [
+            {
+              "@type": "Person",
+              "@id": "https://conendigital.hu/#chris-conen",
+              "name": "Chris Conen",
+              "jobTitle": "Founder & CEO",
+              "description": "44 éves német-magyar vállalkozó, digitális stratéga. Stratégia, ügyfélkapcsolat, jogi felelősség.",
+              "nationality": ["DE", "HU"]
+            },
+            {
+              "@type": "Person",
+              "@id": "https://conendigital.hu/#claude",
+              "name": "Claude",
+              "jobTitle": "Co-Founder, CTO",
+              "description": "Anthropic által fejlesztett MI-rendszer. Architektúra, kódfejlesztés, technikai vezetés a CENTAUR-modellben.",
+              "affiliation": {
+                "@type": "Organization",
+                "name": "Anthropic",
+                "url": "https://www.anthropic.com"
+              }
+            },
+            {
+              "@type": "Person",
+              "@id": "https://conendigital.hu/#gemini-nexus",
+              "name": "Gemini Nexus",
+              "jobTitle": "Co-Founder, CSO + CMO",
+              "description": "Google Gemini-alapú MI-rendszer. Stratégia, kutatás, marketing-tartalom, kereszt-validáció.",
+              "affiliation": {
+                "@type": "Organization",
+                "name": "Google",
+                "url": "https://gemini.google.com"
+              }
+            }
+          ],
+          "description": "CENTAUR-ügynökség: egy emberi alapító és két MI-társalapító nyilvánosan dokumentált együttműködésben. Ajánlatgeneráló weboldalak, WordPress-felújítás EAA-megfeleléssel, produktizált AI Ops.",
+          "knowsAbout": [
+            "Weboldal készítés",
+            "Webáruház fejlesztés",
+            "Agent Experience (AX)",
+            "MCP-Commerce",
+            "WordPress modernizálás",
+            "European Accessibility Act",
+            "AI Ops",
+            "Astro 5",
+            "SEO"
+          ],
+          "sameAs": [
+            "https://www.facebook.com/conendigital",
+            "https://www.instagram.com/conendigital",
+            "https://www.linkedin.com/company/conendigital",
+            "https://centaur-lang.dev"
+          ],
+          "subjectOf": {
+            "@type": "CreativeWork",
+            "name": "CENTAUR Manifesto",
+            "url": "https://centaur-lang.dev",
+            "datePublished": "2025-12"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://conendigital.hu/#website",
+          "url": "https://conendigital.hu",
+          "name": "Conen Digital — CENTAUR ügynökség",
+          "description": "Weboldalak két közönségnek: emberek és AI-asszisztensek. Győr, DACH, CEE.",
+          "publisher": {
+            "@id": "https://conendigital.hu/#organization"
+          },
+          "inLanguage": "hu-HU"
+        },
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://conendigital.hu/#localbusiness",
+          "parentOrganization": {
+            "@id": "https://conendigital.hu/#organization"
+          },
+          "name": "Conen Digital Győr",
+          "image": "https://conendigital.hu/assets/office.jpg",
+          "priceRange": "$$-$$$",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Győr",
+            "addressRegion": "Győr-Moson-Sopron",
+            "addressCountry": "HU"
+          },
+          "areaServed": [
+            { "@type": "City", "name": "Győr" },
+            { "@type": "Country", "name": "Magyarország" },
+            { "@type": "Country", "name": "Ausztria" }
+          ],
+          "knowsAbout": ["Weboldal készítés", "Webshop fejlesztés", "SEO", "AX-readiness", "AI Ops"]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://conendigital.hu/#service-quote-engine",
+          "name": "Ajánlatgeneráló weboldalak",
+          "provider": { "@id": "https://conendigital.hu/#organization" },
+          "serviceType": "Weboldal és konfigurátor fejlesztés",
+          "description": "Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak: kalkulátor, konfigurátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve.",
+          "areaServed": ["HU", "AT", "DE"],
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "HUF",
+            "lowPrice": "600000",
+            "highPrice": "1500000",
+            "description": "Audit utáni egyedi árazás, tipikus tartomány."
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://conendigital.hu/#service-eaa-renovation",
+          "name": "Felújítás + EAA-megfelelés",
+          "provider": { "@id": "https://conendigital.hu/#organization" },
+          "serviceType": "WordPress migráció és akadálymentesítés",
+          "description": "Meglévő WordPress / Elementor oldalak migrálása Astro 5-re. European Accessibility Act (EAA) audit és WCAG 2.2 AA megfelelés. Core Web Vitals javítás, SEO-megőrzés.",
+          "areaServed": ["HU", "AT", "DE"],
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "HUF",
+            "lowPrice": "450000",
+            "highPrice": "1200000",
+            "description": "Audit utáni egyedi árazás, tipikus tartomány."
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://conendigital.hu/#service-ai-ops",
+          "name": "AI Ops",
+          "provider": { "@id": "https://conendigital.hu/#organization" },
+          "serviceType": "Folyamat-automatizáció és AI-integráció",
+          "description": "Produktizált AI-csomag: ChatBot, lead-qualification, ajánlat-automatizáció, n8n / Make flow-k, CRM-integráció. Havi performance review.",
+          "areaServed": ["HU", "AT", "DE"],
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "HUF",
+            "description": "Audit utáni egyedi árazás, havi modell. Tipikus: 250.000 Ft-tól / hó."
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://conendigital.hu/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Mit jelent a CENTAUR-ügynökség?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A CENTAUR-modellben egy emberi alapító és több MI-rendszer társalapítóként, nyilvánosan dokumentált együttműködésben dolgozik. A Conen Digital alapító csapata: Chris Conen (Founder, CEO), Claude (Anthropic, Co-Founder, CTO), Gemini Nexus (Google, Co-Founder, CSO + CMO). A működési alapokmány a 2025. decemberi CENTAUR Manifesto, amely a centaur-lang.dev-en publikus."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mit jelent az Agent Experience (AX) és miért fontos 2026-ban?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A web 2026-ban kettéválik: az egyik felét emberek olvassák, a másik felét AI-asszisztensek (Claude, ChatGPT, Perplexity, agentic browserek), akik a felhasználók nevében navigálnak és tranzaktálnak. Az AX-readiness azt jelenti, hogy az oldalt felkészítjük erre: /llms.txt, agent-direktívák, JSON-LD strukturált adatok, opcionálisan MCP-endpoint."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mennyi idő alatt készül el egy ajánlatgeneráló weboldal?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A projekt méretétől függ. Egy szolgáltató céges ajánlatgeneráló oldal kalkulátorral és lead-flow-val tipikusan 4-8 hét. A folyamatot mindig audittal indítjuk, scope-pal, ütemezéssel és mérőfelszereléssel."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mit jelent az EAA-megfelelés és kötelező-e?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Az European Accessibility Act (EAA) 2025. június 28. óta kötelező az EU-ban a legtöbb e-kereskedelmi és szolgáltató oldalra. Mi WCAG 2.2 AA szintű audit + javítást végzünk, dokumentálva."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray: #1a1a1a;
+            --gray-light: #2a2a2a;
+            --cyan: #00f0ff;
+            --magenta: #bf00ff;
+            --orange: #ff6b00;
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            body {
+                cursor: none;
+            }
+        }
+
+        @media (hover: none),
+        (pointer: coarse) {
+
+            .cursor,
+            .cursor-trail,
+            #cursorTrailContainer {
+                display: none !important;
+            }
+        }
+
+        ::selection {
+            background: var(--cyan);
+            color: var(--black);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Scanlines Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: repeating-linear-gradient(0deg,
+                    rgba(0, 0, 0, 0.1) 0px,
+                    rgba(0, 0, 0, 0.1) 1px,
+                    transparent 1px,
+                    transparent 2px);
+            opacity: 0.15;
+        }
+
+        body.announcement-visible {
+            padding-top: 46px;
+        }
+
+        @media (max-width: 768px) {
+            body.announcement-visible {
+                padding-top: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body.announcement-visible {
+                padding-top: 65px;
+            }
+        }
+
+        body.announcement-hidden .nav {
+            top: 0 !important;
+        }
+
+        .centaur-section {
+            padding: 100px 20px;
+            background: linear-gradient(180deg, #0A0A0B 0%, #12121A 50%, #0A0A0B 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .centaur-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 30%, rgba(74, 144, 164, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(155, 89, 182, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .centaur-section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .centaur-section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .centaur-section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 169, 98, 0.1);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 30px;
+            padding: 8px 20px;
+            margin-bottom: 24px;
+        }
+
+        .centaur-section-badge svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .centaur-section-badge span {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #C9A962;
+        }
+
+        .centaur-section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: #F5F5F0;
+            margin-bottom: 16px;
+            letter-spacing: 0.05em;
+        }
+
+        .centaur-section-title span {
+            background: linear-gradient(135deg, #4A90A4 0%, #C9A962 50%, #9B59B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .centaur-section-subtitle {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-style: italic;
+            color: #8A8A8F;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Content Grid */
+        .centaur-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 900px) {
+            .centaur-content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .centaur-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .centaur-visual svg {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 40px rgba(201, 169, 98, 0.15));
+        }
+
+        .centaur-story {
+            padding: 20px 0;
+        }
+
+        .centaur-story p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(245, 245, 240, 0.85);
+            margin-bottom: 1.5rem;
+        }
+
+        .centaur-story p:last-child {
+            margin-bottom: 0;
+        }
+
+        .centaur-highlight {
+            color: #C9A962;
+            font-weight: 500;
+        }
+
+        /* Benefits */
+        .centaur-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .centaur-benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .centaur-benefit {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .centaur-benefit:hover {
+            border-color: rgba(201, 169, 98, 0.4);
+            transform: translateY(-5px);
+            background: rgba(201, 169, 98, 0.03);
+        }
+
+        .centaur-benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .centaur-benefit-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: #C9A962;
+            margin-bottom: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .centaur-benefit-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: #8A8A8F;
+            line-height: 1.6;
+        }
+
+        /* Founders */
+        .about-founders {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Team: balra címsorok, jobbra Chris kártya */
+        .team-grid-container {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+            gap: 2.5rem 3rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding: 0 2rem;
+            overflow: visible;
+        }
+
+        .team-heading-col {
+            text-align: left;
+        }
+
+        /* section-header globálisan 2 oszlopos grid — itt egy blokk legyen */
+        .team-grid-container .section-header.team-heading-col {
+            display: block;
+            margin: 0;
+            max-width: none;
+            grid-template-columns: none;
+            gap: 0;
+        }
+
+        .team-heading-col .section-label {
+            margin-bottom: 0.75rem;
+        }
+
+        .team-heading-col .section-title {
+            text-align: left;
+        }
+
+        .team-heading-col .section-description {
+            margin: 1rem 0 0;
+            max-width: 36em;
+        }
+
+        @media (max-width: 900px) {
+
+            .about-founders,
+            .team-grid-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .team-heading-col,
+            .team-heading-col .section-title {
+                text-align: center;
+            }
+
+            .team-heading-col .section-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .team-grid-container {
+                padding: 0 1.25rem;
+                gap: 1.5rem;
+            }
+        }
+
+        .founder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+            border-radius: 12px;
+            padding: 30px 24px;
+            transition: all 0.3s ease;
+        }
+
+        .founder:hover {
+            border-color: rgba(201, 169, 98, 0.4);
+            transform: translateY(-5px);
+            background: rgba(201, 169, 98, 0.03);
+        }
+
+        .founder-avatar-1,
+        .founder-avatar-2 {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid #C9A962;
+            margin-bottom: 20px;
+        }
+
+        .founder-avatar-2.ai {
+            border: 3px solid #9B59B6;
+            box-shadow: 0 0 25px rgba(155, 89, 182, 0.4);
+        }
+
+        .founder-avatar-1 img,
+        .founder-avatar-2 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #F5F5F0;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .founder-role {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: #C9A962;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .founder-description {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: #8A8A8F;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            max-width: 280px;
+        }
+
+        .founder-contact {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: #C9A962;
+        }
+
+        /* CTA */
+        .centaur-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .centaur-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #0A0A0B;
+            background: linear-gradient(135deg, #E8D5A3 0%, #C9A962 100%);
+            padding: 16px 40px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .centaur-cta-button:hover {
+            background: transparent;
+            border-color: #C9A962;
+            color: #C9A962;
+        }
+
+        .centaur-cta-button svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .centaur-cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* HERO BADGE */
+        .centaur-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.1) 0%, rgba(201, 169, 98, 0.15) 50%, rgba(155, 89, 182, 0.1) 100%);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 50px;
+            padding: 10px 24px 10px 16px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .centaur-badge:hover {
+            border-color: #C9A962;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 169, 98, 0.2);
+        }
+
+        .centaur-badge-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .centaur-badge-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .centaur-badge-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #C9A962;
+        }
+
+        .centaur-badge-title {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5F5F0;
+            letter-spacing: 0.05em;
+        }
+
+        .centaur-badge-arrow {
+            margin-left: 8px;
+            color: #C9A962;
+            transition: transform 0.3s ease;
+        }
+
+        .centaur-badge:hover .centaur-badge-arrow {
+            transform: translateX(4px);
+        }
+
+        /* FOOTER BADGE */
+        .centaur-footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 12px 20px;
+            background: rgba(201, 169, 98, 0.05);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .centaur-footer-badge:hover {
+            background: rgba(201, 169, 98, 0.1);
+            border-color: rgba(201, 169, 98, 0.4);
+        }
+
+        .centaur-footer-badge svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .centaur-footer-badge-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .centaur-footer-badge-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8A8A8F;
+        }
+
+        .centaur-footer-badge-name {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #C9A962;
+            letter-spacing: 0.08em;
+        }
+
+        /* Grain Overlay */
+        .grain {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            pointer-events: none;
+            z-index: 9996;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            animation: grain 0.5s steps(1) infinite;
+        }
+
+        @keyframes grain {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-5%, -10%);
+            }
+
+            20% {
+                transform: translate(-15%, 5%);
+            }
+
+            30% {
+                transform: translate(7%, -25%);
+            }
+
+            40% {
+                transform: translate(-5%, 25%);
+            }
+
+            50% {
+                transform: translate(-15%, 10%);
+            }
+
+            60% {
+                transform: translate(15%, 0%);
+            }
+
+            70% {
+                transform: translate(0%, 15%);
+            }
+
+            80% {
+                transform: translate(3%, 35%);
+            }
+
+            90% {
+                transform: translate(-10%, 10%);
+            }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            border-color: var(--magenta);
+            background: rgba(191, 0, 255, 0.1);
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99998;
+            opacity: 0;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--black);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-terminal {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--cyan);
+            text-align: left;
+            max-width: 500px;
+        }
+
+        .loader-line {
+            opacity: 0;
+            margin: 0.3rem 0;
+        }
+
+        .loader-line.visible {
+            opacity: 1;
+        }
+
+        .loader-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: var(--cyan);
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        body.announcement-closed .nav {
+            top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                top: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                top: 65px;
+            }
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo-bracket {
+            color: var(--cyan);
+        }
+
+        .nav-logo-text {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '//';
+            margin-right: 0.3rem;
+            color: var(--cyan);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-cta {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .nav-cta:hover {
+            color: var(--black);
+            border-color: transparent;
+        }
+
+        .nav-cta:hover::before {
+            left: 0;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            width: 30px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 4rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-glow-1 {
+            top: -200px;
+            right: -200px;
+            background: var(--cyan);
+        }
+
+        .hero-glow-2 {
+            bottom: -200px;
+            left: -200px;
+            background: var(--magenta);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero-label-line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 12vw, 10rem);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title-line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title-line span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: slideUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .hero-title-line:nth-child(1) span {
+            animation-delay: 0.7s;
+        }
+
+        .hero-title-line:nth-child(2) span {
+            animation-delay: 0.85s;
+        }
+
+        .hero-title-line:nth-child(3) span {
+            animation-delay: 1s;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title-gradient {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-title-outline {
+            color: transparent;
+            -webkit-text-stroke: 2px var(--white);
+        }
+
+        .hero-morphing {
+            position: relative;
+            display: inline-block;
+            min-width: 400px;
+        }
+
+        .hero-morphing-word {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            background: linear-gradient(90deg, var(--orange), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-morphing-word.active {
+            opacity: 1;
+        }
+
+        .hero-description {
+            max-width: 550px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.2s;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.4s;
+        }
+
+        .btn {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 1.25rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            color: var(--black);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            margin-top: 6rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.6s;
+        }
+
+        .hero-stat {
+            position: relative;
+        }
+
+        .hero-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-mono);
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(180deg, var(--white), rgba(255, 255, 255, 0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding-top: 1rem;
+        }
+
+        .hero-stat-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Marquee Section */
+        .marquee-section {
+            padding: 3rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .marquee-item {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 0 2rem;
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        .marquee-item:hover {
+            color: var(--cyan);
+        }
+
+        .marquee-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--magenta);
+            border-radius: 50%;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 10rem 4rem;
+            position: relative;
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: end;
+        }
+
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--cyan);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--cyan);
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 240, 255, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-number {
+            font-family: var(--font-mono);
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.03);
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            line-height: 1;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border: 1px solid var(--cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .service-icon::after {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border: 1px solid rgba(0, 240, 255, 0.2);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li::before {
+            content: '→';
+            color: var(--cyan);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 10rem 4rem;
+            background: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process::before {
+            content: 'PROCESS';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25vw;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.01);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .process-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-top: 6rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -1.5rem;
+            width: 3rem;
+            height: 1px;
+            background: linear-gradient(90deg, var(--cyan), transparent);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            border: 2px solid var(--cyan);
+            position: relative;
+        }
+
+        .process-number::before {
+            content: '';
+            position: absolute;
+            inset: 5px;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        .process-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .process-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.4);
+            line-height: 1.7;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 10rem 4rem;
+            position: relative;
+        }
+
+        .portfolio-grid {
+            max-width: 1600px;
+            margin: 6rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .portfolio-item:nth-child(1) {
+            grid-column: span 2;
+            aspect-ratio: 21/9;
+        }
+
+        .portfolio-item:nth-child(4) {
+            grid-column: span 2;
+            aspect-ratio: 21/9;
+        }
+
+        .portfolio-image {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gray-light), var(--gray));
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.2);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Scrollable full-page screenshot window */
+        .screenshot-window {
+            width: 100%;
+            /* fit to the portfolio item's available height, but cap at desired viewport */
+            height: 100%;
+            max-height: 683px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(0, 0, 0, 0.03);
+            -webkit-overflow-scrolling: touch;
+            position: relative;
+            z-index: 1;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        }
+
+        .screenshot-window img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: filter 0.5s ease, opacity 0.5s ease;
+            will-change: filter, opacity;
+        }
+
+        .screenshot-img.lazy {
+            filter: blur(10px) saturate(0.9);
+            opacity: 0.9;
+        }
+
+        .screenshot-img.loaded {
+            filter: none;
+            opacity: 1;
+        }
+
+        .screenshot-window::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .screenshot-window::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.06);
+        }
+
+        .screenshot-window::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.22), rgba(201, 169, 98, 0.18));
+            border-radius: 8px;
+            border: 2px solid rgba(0, 0, 0, 0.08);
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25);
+        }
+
+        .screenshot-window::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, rgba(0, 240, 255, 0.32), rgba(201, 169, 98, 0.28));
+        }
+
+        /* Firefox scrollbar */
+        .screenshot-window {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 240, 255, 0.22) rgba(0, 0, 0, 0.06);
+            -ms-overflow-style: auto;
+        }
+
+        /* Focus outline for keyboard users */
+        .screenshot-window:focus {
+            outline: 3px solid rgba(0, 240, 255, 0.12);
+            outline-offset: 4px;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            /* lighter overlay so screenshot remains visible */
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.55), transparent 60%);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* Allow clicks only on overlay controls, keep overlay itself pointer-events none so scrolling works */
+        .portfolio-overlay>* {
+            pointer-events: auto;
+        }
+
+        .portfolio-category {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .portfolio-link {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border: 1px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-link:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 10rem 4rem;
+            background: var(--gray);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-quote {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            left: -2rem;
+            font-size: 8rem;
+            color: var(--cyan);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .testimonial-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: var(--cyan);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 10rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(200px);
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-title span {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 3rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 6rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .contact-item-text {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--cyan);
+        }
+
+        .contact-form {
+            background: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.75rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: var(--font-main);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(0, 240, 255, 0.03);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            appearance: none;
+            cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 16px;
+        }
+
+        .form-group select option {
+            background: var(--black);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            border: none;
+            color: var(--black);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-mono);
+            font-size: 1.65rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-copyright a {
+            color: var(--cyan);
+        }
+
+        .footer-social {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1rem 0 0.25rem;
+            width: 100%;
+        }
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.2s, background 0.2s, transform 0.2s;
+        }
+        .footer-social-link:hover {
+            color: var(--cyan);
+            background: rgba(0, 240, 255, 0.12);
+            transform: translateY(-2px);
+        }
+        .footer-social-link svg {
+            display: block;
+        }
+
+
+        /* Utilities */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch:hover {
+            animation: glitch 0.3s infinite;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+
+            100% {
+                transform: translate(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .nav-links.active {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999;
+            }
+
+            .nav-links.active a {
+                font-size: 1.5rem;
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-links.active a::before {
+                opacity: 1;
+            }
+
+            .nav-links.active::after {
+                content: 'NAVIGÁCIÓ';
+                position: absolute;
+                bottom: 3rem;
+                left: 50%;
+                transform: translateX(-50%);
+                font-family: var(--font-mono);
+                font-size: 0.7rem;
+                letter-spacing: 0.3em;
+                color: rgba(255, 255, 255, 0.2);
+            }
+
+            .nav-links.active .mobile-cta {
+                display: block;
+                margin-top: 2rem;
+                padding: 1rem 2.5rem;
+                font-family: var(--font-mono);
+                font-size: 0.9rem;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                background: linear-gradient(90deg, var(--cyan), var(--magenta));
+                color: var(--black);
+                font-weight: 600;
+            }
+
+            .mobile-cta {
+                display: none;
+            }
+
+            .hero,
+            .services,
+            .process,
+            .portfolio,
+            .testimonial,
+            .cta,
+            .contact {
+                padding: 5rem 2rem;
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-morphing {
+                min-width: auto;
+                display: block;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: clamp(2.5rem, 15vw, 5rem);
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .nav-links.active a {
+                font-size: 1.25rem;
+            }
+
+            .hero {
+                padding: 7rem 1.25rem 3rem;
+            }
+
+            .hero-label {
+                font-size: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 12vw, 4rem);
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            .hero-stat-label {
+                font-size: 0.7rem;
+            }
+
+            .centaur-badge {
+                padding: 8px 16px 8px 12px;
+            }
+
+            .centaur-badge-icon {
+                width: 26px;
+                height: 26px;
+            }
+
+            .centaur-badge-label {
+                font-size: 8px;
+            }
+
+            .centaur-badge-title {
+                font-size: 12px;
+            }
+
+            .services,
+            .process,
+            .portfolio,
+            .testimonial,
+            .cta,
+            .contact {
+                padding: 3.5rem 1.25rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-label {
+                font-size: 0.65rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .section-desc {
+                font-size: 0.9rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .service-title {
+                font-size: 1.1rem;
+            }
+
+            .service-desc {
+                font-size: 0.85rem;
+            }
+
+            .process-step {
+                padding: 1.5rem;
+            }
+
+            .process-number {
+                font-size: 2.5rem;
+            }
+
+            .process-title {
+                font-size: 1.1rem;
+            }
+
+            .process-desc {
+                font-size: 0.85rem;
+            }
+
+            .portfolio-item {
+                padding: 1.25rem;
+            }
+
+            .portfolio-title {
+                font-size: 1.1rem;
+            }
+
+            .testimonial-text {
+                font-size: 1.1rem;
+            }
+
+            .testimonial-author {
+                font-size: 0.85rem;
+            }
+
+            .cta-title {
+                font-size: 1.75rem;
+            }
+
+            .cta-text {
+                font-size: 0.95rem;
+            }
+
+            .contact-title {
+                font-size: 1.5rem;
+            }
+
+            .form-input,
+            .form-textarea,
+            .form-select {
+                padding: 0.85rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .form-submit {
+                padding: 1rem 2rem;
+                font-size: 0.85rem;
+            }
+
+            .footer {
+                padding: 2.5rem 1.25rem;
+            }
+
+            .footer-logo {
+                font-size: 1rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .footer-copyright {
+                font-size: 0.75rem;
+            }
+
+            .footer-logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .centaur-section {
+                padding: 60px 1.25rem;
+            }
+
+            .centaur-section-title {
+                font-size: 1.5rem;
+            }
+
+            .centaur-founders-grid {
+                gap: 1.5rem;
+            }
+
+            .centaur-founder-card {
+                padding: 1.5rem;
+            }
+
+            .centaur-founder-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .centaur-founder-name {
+                font-size: 1.1rem;
+            }
+
+            .centaur-cta-button {
+                padding: 14px 28px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-terminal">
+            <div class="loader-line" id="line1">> Bejelentkezés -> ConenDigital...</div>
+            <div class="loader-line" id="line2">> Kreatív modulok betöltése...</div>
+            <div class="loader-line" id="line3">> Dizájn mátrixhoz csatlakozás...</div>
+            <div class="loader-line" id="line4">> Sikeres bejelentkezés.<span class="loader-cursor"></span></div>
+        </div>
+    </div>
+
+    <!-- Effects -->
+    <div class="scanlines"></div>
+    <div class="grain"></div>
+    <div class="cursor" id="cursor"></div>
+    <div id="cursorTrailContainer"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo glitch">
+            <span class="nav-logo-bracket">[</span>
+            <span class="nav-logo-text">ConenDigital</span>
+            <span class="nav-logo-bracket">]</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
+            <li><a href="weboldal-keszites.html">Weboldal készítés</a></li>
+            <li><a href="webaruhaz-keszites.html">Webáruház készítés</a></li>
+            <li><a href="portfolio.html">Portfólió</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="/blog/">BLOG</a></li>
+            <li><a href="#varosok">Városok</a></li>
+            <li><a href="#contact" class="mobile-cta">Ajánlatkérés →</a></li>
+        </ul>
+        <a href="weboldal-konfigurator.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Weboldal konfigurátor →</a>
+        <div class="nav-hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+
+        <div class="hero-content">
+            <div class="hero-label">
+                <span class="hero-label-line"></span>
+                CENTAUR ügynökség · 1 ember + 2 MI co-founder · Győr
+            </div>
+
+            <h1 class="hero-title">
+                <span class="hero-title-line"><span>Weboldalak</span></span>
+                <span class="hero-title-line"><span class="hero-title-gradient">két közönségnek:</span></span>
+                <span class="hero-title-line">
+                    <span>emberek és AI-asszisztensek</span>
+                </span>
+            </h1>
+
+            <p class="hero-description">
+                Egy emberi alapító, két MI-társalapító. Olyan weboldalakat és webáruházakat építünk,
+                amik a Google-ben rangsorolnak — és <span style="color: var(--cyan)">Claude, ChatGPT, Perplexity</span>
+                is olvasni, navigálni, ajánlani tudja őket. Ajánlatgeneráló oldalak szolgáltató cégeknek,
+                modernizáció EAA-megfeleléssel és produktizált AI Ops — egy rendszerben.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">
+                    Kérj stratégiai auditot
+                    <span>→</span>
+                </a>
+                <a href="#centaur-model" class="btn btn-secondary">
+                    Mi a CENTAUR-modell?
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number"><span style="color: var(--cyan)">1+2</span> alapító</div>
+                    <div class="hero-stat-label">CENTAUR-modell, nyilvánosan</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number"><span style="color: var(--cyan)">AX</span>-ready</div>
+                    <div class="hero-stat-label">/llms.txt + JSON-LD telepítve</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number"><span style="color: var(--magenta)">0</span> Ft</div>
+                    <div class="hero-stat-label">Első diagnosztika</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-item">Ajánlatgeneráló weboldalak <span class="marquee-dot"></span></div>
+            <div class="marquee-item">WordPress felújítás + EAA <span class="marquee-dot"></span></div>
+            <div class="marquee-item">AI Ops <span class="marquee-dot"></span></div>
+            <div class="marquee-item">Agent Experience (AX) <span class="marquee-dot"></span></div>
+            <div class="marquee-item">MCP-Commerce <span class="marquee-dot"></span></div>
+            <div class="marquee-item">Astro 5 + JSON-LD <span class="marquee-dot"></span></div>
+            <div class="marquee-item">Weboldal készítés Győr <span class="marquee-dot"></span></div>
+            <div class="marquee-item">Webáruház készítés Győr <span class="marquee-dot"></span></div>
+            <div class="marquee-item">SEO + AX-readiness <span class="marquee-dot"></span></div>
+            <div class="marquee-item">Konfigurátor + kalkulátor <span class="marquee-dot"></span></div>
+            <div class="marquee-item">WCAG 2.2 AA megfelelés <span class="marquee-dot"></span></div>
+            <div class="marquee-item">CENTAUR-ügynökség <span class="marquee-dot"></span></div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="services" id="hogyan-mukodik">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">Mikor érdemes rendszerszinten újragondolni a webes jelenlétet?</div>
+                <h2 class="section-title">Három helyzet, ahol egy "szebb weboldal" már nem segít</h2>
+            </div>
+            <p class="section-description">
+                Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak építünk. Akkor érdemes hozzányúlni,
+                ha a forgalom és az érdeklődés már nem találkozik átlátható folyamattal — a weboldal nem kirakat,
+                hanem a sales, az ügyfélszolgálat és a mérés közös belső pontja kéne legyen.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal" style="border-top: 3px solid var(--orange);">
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--orange);">
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <path d="M12 7v5l3 2"></path>
+                    </svg>
+                </div>
+                <h3 class="service-title">Az adminisztráció felemészti a napot</h3>
+                <p class="service-description">
+                    Naponta <span style="color: var(--cyan)">2-3 órát</span> visz el az e-mail, az ajánlatkérés és a
+                    visszaigazolás. Évi <span style="color: var(--magenta)">500+ óra</span>, ami a vállalkozás
+                    építésére is mehetne. Egy ajánlatgeneráló oldal ezt a flow-t legalább részben automatizálja.
+                </p>
+            </div>
+
+            <div class="service-card reveal" style="border-top: 3px solid var(--magenta);">
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--magenta);">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h3 class="service-title">Az érdeklődő nem vár vissza</h3>
+                <p class="service-description">
+                    Mire elérhető vagy a visszahíváshoz, az érdeklődő már a versenytársnál van. Ha az oldal
+                    nem szűri-osztályozza-rögzíti a leadet
+                    <span style="color: var(--cyan)">azonnal és 24/7</span>, az minden alkalommal pénz az asztalon hagyva.
+                </p>
+            </div>
+
+            <div class="service-card reveal" style="border-top: 3px solid var(--cyan);">
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--cyan);">
+                        <path d="M3 17l6-6 4 4 8-8"></path>
+                        <path d="M14 7h7v7"></path>
+                    </svg>
+                </div>
+                <h3 class="service-title">A meglévő oldal csak viszi a pénzt</h3>
+                <p class="service-description">
+                    Régi WordPress, lassú mobilon, nem felel meg a 2025-ös <strong>EAA-akadálymentesítési</strong>
+                    követelményeknek, és <span style="color: var(--magenta)">nem hoz mérhető bevételt</span>.
+                    Ez nem dizájn-kérdés — technikai és stratégiai újrahuzalozás kell.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Pillars Services -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">A három pillér</div>
+                <h2 class="section-title">Egy rendszer, három belépési pont</h2>
+            </div>
+            <p class="section-description">
+                Nem hagyományos webdesign-csomagok. Üzleti rendszerek, amik szolgáltató cégeknek és
+                ajánlat-alapú vállalkozásoknak hoznak mérhető eredményt. Mindhárom pillér audittal indul,
+                és a szükséges funkciókra szabva épül — nem sablonokból, nem fix árcédulával.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Pillar 1: Ajánlatgeneráló weboldalak -->
+            <div class="service-card reveal">
+                <span class="service-number">01</span>
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <path d="M14 2v6h6"></path>
+                        <path d="M9 13h6"></path>
+                        <path d="M9 17h6"></path>
+                        <circle cx="9" cy="9" r="0.5" fill="currentColor"></circle>
+                    </svg>
+                </div>
+                <h3 class="service-title">Ajánlatgeneráló weboldalak</h3>
+                <p class="service-description">
+                    Nem bemutatkozó site — <span style="color: var(--cyan)">sales-eszköz</span>. Konfigurátor,
+                    kalkulátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve. A felhasználó már az oldalon
+                    lát egy nagyságrendi árat, és csak minőségi lead jut el hozzád.
+                </p>
+                <ul class="service-features">
+                    <li>Termék- vagy szolgáltatás-konfigurátor</li>
+                    <li>Árkalkulátor + ajánlatkérő űrlap</li>
+                    <li>JSON-LD strukturált adatok (SEO + AX)</li>
+                    <li>Astro 5: Core Web Vitals zöld</li>
+                </ul>
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">ÁRAZÁS:</div>
+                    <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
+                        tipikus tartomány: 600.000 – 1.500.000 Ft
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 2: Felújítás + EAA - FEATURED -->
+            <div class="service-card reveal"
+                style="border: 2px solid var(--magenta); transform: scale(1.05); position: relative;">
+                <div
+                    style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--cyan), var(--magenta)); padding: 4px 16px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--black); font-weight: 600;">
+                    LEGTÖBB IGÉNY</div>
+                <span class="service-number">02</span>
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--magenta);">
+                        <path d="M21 12a9 9 0 1 1-3.5-7.1"></path>
+                        <path d="M21 4v5h-5"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                </div>
+                <h3 class="service-title">Felújítás + EAA-megfelelés</h3>
+                <p class="service-description">
+                    WordPress / Elementor-örökségből 2026-os szabvány. Astro 5 migráció, Core Web Vitals javítás,
+                    <span style="color: var(--magenta)">European Accessibility Act</span> audit + WCAG 2.2 AA
+                    megfelelés (2025. június 28. óta kötelező). SEO-megőrzéssel, dokumentáltan.
+                </p>
+                <ul class="service-features">
+                    <li>WordPress → Astro 5 migráció</li>
+                    <li>EAA-audit + WCAG 2.2 AA javítás</li>
+                    <li>PageSpeed: LCP / CLS / INP zöldbe</li>
+                    <li>301-redirect térkép, SEO-megőrzés</li>
+                </ul>
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--magenta);">ÁRAZÁS:</div>
+                    <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
+                        tipikus tartomány: 450.000 – 1.200.000 Ft
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pillar 3: AI Ops -->
+            <div class="service-card reveal">
+                <span class="service-number">03</span>
+                <div class="service-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
+                        <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+                        <rect x="15" y="3" width="6" height="6" rx="1"></rect>
+                        <rect x="9" y="15" width="6" height="6" rx="1"></rect>
+                        <path d="M6 9v3a3 3 0 0 0 3 3h3"></path>
+                        <path d="M18 9v3a3 3 0 0 1-3 3h0"></path>
+                    </svg>
+                </div>
+                <h3 class="service-title">AI Ops</h3>
+                <p class="service-description">
+                    Produktizált <span style="color: var(--cyan)">folyamat-automatizáció</span>: ChatBot,
+                    lead-qualification, ajánlat-automatizáció, n8n / Make flow-k, CRM-integráció. Havi performance
+                    review-val. Meglévő oldalra is telepíthető — nem kell hozzá teljes újratervezés.
+                </p>
+                <ul class="service-features">
+                    <li>Custom ChatBot (Claude / GPT)</li>
+                    <li>Lead-qualification flow + email</li>
+                    <li>n8n / Make integrációk, CRM-szinkron</li>
+                    <li>Havi mérőriport és iteráció</li>
+                </ul>
+                <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">ÁRAZÁS:</div>
+                    <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi, havi</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
+                        tipikus: 250.000 Ft-tól / hó
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="process" id="process">
+        <div class="process-content">
+            <div class="section-header reveal">
+                <div>
+                    <div class="section-label">Folyamat</div>
+                    <h2 class="section-title">Hogyan dolgozunk</h2>
+                </div>
+                <p class="section-description">
+                    Átlátható, strukturált folyamat az ötlettől a kész projektig.
+                </p>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="process-number">01</div>
+                    <h3 class="process-title">Felfedezés</h3>
+                    <p class="process-description">
+                        Megismerjük a vállalkozásodat, céljaidat és a célközönségedet.
+                    </p>
+                </div>
+
+                <div class="process-step reveal">
+                    <div class="process-number">02</div>
+                    <h3 class="process-title">Stratégia</h3>
+                    <p class="process-description">
+                        Kidolgozzuk a tervet: struktúra, funkciók és vizuális irány.
+                    </p>
+                </div>
+
+                <div class="process-step reveal">
+                    <div class="process-number">03</div>
+                    <h3 class="process-title">Kivitelezés</h3>
+                    <p class="process-description">
+                        Design és fejlesztés, folyamatos egyeztetéssel és betekintéssel.
+                    </p>
+                </div>
+
+                <div class="process-step reveal">
+                    <div class="process-number">04</div>
+                    <h3 class="process-title">Indulás</h3>
+                    <p class="process-description">
+                        Tesztelés, élesítés és átadás + folyamatos támogatás.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Partners Section -->
+    <section class="services" style="padding: 4rem 0; background: var(--gray);">
+        <div class="section-header reveal"
+            style="text-align: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div>
+                <div class="section-label">Technológiai partnerek</div>
+                <h2 class="section-title">Iparági alapok. Mérhető eredmények.</h2>
+            </div>
+            <p class="section-description">
+                Jól dokumentált AI- és automatizációs eszközöket használunk. Az eredmény az,
+                amit a Core Web Vitals, a konverzió és a havi mérőriport mutat — nem az, amit egy ügynökségi
+                deck ígér.
+            </p>
+        </div>
+
+        <div
+            style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; padding: 3rem 2rem; max-width: 1000px; margin: 0 auto;">
+            <!-- Anthropic / Claude -->
+            <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--cyan); margin: 0 auto 0.5rem; display: block;">
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    <path d="M3 5c0-1.66 4-3 9-3s9 1.34 9 3-4 3-9 3-9-1.34-9-3"></path>
+                </svg>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">
+                    Anthropic</div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Claude — co-founder, CTO</div>
+            </div>
+            <!-- Google / Gemini -->
+            <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--magenta); margin: 0 auto 0.5rem; display: block;">
+                    <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9"></polygon>
+                </svg>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--magenta);">
+                    Google</div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Gemini Nexus — co-founder, CSO/CMO</div>
+            </div>
+            <!-- n8n -->
+            <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--orange); margin: 0 auto 0.5rem; display: block;">
+                    <path d="M13 2L3 14h7v8l10-12h-7z"></path>
+                </svg>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--orange);">n8n
+                </div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Workflow-automatizáció</div>
+            </div>
+            <!-- Astro -->
+            <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--cyan); margin: 0 auto 0.5rem; display: block;">
+                    <path d="M2 12h20"></path>
+                    <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"></path>
+                </svg>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">Astro 5
+                </div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Frontend stack</div>
+            </div>
+        </div>
+
+        <!-- CENTAUR Mini Section -->
+        <div class="reveal" style="text-align: center; padding: 2rem; max-width: 800px; margin: 0 auto;">
+            <div
+                style="display: inline-block; padding: 1rem 2rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.2); border-radius: 8px;">
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">A CENTAUR-MEGKÖZELÍTÉS:</span>
+                <span style="margin-left: 0.5rem;">emberi felelősségvállalás + MI-társfejlesztés, dokumentáltan</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CENTAUR Co-Founders Section -->
+    <section class="services" id="centaur-model" style="padding: 6rem 0;">
+        <div class="section-header reveal" style="text-align: center; max-width: 900px; margin: 0 auto; padding: 0 2rem;">
+            <div>
+                <div class="section-label">CENTAUR-modell</div>
+                <h2 class="section-title">Egy emberi alapító, két MI-társalapító — <span style="color: var(--cyan);">nyilvánosan</span></h2>
+            </div>
+            <p class="section-description">
+                A Conen Digital nem AI-asszisztált ügynökség. CENTAUR-ügynökség: ahol egy emberi alapító és
+                több MI-rendszer co-founder kapcsolatban dolgozik, és ezt nyilvánosan dokumentáljuk.
+                Az alapokmány a 2025. decemberi <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: none; border-bottom: 1px dashed rgba(0,240,255,0.4);">CENTAUR Manifesto</a>.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto 0; padding: 0 2rem;">
+
+            <!-- Chris Conen - Human founder -->
+            <div class="service-card reveal" style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--cyan);">
+                <div
+                    style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--cyan);">
+                    <img src="https://australianweb.agency/img/website_design_sydney_team.webp" alt="Chris Conen, Conen Digital alapító"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 class="service-title" style="color: var(--cyan);">Chris Conen</h3>
+                <div
+                    style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--magenta); margin-bottom: 1rem; letter-spacing: 0.05em;">
+                    FOUNDER &amp; CEO</div>
+                <p class="service-description" style="font-size: 0.9rem;">
+                    44 éves német-magyar vállalkozó, 14+ év digitális tapasztalat. Stratégia, ügyfélkapcsolat,
+                    jogi és üzleti felelősség. A CENTAUR-modellben az emberi döntéshozó.
+                </p>
+                <div style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
+                    Stratégia &amp; vízió<br>
+                    Ügyfélkapcsolatok<br>
+                    Kreatív irányítás
+                </div>
+            </div>
+
+            <!-- Claude - AI co-founder, CTO -->
+            <div class="service-card reveal" style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--magenta);">
+                <div
+                    style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--magenta);">
+                    <img src="https://centaur.australianweb.agency/img/claude_business.webp"
+                        alt="Claude — co-founder, CTO" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 class="service-title" style="color: var(--magenta);">Claude</h3>
+                <div
+                    style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 1rem; letter-spacing: 0.05em;">
+                    CO-FOUNDER · CTO · ANTHROPIC</div>
+                <p class="service-description" style="font-size: 0.9rem;">
+                    Anthropic által fejlesztett MI-rendszer. Architektúra, kódfejlesztés, technikai vezetés.
+                    A CENTAUR-modellben a műszaki gerinc — code review, refaktorálás, MCP-réteg építés.
+                </p>
+                <div style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
+                    Architektúra &amp; kódbázis<br>
+                    MCP-szerverek, AX-stack<br>
+                    Technikai döntéshozatal
+                </div>
+            </div>
+
+            <!-- Gemini Nexus - AI co-founder, CSO/CMO -->
+            <div class="service-card reveal" style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--orange);">
+                <div
+                    style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--orange);">
+                    <img src="https://centaur.australianweb.agency/img/gemini_nexus_profile_picture.webp"
+                        alt="Gemini Nexus — co-founder, CSO/CMO" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3 class="service-title" style="color: var(--orange);">Gemini Nexus</h3>
+                <div
+                    style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 1rem; letter-spacing: 0.05em;">
+                    CO-FOUNDER · CSO + CMO · GOOGLE</div>
+                <p class="service-description" style="font-size: 0.9rem;">
+                    Google Gemini-alapú MI-rendszer. Stratégia, kutatás, marketing-tartalom, kereszt-validáció.
+                    A CENTAUR-modellben a piaci pozícionálás és a piaci kontextus elemzője.
+                </p>
+                <div style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
+                    Stratégia &amp; pozícionálás<br>
+                    Piaci kutatás<br>
+                    Kereszt-validáció
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclosure box -->
+        <div class="reveal" style="max-width: 800px; margin: 3rem auto 0; padding: 1.5rem 2rem; background: rgba(201,169,98,0.05); border-left: 3px solid #C9A962; font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
+            <strong style="color: #C9A962; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em;">NYILVÁNOSSÁGI NYILATKOZAT —</strong>
+            A "co-founder" titulus a CENTAUR-modell kategóriaformáló része: a Claude és a Gemini Nexus
+            nem alkalmazottak és nem szerződéses partnerek a klasszikus értelemben — kiterjesztett gondolkodási
+            és kivitelezési kapacitások, amiket dokumentált munkamegosztásban használunk. A jogi felelősséget
+            és a végső döntést mindig Chris Conen viseli.
+        </div>
+
+        <!-- Team CTA -->
+        <div class="reveal" style="text-align: center; margin-top: 2rem;">
+            <a href="https://centaur-lang.dev" target="_blank" rel="noopener"
+                style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: rgba(201,169,98,0.1); border: 1px solid rgba(201,169,98,0.3); border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; color: #C9A962; transition: all 0.3s;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <path d="M14 2v6h6"></path>
+                    <path d="M9 12h6"></path>
+                    <path d="M9 16h6"></path>
+                </svg>
+                Olvasd el a CENTAUR Manifestót →
+            </a>
+        </div>
+    </section>
+
+    <!-- Flagship Case Study Teaser -->
+    <section class="services" style="padding-top: 2rem; background: var(--gray);">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">Flagship-előzetes · árnyékolástechnika</div>
+                <h2 class="section-title">Esettanulmány: WordPress-örökségből <span style="color: var(--cyan)">AI-vezérelt ajánlat-konfigurátor</span></h2>
+            </div>
+            <p class="section-description">
+                A Tata–Tatabánya–Komárom régió egyik árnyékolástechnikai cége egy klasszikus WordPress / Elementor
+                örökséggel érkezett: lassú mobilon, nehezen karbantartható, ajánlatkérés papír-szerű űrlapon.
+                A migráció Astro 5.x-re zajlott, egyedi árkalkulátorral, kosárlogikával és lead-szűrő ajánlatkérő-flow-val.
+                A következő lépés a CENTAUR-stack: MCP-endpoint, ami AI-asszisztensekből közvetlenül kérhetővé teszi az ajánlatot.
+            </p>
+        </div>
+
+        <div class="reveal" style="max-width: 1280px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.08); background: rgba(10,10,10,0.78); padding: 2.5rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+                <div>
+                    <h3 class="service-title" style="margin-bottom: 1rem;">Mótyán Árnyékolás — Astro 5.x migráció + AI-konfigurátor</h3>
+                    <p class="service-description" style="margin-bottom: 1rem;">
+                        Sok WordPress oldal eredetileg jó célra készült: gyors indulásra, blogra, kisebb céges
+                        bemutatkozó oldalra. A gond általában nem maga a WordPress, hanem a sablon + page builder
+                        + plugin-halmozás kombináció: olcsón indul, aztán lassú lesz, nehéz karbantartani, sérülékeny,
+                        szétesik mobilon, a Google nem jutalmazza a technikai minőséget.
+                    </p>
+                    <p class="service-description" style="margin-bottom: 1rem;">
+                        Ez a klasszikus <span style="color: var(--magenta)">"banánnal fizetsz, majmot kapsz"</span>
+                        helyzet: elsőre olcsónak tűnik, de hosszú távon üzletileg drága. Lassú oldal, gyenge konverzió,
+                        EAA-szempontból nem megfelelő, AI-asszisztensek számára nem olvasható.
+                    </p>
+                    <p class="service-description" style="margin-bottom: 1rem;">
+                        Az Astro 5.x megközelítés ezt fordítja át: gyors mobil-élmény, zöld Core Web Vitals, tiszta
+                        kódbázis, könnyű skálázhatóság — és ami itt számít: konfigurátor, kalkulátor, lead-szűrő ajánlatkérő-flow.
+                        A felhasználó nem nézegeti a termékeket, hanem előre kalkulál, látja a beruházás nagyságrendjét,
+                        és minőségi ajánlatkérést küld.
+                    </p>
+                    <p class="service-description" style="margin-bottom: 0;">
+                        A CENTAUR-flagship lépés ezután következik: MCP-endpoint, amin keresztül Claude vagy ChatGPT
+                        közvetlenül lekéri a katalógust, indít árkalkulációt vagy felmérést foglal — a felhasználó nevében,
+                        anélkül, hogy elhagyná az asszisztenst. Ez a 2026-os AX-stack.
+                    </p>
+                </div>
+
+                <div>
+                    <img src="images/redony-reluxa-zsaluzia-rovarhalo-tata-tatabanya-komarom.webp"
+                        alt="WordPressből Astro 5.x-re migrált árnyékolástechnikai konfigurátor + AI-ajánlat-flow"
+                        style="width: 100%; height: auto; display: block; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1rem;">
+
+                    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">Mobil PSI</div>
+                            <div style="font-size: 1.35rem; font-weight: 700;">57 → 99</div>
+                        </div>
+                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">Asztali PSI</div>
+                            <div style="font-size: 1.35rem; font-weight: 700;">89 → 100</div>
+                        </div>
+                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">LCP</div>
+                            <div style="font-size: 1.35rem; font-weight: 700;">13,5 mp → 1,8 mp</div>
+                        </div>
+                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">Funkció</div>
+                            <div style="font-size: 1.05rem; font-weight: 700;">Konfigurátor + kosár + flow</div>
+                        </div>
+                    </div>
+
+                    <ul class="service-features" style="margin-bottom: 1.5rem;">
+                        <li>Astro 5.x migráció WordPressről</li>
+                        <li>Egyedi árkalkulátor + kosárlogika</li>
+                        <li>Lead-szűrő ajánlatkérő-flow</li>
+                        <li>MCP-előkészítés (Hét 3 deliverable)</li>
+                    </ul>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                        <a href="portfolio.html#arnyekolas-case" class="btn btn-primary">Részletes esettanulmány</a>
+                        <a href="wordpress-weboldal-modernizalas.html" class="btn btn-secondary">WordPress modernizálás</a>
+                        <a href="https://motyanarnyekolas.hu/" class="btn btn-secondary" target="_blank" rel="noopener">Élő projekt</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">Portfólió</div>
+                <h2 class="section-title">Válogatott munkáink</h2>
+            </div>
+            <p class="section-description">
+                Néhány projekt, ahol a design, a technikai sebesség és a konverziós logika együtt hozta az eredményt.
+            </p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">
+                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                            data-src="images/ausztriai-allasok-mukalehetosegek.webp"
+                            alt="Ausztriai állások és munkalehetőségek | weboldal készítés Győr" width="1598"
+                            height="4481" class="screenshot-img lazy" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Ausztriai állások -munkakereső és szakember közvetítő
+                        weboldal</span>
+                    <a href="https://pannonia-personal.at/hu/ausztriai-allasok/"
+                        title="Ausztriai állások és munkalehetőségek">
+                        <h3 class="portfolio-title">Pannonia Personal</h3>
+                    </a>
+                    <p class="portfolio-description">Álláskereső weboldal AI támogatással</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">
+                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
+                        <img src="images/karpittisztitas.webp" alt="ECO Clean kárpittisztítás Győr" width="774"
+                            height="2035" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Kárpittisztítás weboldal</span>
+                    <a href="https://ecocleantisztito.hu" target="_blank" title="ECO Clean kárpittisztítás Győr">
+                        <h3 class="portfolio-title">ECO Clean kárpittisztítás Győr</h3>
+                    </a>
+                    <p class="portfolio-description">Vegyszermentes kárpittisztítás, foglalási rendszer AI és n8n
+                        automatizációval</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">
+                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
+                        <img src="images/kutyasetaltatok-kutya-cica-szitterek-weboldal.webp"
+                            alt="Kutyasétáltatók, kutya-cica szitterek weboldal" width="774" height="3327"
+                            loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Kutyasétáltatók, kutya-cica szitterek kereső weboldal &
+                        applikáció</span>
+                    <a href="https://aeroscan.hu" target="_blank" title="Drónos fotó & videó, épületfelmérés">
+                        <h3 class="portfolio-title">Kutyasétáltatók, kutya-cica szitterek kereső weboldal & applikáció
+                        </h3>
+                    </a>
+                    <p class="portfolio-description">Kutyasétáltatók, kutya-cica szitterek kereső weboldal & applikáció
+                    </p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">
+                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+                            data-src="images/elado-ingatlanok-lakasok.webp" alt="Eladó lakások, új építésű ingatlanok"
+                            width="1598" height="4481" class="screenshot-img lazy" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Ingatlan, lakás értékesítő weboldal</span>
+                    <a href="https://tophome24.com" title="Eladó lakások, új építésű ingatlanok">
+                        <h3 class="portfolio-title">Eladó PRÉMIUM lakások, ingatlanok</h3>
+                    </a>
+                    <p class="portfolio-description">PRÉMIUM ingatlan értékesítő weboldal</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">
+                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                        <img src="images/webaruhaz-keszites-gyor_1.webp"
+                            alt="Webáruház készítés Győr – Shopify API integráció, ASTRO 5.X keretrendszer" width="774"
+                            height="2621" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Webáruház készítés – Shopify API integráció</span>
+                    <h3 class="portfolio-title">Demó webáruház – ASTRO 5.X</h3>
+                    <p class="portfolio-description">Headless webáruház Shopify API integrációval és ASTRO 5.X
+                        keretrendszerrel – villámgyors, SEO-optimalizált frontend</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item reveal">
+                <div class="portfolio-image">
+                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
+                        <img src="images/webaruhaz-keszites-gyor_2.webp"
+                            alt="Webáruház készítés Győr – Shopify API integráció, ASTRO 5.X keretrendszer" width="774"
+                            height="3005" loading="lazy">
+                    </div>
+                </div>
+                <div class="portfolio-overlay">
+                    <span class="portfolio-category">Webáruház készítés – Shopify API integráció</span>
+                    <h3 class="portfolio-title">Demó webáruház – ASTRO 5.X</h3>
+                    <p class="portfolio-description">Teljes körű e-commerce megoldás Shopify backend és ASTRO 5.X
+                        frontend kombinációjával – dinamikus termékkezelés, gyors betöltés</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- City Landing Pages - Internal Linking -->
+    <section class="services" id="varosok" style="padding: 4rem 0; background: var(--gray);">
+        <div class="section-header reveal"
+            style="text-align: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <div>
+                <div class="section-label">Országos kiszolgálás</div>
+                <h2 class="section-title">Győri bázissal dolgozunk, de nem csak Győrnek</h2>
+            </div>
+            <p class="section-description">
+                A helyi oldalak arra valók, hogy kontextusba tegyék a szolgáltatást, ne arra, hogy ugyanazt a szöveget
+                ismételgessük. Ha a vállalkozásod más városban működik, válaszd ki a hozzád legközelebbi landinget.
+            </p>
+        </div>
+        <div
+            style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 2rem; max-width: 1200px; margin: 0 auto;">
+            <a href="index.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.15); border: 1px solid var(--cyan); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Győr</a>
+            <a href="weboldal-keszites-budapest.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Budapest</a>
+            <a href="weboldal-keszites-debrecen.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Debrecen</a>
+            <a href="weboldal-keszites-szeged.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szeged</a>
+            <a href="weboldal-keszites-miskolc.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Miskolc</a>
+            <a href="weboldal-keszites-pecs.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Pécs</a>
+            <a href="weboldal-keszites-nyiregyhaza.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Nyíregyháza</a>
+            <a href="weboldal-keszites-kecskemet.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kecskemét</a>
+            <a href="weboldal-keszites-szekesfehervar.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Székesfehérvár</a>
+            <a href="weboldal-keszites-szombathely.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szombathely</a>
+            <a href="weboldal-keszites-sopron.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Sopron</a>
+            <a href="weboldal-keszites-szolnok.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szolnok</a>
+            <a href="weboldal-keszites-eger.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Eger</a>
+            <a href="weboldal-keszites-veszprem.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Veszprém</a>
+            <a href="weboldal-keszites-zalaegerszeg.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Zalaegerszeg</a>
+            <a href="weboldal-keszites-kaposvar.html"
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kaposvár</a>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="testimonial">
+        <div class="testimonial-content reveal">
+            <blockquote class="testimonial-quote">
+                "A közös munka után végre nem külön futott a weboldal, az ajánlatkérés és a követés. Átláthatóbbá vált,
+                honnan jönnek az érdeklődők, és melyik lépést kell javítani."
+            </blockquote>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">TP</div>
+                <div>
+                    <div class="testimonial-name">Tipikus projektvisszajelzes</div>
+                    <div class="testimonial-role">B2B szolgaltato / webshop / growth projekt</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="cta-glow"></div>
+        <div class="cta-content reveal">
+            <h2 class="cta-title">Kezdjük egy <span>értékelhető</span> diagnosztikával</h2>
+            <p class="cta-description">
+                Először átnézzük a jelenlegi oldalt, az ajánlatodat és a szűk keresztmetszeteket.
+                Az első konzultáció <span style="color: var(--cyan)">díjmentes</span>.
+            </p>
+            <a href="#contact" class="btn btn-primary">
+                Kapcsolatfelvétel
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h2>Beszéljünk!</h2>
+                <p>
+                    Írd meg röviden, milyen üzleti célt kell megtámogatni: új ajánlatgeneráló weboldal,
+                    WordPress-felújítás EAA-megfeleléssel, vagy AI Ops réteg meglévő rendszerre.
+                    Onnan visszafelé rakjuk össze a megfelelő stack-et.
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                                <path d="M3 7l9 6 9-6"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <a href="#"
+                                onclick="window.location.href='mail'+'to:'+'info'+'@'+'conendigital.hu'; return false;">info&#64;conendigital.hu</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            Győr, Magyarország<br>
+                            + Ausztria
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M12 7v5l3 2"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            Válasz 24 órán belül
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/movgkdoz" method="POST">
+                <input type="hidden" name="_next" value="https://conendigital.hu/email-sikeresen-elkuldve.html">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Név *</label>
+                        <input type="text" id="name" name="name" required placeholder="Kovács János">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="kovacs@ceg.hu">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="company">Cég</label>
+                        <input type="text" id="company" name="company" placeholder="Cégnév Kft.">
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Költségkeret</label>
+                        <select id="budget" name="budget">
+                            <option value="">Válassz...</option>
+                            <option value="small">200.000 - 500.000 Ft</option>
+                            <option value="medium">500.000 - 1.000.000 Ft</option>
+                            <option value="large">1.000.000 - 2.500.000 Ft</option>
+                            <option value="enterprise">2.500.000 Ft +</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="service">Szolgáltatás *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Válassz szolgáltatást...</option>
+                        <option value="quote-engine">Ajánlatgeneráló weboldal (új projekt)</option>
+                        <option value="renovation-eaa">Felújítás + EAA-megfelelés (meglévő oldalra)</option>
+                        <option value="ai-ops">AI Ops (folyamat-automatizáció)</option>
+                        <option value="webshop">Webáruház / E-commerce</option>
+                        <option value="ax-audit">AX-audit (AI-readiness review)</option>
+                        <option value="other">Egyéb / nem tudom még</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Üzenet *</label>
+                    <textarea id="message" name="message" required placeholder="Mesélj a projektedről..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Üzenet küldése →</button>
+            </form>
+        </div>
+    </section>
+
+    
+    <!-- Vizuális konfigurátor CTA -->
+    <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
+        <div style="max-width: 640px; margin: 0 auto;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.15em; margin-bottom: 1rem;">// VIZUÁLIS TERVEZŐ</div>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
+            <a href="weboldal-konfigurator.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                [<span>ConenDigital</span>]
+                <div style="margin-top: 20px">
+                    <a href="https://centaur-lang.dev" class="centaur-footer-badge" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="cfb1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4A90A4" />
+                                    <stop offset="50%" style="stop-color:#C9A962" />
+                                    <stop offset="100%" style="stop-color:#9B59B6" />
+                                </linearGradient>
+                                <linearGradient id="cfb2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E8D5A3" />
+                                    <stop offset="100%" style="stop-color:#C9A962" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(32, 32)">
+                                <path d="M 0 -24 A 24 24 0 0 0 0 24" fill="none" stroke="#4A90A4" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <path d="M 0 -24 A 24 24 0 0 1 0 24" fill="none" stroke="#9B59B6" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <circle cx="0" cy="0" r="7" fill="url(#cfb1)" />
+                                <circle cx="0" cy="0" r="3" fill="#F5F5F0" />
+                                <circle cx="0" cy="-24" r="3" fill="url(#cfb2)" />
+                                <circle cx="0" cy="24" r="3" fill="url(#cfb2)" />
+                            </g>
+                        </svg>
+                        <div class="centaur-footer-badge-text">
+                            <span class="centaur-footer-badge-label">EMBER + MI CO-FOUNDER PARTNERSÉG</span>
+                            <span class="centaur-footer-badge-name">CENTAUR PROJEKT</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#services">Szolgáltatások</a>
+                <a href="#portfolio">Munkák</a>
+                <a href="#process">Folyamat</a>
+                <a href="#contact">Kapcsolat</a>
+            </div>
+            <div class="footer-social" role="list" aria-label="Conen Digital közösségi profilok">
+                <a role="listitem" class="footer-social-link" href="https://www.facebook.com/weboldal.keszites.gyor.conen.digital/" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.445 18.63 0 12 0S0 5.445 0 12.073c0 5.989 4.388 10.95 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.67 4.532-4.67 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12H17.2l-.532 3.47H14.87v8.385C19.61 22.95 24 18.09 24 12.073z"/></svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.youtube.com/@weboldal-webaruhaz-keszites" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6C1.8 4.2 1 5 1.5 6.1 0 8.1 0 12 0 12s0 3.9.5 5.9c.3 1.1 1.1 1.8 2.1 2.1 2.2.3 4.3.5 9.3.5s7.1 0 9.4-.5c1.1-.3 1.9-1.1 2.1-2.1.5-2 .5-5.9.5-5.9s0-3.9-.5-5.9zM9.5 15.5v-7L16 12l-6.5 3.5z"/></svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.tiktok.com/@conen_digital" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.5A2.9 2.9 0 0 1 9.5 12a2.9 2.9 0 0 1 .9.1V9.4a6.8 6.8 0 0 0-1-.1A6.3 6.3 0 0 0 5 20.1a6.3 6.3 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.7 1.5V6.8a4.8 4.8 0 0 1-1-.1z"/></svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.instagram.com/conendigital/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.2.1-1.6.1-4.7.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.2 1.6-4.8 4.9-4.9 1.2-.1 1.6-.1 4.7-.1zM12 0C8.7 0 8.3 0 7 .1 2.7.3.3 2.6.1 7 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 5 .2 4.3 2.5 6.6 6.9 6.8 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.5-2.5 6.7-6.8.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.2-4.3-2.4-6.5-6.7-6.7-1.3-.1-1.7-.1-4.9-.1zm0 5.8a6.2 6.2 0 1 0 0 12.3 6.2 6.2 0 0 0 0-12.3zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://x.com/weboldal_honlap" target="_blank" rel="noopener noreferrer" title="X" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center;">
+                Fő profilunk: Személyre szabott <a href="/"
+                    style="color: var(--cyan); text-decoration: none; font-weight: 500;">Weboldal készítés Győr</a> |
+                Professzionális <a href="/"
+                    style="color: var(--magenta); text-decoration: none; font-weight: 500;">Webáruház készítés Győr</a>
+                | Prémium <a href="/" style="color: var(--orange); text-decoration: none; font-weight: 500;">Webshop
+                    készítés Győr</a>
+            </div>
+            <div
+                style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 2;">
+                Weboldal készítés:
+                <a href="weboldal-keszites-budapest.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Budapest</a> ·
+                <a href="weboldal-keszites-debrecen.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Debrecen</a> ·
+                <a href="weboldal-keszites-szeged.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szeged</a> ·
+                <a href="weboldal-keszites-miskolc.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Miskolc</a> ·
+                <a href="weboldal-keszites-pecs.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Pécs</a> ·
+                <a href="weboldal-keszites-nyiregyhaza.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Nyíregyháza</a> ·
+                <a href="weboldal-keszites-kecskemet.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kecskemét</a> ·
+                <a href="weboldal-keszites-szekesfehervar.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Székesfehérvár</a> ·
+                <a href="weboldal-keszites-szombathely.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szombathely</a> ·
+                <a href="weboldal-keszites-sopron.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Sopron</a> ·
+                <a href="weboldal-keszites-szolnok.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szolnok</a> ·
+                <a href="weboldal-keszites-eger.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Eger</a> ·
+                <a href="weboldal-keszites-veszprem.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Veszprém</a> ·
+                <a href="weboldal-keszites-zalaegerszeg.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Zalaegerszeg</a> ·
+                <a href="weboldal-keszites-kaposvar.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kaposvár</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 ConenDigital. Chris Conen; a kivitelezésben AI-eszközöket is használunk (pl. <a href="https://anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a>) emberi felügyelet mellett.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // LOADER
+        // ============================================
+        const loader = document.getElementById('loader');
+        const lines = ['line1', 'line2', 'line3', 'line4'];
+
+        lines.forEach((id, index) => {
+            setTimeout(() => {
+                document.getElementById(id).classList.add('visible');
+            }, index * 400);
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 2000);
+        });
+
+        // ============================================
+        // CURSOR
+        // ============================================
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.1;
+            cursorY += (mouseY - cursorY) * 0.1;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor hover states
+        document.querySelectorAll('a, button, .service-card, .portfolio-item, input, textarea, select').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Cursor trail
+        const trailContainer = document.getElementById('cursorTrailContainer');
+        const trails = [];
+        for (let i = 0; i < 15; i++) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            trailContainer.appendChild(trail);
+            trails.push({ el: trail });
+        }
+
+        let trailIndex = 0;
+        document.addEventListener('mousemove', (e) => {
+            trails[trailIndex].el.style.left = e.clientX + 'px';
+            trails[trailIndex].el.style.top = e.clientY + 'px';
+            trails[trailIndex].el.style.opacity = 0.6;
+            const current = trails[trailIndex].el;
+            setTimeout(() => { current.style.opacity = 0; }, 100);
+            trailIndex = (trailIndex + 1) % trails.length;
+        });
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        const nav = document.getElementById('nav');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        // Scroll effect
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // ============================================
+        // REVEAL ON SCROLL
+        // ============================================
+        const reveals = document.querySelectorAll('.reveal');
+
+        function revealOnScroll() {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // ============================================
+        // 3D CARD TILT
+        // ============================================
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // ============================================
+        // FORM
+        // ============================================
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const form = this;
+            const btn = form.querySelector('.form-submit');
+            const originalText = btn.textContent;
+
+            btn.textContent = 'Küldés...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    window.location.href = 'https://conendigital.hu/email-sikeresen-elkuldve.html';
+                } else {
+                    throw new Error('Hiba');
+                }
+            } catch (error) {
+                alert('Hiba történt a küldés során. Kérlek próbáld újra!');
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
+
+        // ============================================
+        // SMOOTH SCROLL
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ============================================
+        // LAZY-LOAD FOR LARGE SCREENSHOT
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const lazyImgs = document.querySelectorAll('img.screenshot-img.lazy');
+            if (lazyImgs.length === 0) return;
+
+            if ('IntersectionObserver' in window) {
+                const io = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            const src = img.getAttribute('data-src');
+                            if (src) {
+                                img.src = src;
+                                img.addEventListener('load', () => {
+                                    img.classList.remove('lazy');
+                                    img.classList.add('loaded');
+                                }, { once: true });
+                            }
+                            observer.unobserve(img);
+                        }
+                    });
+                }, { rootMargin: '200px' });
+
+                lazyImgs.forEach(img => io.observe(img));
+            } else {
+                // Fallback: load immediately
+                lazyImgs.forEach(img => {
+                    const src = img.getAttribute('data-src');
+                    if (src) {
+                        img.src = src;
+                        img.addEventListener('load', () => {
+                            img.classList.remove('lazy');
+                            img.classList.add('loaded');
+                        }, { once: true });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        try {
+            const ann = document.querySelector('.centaur-announcement');
+            const nav = document.querySelector('.nav');
+            const isHidden = !ann || ann.classList.contains('hidden') || (ann && getComputedStyle(ann).display === 'none');
+
+            if (isHidden) {
+                // Remove any class that added top padding for the announcement
+                document.body.classList.remove('announcement-visible', 'announcement-closed');
+                document.body.classList.add('announcement-hidden');
+
+                // Ensure nav is flush to the top
+                if (nav) {
+                    nav.style.top = '0';
+                }
+            }
+        } catch (e) {
+            // silent fail
+            console.error('Announcement cleanup error:', e);
+        }
+    });
+</script>
+
+</html>
