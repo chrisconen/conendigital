@@ -19,6 +19,10 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 
 /* Layout */
 .app{position:relative;z-index:1;display:grid;grid-template-columns:minmax(340px,42%) 1fr;grid-template-rows:auto 1fr;min-height:100vh}
+/* Reszponzív default-arány: kisebb képernyőn több hely a configurator-nak */
+@media(min-width:1025px) and (max-width:1199px){.app{grid-template-columns:minmax(340px,55%) 1fr}}
+@media(min-width:1200px) and (max-width:1499px){.app{grid-template-columns:minmax(340px,50%) 1fr}}
+@media(min-width:1500px) and (max-width:1799px){.app{grid-template-columns:minmax(340px,45%) 1fr}}
 .topbar{grid-column:1/-1;padding:.7rem 1.5rem;display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--gb);background:rgba(10,10,10,.85);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
 .logo{font-family:var(--mono);font-size:1rem;font-weight:700}.logo span{background:linear-gradient(90deg,var(--cyan),var(--mag));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .topbar-right{margin-left:auto;display:flex;align-items:center;gap:1rem}
@@ -85,8 +89,18 @@ a{color:inherit;text-decoration:none}button{font-family:inherit;cursor:pointer;b
 .save-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
 
 /* Resize handle */
-.rh{position:absolute;top:0;left:-4px;width:8px;height:100%;cursor:col-resize;z-index:10;display:flex;align-items:center;justify-content:center}
-.rh::after{content:'';width:3px;height:40px;border-radius:2px;background:rgba(255,255,255,.06)}.rh:hover::after{background:var(--cyan)}
+.rh{position:absolute;top:0;left:-5px;width:10px;height:100%;cursor:col-resize;z-index:10;display:flex;align-items:center;justify-content:center}
+.rh::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:48px;border-radius:7px;background:rgba(0,240,255,.05);border:1px solid rgba(0,240,255,.12);transition:background .15s,border-color .15s,box-shadow .15s;pointer-events:none}
+.rh::after{content:'⋮⋮';font-family:var(--mono);font-size:.7rem;line-height:1.1;color:rgba(255,255,255,.35);letter-spacing:-2px;writing-mode:vertical-rl;transition:color .15s;z-index:1}
+.rh:hover::before{background:rgba(0,240,255,.15);border-color:rgba(0,240,255,.55);box-shadow:0 0 12px rgba(0,240,255,.35)}
+.rh:hover::after{color:var(--cyan)}
+/* Hover-toolbar: 3 preset gomb a kétfelet-választó vonalon */
+.rh-tools{position:absolute;top:50%;left:50%;transform:translate(-50%,calc(-50% + 50px));display:none;flex-direction:column;gap:4px;background:rgba(10,10,10,.96);border:1px solid var(--gb);border-radius:6px;padding:5px;box-shadow:0 8px 22px rgba(0,0,0,.6);z-index:11}
+.rh:hover .rh-tools,.rh-tools:hover{display:flex}
+.rh-tools button{width:28px;height:28px;border:1px solid var(--gb);background:rgba(255,255,255,.04);color:var(--white);border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.75rem;line-height:1;transition:all .15s;padding:0}
+.rh-tools button:hover{border-color:var(--cyan);background:rgba(0,240,255,.1);color:var(--cyan)}
+.rh-tools button.act{border-color:var(--cyan);background:rgba(0,240,255,.18);color:var(--cyan)}
+.rh-tools-label{font-family:var(--mono);font-size:.5rem;color:var(--dim);letter-spacing:.08em;text-align:center;padding:2px 0 4px;border-bottom:1px solid var(--gb);margin-bottom:2px}
 
 /* Steps */
 .step{display:none;animation:fi .35s ease}.step.on{display:block}
@@ -517,7 +531,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
         </section>
     </main>
     <aside class="pv" id="pv" aria-label="Élő előnézet">
-        <div class="rh" id="rh"></div>
+        <div class="rh" id="rh" role="separator" aria-orientation="vertical" aria-label="Konfigurátor és előnézet aránya — húzd a méretezéshez"><div class="rh-tools" id="rhTools"><div class="rh-tools-label">ARÁNY</div><button type="button" data-split="60" title="Configurator-fókusz (60/40)" aria-label="Configurator-fókusz">◧</button><button type="button" data-split="50" title="Egyenlő (50/50)" aria-label="Egyenlő arány">=</button><button type="button" data-split="42" title="Preview-fókusz (42/58)" aria-label="Preview-fókusz">◨</button></div></div>
         <div class="pv-chrome">
             <div class="pv-dots"><i></i><i></i><i></i></div>
             <div class="pv-url" id="pvUrl">az-en-weboldam.hu</div>
@@ -736,11 +750,66 @@ document.getElementById('pvFs').addEventListener('click',()=>{$pv.classList.togg
 document.getElementById('pvClose').addEventListener('click',()=>{$pv.classList.remove('fs','mob');document.getElementById('pvClose').style.display='none';render()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$pv.classList.contains('fs')){$pv.classList.remove('fs');document.getElementById('pvClose').style.display='none';render()}});
 document.getElementById('mobPv').addEventListener('click',()=>{$pv.classList.toggle('mob');render()});
-// Resize
-(function(){const h=document.getElementById('rh'),app=document.querySelector('.app');let d=0,sx,sw;
-h.addEventListener('mousedown',e=>{d=1;sx=e.clientX;sw=$pv.getBoundingClientRect().width;document.body.style.cursor='col-resize';document.body.style.userSelect='none';e.preventDefault()});
-document.addEventListener('mousemove',e=>{if(!d)return;const nw=Math.max(350,Math.min(innerWidth*.75,sw+(sx-e.clientX)));app.style.gridTemplateColumns=(innerWidth-nw)+'px '+nw+'px';$nav.style.width=(innerWidth-nw)+'px'});
-document.addEventListener('mouseup',()=>{if(!d)return;d=0;document.body.style.cursor='';document.body.style.userSelect='';render()})})();
+// Resize + preset-toolbar + localStorage persistence
+(function(){
+    const h=document.getElementById('rh'),app=document.querySelector('.app'),tools=document.getElementById('rhTools');
+    const SPLIT_KEY='ccfg_layout_split_pct'; // a configurator-rész százaléka (pl. 50 = 50%)
+    let d=0,sx,sw;
+    function applySplit(cfgPct){
+        if(innerWidth<=1024)return; // mobile-on nincs split
+        const cfgW=Math.max(340,Math.min(innerWidth*.75,innerWidth*cfgPct/100));
+        const pvW=innerWidth-cfgW;
+        app.style.gridTemplateColumns=cfgW+'px '+pvW+'px';
+        $nav.style.width=cfgW+'px';
+        // toolbar aktív-állapot
+        if(tools){tools.querySelectorAll('button').forEach(b=>{
+            const v=parseInt(b.dataset.split);
+            // egy preset akkor "act", ha a tényleges arány közel van hozzá (±3%)
+            const realPct=Math.round(cfgW/innerWidth*100);
+            b.classList.toggle('act',Math.abs(realPct-v)<=3);
+        })}
+    }
+    function saveSplit(){
+        const cfgPct=Math.round(parseFloat(getComputedStyle(app).gridTemplateColumns.split(' ')[0])/innerWidth*100);
+        try{localStorage.setItem(SPLIT_KEY,cfgPct)}catch(e){}
+    }
+    // Restore mentett arány (ha van)
+    try{
+        const saved=parseInt(localStorage.getItem(SPLIT_KEY));
+        if(saved>=30&&saved<=75&&innerWidth>1024)setTimeout(()=>applySplit(saved),50);
+    }catch(e){}
+    // Drag
+    h.addEventListener('mousedown',e=>{
+        // Ne induljon drag, ha toolbar-gombra kattint
+        if(e.target.closest('.rh-tools'))return;
+        d=1;sx=e.clientX;sw=$pv.getBoundingClientRect().width;
+        document.body.style.cursor='col-resize';document.body.style.userSelect='none';e.preventDefault();
+    });
+    document.addEventListener('mousemove',e=>{
+        if(!d)return;
+        const nw=Math.max(350,Math.min(innerWidth*.75,sw+(sx-e.clientX)));
+        const cfgW=innerWidth-nw;
+        app.style.gridTemplateColumns=cfgW+'px '+nw+'px';
+        $nav.style.width=cfgW+'px';
+    });
+    document.addEventListener('mouseup',()=>{
+        if(!d)return;d=0;document.body.style.cursor='';document.body.style.userSelect='';
+        saveSplit();render();
+    });
+    // Preset-toolbar gombok
+    if(tools){tools.querySelectorAll('button').forEach(btn=>{
+        btn.addEventListener('click',e=>{
+            e.stopPropagation();
+            const pct=parseInt(btn.dataset.split);
+            applySplit(pct);saveSplit();render();
+        });
+    })}
+    // Window resize: az arány-százalék újraszámolása (relatív arány marad)
+    window.addEventListener('resize',()=>{
+        if(innerWidth<=1024){app.style.gridTemplateColumns='';$nav.style.width='';return}
+        try{const saved=parseInt(localStorage.getItem(SPLIT_KEY));if(saved>=30&&saved<=75)applySplit(saved)}catch(e){}
+    });
+})();
 
 // --- Per-page section UI (Step 6) ---
 function buildPageUI(){
