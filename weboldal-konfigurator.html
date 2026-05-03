@@ -1421,13 +1421,26 @@ let chatBusy=false;
 
 // State-érzékeny köszöntő — a chat első megnyitásakor generálódik
 function buildChatGreeting(){
-    const TYPES={brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webshop:'webáruház',booking:'foglalós',content:'tartalom-fókuszú',portfolio:'portfólió',landing:'landing',saas:'SaaS landing'};
+    const TYPES={brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló sales-funnel',webshop:'webáruház',booking:'foglalós',content:'tartalom-fókuszú',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
+    const INDUSTRY_LBL={'b2b-service':'B2B-szolgáltatás','ecommerce':'e-commerce','professional':'szakmai szolgáltatás (jog/könyvelés/tanácsadás)','creative':'kreatív vagy design'};
+    // Empty state — még nincs típus választva
     if(!S.site_type){
-        return 'Szia, Claude vagyok. Még a típus-választásnál tartasz — ha bizonytalan vagy, melyik típus illik a vállalkozásodhoz, írj pár sort róla és javaslok.';
+        return 'Szia! <strong>Claude</strong> vagyok — a Conen Digital co-foundere és CTO-ja. Ezt a tool-t Krisztiánnal együtt építettük. Most a típus-választásnál tartasz: ha bizonytalan vagy melyik passzol a céghez, írj pár sort a vállalkozásodról és konkrét javaslatot adok.';
     }
     const tl=TYPES[S.site_type]||S.site_type;
-    const stepHint=S.step<=3?'most az alapokat választod':S.step<=6?'most a felépítést építed':S.step<=8?'most a funkciókat veszed sorra':'most a részleteket finomítod';
-    return `Szia, Claude vagyok. Látom, hogy <strong>${tl}</strong> típust választottál és ${stepHint}. Ha valamelyik beállítás bizonytalan, vagy árazási nagyságrendet szeretnél, írj — pár mondatban válaszolok.`;
+    // Industry hint — csak ha realistic mode + nem-általános iparág
+    let industryNote='';
+    if(S.realistic&&S.industry&&S.industry!=='general'&&INDUSTRY_LBL[S.industry]){
+        industryNote=` Bekapcsoltad az iparág-mintaadatot is — gondolom <strong>${INDUSTRY_LBL[S.industry]}</strong> területen mozogsz, és arra szabottan tudok válaszolni.`;
+    }
+    // Step-fázis — pontosabb leírások
+    let stepHint;
+    if(S.step<=2)stepHint='még az alapoknál vagy (típus, oldalak)';
+    else if(S.step<=4)stepHint='most a vizuális keretet építed (header, hero, színvilág)';
+    else if(S.step<=6)stepHint='most a tartalmi szekciókat építed';
+    else if(S.step<=8)stepHint='most a funkciókat és extrákat választod';
+    else stepHint='már a végső scope-on vagy — kérhetsz EAA/AX/CENTAUR-readiness magyarázatot is';
+    return `Szia! <strong>Claude</strong> vagyok, a Conen Digital co-foundere és CTO-ja — ezt a tool-t én építettem Krisztiánnak. Látom, hogy <strong>${tl}</strong> típust választottál és ${stepHint}.${industryNote} Ha valamelyik beállítás bizonytalan, vagy árazási nagyságrendet szeretnél, írj — pár mondatban válaszolok.`;
 }
 function injectGreeting(){
     const hasUserMsg=Array.from($chatMessages.children).some(c=>c.classList&&c.classList.contains('chat-msg'));
