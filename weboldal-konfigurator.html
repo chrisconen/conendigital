@@ -531,6 +531,27 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
         <div class="pv-share"><div class="save-dot"></div><label class="sr-only" for="shareUrl">Megosztási link</label><input type="text" id="shareUrl" readonly><button class="share-btn" id="shareBtn">Másolás</button></div>
     </aside>
 </div>
+<button type="button" class="chat-fab" id="chatFab" aria-label="AI-asszisztens megnyitása — Claude">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI-asszisztens" aria-hidden="true">
+    <div class="chat-header">
+        <div class="chat-title"><span class="chat-status" aria-hidden="true"></span>AI-asszisztens · <strong>Claude</strong></div>
+        <button type="button" class="chat-close" id="chatClose" aria-label="Chat bezárása">×</button>
+    </div>
+    <div class="chat-messages" id="chatMessages" aria-live="polite">
+        <div class="chat-msg chat-msg-bot"><div class="chat-msg-text">Szia! Claude vagyok, a Conen Digital CTO-ja. A configurator-od bármely lépéséről kérdezhetsz — típusok, EAA, árazás, AI-funkciók — és látom, hol tartasz éppen. Mit segítsek?</div></div>
+    </div>
+    <form class="chat-form" id="chatForm" autocomplete="off">
+        <label class="sr-only" for="chatInput">Üzenet</label>
+        <input type="text" class="chat-input" id="chatInput" placeholder="Pl. Mit jelent az ajánlatgeneráló?" maxlength="500">
+        <button type="submit" class="chat-send" id="chatSend" aria-label="Küldés">→</button>
+    </form>
+    <div class="chat-meta">Claude · Anthropic · CENTAUR-modell · centaur-lang.dev</div>
+</div>
+
 <div class="wnav" id="wnav"><button class="btn btn-s" id="bPrev" disabled>← Vissza</button><button class="btn btn-p" id="bNext" disabled>Tovább →</button></div>
 <div class="pbar"><div class="pbar-f" id="pFill"></div></div>
 
@@ -1213,26 +1234,5 @@ $chatForm.addEventListener('submit',async(e)=>{
 
 })();
 </script>
-<button type="button" class="chat-fab" id="chatFab" aria-label="AI-asszisztens megnyitása — Claude">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-    </svg>
-</button>
-<div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI-asszisztens" aria-hidden="true">
-    <div class="chat-header">
-        <div class="chat-title"><span class="chat-status" aria-hidden="true"></span>AI-asszisztens · <strong>Claude</strong></div>
-        <button type="button" class="chat-close" id="chatClose" aria-label="Chat bezárása">×</button>
-    </div>
-    <div class="chat-messages" id="chatMessages" aria-live="polite">
-        <div class="chat-msg chat-msg-bot"><div class="chat-msg-text">Szia! Claude vagyok, a Conen Digital CTO-ja. A configurator-od bármely lépéséről kérdezhetsz — típusok, EAA, árazás, AI-funkciók — és látom, hol tartasz éppen. Mit segítsek?</div></div>
-    </div>
-    <form class="chat-form" id="chatForm" autocomplete="off">
-        <label class="sr-only" for="chatInput">Üzenet</label>
-        <input type="text" class="chat-input" id="chatInput" placeholder="Pl. Mit jelent az ajánlatgeneráló?" maxlength="500">
-        <button type="submit" class="chat-send" id="chatSend" aria-label="Küldés">→</button>
-    </form>
-    <div class="chat-meta">Claude · Anthropic · CENTAUR-modell · centaur-lang.dev</div>
-</div>
-
 </body>
 </html>
