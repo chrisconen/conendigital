@@ -220,6 +220,54 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
 .cto-credit a:hover{color:var(--cyan);border-color:var(--cyan)}
 @media(max-width:520px){.cto-credit{flex-direction:column;text-align:center;gap:.4rem}}
 
+
+/* AI chat — Claude assistant */
+.chat-fab{position:fixed;bottom:20px;right:20px;z-index:900;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--mag));color:var(--black);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,240,255,.35),0 0 0 1px rgba(0,240,255,.2);cursor:pointer;border:none;transition:transform .2s,box-shadow .2s}
+.chat-fab:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,240,255,.45)}
+.chat-fab.hide{display:none}
+.chat-fab::after{content:'';position:absolute;top:6px;right:6px;width:10px;height:10px;border-radius:50%;background:var(--green);border:2px solid var(--black);box-shadow:0 0 6px var(--green)}
+
+.chat-panel{position:fixed;bottom:20px;right:20px;z-index:950;width:380px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 40px);background:#0d0d10;border:1px solid rgba(0,240,255,.3);border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.6),0 0 0 1px rgba(0,240,255,.06) inset;display:none;flex-direction:column;overflow:hidden}
+.chat-panel.open{display:flex;animation:chat-slide-up .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes chat-slide-up{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+.chat-header{padding:.85rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,rgba(0,240,255,.05),rgba(191,0,255,.03));flex-shrink:0}
+.chat-title{font-size:.82rem;font-weight:500;display:flex;align-items:center;gap:.55rem}
+.chat-title strong{color:var(--cyan);font-weight:700}
+.chat-status{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,255,136,.6);flex-shrink:0}
+.chat-close{background:none;border:none;color:var(--mid);font-size:1.5rem;cursor:pointer;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:5px;line-height:1}
+.chat-close:hover{color:var(--cyan);background:rgba(255,255,255,.06)}
+
+.chat-messages{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
+.chat-msg{display:flex;max-width:88%;animation:chat-msg-in .25s ease}
+@keyframes chat-msg-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg-bot{align-self:flex-start}
+.chat-msg-user{align-self:flex-end}
+.chat-msg-text{padding:.6rem .85rem;border-radius:11px;font-size:.82rem;line-height:1.55;word-wrap:break-word;white-space:pre-wrap}
+.chat-msg-bot .chat-msg-text{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);color:var(--white);border-bottom-left-radius:3px}
+.chat-msg-user .chat-msg-text{background:linear-gradient(135deg,var(--cyan),var(--mag));color:var(--black);font-weight:500;border-bottom-right-radius:3px}
+.chat-msg-error .chat-msg-text{background:rgba(255,80,80,.08);border:1px solid rgba(255,80,80,.25);color:#ffaaaa}
+.chat-typing{display:flex;gap:4px;padding:.7rem .85rem;align-items:center}
+.chat-typing span{width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:.4;animation:chat-dot 1.2s infinite}
+.chat-typing span:nth-child(2){animation-delay:.15s}
+.chat-typing span:nth-child(3){animation-delay:.3s}
+@keyframes chat-dot{0%,60%,100%{opacity:.4;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+.chat-form{padding:.65rem .7rem;border-top:1px solid rgba(255,255,255,.06);display:flex;gap:.4rem;flex-shrink:0;background:rgba(0,0,0,.3)}
+.chat-input{flex:1;padding:.55rem .8rem;background:rgba(255,255,255,.04);border:1px solid var(--gb);border-radius:6px;color:var(--white);font-family:var(--fm);font-size:.82rem;min-width:0}
+.chat-input:focus{border-color:var(--cyan);outline:none}
+.chat-input::placeholder{color:var(--dim)}
+.chat-send{width:40px;background:linear-gradient(135deg,var(--cyan),var(--mag));color:var(--black);border:none;border-radius:6px;cursor:pointer;font-size:1rem;font-weight:700;transition:transform .15s;flex-shrink:0}
+.chat-send:hover:not(:disabled){transform:translateX(2px)}
+.chat-send:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+.chat-meta{padding:.4rem 1rem;background:rgba(0,0,0,.5);text-align:center;font-family:var(--mono);font-size:.55rem;color:var(--dim);letter-spacing:.06em;border-top:1px solid rgba(255,255,255,.04);flex-shrink:0}
+
+@media(max-width:1024px){.chat-fab{bottom:84px;right:16px;width:48px;height:48px}.chat-panel{bottom:74px;right:16px}}
+@media(max-width:520px){.chat-panel{bottom:0;right:0;left:0;width:100vw;height:75vh;max-height:75vh;border-radius:14px 14px 0 0;border-bottom:none}}
+
 </style>
 </head>
 <body>
@@ -1047,7 +1095,144 @@ document.addEventListener('keydown',function(e){
         if(!e.classList.contains('locked'))e.setAttribute('aria-pressed',e.classList.contains('sel')?'true':'false');
     });
 })();
+
+// ========== AI ASSISTANT (Claude) ==========
+// Configure your deployed Cloudflare Worker URL here:
+const CHAT_ENDPOINT='https://chat.conendigital.hu/chat';
+
+const $chatFab=document.getElementById('chatFab');
+const $chatPanel=document.getElementById('chatPanel');
+const $chatClose=document.getElementById('chatClose');
+const $chatMessages=document.getElementById('chatMessages');
+const $chatForm=document.getElementById('chatForm');
+const $chatInput=document.getElementById('chatInput');
+const $chatSend=document.getElementById('chatSend');
+const chatHistory=[];
+let chatBusy=false;
+
+$chatFab.addEventListener('click',()=>{
+    $chatPanel.classList.add('open');
+    $chatPanel.setAttribute('aria-hidden','false');
+    $chatFab.classList.add('hide');
+    setTimeout(()=>$chatInput.focus(),100);
+});
+$chatClose.addEventListener('click',()=>{
+    $chatPanel.classList.remove('open');
+    $chatPanel.setAttribute('aria-hidden','true');
+    $chatFab.classList.remove('hide');
+});
+document.addEventListener('keydown',e=>{
+    if(e.key==='Escape'&&$chatPanel.classList.contains('open')){$chatClose.click()}
+});
+
+function appendChatMsg(role,text){
+    const div=document.createElement('div');
+    div.className='chat-msg chat-msg-'+role;
+    const inner=document.createElement('div');
+    inner.className='chat-msg-text';
+    inner.textContent=text;
+    div.appendChild(inner);
+    $chatMessages.appendChild(div);
+    $chatMessages.scrollTop=$chatMessages.scrollHeight;
+    return div;
+}
+function appendChatTyping(){
+    const div=document.createElement('div');
+    div.className='chat-msg chat-msg-bot';
+    div.id='chatTyping';
+    div.innerHTML='<div class="chat-typing"><span></span><span></span><span></span></div>';
+    $chatMessages.appendChild(div);
+    $chatMessages.scrollTop=$chatMessages.scrollHeight;
+}
+function removeChatTyping(){
+    const t=document.getElementById('chatTyping');
+    if(t)t.remove();
+}
+
+function buildChatStateContext(){
+    const TYPES={brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló sales-eszköz',webshop:'webáruház',booking:'foglalós oldal',content:'tartalom-fókuszú oldal',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
+    return {
+        step:S.step,
+        site_type:S.site_type,
+        site_type_label:TYPES[S.site_type]||S.site_type,
+        color_scheme:S.color_scheme,
+        font_family:S.font_family,
+        header_style:S.header_style,
+        hero_style:S.hero_style,
+        pages:S.pages,
+        page_count:(S.pages||[]).length,
+        features:S.features,
+        extras:S.extras,
+        content_state:S.content_state,
+        timeline:S.timeline,
+        brand:S.brand||null,
+        has_logo:!!S.logo,
+        has_hero_img:!!S.hero_img
+    };
+}
+
+$chatForm.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    if(chatBusy)return;
+    const text=$chatInput.value.trim();
+    if(!text)return;
+    $chatInput.value='';
+    chatBusy=true;
+    $chatSend.disabled=true;
+    appendChatMsg('user',text);
+    chatHistory.push({role:'user',content:text});
+    appendChatTyping();
+    try{
+        const res=await fetch(CHAT_ENDPOINT,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({
+                messages:chatHistory.slice(-20),
+                state:buildChatStateContext()
+            })
+        });
+        removeChatTyping();
+        if(!res.ok){
+            const errTxt=await res.text();
+            throw new Error('API '+res.status+': '+errTxt.slice(0,100));
+        }
+        const data=await res.json();
+        const reply=data.reply||'Üres válasz érkezett.';
+        chatHistory.push({role:'assistant',content:reply});
+        appendChatMsg('bot',reply);
+    }catch(err){
+        removeChatTyping();
+        const div=appendChatMsg('bot','Sajnos jelenleg nem érem el az asszisztens-szolgáltatást. Próbáld újra pár perc múlva, vagy kérdezz az emberi csapatból a kapcsolat oldalon. (Részletek: '+err.message+')');
+        div.classList.add('chat-msg-error');
+    }finally{
+        chatBusy=false;
+        $chatSend.disabled=false;
+        $chatInput.focus();
+    }
+});
+
 })();
 </script>
+<button type="button" class="chat-fab" id="chatFab" aria-label="AI-asszisztens megnyitása — Claude">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+</button>
+<div class="chat-panel" id="chatPanel" role="dialog" aria-label="AI-asszisztens" aria-hidden="true">
+    <div class="chat-header">
+        <div class="chat-title"><span class="chat-status" aria-hidden="true"></span>AI-asszisztens · <strong>Claude</strong></div>
+        <button type="button" class="chat-close" id="chatClose" aria-label="Chat bezárása">×</button>
+    </div>
+    <div class="chat-messages" id="chatMessages" aria-live="polite">
+        <div class="chat-msg chat-msg-bot"><div class="chat-msg-text">Szia! Claude vagyok, a Conen Digital CTO-ja. A configurator-od bármely lépéséről kérdezhetsz — típusok, EAA, árazás, AI-funkciók — és látom, hol tartasz éppen. Mit segítsek?</div></div>
+    </div>
+    <form class="chat-form" id="chatForm" autocomplete="off">
+        <label class="sr-only" for="chatInput">Üzenet</label>
+        <input type="text" class="chat-input" id="chatInput" placeholder="Pl. Mit jelent az ajánlatgeneráló?" maxlength="500">
+        <button type="submit" class="chat-send" id="chatSend" aria-label="Küldés">→</button>
+    </form>
+    <div class="chat-meta">Claude · Anthropic · CENTAUR-modell · centaur-lang.dev</div>
+</div>
+
 </body>
 </html>
