@@ -705,6 +705,13 @@ document.getElementById('pvRd').addEventListener('click',function(){
     this.setAttribute('aria-pressed',S.realistic?'true':'false');
     render();save();
 });
+const pvIndElem=document.getElementById('pvIndustry');
+if(pvIndElem){
+    pvIndElem.addEventListener('change',function(){
+        S.industry=this.value||'general';
+        save();render();
+    });
+}
 
 // Fullscreen
 document.getElementById('pvFs').addEventListener('click',()=>{$pv.classList.toggle('fs');document.getElementById('pvClose').style.display=$pv.classList.contains('fs')?'flex':'none';render()});
@@ -769,7 +776,7 @@ $next.addEventListener('click',()=>{if(canGo()&&S.step<T)goStep(S.step+1)});$pre
 // Restart
 document.getElementById('rRestart').addEventListener('click',()=>{
     Object.assign(S,{step:1,site_type:null,color_scheme:null,font_family:'Space Grotesk',border_radius:8,font_size:100,header_style:null,hero_style:null,pages:['home','contact'],page_sections:{home:[],contact:[]},section_config:{},active_page:'home',features:[],extras:[],content_state:null,timeline:null,brand:'',tagline:'',cta:'',logo:null,hero_img:null,realistic:false});
-    document.getElementById('pvRd')?.classList.remove('act');document.getElementById('pvRd')?.setAttribute('aria-pressed','false');
+    document.getElementById('pvRd')?.classList.remove('act');document.getElementById('pvRd')?.setAttribute('aria-pressed','false');const indEl=document.getElementById('pvIndustry');if(indEl){indEl.style.display='none';indEl.value='general'}
     document.querySelectorAll('.c.sel:not(.locked),.ti.sel:not(.locked),.cs.sel,.fc.sel').forEach(e=>e.classList.remove('sel'));
     $br.value=8;document.getElementById('brVal').textContent='8px';$fs.value=100;document.getElementById('fsVal').textContent='100%';
     $ib.value='';$it.value='';$ic.value='';
@@ -794,7 +801,7 @@ function load(){const p=new URLSearchParams(location.search).get('c');if(p){try{
     try{const d=JSON.parse(localStorage.getItem(SK));if(d&&d.site_type){Object.assign(S,d);return true}}catch(e){}return false}
 function restoreUI(){
     if(S.color_scheme){const e=document.querySelector(`.cs[data-v="${S.color_scheme}"]`);if(e)e.classList.add('sel')}
-    if(S.realistic){const r=document.getElementById('pvRd');if(r){r.classList.add('act');r.setAttribute('aria-pressed','true')}}
+    if(S.realistic){const r=document.getElementById('pvRd');if(r){r.classList.add('act');r.setAttribute('aria-pressed','true')}const ind=document.getElementById('pvIndustry');if(ind){ind.style.display='inline-block';ind.value=S.industry||'general'}}
     if(S.font_family){const e=document.querySelector(`.fc[data-v="${S.font_family}"]`);if(e)e.classList.add('sel')}
     ['site_type','header_style','hero_style','content_state','timeline'].forEach(k=>{if(S[k]){const e=document.querySelector(`.g[data-k="${k}"] .c[data-v="${S[k]}"]`);if(e)e.classList.add('sel')}});
     ['features','extras'].forEach(k=>(S[k]||[]).forEach(v=>{const e=document.querySelector(`.tl[data-k="${k}"] .ti[data-v="${v}"]`);if(e)e.classList.add('sel')}));
@@ -1261,7 +1268,24 @@ const $chatSend=document.getElementById('chatSend');
 const chatHistory=[];
 let chatBusy=false;
 
+// State-érzékeny köszöntő — a chat első megnyitásakor generálódik
+function buildChatGreeting(){
+    const TYPES={brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webshop:'webáruház',booking:'foglalós',content:'tartalom-fókuszú',portfolio:'portfólió',landing:'landing',saas:'SaaS landing'};
+    if(!S.site_type){
+        return 'Szia, Claude vagyok. Még a típus-választásnál tartasz — ha bizonytalan vagy, melyik típus illik a vállalkozásodhoz, írj pár sort róla és javaslok.';
+    }
+    const tl=TYPES[S.site_type]||S.site_type;
+    const stepHint=S.step<=3?'most az alapokat választod':S.step<=6?'most a felépítést építed':S.step<=8?'most a funkciókat veszed sorra':'most a részleteket finomítod';
+    return `Szia, Claude vagyok. Látom, hogy <strong>${tl}</strong> típust választottál és ${stepHint}. Ha valamelyik beállítás bizonytalan, vagy árazási nagyságrendet szeretnél, írj — pár mondatban válaszolok.`;
+}
+function injectGreeting(){
+    const hasUserMsg=Array.from($chatMessages.children).some(c=>c.classList&&c.classList.contains('chat-msg'));
+    if(!hasUserMsg){
+        $chatMessages.innerHTML=`<div class="chat-msg chat-msg-bot"><div class="chat-msg-text">${buildChatGreeting()}</div></div>`;
+    }
+}
 $chatFab.addEventListener('click',()=>{
+    injectGreeting();
     $chatPanel.classList.add('open');
     $chatPanel.setAttribute('aria-hidden','false');
     $chatFab.classList.add('hide');
