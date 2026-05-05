@@ -1148,7 +1148,7 @@
             position: relative;
             z-index: 1;
             display: grid;
-            grid-template-columns: 1.05fr 1fr;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
             gap: 4rem;
             align-items: center;
         }
@@ -1177,11 +1177,13 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 12vw, 10rem);
+            font-size: clamp(2.5rem, 5.8vw, 5rem);
             font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            margin-bottom: 2rem;
+            line-height: 1.0;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.75rem;
+            overflow-wrap: anywhere;
+            hyphens: auto;
         }
 
         .hero-title-line {
@@ -1447,6 +1449,77 @@
             line-height: 1.7;
             color: rgba(255,255,255,0.55);
             max-width: 48ch;
+        }
+
+        /* Right column wrapper: groups canvas + speak button + transcript */
+        .hero__visual-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        /* Canvas itself becomes the primary affordance: clickable, hoverable */
+        .hero__visual {
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+        .hero__visual:hover { transform: scale(1.01); }
+        .hero__visual:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 8px;
+        }
+
+        /* Floating affordance hint inside the canvas frame */
+        .visual-affordance {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.85rem;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            opacity: 0;
+            animation: affordanceIn 0.6s ease 2s forwards;
+            pointer-events: none;
+            z-index: 2;
+        }
+        @keyframes affordanceIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glow pulse on the speak button to draw attention while idle */
+        .hero-speak-btn { position: relative; overflow: visible; }
+        .hero-speak-btn::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--cyan), transparent, var(--cyan));
+            background-size: 200% 100%;
+            opacity: 0;
+            z-index: -1;
+            animation: btnGlow 4s ease-in-out infinite;
+            filter: blur(6px);
+        }
+        @keyframes btnGlow {
+            0%, 100% { opacity: 0; background-position: 0% 50%; }
+            50% { opacity: 0.45; background-position: 100% 50%; }
+        }
+        .hero-speak-btn[aria-pressed="true"]::before {
+            animation: none;
+            opacity: 0;
         }
 
         /* Marquee Section */
@@ -2806,6 +2879,24 @@
                     </div>
                 </div>
 
+            </div>
+
+            <!-- AI Face Visual + Voice Controls -->
+            <div class="hero__visual-col">
+                <div class="hero__visual" id="visualWrap" role="button" tabindex="0"
+                     aria-label="Hangos bemutatkozas inditasa - Claude AI bemutatkozik"
+                     aria-pressed="false">
+                    <canvas id="dotface" role="img" aria-label="Animalt pontfelho-portre, a Conen Digital AI-tarsalapitojanak reprezentacioja"></canvas>
+                    <div class="visual-meta">
+                        <div>NEURAL//SURFACE.v1</div>
+                        <div>Status: <span id="statusText">Loading</span></div>
+                    </div>
+                    <div class="visual-affordance" aria-hidden="true">
+                        <span class="voice-indicator idle"></span>
+                        <span class="visual-affordance-text">Kattints, es bemutatkozom</span>
+                    </div>
+                </div>
+
                 <button class="hero-speak-btn" id="speakBtn" type="button" aria-label="Hangos bemutatkozas inditasa" aria-pressed="false">
                     <span class="voice-indicator idle" id="voiceInd"></span>
                     Mondd el, kik vagytok
@@ -2814,15 +2905,6 @@
                     <summary>Olvasd el szovegben</summary>
                     <p>Udvozollek a Conen Digital vilagaban. Mi egy ember es mestersiges intelligencia partnerseg vagyunk, ahol a kreativitas es az algoritmus kez a kezben dolgozik. Tizennegy ev webfejlesztesi tapasztalattal epitunk villamgyors Astro oldalakat, intelligens automatizaciokat es olyan digitalis termekeket, amelyek merhetoen jobbak, mint a piaci atlag.</p>
                 </details>
-            </div>
-
-            <!-- AI Face Visual -->
-            <div class="hero__visual">
-                <canvas id="dotface" role="img" aria-label="Animalt pontfelho-portre, a Conen Digital AI-tarsalapitojanak reprezentacioja"></canvas>
-                <div class="visual-meta">
-                    <div>NEURAL//SURFACE.v1</div>
-                    <div>Status: <span id="statusText">Loading</span></div>
-                </div>
             </div>
         </div>
     </section>
@@ -4000,7 +4082,7 @@
       var voiceInd = document.getElementById('voiceInd');
 
       // Heightmap (inline base64 ~5KB)
-      var FACE_IMG_SRC = "data:image/jpeg;base64,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";
+      var FACE_IMG_SRC = "/heightmaps/face-claude.jpg";
 
       var W = 0, H = 0;
       var DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -4182,16 +4264,32 @@
         });
       }
 
+      // Synchronize aria-pressed and voice indicators across both controls
+      // (the visible speak button and the canvas wrapper acting as button).
+      function setSpeakingState(active) {
+        var pressed = active ? 'true' : 'false';
+        var label = active ? 'Hangos bemutatkozas leallitasa' : 'Hangos bemutatkozas inditasa';
+        if (speakBtn) {
+          speakBtn.setAttribute('aria-pressed', pressed);
+          speakBtn.setAttribute('aria-label', label);
+        }
+        var visualWrap = document.getElementById('visualWrap');
+        if (visualWrap) visualWrap.setAttribute('aria-pressed', pressed);
+        var indicators = document.querySelectorAll('.voice-indicator');
+        for (var i = 0; i < indicators.length; i++) {
+          if (active) indicators[i].classList.remove('idle');
+          else indicators[i].classList.add('idle');
+        }
+      }
+
       function startSpeaking() {
         initAudio();
         if (audioCtx.state === 'suspended') audioCtx.resume();
         introAudio.currentTime = 0;
         introAudio.play().then(function() {
           speaking = true;
-          voiceInd.classList.remove('idle');
+          setSpeakingState(true);
           statusText.textContent = 'Speaking';
-          speakBtn.setAttribute('aria-pressed', 'true');
-          speakBtn.setAttribute('aria-label', 'Hangos bemutatkozas leallitasa');
         }).catch(function(err) {
           console.warn('Audio play blocked:', err);
           statusText.textContent = 'Blocked';
@@ -4201,15 +4299,29 @@
       function stopSpeaking() {
         if (introAudio) { introAudio.pause(); introAudio.currentTime = 0; }
         speaking = false;
-        voiceInd.classList.add('idle');
+        setSpeakingState(false);
         statusText.textContent = 'Idle';
-        speakBtn.setAttribute('aria-pressed', 'false');
-        speakBtn.setAttribute('aria-label', 'Hangos bemutatkozas inditasa');
       }
 
-      speakBtn.addEventListener('click', function() {
+      function toggleSpeak() {
         if (speaking) stopSpeaking(); else startSpeaking();
-      });
+      }
+
+      // Both the speak button and the canvas wrapper trigger the same action.
+      // The canvas itself is the primary affordance — visitors instinctively
+      // click on the AI face to interact with it.
+      speakBtn.addEventListener('click', toggleSpeak);
+
+      var visualWrap = document.getElementById('visualWrap');
+      if (visualWrap) {
+        visualWrap.addEventListener('click', toggleSpeak);
+        visualWrap.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleSpeak();
+          }
+        });
+      }
 
       function getAudioLevel() {
         if (!speaking || !analyser) return 0;
@@ -4225,7 +4337,10 @@
           var target = getAudioLevel();
           mouthAmp += (target - mouthAmp) * 0.45;
         } else {
-          mouthAmp *= 0.85;
+          // Idle "breath" pulse: every 5-6 seconds a brief mouth flutter
+          // hints to the visitor that the face is alive and can speak.
+          var idlePulse = Math.max(0, Math.sin(time * 0.55) - 0.85) * 6.0;
+          mouthAmp += (idlePulse - mouthAmp) * 0.08;
         }
       }
 
