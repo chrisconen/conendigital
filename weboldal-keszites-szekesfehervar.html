@@ -909,38 +909,26 @@
             color: var(--cyan);
         }
 
-        .nav-cta {
+        .nav-konfigurator-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.6rem;
+            background: var(--cyan);
+            color: var(--black);
             font-family: var(--font-mono);
             font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
             letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--cyan);
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-konfigurator-btn:hover {
+            background: transparent;
             color: var(--cyan);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .nav-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .nav-cta:hover {
-            color: var(--black);
-            border-color: transparent;
-        }
-
-        .nav-cta:hover::before {
-            left: 0;
+            box-shadow: inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4);
         }
 
         .nav-hamburger {
@@ -2315,9 +2303,14 @@
                 padding: 1.5rem 2rem;
             }
 
-            .nav-links,
-            .nav-cta {
+            .nav-links {
                 display: none;
+            }
+
+            .nav-konfigurator-btn {
+                font-size: 0.65rem;
+                padding: 0.5rem 0.8rem;
+                letter-spacing: 0.03em;
             }
 
             .nav-hamburger {
@@ -2723,7 +2716,7 @@
             <li><a href="#varosok">Városok</a></li>
             <li><a href="#contact" class="mobile-cta">Konzultáció · Székesfehérvár →</a></li>
         </ul>
-        <a href="weboldal-konfigurator.html" class="nav-cta">Konfigurátor</a>
+        <a href="weboldal-konfigurator.html" class="nav-konfigurator-btn">Weboldal tervező</a>
         <div class="nav-hamburger" id="hamburger">
             <span></span>
             <span></span>

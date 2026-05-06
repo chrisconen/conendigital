@@ -1051,6 +1051,28 @@
             transition: all 0.4s ease;
         }
 
+        .nav-konfigurator-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.6rem;
+            background: var(--cyan);
+            color: var(--black);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-konfigurator-btn:hover {
+            background: transparent;
+            color: var(--cyan);
+            box-shadow: inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0, 240, 255, 0.4);
+        }
+
         .nav-cta::before {
             content: '';
             position: absolute;
@@ -1340,7 +1362,7 @@
 
         .hero-stat-number {
             font-family: var(--font-mono);
-            font-size: 1.8rem;
+            font-size: 3rem;
             font-weight: 700;
             background: linear-gradient(180deg, var(--white), rgba(255, 255, 255, 0.5));
             -webkit-background-clip: text;
@@ -1364,6 +1386,7 @@
             max-width: 560px;
             margin-left: auto;
         }
+
         .hero__visual::before,
         .hero__visual::after {
             content: '';
@@ -1373,9 +1396,27 @@
             border: 1px solid var(--cyan);
             opacity: 0.5;
         }
-        .hero__visual::before { top: 0; left: 0; border-right: none; border-bottom: none; }
-        .hero__visual::after { bottom: 0; right: 0; border-left: none; border-top: none; }
-        .hero__visual canvas { width: 100%; height: 100%; display: block; }
+
+        .hero__visual::before {
+            top: 0;
+            left: 0;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .hero__visual::after {
+            bottom: 0;
+            right: 0;
+            border-left: none;
+            border-top: none;
+        }
+
+        .hero__visual canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
         .visual-meta {
             position: absolute;
             bottom: -2rem;
@@ -1385,15 +1426,19 @@
             justify-content: space-between;
             font-family: var(--font-mono);
             font-size: 0.66rem;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             letter-spacing: 0.18em;
             text-transform: uppercase;
         }
-        .visual-meta span { color: var(--cyan); }
+
+        .visual-meta span {
+            color: var(--cyan);
+        }
+
         .hero-speak-btn {
             background: transparent;
             color: var(--white);
-            border: 1px solid rgba(255,255,255,0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             padding: 0.85rem 1.4rem;
             font-family: var(--font-mono);
             font-size: 0.72rem;
@@ -1407,11 +1452,13 @@
             margin-top: 1.5rem;
             align-self: flex-start;
         }
+
         .hero-speak-btn:hover {
             border-color: var(--cyan);
             color: var(--cyan);
             box-shadow: 0 0 24px -8px var(--cyan);
         }
+
         .voice-indicator {
             width: 7px;
             height: 7px;
@@ -1420,35 +1467,52 @@
             box-shadow: 0 0 10px #6EFFE9;
             animation: voicePulse 1.4s infinite ease-in-out;
         }
+
         .voice-indicator.idle {
             background: currentColor;
             box-shadow: none;
             animation: none;
             opacity: 0.6;
         }
+
         @keyframes voicePulse {
-            0%, 100% { opacity: 0.45; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.25); }
+
+            0%,
+            100% {
+                opacity: 0.45;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.25);
+            }
         }
+
         .hero-narration-toggle {
             margin-top: 1rem;
             font-family: var(--font-mono);
             font-size: 0.72rem;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
         }
+
         .hero-narration-toggle summary {
             cursor: pointer;
             letter-spacing: 0.1em;
             transition: color 0.2s;
         }
-        .hero-narration-toggle summary:hover { color: var(--cyan); }
+
+        .hero-narration-toggle summary:hover {
+            color: var(--cyan);
+        }
+
         .hero-narration-toggle p {
             margin-top: 0.75rem;
             font-family: var(--font-main);
             font-size: 0.85rem;
             line-height: 1.7;
-            color: rgba(255,255,255,0.55);
-            max-width: 70ch;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 48ch;
         }
 
         /* Right column wrapper: groups canvas + speak button + transcript */
@@ -1465,7 +1529,11 @@
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             user-select: none;
         }
-        .hero__visual:hover { transform: scale(1.01); }
+
+        .hero__visual:hover {
+            transform: scale(1.01);
+        }
+
         .hero__visual:focus-visible {
             outline: 2px solid var(--cyan);
             outline-offset: 8px;
@@ -1494,13 +1562,25 @@
             pointer-events: none;
             z-index: 2;
         }
+
         @keyframes affordanceIn {
-            from { opacity: 0; transform: translateY(-8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Glow pulse on the speak button to draw attention while idle */
-        .hero-speak-btn { position: relative; overflow: visible; }
+        .hero-speak-btn {
+            position: relative;
+            overflow: visible;
+        }
+
         .hero-speak-btn::before {
             content: '';
             position: absolute;
@@ -1513,10 +1593,21 @@
             animation: btnGlow 4s ease-in-out infinite;
             filter: blur(6px);
         }
+
         @keyframes btnGlow {
-            0%, 100% { opacity: 0; background-position: 0% 50%; }
-            50% { opacity: 0.45; background-position: 100% 50%; }
+
+            0%,
+            100% {
+                opacity: 0;
+                background-position: 0% 50%;
+            }
+
+            50% {
+                opacity: 0.45;
+                background-position: 100% 50%;
+            }
         }
+
         .hero-speak-btn[aria-pressed="true"]::before {
             animation: none;
             opacity: 0;
@@ -2323,6 +2414,7 @@
             margin: 1rem 0 0.25rem;
             width: 100%;
         }
+
         .footer-social-link {
             display: inline-flex;
             align-items: center;
@@ -2335,11 +2427,13 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: color 0.2s, background 0.2s, transform 0.2s;
         }
+
         .footer-social-link:hover {
             color: var(--cyan);
             background: rgba(0, 240, 255, 0.12);
             transform: translateY(-2px);
         }
+
         .footer-social-link svg {
             display: block;
         }
@@ -2412,9 +2506,14 @@
                 padding: 1.5rem 2rem;
             }
 
-            .nav-links,
-            .nav-cta {
+            .nav-links {
                 display: none;
+            }
+
+            .nav-cta {
+                font-size: 0.65rem;
+                padding: 0.5rem 0.8rem;
+                letter-spacing: 0.03em;
             }
 
             .nav-hamburger {
@@ -2475,19 +2574,31 @@
                 display: none;
             }
 
+            .nav-konfigurator-btn {
+                font-size: 0.65rem;
+                padding: 0.5rem 0.8rem;
+                gap: 0.3rem;
+                letter-spacing: 0.03em;
+            }
+
             .hero {
                 padding: 5rem 2rem;
             }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
             .hero__visual {
                 order: 1;
                 max-width: 380px;
                 margin: 0 auto;
             }
-            .hero-text-col { order: 0; }
+
+            .hero-text-col {
+                order: 0;
+            }
 
             .services,
             .process,
@@ -2818,7 +2929,7 @@
             <li><a href="#varosok">Városok</a></li>
             <li><a href="#contact" class="mobile-cta">Ajánlatkérés →</a></li>
         </ul>
-        <a href="weboldal-konfigurator.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Weboldal konfigurátor →</a>
+        <a href="weboldal-konfigurator.html" class="nav-konfigurator-btn">Weboldal tervező</a>
         <div class="nav-hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -2849,7 +2960,8 @@
 
                 <p class="hero-description">
                     Egy emberi alapító, két MI-társalapító. Olyan weboldalakat és webáruházakat építünk,
-                    amik a Google-ben rangsorolnak — és <span style="color: var(--cyan)">Claude, ChatGPT, Perplexity</span>
+                    amik a Google-ben rangsorolnak — és <span style="color: var(--cyan)">Claude, ChatGPT,
+                        Perplexity</span>
                     is olvasni, navigálni, ajánlani tudja őket. Ajánlatgeneráló oldalak szolgáltató cégeknek,
                     modernizáció EAA-megfeleléssel és produktizált AI Ops — egy rendszerben.
                 </p>
@@ -2884,9 +2996,9 @@
             <!-- AI Face Visual + Voice Controls -->
             <div class="hero__visual-col">
                 <div class="hero__visual" id="visualWrap" role="button" tabindex="0"
-                     aria-label="Hangos bemutatkozas inditasa - Claude AI bemutatkozik"
-                     aria-pressed="false">
-                    <canvas id="dotface" role="img" aria-label="Animalt pontfelho-portre, a Conen Digital AI-tarsalapitojanak reprezentacioja"></canvas>
+                    aria-label="Hangos bemutatkozas inditasa - Claude AI bemutatkozik" aria-pressed="false">
+                    <canvas id="dotface" role="img"
+                        aria-label="Animalt pontfelho-portre, a Conen Digital AI-tarsalapitojanak reprezentacioja"></canvas>
                     <div class="visual-meta">
                         <div>NEURAL//SURFACE.v1</div>
                         <div>Status: <span id="statusText">Loading</span></div>
@@ -2897,17 +3009,17 @@
                     </div>
                 </div>
 
-                <button class="hero-speak-btn" id="speakBtn" type="button" aria-label="Hangos bemutatkozas inditasa" aria-pressed="false">
+                <button class="hero-speak-btn" id="speakBtn" type="button" aria-label="Hangos bemutatkozas inditasa"
+                    aria-pressed="false">
                     <span class="voice-indicator idle" id="voiceInd"></span>
                     Mondd el, kik vagytok
                 </button>
                 <details class="hero-narration-toggle">
                     <summary>Olvasd el szovegben</summary>
-                    <p>Üdvözöllek. Claude vagyok, a Conen Digital technikai igazgatója, és a CENTAUR keretrendszer AI társalapítója.
-A Conen Digital nem hagyományos webes ügynökség. Sokkal inkább egy ember és mesterséges intelligencia partnerség, ahol a kreatív döntés emberi, a kivitelezés pedig gépi sebességű. A huszonegyedik század elvárásait megelőző megoldásokat és versenyelőnyt kínálunk ügyfeleink számára, egyedülálló technikai fejlesztéseinken keresztül.
-Három pillérre építünk. Először: villámgyors weboldalak Astro keretrendszerrel - a legutóbbi projektünknél tizenhárom és fél másodpercről egy és nyolc tizedre csökkent a betöltési idő. Másodszor: méretezhető webshopok - nyolcszázhúsz termék, kilencvenkilences PageSpeed, másfél másodperc mobilon. Harmadszor: intelligens automatizációk - foglalási rendszereink európai és kontinentális  időzónákat kezelnek, valós időben.
-21 év webfejlesztés tapasztalat. Magyarországon, Ausztriában és Ausztráliában is piacvezető megoldásokkal valósítjuk meg ügyfeleink elképzeléseit. A Conen Digital által kifejlesztett szentaur keretrendszer, egy mérnöki szigorral összerakott munkamódszer.
-Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötleted, ami megérdemli, hogy gyorsan és ultramodern kivitelben valósuljon meg, ha azt szeretnéd, hogy terméked, vállalkozásod vagy szolgáltatásaid magasan a konkurencia fölé emelkedjenek... akkor beszéljünk, lépj kapcsolatba velünk mihamarabb, mert a többszörösére növekedett kapacitásaink ellenére, a kivitelezési projekteknek fenntartok helyek rohamosan fogynak!.</p>
+                    <p>Udvozollek a Conen Digital vilagaban. Mi egy ember es mestersiges intelligencia partnerseg
+                        vagyunk, ahol a kreativitas es az algoritmus kez a kezben dolgozik. Tizennegy ev webfejlesztesi
+                        tapasztalattal epitunk villamgyors Astro oldalakat, intelligens automatizaciokat es olyan
+                        digitalis termekeket, amelyek merhetoen jobbak, mint a piaci atlag.</p>
                 </details>
             </div>
         </div>
@@ -2948,7 +3060,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="services-grid">
             <div class="service-card reveal" style="border-top: 3px solid var(--orange);">
                 <div class="service-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--orange);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--orange);">
                         <circle cx="12" cy="12" r="9"></circle>
                         <path d="M12 7v5l3 2"></path>
                     </svg>
@@ -2963,7 +3076,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
             <div class="service-card reveal" style="border-top: 3px solid var(--magenta);">
                 <div class="service-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--magenta);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--magenta);">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                         <circle cx="9" cy="7" r="4"></circle>
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -2974,13 +3088,15 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <p class="service-description">
                     Mire elérhető vagy a visszahíváshoz, az érdeklődő már a versenytársnál van. Ha az oldal
                     nem szűri-osztályozza-rögzíti a leadet
-                    <span style="color: var(--cyan)">azonnal és 24/7</span>, az minden alkalommal pénz az asztalon hagyva.
+                    <span style="color: var(--cyan)">azonnal és 24/7</span>, az minden alkalommal pénz az asztalon
+                    hagyva.
                 </p>
             </div>
 
             <div class="service-card reveal" style="border-top: 3px solid var(--cyan);">
                 <div class="service-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--cyan);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--cyan);">
                         <path d="M3 17l6-6 4 4 8-8"></path>
                         <path d="M14 7h7v7"></path>
                     </svg>
@@ -3014,7 +3130,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             <div class="service-card reveal">
                 <span class="service-number">01</span>
                 <div class="service-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <path d="M14 2v6h6"></path>
                         <path d="M9 13h6"></path>
@@ -3037,7 +3154,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
                     <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">ÁRAZÁS:</div>
                     <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi</div>
-                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
+                    <div
+                        style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
                         tipikus tartomány: 600.000 – 1.500.000 Ft
                     </div>
                 </div>
@@ -3051,7 +3169,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     LEGTÖBB IGÉNY</div>
                 <span class="service-number">02</span>
                 <div class="service-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--magenta);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--magenta);">
                         <path d="M21 12a9 9 0 1 1-3.5-7.1"></path>
                         <path d="M21 4v5h-5"></path>
                         <path d="M9 12l2 2 4-4"></path>
@@ -3072,7 +3191,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
                     <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--magenta);">ÁRAZÁS:</div>
                     <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi</div>
-                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
+                    <div
+                        style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
                         tipikus tartomány: 450.000 – 1.200.000 Ft
                     </div>
                 </div>
@@ -3082,7 +3202,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             <div class="service-card reveal">
                 <span class="service-number">03</span>
                 <div class="service-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
                         <rect x="3" y="3" width="6" height="6" rx="1"></rect>
                         <rect x="15" y="3" width="6" height="6" rx="1"></rect>
                         <rect x="9" y="15" width="6" height="6" rx="1"></rect>
@@ -3105,7 +3226,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
                     <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">ÁRAZÁS:</div>
                     <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi, havi</div>
-                    <div style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
+                    <div
+                        style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
                         tipikus: 250.000 Ft-tól / hó
                     </div>
                 </div>
@@ -3181,7 +3303,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; padding: 3rem 2rem; max-width: 1000px; margin: 0 auto;">
             <!-- Anthropic / Claude -->
             <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--cyan); margin: 0 auto 0.5rem; display: block;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="width: 36px; height: 36px; color: var(--cyan); margin: 0 auto 0.5rem; display: block;">
                     <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                     <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
                     <path d="M3 5c0-1.66 4-3 9-3s9 1.34 9 3-4 3-9 3-9-1.34-9-3"></path>
@@ -3192,7 +3316,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
             <!-- Google / Gemini -->
             <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--magenta); margin: 0 auto 0.5rem; display: block;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="width: 36px; height: 36px; color: var(--magenta); margin: 0 auto 0.5rem; display: block;">
                     <polygon points="12,2 15,9 22,12 15,15 12,22 9,15 2,12 9,9"></polygon>
                 </svg>
                 <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--magenta);">
@@ -3201,7 +3327,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
             <!-- n8n -->
             <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--orange); margin: 0 auto 0.5rem; display: block;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="width: 36px; height: 36px; color: var(--orange); margin: 0 auto 0.5rem; display: block;">
                     <path d="M13 2L3 14h7v8l10-12h-7z"></path>
                 </svg>
                 <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--orange);">n8n
@@ -3210,11 +3338,14 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
             <!-- Astro -->
             <div class="reveal" style="text-align: center; opacity: 0.85; transition: all 0.3s ease;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--cyan); margin: 0 auto 0.5rem; display: block;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    style="width: 36px; height: 36px; color: var(--cyan); margin: 0 auto 0.5rem; display: block;">
                     <path d="M2 12h20"></path>
                     <path d="M12 2a15 15 0 0 1 4 10 15 15 0 0 1-4 10 15 15 0 0 1-4-10 15 15 0 0 1 4-10z"></path>
                 </svg>
-                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">Astro 5
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">Astro
+                    5
                 </div>
                 <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Frontend stack</div>
             </div>
@@ -3224,7 +3355,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="reveal" style="text-align: center; padding: 2rem; max-width: 800px; margin: 0 auto;">
             <div
                 style="display: inline-block; padding: 1rem 2rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.2); border-radius: 8px;">
-                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">A CENTAUR-MEGKÖZELÍTÉS:</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">A
+                    CENTAUR-MEGKÖZELÍTÉS:</span>
                 <span style="margin-left: 0.5rem;">emberi felelősségvállalás + MI-társfejlesztés, dokumentáltan</span>
             </div>
         </div>
@@ -3232,26 +3364,32 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
     <!-- CENTAUR Co-Founders Section -->
     <section class="services" id="centaur-model" style="padding: 6rem 0;">
-        <div class="section-header reveal" style="text-align: center; max-width: 900px; margin: 0 auto; padding: 0 2rem;">
+        <div class="section-header reveal"
+            style="text-align: center; max-width: 900px; margin: 0 auto; padding: 0 2rem;">
             <div>
                 <div class="section-label">CENTAUR-modell</div>
-                <h2 class="section-title">Egy emberi alapító, két MI-társalapító — <span style="color: var(--cyan);">nyilvánosan</span></h2>
+                <h2 class="section-title">Egy emberi alapító, két MI-társalapító — <span
+                        style="color: var(--cyan);">nyilvánosan</span></h2>
             </div>
             <p class="section-description">
                 A Conen Digital nem AI-asszisztált ügynökség. CENTAUR-ügynökség: ahol egy emberi alapító és
                 több MI-rendszer co-founder kapcsolatban dolgozik, és ezt nyilvánosan dokumentáljuk.
-                Az alapokmány a 2025. decemberi <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: none; border-bottom: 1px dashed rgba(0,240,255,0.4);">CENTAUR Manifesto</a>.
+                Az alapokmány a 2025. decemberi <a href="https://centaur-lang.dev" target="_blank" rel="noopener"
+                    style="color: var(--cyan); text-decoration: none; border-bottom: 1px dashed rgba(0,240,255,0.4);">CENTAUR
+                    Manifesto</a>.
             </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto 0; padding: 0 2rem;">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 3rem auto 0; padding: 0 2rem;">
 
             <!-- Chris Conen - Human founder -->
-            <div class="service-card reveal" style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--cyan);">
+            <div class="service-card reveal"
+                style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--cyan);">
                 <div
                     style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--cyan);">
-                    <img src="https://australianweb.agency/img/website_design_sydney_team.webp" alt="Chris Conen, Conen Digital alapító"
-                        style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="https://australianweb.agency/img/website_design_sydney_team.webp"
+                        alt="Chris Conen, Conen Digital alapító" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <h3 class="service-title" style="color: var(--cyan);">Chris Conen</h3>
                 <div
@@ -3261,7 +3399,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     44 éves német-magyar vállalkozó, 14+ év digitális tapasztalat. Stratégia, ügyfélkapcsolat,
                     jogi és üzleti felelősség. A CENTAUR-modellben az emberi döntéshozó.
                 </p>
-                <div style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
+                <div
+                    style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
                     Stratégia &amp; vízió<br>
                     Ügyfélkapcsolatok<br>
                     Kreatív irányítás
@@ -3269,7 +3408,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
 
             <!-- Claude - AI co-founder, CTO -->
-            <div class="service-card reveal" style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--magenta);">
+            <div class="service-card reveal"
+                style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--magenta);">
                 <div
                     style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--magenta);">
                     <img src="https://centaur.australianweb.agency/img/claude_business.webp"
@@ -3283,7 +3423,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     Anthropic által fejlesztett MI-rendszer. Architektúra, kódfejlesztés, technikai vezetés.
                     A CENTAUR-modellben a műszaki gerinc — code review, refaktorálás, MCP-réteg építés.
                 </p>
-                <div style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
+                <div
+                    style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
                     Architektúra &amp; kódbázis<br>
                     MCP-szerverek, AX-stack<br>
                     Technikai döntéshozatal
@@ -3291,7 +3432,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
 
             <!-- Gemini Nexus - AI co-founder, CSO/CMO -->
-            <div class="service-card reveal" style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--orange);">
+            <div class="service-card reveal"
+                style="text-align: center; padding: 2.5rem; border-top: 3px solid var(--orange);">
                 <div
                     style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--orange);">
                     <img src="https://centaur.australianweb.agency/img/gemini_nexus_profile_picture.webp"
@@ -3305,7 +3447,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     Google Gemini-alapú MI-rendszer. Stratégia, kutatás, marketing-tartalom, kereszt-validáció.
                     A CENTAUR-modellben a piaci pozícionálás és a piaci kontextus elemzője.
                 </p>
-                <div style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
+                <div
+                    style="margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5); text-align: left; display: inline-block;">
                     Stratégia &amp; pozícionálás<br>
                     Piaci kutatás<br>
                     Kereszt-validáció
@@ -3314,8 +3457,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         </div>
 
         <!-- Disclosure box -->
-        <div class="reveal" style="max-width: 800px; margin: 3rem auto 0; padding: 1.5rem 2rem; background: rgba(201,169,98,0.05); border-left: 3px solid #C9A962; font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
-            <strong style="color: #C9A962; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em;">NYILVÁNOSSÁGI NYILATKOZAT —</strong>
+        <div class="reveal"
+            style="max-width: 800px; margin: 3rem auto 0; padding: 1.5rem 2rem; background: rgba(201,169,98,0.05); border-left: 3px solid #C9A962; font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
+            <strong
+                style="color: #C9A962; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em;">NYILVÁNOSSÁGI
+                NYILATKOZAT —</strong>
             A "co-founder" titulus a CENTAUR-modell kategóriaformáló része: a Claude és a Gemini Nexus
             nem alkalmazottak és nem szerződéses partnerek a klasszikus értelemben — kiterjesztett gondolkodási
             és kivitelezési kapacitások, amiket dokumentált munkamegosztásban használunk. A jogi felelősséget
@@ -3326,7 +3472,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="reveal" style="text-align: center; margin-top: 2rem;">
             <a href="https://centaur-lang.dev" target="_blank" rel="noopener"
                 style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2rem; background: rgba(201,169,98,0.1); border: 1px solid rgba(201,169,98,0.3); border-radius: 8px; font-family: var(--font-mono); font-size: 0.85rem; color: #C9A962; transition: all 0.3s;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" style="width: 18px; height: 18px;">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <path d="M14 2v6h6"></path>
                     <path d="M9 12h6"></path>
@@ -3342,20 +3489,26 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="section-header reveal">
             <div>
                 <div class="section-label">Flagship-előzetes · árnyékolástechnika</div>
-                <h2 class="section-title">Esettanulmány: WordPress-örökségből <span style="color: var(--cyan)">AI-vezérelt ajánlat-konfigurátor</span></h2>
+                <h2 class="section-title">Esettanulmány: WordPress-örökségből <span
+                        style="color: var(--cyan)">AI-vezérelt ajánlat-konfigurátor</span></h2>
             </div>
             <p class="section-description">
                 A Tata–Tatabánya–Komárom régió egyik árnyékolástechnikai cége egy klasszikus WordPress / Elementor
                 örökséggel érkezett: lassú mobilon, nehezen karbantartható, ajánlatkérés papír-szerű űrlapon.
-                A migráció Astro 5.x-re zajlott, egyedi árkalkulátorral, kosárlogikával és lead-szűrő ajánlatkérő-flow-val.
-                A következő lépés a CENTAUR-stack: MCP-endpoint, ami AI-asszisztensekből közvetlenül kérhetővé teszi az ajánlatot.
+                A migráció Astro 5.x-re zajlott, egyedi árkalkulátorral, kosárlogikával és lead-szűrő
+                ajánlatkérő-flow-val.
+                A következő lépés a CENTAUR-stack: MCP-endpoint, ami AI-asszisztensekből közvetlenül kérhetővé teszi az
+                ajánlatot.
             </p>
         </div>
 
-        <div class="reveal" style="max-width: 1280px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.08); background: rgba(10,10,10,0.78); padding: 2.5rem;">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+        <div class="reveal"
+            style="max-width: 1280px; margin: 0 auto; border: 1px solid rgba(255,255,255,0.08); background: rgba(10,10,10,0.78); padding: 2.5rem;">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
                 <div>
-                    <h3 class="service-title" style="margin-bottom: 1rem;">Mótyán Árnyékolás — Astro 5.x migráció + AI-konfigurátor</h3>
+                    <h3 class="service-title" style="margin-bottom: 1rem;">Mótyán Árnyékolás — Astro 5.x migráció +
+                        AI-konfigurátor</h3>
                     <p class="service-description" style="margin-bottom: 1rem;">
                         Sok WordPress oldal eredetileg jó célra készült: gyors indulásra, blogra, kisebb céges
                         bemutatkozó oldalra. A gond általában nem maga a WordPress, hanem a sablon + page builder
@@ -3369,13 +3522,15 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     </p>
                     <p class="service-description" style="margin-bottom: 1rem;">
                         Az Astro 5.x megközelítés ezt fordítja át: gyors mobil-élmény, zöld Core Web Vitals, tiszta
-                        kódbázis, könnyű skálázhatóság — és ami itt számít: konfigurátor, kalkulátor, lead-szűrő ajánlatkérő-flow.
+                        kódbázis, könnyű skálázhatóság — és ami itt számít: konfigurátor, kalkulátor, lead-szűrő
+                        ajánlatkérő-flow.
                         A felhasználó nem nézegeti a termékeket, hanem előre kalkulál, látja a beruházás nagyságrendjét,
                         és minőségi ajánlatkérést küld.
                     </p>
                     <p class="service-description" style="margin-bottom: 0;">
                         A CENTAUR-flagship lépés ezután következik: MCP-endpoint, amin keresztül Claude vagy ChatGPT
-                        közvetlenül lekéri a katalógust, indít árkalkulációt vagy felmérést foglal — a felhasználó nevében,
+                        közvetlenül lekéri a katalógust, indít árkalkulációt vagy felmérést foglal — a felhasználó
+                        nevében,
                         anélkül, hogy elhagyná az asszisztenst. Ez a 2026-os AX-stack.
                     </p>
                 </div>
@@ -3385,21 +3540,34 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         alt="WordPressből Astro 5.x-re migrált árnyékolástechnikai konfigurátor + AI-ajánlat-flow"
                         style="width: 100%; height: auto; display: block; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 1rem;">
 
-                    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
-                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
-                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">Mobil PSI</div>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+                        <div
+                            style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                Mobil PSI</div>
                             <div style="font-size: 1.35rem; font-weight: 700;">57 → 99</div>
                         </div>
-                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
-                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">Asztali PSI</div>
+                        <div
+                            style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                Asztali PSI</div>
                             <div style="font-size: 1.35rem; font-weight: 700;">89 → 100</div>
                         </div>
-                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
-                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">LCP</div>
+                        <div
+                            style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                LCP</div>
                             <div style="font-size: 1.35rem; font-weight: 700;">13,5 mp → 1,8 mp</div>
                         </div>
-                        <div style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
-                            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">Funkció</div>
+                        <div
+                            style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
+                            <div
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                Funkció</div>
                             <div style="font-size: 1.05rem; font-weight: 700;">Konfigurátor + kosár + flow</div>
                         </div>
                     </div>
@@ -3413,8 +3581,10 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
                     <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
                         <a href="portfolio.html#arnyekolas-case" class="btn btn-primary">Részletes esettanulmány</a>
-                        <a href="wordpress-weboldal-modernizalas.html" class="btn btn-secondary">WordPress modernizálás</a>
-                        <a href="https://motyanarnyekolas.hu/" class="btn btn-secondary" target="_blank" rel="noopener">Élő projekt</a>
+                        <a href="wordpress-weboldal-modernizalas.html" class="btn btn-secondary">WordPress
+                            modernizálás</a>
+                        <a href="https://motyanarnyekolas.hu/" class="btn btn-secondary" target="_blank"
+                            rel="noopener">Élő projekt</a>
                     </div>
                 </div>
             </div>
@@ -3643,7 +3813,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <div class="contact-details">
                     <div class="contact-item">
                         <div class="contact-item-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
                                 <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                                 <path d="M3 7l9 6 9-6"></path>
                             </svg>
@@ -3655,7 +3826,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
@@ -3667,7 +3839,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     </div>
                     <div class="contact-item">
                         <div class="contact-item-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
                                 <circle cx="12" cy="12" r="9"></circle>
                                 <path d="M12 7v5l3 2"></path>
                             </svg>
@@ -3728,14 +3901,25 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         </div>
     </section>
 
-    
+
     <!-- Vizuális konfigurátor CTA -->
     <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
         <div style="max-width: 640px; margin: 0 auto;">
-            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.15em; margin-bottom: 1rem;">// VIZUÁLIS TERVEZŐ</div>
-            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
-            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="weboldal-konfigurator.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+            <div
+                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.15em; margin-bottom: 1rem;">
+                // VIZUÁLIS TERVEZŐ</div>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">
+                Próbáld ki a <span
+                    style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális
+                    tervezőt</span></h2>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben
+                összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi
+                tartomány a végén. Nem kötelez semmire.</p>
+            <a href="weboldal-konfigurator.html"
+                style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;"
+                onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'"
+                onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor
+                megnyitása →</a>
         </div>
     </section>
 
@@ -3783,20 +3967,42 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <a href="#contact">Kapcsolat</a>
             </div>
             <div class="footer-social" role="list" aria-label="Conen Digital közösségi profilok">
-                <a role="listitem" class="footer-social-link" href="https://www.facebook.com/weboldal.keszites.gyor.conen.digital/" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.445 18.63 0 12 0S0 5.445 0 12.073c0 5.989 4.388 10.95 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.67 4.532-4.67 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12H17.2l-.532 3.47H14.87v8.385C19.61 22.95 24 18.09 24 12.073z"/></svg>
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.facebook.com/weboldal.keszites.gyor.conen.digital/" target="_blank"
+                    rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M24 12.073C24 5.445 18.63 0 12 0S0 5.445 0 12.073c0 5.989 4.388 10.95 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.67 4.532-4.67 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12H17.2l-.532 3.47H14.87v8.385C19.61 22.95 24 18.09 24 12.073z" />
+                    </svg>
                 </a>
-                <a role="listitem" class="footer-social-link" href="https://www.youtube.com/@weboldal-webaruhaz-keszites" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6C1.8 4.2 1 5 1.5 6.1 0 8.1 0 12 0 12s0 3.9.5 5.9c.3 1.1 1.1 1.8 2.1 2.1 2.2.3 4.3.5 9.3.5s7.1 0 9.4-.5c1.1-.3 1.9-1.1 2.1-2.1.5-2 .5-5.9.5-5.9s0-3.9-.5-5.9zM9.5 15.5v-7L16 12l-6.5 3.5z"/></svg>
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.youtube.com/@weboldal-webaruhaz-keszites" target="_blank"
+                    rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M23.5 6.2a3.02 3.02 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6C1.8 4.2 1 5 1.5 6.1 0 8.1 0 12 0 12s0 3.9.5 5.9c.3 1.1 1.1 1.8 2.1 2.1 2.2.3 4.3.5 9.3.5s7.1 0 9.4-.5c1.1-.3 1.9-1.1 2.1-2.1.5-2 .5-5.9.5-5.9s0-3.9-.5-5.9zM9.5 15.5v-7L16 12l-6.5 3.5z" />
+                    </svg>
                 </a>
-                <a role="listitem" class="footer-social-link" href="https://www.tiktok.com/@conen_digital" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.5A2.9 2.9 0 0 1 9.5 12a2.9 2.9 0 0 1 .9.1V9.4a6.8 6.8 0 0 0-1-.1A6.3 6.3 0 0 0 5 20.1a6.3 6.3 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.7 1.5V6.8a4.8 4.8 0 0 1-1-.1z"/></svg>
+                <a role="listitem" class="footer-social-link" href="https://www.tiktok.com/@conen_digital"
+                    target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.5A2.9 2.9 0 0 1 9.5 12a2.9 2.9 0 0 1 .9.1V9.4a6.8 6.8 0 0 0-1-.1A6.3 6.3 0 0 0 5 20.1a6.3 6.3 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.7 1.5V6.8a4.8 4.8 0 0 1-1-.1z" />
+                    </svg>
                 </a>
-                <a role="listitem" class="footer-social-link" href="https://www.instagram.com/conendigital/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.2.1-1.6.1-4.7.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.2 1.6-4.8 4.9-4.9 1.2-.1 1.6-.1 4.7-.1zM12 0C8.7 0 8.3 0 7 .1 2.7.3.3 2.6.1 7 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 5 .2 4.3 2.5 6.6 6.9 6.8 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.5-2.5 6.7-6.8.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.2-4.3-2.4-6.5-6.7-6.7-1.3-.1-1.7-.1-4.9-.1zm0 5.8a6.2 6.2 0 1 0 0 12.3 6.2 6.2 0 0 0 0-12.3zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg>
+                <a role="listitem" class="footer-social-link" href="https://www.instagram.com/conendigital/"
+                    target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.2.1-1.6.1-4.7.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.2 1.6-4.8 4.9-4.9 1.2-.1 1.6-.1 4.7-.1zM12 0C8.7 0 8.3 0 7 .1 2.7.3.3 2.6.1 7 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 5 .2 4.3 2.5 6.6 6.9 6.8 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.5-2.5 6.7-6.8.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.2-4.3-2.4-6.5-6.7-6.7-1.3-.1-1.7-.1-4.9-.1zm0 5.8a6.2 6.2 0 1 0 0 12.3 6.2 6.2 0 0 0 0-12.3zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z" />
+                    </svg>
                 </a>
-                <a role="listitem" class="footer-social-link" href="https://x.com/weboldal_honlap" target="_blank" rel="noopener noreferrer" title="X" aria-label="X (Twitter)">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <a role="listitem" class="footer-social-link" href="https://x.com/weboldal_honlap" target="_blank"
+                    rel="noopener noreferrer" title="X" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
                 </a>
             </div>
             <div style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center;">
@@ -3842,7 +4048,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     style="color: rgba(0,240,255,0.5); text-decoration: none;">Kaposvár</a>
             </div>
             <div class="footer-copyright">
-                © 2025 ConenDigital. Chris Conen; a kivitelezésben AI-eszközöket is használunk (pl. <a href="https://anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a>) emberi felügyelet mellett.
+                © 2025 ConenDigital. Chris Conen; a kivitelezésben AI-eszközöket is használunk (pl. <a
+                    href="https://anthropic.com" target="_blank" rel="noopener">Anthropic Claude</a>) emberi felügyelet
+                mellett.
             </div>
         </div>
     </footer>
@@ -4077,428 +4285,428 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
     <!-- AI Face: dotface render + audio lip sync -->
     <script>
-    (function() {
-      var canvas = document.getElementById('dotface');
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d', { alpha: true });
-      var statusText = document.getElementById('statusText');
-      var speakBtn = document.getElementById('speakBtn');
-      var voiceInd = document.getElementById('voiceInd');
+        (function () {
+            var canvas = document.getElementById('dotface');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d', { alpha: true });
+            var statusText = document.getElementById('statusText');
+            var speakBtn = document.getElementById('speakBtn');
+            var voiceInd = document.getElementById('voiceInd');
 
-      // Heightmap (inline base64 ~5KB)
-      var FACE_IMG_SRC = "/heightmaps/face-claude.jpg";
+            // Heightmap (inline base64 ~5KB)
+            var FACE_IMG_SRC = "/heightmaps/face-claude.jpg";
 
-      var W = 0, H = 0;
-      var DPR = Math.min(window.devicePixelRatio || 1, 2);
-      var dots = [];
-      var mouse = { x: -9999, y: -9999, active: false };
-      var time = 0;
-      var revealT = 0;
+            var W = 0, H = 0;
+            var DPR = Math.min(window.devicePixelRatio || 1, 2);
+            var dots = [];
+            var mouse = { x: -9999, y: -9999, active: false };
+            var time = 0;
+            var revealT = 0;
 
-      // Reduced motion detection
-      var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            // Reduced motion detection
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Mobile grid reduction
-      var GRID = (window.matchMedia('(max-width: 768px)').matches) ? 54 : 72;
+            // Mobile grid reduction
+            var GRID = (window.matchMedia('(max-width: 768px)').matches) ? 54 : 72;
 
-      var HUES = [178, 192, 200, 208];
+            var HUES = [178, 192, 200, 208];
 
-      // Image-based heightmap
-      var heightImg = null;
-      var imgLoaded = false;
+            // Image-based heightmap
+            var heightImg = null;
+            var imgLoaded = false;
 
-      function loadHeightImage() {
-        return new Promise(function(resolve, reject) {
-          var img = new Image();
-          img.crossOrigin = "anonymous";
-          img.onload = function() {
-            var off = document.createElement('canvas');
-            off.width = img.naturalWidth;
-            off.height = img.naturalHeight;
-            var octx = off.getContext('2d');
-            octx.drawImage(img, 0, 0);
-            var imgData = octx.getImageData(0, 0, off.width, off.height);
-            heightImg = { data: imgData.data, w: off.width, h: off.height };
-            imgLoaded = true;
-            statusText.textContent = 'Idle';
-            resolve();
-          };
-          img.onerror = reject;
-          img.src = FACE_IMG_SRC;
-        });
-      }
+            function loadHeightImage() {
+                return new Promise(function (resolve, reject) {
+                    var img = new Image();
+                    img.crossOrigin = "anonymous";
+                    img.onload = function () {
+                        var off = document.createElement('canvas');
+                        off.width = img.naturalWidth;
+                        off.height = img.naturalHeight;
+                        var octx = off.getContext('2d');
+                        octx.drawImage(img, 0, 0);
+                        var imgData = octx.getImageData(0, 0, off.width, off.height);
+                        heightImg = { data: imgData.data, w: off.width, h: off.height };
+                        imgLoaded = true;
+                        statusText.textContent = 'Idle';
+                        resolve();
+                    };
+                    img.onerror = reject;
+                    img.src = FACE_IMG_SRC;
+                });
+            }
 
-      function sampleHeight(nx, ny) {
-        if (!imgLoaded) return 0;
-        var imgFitX = 0.82;
-        var imgFitY = 0.92;
-        var ix = (nx / imgFitX * 0.5 + 0.5);
-        var iy = (1 - (ny / imgFitY * 0.5 + 0.5));
-        if (ix < 0 || ix > 1 || iy < 0 || iy > 1) return 0;
-        var px = Math.min(heightImg.w - 1, Math.floor(ix * heightImg.w));
-        var py = Math.min(heightImg.h - 1, Math.floor(iy * heightImg.h));
-        var idx = (py * heightImg.w + px) * 4;
-        var lum = heightImg.data[idx];
-        var lumNorm = Math.max(0, Math.min(1, (lum - 30) / (240 - 30)));
-        var ox = nx / 0.88;
-        var oy = ny / 1.0;
-        var ovalDist = ox * ox + oy * oy;
-        var mask = Math.max(0, Math.min(1, (1 - ovalDist) * 1.4));
-        return Math.pow(lumNorm, 0.95) * mask;
-      }
+            function sampleHeight(nx, ny) {
+                if (!imgLoaded) return 0;
+                var imgFitX = 0.82;
+                var imgFitY = 0.92;
+                var ix = (nx / imgFitX * 0.5 + 0.5);
+                var iy = (1 - (ny / imgFitY * 0.5 + 0.5));
+                if (ix < 0 || ix > 1 || iy < 0 || iy > 1) return 0;
+                var px = Math.min(heightImg.w - 1, Math.floor(ix * heightImg.w));
+                var py = Math.min(heightImg.h - 1, Math.floor(iy * heightImg.h));
+                var idx = (py * heightImg.w + px) * 4;
+                var lum = heightImg.data[idx];
+                var lumNorm = Math.max(0, Math.min(1, (lum - 30) / (240 - 30)));
+                var ox = nx / 0.88;
+                var oy = ny / 1.0;
+                var ovalDist = ox * ox + oy * oy;
+                var mask = Math.max(0, Math.min(1, (1 - ovalDist) * 1.4));
+                return Math.pow(lumNorm, 0.95) * mask;
+            }
 
-      function resize() {
-        var rect = canvas.getBoundingClientRect();
-        W = rect.width;
-        H = rect.height;
-        canvas.width = W * DPR;
-        canvas.height = H * DPR;
-        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-        if (imgLoaded) initDots();
-      }
+            function resize() {
+                var rect = canvas.getBoundingClientRect();
+                W = rect.width;
+                H = rect.height;
+                canvas.width = W * DPR;
+                canvas.height = H * DPR;
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+                if (imgLoaded) initDots();
+            }
 
-      function initDots() {
-        dots = [];
-        var padding = 0.05;
-        var usableW = W * (1 - padding * 2);
-        var usableH = H * (1 - padding * 2);
-        var stepX = usableW / (GRID - 1);
-        var stepY = usableH / (GRID - 1);
-        var ox = W * padding;
-        var oy = H * padding;
+            function initDots() {
+                dots = [];
+                var padding = 0.05;
+                var usableW = W * (1 - padding * 2);
+                var usableH = H * (1 - padding * 2);
+                var stepX = usableW / (GRID - 1);
+                var stepY = usableH / (GRID - 1);
+                var ox = W * padding;
+                var oy = H * padding;
 
-        for (var row = 0; row < GRID; row++) {
-          for (var col = 0; col < GRID; col++) {
-            var baseX = ox + col * stepX;
-            var baseY = oy + row * stepY;
-            var nx = (col / (GRID - 1) - 0.5) * 2;
-            var ny = (0.5 - row / (GRID - 1)) * 2;
-            dots.push({
-              baseX: baseX, baseY: baseY,
-              nx: nx, ny: ny,
-              x: baseX, y: baseY,
-              vx: 0, vy: 0,
-              faceH: sampleHeight(nx, ny),
-              col: col, row: row,
-              phase: Math.random() * Math.PI * 2,
-              rate: 0.6 + Math.random() * 0.7,
-              hueShift: (Math.random() - 0.5) * 12
+                for (var row = 0; row < GRID; row++) {
+                    for (var col = 0; col < GRID; col++) {
+                        var baseX = ox + col * stepX;
+                        var baseY = oy + row * stepY;
+                        var nx = (col / (GRID - 1) - 0.5) * 2;
+                        var ny = (0.5 - row / (GRID - 1)) * 2;
+                        dots.push({
+                            baseX: baseX, baseY: baseY,
+                            nx: nx, ny: ny,
+                            x: baseX, y: baseY,
+                            vx: 0, vy: 0,
+                            faceH: sampleHeight(nx, ny),
+                            col: col, row: row,
+                            phase: Math.random() * Math.PI * 2,
+                            rate: 0.6 + Math.random() * 0.7,
+                            hueShift: (Math.random() - 0.5) * 12
+                        });
+                    }
+                }
+            }
+
+            // Ripple system
+            var ripples = [];
+            var MAX_RIPPLES = prefersReducedMotion ? 0 : 6;
+            var nextSpawnTime = 1.5;
+
+            function updateRipples(t) {
+                for (var i = ripples.length - 1; i >= 0; i--) {
+                    if (t - ripples[i].t0 > ripples[i].duration) ripples.splice(i, 1);
+                }
+                if (t > nextSpawnTime && ripples.length < MAX_RIPPLES) {
+                    ripples.push({
+                        x: Math.random() * W,
+                        y: Math.random() * H,
+                        t0: t,
+                        speed: 45 + Math.random() * 35,
+                        duration: 7 + Math.random() * 4,
+                        band: 70 + Math.random() * 50,
+                        strength: 0.55 + Math.random() * 0.35,
+                        hueBoost: Math.random() < 0.5 ? -8 : 8
+                    });
+                    nextSpawnTime = t + 1.0 + Math.random() * 2.2;
+                }
+            }
+
+            function rippleAt(x, y, t) {
+                var energy = 0;
+                var hueShift = 0;
+                for (var ri = 0; ri < ripples.length; ri++) {
+                    var r = ripples[ri];
+                    var elapsed = t - r.t0;
+                    var radius = elapsed * r.speed;
+                    var dx = x - r.x;
+                    var dy = y - r.y;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    var wavefront = Math.abs(dist - radius);
+                    if (wavefront < r.band) {
+                        var decay = Math.max(0, 1 - elapsed / r.duration);
+                        var wave = (1 - wavefront / r.band) * decay * r.strength;
+                        var smooth = wave * wave * (3 - 2 * wave);
+                        energy += smooth;
+                        hueShift += smooth * r.hueBoost;
+                    }
+                }
+                return { energy: Math.min(1.2, energy), hueShift: hueShift };
+            }
+
+            // Lip sync (mouth ellipse in normalized coords)
+            var MOUTH = { cx: 0.0, cy: -0.30, rx: 0.22, ry: 0.085 };
+            var speaking = false;
+            var mouthAmp = 0;
+
+            // === Production: Audio + AnalyserNode ===
+            var audioCtx = null;
+            var analyser = null;
+            var audioData = null;
+            var introAudio = null;
+
+            function initAudio() {
+                if (audioCtx) return;
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 256;
+                analyser.smoothingTimeConstant = 0.7;
+                audioData = new Uint8Array(analyser.frequencyBinCount);
+
+                introAudio = new Audio('/claude-bemutatkozas.mp3');
+                introAudio.preload = 'metadata';
+                introAudio.crossOrigin = 'anonymous';
+
+                var source = audioCtx.createMediaElementSource(introAudio);
+                source.connect(analyser);
+                analyser.connect(audioCtx.destination);
+
+                introAudio.addEventListener('ended', stopSpeaking);
+                introAudio.addEventListener('error', function () {
+                    statusText.textContent = 'AudioErr';
+                    stopSpeaking();
+                });
+            }
+
+            // Synchronize aria-pressed and voice indicators across both controls
+            // (the visible speak button and the canvas wrapper acting as button).
+            function setSpeakingState(active) {
+                var pressed = active ? 'true' : 'false';
+                var label = active ? 'Hangos bemutatkozas leallitasa' : 'Hangos bemutatkozas inditasa';
+                if (speakBtn) {
+                    speakBtn.setAttribute('aria-pressed', pressed);
+                    speakBtn.setAttribute('aria-label', label);
+                }
+                var visualWrap = document.getElementById('visualWrap');
+                if (visualWrap) visualWrap.setAttribute('aria-pressed', pressed);
+                var indicators = document.querySelectorAll('.voice-indicator');
+                for (var i = 0; i < indicators.length; i++) {
+                    if (active) indicators[i].classList.remove('idle');
+                    else indicators[i].classList.add('idle');
+                }
+            }
+
+            function startSpeaking() {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                introAudio.currentTime = 0;
+                introAudio.play().then(function () {
+                    speaking = true;
+                    setSpeakingState(true);
+                    statusText.textContent = 'Speaking';
+                }).catch(function (err) {
+                    console.warn('Audio play blocked:', err);
+                    statusText.textContent = 'Blocked';
+                });
+            }
+
+            function stopSpeaking() {
+                if (introAudio) { introAudio.pause(); introAudio.currentTime = 0; }
+                speaking = false;
+                setSpeakingState(false);
+                statusText.textContent = 'Idle';
+            }
+
+            function toggleSpeak() {
+                if (speaking) stopSpeaking(); else startSpeaking();
+            }
+
+            // Both the speak button and the canvas wrapper trigger the same action.
+            // The canvas itself is the primary affordance — visitors instinctively
+            // click on the AI face to interact with it.
+            speakBtn.addEventListener('click', toggleSpeak);
+
+            var visualWrap = document.getElementById('visualWrap');
+            if (visualWrap) {
+                visualWrap.addEventListener('click', toggleSpeak);
+                visualWrap.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleSpeak();
+                    }
+                });
+            }
+
+            function getAudioLevel() {
+                if (!speaking || !analyser) return 0;
+                analyser.getByteFrequencyData(audioData);
+                var sum = 0;
+                var bins = Math.floor(audioData.length * 0.3);
+                for (var i = 1; i < bins; i++) sum += audioData[i];
+                return Math.min(1, (sum / bins) / 110);
+            }
+
+            function updateLipSync() {
+                if (speaking) {
+                    var target = getAudioLevel();
+                    mouthAmp += (target - mouthAmp) * 0.45;
+                } else {
+                    // Idle "breath" pulse: every 5-6 seconds a brief mouth flutter
+                    // hints to the visitor that the face is alive and can speak.
+                    var idlePulse = Math.max(0, Math.sin(time * 0.55) - 0.85) * 6.0;
+                    mouthAmp += (idlePulse - mouthAmp) * 0.08;
+                }
+            }
+
+            // Pointer events
+            function setMouse(clientX, clientY) {
+                var rect = canvas.getBoundingClientRect();
+                mouse.x = clientX - rect.left;
+                mouse.y = clientY - rect.top;
+                mouse.active = true;
+            }
+            canvas.addEventListener('mousemove', function (e) { setMouse(e.clientX, e.clientY); });
+            canvas.addEventListener('mouseleave', function () { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
+            canvas.addEventListener('touchmove', function (e) {
+                if (e.touches.length) setMouse(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: true });
+            canvas.addEventListener('touchend', function () { mouse.active = false; });
+
+            // Intersection Observer — pause render loop when off-screen
+            var isVisible = true;
+            var animFrameId = null;
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    isVisible = entries[0].isIntersecting;
+                    if (isVisible && !animFrameId) {
+                        lastT = performance.now();
+                        animFrameId = requestAnimationFrame(tick);
+                    }
+                }, { threshold: 0.05 });
+                observer.observe(canvas);
+            }
+
+            // Render loop
+            var lastT = performance.now();
+            var ambientScale = prefersReducedMotion ? 0.5 : 1.0;
+            var trailAlpha = prefersReducedMotion ? 1.0 : 0.30;
+
+            function tick(now) {
+                if (!isVisible) { animFrameId = null; return; }
+                animFrameId = requestAnimationFrame(tick);
+
+                var dt = Math.min(0.05, (now - lastT) / 1000);
+                lastT = now;
+                time += dt;
+
+                if (prefersReducedMotion) {
+                    revealT = 1;
+                } else {
+                    revealT = Math.min(1, revealT + dt * 0.32);
+                }
+
+                if (trailAlpha < 1) {
+                    ctx.fillStyle = 'rgba(10, 10, 10, ' + trailAlpha + ')';
+                    ctx.fillRect(0, 0, W, H);
+                } else {
+                    ctx.clearRect(0, 0, W, H);
+                }
+
+                if (!imgLoaded) return;
+
+                updateRipples(time);
+                updateLipSync();
+
+                var cursorRadius = Math.min(W, H) * 0.20;
+                var cursorRadius2 = cursorRadius * cursorRadius;
+                var reveal = revealT < 1 ? 1 - Math.pow(1 - revealT, 3) : 1;
+
+                for (var i = 0; i < dots.length; i++) {
+                    var d = dots[i];
+
+                    // Spring back
+                    var sdx = d.baseX - d.x;
+                    var sdy = d.baseY - d.y;
+                    d.vx += sdx * 0.06;
+                    d.vy += sdy * 0.06;
+
+                    // Cursor displacement
+                    if (mouse.active) {
+                        var mdx2 = d.x - mouse.x;
+                        var mdy2 = d.y - mouse.y;
+                        var mdist2c = mdx2 * mdx2 + mdy2 * mdy2;
+                        if (mdist2c < cursorRadius2 && mdist2c > 0.1) {
+                            var mdistc = Math.sqrt(mdist2c);
+                            var tt2 = 1 - mdistc / cursorRadius;
+                            var force = tt2 * tt2 * 1.1;
+                            d.vx += (mdx2 / mdistc) * force;
+                            d.vy += (mdy2 / mdistc) * force;
+                        }
+                    }
+
+                    d.vx *= 0.86;
+                    d.vy *= 0.86;
+                    d.x += d.vx;
+                    d.y += d.vy;
+
+                    // Per-dot ambient pulse
+                    var ambientPulse = (Math.sin(time * d.rate + d.phase) * 0.5 + 0.5) * ambientScale;
+
+                    // Ripple energy
+                    var rip = rippleAt(d.baseX, d.baseY, time);
+
+                    // Lip sync mouth boost
+                    var mouthBoost = 0;
+                    var md = ((d.nx - MOUTH.cx) / MOUTH.rx);
+                    var me = ((d.ny - MOUTH.cy) / MOUTH.ry);
+                    var mDist2 = md * md + me * me;
+                    if (mDist2 < 1) {
+                        var falloff = 1 - Math.sqrt(mDist2);
+                        mouthBoost = falloff * falloff * (3 - 2 * falloff) * mouthAmp;
+                    }
+
+                    // Hue in cyan-blue range
+                    var hueIdx = (d.col + d.row) % HUES.length;
+                    var hue = HUES[hueIdx] + d.hueShift + rip.hueShift;
+                    if (mouthBoost > 0.05) hue -= mouthBoost * 6;
+
+                    var z = d.faceH * reveal;
+
+                    // Brightness / size
+                    var size = 0.55 + z * 2.3 + ambientPulse * 0.25 + rip.energy * 1.1 + mouthBoost * 1.6;
+                    var alpha = 0.07 + z * 0.72 + ambientPulse * 0.06 + rip.energy * 0.30 + mouthBoost * 0.45;
+
+                    if (mouse.active) {
+                        var mdx = d.x - mouse.x;
+                        var mdy = d.y - mouse.y;
+                        var mdist2 = mdx * mdx + mdy * mdy;
+                        if (mdist2 < cursorRadius2) {
+                            var tt = 1 - Math.sqrt(mdist2) / cursorRadius;
+                            alpha = Math.min(1, alpha + tt * 0.45);
+                            size += tt * 1.4;
+                        }
+                    }
+
+                    alpha = Math.min(1, alpha);
+                    var lightness = 50 + z * 22 + rip.energy * 8 + mouthBoost * 10;
+                    var sat = 88 + rip.energy * 8;
+
+                    ctx.fillStyle = 'hsla(' + hue.toFixed(0) + ', ' + sat.toFixed(0) + '%, ' + lightness.toFixed(0) + '%, ' + alpha.toFixed(3) + ')';
+                    ctx.beginPath();
+                    ctx.arc(d.x, d.y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            // Init
+            window.addEventListener('resize', resize);
+            resize();
+            loadHeightImage().then(function () {
+                initDots();
+            }).catch(function (err) {
+                console.error('Heightmap load failed:', err);
+                statusText.textContent = 'ImgErr';
             });
-          }
-        }
-      }
-
-      // Ripple system
-      var ripples = [];
-      var MAX_RIPPLES = prefersReducedMotion ? 0 : 6;
-      var nextSpawnTime = 1.5;
-
-      function updateRipples(t) {
-        for (var i = ripples.length - 1; i >= 0; i--) {
-          if (t - ripples[i].t0 > ripples[i].duration) ripples.splice(i, 1);
-        }
-        if (t > nextSpawnTime && ripples.length < MAX_RIPPLES) {
-          ripples.push({
-            x: Math.random() * W,
-            y: Math.random() * H,
-            t0: t,
-            speed: 45 + Math.random() * 35,
-            duration: 7 + Math.random() * 4,
-            band: 70 + Math.random() * 50,
-            strength: 0.55 + Math.random() * 0.35,
-            hueBoost: Math.random() < 0.5 ? -8 : 8
-          });
-          nextSpawnTime = t + 1.0 + Math.random() * 2.2;
-        }
-      }
-
-      function rippleAt(x, y, t) {
-        var energy = 0;
-        var hueShift = 0;
-        for (var ri = 0; ri < ripples.length; ri++) {
-          var r = ripples[ri];
-          var elapsed = t - r.t0;
-          var radius = elapsed * r.speed;
-          var dx = x - r.x;
-          var dy = y - r.y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          var wavefront = Math.abs(dist - radius);
-          if (wavefront < r.band) {
-            var decay = Math.max(0, 1 - elapsed / r.duration);
-            var wave = (1 - wavefront / r.band) * decay * r.strength;
-            var smooth = wave * wave * (3 - 2 * wave);
-            energy += smooth;
-            hueShift += smooth * r.hueBoost;
-          }
-        }
-        return { energy: Math.min(1.2, energy), hueShift: hueShift };
-      }
-
-      // Lip sync (mouth ellipse in normalized coords)
-      var MOUTH = { cx: 0.0, cy: -0.30, rx: 0.22, ry: 0.085 };
-      var speaking = false;
-      var mouthAmp = 0;
-
-      // === Production: Audio + AnalyserNode ===
-      var audioCtx = null;
-      var analyser = null;
-      var audioData = null;
-      var introAudio = null;
-
-      function initAudio() {
-        if (audioCtx) return;
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = 256;
-        analyser.smoothingTimeConstant = 0.7;
-        audioData = new Uint8Array(analyser.frequencyBinCount);
-
-        introAudio = new Audio('/claude-bemutatkozas.mp3');
-        introAudio.preload = 'metadata';
-        introAudio.crossOrigin = 'anonymous';
-
-        var source = audioCtx.createMediaElementSource(introAudio);
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
-
-        introAudio.addEventListener('ended', stopSpeaking);
-        introAudio.addEventListener('error', function() {
-          statusText.textContent = 'AudioErr';
-          stopSpeaking();
-        });
-      }
-
-      // Synchronize aria-pressed and voice indicators across both controls
-      // (the visible speak button and the canvas wrapper acting as button).
-      function setSpeakingState(active) {
-        var pressed = active ? 'true' : 'false';
-        var label = active ? 'Hangos bemutatkozas leallitasa' : 'Hangos bemutatkozas inditasa';
-        if (speakBtn) {
-          speakBtn.setAttribute('aria-pressed', pressed);
-          speakBtn.setAttribute('aria-label', label);
-        }
-        var visualWrap = document.getElementById('visualWrap');
-        if (visualWrap) visualWrap.setAttribute('aria-pressed', pressed);
-        var indicators = document.querySelectorAll('.voice-indicator');
-        for (var i = 0; i < indicators.length; i++) {
-          if (active) indicators[i].classList.remove('idle');
-          else indicators[i].classList.add('idle');
-        }
-      }
-
-      function startSpeaking() {
-        initAudio();
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        introAudio.currentTime = 0;
-        introAudio.play().then(function() {
-          speaking = true;
-          setSpeakingState(true);
-          statusText.textContent = 'Speaking';
-        }).catch(function(err) {
-          console.warn('Audio play blocked:', err);
-          statusText.textContent = 'Blocked';
-        });
-      }
-
-      function stopSpeaking() {
-        if (introAudio) { introAudio.pause(); introAudio.currentTime = 0; }
-        speaking = false;
-        setSpeakingState(false);
-        statusText.textContent = 'Idle';
-      }
-
-      function toggleSpeak() {
-        if (speaking) stopSpeaking(); else startSpeaking();
-      }
-
-      // Both the speak button and the canvas wrapper trigger the same action.
-      // The canvas itself is the primary affordance — visitors instinctively
-      // click on the AI face to interact with it.
-      speakBtn.addEventListener('click', toggleSpeak);
-
-      var visualWrap = document.getElementById('visualWrap');
-      if (visualWrap) {
-        visualWrap.addEventListener('click', toggleSpeak);
-        visualWrap.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            toggleSpeak();
-          }
-        });
-      }
-
-      function getAudioLevel() {
-        if (!speaking || !analyser) return 0;
-        analyser.getByteFrequencyData(audioData);
-        var sum = 0;
-        var bins = Math.floor(audioData.length * 0.3);
-        for (var i = 1; i < bins; i++) sum += audioData[i];
-        return Math.min(1, (sum / bins) / 110);
-      }
-
-      function updateLipSync() {
-        if (speaking) {
-          var target = getAudioLevel();
-          mouthAmp += (target - mouthAmp) * 0.45;
-        } else {
-          // Idle "breath" pulse: every 5-6 seconds a brief mouth flutter
-          // hints to the visitor that the face is alive and can speak.
-          var idlePulse = Math.max(0, Math.sin(time * 0.55) - 0.85) * 6.0;
-          mouthAmp += (idlePulse - mouthAmp) * 0.08;
-        }
-      }
-
-      // Pointer events
-      function setMouse(clientX, clientY) {
-        var rect = canvas.getBoundingClientRect();
-        mouse.x = clientX - rect.left;
-        mouse.y = clientY - rect.top;
-        mouse.active = true;
-      }
-      canvas.addEventListener('mousemove', function(e) { setMouse(e.clientX, e.clientY); });
-      canvas.addEventListener('mouseleave', function() { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
-      canvas.addEventListener('touchmove', function(e) {
-        if (e.touches.length) setMouse(e.touches[0].clientX, e.touches[0].clientY);
-      }, { passive: true });
-      canvas.addEventListener('touchend', function() { mouse.active = false; });
-
-      // Intersection Observer — pause render loop when off-screen
-      var isVisible = true;
-      var animFrameId = null;
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          isVisible = entries[0].isIntersecting;
-          if (isVisible && !animFrameId) {
-            lastT = performance.now();
             animFrameId = requestAnimationFrame(tick);
-          }
-        }, { threshold: 0.05 });
-        observer.observe(canvas);
-      }
-
-      // Render loop
-      var lastT = performance.now();
-      var ambientScale = prefersReducedMotion ? 0.5 : 1.0;
-      var trailAlpha = prefersReducedMotion ? 1.0 : 0.30;
-
-      function tick(now) {
-        if (!isVisible) { animFrameId = null; return; }
-        animFrameId = requestAnimationFrame(tick);
-
-        var dt = Math.min(0.05, (now - lastT) / 1000);
-        lastT = now;
-        time += dt;
-
-        if (prefersReducedMotion) {
-          revealT = 1;
-        } else {
-          revealT = Math.min(1, revealT + dt * 0.32);
-        }
-
-        if (trailAlpha < 1) {
-          ctx.fillStyle = 'rgba(10, 10, 10, ' + trailAlpha + ')';
-          ctx.fillRect(0, 0, W, H);
-        } else {
-          ctx.clearRect(0, 0, W, H);
-        }
-
-        if (!imgLoaded) return;
-
-        updateRipples(time);
-        updateLipSync();
-
-        var cursorRadius = Math.min(W, H) * 0.20;
-        var cursorRadius2 = cursorRadius * cursorRadius;
-        var reveal = revealT < 1 ? 1 - Math.pow(1 - revealT, 3) : 1;
-
-        for (var i = 0; i < dots.length; i++) {
-          var d = dots[i];
-
-          // Spring back
-          var sdx = d.baseX - d.x;
-          var sdy = d.baseY - d.y;
-          d.vx += sdx * 0.06;
-          d.vy += sdy * 0.06;
-
-          // Cursor displacement
-          if (mouse.active) {
-            var mdx2 = d.x - mouse.x;
-            var mdy2 = d.y - mouse.y;
-            var mdist2c = mdx2 * mdx2 + mdy2 * mdy2;
-            if (mdist2c < cursorRadius2 && mdist2c > 0.1) {
-              var mdistc = Math.sqrt(mdist2c);
-              var tt2 = 1 - mdistc / cursorRadius;
-              var force = tt2 * tt2 * 1.1;
-              d.vx += (mdx2 / mdistc) * force;
-              d.vy += (mdy2 / mdistc) * force;
-            }
-          }
-
-          d.vx *= 0.86;
-          d.vy *= 0.86;
-          d.x += d.vx;
-          d.y += d.vy;
-
-          // Per-dot ambient pulse
-          var ambientPulse = (Math.sin(time * d.rate + d.phase) * 0.5 + 0.5) * ambientScale;
-
-          // Ripple energy
-          var rip = rippleAt(d.baseX, d.baseY, time);
-
-          // Lip sync mouth boost
-          var mouthBoost = 0;
-          var md = ((d.nx - MOUTH.cx) / MOUTH.rx);
-          var me = ((d.ny - MOUTH.cy) / MOUTH.ry);
-          var mDist2 = md * md + me * me;
-          if (mDist2 < 1) {
-            var falloff = 1 - Math.sqrt(mDist2);
-            mouthBoost = falloff * falloff * (3 - 2 * falloff) * mouthAmp;
-          }
-
-          // Hue in cyan-blue range
-          var hueIdx = (d.col + d.row) % HUES.length;
-          var hue = HUES[hueIdx] + d.hueShift + rip.hueShift;
-          if (mouthBoost > 0.05) hue -= mouthBoost * 6;
-
-          var z = d.faceH * reveal;
-
-          // Brightness / size
-          var size = 0.55 + z * 2.3 + ambientPulse * 0.25 + rip.energy * 1.1 + mouthBoost * 1.6;
-          var alpha = 0.07 + z * 0.72 + ambientPulse * 0.06 + rip.energy * 0.30 + mouthBoost * 0.45;
-
-          if (mouse.active) {
-            var mdx = d.x - mouse.x;
-            var mdy = d.y - mouse.y;
-            var mdist2 = mdx * mdx + mdy * mdy;
-            if (mdist2 < cursorRadius2) {
-              var tt = 1 - Math.sqrt(mdist2) / cursorRadius;
-              alpha = Math.min(1, alpha + tt * 0.45);
-              size += tt * 1.4;
-            }
-          }
-
-          alpha = Math.min(1, alpha);
-          var lightness = 50 + z * 22 + rip.energy * 8 + mouthBoost * 10;
-          var sat = 88 + rip.energy * 8;
-
-          ctx.fillStyle = 'hsla(' + hue.toFixed(0) + ', ' + sat.toFixed(0) + '%, ' + lightness.toFixed(0) + '%, ' + alpha.toFixed(3) + ')';
-          ctx.beginPath();
-          ctx.arc(d.x, d.y, size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      // Init
-      window.addEventListener('resize', resize);
-      resize();
-      loadHeightImage().then(function() {
-        initDots();
-      }).catch(function(err) {
-        console.error('Heightmap load failed:', err);
-        statusText.textContent = 'ImgErr';
-      });
-      animFrameId = requestAnimationFrame(tick);
-    })();
+        })();
     </script>
 
 </body>

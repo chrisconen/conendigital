@@ -233,15 +233,26 @@
             color: var(--cyan);
         }
 
-        .nav-cta {
-            padding: 0.85rem 1.4rem;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+        .nav-konfigurator-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.6rem;
+            background: var(--cyan);
             color: var(--black);
             font-family: var(--font-mono);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
+            font-size: 0.8rem;
             font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-konfigurator-btn:hover {
+            background: transparent;
+            color: var(--cyan);
+            box-shadow: inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4);
         }
 
         .mobile-cta {
@@ -657,9 +668,14 @@
                 padding: 1.5rem 2rem;
             }
 
-            .nav-links,
-            .nav-cta {
+            .nav-links {
                 display: none;
+            }
+
+            .nav-konfigurator-btn {
+                font-size: 0.65rem;
+                padding: 0.5rem 0.8rem;
+                letter-spacing: 0.03em;
             }
 
             .nav-hamburger {
@@ -835,7 +851,7 @@
             <li><a href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a></li>
             <li><a href="kapcsolat.html" class="mobile-cta">Egyeztetés →</a></li>
         </ul>
-        <a href="weboldal-konfigurator.html" class="nav-cta">Konfigurátor</a>
+        <a href="weboldal-konfigurator.html" class="nav-konfigurator-btn">Weboldal tervező</a>
         <div class="nav-hamburger" id="hamburger">
             <span></span>
             <span></span>

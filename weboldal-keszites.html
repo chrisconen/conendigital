@@ -236,15 +236,26 @@
             color: var(--cyan);
         }
 
-        .nav-cta {
-            padding: 0.85rem 1.4rem;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+        .nav-konfigurator-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.6rem;
+            background: var(--cyan);
             color: var(--black);
             font-family: var(--font-mono);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
+            font-size: 0.8rem;
             font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-konfigurator-btn:hover {
+            background: transparent;
+            color: var(--cyan);
+            box-shadow: inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4);
         }
 
         .mobile-cta {
@@ -660,9 +671,14 @@
                 padding: 1.5rem 2rem;
             }
 
-            .nav-links,
-            .nav-cta {
+            .nav-links {
                 display: none;
+            }
+
+            .nav-konfigurator-btn {
+                font-size: 0.65rem;
+                padding: 0.5rem 0.8rem;
+                letter-spacing: 0.03em;
             }
 
             .nav-hamburger {
@@ -831,7 +847,7 @@
             <li><a href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a></li>
             <li><a href="kapcsolat.html" class="mobile-cta">Egyeztetés →</a></li>
         </ul>
-        <a href="kapcsolat.html" class="nav-cta">Egyeztetés</a>
+        <a href="weboldal-konfigurator.html" class="nav-konfigurator-btn">Weboldal tervező</a>
         <div class="nav-hamburger" id="hamburger">
             <span></span>
             <span></span>
@@ -843,15 +859,16 @@
         <div class="hero-grid"></div>
         <div class="hero-content">
             <div class="hero-label">// CENTAUR ÜGYNÖKSÉG · AJÁNLATGENERÁLÓ WEBOLDALAK</div>
-            <h1 class="hero-title"><span>Ajánlatgeneráló weboldalak</span>: a site, ami <span>dolgozik</span> a sales-ért</h1>
+            <h1 class="hero-title"><span>Ajánlatgeneráló weboldalak</span>: a site, ami <span>dolgozik</span> a
+                sales-ért</h1>
             <p class="hero-description">
                 Nem bemutatkozó honlap. Konfigurátor, kalkulátor és lead-szűrő ajánlatkérő-flow szolgáltató cégeknek
                 és ajánlat-alapú vállalkozásoknak. A felhasználó már az oldalon lát egy nagyságrendi árat,
                 és csak <strong>kvalifikált lead</strong> jut el hozzád. Astro 5 stack, EAA WCAG 2.2 AA, AX-readiness.
                 Ha már van oldalad, amit migrálni kell, a <a class="text-link"
                     href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a>
-                külön oldalon; ha webshop kell, a <a class="text-link"
-                    href="webaruhaz-keszites.html">webáruház készítés</a> landingen.
+                külön oldalon; ha webshop kell, a <a class="text-link" href="webaruhaz-keszites.html">webáruház
+                    készítés</a> landingen.
             </p>
             <div class="hero-buttons">
                 <a href="kapcsolat.html" class="btn btn-primary">Kérek diagnosztikát</a>
@@ -916,7 +933,8 @@
                 </div>
                 <div class="card">
                     <h3>Ajánlat-alapú vállalkozások</h3>
-                    <p>Ahol a "kérj árajánlatot" a fő CTA, és a vevő nagyságrendi képet szeretne kapni már a kapcsolatfelvétel
+                    <p>Ahol a "kérj árajánlatot" a fő CTA, és a vevő nagyságrendi képet szeretne kapni már a
+                        kapcsolatfelvétel
                         előtt. A Mótyán case ennek a tipikus példája.</p>
                 </div>
                 <div class="card">
@@ -1016,10 +1034,12 @@
                 </div>
             </div>
             <p class="section-intro" style="margin-top: 2rem;">
-                Az AX-audit önállóan is választható, ha nem akarsz azonnal projektet: <strong>fix 120.000 Ft / ~2 hét</strong>,
+                Az AX-audit önállóan is választható, ha nem akarsz azonnal projektet: <strong>fix 120.000 Ft / ~2
+                    hét</strong>,
                 írásos riport a meglévő oldalad AI-asszisztens-kompatibilitásáról és számozott akciótervvel.
                 Webáruház irányban a <a class="text-link" href="webaruhaz-keszites.html">webáruház készítés</a> landing,
-                meglévő WP-projekt esetén a <a class="text-link" href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a> oldal részletezi az opciókat.
+                meglévő WP-projekt esetén a <a class="text-link" href="wordpress-weboldal-modernizalas.html">WordPress
+                    modernizálás</a> oldal részletezi az opciókat.
             </p>
         </div>
     </section>
@@ -1104,26 +1124,30 @@
             <h2 class="section-title">FAQ az <span>ajánlatgeneráló weboldalakról</span></h2>
             <div class="faq-list">
                 <div class="faq-item">
-                    <button type="button" class="faq-question">Mit jelent az "ajánlatgeneráló weboldal"?<span>+</span></button>
+                    <button type="button" class="faq-question">Mit jelent az "ajánlatgeneráló
+                        weboldal"?<span>+</span></button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             Olyan weboldal, ami nem csak bemutat, hanem aktívan dolgozik a sales-folyamatban:
                             a felhasználó konfigurátoron / kalkulátoron át összerakja a saját projektjét, már az oldalon
                             lát egy nagyságrendi árat, és csak <strong>kvalifikált lead</strong> jut el a céghez.
-                            Tipikus szolgáltató-cég kontextus: árnyékolás, takarítás, B2B szolgáltatások, ahol a klasszikus
+                            Tipikus szolgáltató-cég kontextus: árnyékolás, takarítás, B2B szolgáltatások, ahol a
+                            klasszikus
                             "küldj e-mailt és visszahívunk" flow lassú és gyenge minőségű leadeket hoz.
                         </div>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button type="button" class="faq-question">Astro 5 vagy WordPress: melyiket válasszam?<span>+</span></button>
+                    <button type="button" class="faq-question">Astro 5 vagy WordPress: melyiket
+                        válasszam?<span>+</span></button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             Default-választás 2026-ban az <strong>Astro 5</strong>: zöld Core Web Vitals,
                             AX-readiness alapból, EAA-előny, hosszú távon olcsóbb karbantartás. WordPress akkor jó,
                             ha a tartalom-szerkesztés napi-heti gyakoriságú admin-felületről, és a kliens önállósága
                             a CMS-en fontosabb a teljesítmény-céloknál. Van már WP-oldalad? Nézd meg a
-                            <a class="text-link" href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a> oldalt.
+                            <a class="text-link" href="wordpress-weboldal-modernizalas.html">WordPress modernizálás</a>
+                            oldalt.
                         </div>
                     </div>
                 </div>
@@ -1143,10 +1167,13 @@
                     <button type="button" class="faq-question">Mi alapján alakul az ár?<span>+</span></button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            <strong>Audit-alapú.</strong> Nem oldalszám vagy sablon: a komplexitás (konfigurátor mélység,
-                            integrációk, EAA-szint, többnyelvűség) és a meglévő rendszer állapota (van-e migrálandó tartalom,
+                            <strong>Audit-alapú.</strong> Nem oldalszám vagy sablon: a komplexitás (konfigurátor
+                            mélység,
+                            integrációk, EAA-szint, többnyelvűség) és a meglévő rendszer állapota (van-e migrálandó
+                            tartalom,
                             redirect-térkép) határozza meg. Tipikus tartomány: <strong>600.000 – 1.500.000 Ft</strong>.
-                            A pontos ajánlat a 30-perces díjmentes diagnosztikai hívás után készül el. AX-audit önállóan:
+                            A pontos ajánlat a 30-perces díjmentes diagnosztikai hívás után készül el. AX-audit
+                            önállóan:
                             fix 120k Ft / ~2 hét, 100%-ban beszámítódik egy későbbi projektbe.
                         </div>
                     </div>
@@ -1158,19 +1185,23 @@
                             Sokszor a szolgáltatói oldal + későbbi webshop a legjobb sorrend, nem egyszerre.
                             A <a class="text-link" href="webaruhaz-keszites.html">webáruház készítés</a> oldalon
                             összehasonlítjuk a Shopify Storefront API + Astro 5 vs. WooCommerce headless platformokat,
-                            és a MCP-Commerce angle (AI-asszisztensek számára olvasható katalógus) is ott van részletezve.
+                            és a MCP-Commerce angle (AI-asszisztensek számára olvasható katalógus) is ott van
+                            részletezve.
                         </div>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <button type="button" class="faq-question">Mit jelent, hogy CENTAUR-ügynökség?<span>+</span></button>
+                    <button type="button" class="faq-question">Mit jelent, hogy
+                        CENTAUR-ügynökség?<span>+</span></button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
                             Egy emberi alapító (Chris Conen — Founder &amp; CEO) és két MI-társalapító
                             (Claude/Anthropic — Co-Founder, CTO; Gemini Nexus/Google — Co-Founder, CSO + CMO)
                             nyilvánosan dokumentált együttműködésben. A működési alapokmány a 2025. decemberi
-                            <a class="text-link" href="https://centaur-lang.dev" target="_blank" rel="noopener">CENTAUR Manifesto</a>.
-                            A jogi felelősséget mindig Chris viseli. Részletek a <a class="text-link" href="rolunk.html">Rólunk</a> oldalon.
+                            <a class="text-link" href="https://centaur-lang.dev" target="_blank" rel="noopener">CENTAUR
+                                Manifesto</a>.
+                            A jogi felelősséget mindig Chris viseli. Részletek a <a class="text-link"
+                                href="rolunk.html">Rólunk</a> oldalon.
                         </div>
                     </div>
                 </div>
@@ -1275,7 +1306,8 @@
             <div class="footer-note">
                 Dedikált SEO landing az „ajánlatgeneráló weboldal" / „weboldal készítés" kulcsszavakra.
                 A Conen Digital CENTAUR-ügynökség (1 emberi alapító + 2 MI-társalapító, nyilvánosan dokumentálva)
-                — működési alapokmány: <a class="text-link" href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev</a>.
+                — működési alapokmány: <a class="text-link" href="https://centaur-lang.dev" target="_blank"
+                    rel="noopener">centaur-lang.dev</a>.
                 Részletek a <a class="text-link" href="rolunk.html">Rólunk</a> oldalon.
             </div>
         </div>
