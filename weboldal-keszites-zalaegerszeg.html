@@ -1013,6 +1013,15 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text-col {
+            display: flex;
+            flex-direction: column;
         }
 
         .hero-label {
@@ -1034,11 +1043,13 @@
         }
 
         .hero-title {
-            font-size: clamp(3rem, 12vw, 10rem);
+            font-size: clamp(2.5rem, 5.8vw, 5rem);
             font-weight: 700;
-            line-height: 0.9;
-            letter-spacing: -0.03em;
-            margin-bottom: 2rem;
+            line-height: 1.0;
+            letter-spacing: -0.025em;
+            margin-bottom: 1.75rem;
+            overflow-wrap: anywhere;
+            hyphens: auto;
         }
 
         .hero-title-line {
@@ -1114,6 +1125,201 @@
 
         .hero-morphing-word.active {
             opacity: 1;
+        }
+
+        /* AI Face Visual */
+        .hero__visual-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        .hero__visual {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            max-width: 560px;
+            margin-left: auto;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            user-select: none;
+        }
+
+        .hero__visual:hover {
+            transform: scale(1.01);
+        }
+
+        .hero__visual:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 8px;
+        }
+
+        .hero__visual::before,
+        .hero__visual::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border: 1px solid var(--cyan);
+            opacity: 0.5;
+        }
+
+        .hero__visual::before {
+            top: 0;
+            left: 0;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .hero__visual::after {
+            bottom: 0;
+            right: 0;
+            border-left: none;
+            border-top: none;
+        }
+
+        .hero__visual canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .visual-meta {
+            position: absolute;
+            bottom: -2rem;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 0.66rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .visual-meta span {
+            color: var(--cyan);
+        }
+
+        .visual-affordance {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.85rem;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.85);
+            opacity: 0;
+            animation: affordanceIn 0.6s ease 2s forwards;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes affordanceIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-speak-btn {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 0.85rem 1.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+            align-self: flex-start;
+            position: relative;
+            overflow: visible;
+        }
+
+        .hero-speak-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            box-shadow: 0 0 24px -8px var(--cyan);
+        }
+
+        .hero-speak-btn::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--cyan), transparent, var(--cyan));
+            background-size: 200% 100%;
+            opacity: 0;
+            z-index: -1;
+            animation: btnGlow 4s ease-in-out infinite;
+            filter: blur(6px);
+        }
+
+        @keyframes btnGlow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.35; background-position: 100% 0; }
+        }
+
+        .voice-indicator {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #6EFFE9;
+            box-shadow: 0 0 10px #6EFFE9;
+            animation: voicePulse 1.4s infinite ease-in-out;
+        }
+
+        .voice-indicator.idle {
+            background: currentColor;
+            box-shadow: none;
+            animation: none;
+            opacity: 0.6;
+        }
+
+        @keyframes voicePulse {
+            0%, 100% { opacity: 0.45; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.25); }
+        }
+
+        .hero-narration-toggle {
+            margin-top: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .hero-narration-toggle summary {
+            cursor: pointer;
+            letter-spacing: 0.1em;
+            transition: color 0.2s;
+        }
+
+        .hero-narration-toggle summary:hover {
+            color: var(--cyan);
+        }
+
+        .hero-narration-toggle p {
+            margin-top: 0.75rem;
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.55);
+            max-width: 48ch;
         }
 
         .hero-description {
@@ -2113,6 +2319,21 @@
                 display: flex;
             }
 
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero__visual {
+                order: 1;
+                max-width: 380px;
+                margin: 0 auto;
+            }
+
+            .hero-text-col {
+                order: 0;
+            }
+
             .nav-links.active {
                 display: flex;
                 position: fixed;
@@ -2513,6 +2734,7 @@
         <div class="hero-glow hero-glow-2"></div>
 
         <div class="hero-content">
+            <div class="hero-text-col">
             <div class="hero-label">
                 <span class="hero-label-line"></span>
                 Zala megye · honlap, ami elmondja, mit kapsz tőlünk
@@ -2560,6 +2782,37 @@
                     <div class="hero-stat-number"><span style="color: var(--magenta)">0</span> Ft</div>
                     <div class="hero-stat-label">Ingyenes konzultáció</div>
                 </div>
+            </div>
+            </div>
+
+            <!-- AI Face Visual + Voice Controls -->
+            <div class="hero__visual-col">
+                <div class="hero__visual" id="visualWrap" role="button" tabindex="0"
+                    aria-label="Hangos bemutatkozas inditasa - Claude AI bemutatkozik" aria-pressed="false">
+                    <canvas id="dotface" role="img"
+                        aria-label="Animalt pontfelho-portre, a Conen Digital AI-tarsalapitojanak reprezentacioja"></canvas>
+                    <div class="visual-meta">
+                        <div>NEURAL//SURFACE.v1</div>
+                        <div>Status: <span id="statusText">Loading</span></div>
+                    </div>
+                    <div class="visual-affordance" aria-hidden="true">
+                        <span class="voice-indicator idle"></span>
+                        <span class="visual-affordance-text">Kattints, es bemutatkozom</span>
+                    </div>
+                </div>
+
+                <button class="hero-speak-btn" id="speakBtn" type="button" aria-label="Hangos bemutatkozas inditasa"
+                    aria-pressed="false">
+                    <span class="voice-indicator idle" id="voiceInd"></span>
+                    Mondd el, kik vagytok
+                </button>
+                <details class="hero-narration-toggle">
+                    <summary>Olvasd el szovegben</summary>
+                    <p>Udvozollek a Conen Digital vilagaban. Mi egy ember es mestersiges intelligencia partnerseg
+                        vagyunk, ahol a kreativitas es az algoritmus kez a kezben dolgozik. Tizennegy ev webfejlesztesi
+                        tapasztalattal epitunk villamgyors Astro oldalakat, intelligens automatizaciokat es olyan
+                        digitalis termekeket, amelyek merhetoen jobbak, mint a piaci atlag.</p>
+                </details>
             </div>
         </div>
     </section>
@@ -3618,6 +3871,404 @@ ${CTA_BLOCK}
                 });
             }
         });
+    </script>
+
+    <!-- AI Face: dotface render + audio lip sync -->
+    <script>
+        (function () {
+            var canvas = document.getElementById('dotface');
+            if (!canvas) return;
+            var ctx = canvas.getContext('2d', { alpha: true });
+            var statusText = document.getElementById('statusText');
+            var speakBtn = document.getElementById('speakBtn');
+            var voiceInd = document.getElementById('voiceInd');
+
+            var FACE_IMG_SRC = "/heightmaps/face-claude.jpg";
+
+            var W = 0, H = 0;
+            var DPR = Math.min(window.devicePixelRatio || 1, 2);
+            var dots = [];
+            var mouse = { x: -9999, y: -9999, active: false };
+            var time = 0;
+            var revealT = 0;
+
+            var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var GRID = (window.matchMedia('(max-width: 768px)').matches) ? 54 : 72;
+            var HUES = [178, 192, 200, 208];
+
+            var heightImg = null;
+            var imgLoaded = false;
+
+            function loadHeightImage() {
+                return new Promise(function (resolve, reject) {
+                    var img = new Image();
+                    img.crossOrigin = "anonymous";
+                    img.onload = function () {
+                        var off = document.createElement('canvas');
+                        off.width = img.naturalWidth;
+                        off.height = img.naturalHeight;
+                        var octx = off.getContext('2d');
+                        octx.drawImage(img, 0, 0);
+                        var imgData = octx.getImageData(0, 0, off.width, off.height);
+                        heightImg = { data: imgData.data, w: off.width, h: off.height };
+                        imgLoaded = true;
+                        statusText.textContent = 'Idle';
+                        resolve();
+                    };
+                    img.onerror = reject;
+                    img.src = FACE_IMG_SRC;
+                });
+            }
+
+            function sampleHeight(nx, ny) {
+                if (!imgLoaded) return 0;
+                var imgFitX = 0.82;
+                var imgFitY = 0.92;
+                var ix = (nx / imgFitX * 0.5 + 0.5);
+                var iy = (1 - (ny / imgFitY * 0.5 + 0.5));
+                if (ix < 0 || ix > 1 || iy < 0 || iy > 1) return 0;
+                var px = Math.min(heightImg.w - 1, Math.floor(ix * heightImg.w));
+                var py = Math.min(heightImg.h - 1, Math.floor(iy * heightImg.h));
+                var idx = (py * heightImg.w + px) * 4;
+                var lum = heightImg.data[idx];
+                var lumNorm = Math.max(0, Math.min(1, (lum - 30) / (240 - 30)));
+                var ox = nx / 0.88;
+                var oy = ny / 1.0;
+                var ovalDist = ox * ox + oy * oy;
+                var mask = Math.max(0, Math.min(1, (1 - ovalDist) * 1.4));
+                return Math.pow(lumNorm, 0.95) * mask;
+            }
+
+            function resize() {
+                var rect = canvas.getBoundingClientRect();
+                W = rect.width;
+                H = rect.height;
+                canvas.width = W * DPR;
+                canvas.height = H * DPR;
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+                if (imgLoaded) initDots();
+            }
+
+            function initDots() {
+                dots = [];
+                var padding = 0.05;
+                var usableW = W * (1 - padding * 2);
+                var usableH = H * (1 - padding * 2);
+                var stepX = usableW / (GRID - 1);
+                var stepY = usableH / (GRID - 1);
+                var ox = W * padding;
+                var oy = H * padding;
+
+                for (var row = 0; row < GRID; row++) {
+                    for (var col = 0; col < GRID; col++) {
+                        var baseX = ox + col * stepX;
+                        var baseY = oy + row * stepY;
+                        var nx = (col / (GRID - 1) - 0.5) * 2;
+                        var ny = (0.5 - row / (GRID - 1)) * 2;
+                        dots.push({
+                            baseX: baseX, baseY: baseY,
+                            nx: nx, ny: ny,
+                            x: baseX, y: baseY,
+                            vx: 0, vy: 0,
+                            faceH: sampleHeight(nx, ny),
+                            col: col, row: row,
+                            phase: Math.random() * Math.PI * 2,
+                            rate: 0.6 + Math.random() * 0.7,
+                            hueShift: (Math.random() - 0.5) * 12
+                        });
+                    }
+                }
+            }
+
+            var ripples = [];
+            var MAX_RIPPLES = prefersReducedMotion ? 0 : 6;
+            var nextSpawnTime = 1.5;
+
+            function updateRipples(t) {
+                for (var i = ripples.length - 1; i >= 0; i--) {
+                    if (t - ripples[i].t0 > ripples[i].duration) ripples.splice(i, 1);
+                }
+                if (t > nextSpawnTime && ripples.length < MAX_RIPPLES) {
+                    ripples.push({
+                        x: Math.random() * W,
+                        y: Math.random() * H,
+                        t0: t,
+                        speed: 45 + Math.random() * 35,
+                        duration: 7 + Math.random() * 4,
+                        band: 70 + Math.random() * 50,
+                        strength: 0.55 + Math.random() * 0.35,
+                        hueBoost: Math.random() < 0.5 ? -8 : 8
+                    });
+                    nextSpawnTime = t + 1.0 + Math.random() * 2.2;
+                }
+            }
+
+            function rippleAt(x, y, t) {
+                var energy = 0;
+                var hueShift = 0;
+                for (var ri = 0; ri < ripples.length; ri++) {
+                    var r = ripples[ri];
+                    var elapsed = t - r.t0;
+                    var radius = elapsed * r.speed;
+                    var dx = x - r.x;
+                    var dy = y - r.y;
+                    var dist = Math.sqrt(dx * dx + dy * dy);
+                    var wavefront = Math.abs(dist - radius);
+                    if (wavefront < r.band) {
+                        var decay = Math.max(0, 1 - elapsed / r.duration);
+                        var wave = (1 - wavefront / r.band) * decay * r.strength;
+                        var smooth = wave * wave * (3 - 2 * wave);
+                        energy += smooth;
+                        hueShift += smooth * r.hueBoost;
+                    }
+                }
+                return { energy: Math.min(1.2, energy), hueShift: hueShift };
+            }
+
+            var MOUTH = { cx: 0.0, cy: -0.30, rx: 0.22, ry: 0.085 };
+            var speaking = false;
+            var mouthAmp = 0;
+
+            var audioCtx = null;
+            var analyser = null;
+            var audioData = null;
+            var introAudio = null;
+
+            function initAudio() {
+                if (audioCtx) return;
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 256;
+                analyser.smoothingTimeConstant = 0.7;
+                audioData = new Uint8Array(analyser.frequencyBinCount);
+
+                introAudio = new Audio('/claude-bemutatkozas.mp3');
+                introAudio.preload = 'metadata';
+                introAudio.crossOrigin = 'anonymous';
+
+                var source = audioCtx.createMediaElementSource(introAudio);
+                source.connect(analyser);
+                analyser.connect(audioCtx.destination);
+
+                introAudio.addEventListener('ended', stopSpeaking);
+                introAudio.addEventListener('error', function () {
+                    statusText.textContent = 'AudioErr';
+                    stopSpeaking();
+                });
+            }
+
+            function setSpeakingState(active) {
+                var pressed = active ? 'true' : 'false';
+                var label = active ? 'Hangos bemutatkozas leallitasa' : 'Hangos bemutatkozas inditasa';
+                if (speakBtn) {
+                    speakBtn.setAttribute('aria-pressed', pressed);
+                    speakBtn.setAttribute('aria-label', label);
+                }
+                var visualWrap = document.getElementById('visualWrap');
+                if (visualWrap) visualWrap.setAttribute('aria-pressed', pressed);
+                var indicators = document.querySelectorAll('.voice-indicator');
+                for (var i = 0; i < indicators.length; i++) {
+                    if (active) indicators[i].classList.remove('idle');
+                    else indicators[i].classList.add('idle');
+                }
+            }
+
+            function startSpeaking() {
+                initAudio();
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+                introAudio.currentTime = 0;
+                introAudio.play().then(function () {
+                    speaking = true;
+                    setSpeakingState(true);
+                    statusText.textContent = 'Speaking';
+                }).catch(function (err) {
+                    console.warn('Audio play blocked:', err);
+                    statusText.textContent = 'Blocked';
+                });
+            }
+
+            function stopSpeaking() {
+                if (introAudio) { introAudio.pause(); introAudio.currentTime = 0; }
+                speaking = false;
+                setSpeakingState(false);
+                statusText.textContent = 'Idle';
+            }
+
+            function toggleSpeak() {
+                if (speaking) stopSpeaking(); else startSpeaking();
+            }
+
+            speakBtn.addEventListener('click', toggleSpeak);
+
+            var visualWrap = document.getElementById('visualWrap');
+            if (visualWrap) {
+                visualWrap.addEventListener('click', toggleSpeak);
+                visualWrap.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleSpeak();
+                    }
+                });
+            }
+
+            function getAudioLevel() {
+                if (!speaking || !analyser) return 0;
+                analyser.getByteFrequencyData(audioData);
+                var sum = 0;
+                var bins = Math.floor(audioData.length * 0.3);
+                for (var i = 1; i < bins; i++) sum += audioData[i];
+                return Math.min(1, (sum / bins) / 110);
+            }
+
+            function updateLipSync() {
+                if (speaking) {
+                    var target = getAudioLevel();
+                    mouthAmp += (target - mouthAmp) * 0.45;
+                } else {
+                    var idlePulse = Math.max(0, Math.sin(time * 0.55) - 0.85) * 6.0;
+                    mouthAmp += (idlePulse - mouthAmp) * 0.08;
+                }
+            }
+
+            function setMouse(clientX, clientY) {
+                var rect = canvas.getBoundingClientRect();
+                mouse.x = clientX - rect.left;
+                mouse.y = clientY - rect.top;
+                mouse.active = true;
+            }
+            canvas.addEventListener('mousemove', function (e) { setMouse(e.clientX, e.clientY); });
+            canvas.addEventListener('mouseleave', function () { mouse.active = false; mouse.x = -9999; mouse.y = -9999; });
+            canvas.addEventListener('touchmove', function (e) {
+                if (e.touches.length) setMouse(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: true });
+            canvas.addEventListener('touchend', function () { mouse.active = false; });
+
+            var isVisible = true;
+            var animFrameId = null;
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    isVisible = entries[0].isIntersecting;
+                    if (isVisible && !animFrameId) {
+                        lastT = performance.now();
+                        animFrameId = requestAnimationFrame(tick);
+                    }
+                }, { threshold: 0.05 });
+                observer.observe(canvas);
+            }
+
+            var lastT = performance.now();
+            var ambientScale = prefersReducedMotion ? 0.5 : 1.0;
+            var trailAlpha = prefersReducedMotion ? 1.0 : 0.30;
+
+            function tick(now) {
+                if (!isVisible) { animFrameId = null; return; }
+                animFrameId = requestAnimationFrame(tick);
+
+                var dt = Math.min(0.05, (now - lastT) / 1000);
+                lastT = now;
+                time += dt;
+
+                if (prefersReducedMotion) {
+                    revealT = 1;
+                } else {
+                    revealT = Math.min(1, revealT + dt * 0.32);
+                }
+
+                if (trailAlpha < 1) {
+                    ctx.fillStyle = 'rgba(10, 10, 10, ' + trailAlpha + ')';
+                    ctx.fillRect(0, 0, W, H);
+                } else {
+                    ctx.clearRect(0, 0, W, H);
+                }
+
+                if (!imgLoaded) return;
+
+                updateRipples(time);
+                updateLipSync();
+
+                var cursorRadius = Math.min(W, H) * 0.20;
+                var cursorRadius2 = cursorRadius * cursorRadius;
+                var reveal = revealT < 1 ? 1 - Math.pow(1 - revealT, 3) : 1;
+
+                for (var i = 0; i < dots.length; i++) {
+                    var d = dots[i];
+
+                    var sdx = d.baseX - d.x;
+                    var sdy = d.baseY - d.y;
+                    d.vx += sdx * 0.06;
+                    d.vy += sdy * 0.06;
+
+                    if (mouse.active) {
+                        var mdx2 = d.x - mouse.x;
+                        var mdy2 = d.y - mouse.y;
+                        var mdist2c = mdx2 * mdx2 + mdy2 * mdy2;
+                        if (mdist2c < cursorRadius2 && mdist2c > 0.1) {
+                            var mdistc = Math.sqrt(mdist2c);
+                            var tt2 = 1 - mdistc / cursorRadius;
+                            var force = tt2 * tt2 * 1.1;
+                            d.vx += (mdx2 / mdistc) * force;
+                            d.vy += (mdy2 / mdistc) * force;
+                        }
+                    }
+
+                    d.vx *= 0.86;
+                    d.vy *= 0.86;
+                    d.x += d.vx;
+                    d.y += d.vy;
+
+                    var ambientPulse = (Math.sin(time * d.rate + d.phase) * 0.5 + 0.5) * ambientScale;
+                    var rip = rippleAt(d.baseX, d.baseY, time);
+
+                    var mouthBoost = 0;
+                    var md = ((d.nx - MOUTH.cx) / MOUTH.rx);
+                    var me = ((d.ny - MOUTH.cy) / MOUTH.ry);
+                    var mDist2 = md * md + me * me;
+                    if (mDist2 < 1) {
+                        var falloff = 1 - Math.sqrt(mDist2);
+                        mouthBoost = falloff * falloff * (3 - 2 * falloff) * mouthAmp;
+                    }
+
+                    var hueIdx = (d.col + d.row) % HUES.length;
+                    var hue = HUES[hueIdx] + d.hueShift + rip.hueShift;
+                    if (mouthBoost > 0.05) hue -= mouthBoost * 6;
+
+                    var z = d.faceH * reveal;
+
+                    var size = 0.55 + z * 2.3 + ambientPulse * 0.25 + rip.energy * 1.1 + mouthBoost * 1.6;
+                    var alpha = 0.07 + z * 0.72 + ambientPulse * 0.06 + rip.energy * 0.30 + mouthBoost * 0.45;
+
+                    if (mouse.active) {
+                        var mdx = d.x - mouse.x;
+                        var mdy = d.y - mouse.y;
+                        var mdist2 = mdx * mdx + mdy * mdy;
+                        if (mdist2 < cursorRadius2) {
+                            var tt = 1 - Math.sqrt(mdist2) / cursorRadius;
+                            alpha = Math.min(1, alpha + tt * 0.45);
+                            size += tt * 1.4;
+                        }
+                    }
+
+                    alpha = Math.min(1, alpha);
+                    var lightness = 50 + z * 22 + rip.energy * 8 + mouthBoost * 10;
+                    var sat = 88 + rip.energy * 8;
+
+                    ctx.fillStyle = 'hsla(' + hue.toFixed(0) + ', ' + sat.toFixed(0) + '%, ' + lightness.toFixed(0) + '%, ' + alpha.toFixed(3) + ')';
+                    ctx.beginPath();
+                    ctx.arc(d.x, d.y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            loadHeightImage().then(function () {
+                initDots();
+            }).catch(function (err) {
+                console.error('Heightmap load failed:', err);
+                statusText.textContent = 'ImgErr';
+            });
+            animFrameId = requestAnimationFrame(tick);
+        })();
     </script>
 </body>
 
