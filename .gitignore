@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+.claude/
+*.mp4
+*.wfp
+*.mp3
+*.pdf
+Untitled
