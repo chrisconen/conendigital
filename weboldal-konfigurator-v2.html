@@ -122,10 +122,10 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .device-frame{position:relative;width:100%;height:100%;max-width:1400px;display:flex;z-index:var(--z-device);transition:all var(--t-slow) var(--e-in-out)}
 .device-frame[data-device="desktop"]{border-radius:var(--r-md);box-shadow:0 30px 60px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);overflow:hidden}
 .device-frame[data-device="tablet"]{max-width:840px;border-radius:22px;padding:16px;background:#1a1a1a;box-shadow:0 0 0 1.5px #2a2a2a,0 30px 60px rgba(0,0,0,.5);max-height:calc(100dvh - 120px)}
-.device-frame[data-device="tablet"] .preview-frame{border-radius:8px;overflow:hidden}
+.device-frame[data-device="tablet"] .preview-frame{border-radius:8px}
 .device-frame[data-device="tablet"]::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:#333;z-index:3}
 .device-frame[data-device="mobile"]{max-width:390px;border-radius:50px;padding:12px;background:#1a1a1a;box-shadow:0 0 0 1.5px #2a2a2a,0 30px 60px rgba(0,0,0,.5);max-height:calc(100dvh - 120px)}
-.device-frame[data-device="mobile"] .preview-frame{border-radius:38px;overflow:hidden}
+.device-frame[data-device="mobile"] .preview-frame{border-radius:38px}
 .device-frame[data-device="mobile"]::after{content:'';position:absolute;top:18px;left:50%;transform:translateX(-50%);width:120px;height:32px;border-radius:100px;background:#000;z-index:3}
 .device-frame[data-device="mobile"]::before{content:'';position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:140px;height:4px;border-radius:100px;background:#333;z-index:3}
 
@@ -140,7 +140,12 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .seam-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:var(--bg);border:1.5px solid var(--accent);color:var(--accent);pointer-events:auto;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(0,240,255,.4),0 4px 12px rgba(0,0,0,.3);cursor:ew-resize;transition:transform var(--t-fast) var(--e-out),box-shadow var(--t-fast)}
 .seam-handle:hover{transform:translate(-50%,-50%) scale(1.08)}
 
-.preview-frame[data-active="true"]::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 2px var(--accent);opacity:.35;transition:opacity var(--t-fast)}
+/* Variant-active: frames overlap for clip-path */
+.device-frame.variant-active .preview-frame{position:absolute;inset:0;flex:none}
+
+/* Active-target indikátor (erős glow + dim inaktív) */
+.preview-frame[data-active="true"]{box-shadow:inset 0 0 0 3px var(--accent),0 0 30px rgba(0,240,255,.15);z-index:calc(var(--z-preview) + 1)}
+.device-frame.variant-active .preview-frame[data-active="false"]{filter:brightness(0.85);transition:filter var(--t-fast)}
 
 /* --- ConfigOverlay --- */
 .config-overlay{position:fixed;top:16px;right:16px;bottom:calc(var(--bottom-bar-height) + 16px);width:var(--overlay-pill-width);z-index:var(--z-config);display:flex;transition:width var(--t-slower) var(--e-out)}
@@ -366,6 +371,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .cto-credit a{color:var(--mid);border-bottom:1px dashed rgba(255,255,255,.2);text-decoration:none}
 .cto-credit a:hover{color:var(--accent);border-color:var(--accent)}
 
+/* Variant onboarding banner */
+.variant-onboarding{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:calc(var(--z-seam) + 5);max-width:480px;padding:12px 16px;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--accent);border-radius:var(--r-md);font-size:12px;color:var(--fg);display:flex;flex-direction:column;gap:8px;animation:variant-onboarding-in 320ms ease-out}
+.variant-onboarding[hidden]{display:none}
+@keyframes variant-onboarding-in{from{opacity:0;transform:translateX(-50%) translateY(-12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
 /* Swap button on seam */
 .seam-swap{position:absolute;top:calc(50% + 28px);left:50%;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--accent);color:var(--accent);pointer-events:auto;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.6;transition:opacity var(--t-fast);font-size:11px}
 .seam-swap:hover{opacity:1}
@@ -414,6 +424,10 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
         </div>
       </div>
       <div class="motion-layer" id="motionLayer" aria-hidden="true"></div>
+      <div class="variant-onboarding" id="variantOnboarding" hidden>
+        <p>Most két verzió él egymás mellett. A jobb oldal automatikusan másik színvilágot kapott — válassz bármi mást is (másik fejléc, másik hero), és látod a különbséget. Klikkelj a másik oldalra ha azt akarod módosítani.</p>
+        <button class="btn btn-s" id="variantOnboardingClose">Értem</button>
+      </div>
     </main>
 
     <!-- ConfigOverlay -->
@@ -1754,10 +1768,15 @@ vToggle.addEventListener('click', () => {
 function openVariant() {
   if (!active().type) { toast('Először válassz típust.'); return; }
   State.variant = JSON.parse(JSON.stringify(State.site));
+  // Auto-divergence: variant kap másik színvilágot
+  const schemes = ['dark-cyan','dark-mag','dark-orange','dark-green','light-blue','light-emerald','light-warm','bold','earth','mono'];
+  const idx = schemes.indexOf(State.site.style.color_scheme || 'dark-cyan');
+  State.variant.style.color_scheme = schemes[(idx + 1) % schemes.length];
   State.variant_active = true;
   State.variant_seam_pos = 0.5;
   State.variant_active_target = 'variant';
   vToggle.setAttribute('aria-pressed', 'true');
+  document.getElementById('deviceFrame').classList.add('variant-active');
   if (supportsViewTransitions() && !State.meta.motion_reduce) {
     document.startViewTransition(() => render());
   } else {
@@ -1765,6 +1784,7 @@ function openVariant() {
   }
   applySeamClip();
   toast('Variant-mode bekapcsolva. A választásaid a jobb oldalra mennek.');
+  showVariantOnboarding();
   save();
 }
 
@@ -1772,6 +1792,8 @@ function closeVariant() {
   State.variant_active = false;
   State.variant_active_target = 'site';
   vToggle.setAttribute('aria-pressed', 'false');
+  document.getElementById('deviceFrame').classList.remove('variant-active');
+  document.getElementById('variantOnboarding').hidden = true;
   clearSeamClip();
   if (supportsViewTransitions() && !State.meta.motion_reduce) {
     document.startViewTransition(() => {
@@ -1868,6 +1890,17 @@ seamHandle.addEventListener('keydown', (e) => {
       save();
     }
   });
+});
+
+// Variant onboarding (first-time banner)
+const VARIANT_ONBOARD_KEY = 'core_v2_variant_onboarded';
+function showVariantOnboarding() {
+  if (localStorage.getItem(VARIANT_ONBOARD_KEY)) return;
+  document.getElementById('variantOnboarding').hidden = false;
+}
+document.getElementById('variantOnboardingClose').addEventListener('click', () => {
+  document.getElementById('variantOnboarding').hidden = true;
+  try { localStorage.setItem(VARIANT_ONBOARD_KEY, '1'); } catch(e) {}
 });
 
 /* ==============================
