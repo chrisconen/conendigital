@@ -151,7 +151,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .config-overlay{position:fixed;top:16px;right:16px;bottom:calc(var(--bottom-bar-height) + 16px);width:var(--overlay-pill-width);z-index:var(--z-config);display:flex;transition:width var(--t-slower) var(--e-out)}
 .config-overlay[data-open="true"]{width:var(--overlay-width)}
 
-.cfg-pill{position:absolute;top:50%;left:0;transform:translateY(-50%);width:var(--overlay-pill-width);height:120px;background:rgba(10,10,10,.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-border);border-radius:var(--r-md) 0 0 var(--r-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--accent);cursor:pointer;transition:opacity var(--t-base),transform var(--t-base)}
+.cfg-pill{position:absolute;top:50%;left:-8px;transform:translateY(-50%);width:calc(var(--overlay-pill-width) + 8px);height:140px;background:rgba(10,10,10,.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-border);border-radius:var(--r-md) 0 0 var(--r-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--accent);cursor:pointer;transition:opacity var(--t-base),transform var(--t-base);padding:12px 8px}
 .cfg-pill-label{writing-mode:vertical-rl;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
 .config-overlay[data-open="true"] .cfg-pill{opacity:0;pointer-events:none;transform:translateY(-50%) translateX(-8px)}
 
