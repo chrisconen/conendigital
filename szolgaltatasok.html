@@ -2183,6 +2183,7 @@
         const reveals = document.querySelectorAll('.reveal'); function revealOnScroll() { reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active') }) } window.addEventListener('scroll', revealOnScroll); window.addEventListener('load', revealOnScroll);
         document.querySelectorAll('.faq-question').forEach(btn => { btn.addEventListener('click', () => { const item = btn.parentElement; document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('active') }); item.classList.toggle('active') }) });
     </script>
+<script src="/blog-widget.js" defer></script>
 </body>
 
 </html>
