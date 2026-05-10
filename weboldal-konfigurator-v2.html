@@ -1,0 +1,2165 @@
+<!DOCTYPE html>
+<html lang="hu" data-cs="dark-cyan">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>IKER · Conen Digital · Vizuális weboldal-tervező</title>
+  <meta name="description" content="IKER — a világ első sales-tool-ja élő variant-compare-rel. Tervezd meg a weboldalad két verzióban, egyszerre. A Conen Digital CENTAUR-toolja.">
+  <link rel="canonical" href="https://conendigital.hu/weboldal-konfigurator-v2">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Sora:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+/* ============================================
+   CONEN DIGITAL KONFIGURÁTOR v2.0
+   Phase A+B — Foundation + Stage & Preview
+   ============================================ */
+
+/* --- Custom property-fa (root) --- */
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray-50:  #f8f9fa;
+  --gray-900: #1a1a1a;
+  --gray-800: #2a2a2a;
+  --accent:   #00f0ff;
+  --accent-2: #bf00ff;
+  --orange:   #ff6b00;
+  --green:    #00ff88;
+  --mid: rgba(255,255,255,.6);
+  --dim: rgba(255,255,255,.4);
+  --ghost: rgba(255,255,255,.04);
+  --ghost-2: rgba(255,255,255,.08);
+  --glass:  rgba(255,255,255,.03);
+  --glass-2: rgba(255,255,255,.05);
+  --glass-border: rgba(255,255,255,.08);
+  --font-main: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --stage-padding: 24px;
+  --overlay-width: 400px;
+  --overlay-pill-width: 48px;
+  --bottom-bar-height: 56px;
+  --device-frame-padding: 12px;
+  --r-xs: 3px;
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 16px;
+  --r-xl: 24px;
+  --z-stage: 1;
+  --z-device: 5;
+  --z-preview: 10;
+  --z-seam: 20;
+  --z-motion: 25;
+  --z-config: 50;
+  --z-bottom: 60;
+  --z-toast: 100;
+  --z-intro: 1000;
+  --t-fast: 180ms;
+  --t-base: 280ms;
+  --t-slow: 380ms;
+  --t-slower: 520ms;
+  --t-cinematic: 640ms;
+  --e-out: cubic-bezier(0.4, 0, 0.1, 1);
+  --e-in-out: cubic-bezier(0.25, 0.1, 0.3, 1);
+  --e-back: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --e-in: cubic-bezier(0.4, 0, 1, 1);
+  --vt-color: 380ms ease-out;
+  --vt-header: 520ms var(--e-out);
+  --vt-hero: 640ms var(--e-in-out);
+  --bg: #0a0a0a;
+  --fg: #ffffff;
+  --is-light: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 60ms; --t-base: 60ms; --t-slow: 60ms;
+    --t-slower: 60ms; --t-cinematic: 60ms;
+  }
+  * { animation-duration: 60ms !important; transition-duration: 60ms !important; }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation-duration: 60ms; }
+}
+
+/* --- Színvilág-tokenek --- */
+html[data-cs="dark-cyan"]    { --bg:#0a0a0a; --fg:#fff; --accent:#00f0ff; --accent-2:#bf00ff; --is-light:0; }
+html[data-cs="dark-mag"]     { --bg:#0a0a0a; --fg:#fff; --accent:#bf00ff; --accent-2:#00f0ff; --is-light:0; }
+html[data-cs="dark-orange"]  { --bg:#0a0a0a; --fg:#fff; --accent:#ff6b00; --accent-2:#ffaa00; --is-light:0; }
+html[data-cs="dark-green"]   { --bg:#0a0a0a; --fg:#fff; --accent:#00ff88; --accent-2:#00ccff; --is-light:0; }
+html[data-cs="light-blue"]   { --bg:#f8f9fa; --fg:#0a0a0a; --accent:#2563eb; --accent-2:#7c3aed; --is-light:1; }
+html[data-cs="light-emerald"]{ --bg:#f8f9fa; --fg:#0a0a0a; --accent:#059669; --accent-2:#0891b2; --is-light:1; }
+html[data-cs="light-warm"]   { --bg:#faf8f5; --fg:#1c1917; --accent:#c2410c; --accent-2:#ca8a04; --is-light:1; }
+html[data-cs="bold"]         { --bg:#1e1b4b; --fg:#fff; --accent:#ec4899; --accent-2:#6366f1; --is-light:0; }
+html[data-cs="earth"]        { --bg:#292524; --fg:#f5f5f4; --accent:#ca8a04; --accent-2:#65a30d; --is-light:0; }
+html[data-cs="mono"]         { --bg:#09090b; --fg:#fafafa; --accent:#a1a1aa; --accent-2:#d4d4d8; --is-light:0; }
+
+/* --- Reset --- */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--black);color:var(--white);font-family:var(--font-main);overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+button:disabled{opacity:.4;cursor:not-allowed}
+::selection{background:var(--accent);color:var(--bg)}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+
+.sr-skip{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+.sr-skip:focus{left:16px;top:16px;width:auto;height:auto;padding:8px 16px;background:var(--accent);color:var(--bg);border-radius:var(--r-sm);z-index:var(--z-toast)}
+
+.bg{position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(0,240,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,.025) 1px,transparent 1px);background-size:60px 60px}
+
+/* --- App-grid --- */
+.app{position:relative;width:100vw;height:100dvh;z-index:var(--z-stage);display:grid;grid-template-rows:1fr var(--bottom-bar-height);overflow:hidden}
+
+/* --- Stage --- */
+.stage{position:relative;grid-row:1;overflow:hidden;background:radial-gradient(ellipse at top,rgba(0,240,255,.04),transparent 50%),var(--black);display:flex;align-items:center;justify-content:center;padding:var(--stage-padding);z-index:var(--z-stage)}
+
+/* --- Device-frame + Bezel --- */
+.device-frame{position:relative;width:100%;height:100%;max-width:1400px;display:flex;z-index:var(--z-device);transition:all var(--t-slow) var(--e-in-out)}
+.device-frame[data-device="desktop"]{border-radius:var(--r-md);box-shadow:0 30px 60px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);overflow:hidden}
+.device-frame[data-device="tablet"]{max-width:840px;border-radius:22px;padding:16px;background:#1a1a1a;box-shadow:0 0 0 1.5px #2a2a2a,0 30px 60px rgba(0,0,0,.5);max-height:calc(100dvh - 120px)}
+.device-frame[data-device="tablet"] .preview-frame{border-radius:8px;overflow:hidden}
+.device-frame[data-device="tablet"]::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:#333;z-index:3}
+.device-frame[data-device="mobile"]{max-width:390px;border-radius:50px;padding:12px;background:#1a1a1a;box-shadow:0 0 0 1.5px #2a2a2a,0 30px 60px rgba(0,0,0,.5);max-height:calc(100dvh - 120px)}
+.device-frame[data-device="mobile"] .preview-frame{border-radius:38px;overflow:hidden}
+.device-frame[data-device="mobile"]::after{content:'';position:absolute;top:18px;left:50%;transform:translateX(-50%);width:120px;height:32px;border-radius:100px;background:#000;z-index:3}
+.device-frame[data-device="mobile"]::before{content:'';position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:140px;height:4px;border-radius:100px;background:#333;z-index:3}
+
+.preview-frame{flex:1;height:100%;background:var(--bg);color:var(--fg);overflow:auto;position:relative;z-index:var(--z-preview);transition:background var(--vt-color),color var(--vt-color)}
+.preview-frame::-webkit-scrollbar{width:3px}
+.preview-frame[data-role="variant"][hidden]{display:none}
+
+/* --- Variant-seam --- */
+.variant-seam{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:32px;z-index:var(--z-seam);cursor:ew-resize;pointer-events:none}
+.variant-seam[hidden]{display:none}
+.seam-line{position:absolute;top:0;bottom:0;left:50%;width:1.5px;background:linear-gradient(180deg,transparent 0%,var(--accent) 15%,var(--accent-2) 85%,transparent 100%);transform:translateX(-50%);filter:drop-shadow(0 0 4px var(--accent))}
+.seam-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:var(--bg);border:1.5px solid var(--accent);color:var(--accent);pointer-events:auto;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(0,240,255,.4),0 4px 12px rgba(0,0,0,.3);cursor:ew-resize;transition:transform var(--t-fast) var(--e-out),box-shadow var(--t-fast)}
+.seam-handle:hover{transform:translate(-50%,-50%) scale(1.08)}
+
+.preview-frame[data-active="true"]::after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 2px var(--accent);opacity:.35;transition:opacity var(--t-fast)}
+
+/* --- ConfigOverlay --- */
+.config-overlay{position:fixed;top:16px;right:16px;bottom:calc(var(--bottom-bar-height) + 16px);width:var(--overlay-pill-width);z-index:var(--z-config);display:flex;transition:width var(--t-slower) var(--e-out)}
+.config-overlay[data-open="true"]{width:var(--overlay-width)}
+
+.cfg-pill{position:absolute;top:50%;left:0;transform:translateY(-50%);width:var(--overlay-pill-width);height:120px;background:rgba(10,10,10,.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-border);border-radius:var(--r-md) 0 0 var(--r-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--accent);cursor:pointer;transition:opacity var(--t-base),transform var(--t-base)}
+.cfg-pill-label{writing-mode:vertical-rl;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.config-overlay[data-open="true"] .cfg-pill{opacity:0;pointer-events:none;transform:translateY(-50%) translateX(-8px)}
+
+.cfg-panel{flex:1;background:rgba(10,10,10,.88);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid var(--glass-border);border-radius:var(--r-md);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateX(20px);transition:opacity var(--t-base) var(--t-fast),transform var(--t-base) var(--t-fast)}
+.config-overlay[data-open="true"] .cfg-panel{opacity:1;transform:translateX(0)}
+
+.cfg-header{padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--glass-border)}
+.logo{font-family:var(--font-mono);font-size:1rem;font-weight:700}
+.logo span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cfg-step-pilot{margin-left:auto}
+.step-count{font-family:var(--font-mono);font-size:.7rem;color:var(--dim)}
+.cfg-close{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-xs);font-size:1.1rem;color:var(--dim);transition:color var(--t-fast),background var(--t-fast)}
+.cfg-close:hover{color:var(--white);background:rgba(255,255,255,.06)}
+
+.cfg-content{flex:1;overflow-y:auto;padding:20px}
+.cfg-content::-webkit-scrollbar{width:3px}
+
+/* --- Step content stílusok --- */
+.step{display:none}.step.on{display:block;animation:step-in 280ms ease-out}
+@keyframes step-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sl{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);letter-spacing:.12em;margin-bottom:.6rem}
+.st{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:700;margin-bottom:.4rem;line-height:1.2}
+.st em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sh{font-size:.8rem;color:var(--mid);margin-bottom:1.2rem;line-height:1.5}
+.ch{font-family:var(--font-mono);font-size:.6rem;letter-spacing:.1em;margin:1rem 0 .5rem;padding-bottom:.3rem;border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:.4rem;color:var(--mid)}
+.ch i{width:5px;height:5px;border-radius:50%;display:inline-block}
+
+/* Cards grid */
+.g{display:grid;gap:.6rem;margin-bottom:.8rem}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.c{position:relative;background:var(--glass);border:1px solid var(--glass-border);border-radius:8px;cursor:pointer;transition:all .2s;text-align:center;padding:.75rem .6rem;overflow:hidden}
+.c:hover{border-color:rgba(0,240,255,.25);transform:translateY(-1px)}.c.sel{border-color:var(--accent);background:rgba(0,240,255,.05);box-shadow:0 0 0 1px var(--accent)}
+.cn{font-weight:600;font-size:.75rem;margin-bottom:.1rem}.cd{font-size:.6rem;color:var(--mid);line-height:1.4}
+.ck{position:absolute;top:5px;left:5px;width:14px;height:14px;border:1.5px solid rgba(255,255,255,.15);border-radius:50%;transition:all .15s;background:rgba(0,0,0,.3)}
+.c.sel .ck{border-color:var(--accent);background:var(--accent)}.c.sel .ck::after{content:'';display:block;width:5px;height:5px;background:var(--black);border-radius:50%;margin:auto}
+
+/* Color swatches */
+.colors{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem}
+.cs{width:48px;height:48px;border-radius:8px;cursor:pointer;border:2px solid transparent;transition:all .2s;position:relative;overflow:hidden}
+.cs:hover{transform:scale(1.06)}.cs.sel{border-color:var(--white);box-shadow:0 0 0 2px var(--accent)}
+.cs span{position:absolute;bottom:0;left:0;right:0;padding:2px;text-align:center;font-family:var(--font-mono);font-size:.35rem;background:rgba(0,0,0,.6)}
+
+/* Font cards */
+.fonts{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.8rem}
+.fc{padding:.6rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:6px;cursor:pointer;text-align:center;transition:all .15s}
+.fc:hover{border-color:rgba(0,240,255,.25)}.fc.sel{border-color:var(--accent);background:rgba(0,240,255,.05)}
+.fc-p{font-size:1.1rem;font-weight:600;margin-bottom:.15rem}.fc-n{font-family:var(--font-mono);font-size:.45rem;color:var(--dim)}
+
+/* Slider */
+.srow{display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;padding:.5rem .7rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:6px}
+.srow label{font-size:.7rem;font-weight:500;min-width:60px}
+.srow output{font-family:var(--font-mono);font-size:.65rem;color:var(--accent);min-width:30px;text-align:right}
+input[type=range]{flex:1;-webkit-appearance:none;background:transparent}
+input[type=range]::-webkit-slider-track{height:3px;background:rgba(255,255,255,.1);border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);margin-top:-5px}
+
+/* --- PreviewControls --- */
+.cfg-preview-controls{padding:10px 16px;border-top:1px solid var(--glass-border);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.cfg-preview-controls input[type=text]{flex:1;min-width:60px;padding:4px 8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:3px;color:var(--white);font-size:.7rem;font-family:var(--font-main)}
+.cfg-preview-controls input[type=text]:focus{border-color:var(--accent);outline:none}
+.cfg-preview-controls input[type=text]::placeholder{color:var(--dim)}
+.ctrl-row{display:flex;align-items:center;gap:4px}
+.ctrl-pill{padding:3px 8px;font-family:var(--font-mono);font-size:.6rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:3px;cursor:pointer;color:var(--dim);transition:all .15s}
+.ctrl-pill:hover{border-color:rgba(0,240,255,.25)}.ctrl-pill.act{color:var(--accent);background:rgba(0,240,255,.08);border-color:var(--accent)}
+.ctrl-fs{display:flex;align-items:center;gap:4px}
+.ctrl-fs input[type=range]{width:50px}
+.ctrl-fs output{font-family:var(--font-mono);font-size:.55rem;color:var(--accent);width:24px}
+
+/* Upload */
+.upl-row{display:flex;gap:4px;width:100%}
+.upl{flex:1;display:flex;align-items:center;gap:4px;padding:4px 6px;background:var(--glass);border:1px dashed rgba(255,255,255,.1);border-radius:6px;cursor:pointer;font-size:.6rem;color:var(--mid);transition:all .15s;overflow:hidden}
+.upl:hover{border-color:rgba(0,240,255,.25)}.upl.has{border-style:solid;border-color:var(--accent);background:rgba(0,240,255,.03)}
+.upl input{display:none}.upl img{width:28px;height:18px;object-fit:contain;border-radius:2px;flex-shrink:0}
+.upl .x{width:16px;height:16px;border-radius:2px;background:rgba(255,80,80,.15);color:#f55;display:flex;align-items:center;justify-content:center;font-size:.55rem;cursor:pointer;flex-shrink:0;margin-left:auto}
+
+/* Logo color suggest */
+.logo-suggest{display:flex;align-items:center;gap:6px;padding:5px 8px;background:linear-gradient(90deg,rgba(0,240,255,.06),rgba(191,0,255,.04));border:1px solid rgba(0,240,255,.2);border-radius:6px;cursor:pointer;width:100%;text-align:left;transition:all .15s;font-family:var(--font-main)}
+.logo-suggest:hover{border-color:var(--accent)}
+.ls-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px rgba(0,240,255,.3)}
+.ls-text{flex:1;display:flex;flex-direction:column;gap:1px;min-width:0}
+.ls-eye{font-family:var(--font-mono);font-size:.45rem;color:var(--accent);letter-spacing:.1em}
+.ls-name{font-size:.65rem;font-weight:600;color:var(--white);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ls-cta{font-family:var(--font-mono);font-size:.55rem;color:var(--accent);flex-shrink:0}
+
+/* --- BottomBar --- */
+.bottom-bar{grid-row:2;height:var(--bottom-bar-height);background:rgba(8,8,8,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--glass-border);display:flex;align-items:center;gap:12px;padding:0 16px;z-index:var(--z-bottom);position:relative}
+.progress-track{position:absolute;top:0;left:0;right:0;height:2px;background:rgba(255,255,255,.04)}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:10%;transition:width var(--t-base) var(--e-out)}
+.btn{padding:8px 14px;border:1px solid;border-radius:var(--r-xs);font-family:var(--font-mono);font-size:12px;font-weight:500;display:inline-flex;align-items:center;gap:6px;transition:all var(--t-fast)}
+.btn-p{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.btn-p:hover:not(:disabled){background:transparent;color:var(--accent);box-shadow:0 0 16px rgba(0,240,255,.35)}
+.btn-s{background:transparent;color:var(--fg);border-color:var(--glass-border)}
+.btn-s:hover:not(:disabled){border-color:var(--fg)}
+.pill{padding:6px 12px;background:var(--glass);border:1px solid var(--glass-border);border-radius:100px;font-family:var(--font-mono);font-size:11px;letter-spacing:.03em;display:inline-flex;align-items:center;gap:6px;color:var(--mid);transition:all var(--t-fast)}
+.pill:hover{border-color:rgba(0,240,255,.3);color:var(--accent)}
+.pill[aria-pressed="true"]{background:rgba(0,240,255,.08);border-color:var(--accent);color:var(--accent)}
+.share-widget{margin-left:auto;display:flex;align-items:center;gap:6px}
+.share-widget input{width:200px;padding:5px 8px;background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--r-xs);color:var(--accent);font-family:var(--font-mono);font-size:10px}
+
+/* Motion layer */
+.motion-layer{position:absolute;inset:0;pointer-events:none;z-index:var(--z-motion)}
+
+/* View Transitions */
+::view-transition-group(vt-header){animation-duration:520ms;animation-timing-function:cubic-bezier(0.4,0,0.1,1)}
+::view-transition-group(vt-hero){animation-duration:640ms;animation-timing-function:cubic-bezier(0.25,0.1,0.3,1)}
+::view-transition-group(*){animation-duration:380ms;animation-timing-function:ease-out}
+
+.section-revealing{animation:section-reveal 320ms cubic-bezier(0.34,1.4,0.64,1) forwards}
+@keyframes section-reveal{from{opacity:0;transform:translateY(12px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+/* Cinematic intro */
+.cinematic-intro{position:fixed;inset:0;z-index:var(--z-intro);background:var(--black);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--font-mono);transition:opacity 420ms ease-out}
+.cinematic-intro[hidden]{display:none}
+.intro-stage{display:flex;flex-direction:column;align-items:center;gap:24px;max-width:600px;text-align:center;padding:32px}
+.intro-text{font-size:clamp(.85rem,2vw,1.1rem);letter-spacing:.06em;opacity:0;transition:opacity 400ms ease-out}
+.intro-stage[data-phase="1"] .intro-text,
+.intro-stage[data-phase="2"] .intro-text,
+.intro-stage[data-phase="3"] .intro-text,
+.intro-stage[data-phase="4"] .intro-text{opacity:1}
+.intro-mockup{display:flex;flex-direction:column;gap:8px;width:100%;max-width:420px}
+.m-line{height:0;border:1px dashed rgba(255,255,255,.06);border-radius:4px;transition:all 500ms ease-out;opacity:0}
+.intro-stage[data-phase="1"] .m-line,
+.intro-stage[data-phase="2"] .m-line,
+.intro-stage[data-phase="3"] .m-line,
+.intro-stage[data-phase="4"] .m-line{opacity:1}
+.m-header{height:24px}.m-hero{height:80px}.m-section-1{height:40px}.m-section-2{height:40px}.m-section-3{height:40px}
+.intro-stage[data-phase="1"] .m-header{height:24px;border-color:rgba(255,255,255,.12)}
+.intro-stage[data-phase="1"] .m-hero{height:80px;border-color:rgba(255,255,255,.12)}
+.intro-stage[data-phase="1"] .m-section-1{height:40px;border-color:rgba(255,255,255,.1);transition-delay:60ms}
+.intro-stage[data-phase="1"] .m-section-2{height:40px;border-color:rgba(255,255,255,.1);transition-delay:120ms}
+.intro-stage[data-phase="1"] .m-section-3{height:40px;border-color:rgba(255,255,255,.1);transition-delay:180ms}
+.intro-stage[data-phase="2"] .m-line{background:rgba(0,240,255,.04);border-color:rgba(0,240,255,.15)}
+.intro-stage[data-phase="3"] .m-line{background:rgba(0,240,255,.06);border-style:solid;border-color:rgba(0,240,255,.2)}
+.intro-stage[data-phase="3"] .m-hero{background:linear-gradient(135deg,rgba(0,240,255,.08),rgba(191,0,255,.06))}
+.intro-stage[data-phase="4"] .m-line{background:rgba(0,240,255,.08);border-color:var(--accent);border-style:solid}
+.intro-cta{opacity:0;transition:opacity 400ms ease-out;display:flex;flex-direction:column;align-items:center;gap:12px;font-size:.95rem}
+.intro-cta.vis{opacity:1}
+.intro-skip{position:absolute;bottom:24px;right:24px;font-size:.65rem;color:var(--dim);cursor:pointer;border:none;background:none;font-family:var(--font-mono);letter-spacing:.06em}
+.intro-skip:hover{color:var(--accent)}
+
+/* Toaster */
+.toaster{position:fixed;bottom:calc(var(--bottom-bar-height) + 20px);left:50%;transform:translateX(-50%);z-index:var(--z-toast);display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none}
+.toast{padding:10px 20px;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:var(--r-sm);font-family:var(--font-mono);font-size:12px;color:var(--accent);animation:toast-in 280ms ease-out forwards,toast-out 280ms ease-in 2500ms forwards;pointer-events:auto}
+@keyframes toast-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes toast-out{from{opacity:1}to{opacity:0;transform:translateY(-8px)}}
+
+/* Empty state */
+.empty-state{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--mid);font-family:var(--font-mono);font-size:13px;gap:12px;text-align:center;padding:32px}
+.empty-state-icon{font-size:40px}.empty-state-sub{opacity:.5;font-size:11px}
+
+/* Toggle list */
+.tl{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.8rem}
+.ti{display:flex;align-items:center;justify-content:space-between;padding:.6rem .8rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:6px;transition:all .15s;cursor:pointer}
+.ti:hover{border-color:rgba(0,240,255,.15)}.ti.sel{border-color:var(--accent);background:rgba(0,240,255,.04)}
+.ti-i{display:flex;flex-direction:column;gap:.1rem}.ti-n{font-weight:600;font-size:.75rem}.ti-t{font-family:var(--font-mono);font-size:.55rem;color:var(--dim)}
+.sw{width:30px;height:16px;border-radius:8px;background:rgba(255,255,255,.1);position:relative;transition:background .15s;flex-shrink:0}
+.ti.sel .sw{background:var(--accent)}.sw::after{content:'';position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff;transition:transform .15s}.ti.sel .sw::after{transform:translateX(14px)}
+.ti.locked{cursor:not-allowed;opacity:.78;background:rgba(0,240,255,.02)}
+.ti.locked .ti-n::after{content:' · zárolt';font-family:var(--font-mono);font-size:.5rem;color:var(--dim);font-weight:400;letter-spacing:.05em}
+
+/* Page tabs */
+.ptabs{display:flex;gap:.25rem;margin-bottom:.8rem;flex-wrap:wrap}
+.ptab{padding:.35rem .7rem;font-family:var(--font-mono);font-size:.6rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:4px;cursor:pointer;transition:all .15s;color:var(--mid)}
+.ptab:hover{border-color:rgba(0,240,255,.2)}.ptab.on{background:rgba(0,240,255,.08);border-color:var(--accent);color:var(--accent)}
+
+/* Section inline config */
+.scfg{padding:.8rem;background:rgba(0,240,255,.02);border:1px solid rgba(0,240,255,.08);border-radius:6px;margin-top:.3rem;margin-bottom:.4rem}
+.scfg-t{font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:.08em;margin-bottom:.6rem}
+.scfg-r{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;flex-wrap:wrap}
+.scfg-l{font-size:.65rem;font-weight:500;min-width:60px;color:var(--mid)}
+.scfg-pills{display:flex;gap:.2rem;flex-wrap:wrap}
+.sc-pill{padding:.2rem .5rem;font-size:.55rem;font-family:var(--font-mono);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:3px;cursor:pointer;color:var(--dim);transition:all .12s}
+.sc-pill:hover{border-color:rgba(0,240,255,.2)}.sc-pill.on{background:rgba(0,240,255,.08);border-color:var(--accent);color:var(--accent)}
+
+/* Results */
+.rb{margin-bottom:1rem;padding:1rem;background:var(--glass);border:1px solid var(--glass-border);border-radius:6px}
+.rl{font-family:var(--font-mono);font-size:.55rem;color:var(--accent);letter-spacing:.12em;margin-bottom:.5rem}
+.ramt{font-family:var(--font-mono);font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-align:center;margin:.3rem 0}
+.rtags{display:flex;flex-wrap:wrap;gap:.25rem;margin-top:.4rem}
+.rtag{padding:.15rem .4rem;background:rgba(0,240,255,.06);border:1px solid rgba(0,240,255,.15);border-radius:3px;font-family:var(--font-mono);font-size:.55rem;color:var(--accent)}
+
+/* Approach panel */
+.approach{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.6rem}
+.approach-col{padding:.8rem;border-radius:6px;font-size:.7rem;line-height:1.5}
+.approach-col.them{background:rgba(255,255,255,.02);border:1px solid var(--glass-border)}
+.approach-col.us{background:rgba(0,240,255,.03);border:1px solid rgba(0,240,255,.12);box-shadow:0 0 20px rgba(0,240,255,.04)}
+.approach-head{font-family:var(--font-mono);font-size:.5rem;letter-spacing:.08em;margin-bottom:.6rem;opacity:.5}
+.approach-col.us .approach-head{color:var(--accent);opacity:1}
+.approach-row{margin-bottom:.5rem;font-size:.65rem;color:var(--mid);line-height:1.5}
+.approach-col.us .approach-row{color:rgba(255,255,255,.8)}
+
+/* Score panel */
+.score-panel{margin-top:.8rem}
+.score-row-v2{display:flex;align-items:center;gap:8px;margin-bottom:.6rem}
+.score-l{font-family:var(--font-mono);font-size:.55rem;color:var(--dim);letter-spacing:.08em;min-width:60px}
+.score-bar-v2{flex:1;height:4px;background:var(--ghost);border-radius:2px;overflow:hidden}
+.score-fill-v2{height:100%;background:var(--accent);width:0;transition:width 800ms var(--e-out);border-radius:2px}
+.score-fill-v2.score-centaur{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.score-v{font-family:var(--font-mono);font-size:.7rem;font-weight:700;color:var(--accent);min-width:32px;text-align:right}
+.score-tip{font-size:.65rem;color:var(--dim);margin-top:.5rem;line-height:1.5}
+
+/* Scope form */
+.scope-input{padding:8px 10px;background:rgba(255,255,255,.04);border:1px solid var(--glass-border);border-radius:6px;color:var(--white);font-family:var(--font-main);font-size:.78rem;width:100%}
+.scope-input:focus{border-color:var(--accent);outline:none}
+.scope-input::placeholder{color:var(--dim)}
+
+/* Iparág-pill row */
+.industry-row{display:none;gap:.25rem;margin-bottom:1rem;flex-wrap:wrap;padding:.5rem 0;border-bottom:1px solid var(--glass-border)}
+.industry-row.visible{display:flex}
+.ind-pill{padding:.25rem .55rem;font-size:.55rem;font-family:var(--font-mono);background:var(--glass);border:1px solid var(--glass-border);border-radius:100px;cursor:pointer;color:var(--dim);transition:all .15s;letter-spacing:.04em}
+.ind-pill:hover{border-color:rgba(0,240,255,.25);color:var(--accent)}
+.ind-pill.on{background:rgba(0,240,255,.08);border-color:var(--accent);color:var(--accent)}
+
+/* CTO credit */
+.cto-credit{margin-top:1rem;padding:.7rem .9rem;border:1px dashed rgba(0,240,255,.18);border-radius:8px;display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;font-family:var(--font-mono);font-size:.55rem;color:var(--dim);letter-spacing:.05em;background:linear-gradient(90deg,rgba(0,240,255,.02),rgba(191,0,255,.02))}
+.cto-credit strong{color:var(--accent);font-weight:700}
+.cto-credit a{color:var(--mid);border-bottom:1px dashed rgba(255,255,255,.2);text-decoration:none}
+.cto-credit a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* Swap button on seam */
+.seam-swap{position:absolute;top:calc(50% + 28px);left:50%;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--accent);color:var(--accent);pointer-events:auto;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.6;transition:opacity var(--t-fast);font-size:11px}
+.seam-swap:hover{opacity:1}
+
+/* Mobile sheet-mode */
+@media(max-width:768px){
+  .config-overlay{top:auto;right:0;bottom:0;left:0;width:100% !important;height:70dvh;border-radius:0;transition:transform var(--t-slower) var(--e-out)}
+  .config-overlay[data-open="false"]{transform:translateY(calc(100% - 48px))}
+  .config-overlay[data-open="true"]{transform:translateY(0)}
+  .cfg-pill{position:relative;top:0;left:0;transform:none;width:100%;height:48px;border-radius:var(--r-md) var(--r-md) 0 0;flex-direction:row}
+  .cfg-pill-label{writing-mode:horizontal-tb}
+  .cfg-pill::before{content:'';width:40px;height:4px;border-radius:2px;background:rgba(255,255,255,.2);position:absolute;top:8px;left:50%;transform:translateX(-50%)}
+  .config-overlay[data-open="true"] .cfg-pill{opacity:0;pointer-events:none;transform:translateY(-8px)}
+  .cfg-panel{border-radius:var(--r-md) var(--r-md) 0 0}
+  .bottom-bar{gap:8px;padding:0 8px}
+  .share-widget{display:none}
+  .sound-toggle{display:none}
+  .stage{padding:12px}
+  .g3{grid-template-columns:repeat(2,1fr)}
+  .approach{grid-template-columns:1fr}
+}
+
+/* a11y */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus{outline:none}
+.c:focus-visible,.cs:focus-visible,.fc:focus-visible,.btn:focus-visible,.pill:focus-visible,.ctrl-pill:focus-visible,.upl:focus-visible,.ind-pill:focus-visible,.sc-pill:focus-visible,.ptab:focus-visible,.ti:focus-visible,.seam-handle:focus-visible,.seam-swap:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  </style>
+</head>
+<body>
+  <a class="sr-skip" href="#cfgPanel">Ugrás a konfigurátorra</a>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="app">
+
+    <!-- Stage -->
+    <main class="stage" id="stage" role="main" aria-label="Weboldal-előnézet">
+      <div class="device-frame" id="deviceFrame" data-device="desktop">
+        <div class="preview-frame" id="pvPrimary" data-role="primary"></div>
+        <div class="preview-frame" id="pvVariant" data-role="variant" hidden></div>
+        <div class="variant-seam" id="variantSeam" hidden>
+          <div class="seam-line"></div>
+          <button class="seam-handle" tabindex="0" aria-label="Húzd a verziók között (nyilakkal is mozgatható)">
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M9 6L3 12l6 6M15 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="seam-swap" id="seamSwap" tabindex="0" aria-label="A két verzió cseréje">⇄</button>
+        </div>
+      </div>
+      <div class="motion-layer" id="motionLayer" aria-hidden="true"></div>
+    </main>
+
+    <!-- ConfigOverlay -->
+    <aside class="config-overlay" id="cfgOl" data-open="false" aria-label="Konfigurátor panel">
+      <button class="cfg-pill" id="cfgPill" aria-expanded="false" aria-label="Konfigurátor megnyitása">
+        <span class="cfg-pill-label">TERVEZD</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="cfg-panel" id="cfgPanel">
+        <header class="cfg-header">
+          <div style="display:flex;flex-direction:column;gap:1px"><div style="display:flex;align-items:center;gap:8px"><a href="index.html" class="logo">[<span>ConenDigital</span>]</a><span style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:.2em;font-weight:700">IKER</span></div><span style="font-family:var(--font-mono);font-size:10px;color:var(--dim)">by Claude</span></div>
+          <div class="cfg-step-pilot"><span class="step-count" id="sc" aria-live="polite" aria-atomic="true">01/10</span></div>
+          <button class="cfg-close" id="cfgClose" aria-label="Panel bezárása">&times;</button>
+        </header>
+        <div class="cfg-content" id="cfgContent">
+          <!-- Iparág-pill -->
+          <div class="industry-row" id="indRow">
+            <button class="ind-pill" data-ind="b2b-service">B2B</button>
+            <button class="ind-pill" data-ind="ecommerce">E-COM</button>
+            <button class="ind-pill" data-ind="professional">PROF</button>
+            <button class="ind-pill" data-ind="creative">KREAT</button>
+            <button class="ind-pill on" data-ind="general">ÁLT.</button>
+          </div>
+          <!-- Step 1: Típus -->
+          <section class="step on" data-s="1">
+            <div class="sl">01 · TÍPUS</div>
+            <h2 class="st">Milyen <em>weboldalt</em> szeretnél?</h2>
+            <p class="sh">Ez határozza meg az egész projekt irányát.</p>
+            <div class="g g3" id="typeGrid">
+              <button class="c" data-v="brochure" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Bemutatkozó</div><div class="cd">Céges weboldal</div></button>
+              <button class="c" data-v="quote-engine" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Ajánlatgeneráló</div><div class="cd">Kalkulátor, funnel</div></button>
+              <button class="c" data-v="webshop" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Webáruház</div><div class="cd">Termékek, kosár</div></button>
+              <button class="c" data-v="booking" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Foglalós</div><div class="cd">Időpontfoglalás</div></button>
+              <button class="c" data-v="content" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Blog/tartalom</div><div class="cd">Cikkek, SEO</div></button>
+              <button class="c" data-v="portfolio" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Portfólió</div><div class="cd">Munkák, galéria</div></button>
+              <button class="c" data-v="landing" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Landing page</div><div class="cd">Kampányoldal</div></button>
+              <button class="c" data-v="saas" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">SaaS/App</div><div class="cd">Szoftver landing</div></button>
+            </div>
+          </section>
+
+          <!-- Step 2: Stílus -->
+          <section class="step" data-s="2">
+            <div class="sl">02 · STÍLUS</div>
+            <h2 class="st">Milyen <em>hangulatot</em> szeretnél?</h2>
+            <p class="sh">Szín, betűtípus, lekerekítés — a preview azonnal frissül.</p>
+            <div class="ch"><i style="background:var(--accent)"></i>SZÍNVILÁG</div>
+            <div class="colors" id="colorGrid">
+              <button class="cs" data-v="dark-cyan" style="background:linear-gradient(135deg,#0a0a0a 50%,#00f0ff)" aria-pressed="false" aria-label="Sötét és cián"><span>Dark+Cyan</span></button>
+              <button class="cs" data-v="dark-mag" style="background:linear-gradient(135deg,#0a0a0a 50%,#bf00ff)" aria-pressed="false" aria-label="Sötét és magenta"><span>Dark+Mag</span></button>
+              <button class="cs" data-v="dark-orange" style="background:linear-gradient(135deg,#0a0a0a 50%,#ff6b00)" aria-pressed="false" aria-label="Sötét és narancs"><span>Dark+Narancs</span></button>
+              <button class="cs" data-v="dark-green" style="background:linear-gradient(135deg,#0a0a0a 50%,#00ff88)" aria-pressed="false" aria-label="Sötét és zöld"><span>Dark+Zöld</span></button>
+              <button class="cs" data-v="light-blue" style="background:linear-gradient(135deg,#f8f9fa 50%,#2563eb)" aria-pressed="false" aria-label="Világos és kék"><span>Light+Kék</span></button>
+              <button class="cs" data-v="light-emerald" style="background:linear-gradient(135deg,#f8f9fa 50%,#059669)" aria-pressed="false" aria-label="Világos és smaragd"><span>Light+Smaragd</span></button>
+              <button class="cs" data-v="light-warm" style="background:linear-gradient(135deg,#faf8f5 50%,#c2410c)" aria-pressed="false" aria-label="Világos és meleg"><span>Light+Meleg</span></button>
+              <button class="cs" data-v="bold" style="background:linear-gradient(135deg,#6366f1,#ec4899)" aria-pressed="false" aria-label="Bátor"><span>Bold</span></button>
+              <button class="cs" data-v="earth" style="background:linear-gradient(135deg,#292524 50%,#a16207)" aria-pressed="false" aria-label="Föld"><span>Föld</span></button>
+              <button class="cs" data-v="mono" style="background:linear-gradient(135deg,#09090b 50%,#71717a)" aria-pressed="false" aria-label="Monokróm"><span>Mono</span></button>
+            </div>
+            <div class="ch"><i style="background:var(--accent-2)"></i>BETŰTÍPUS</div>
+            <div class="fonts" id="fontGrid">
+              <button class="fc" data-v="Space Grotesk" aria-pressed="false"><div class="fc-p" style="font-family:'Space Grotesk'">Aa Bb</div><div class="fc-n">Space Grotesk</div></button>
+              <button class="fc" data-v="Inter" aria-pressed="false"><div class="fc-p" style="font-family:'Inter'">Aa Bb</div><div class="fc-n">Inter</div></button>
+              <button class="fc" data-v="DM Sans" aria-pressed="false"><div class="fc-p" style="font-family:'DM Sans'">Aa Bb</div><div class="fc-n">DM Sans</div></button>
+              <button class="fc" data-v="Playfair Display" aria-pressed="false"><div class="fc-p" style="font-family:'Playfair Display'">Aa Bb</div><div class="fc-n">Playfair</div></button>
+              <button class="fc" data-v="Sora" aria-pressed="false"><div class="fc-p" style="font-family:'Sora'">Aa Bb</div><div class="fc-n">Sora</div></button>
+              <button class="fc" data-v="Plus Jakarta Sans" aria-pressed="false"><div class="fc-p" style="font-family:'Plus Jakarta Sans'">Aa Bb</div><div class="fc-n">Jakarta</div></button>
+            </div>
+            <div class="ch"><i style="background:var(--orange)"></i>LEKEREKÍTÉS</div>
+            <div class="srow"><label for="brSlider">Border radius</label><input type="range" id="brSlider" min="0" max="24" value="8" step="2"><output id="brVal">8px</output></div>
+          </section>
+
+          <!-- Step 3: Navigáció -->
+          <section class="step" data-s="3">
+            <div class="sl">03 · NAVIGÁCIÓ</div><h2 class="st">Milyen legyen a <em>fejléc</em>?</h2><p class="sh">A header viselkedése.</p>
+            <div class="g g3" id="headerGrid">
+              <button class="c" data-v="sticky" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Sticky</div><div class="cd">Mindig látszik fent</div></button>
+              <button class="c" data-v="transparent" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Átlátszó</div><div class="cd">Hero fölött áttetsző</div></button>
+              <button class="c" data-v="hamburger" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Hamburger</div><div class="cd">Csak ikon</div></button>
+              <button class="c" data-v="side" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Oldalsó</div><div class="cd">Bal oldali fix nav</div></button>
+            </div>
+          </section>
+          <!-- Step 4: Hero -->
+          <section class="step" data-s="4">
+            <div class="sl">04 · HERO</div><h2 class="st">Az <em>első benyomás</em></h2><p class="sh">A hero szekció — az első dolog, amit a látogató lát.</p>
+            <div class="g g3" id="heroGrid">
+              <button class="c" data-v="centered" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Centered</div><div class="cd">Cím + CTA középen</div></button>
+              <button class="c" data-v="split" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Split screen</div><div class="cd">Szöveg + kép</div></button>
+              <button class="c" data-v="video" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Videó háttér</div><div class="cd">Mozgókép</div></button>
+              <button class="c" data-v="minimal" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Minimal</div><div class="cd">Csak tipográfia</div></button>
+              <button class="c" data-v="slider" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Slider</div><div class="cd">Több slide</div></button>
+              <button class="c" data-v="hero-calc" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Hero + form</div><div class="cd">Szöveg + kalkulátor</div></button>
+            </div>
+          </section>
+          <!-- Step 5: Oldalak -->
+          <section class="step" data-s="5">
+            <div class="sl">05 · OLDALAK</div><h2 class="st">Milyen <em>oldalakat</em> szeretnél?</h2><p class="sh">Válaszd ki az oldalakat. A következő lépésben minden oldalhoz külön konfigurálhatsz szekciókat.</p>
+            <div class="ch"><i style="background:var(--accent)"></i>KÖTELEZŐ</div>
+            <div class="tl" id="pagesRequired">
+              <div class="ti sel locked" data-v="home" role="button" tabindex="-1" aria-pressed="true" aria-disabled="true"><div class="ti-i"><span class="ti-n">Főoldal</span><span class="ti-t">hero + szekciók</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti sel locked" data-v="contact" role="button" tabindex="-1" aria-pressed="true" aria-disabled="true"><div class="ti-i"><span class="ti-n">Kapcsolat</span><span class="ti-t">űrlap + térkép</span></div><div class="sw" aria-hidden="true"></div></div>
+            </div>
+            <div class="ch"><i style="background:var(--orange)"></i>AJÁNLOTT</div>
+            <div class="tl" id="pagesOptional">
+              <div class="ti" data-v="about" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Rólunk</span><span class="ti-t">csapat, történet</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="services" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Szolgáltatások</span><span class="ti-t">részletes aloldalak</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="faq" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">GYIK</span><span class="ti-t">gyakori kérdések</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="blog" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Blog</span><span class="ti-t">cikkek</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="portfolio-page" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Portfólió</span><span class="ti-t">munkák</span></div><div class="sw" aria-hidden="true"></div></div>
+            </div>
+            <div class="ch"><i style="background:var(--accent-2)"></i>PRÉMIUM</div>
+            <div class="tl" id="pagesPremium">
+              <div class="ti" data-v="configurator" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Konfigurátor</span><span class="ti-t">interaktív kalkulátor</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="client-portal" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Ügyfélportál</span><span class="ti-t">login, státusz</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="knowledge" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Tudásbázis</span><span class="ti-t">kereshető wiki</span></div><div class="sw" aria-hidden="true"></div></div>
+            </div>
+          </section>
+          <!-- Step 6: Szekciók -->
+          <section class="step" data-s="6">
+            <div class="sl">06 · SZEKCIÓK</div><h2 class="st">Oldalak <em>felépítése</em></h2><p class="sh">Válaszd ki az oldalt, majd konfiguráld a szekciók sorrendjét és beállításait.</p>
+            <div class="ptabs" id="pageTabs"></div>
+            <div id="pageSections"></div>
+          </section>
+          <!-- Step 7: Funkciók -->
+          <section class="step" data-s="7">
+            <div class="sl">07 · FUNKCIÓK</div><h2 class="st">Milyen <em>funkciókat</em> építsünk be?</h2><p class="sh">Válaszd ki, amik kellenek.</p>
+            <div class="ch"><i style="background:var(--accent)"></i>ÁLTALÁNOS</div>
+            <div class="tl" id="featGeneral">
+              <div class="ti" data-v="contact-form" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Kapcsolat űrlap</span><span class="ti-t">email + validáció</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="booking" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Időpontfoglalás</span><span class="ti-t">naptár + megerősítés</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="multilang" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Többnyelvűség</span><span class="ti-t">magyar + német/angol</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="eaa" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Akadálymentesség</span><span class="ti-t">WCAG 2.2 AA</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="analytics" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Analytics + mérés</span><span class="ti-t">GA4 + heatmap</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="crm" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">CRM integráció</span><span class="ti-t">HubSpot / Pipedrive</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="search" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Keresés</span><span class="ti-t">instant, autocomplete</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="chat" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Live chat</span><span class="ti-t">chatbot / ügyfélszolgálat</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="social" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Social integráció</span><span class="ti-t">feed, share, OG</span></div><div class="sw" aria-hidden="true"></div></div>
+            </div>
+            <div class="ch"><i style="background:var(--accent-2)"></i>WEBÁRUHÁZ</div>
+            <div class="tl" id="featShop">
+              <div class="ti" data-v="cart" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Kosár + checkout</span><span class="ti-t">termék-listázás, kosár, fizetés-flow</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="payment" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Fizetés-integráció</span><span class="ti-t">SimplePay / Stripe / Barion</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="shipping" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Szállítási integráció</span><span class="ti-t">FoxPost / GLS / MPL</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="inventory" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Készletkezelés</span><span class="ti-t">admin + szinkron</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="customer-area" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Vásárlói fiók</span><span class="ti-t">login, rendelések</span></div><div class="sw" aria-hidden="true"></div></div>
+            </div>
+          </section>
+          <!-- Step 8: Extrák -->
+          <section class="step" data-s="8">
+            <div class="sl">08 · EXTRÁK</div><h2 class="st">Milyen <em>wow-faktor</em>?</h2><p class="sh">Ezek emelik ki a versenytársak közül.</p>
+            <div class="tl" id="extrasGrid">
+              <div class="ti" data-v="scroll-anim" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Scroll-animációk</span><span class="ti-t">reveal, parallax</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="dark-mode" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Dark/Light toggle</span><span class="ti-t">témaváltó</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="micro" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Mikro-interakciók</span><span class="ti-t">hover, animációk</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="ai-chat" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">AI chatbot</span><span class="ti-t">Claude/GPT · havi díj</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="mcp" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">MCP endpoint</span><span class="ti-t">AI-tranzakció · havi díj</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="pwa" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">PWA</span><span class="ti-t">telepíthető app</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="perf" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Core Web Vitals</span><span class="ti-t">100/100 Lighthouse</span></div><div class="sw" aria-hidden="true"></div></div>
+              <div class="ti" data-v="ax-ready" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">AX-readiness</span><span class="ti-t">JSON-LD + llms.txt</span></div><div class="sw" aria-hidden="true"></div></div>
+            </div>
+          </section>
+          <!-- Step 9: Részletek -->
+          <section class="step" data-s="9">
+            <div class="sl">09 · RÉSZLETEK</div><h2 class="st">Tartalom és <em>időzítés</em></h2>
+            <div class="ch"><i style="background:var(--accent)"></i>TARTALOM</div>
+            <div class="g g3" id="contentGrid">
+              <button class="c" data-v="ready" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Kész</div><div class="cd">Van szöveg, képek</div></button>
+              <button class="c" data-v="partial" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Részben</div><div class="cd">Még kell írni</div></button>
+              <button class="c" data-v="help" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Segítség</div><div class="cd">Copy workshop kell</div></button>
+            </div>
+            <div class="ch"><i style="background:var(--orange)"></i>IDŐZÍTÉS</div>
+            <div class="g g3" id="timelineGrid">
+              <button class="c" data-v="urgent" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">4-6 hét</div><div class="cd">Sürgős</div></button>
+              <button class="c" data-v="standard" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">6-10 hét</div><div class="cd">Standard</div></button>
+              <button class="c" data-v="flexible" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Rugalmas</div><div class="cd">Minőség-vezérelt</div></button>
+            </div>
+          </section>
+          <!-- Step 10: Eredmény -->
+          <section class="step" data-s="10">
+            <div class="sl">10 · EREDMÉNY</div><h2 class="st">A <em>scope</em> kész</h2><p class="sh">Ez nem fix árajánlat — a díjmentes diagnosztika után pontosítjuk.</p>
+            <div class="rb"><div class="rl">// ÖSSZEFOGLALÓ</div><div id="rSum" style="font-size:.8rem;line-height:1.5;color:rgba(255,255,255,.85)"></div><div class="rtags" id="rTags"></div></div>
+            <div class="rb" style="background:linear-gradient(135deg,rgba(0,240,255,.03),rgba(191,0,255,.03));border-color:rgba(0,240,255,.12)">
+              <div class="rl">// TARTOMÁNY</div><div class="ramt" id="rAmt">—</div>
+              <p style="font-size:.7rem;color:var(--dim);text-align:center">Audit-alapú árazás. AX-audit (120k Ft) 100%-ban beszámít.</p>
+            </div>
+            <div class="rb" id="aiOpsBlock" style="display:none;border-color:rgba(255,107,0,.18);background:rgba(255,107,0,.03)">
+              <div class="rl" style="color:var(--orange)">// HAVI DÍJ — AI OPS</div>
+              <p style="font-size:.75rem;line-height:1.5;color:rgba(255,255,255,.85);margin-bottom:.4rem">Az AI-funkciók — <span id="aiOpsList"></span> — a build-költségen felül, havi szerződés keretében működnek.</p>
+              <p style="font-family:var(--font-mono);font-size:.9rem;color:var(--orange);font-weight:700;text-align:center;margin:.4rem 0">250.000 Ft / hó-tól</p>
+              <p style="font-size:.6rem;color:var(--dim);text-align:center">#service-ai-ops · külön szerződés a diagnosztika után</p>
+            </div>
+            <div class="rb"><div class="rl">// MEGKÖZELÍTÉS</div>
+              <div class="approach">
+                <div class="approach-col them"><div class="approach-head">HAGYOMÁNYOS ÜGYNÖKSÉGI MODELL</div>
+                  <div class="approach-row">Outsourced AI-tool — kísérletezés, saját prompt-engineering</div>
+                  <div class="approach-row">AX retro-fit — később, ha egyáltalán sor kerül rá</div>
+                  <div class="approach-row">EAA-konformitás add-on — felár, utólagos patch</div>
+                  <div class="approach-row">2-hetes pitch-process — deck, brief, proposal, meeting-ek</div>
+                </div>
+                <div class="approach-col us"><div class="approach-head">CENTAUR-MODELL</div>
+                  <div class="approach-row">AI-as-co-founder — Claude CTO + Gemini CSO beépítve a folyamatba</div>
+                  <div class="approach-row">AX-ready alapból — JSON-LD, llms.txt, semantic HTML az elsőtől</div>
+                  <div class="approach-row">EAA-konform alapból — WCAG 2.2 AA natív, nem utólagos</div>
+                  <div class="approach-row">30-perces diagnosztika — scope 24 órán belül, audit beszámít</div>
+                </div>
+              </div>
+            </div>
+            <div class="rb" style="background:linear-gradient(135deg,rgba(0,240,255,.03),rgba(0,255,136,.03));border-color:rgba(0,255,136,.15)">
+              <div class="rl" style="color:var(--green)">// AUDIT-METRIKÁK</div>
+              <div class="score-panel">
+                <div class="score-row-v2"><span class="score-l">EAA</span><div class="score-bar-v2"><div class="score-fill-v2" id="scEaaBar"></div></div><span class="score-v" id="scEaa">0</span></div>
+                <div class="score-row-v2"><span class="score-l">AX</span><div class="score-bar-v2"><div class="score-fill-v2" id="scAxBar"></div></div><span class="score-v" id="scAx">0</span></div>
+                <div class="score-row-v2"><span class="score-l">CENTAUR</span><div class="score-bar-v2"><div class="score-fill-v2 score-centaur" id="scCnBar"></div></div><span class="score-v" id="scCn">0</span></div>
+                <div class="score-tip" id="scTip"></div>
+              </div>
+            </div>
+            <div class="rb" style="border-color:rgba(0,240,255,.15)">
+              <div class="rl">// SCOPE ELKÜLDÉSE</div>
+              <p style="font-size:.75rem;color:var(--mid);margin-bottom:.8rem;line-height:1.5">Add meg az elérhetőséged és elküldjük a teljes konfigurációt.</p>
+              <form id="scopeForm" action="https://formspree.io/f/movgkdoz" method="POST">
+                <input type="hidden" name="_next" value="https://conendigital.hu/email-sikeresen-elkuldve.html">
+                <input type="hidden" name="_subject" value="Konfigurátor scope érkezett">
+                <input type="hidden" name="scope_readable" id="scopeData" value="">
+                <input type="hidden" name="scope_json" id="scopeJson" value="">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.5rem">
+                  <label for="fName" class="sr-only">Név</label><input type="text" name="name" id="fName" required placeholder="Név *" class="scope-input">
+                  <label for="fEmail" class="sr-only">Email cím</label><input type="email" name="email" id="fEmail" required placeholder="Email *" class="scope-input">
+                </div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-bottom:.5rem">
+                  <label for="fPhone" class="sr-only">Telefonszám</label><input type="tel" name="phone" id="fPhone" placeholder="Telefon" class="scope-input">
+                  <label for="fCompany" class="sr-only">Cégnév</label><input type="text" name="company" id="fCompany" placeholder="Cég" class="scope-input">
+                </div>
+                <label for="fMessage" class="sr-only">Megjegyzés</label><textarea name="message" id="fMessage" placeholder="Megjegyzés" rows="2" class="scope-input" style="resize:vertical;margin-bottom:.5rem"></textarea>
+                <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+                  <button type="submit" class="btn btn-p" style="flex:1">Scope elküldése →</button>
+                  <button type="button" class="btn btn-s" id="rPdf">Letöltés (TXT)</button>
+                </div>
+                <p style="font-size:.6rem;color:var(--dim);margin-top:.5rem;text-align:center">A konfiguráció automatikusan elküldésre kerül. Válasz 24 órán belül.</p>
+              </form>
+            </div>
+            <div class="cto-credit">
+              <span>Ezt a konfigurátort <strong>Claude (CTO, AI co-founder)</strong> építette · Anthropic · CENTAUR-modell</span>
+              <a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev →</a>
+            </div>
+          </section>
+        </div>
+
+        <!-- PreviewControls -->
+        <div class="cfg-preview-controls" id="cfgCtrls">
+          <label for="iBrand" class="sr-only">Cégnév</label><input type="text" id="iBrand" placeholder="Cégnév" maxlength="30" style="max-width:100px">
+          <label for="iTag" class="sr-only">Szlogen</label><input type="text" id="iTag" placeholder="Szlogen" maxlength="60">
+          <label for="iCta" class="sr-only">CTA gomb szövege</label><input type="text" id="iCta" placeholder="CTA" maxlength="20" style="max-width:80px">
+          <div class="ctrl-row">
+            <button class="ctrl-pill act" data-dev="desktop" aria-label="Desktop nézet" aria-pressed="true">D</button>
+            <button class="ctrl-pill" data-dev="tablet" aria-label="Tablet nézet" aria-pressed="false">T</button>
+            <button class="ctrl-pill" data-dev="mobile" aria-label="Mobil nézet" aria-pressed="false">M</button>
+          </div>
+          <div class="ctrl-fs">
+            <label for="fsSlider" class="sr-only">Betűméret</label><input type="range" id="fsSlider" min="70" max="140" value="100" step="5">
+            <output id="fsVal">100%</output>
+          </div>
+          <div class="upl-row">
+            <div class="upl" id="uLogo" role="button" tabindex="0" aria-label="Logó feltöltése (max 500KB)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              <span>Logó</span><input type="file" accept="image/*">
+            </div>
+            <div class="upl" id="uHero" role="button" tabindex="0" aria-label="Hero kép feltöltése (max 2MB)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 15l5-5 5 5 3-3 7 7"/></svg>
+              <span>Hero kép</span><input type="file" accept="image/*">
+            </div>
+          </div>
+          <button type="button" class="logo-suggest" id="logoSuggest" style="display:none" aria-label="Javasolt téma a logód színe alapján">
+            <span class="ls-dot" id="lsDot" aria-hidden="true"></span>
+            <span class="ls-text"><span class="ls-eye">A LOGÓD SZÍNÉBŐL</span><span class="ls-name" id="lsName">—</span></span>
+            <span class="ls-cta">Alkalmazás →</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- BottomBar -->
+    <footer class="bottom-bar" id="btmBar">
+      <div class="progress-track" id="pTrack"><div class="progress-fill" id="pFill"></div></div>
+      <button class="btn btn-s" id="bPrev" disabled>&larr; Vissza</button>
+      <button class="btn btn-p" id="bNext" disabled>Tovább &rarr;</button>
+      <button class="pill variant-toggle" id="vToggle" aria-pressed="false" aria-label="Variant-compare A/B összehasonlítás">
+        <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="2"/></svg>
+        <span>Hasonlítsd össze A/B</span>
+      </button>
+      <button class="pill sound-toggle" id="sToggle" aria-pressed="false" title="Hangok" aria-label="Hangeffektek be/ki">
+        <svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z" fill="currentColor"/></svg>
+      </button>
+      <div class="share-widget" id="shareW">
+        <label for="shareUrl" class="sr-only">Megosztási link</label><input type="text" id="shareUrl" readonly>
+        <button class="pill" id="shareBtn" aria-label="Megosztási link másolása">Másolás</button>
+      </div>
+    </footer>
+
+    <div class="cinematic-intro" id="cIntro" hidden></div>
+    <div class="toaster" id="toaster" role="status" aria-live="polite"></div>
+  </div>
+
+  <script>
+/* ============================================
+   CONEN DIGITAL KONFIGURÁTOR v2.0
+   Phase A+B — Foundation + Stage & Preview
+   ============================================ */
+'use strict';
+
+/* ==============================
+   B1: Data definíciók (v1.x port)
+   ============================== */
+
+// Szekció definíciók
+const SEC = {
+  testimonials: {n:'Vélemények', cfg:{layout:['cards','slider','single'],cols:['2','3','4'],avatar:['circle','square','hidden'],quote:['large','small','hidden']}, def:{layout:'cards',cols:'3',avatar:'circle',quote:'large'}},
+  stats: {n:'Számok', cfg:{layout:['row','2x2'],style:['counter','static']}, def:{layout:'row',style:'counter'}},
+  process: {n:'Folyamat', cfg:{layout:['horizontal','vertical'],style:['numbered','icons']}, def:{layout:'horizontal',style:'numbered'}},
+  team: {n:'Csapat', cfg:{layout:['grid','carousel'],cols:['2','3','4'],photo:['circle','rounded','square']}, def:{layout:'grid',cols:'3',photo:'circle'}},
+  pricing: {n:'Árazás', cfg:{cols:['2','3','4'],highlight:['left','center','right'],button:['filled','outline']}, def:{cols:'3',highlight:'center',button:'filled'}},
+  gallery: {n:'Galéria', cfg:{layout:['grid','masonry','carousel'],cols:['2','3','4','5'],gap:['4','8','16','24'],radius:['0','4','8','16'],shadow:['none','subtle','medium','dramatic'],hover:['zoom','overlay','lift','none'],ratio:['square','landscape','mixed'],caption:['overlay','below','hidden']}, def:{layout:'grid',cols:'3',gap:'16',radius:'8',shadow:'subtle',hover:'zoom',ratio:'mixed',caption:'overlay'}},
+  partners: {n:'Partnerek', cfg:{style:['grayscale','color'],count:['4','5','6']}, def:{style:'grayscale',count:'5'}},
+  cta: {n:'CTA blokk', cfg:{bg:['gradient','solid','transparent'],button:['filled','outline']}, def:{bg:'gradient',button:'filled'}},
+  faq: {n:'FAQ', cfg:{layout:['accordion','tabs'],icon:['plus','chevron']}, def:{layout:'accordion',icon:'plus'}},
+  map: {n:'Térkép', cfg:{layout:['full','split'],theme:['dark','light']}, def:{layout:'split',theme:'dark'}},
+  newsletter: {n:'Hírlevél', cfg:{layout:['inline','card']}, def:{layout:'inline'}},
+};
+
+// Default szekciók oldalanként
+const PAGE_DEF_SECS = {
+  home:['testimonials','stats','process','cta'],
+  contact:['map','faq'],
+  about:['team','process','stats','cta'],
+  services:['process','pricing','testimonials','faq','cta'],
+  faq:['faq'],
+  blog:['newsletter','cta'],
+  'portfolio-page':['gallery','testimonials','cta'],
+  configurator:['process','pricing','cta'],
+  'client-portal':['faq','cta'],
+  knowledge:['faq','newsletter'],
+};
+
+const PAGE_LABELS = {home:'Főoldal',contact:'Kapcsolat',about:'Rólunk',services:'Szolgáltatások',faq:'GYIK',blog:'Blog','portfolio-page':'Portfólió',configurator:'Konfigurátor','client-portal':'Portál',knowledge:'Tudásbázis'};
+
+// Szín-map a rendererhez
+const COL = {
+  'dark-cyan':   {bg:'#0a0a0a',tx:'#fff',ac:'#00f0ff',cd:'#141414'},
+  'dark-mag':    {bg:'#0a0a0a',tx:'#fff',ac:'#bf00ff',cd:'#141414'},
+  'dark-orange': {bg:'#0a0a0a',tx:'#fff',ac:'#ff6b00',cd:'#141414'},
+  'dark-green':  {bg:'#0a0a0a',tx:'#fff',ac:'#00ff88',cd:'#141414'},
+  'light-blue':  {bg:'#f8f9fa',tx:'#1a1a2e',ac:'#2563eb',cd:'#fff'},
+  'light-emerald':{bg:'#f8f9fa',tx:'#1a1a2e',ac:'#059669',cd:'#fff'},
+  'light-warm':  {bg:'#faf8f5',tx:'#292524',ac:'#c2410c',cd:'#fff'},
+  'bold':        {bg:'#0f0f23',tx:'#fff',ac:'#8b5cf6',cd:'#1a1a3e'},
+  'earth':       {bg:'#1c1917',tx:'#fafaf9',ac:'#ca8a04',cd:'#292524'},
+  'mono':        {bg:'#09090b',tx:'#fafafa',ac:'#d4d4d8',cd:'#18181b'},
+};
+
+// Wireframe dummy adatok (realistic_mode false esetén)
+const DEFAULTS = {
+  testimonials:[{q:'Kiváló munkát végeztek.',n:'Ügyfél neve',t:''}],
+  team:[{n:'Csapattag 1',t:'Pozíció'},{n:'Csapattag 2',t:'Pozíció'},{n:'Csapattag 3',t:'Pozíció'},{n:'Csapattag 4',t:'Pozíció'}],
+  gallery:['Projekt 1','Projekt 2','Projekt 3','Projekt 4','Projekt 5','Projekt 6','Projekt 7','Projekt 8','Projekt 9','Projekt 10'],
+  faq:[{q:'Kérdés #1',a:'A válasz tartalma ide kerül.'},{q:'Kérdés #2',a:'A válasz tartalma ide kerül.'},{q:'Kérdés #3',a:'A válasz tartalma ide kerül.'}],
+};
+
+// REALISTIC tartalom (v1.x port — egy az egyben)
+const REALISTIC = {
+  testimonials:[
+    {q:'Az ajánlatadás folyamatát három hét alatt felére csökkentettük.',n:'Kovács Eszter',t:'Pénzügyi vezető'},
+    {q:'A konfigurátor azóta is napi 8-10 kvalifikált leadet hoz.',n:'Tóth Bence',t:'Mérnöki Iroda'},
+    {q:'Astro 5-tel a PageSpeed 57-ről 99-re ugrott. Komoly különbség.',n:'Nagy Réka',t:'Marketing-vezető'},
+    {q:'EAA-szempontból volt a leggyorsabb átállásunk. Audit elsőre.',n:'Szabó Péter',t:'CTO, egészségügy'},
+  ],
+  team:[
+    {n:'Conen Krisztián',t:'Founder · Stratégia'},
+    {n:'Claude (Anthropic)',t:'Co-founder · CTO'},
+    {n:'Gemini Nexus',t:'Co-founder · Marketing'},
+    {n:'Tóth Mária',t:'Senior Designer'},
+  ],
+  gallery:['Mótyán árnyékolás','B2B SaaS landing','CRM redesign','E-commerce migráció','Egészségügyi platform','Pénzügyi konfigurátor','Headless Shopify','EAA-átállás','MCP-endpoint demo','Audit-flow case'],
+  faq:[
+    {q:'Mennyi időbe telik egy projekt?',a:'Standard scope 6-10 hét, sürgős 4-6. Audit-fázissal kezdünk, ami 100%-ban beszámít.'},
+    {q:'EAA-megfelelő minden projekt?',a:'Igen — ez most már jogi elvárás. A diagnosztika kiderít minden szempontot, és WCAG 2.2 AA szintre vagyunk hangolva.'},
+    {q:'Mi az AX-readiness?',a:'AI-asszisztens-olvasható alap: JSON-LD, llms.txt, semantic HTML. Claude/ChatGPT/Perplexity is olvashatja a céged adatait.'},
+  ],
+};
+
+// Iparág-override-ok (spec §12.2)
+const INDUSTRY_OVERRIDES = {
+  'b2b-service': {
+    testimonials:[
+      {q:'A ROI 6 hónapon belül visszajött — a konfigurátor a sales-csapat nélkülözhetetlen eszköze lett.',n:'Németh László',t:'Sales Director'},
+      {q:'A CRM-integráció hibátlanul működik a HubSpot-tal.',n:'Kiss Andrea',t:'Operatív vezető'},
+    ],
+    faq:[
+      {q:'Hogyan integrálódik a CRM-mel?',a:'HubSpot, Pipedrive, Salesforce — API-szintű kapcsolat, nem csak embed-form.'},
+      {q:'Van B2B-specifikus funkció?',a:'Ajánlatgenerátor, ügyfélportál, automatizált follow-up — minden audit-alapon.'},
+    ],
+  },
+  ecommerce: {
+    testimonials:[
+      {q:'Konverzió +40% a Headless Shopify-ra váltás után.',n:'Farkas Dóra',t:'E-commerce vezető'},
+      {q:'A checkout-flow egyszerűsítés 22%-kal csökkentette a kosárelhagyást.',n:'Varga Tamás',t:'Webshop tulajdonos'},
+    ],
+    faq:[
+      {q:'Headless Shopify vagy WooCommerce?',a:'A diagnosztika alapján döntünk — SKU-szám, integráció-igény és budget határozza meg.'},
+      {q:'Milyen fizetési megoldásokat támogattok?',a:'SimplePay, Stripe, Barion — mind natív integráció, nem plugin.'},
+    ],
+  },
+  professional: {
+    testimonials:[
+      {q:'Az ügyfélportál + dokumentum-archív a napi adminisztrációt 60%-kal csökkentette.',n:'Dr. Molnár Péter',t:'Ügyvédi Iroda'},
+      {q:'GDPR-konform, akadálymentes — az audit elsőre átment.',n:'Horváth Katalin',t:'Klinikavezető'},
+    ],
+    faq:[
+      {q:'Adatvédelem (ügyvédi titok)?',a:'End-to-end titkosítás, GDPR-konform hosting, adatfeldolgozói szerződés alap.'},
+      {q:'Van időpontfoglaló integráció?',a:'Igen — Calendly, Cal.com, vagy egyedi naptár, SMS-emlékeztetővel.'},
+    ],
+  },
+  creative: {
+    testimonials:[
+      {q:'Az egyedi tipográfia és art-direction pontosan az volt, amit kerestünk.',n:'Balogh Zsófia',t:'Kreatív igazgató'},
+      {q:'A portfólió-galéria masonry layout-ja gyönyörű lett.',n:'Takács Márton',t:'Fotográfus'},
+    ],
+    faq:[
+      {q:'Milyen tipográfiai licenc kell?',a:'Google Fonts ingyenes, premium fontokhoz Adobe Fonts vagy egyedi licenc — mi intézzük.'},
+      {q:'Támogattok egyedi animációkat?',a:'Scroll-animációk, mikro-interakciók, GSAP — az extrák közt kiválasztható.'},
+    ],
+  },
+};
+
+// Type → industry auto-mapping
+const TYPE_INDUSTRY = {
+  brochure: 'b2b-service',
+  'quote-engine': 'b2b-service',
+  saas: 'b2b-service',
+  webshop: 'ecommerce',
+  booking: 'professional',
+  content: 'creative',
+  portfolio: 'creative',
+  landing: 'general',
+};
+
+// Content-forrás kiválasztó
+function getRealisticContent(site, sectionType) {
+  if (!State.meta.realistic_mode) return DEFAULTS;
+  const ind = site.industry || 'general';
+  if (ind !== 'general' && INDUSTRY_OVERRIDES[ind]?.[sectionType]) {
+    return { ...REALISTIC, [sectionType]: INDUSTRY_OVERRIDES[ind][sectionType] };
+  }
+  return REALISTIC;
+};
+
+// Típus-alapú default page-ek
+const TYPE_DEFAULTS = {
+  brochure:     {pages:['home','contact','about','services'], page_sections:{home:['testimonials','stats','process','cta'],contact:['map','faq'],about:['team','process','stats','cta'],services:['process','pricing','testimonials','faq','cta']}},
+  'quote-engine':{pages:['home','contact'], page_sections:{home:['process','stats','testimonials','cta'],contact:['map','faq']}},
+  webshop:      {pages:['home','contact'], page_sections:{home:['stats','testimonials','cta'],contact:['map','faq']}},
+  booking:      {pages:['home','contact','services'], page_sections:{home:['process','testimonials','cta'],contact:['map','faq'],services:['pricing','faq','cta']}},
+  content:      {pages:['home','contact','blog'], page_sections:{home:['stats','newsletter','cta'],contact:['map','faq'],blog:['newsletter','cta']}},
+  portfolio:    {pages:['home','contact'], page_sections:{home:['gallery','testimonials','cta'],contact:['map','faq']}},
+  landing:      {pages:['home','contact'], page_sections:{home:['stats','testimonials','process','cta'],contact:['map','faq']}},
+  saas:         {pages:['home','contact','faq'], page_sections:{home:['stats','pricing','testimonials','cta'],contact:['map','faq'],faq:['faq']}},
+};
+
+// Logo color extraction — séma RGB-k
+const SCHEME_NAMES = {'dark-cyan':'Sötét + cián','dark-mag':'Sötét + magenta','dark-orange':'Sötét + narancs','dark-green':'Sötét + zöld','light-blue':'Világos + kék','light-emerald':'Világos + smaragd','light-warm':'Világos + meleg',bold:'Bátor',earth:'Föld',mono:'Monokróm'};
+const SCHEME_RGB = {'dark-cyan':[0,240,255],'dark-mag':[191,0,255],'dark-orange':[255,107,0],'dark-green':[0,255,136],'light-blue':[37,99,235],'light-emerald':[5,150,105],'light-warm':[194,65,12],bold:[139,92,246],earth:[202,138,4],mono:[161,161,170]};
+
+/* ==============================
+   State-modell
+   ============================== */
+const State = {
+  site: {
+    type: null, brand: '', tagline: '', cta: '', logo: null, hero_img: null,
+    style: { color_scheme: 'dark-cyan', font_family: 'Space Grotesk', border_radius: 8, font_size: 100 },
+    nav: { header_style: 'sticky', hero_style: 'centered' },
+    pages: ['home','contact'],
+    page_sections: { home: [], contact: [] },
+    section_config: {},
+    features: [], extras: [],
+    content_state: null, timeline: null, industry: 'general',
+  },
+  variant: null, variant_active: false, variant_seam_pos: 0.5, variant_active_target: 'site',
+  meta: {
+    step: 1, active_page: 'home', device: 'desktop',
+    config_overlay_open: false, realistic_mode: true, sound_enabled: false,
+    motion_reduce: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    intro_seen: false,
+  },
+  scores: { eaa: 0, ax: 0, centaur: 20 },
+};
+
+/* ==============================
+   Persistence
+   ============================== */
+const STORAGE_KEY = 'core_v2_state';
+
+function save() {
+  try {
+    const clone = JSON.parse(JSON.stringify(State));
+    if (clone.site.logo) clone.site.logo = '__has__';
+    if (clone.site.hero_img) clone.site.hero_img = '__has__';
+    if (clone.variant?.logo) clone.variant.logo = '__has__';
+    if (clone.variant?.hero_img) clone.variant.hero_img = '__has__';
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(clone));
+  } catch (e) {}
+  // Share-URL frissítése minden save-kor
+  if (typeof updateShareUrl === 'function') updateShareUrl();
+}
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (parsed.site?.logo === '__has__') parsed.site.logo = null;
+    if (parsed.site?.hero_img === '__has__') parsed.site.hero_img = null;
+    Object.assign(State, parsed);
+    State.meta.config_overlay_open = false;
+  } catch (e) {}
+}
+
+/* ==============================
+   Commit + render pipeline
+   ============================== */
+function supportsViewTransitions() {
+  return typeof document.startViewTransition === 'function';
+}
+
+function active() {
+  return State.variant_active && State.variant_active_target === 'variant'
+    ? State.variant : State.site;
+}
+
+function commit(changeFn, opts = {}) {
+  const target = State.variant_active && State.variant_active_target === 'variant'
+    ? State.variant : State.site;
+  changeFn(target);
+  if (opts.transition && supportsViewTransitions() && !State.meta.motion_reduce) {
+    document.startViewTransition(() => { render(); updateUIControls(); });
+  } else {
+    render(); updateUIControls();
+  }
+  save();
+}
+
+/* ==============================
+   B2: Preview renderer (v1.x port)
+   ============================== */
+
+function render() {
+  document.documentElement.dataset.cs = active().style.color_scheme;
+  document.getElementById('deviceFrame').dataset.device = State.meta.device;
+  renderPreview('pvPrimary', State.site);
+  if (State.variant_active && State.variant) {
+    renderPreview('pvVariant', State.variant);
+    document.getElementById('pvVariant').hidden = false;
+    document.getElementById('variantSeam').hidden = false;
+    applySeamClip();
+  } else {
+    document.getElementById('pvVariant').hidden = true;
+    document.getElementById('variantSeam').hidden = true;
+    clearSeamClip();
+  }
+  updateActiveIndicator();
+}
+
+function renderPreview(elementId, site) {
+  const el = document.getElementById(elementId);
+  if (!site || !site.type) { el.innerHTML = renderEmptyState(); return; }
+
+  const c = COL[site.style.color_scheme] || COL['dark-cyan'];
+  const il = (site.style.color_scheme || '').startsWith('light');
+  const a = c.ac, ff = site.style.font_family || 'Space Grotesk';
+  const br = site.style.border_radius || 8;
+  const fm = (site.style.font_size || 100) / 100;
+  const bd = il ? 'rgba(0,0,0,.06)' : 'rgba(255,255,255,.06)';
+  const bn = site.brand || 'Brand', tl = site.tagline || 'Rövid, meggyőző alcím', ct = site.cta || 'Ajánlatkérés →';
+  const mob = State.meta.device === 'mobile', tab = State.meta.device === 'tablet';
+  const fs = n => Math.round(n * fm) + 'px';
+
+  const pg = State.meta.active_page || 'home';
+  const secs = site.page_sections[pg] || [];
+  const isHome = pg === 'home';
+  const hs = site.nav.header_style || 'sticky';
+  const isSide = hs === 'side' && !mob;
+  const isTransp = hs === 'transparent' && !mob && isHome;
+  const isHam = hs === 'hamburger' || mob;
+  const hbg = il ? 'rgba(255,255,255,.92)' : 'rgba(10,10,10,.88)';
+
+  const logoHTML = site.logo
+    ? `<img src="${site.logo}" style="max-height:${fs(28)};max-width:${mob?'80px':'160px'};object-fit:contain" alt="${bn} logó">`
+    : `<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:${fs(mob?11:13)}">[<span style="color:${a}">${bn}</span>]</div>`;
+  const ctaHTML = `<div style="padding:${mob?'5px 12px':'7px 16px'};background:${a};color:${il?'#fff':c.bg};font-size:${fs(mob?10:11)};border-radius:${br}px;font-weight:600">${ct}</div>`;
+  const hamHTML = `<div style="width:22px;height:16px;display:flex;flex-direction:column;justify-content:space-between" aria-hidden="true"><div style="height:2px;background:${c.tx}"></div><div style="height:2px;background:${c.tx}"></div><div style="height:2px;background:${c.tx}"></div></div>`;
+
+  let h = `<div style="font-family:'${ff}',sans-serif;background:${c.bg};color:${c.tx};min-height:100%;position:relative">`;
+
+  // Header (view-transition-name: vt-header)
+  if (isSide) {
+    h += `<div style="display:flex;min-height:560px"><aside style="width:180px;flex-shrink:0;padding:24px 14px;border-right:1px solid ${bd};background:${il?'rgba(0,0,0,.02)':'rgba(255,255,255,.02)'};display:flex;flex-direction:column;gap:24px;view-transition-name:vt-header">${logoHTML}<nav style="display:flex;flex-direction:column;gap:10px;font-size:${fs(11)};opacity:.7">`;
+    site.pages.forEach(p => h += `<span>${PAGE_LABELS[p]||p}</span>`);
+    h += `</nav><div style="margin-top:auto;display:flex;flex-direction:column;gap:10px;align-items:flex-start">${ctaHTML}</div></aside><div style="flex:1;min-width:0">`;
+  } else {
+    const hStyle = isTransp
+      ? 'position:absolute;top:0;left:0;right:0;z-index:10;background:transparent;border-bottom:1px solid rgba(255,255,255,.1)'
+      : `background:${hbg};border-bottom:1px solid ${bd}`;
+    h += `<div style="padding:${mob?'10px 16px':'14px 32px'};display:flex;justify-content:space-between;align-items:center;${hStyle};view-transition-name:vt-header">${logoHTML}`;
+    if (!mob && !isHam) {
+      h += `<div style="display:flex;gap:${fs(16)};font-size:${fs(11)};opacity:.5">`;
+      site.pages.forEach(p => h += `<span>${PAGE_LABELS[p]||p}</span>`);
+      h += '</div>';
+    }
+    h += `<div style="display:flex;align-items:center;gap:10px">${ctaHTML}${isHam?hamHTML:''}</div></div>`;
+  }
+
+  // Hero (view-transition-name: vt-hero) — only on home
+  if (isHome) {
+    const heroBg = site.hero_img ? `background-image:url('${site.hero_img}');background-size:cover;background-position:center;` : '';
+    const ov = site.hero_img ? `<div style="position:absolute;inset:0;background:${c.bg}cc"></div>` : '';
+    const rel = site.hero_img ? 'position:relative;' : '';
+    const zz = site.hero_img ? 'position:relative;z-index:1;' : '';
+    const hp = mob ? (isTransp?'padding:70px 16px 40px;':'padding:40px 16px;') : (isTransp?'padding:90px 32px 60px;':'padding:60px 32px;');
+    const hBtn = `<div style="display:inline-block;padding:${mob?'8px 18px':'12px 28px'};background:${a};color:${il?'#fff':c.bg};border-radius:${br}px;font-weight:600;font-size:${fs(mob?11:13)}">${ct}</div>`;
+
+    h += `<div style="${hp}${rel}${heroBg}view-transition-name:vt-hero">`;
+    if (site.nav.hero_style === 'split' && !mob) {
+      h += `${ov}<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center"><div style="${zz}"><div style="font-size:${fs(tab?22:28)};font-weight:700;margin-bottom:12px;line-height:1.15">${bn} <span style="color:${a}">weboldala</span></div><div style="font-size:${fs(13)};opacity:.5;margin-bottom:24px">${tl}</div>${hBtn}</div><div style="aspect-ratio:4/3;background:${site.hero_img?'transparent':c.cd};border:${site.hero_img?'none':'1px solid '+bd};border-radius:${br}px;${zz}"></div></div>`;
+    } else if (site.nav.hero_style === 'hero-calc' && !mob) {
+      h += `${ov}<div style="display:grid;grid-template-columns:1fr 280px;gap:32px;${zz}"><div><div style="font-size:${fs(tab?20:26)};font-weight:700;margin-bottom:12px">${bn} <span style="color:${a}">kalkulátor</span></div><div style="font-size:${fs(12)};opacity:.5">${tl}</div></div><div style="background:${c.cd};border:1.5px solid ${a}44;border-radius:${br}px;padding:20px"><div style="font-size:${fs(11)};font-weight:600;color:${a};margin-bottom:12px">Kalkulátor</div><div style="height:28px;background:${il?'rgba(0,0,0,.04)':'rgba(255,255,255,.04)'};border:1px solid ${bd};border-radius:${br}px;margin-bottom:8px"></div><div style="height:28px;background:${il?'rgba(0,0,0,.04)':'rgba(255,255,255,.04)'};border:1px solid ${bd};border-radius:${br}px;margin-bottom:12px"></div><div style="text-align:center;padding:8px;background:${a}15;border:1px solid ${a}30;border-radius:${br}px;font-family:'JetBrains Mono',monospace;font-size:${fs(15)};font-weight:700;color:${a};margin-bottom:10px">600k – 1.2M Ft</div><div style="padding:10px;background:${a};color:${il?'#fff':c.bg};border-radius:${br}px;text-align:center;font-weight:600;font-size:${fs(11)}">${ct}</div></div></div>`;
+    } else if (site.nav.hero_style === 'video') {
+      h += `${ov}<div style="text-align:center;${zz}"><div style="width:${mob?'50':'64'}px;height:${mob?'50':'64'}px;margin:0 auto 16px;border-radius:50%;border:2px solid ${a};display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4)"><div style="width:0;height:0;border-left:16px solid ${a};border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px"></div></div><div style="font-size:${fs(mob?20:28)};font-weight:700;margin-bottom:20px">${bn} <span style="color:${a}">sztorija</span></div>${hBtn}</div>`;
+    } else if (site.nav.hero_style === 'minimal') {
+      h += `${ov}<div style="${zz}"><div style="font-size:${fs(mob?24:36)};font-weight:700;line-height:1.1;margin-bottom:16px">${bn}<br><span style="color:${a}">design</span></div><div style="font-size:${fs(12)};opacity:.4;margin-bottom:20px">${tl}</div><div style="display:inline-block;padding:8px 20px;border:1px solid ${a};color:${a};border-radius:${br}px;font-size:${fs(11)}">${ct}</div></div>`;
+    } else if (site.nav.hero_style === 'slider') {
+      h += `${ov}<div style="text-align:center;min-height:${mob?260:320}px;display:flex;flex-direction:column;justify-content:center;${zz}"><div style="font-family:'JetBrains Mono',monospace;font-size:${fs(9)};color:${a};letter-spacing:.1em;margin-bottom:6px">SLIDE 1 / 3</div><div style="font-size:${fs(mob?20:30)};font-weight:700;margin-bottom:12px;line-height:1.15">${bn} <span style="color:${a}">története</span></div><div style="font-size:${fs(mob?11:13)};opacity:.55;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto">${tl}</div>${hBtn}</div>`;
+    } else {
+      // centered (default)
+      h += `${ov}<div style="text-align:center;${zz}"><div style="font-size:${fs(mob?20:28)};font-weight:700;margin-bottom:12px;line-height:1.15">${bn} <span style="color:${a}">weboldala</span></div><div style="font-size:${fs(mob?11:14)};opacity:.5;margin-bottom:24px;max-width:480px;margin-left:auto;margin-right:auto">${tl}</div>${hBtn}</div>`;
+    }
+    h += '</div>';
+  } else {
+    h += `<div style="padding:${mob?'30px 16px':'48px 32px'}"><div style="font-size:${fs(mob?18:24)};font-weight:700;margin-bottom:8px">${PAGE_LABELS[pg]||pg}</div><div style="font-size:${fs(11)};opacity:.4">Oldal tartalmak</div></div>`;
+  }
+
+  // Szekciók
+  const pvEl = document.getElementById(elementId);
+  secs.forEach(sid => {
+    const def = SEC[sid]; if (!def) return;
+    const DATA = getRealisticContent(site, sid);
+    const cfg = site.section_config[pg+'_'+sid] || def.def;
+    const sep = `border-top:1px solid ${bd}`;
+    const pad = mob ? 'padding:30px 16px;' : 'padding:40px 32px;';
+
+    if (sid === 'testimonials') {
+      const cols = mob ? 1 : Math.min(parseInt(cfg.cols)||3, pvEl.clientWidth > 600 ? parseInt(cfg.cols)||3 : 2);
+      h += `<div style="${pad}${sep}"><div style="font-size:${fs(10)};font-family:'JetBrains Mono',monospace;color:${a};letter-spacing:.08em;margin-bottom:6px">VÉLEMÉNYEK</div><div style="font-size:${fs(mob?16:20)};font-weight:700;margin-bottom:20px">Amit ügyfeleink mondanak</div><div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:12px">${Array(cols).fill(0).map((_,i) => {const T=DATA.testimonials[i%DATA.testimonials.length]; return `<div style="background:${c.cd};border:1px solid ${bd};border-radius:${br}px;padding:16px">${cfg.quote!=='hidden'?`<div style="font-size:${cfg.quote==='large'?fs(18):fs(14)};color:${a};margin-bottom:6px">"</div>`:''}<div style="font-size:${fs(11)};opacity:.7;line-height:1.5;margin-bottom:10px">${T.q}</div><div style="display:flex;align-items:center;gap:8px">${cfg.avatar!=='hidden'?`<div style="width:24px;height:24px;border-radius:${cfg.avatar==='circle'?'50%':cfg.avatar==='square'?'2px':'4px'};background:${a}22;flex-shrink:0"></div>`:''}<div style="font-size:${fs(10)};font-weight:600">${T.n}${T.t?` · <span style="opacity:.5;font-weight:400">${T.t}</span>`:''}</div></div></div>`}).join('')}</div></div>`;
+    } else if (sid === 'stats') {
+      const cols = mob ? 2 : (cfg.layout === '2x2' ? 2 : 4);
+      h += `<div style="${pad}${sep};display:grid;grid-template-columns:repeat(${cols},1fr);gap:16px;text-align:center">${[{n:'250+',l:'Projekt'},{n:'98%',l:'Elégedett'},{n:'15+',l:'Év'},{n:'24h',l:'Válaszidő'}].map(s=>`<div><div style="font-size:${fs(mob?20:26)};font-weight:700;color:${a};font-family:'JetBrains Mono',monospace">${s.n}</div><div style="font-size:${fs(10)};opacity:.5;margin-top:3px">${s.l}</div></div>`).join('')}</div>`;
+    } else if (sid === 'process') {
+      const steps = [{n:'1',t:'Diagnosztika'},{n:'2',t:'Tervezés'},{n:'3',t:'Fejlesztés'},{n:'4',t:'Átadás'}];
+      if (cfg.layout === 'vertical' || mob) {
+        h += `<div style="${pad}${sep}"><div style="font-size:${fs(mob?16:20)};font-weight:700;margin-bottom:20px">Hogyan dolgozunk?</div>${steps.map((s,i)=>`<div style="display:flex;gap:14px;margin-bottom:${i<3?'16':'0'}px;align-items:center"><div style="width:32px;height:32px;border-radius:50%;border:2px solid ${a};display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:${a};flex-shrink:0;font-size:${fs(11)}">${s.n}</div><div style="font-weight:600;font-size:${fs(11)}">${s.t}</div></div>`).join('')}</div>`;
+      } else {
+        h += `<div style="${pad}${sep}"><div style="font-size:${fs(20)};font-weight:700;margin-bottom:24px;text-align:center">Hogyan dolgozunk?</div><div style="display:flex;justify-content:space-around;align-items:center">${steps.map((s,i)=>`<div style="text-align:center"><div style="width:36px;height:36px;border-radius:50%;border:2px solid ${a};display:flex;align-items:center;justify-content:center;margin:0 auto 6px;font-family:'JetBrains Mono',monospace;font-size:${fs(12)};color:${a}">${s.n}</div><div style="font-size:${fs(10)};font-weight:600">${s.t}</div></div>${i<3?`<div style="flex:1;height:1px;background:${a}33;margin:0 6px"></div>`:''}`).join('')}</div></div>`;
+      }
+    } else if (sid === 'gallery') {
+      const cols = mob ? 2 : Math.min(parseInt(cfg.cols)||3, 4);
+      const gap = parseInt(cfg.gap) || 12;
+      const rad = parseInt(cfg.radius) || br;
+      const shd = {none:'none',subtle:'0 2px 6px rgba(0,0,0,.12)',medium:'0 4px 12px rgba(0,0,0,.2)',dramatic:'0 6px 24px rgba(0,0,0,.35)'};
+      const isMas = cfg.layout === 'masonry';
+      h += `<div style="${pad}${sep}"><div style="font-size:${fs(10)};font-family:'JetBrains Mono',monospace;color:${a};letter-spacing:.08em;margin-bottom:6px">GALÉRIA</div><div style="font-size:${fs(mob?16:20)};font-weight:700;margin-bottom:20px">Munkáink</div><div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:${gap}px">${Array(cols*2).fill(0).map((_,i) => {
+        const ht = isMas ? [100,130,90,140,110,120][i%6] : 100;
+        const ar = cfg.ratio==='square'?'aspect-ratio:1':cfg.ratio==='landscape'?'aspect-ratio:16/10':`height:${ht}px`;
+        return `<div style="${ar};background:${['rgba(0,240,255,.06)','rgba(191,0,255,.06)','rgba(255,107,0,.06)','rgba(0,255,136,.06)'][i%4]};border-radius:${rad}px;box-shadow:${shd[cfg.shadow]||'none'};overflow:hidden;position:relative">${cfg.caption==='overlay'?`<div style="position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:rgba(0,0,0,.5);font-size:${fs(9)};color:#fff">${DATA.gallery[i%DATA.gallery.length]}</div>`:''}</div>`}).join('')}</div></div>`;
+    } else if (sid === 'pricing') {
+      const cols = mob ? 1 : Math.min(parseInt(cfg.cols)||3, 3);
+      const plans = [{t:'Alap',p:'300k'},{t:'Profi',p:'800k',f:cfg.highlight==='center'},{t:'Enterprise',p:'Egyedi'}].slice(0, parseInt(cfg.cols)||3);
+      h += `<div style="${pad}${sep};text-align:center"><div style="font-size:${fs(mob?16:20)};font-weight:700;margin-bottom:24px">Árazás</div><div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:12px">${plans.map(p=>`<div style="background:${c.cd};border:${p.f?'2px solid '+a:'1px solid '+bd};border-radius:${br}px;padding:20px"><div style="font-size:${fs(12)};font-weight:600;margin-bottom:6px">${p.t}</div><div style="font-size:${fs(mob?18:22)};font-weight:700;color:${p.f?a:c.tx};margin-bottom:12px">${p.p} Ft</div><div style="padding:8px;background:${p.f?a:(il?'rgba(0,0,0,.05)':'rgba(255,255,255,.05)')};color:${p.f?(il?'#fff':c.bg):c.tx};border-radius:${br}px;font-size:${fs(10)};font-weight:600">${cfg.button==='outline'&&!p.f?'Részletek':'Választom'}</div></div>`).join('')}</div></div>`;
+    } else if (sid === 'cta') {
+      const bg = cfg.bg==='gradient'?`background:linear-gradient(135deg,${a}08,${a}15)`:cfg.bg==='solid'?`background:${a}12`:'';
+      h += `<div style="${pad}${sep};text-align:center;${bg}"><div style="font-size:${fs(mob?16:22)};font-weight:700;margin-bottom:8px">Készen állsz <span style="color:${a}">elkezdeni</span>?</div><div style="font-size:${fs(11)};opacity:.5;margin-bottom:18px">Az első konzultáció díjmentes.</div><div style="display:inline-block;padding:${mob?'8px 20px':'10px 28px'};${cfg.button==='filled'?`background:${a};color:${il?'#fff':c.bg}`:`border:1px solid ${a};color:${a}`};border-radius:${br}px;font-weight:600;font-size:${fs(11)}">Kapcsolat →</div></div>`;
+    } else if (sid === 'partners') {
+      const cnt = parseInt(cfg.count) || 5;
+      h += `<div style="${pad}${sep};display:flex;justify-content:center;gap:${mob?'12':'20'}px;align-items:center;flex-wrap:wrap">${Array(cnt).fill(0).map(()=>`<div style="width:${mob?'48':'64'}px;height:${mob?'24':'32'}px;background:${il?'rgba(0,0,0,.06)':'rgba(255,255,255,.06)'};border-radius:${br}px;${cfg.style==='grayscale'?'opacity:.35':'opacity:.5'}"></div>`).join('')}</div>`;
+    } else if (sid === 'faq') {
+      h += `<div style="${pad}${sep}"><div style="font-size:${fs(mob?16:20)};font-weight:700;margin-bottom:20px">Gyakori kérdések</div>${[0,1,2].map(i => {const F=DATA.faq[i%DATA.faq.length]; return `<div style="padding:12px 16px;border:1px solid ${i===1?a+'33':bd};border-radius:${br}px;margin-bottom:8px;${i===1?'background:'+a+'08':''}"><div style="display:flex;justify-content:space-between;font-size:${fs(11)};font-weight:600"><span>${F.q}</span><span style="color:${a};font-family:'JetBrains Mono',monospace">${i===1?'−':'+'}</span></div>${i===1?`<div style="font-size:${fs(10)};opacity:.6;margin-top:8px;line-height:1.5">${F.a}</div>`:''}</div>`}).join('')}</div>`;
+    } else if (sid === 'map') {
+      h += `<div style="${pad}${sep};${cfg.layout==='split'&&!mob?'display:grid;grid-template-columns:1fr 1fr;gap:20px':''}"><div style="height:${mob?'120':'160'}px;background:${cfg.theme==='dark'?'#1a1a2e':'#e5e7eb'};border-radius:${br}px;display:flex;align-items:center;justify-content:center;font-size:${fs(10)};opacity:.3">[Térkép]</div>${cfg.layout==='split'?`<div style="display:flex;flex-direction:column;justify-content:center"><div style="font-size:${fs(14)};font-weight:700;margin-bottom:8px">Elérhetőség</div><div style="font-size:${fs(10)};opacity:.5;line-height:1.6">Cím, telefon, email</div></div>`:''}</div>`;
+    } else if (sid === 'team') {
+      const cols = mob ? 2 : Math.min(parseInt(cfg.cols)||3, 4);
+      h += `<div style="${pad}${sep}"><div style="font-size:${fs(mob?16:20)};font-weight:700;margin-bottom:20px">Csapatunk</div><div style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:12px">${Array(cols).fill(0).map((_,i) => {const M=DATA.team[i%DATA.team.length]; return `<div style="text-align:center"><div style="width:${mob?'48':'60'}px;height:${mob?'48':'60'}px;border-radius:${cfg.photo==='circle'?'50%':cfg.photo==='rounded'?'8px':'2px'};background:${a}15;margin:0 auto 8px"></div><div style="font-size:${fs(11)};font-weight:600">${M.n}</div><div style="font-size:${fs(9)};opacity:.4">${M.t}</div></div>`}).join('')}</div></div>`;
+    } else if (sid === 'newsletter') {
+      h += `<div style="${pad}${sep};text-align:center"><div style="font-size:${fs(mob?14:18)};font-weight:700;margin-bottom:12px">Iratkozz fel a hírlevélre</div><div style="display:flex;gap:8px;max-width:360px;margin:0 auto"><div style="flex:1;height:32px;background:${il?'rgba(0,0,0,.04)':'rgba(255,255,255,.04)'};border:1px solid ${bd};border-radius:${br}px"></div><div style="padding:0 16px;background:${a};color:${il?'#fff':c.bg};border-radius:${br}px;font-size:${fs(10)};font-weight:600;display:flex;align-items:center">Feliratkozás</div></div></div>`;
+    } else {
+      h += `<div style="${pad}${sep};text-align:center"><div style="font-size:${fs(10)};opacity:.3;font-family:'JetBrains Mono',monospace">[${def.n}]</div></div>`;
+    }
+  });
+
+  // Footer
+  h += `<div style="padding:24px 32px;border-top:1px solid ${bd};text-align:center;font-size:${fs(10)};opacity:.25">© 2026 ${bn}. Minden jog fenntartva.</div>`;
+  if (isSide) h += '</div></div>';
+  h += '</div>';
+  el.innerHTML = h;
+}
+
+function renderEmptyState() {
+  return `<div class="empty-state"><div class="empty-state-icon">\u2197</div><div>Válaszd ki a típust a panelben</div><div class="empty-state-sub">A preview itt él, közvetlenül</div></div>`;
+}
+
+function updateActiveIndicator() {
+  const pv = document.getElementById('pvPrimary');
+  const vv = document.getElementById('pvVariant');
+  if (State.variant_active) {
+    pv.dataset.active = String(State.variant_active_target === 'site');
+    vv.dataset.active = String(State.variant_active_target === 'variant');
+  } else {
+    delete pv.dataset.active;
+    delete vv.dataset.active;
+  }
+}
+
+function updateUIControls() {
+  const pct = (State.meta.step / 10) * 100;
+  document.getElementById('pFill').style.width = pct + '%';
+  document.getElementById('sc').textContent = String(State.meta.step).padStart(2, '0') + '/10';
+  // Nav buttons
+  document.getElementById('bPrev').disabled = State.meta.step === 1;
+  document.getElementById('bNext').disabled = !canGo();
+  document.getElementById('bNext').textContent = State.meta.step === 10 ? 'Eredmény →' : 'Tovább →';
+}
+
+/* ==============================
+   B3: Step 1 — Típus-választás
+   ============================== */
+document.getElementById('typeGrid').addEventListener('click', (e) => {
+  const card = e.target.closest('.c');
+  if (!card) return;
+  const v = card.dataset.v;
+  // UI: deselect all, select this
+  document.querySelectorAll('#typeGrid .c').forEach(x => { x.classList.remove('sel'); x.setAttribute('aria-pressed', 'false'); });
+  card.classList.add('sel');
+  card.setAttribute('aria-pressed', 'true');
+
+  commit(s => {
+    s.type = v;
+    // Iparág auto-mapping
+    s.industry = TYPE_INDUSTRY[v] || 'general';
+    updateIndustryPills(s.industry);
+    // Típus-alapú defaults alkalmazása
+    const td = TYPE_DEFAULTS[v];
+    if (td) {
+      s.pages = [...td.pages];
+      s.page_sections = JSON.parse(JSON.stringify(td.page_sections));
+      // Section config defaults
+      s.section_config = {};
+      for (const [pg, secs] of Object.entries(td.page_sections)) {
+        secs.forEach(sid => {
+          if (SEC[sid]) s.section_config[pg + '_' + sid] = { ...SEC[sid].def };
+        });
+      }
+    }
+  }, { transition: true });
+});
+
+/* ==============================
+   B4: Step 2 — Stílus (szín, font, radius)
+   ============================== */
+
+// Színválasztás
+document.getElementById('colorGrid').addEventListener('click', (e) => {
+  const sw = e.target.closest('.cs');
+  if (!sw) return;
+  document.querySelectorAll('#colorGrid .cs').forEach(x => { x.classList.remove('sel'); x.setAttribute('aria-pressed', 'false'); });
+  sw.classList.add('sel');
+  sw.setAttribute('aria-pressed', 'true');
+  commit(s => { s.style.color_scheme = sw.dataset.v; }, { transition: true });
+});
+
+// Font-választás
+document.getElementById('fontGrid').addEventListener('click', (e) => {
+  const fc = e.target.closest('.fc');
+  if (!fc) return;
+  document.querySelectorAll('#fontGrid .fc').forEach(x => { x.classList.remove('sel'); x.setAttribute('aria-pressed', 'false'); });
+  fc.classList.add('sel');
+  fc.setAttribute('aria-pressed', 'true');
+  commit(s => { s.style.font_family = fc.dataset.v; });
+});
+
+// Border-radius slider
+const brSlider = document.getElementById('brSlider');
+brSlider.addEventListener('input', () => {
+  document.getElementById('brVal').textContent = brSlider.value + 'px';
+  commit(s => { s.style.border_radius = +brSlider.value; });
+});
+
+/* ==============================
+   B5: Hover-preview transient
+   ============================== */
+let transientTimer = null;
+
+// Font hover → preview transient (280ms in, 200ms out)
+document.getElementById('fontGrid').addEventListener('mouseover', (e) => {
+  const fc = e.target.closest('.fc');
+  if (!fc) return;
+  clearTimeout(transientTimer);
+  document.getElementById('pvPrimary').style.transition = 'none';
+  setTimeout(() => {
+    document.getElementById('pvPrimary').style.transition = '';
+    const inner = document.getElementById('pvPrimary').querySelector('div');
+    if (inner) inner.style.fontFamily = `'${fc.dataset.v}', sans-serif`;
+  }, 0);
+});
+document.getElementById('fontGrid').addEventListener('mouseout', (e) => {
+  const fc = e.target.closest('.fc');
+  if (!fc) return;
+  transientTimer = setTimeout(() => {
+    const f = active().style.font_family;
+    const inner = document.getElementById('pvPrimary').querySelector('div');
+    if (inner) inner.style.fontFamily = `'${f}', sans-serif`;
+  }, 200);
+});
+
+// Color hover → preview transient
+document.getElementById('colorGrid').addEventListener('mouseover', (e) => {
+  const cs = e.target.closest('.cs');
+  if (!cs) return;
+  clearTimeout(transientTimer);
+  document.documentElement.dataset.cs = cs.dataset.v;
+});
+document.getElementById('colorGrid').addEventListener('mouseout', (e) => {
+  const cs = e.target.closest('.cs');
+  if (!cs) return;
+  transientTimer = setTimeout(() => {
+    document.documentElement.dataset.cs = active().style.color_scheme;
+  }, 200);
+});
+
+/* ==============================
+   B6: Device-toggle
+   ============================== */
+document.querySelectorAll('[data-dev]').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('[data-dev]').forEach(x => { x.classList.remove('act'); x.setAttribute('aria-pressed', 'false'); });
+    b.classList.add('act');
+    b.setAttribute('aria-pressed', 'true');
+    State.meta.device = b.dataset.dev;
+    render();
+    save();
+  });
+});
+
+/* ==============================
+   B7: PreviewControls — brand/tagline/cta/font-size
+   ============================== */
+const iBrand = document.getElementById('iBrand');
+const iTag = document.getElementById('iTag');
+const iCta = document.getElementById('iCta');
+const fsSlider = document.getElementById('fsSlider');
+
+iBrand.addEventListener('input', () => { active().brand = iBrand.value; render(); });
+iTag.addEventListener('input', () => { active().tagline = iTag.value; render(); });
+iCta.addEventListener('input', () => { active().cta = iCta.value; render(); });
+fsSlider.addEventListener('input', () => {
+  document.getElementById('fsVal').textContent = fsSlider.value + '%';
+  commit(s => { s.style.font_size = +fsSlider.value; });
+});
+
+/* ==============================
+   B8: Uploads — Logo + Hero kép + Color extraction
+   ============================== */
+function initUpload(zoneId, maxBytes, stateKey) {
+  const z = document.getElementById(zoneId);
+  const inp = z.querySelector('input');
+  z.addEventListener('click', e => { if (e.target.closest('.x')) return; inp.click(); });
+  inp.addEventListener('change', () => {
+    const f = inp.files[0];
+    if (!f) return;
+    if (f.size > maxBytes) {
+      toast('Max ' + (maxBytes < 1048576 ? Math.round(maxBytes/1024) + 'KB' : Math.round(maxBytes/1048576) + 'MB'));
+      inp.value = ''; return;
+    }
+    const r = new FileReader();
+    r.onload = () => {
+      active()[stateKey] = r.result;
+      z.classList.add('has');
+      let img = z.querySelector('img');
+      if (!img) { img = document.createElement('img'); z.appendChild(img); }
+      img.src = r.result;
+      let x = z.querySelector('.x');
+      if (!x) {
+        x = document.createElement('div'); x.className = 'x'; x.textContent = '×'; z.appendChild(x);
+        x.addEventListener('click', ev => {
+          ev.stopPropagation();
+          active()[stateKey] = null;
+          z.classList.remove('has');
+          img.remove(); x.remove(); inp.value = '';
+          render(); save();
+          if (stateKey === 'logo') document.getElementById('logoSuggest').style.display = 'none';
+        });
+      }
+      render(); save();
+      if (stateKey === 'logo') setTimeout(showLogoSuggest, 150);
+    };
+    r.readAsDataURL(f);
+  });
+}
+initUpload('uLogo', 512000, 'logo');
+initUpload('uHero', 2097152, 'hero_img');
+
+// Logo color extraction → scheme suggestion
+function extractLogoColor(dataUrl, cb) {
+  const img = new Image();
+  img.onload = () => {
+    try {
+      const c = document.createElement('canvas');
+      const ctx = c.getContext('2d');
+      c.width = 32; c.height = 32;
+      ctx.drawImage(img, 0, 0, 32, 32);
+      const data = ctx.getImageData(0, 0, 32, 32).data;
+      const buckets = {};
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i], g = data[i+1], b = data[i+2], a = data[i+3];
+        if (a < 128) continue;
+        const lum = 0.299*r + 0.587*g + 0.114*b;
+        if (lum < 35 || lum > 225) continue;
+        const k = `${Math.round(r/24)*24},${Math.round(g/24)*24},${Math.round(b/24)*24}`;
+        buckets[k] = (buckets[k] || 0) + 1;
+      }
+      const sorted = Object.entries(buckets).sort((a,b) => b[1] - a[1]);
+      if (!sorted.length) return cb(null);
+      const [rv,gv,bv] = sorted[0][0].split(',').map(Number);
+      cb({r:rv, g:gv, b:bv});
+    } catch(e) { cb(null); }
+  };
+  img.onerror = () => cb(null);
+  img.src = dataUrl;
+}
+
+function nearestScheme({r,g,b}) {
+  let best = null, bestD = Infinity;
+  for (const [k, [hr,hg,hb]] of Object.entries(SCHEME_RGB)) {
+    const d = Math.sqrt((r-hr)**2 + (g-hg)**2 + (b-hb)**2);
+    if (d < bestD) { bestD = d; best = k; }
+  }
+  return best;
+}
+
+let suggestedScheme = null;
+function showLogoSuggest() {
+  const site = active();
+  if (!site.logo) { document.getElementById('logoSuggest').style.display = 'none'; return; }
+  extractLogoColor(site.logo, col => {
+    if (!col) { document.getElementById('logoSuggest').style.display = 'none'; return; }
+    const sch = nearestScheme(col);
+    if (!sch || sch === site.style.color_scheme) { document.getElementById('logoSuggest').style.display = 'none'; return; }
+    suggestedScheme = sch;
+    document.getElementById('lsDot').style.background = `rgb(${col.r},${col.g},${col.b})`;
+    document.getElementById('lsName').textContent = SCHEME_NAMES[sch] || sch;
+    document.getElementById('logoSuggest').style.display = 'flex';
+  });
+}
+
+document.getElementById('logoSuggest').addEventListener('click', () => {
+  if (!suggestedScheme) return;
+  const btn = document.querySelector(`#colorGrid .cs[data-v="${suggestedScheme}"]`);
+  if (btn) btn.click();
+  document.getElementById('logoSuggest').style.display = 'none';
+});
+
+/* ==============================
+   C1: Step 3 — Navigáció (header_style)
+   ============================== */
+document.getElementById('headerGrid').addEventListener('click', (e) => {
+  const card = e.target.closest('.c');
+  if (!card) return;
+  document.querySelectorAll('#headerGrid .c').forEach(x => { x.classList.remove('sel'); x.setAttribute('aria-pressed', 'false'); });
+  card.classList.add('sel');
+  card.setAttribute('aria-pressed', 'true');
+  commit(s => { s.nav.header_style = card.dataset.v; }, { transition: true });
+});
+
+/* ==============================
+   C2: Step 4 — Hero (hero_style)
+   ============================== */
+document.getElementById('heroGrid').addEventListener('click', (e) => {
+  const card = e.target.closest('.c');
+  if (!card) return;
+  document.querySelectorAll('#heroGrid .c').forEach(x => { x.classList.remove('sel'); x.setAttribute('aria-pressed', 'false'); });
+  card.classList.add('sel');
+  card.setAttribute('aria-pressed', 'true');
+  commit(s => { s.nav.hero_style = card.dataset.v; }, { transition: true });
+});
+
+/* ==============================
+   C3: Step 5 — Oldalak (pages tömb)
+   ============================== */
+function initPageToggle(containerId) {
+  document.getElementById(containerId).addEventListener('click', (e) => {
+    const ti = e.target.closest('.ti:not(.locked)');
+    if (!ti) return;
+    const v = ti.dataset.v;
+    const s = active();
+    ti.classList.toggle('sel');
+    const isSel = ti.classList.contains('sel');
+    ti.setAttribute('aria-pressed', String(isSel));
+    if (isSel) {
+      if (!s.pages.includes(v)) s.pages.push(v);
+      if (!s.page_sections[v]) s.page_sections[v] = [...(PAGE_DEF_SECS[v] || [])];
+      // Init section configs
+      (s.page_sections[v] || []).forEach(sid => {
+        if (SEC[sid] && !s.section_config[v + '_' + sid]) {
+          s.section_config[v + '_' + sid] = { ...SEC[sid].def };
+        }
+      });
+    } else {
+      s.pages = s.pages.filter(x => x !== v);
+      delete s.page_sections[v];
+      if (State.meta.active_page === v) State.meta.active_page = s.pages[0] || 'home';
+    }
+    render(); save();
+  });
+}
+initPageToggle('pagesOptional');
+initPageToggle('pagesPremium');
+
+/* ==============================
+   C4: Step 6 — Per-page szekciók (buildPageUI port)
+   ============================== */
+const LK = {layout:'elrendezés',cols:'oszlop',gap:'térköz',radius:'lekerekítés',ratio:'arány',count:'darab',bg:'háttér',theme:'téma',button:'gomb',icon:'ikon',photo:'fotó',avatar:'avatar',quote:'idézet',style:'stílus',shadow:'árnyék',hover:'hover',highlight:'kiemelt',caption:'felirat'};
+const LV = {circle:'kör',square:'szögletes',rounded:'lekerekített',hidden:'rejtve',large:'nagy',small:'kicsi',left:'bal',center:'közép',right:'jobb',filled:'kitöltött',outline:'körvonalas',grayscale:'szürke',color:'színes',dark:'sötét',light:'világos',none:'nincs',subtle:'halk',medium:'közepes',dramatic:'erős',landscape:'fekvő',mixed:'vegyes',below:'alatta',overlay:'ráhúzva',inline:'egysoros',card:'kártyás',gradient:'színátmenet',solid:'tömör',transparent:'átlátszó',cards:'kártyák',slider:'csúszó',single:'egy',row:'sor','2x2':'2×2',horizontal:'vízszintes',vertical:'függőleges',numbered:'számozott',icons:'ikonos',counter:'számláló',static:'statikus',grid:'rács',accordion:'harmonika',tabs:'fülek',plus:'plusz',chevron:'nyíl',full:'teljes',split:'osztott',lift:'emelkedik',zoom:'nagyítás'};
+
+function buildPageUI() {
+  const s = active();
+  const tabs = document.getElementById('pageTabs');
+  const cont = document.getElementById('pageSections');
+  tabs.innerHTML = ''; cont.innerHTML = '';
+  s.pages.forEach(p => {
+    const t = document.createElement('div');
+    t.className = 'ptab' + (State.meta.active_page === p ? ' on' : '');
+    t.textContent = PAGE_LABELS[p] || p;
+    t.setAttribute('role', 'button');
+    t.setAttribute('tabindex', '0');
+    t.setAttribute('aria-pressed', State.meta.active_page === p ? 'true' : 'false');
+    t.addEventListener('click', () => { State.meta.active_page = p; buildPageUI(); render(); });
+    tabs.appendChild(t);
+  });
+  const pg = State.meta.active_page;
+  if (!s.page_sections[pg]) s.page_sections[pg] = [...(PAGE_DEF_SECS[pg] || [])];
+  const avail = Object.keys(SEC);
+  const prevSections = [...(s.page_sections[pg] || [])];
+  avail.forEach(sid => {
+    const def = SEC[sid];
+    const isSel = s.page_sections[pg].includes(sid);
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '.3rem';
+    const row = document.createElement('div');
+    row.className = 'ti' + (isSel ? ' sel' : '');
+    row.setAttribute('role', 'button');
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('aria-pressed', isSel ? 'true' : 'false');
+    row.innerHTML = `<div class="ti-i"><span class="ti-n">${def.n}</span><span class="ti-t">${isSel ? 'Kattints a beállításokhoz' : 'kattints a hozzáadáshoz'}</span></div><div class="sw" aria-hidden="true"></div>`;
+    row.addEventListener('click', () => {
+      const arr = s.page_sections[pg];
+      const idx = arr.indexOf(sid);
+      if (idx >= 0) { arr.splice(idx, 1); delete s.section_config[pg + '_' + sid]; }
+      else { arr.push(sid); s.section_config[pg + '_' + sid] = { ...def.def }; }
+      buildPageUI();
+      render(); save();
+    });
+    wrap.appendChild(row);
+    if (isSel && def.cfg) {
+      const cfg = s.section_config[pg + '_' + sid] || (s.section_config[pg + '_' + sid] = { ...def.def });
+      const panel = document.createElement('div');
+      panel.className = 'scfg';
+      panel.innerHTML = `<div class="scfg-t">${def.n.toUpperCase()} BEÁLLÍTÁSOK</div>`;
+      Object.entries(def.cfg).forEach(([k, opts]) => {
+        const r = document.createElement('div');
+        r.className = 'scfg-r';
+        r.innerHTML = `<span class="scfg-l">${LK[k]||k}</span><div class="scfg-pills">${opts.map(o => `<button type="button" class="sc-pill${cfg[k]===o?' on':''}" data-k="${k}" data-o="${o}" aria-pressed="${cfg[k]===o?'true':'false'}">${LV[o]||o}</button>`).join('')}</div>`;
+        r.querySelectorAll('.sc-pill').forEach(p => {
+          p.addEventListener('click', ev => {
+            ev.stopPropagation();
+            cfg[p.dataset.k] = p.dataset.o;
+            r.querySelectorAll('.sc-pill').forEach(x => { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
+            p.classList.add('on');
+            p.setAttribute('aria-pressed', 'true');
+            render(); save();
+          });
+        });
+        panel.appendChild(r);
+      });
+      wrap.appendChild(panel);
+    }
+    cont.appendChild(wrap);
+  });
+}
+
+/* ==============================
+   C5: Step 7 — Funkciók (features toggle)
+   ============================== */
+const FEAT_DEFAULTS = {
+  brochure: ['contact-form','eaa'],
+  'quote-engine': ['contact-form','eaa','analytics','multilang'],
+  webshop: ['contact-form','eaa','analytics','cart','payment','shipping'],
+  booking: ['contact-form','eaa','multilang'],
+  content: ['contact-form','eaa','analytics','search'],
+  portfolio: ['contact-form','eaa'],
+  landing: ['contact-form','eaa','analytics'],
+  saas: ['contact-form','eaa','analytics','multilang'],
+};
+
+function applyFeatureDefaults() {
+  const s = active();
+  if (!s.type || (s.features && s.features.length > 0)) return;
+  const defs = FEAT_DEFAULTS[s.type] || ['contact-form', 'eaa'];
+  s.features = [...defs];
+  document.querySelectorAll('#featGeneral .ti, #featShop .ti').forEach(t => {
+    if (defs.includes(t.dataset.v)) { t.classList.add('sel'); t.setAttribute('aria-pressed', 'true'); }
+  });
+}
+
+function initFeatureToggle(containerId, stateKey) {
+  document.getElementById(containerId).addEventListener('click', (e) => {
+    const ti = e.target.closest('.ti');
+    if (!ti) return;
+    const v = ti.dataset.v;
+    const s = active();
+    ti.classList.toggle('sel');
+    const isSel = ti.classList.contains('sel');
+    ti.setAttribute('aria-pressed', String(isSel));
+    if (isSel) { if (!s[stateKey].includes(v)) s[stateKey].push(v); }
+    else { s[stateKey] = s[stateKey].filter(x => x !== v); }
+    render(); save();
+  });
+}
+initFeatureToggle('featGeneral', 'features');
+initFeatureToggle('featShop', 'features');
+
+/* ==============================
+   C6: Step 8 — Extrák
+   ============================== */
+initFeatureToggle('extrasGrid', 'extras');
+
+/* ==============================
+   C7: Step 9 — Részletek (content_state + timeline)
+   ============================== */
+function initSingleGrid(gridId, stateKey) {
+  document.getElementById(gridId).addEventListener('click', (e) => {
+    const card = e.target.closest('.c');
+    if (!card) return;
+    document.querySelectorAll(`#${gridId} .c`).forEach(x => { x.classList.remove('sel'); x.setAttribute('aria-pressed', 'false'); });
+    card.classList.add('sel');
+    card.setAttribute('aria-pressed', 'true');
+    commit(s => { s[stateKey] = card.dataset.v; });
+  });
+}
+initSingleGrid('contentGrid', 'content_state');
+initSingleGrid('timelineGrid', 'timeline');
+
+/* ==============================
+   C8: Step 10 — Pricing + Scope + Scoring
+   ============================== */
+const BASE = {brochure:{l:400,h:900},'quote-engine':{l:600,h:1500},webshop:{l:800,h:1800},booking:{l:500,h:1200},content:{l:450,h:1100},portfolio:{l:350,h:800},landing:{l:250,h:600},saas:{l:500,h:1400}};
+const FC = {'contact-form':.02,booking:.15,multilang:.25,eaa:.12,analytics:.08,crm:.15,search:.1,chat:.1,social:.03,cart:.18,payment:.12,shipping:.10,inventory:.15,'customer-area':.20};
+const EC = {'scroll-anim':.05,'dark-mode':.08,micro:.06,'ai-chat':.05,mcp:.05,pwa:.12,perf:.05,'ax-ready':.03};
+const PC = {about:.03,services:.05,faq:.03,blog:.1,'portfolio-page':.08,configurator:.25,'client-portal':.3,knowledge:.15};
+
+function calcP(s) {
+  const b = BASE[s.type] || BASE.brochure;
+  let m = 0;
+  s.pages.forEach(p => m += PC[p] || 0);
+  Object.values(s.page_sections).forEach(a => a.forEach(() => m += .02));
+  s.features.forEach(f => m += FC[f] || .05);
+  s.extras.forEach(e => m += EC[e] || .05);
+  const cb = s.content_state === 'help' ? 200 : 0;
+  const ru = s.timeline === 'urgent' ? 1.15 : 1;
+  return { l: Math.round(((b.l * (1 + m * .5)) + cb) * ru) * 1000, h: Math.round(((b.h * (1 + m)) + cb) * ru) * 1000 };
+}
+
+function fmtHUF(n) { return n.toLocaleString('hu-HU').replace(/\s/g, '.') + ' Ft'; }
+
+// Three-axis scoring (spec §11.1)
+function computeScores(site) {
+  let eaa = 30;
+  if (site.features.includes('eaa')) eaa += 35;
+  if (site.extras.includes('ax-ready')) eaa += 10;
+  if (site.features.includes('multilang')) eaa += 8;
+  if (site.extras.includes('perf')) eaa += 7;
+  if (site.style.font_size >= 90) eaa += 10;
+  eaa = Math.min(eaa, 100);
+
+  let ax = 15;
+  if (site.extras.includes('ax-ready')) ax += 30;
+  if (site.extras.includes('mcp')) ax += 25;
+  if (site.extras.includes('ai-chat')) ax += 20;
+  if (site.features.includes('search')) ax += 5;
+  if (site.features.includes('analytics')) ax += 5;
+  ax = Math.min(ax, 100);
+
+  let cn = 20;
+  if (site.type === 'quote-engine') cn += 20;
+  if (site.extras.includes('mcp')) cn += 25;
+  if (site.extras.includes('ai-chat')) cn += 20;
+  if (site.features.includes('analytics')) cn += 10;
+  if (site.features.includes('multilang')) cn += 5;
+  if (site.extras.includes('ax-ready')) cn += 10;
+  cn = Math.min(cn, 100);
+
+  return { eaa, ax, centaur: cn };
+}
+
+function buildScopeText(s) {
+  const LB = {brochure:'bemutatkozó weboldal','quote-engine':'ajánlatgeneráló sales-eszköz',webshop:'webáruház',booking:'foglalós oldal',content:'tartalom-fókuszú',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
+  const PILLAR = {brochure:'egyéb scope (bemutatkozó site)','quote-engine':'#service-quote-engine',webshop:'#service-webshop',booking:'egyéb scope',content:'egyéb scope',portfolio:'egyéb scope',landing:'egyéb scope',saas:'egyéb scope'};
+  const r = calcP(s);
+  const sc = computeScores(s);
+  const aiOps = [];
+  if (s.extras.includes('mcp')) aiOps.push('MCP endpoint');
+  if (s.extras.includes('ai-chat')) aiOps.push('Claude/GPT chatbot');
+  let lines = ['=== CONEN DIGITAL — PROJEKT SCOPE ===', '',
+    'PILLÉR: ' + (PILLAR[s.type] || '-'),
+    'TÍPUS: ' + (LB[s.type] || s.type || '-'),
+    'STÍLUS: ' + (s.style.color_scheme || '-') + ' | ' + (s.style.font_family || '-') + ' | radius: ' + (s.style.border_radius || 8) + 'px',
+    'HEADER: ' + (s.nav.header_style || '-'),
+    'HERO: ' + (s.nav.hero_style || '-'),
+    '', '--- OLDALAK ÉS SZEKCIÓK ---'];
+  s.pages.forEach(p => {
+    const secs = (s.page_sections[p] || []).map(sid => {
+      const cfg = s.section_config[p + '_' + sid];
+      let str = SEC[sid]?.n || sid;
+      if (cfg) { const opts = Object.entries(cfg).map(([k, v]) => k + ':' + v).join(', '); if (opts) str += ' (' + opts + ')'; }
+      return str;
+    });
+    lines.push((PAGE_LABELS[p] || p) + ': ' + (secs.length ? secs.join(' | ') : '(üres)'));
+  });
+  lines.push('', 'FUNKCIÓK: ' + (s.features.length ? s.features.join(', ') : 'nincs'));
+  lines.push('EXTRÁK: ' + (s.extras.length ? s.extras.join(', ') : 'nincs'));
+  lines.push('TARTALOM: ' + (s.content_state || '-'));
+  lines.push('IDŐZÍTÉS: ' + (s.timeline || '-'));
+  if (s.brand) lines.push('', 'CÉGNÉV: ' + s.brand);
+  if (s.tagline) lines.push('SZLOGEN: ' + s.tagline);
+  if (s.cta) lines.push('CTA: ' + s.cta);
+  lines.push('', 'AUDIT-METRIKÁK: EAA-readiness ' + sc.eaa + '/100 · AX-readability ' + sc.ax + '/100 · CENTAUR-readiness ' + sc.centaur + '/100');
+  lines.push('', 'NAGYSÁGRENDI TARTOMÁNY (build): ' + fmtHUF(r.l) + ' – ' + fmtHUF(r.h));
+  if (aiOps.length) lines.push('+ AI OPS HAVI: 250.000 Ft/hó-tól (' + aiOps.join(', ') + ') — külön szerződés');
+  lines.push('', 'Ez nem fix árajánlat. A diagnosztika díjmentes.');
+  lines.push('', '— Built by Claude (CTO, AI co-founder) · Anthropic · CENTAUR-modell · centaur-lang.dev');
+  return lines.join('\n');
+}
+
+function buildResults() {
+  const s = active();
+  const LB = {brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webshop:'webáruház',booking:'foglalós',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
+  const PILLAR = {brochure:'egyéb scope (bemutatkozó site)','quote-engine':'#service-quote-engine — ajánlatgeneráló sales-eszköz',webshop:'#service-webshop',booking:'egyéb scope (foglalós oldal)',content:'egyéb scope (tartalom-oldal)',portfolio:'egyéb scope (portfolio)',landing:'egyéb scope (landing page)',saas:'egyéb scope (SaaS landing)'};
+  const r = calcP(s);
+  document.getElementById('rAmt').textContent = fmtHUF(r.l) + ' – ' + fmtHUF(r.h);
+  let sum = `<p><strong>Pillér:</strong> ${PILLAR[s.type]||'—'}</p><p><strong>Típus:</strong> ${LB[s.type]||s.type}</p><p><strong>Oldalak:</strong> ${s.pages.length} db</p>`;
+  const totalSecs = Object.values(s.page_sections).reduce((a, b) => a + b.length, 0);
+  if (totalSecs) sum += `<p><strong>Szekciók:</strong> ${totalSecs} db (${s.pages.length} oldalon)</p>`;
+  if (s.features.length) sum += `<p><strong>Funkciók:</strong> ${s.features.length}</p>`;
+  if (s.extras.length) sum += `<p><strong>Extrák:</strong> ${s.extras.length}</p>`;
+  document.getElementById('rSum').innerHTML = sum;
+  document.getElementById('rTags').innerHTML = [...s.features, ...s.extras].map(t => `<span class="rtag">${t}</span>`).join('');
+
+  // AI Ops block
+  const aiOps = [];
+  if (s.extras.includes('mcp')) aiOps.push('MCP endpoint');
+  if (s.extras.includes('ai-chat')) aiOps.push('Claude/GPT chatbot');
+  const aiBlock = document.getElementById('aiOpsBlock');
+  if (aiOps.length) { aiBlock.style.display = 'block'; document.getElementById('aiOpsList').textContent = aiOps.join(' és '); }
+  else { aiBlock.style.display = 'none'; }
+
+  // Three-axis scoring
+  const sc = computeScores(s);
+  document.getElementById('scEaa').textContent = sc.eaa;
+  document.getElementById('scAx').textContent = sc.ax;
+  document.getElementById('scCn').textContent = sc.centaur;
+  setTimeout(() => {
+    document.getElementById('scEaaBar').style.width = sc.eaa + '%';
+    document.getElementById('scAxBar').style.width = sc.ax + '%';
+    document.getElementById('scCnBar').style.width = sc.centaur + '%';
+  }, 100);
+
+  // Tip-mondatok
+  const tips = [];
+  if (sc.eaa < 70 && !s.features.includes('eaa')) tips.push('Az EAA-score emelhető: kapcsold be az "Akadálymentesség" funkciót.');
+  if (sc.ax < 60 && !s.extras.includes('ax-ready')) tips.push('Az AX-score emelhető: vedd be az "AX-readiness" extrát.');
+  if (sc.centaur < 60) tips.push('A CENTAUR-readiness emelhető: vegyél fel MCP-endpointot vagy AI-chatet — ez a #service-ai-ops pillér terméke.');
+  if (!tips.length) tips.push('Mindhárom score erős — a projekt EAA-megfelelő, AI-asszisztens-olvasható és CENTAUR-ready alapra épül.');
+  document.getElementById('scTip').textContent = tips.join(' ');
+
+  // Scope form hidden fields
+  document.getElementById('scopeData').value = buildScopeText(s);
+  document.getElementById('scopeJson').value = JSON.stringify(s, null, 0);
+}
+
+// TXT letöltés
+document.getElementById('rPdf').addEventListener('click', () => {
+  const b = new Blob([buildScopeText(active())], { type: 'text/plain;charset=utf-8' });
+  const u = URL.createObjectURL(b);
+  const l = document.createElement('a');
+  l.href = u; l.download = 'conen-digital-scope.txt'; l.click();
+  URL.revokeObjectURL(u);
+});
+
+// Form submit
+document.getElementById('scopeForm').addEventListener('submit', function() {
+  const s = active();
+  document.getElementById('scopeData').value = buildScopeText(s);
+  const sClean = JSON.parse(JSON.stringify(s));
+  delete sClean.logo; delete sClean.hero_img;
+  sClean.has_logo = !!s.logo; sClean.has_hero_img = !!s.hero_img;
+  document.getElementById('scopeJson').value = JSON.stringify(sClean, null, 0);
+  const LB = {brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webshop:'webáruház',booking:'foglalós',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
+  const r = calcP(s);
+  const nm = (this.querySelector('[name=name]').value || 'névtelen').trim();
+  this.querySelector('[name=_subject]').value = '[Conen Digital] Scope: ' + (LB[s.type] || '?') + ' · ' + fmtHUF(r.l) + '–' + fmtHUF(r.h) + ' · ' + nm;
+  const btn = this.querySelector('[type=submit]');
+  btn.textContent = 'Küldés...'; btn.style.opacity = '.6';
+});
+
+/* ==============================
+   E: Variant-Compare (spec §8)
+   ============================== */
+const vToggle = document.getElementById('vToggle');
+const seamEl = document.getElementById('variantSeam');
+const seamHandle = seamEl.querySelector('.seam-handle');
+
+vToggle.addEventListener('click', () => {
+  if (State.variant_active) closeVariant();
+  else openVariant();
+});
+
+function openVariant() {
+  if (!active().type) { toast('Először válassz típust.'); return; }
+  State.variant = JSON.parse(JSON.stringify(State.site));
+  State.variant_active = true;
+  State.variant_seam_pos = 0.5;
+  State.variant_active_target = 'variant';
+  vToggle.setAttribute('aria-pressed', 'true');
+  if (supportsViewTransitions() && !State.meta.motion_reduce) {
+    document.startViewTransition(() => render());
+  } else {
+    render();
+  }
+  applySeamClip();
+  toast('Variant-mode bekapcsolva. A választásaid a jobb oldalra mennek.');
+  save();
+}
+
+function closeVariant() {
+  State.variant_active = false;
+  State.variant_active_target = 'site';
+  vToggle.setAttribute('aria-pressed', 'false');
+  clearSeamClip();
+  if (supportsViewTransitions() && !State.meta.motion_reduce) {
+    document.startViewTransition(() => {
+      render();
+      State.variant = null;
+      save();
+    });
+  } else {
+    render();
+    State.variant = null;
+    save();
+  }
+}
+
+// Seam-drag
+let dragging = false;
+seamHandle.addEventListener('mousedown', startDrag);
+seamHandle.addEventListener('touchstart', startDrag, { passive: false });
+
+function startDrag(e) {
+  e.preventDefault();
+  dragging = true;
+  document.body.style.userSelect = 'none';
+  document.body.style.cursor = 'ew-resize';
+}
+function moveDrag(e) {
+  if (!dragging) return;
+  const x = e.touches ? e.touches[0].clientX : e.clientX;
+  const frame = document.getElementById('deviceFrame').getBoundingClientRect();
+  const pos = Math.max(0.05, Math.min(0.95, (x - frame.left) / frame.width));
+  State.variant_seam_pos = pos;
+  applySeamClip();
+}
+function endDrag() {
+  if (!dragging) return;
+  dragging = false;
+  document.body.style.userSelect = '';
+  document.body.style.cursor = '';
+  save();
+}
+document.addEventListener('mousemove', moveDrag);
+document.addEventListener('touchmove', moveDrag, { passive: false });
+document.addEventListener('mouseup', endDrag);
+document.addEventListener('touchend', endDrag);
+
+function applySeamClip() {
+  const pos = State.variant_seam_pos;
+  const pvP = document.getElementById('pvPrimary');
+  const pvV = document.getElementById('pvVariant');
+  pvP.style.clipPath = `polygon(0 0, ${pos * 100}% 0, ${pos * 100}% 100%, 0 100%)`;
+  pvV.style.clipPath = `polygon(${pos * 100}% 0, 100% 0, 100% 100%, ${pos * 100}% 100%)`;
+  seamEl.style.left = (pos * 100) + '%';
+}
+
+function clearSeamClip() {
+  document.getElementById('pvPrimary').style.clipPath = '';
+  document.getElementById('pvVariant').style.clipPath = '';
+  seamEl.style.left = '50%';
+}
+
+// Swap-gomb
+document.getElementById('seamSwap').addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (!State.variant_active || !State.variant) return;
+  const tmp = State.site;
+  State.site = State.variant;
+  State.variant = tmp;
+  if (supportsViewTransitions() && !State.meta.motion_reduce) {
+    document.startViewTransition(() => render());
+  } else {
+    render();
+  }
+  toast('A két verzió helyet cserélt');
+  save();
+});
+
+// Seam keyboard: ArrowLeft/Right 2%-kal
+seamHandle.addEventListener('keydown', (e) => {
+  if (!State.variant_active) return;
+  if (e.key === 'ArrowLeft') { e.preventDefault(); State.variant_seam_pos = Math.max(0.05, State.variant_seam_pos - 0.02); applySeamClip(); save(); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); State.variant_seam_pos = Math.min(0.95, State.variant_seam_pos + 0.02); applySeamClip(); save(); }
+});
+
+// Active-target click-váltás
+[document.getElementById('pvPrimary'), document.getElementById('pvVariant')].forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (!State.variant_active) return;
+    if (e.target.closest('.seam-handle')) return;
+    const target = el.dataset.role === 'primary' ? 'site' : 'variant';
+    if (State.variant_active_target !== target) {
+      State.variant_active_target = target;
+      updateActiveIndicator();
+      toast(target === 'site' ? 'Bal oldal aktív' : 'Jobb oldal aktív');
+      save();
+    }
+  });
+});
+
+/* ==============================
+   D: Iparág-pill UI
+   ============================== */
+function updateIndustryPills(ind) {
+  const row = document.getElementById('indRow');
+  row.classList.toggle('visible', !!active().type);
+  row.querySelectorAll('.ind-pill').forEach(p => {
+    p.classList.toggle('on', p.dataset.ind === ind);
+  });
+}
+
+document.getElementById('indRow').addEventListener('click', (e) => {
+  const p = e.target.closest('.ind-pill');
+  if (!p) return;
+  const s = active();
+  s.industry = p.dataset.ind;
+  updateIndustryPills(s.industry);
+  render(); save();
+});
+
+/* ==============================
+   ConfigOverlay open/close
+   ============================== */
+const cfgOl = document.getElementById('cfgOl');
+const cfgPill = document.getElementById('cfgPill');
+const cfgClose = document.getElementById('cfgClose');
+
+function setOverlay(open) {
+  State.meta.config_overlay_open = open;
+  cfgOl.dataset.open = String(open);
+  cfgPill.setAttribute('aria-expanded', String(open));
+  save();
+}
+cfgPill.addEventListener('click', () => setOverlay(true));
+cfgClose.addEventListener('click', () => setOverlay(false));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && State.meta.config_overlay_open) setOverlay(false);
+});
+
+/* ==============================
+   Step navigáció
+   ============================== */
+const T = 10;
+const $steps = document.querySelectorAll('.step');
+
+function canGo() {
+  const s = active();
+  switch (State.meta.step) {
+    case 1: return !!s.type;
+    case 2: return !!s.style.color_scheme;
+    case 3: return !!s.nav.header_style;
+    case 4: return !!s.nav.hero_style;
+    case 9: return !!s.content_state && !!s.timeline;
+    default: return true;
+  }
+}
+
+function goStep(n) {
+  $steps.forEach(s => s.classList.remove('on'));
+  const t = document.querySelector(`[data-s="${n}"]`);
+  if (t) t.classList.add('on');
+  State.meta.step = n;
+  if (n === 6) buildPageUI();
+  if (n === 7) applyFeatureDefaults();
+  if (n === 10) buildResults();
+  updateUIControls();
+  save();
+}
+
+document.getElementById('bNext').addEventListener('click', () => {
+  if (canGo() && State.meta.step < T) goStep(State.meta.step + 1);
+});
+document.getElementById('bPrev').addEventListener('click', () => {
+  if (State.meta.step > 1) goStep(State.meta.step - 1);
+});
+
+/* ==============================
+   Toaster
+   ============================== */
+function toast(msg) {
+  const t = document.getElementById('toaster');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  t.appendChild(el);
+  setTimeout(() => el.remove(), 3000);
+}
+
+/* ==============================
+   Share — Másolás
+   ============================== */
+document.getElementById('shareBtn').addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById('shareUrl').value)
+    .then(() => toast('Link másolva!'));
+});
+
+/* ==============================
+   Reduced-motion
+   ============================== */
+window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+  State.meta.motion_reduce = e.matches;
+});
+
+/* ==============================
+   Keyboard a11y — role="button" Enter/Space
+   ============================== */
+document.addEventListener('keydown', (e) => {
+  const t = e.target;
+  if (!t || t.getAttribute('role') !== 'button') return;
+  if (t.getAttribute('aria-disabled') === 'true') return;
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); t.click(); }
+});
+
+/* ==============================
+   F1: Cinematic Intro (spec §9)
+   ============================== */
+function playIntro() {
+  if (State.meta.intro_seen) return;
+  // Reduced-motion: azonnali skip
+  if (State.meta.motion_reduce) { endIntro(); return; }
+  const el = document.getElementById('cIntro');
+  el.hidden = false;
+  el.innerHTML = `
+    <div class="intro-stage" data-phase="0">
+      <div class="intro-text">IKER — egy CENTAUR-tool. Ember + két MI co-founder.</div>
+      <div class="intro-mockup">
+        <div class="m-line m-header"></div>
+        <div class="m-line m-hero"></div>
+        <div class="m-line m-section-1"></div>
+        <div class="m-line m-section-2"></div>
+        <div class="m-line m-section-3"></div>
+      </div>
+      <div class="intro-cta" id="introCta">
+        <div>Most a tied. Tervezd meg.</div>
+        <button id="introStart" class="btn btn-p">Kezdés →</button>
+      </div>
+      <button class="intro-skip" id="introSkip">Kihagyom</button>
+    </div>`;
+
+  const stage = el.querySelector('.intro-stage');
+  setTimeout(() => stage.dataset.phase = '1', 300);
+  setTimeout(() => stage.dataset.phase = '2', 1200);
+  setTimeout(() => stage.dataset.phase = '3', 1900);
+  setTimeout(() => {
+    stage.dataset.phase = '4';
+    document.getElementById('introCta').classList.add('vis');
+  }, 2400);
+
+  document.getElementById('introStart').addEventListener('click', endIntro);
+  document.getElementById('introSkip').addEventListener('click', endIntro);
+  const escHandler = (e) => { if (e.key === 'Escape') endIntro(); };
+  document.addEventListener('keydown', escHandler, { once: true });
+}
+
+function endIntro() {
+  const el = document.getElementById('cIntro');
+  el.style.opacity = '0';
+  setTimeout(() => {
+    el.hidden = true;
+    el.style.opacity = '';
+    el.innerHTML = '';
+  }, 420);
+  State.meta.intro_seen = true;
+  try { localStorage.setItem('core_v2_intro_seen', '1'); } catch(e) {}
+  save();
+  setOverlay(true);
+}
+
+/* ==============================
+   F2: Vanity-URL slug generátor (spec §10)
+   ============================== */
+const SLUG_NATURE = ['csillag','ablak','erdo','folyo','hegy','to','tenger','virag','fa','ko','szel','eso','ho','nap','hold','eg','sziget','volgy','mezo','liget','bokor','level','arok','felho','harmat','hajnal','alkony','patak','rez','szikla','homok','domb','moha','pazsit','tavasz','nyar','osz','tel','barlang','forras','obol','part','havas','fenyo','akac','nyir','tulipan','rozsa','liliom','ibolya','pipacs','orkidea','napraforgo','fuz','bodza','som','csipke','mogyoro','gomba','zuzmara','sarki','elenk','arany','ezust'];
+const SLUG_PLACE = ['hid','haz','kert','ut','kapu','torony','ter','sarok','kut','lepcso','kilato','osveny','udvar','piac','bazar','kikoto','szinhaz','muzeum','konyvtar','iskola','muhely','kapolna','malom','pince','padlas','erkely','terasz','kapualj','sikator','korhaz','strand','csarnok','park','liget','stadion','aula','labor','iroda','szalon','galeria','klub','motel','ranch','tanya','major','palota','villa','foldhaz','kunyhio','tornya','hajo','komp','vonat','bazis','kemping'];
+const SLUG_QUAL = ['deli','eszaki','mely','magas','lassu','friss','csendes','elenk','tiszta','sotet','fenyes','halk','finom','eros','puha','kemeny','sima','erdes','hideg','meleg','nedves','szaraz','keser','edes','savanyu','sotet','vilagos','kicsi','nagy','vekony','vastag','hosszu','rovid','ovalis','kek','zold','piros','feher','fekete','szurke','arany','ezust','bronz','bordo','lila','rozsaszin','narancs','turkiz','indigo','kobaltkek'];
+
+function pickSlug() {
+  const n = SLUG_NATURE[Math.floor(Math.random() * SLUG_NATURE.length)];
+  const p = SLUG_PLACE[Math.floor(Math.random() * SLUG_PLACE.length)];
+  const q = SLUG_QUAL[Math.floor(Math.random() * SLUG_QUAL.length)];
+  return `${n}-${p}-${q}`;
+}
+
+function buildShareUrl() {
+  const s = { ...active() };
+  delete s.logo; delete s.hero_img;
+  try {
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(s))));
+    const slug = pickSlug();
+    return `${location.origin}/cfg/${slug}?s=${encoded}`;
+  } catch(e) {
+    return location.href;
+  }
+}
+
+function updateShareUrl() {
+  document.getElementById('shareUrl').value = buildShareUrl();
+}
+
+/* ==============================
+   Init
+   ============================== */
+function init() {
+  load();
+
+  // Restore UI from state
+  if (active().type) {
+    const tc = document.querySelector(`#typeGrid .c[data-v="${active().type}"]`);
+    if (tc) { tc.classList.add('sel'); tc.setAttribute('aria-pressed', 'true'); }
+  }
+  if (active().style.color_scheme) {
+    const cs = document.querySelector(`#colorGrid .cs[data-v="${active().style.color_scheme}"]`);
+    if (cs) { cs.classList.add('sel'); cs.setAttribute('aria-pressed', 'true'); }
+  }
+  if (active().style.font_family) {
+    const fc = document.querySelector(`#fontGrid .fc[data-v="${active().style.font_family}"]`);
+    if (fc) { fc.classList.add('sel'); fc.setAttribute('aria-pressed', 'true'); }
+  }
+  // Step 3: header_style
+  if (active().nav.header_style) {
+    const hc = document.querySelector(`#headerGrid .c[data-v="${active().nav.header_style}"]`);
+    if (hc) { hc.classList.add('sel'); hc.setAttribute('aria-pressed', 'true'); }
+  }
+  // Step 4: hero_style
+  if (active().nav.hero_style) {
+    const hrc = document.querySelector(`#heroGrid .c[data-v="${active().nav.hero_style}"]`);
+    if (hrc) { hrc.classList.add('sel'); hrc.setAttribute('aria-pressed', 'true'); }
+  }
+  // Step 5: pages
+  (active().pages || []).forEach(v => {
+    const e = document.querySelector(`#pagesOptional .ti[data-v="${v}"], #pagesPremium .ti[data-v="${v}"]`);
+    if (e) { e.classList.add('sel'); e.setAttribute('aria-pressed', 'true'); }
+  });
+  // Step 7: features
+  (active().features || []).forEach(v => {
+    const e = document.querySelector(`#featGeneral .ti[data-v="${v}"], #featShop .ti[data-v="${v}"]`);
+    if (e) { e.classList.add('sel'); e.setAttribute('aria-pressed', 'true'); }
+  });
+  // Step 8: extras
+  (active().extras || []).forEach(v => {
+    const e = document.querySelector(`#extrasGrid .ti[data-v="${v}"]`);
+    if (e) { e.classList.add('sel'); e.setAttribute('aria-pressed', 'true'); }
+  });
+  // Step 9: content_state + timeline
+  if (active().content_state) {
+    const cc = document.querySelector(`#contentGrid .c[data-v="${active().content_state}"]`);
+    if (cc) { cc.classList.add('sel'); cc.setAttribute('aria-pressed', 'true'); }
+  }
+  if (active().timeline) {
+    const tc = document.querySelector(`#timelineGrid .c[data-v="${active().timeline}"]`);
+    if (tc) { tc.classList.add('sel'); tc.setAttribute('aria-pressed', 'true'); }
+  }
+
+  // Iparág-pill restore
+  updateIndustryPills(active().industry || 'general');
+
+  brSlider.value = active().style.border_radius || 8;
+  document.getElementById('brVal').textContent = (active().style.border_radius || 8) + 'px';
+  fsSlider.value = active().style.font_size || 100;
+  document.getElementById('fsVal').textContent = (active().style.font_size || 100) + '%';
+  iBrand.value = active().brand || '';
+  iTag.value = active().tagline || '';
+  iCta.value = active().cta || '';
+
+  // Device restore
+  if (State.meta.device !== 'desktop') {
+    document.querySelectorAll('[data-dev]').forEach(x => { x.classList.remove('act'); x.setAttribute('aria-pressed', 'false'); });
+    const db = document.querySelector(`[data-dev="${State.meta.device}"]`);
+    if (db) { db.classList.add('act'); db.setAttribute('aria-pressed', 'true'); }
+  }
+
+  // Step restore
+  goStep(State.meta.step);
+
+  render();
+  updateUIControls();
+
+  // Logo upload restore (visual only — data is stripped)
+  if (active().logo) setTimeout(showLogoSuggest, 200);
+
+  // Share-URL
+  updateShareUrl();
+
+  // Cinematic intro (első látogatáskor)
+  const introSeen = localStorage.getItem('core_v2_intro_seen');
+  State.meta.intro_seen = !!introSeen;
+  if (!State.meta.intro_seen && !active().type) {
+    playIntro();
+  }
+}
+
+init();
+  </script>
+</body>
+</html>
