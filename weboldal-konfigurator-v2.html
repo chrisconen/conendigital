@@ -209,6 +209,22 @@ input[type=range]{flex:1;-webkit-appearance:none;background:transparent}
 input[type=range]::-webkit-slider-track{height:3px;background:rgba(255,255,255,.1);border-radius:2px}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);margin-top:-5px}
 
+/* Sequential attention animation on preview controls */
+@keyframes attention-glow{
+  0%,100%{box-shadow:0 0 0 0 transparent;border-color:rgba(255,255,255,.07)}
+  20%{box-shadow:0 0 12px rgba(0,240,255,.25),inset 0 0 6px rgba(0,240,255,.08);border-color:rgba(0,240,255,.5)}
+  50%{box-shadow:0 0 20px rgba(0,240,255,.35),inset 0 0 10px rgba(0,240,255,.1);border-color:rgba(0,240,255,.6)}
+  80%{box-shadow:0 0 12px rgba(0,240,255,.25),inset 0 0 6px rgba(0,240,255,.08);border-color:rgba(0,240,255,.5)}
+}
+@keyframes attention-glow-upl{
+  0%,100%{box-shadow:0 0 0 0 transparent;border-color:rgba(255,255,255,.1)}
+  20%{box-shadow:0 0 12px rgba(0,240,255,.25);border-color:rgba(0,240,255,.5)}
+  50%{box-shadow:0 0 20px rgba(0,240,255,.35);border-color:rgba(0,240,255,.6)}
+  80%{box-shadow:0 0 12px rgba(0,240,255,.25);border-color:rgba(0,240,255,.5)}
+}
+.cfg-preview-controls .attn-active{animation:attention-glow 1.5s ease-in-out}
+.cfg-preview-controls .upl.attn-active{animation:attention-glow-upl 1.5s ease-in-out}
+
 /* --- PreviewControls --- */
 .cfg-preview-controls{padding:10px 16px;border-top:1px solid var(--glass-border);display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .cfg-preview-controls input[type=text]{flex:1;min-width:60px;padding:4px 8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:3px;color:var(--white);font-size:.7rem;font-family:var(--font-main)}
@@ -2324,6 +2340,55 @@ function init() {
 }
 
 init();
+
+/* ==============================
+   Sequential attention animation — preview controls
+   ============================== */
+(function() {
+  const targets = ['iBrand', 'iTag', 'iCta', 'uLogo', 'uHero'];
+  let idx = 0;
+  let loopId = null;
+  let stopped = false;
+
+  function runLoop() {
+    if (stopped) return;
+    const el = document.getElementById(targets[idx]);
+    if (!el) return;
+    el.classList.add('attn-active');
+    el.addEventListener('animationend', function handler() {
+      el.classList.remove('attn-active');
+      el.removeEventListener('animationend', handler);
+      idx = (idx + 1) % targets.length;
+      if (!stopped) loopId = setTimeout(runLoop, 300);
+    }, { once: true });
+  }
+
+  function stopLoop() {
+    stopped = true;
+    clearTimeout(loopId);
+    targets.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('attn-active');
+    });
+  }
+
+  // Start after overlay opens, stop on any interaction
+  const startAttn = () => {
+    if (stopped) return;
+    loopId = setTimeout(runLoop, 1000);
+  };
+
+  // Watch overlay open
+  const obs = new MutationObserver(() => {
+    if (document.getElementById('cfgOl').dataset.open === 'true' && !stopped) startAttn();
+  });
+  obs.observe(document.getElementById('cfgOl'), { attributes: true, attributeFilter: ['data-open'] });
+
+  // Stop on any input interaction in preview-controls
+  document.getElementById('cfgCtrls').addEventListener('click', stopLoop, { once: true });
+  document.getElementById('cfgCtrls').addEventListener('input', stopLoop, { once: true });
+  document.getElementById('cfgCtrls').addEventListener('focusin', stopLoop, { once: true });
+})();
   </script>
 </body>
 </html>
