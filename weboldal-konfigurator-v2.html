@@ -163,6 +163,8 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .logo span{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .cfg-step-pilot{margin-left:auto}
 .step-count{font-family:var(--font-mono);font-size:.7rem;color:var(--dim)}
+.cfg-reset{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-xs);font-size:.9rem;color:var(--dim);transition:color var(--t-fast),background var(--t-fast)}
+.cfg-reset:hover{color:var(--orange);background:rgba(255,107,0,.08)}
 .cfg-close{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:var(--r-xs);font-size:1.1rem;color:var(--dim);transition:color var(--t-fast),background var(--t-fast)}
 .cfg-close:hover{color:var(--white);background:rgba(255,255,255,.06)}
 
@@ -440,6 +442,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
         <header class="cfg-header">
           <div style="display:flex;flex-direction:column;gap:1px"><div style="display:flex;align-items:center;gap:8px"><a href="index.html" class="logo">[<span>ConenDigital</span>]</a><span style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:.2em;font-weight:700">IKER</span></div><span style="font-family:var(--font-mono);font-size:10px;color:var(--dim)">by Claude</span></div>
           <div class="cfg-step-pilot"><span class="step-count" id="sc" aria-live="polite" aria-atomic="true">01/10</span></div>
+          <button class="cfg-reset" id="cfgReset" aria-label="Konfiguráció újrakezdése" title="Újrakezdés">↻</button>
           <button class="cfg-close" id="cfgClose" aria-label="Panel bezárása">&times;</button>
         </header>
         <div class="cfg-content" id="cfgContent">
@@ -1921,6 +1924,50 @@ document.getElementById('indRow').addEventListener('click', (e) => {
   s.industry = p.dataset.ind;
   updateIndustryPills(s.industry);
   render(); save();
+});
+
+/* ==============================
+   Reset (újrakezdés)
+   ============================== */
+document.getElementById('cfgReset').addEventListener('click', () => {
+  if (!confirm('Biztosan újrakezded? A jelenlegi konfiguráció elveszik.')) return;
+  // State reset
+  Object.assign(State.site, {
+    type: null, brand: '', tagline: '', cta: '', logo: null, hero_img: null,
+    style: { color_scheme: 'dark-cyan', font_family: 'Space Grotesk', border_radius: 8, font_size: 100 },
+    nav: { header_style: 'sticky', hero_style: 'centered' },
+    pages: ['home','contact'], page_sections: { home: [], contact: [] }, section_config: {},
+    features: [], extras: [], content_state: null, timeline: null, industry: 'general',
+  });
+  State.variant = null; State.variant_active = false;
+  State.variant_seam_pos = 0.5; State.variant_active_target = 'site';
+  State.meta.step = 1; State.meta.active_page = 'home'; State.meta.device = 'desktop';
+  // UI reset
+  document.querySelectorAll('.c.sel,.cs.sel,.fc.sel,.ti.sel:not(.locked)').forEach(e => {
+    e.classList.remove('sel'); e.setAttribute('aria-pressed', 'false');
+  });
+  document.getElementById('brSlider').value = 8;
+  document.getElementById('brVal').textContent = '8px';
+  document.getElementById('fsSlider').value = 100;
+  document.getElementById('fsVal').textContent = '100%';
+  document.getElementById('iBrand').value = '';
+  document.getElementById('iTag').value = '';
+  document.getElementById('iCta').value = '';
+  document.querySelectorAll('.upl').forEach(z => {
+    z.classList.remove('has'); z.querySelectorAll('img,.x').forEach(e => e.remove());
+    z.querySelector('input').value = '';
+  });
+  document.getElementById('logoSuggest').style.display = 'none';
+  document.querySelectorAll('[data-dev]').forEach(x => { x.classList.remove('act'); x.setAttribute('aria-pressed','false'); });
+  document.querySelector('[data-dev="desktop"]').classList.add('act');
+  document.querySelector('[data-dev="desktop"]').setAttribute('aria-pressed','true');
+  document.getElementById('deviceFrame').classList.remove('variant-active');
+  vToggle.setAttribute('aria-pressed', 'false');
+  updateIndustryPills('general');
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  goStep(1);
+  render();
+  toast('Konfiguráció törölve — újrakezdheted.');
 });
 
 /* ==============================
