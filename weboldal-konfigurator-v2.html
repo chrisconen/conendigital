@@ -3646,6 +3646,12 @@ function init() {
 
   goStep(State.meta.step);
 
+  // Restore variant-compare UI if it was active before reload
+  if (State.variant_active && State.variant) {
+    document.getElementById('deviceFrame').classList.add('variant-active');
+    vToggle.setAttribute('aria-pressed', 'true');
+  }
+
   render();
   updateUIControls();
 
@@ -6034,6 +6040,12 @@ function init() {
 
   // Step restore
   goStep(State.meta.step);
+
+  // Restore variant-compare UI if it was active before reload
+  if (State.variant_active && State.variant) {
+    document.getElementById('deviceFrame').classList.add('variant-active');
+    vToggle.setAttribute('aria-pressed', 'true');
+  }
 
   render();
   updateUIControls();
