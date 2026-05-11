@@ -263,29 +263,39 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;heigh
 .section-revealing{animation:section-reveal 320ms cubic-bezier(0.34,1.4,0.64,1) forwards}
 @keyframes section-reveal{from{opacity:0;transform:translateY(12px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
 
-/* Cinematic intro — typographic title sequence */
+/* Cinematic intro — IKER logo + SVG website builder */
 .cinematic-intro{position:fixed;inset:0;z-index:var(--z-intro);background:var(--black);display:flex;align-items:center;justify-content:center;color:var(--white);font-family:var(--font-mono);transition:opacity 500ms ease-out;overflow:hidden}
 .cinematic-intro[hidden]{display:none}
 .cinematic-intro::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,240,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,.015) 1px,transparent 1px);background-size:60px 60px;opacity:0;transition:opacity 800ms ease-out}
-.intro-stage{display:flex;flex-direction:column;align-items:center;gap:0;max-width:700px;text-align:center;padding:32px;position:relative}
-/* Phase 1: grid fade-in */
-.intro-stage[data-phase="1"] ~ *,.intro-stage[data-phase="1"]{} /* grid via parent */
-.cinematic-intro.phase-1::before,.cinematic-intro.phase-2::before,.cinematic-intro.phase-3::before{opacity:1}
-/* Logo reveal */
-.intro-logo{font-size:clamp(4rem,12vw,8rem);font-weight:700;letter-spacing:-.04em;opacity:0;transform:scale(.9);transition:opacity 600ms ease-out,transform 600ms cubic-bezier(.4,0,.2,1);background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:1.5rem}
-.intro-stage[data-phase="1"] .intro-logo,.intro-stage[data-phase="2"] .intro-logo,.intro-stage[data-phase="3"] .intro-logo{opacity:1;transform:scale(1)}
-/* Subtitle */
-.intro-sub{font-size:clamp(.8rem,1.8vw,1rem);letter-spacing:.08em;color:rgba(255,255,255,.5);opacity:0;transform:translateY(12px);transition:opacity 500ms ease-out,transform 500ms ease-out;margin-bottom:2.5rem}
-.intro-stage[data-phase="2"] .intro-sub,.intro-stage[data-phase="3"] .intro-sub{opacity:1;transform:translateY(0)}
-/* Decorative line */
-.intro-line{width:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent-2),transparent);transition:width 800ms ease-out;margin-bottom:2.5rem}
-.intro-stage[data-phase="2"] .intro-line,.intro-stage[data-phase="3"] .intro-line{width:200px}
-/* CTA block */
-.intro-cta{opacity:0;transform:translateY(16px);transition:opacity 500ms ease-out,transform 500ms ease-out;display:flex;flex-direction:column;align-items:center;gap:16px}
+.cinematic-intro.phase-1::before,.cinematic-intro.phase-2::before,.cinematic-intro.phase-3::before,.cinematic-intro.phase-4::before{opacity:1}
+.intro-stage{display:flex;flex-direction:column;align-items:center;gap:0;max-width:800px;width:100%;text-align:center;padding:24px;position:relative}
+/* Logo */
+.intro-logo{font-size:clamp(3rem,10vw,5.5rem);font-weight:700;letter-spacing:-.04em;opacity:0;transform:scale(.9);transition:opacity 600ms ease-out,transform 600ms cubic-bezier(.4,0,.2,1);background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.6rem}
+.intro-stage[data-phase="1"] .intro-logo,.intro-stage[data-phase="2"] .intro-logo,.intro-stage[data-phase="3"] .intro-logo,.intro-stage[data-phase="4"] .intro-logo{opacity:1;transform:scale(1)}
+.intro-sub{font-size:clamp(.7rem,1.4vw,.85rem);letter-spacing:.08em;color:rgba(255,255,255,.4);opacity:0;transition:opacity 400ms ease-out;margin-bottom:1.2rem}
+.intro-stage[data-phase="1"] .intro-sub,.intro-stage[data-phase="2"] .intro-sub,.intro-stage[data-phase="3"] .intro-sub,.intro-stage[data-phase="4"] .intro-sub{opacity:1}
+/* SVG mockup */
+.intro-svg{width:100%;max-width:520px;opacity:0;transform:translateY(16px) scale(.96);transition:opacity 600ms ease-out,transform 600ms cubic-bezier(.4,0,.2,1);margin-bottom:1.5rem}
+.intro-stage[data-phase="2"] .intro-svg,.intro-stage[data-phase="3"] .intro-svg,.intro-stage[data-phase="4"] .intro-svg{opacity:1;transform:translateY(0) scale(1)}
+/* SVG stagger anims */
+@keyframes svg-el-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.intro-svg .s-el{opacity:0;animation:svg-el-in 400ms ease-out forwards}
+.intro-stage[data-phase="2"] .s-chrome{animation-delay:0ms}
+.intro-stage[data-phase="2"] .s-header{animation-delay:200ms}
+.intro-stage[data-phase="2"] .s-hero{animation-delay:450ms}
+.intro-stage[data-phase="3"] .s-cards{animation-delay:0ms}
+.intro-stage[data-phase="3"] .s-card1{animation-delay:100ms}
+.intro-stage[data-phase="3"] .s-card2{animation-delay:200ms}
+.intro-stage[data-phase="3"] .s-card3{animation-delay:300ms}
+.intro-stage[data-phase="3"] .s-testimonial{animation-delay:500ms}
+.intro-stage[data-phase="3"] .s-footer{animation-delay:650ms}
+/* Keep visible after anim */
+.intro-stage[data-phase="3"] .s-el,.intro-stage[data-phase="4"] .s-el{opacity:1}
+/* CTA */
+.intro-cta{opacity:0;transform:translateY(12px);transition:opacity 500ms ease-out,transform 500ms ease-out;display:flex;flex-direction:column;align-items:center;gap:12px}
 .intro-cta.vis{opacity:1;transform:translateY(0)}
-.intro-cta-text{font-size:clamp(1rem,2.5vw,1.35rem);font-weight:600;font-family:var(--font-main);letter-spacing:-.01em;color:var(--white)}
-/* Skip */
-.intro-skip{position:absolute;bottom:24px;right:24px;font-size:.65rem;color:rgba(255,255,255,.25);cursor:pointer;border:none;background:none;font-family:var(--font-mono);letter-spacing:.06em;transition:color .25s}
+.intro-cta-text{font-size:clamp(.9rem,2vw,1.15rem);font-weight:600;font-family:var(--font-main);letter-spacing:-.01em;color:var(--white)}
+.intro-skip{position:absolute;bottom:20px;right:24px;font-size:.6rem;color:rgba(255,255,255,.2);cursor:pointer;border:none;background:none;font-family:var(--font-mono);letter-spacing:.06em;transition:color .25s}
 .intro-skip:hover{color:var(--accent)}
 
 /* Toaster */
@@ -2069,7 +2079,76 @@ function playIntro() {
     <div class="intro-stage" data-phase="0">
       <div class="intro-logo">IKER</div>
       <div class="intro-sub">Egy CENTAUR-tool. Ember + két MI co-founder.</div>
-      <div class="intro-line"></div>
+      <svg class="intro-svg" viewBox="0 0 520 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Browser chrome -->
+        <g class="s-el s-chrome">
+          <rect x="0" y="0" width="520" height="380" rx="8" fill="#111113" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <rect x="0" y="0" width="520" height="32" rx="8" fill="#18181b"/>
+          <rect x="0" y="24" width="520" height="8" fill="#18181b"/>
+          <circle cx="16" cy="14" r="4" fill="#ff5f57"/>
+          <circle cx="30" cy="14" r="4" fill="#ffbd2e"/>
+          <circle cx="44" cy="14" r="4" fill="#28c840"/>
+          <rect x="60" y="8" width="180" height="12" rx="3" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.06)" stroke-width=".5"/>
+          <text x="72" y="17" font-family="JetBrains Mono,monospace" font-size="6" fill="rgba(255,255,255,.25)">az-en-weboldam.hu</text>
+        </g>
+        <!-- Header -->
+        <g class="s-el s-header">
+          <rect x="16" y="42" width="488" height="28" rx="2" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.04)" stroke-width=".5"/>
+          <text x="28" y="60" font-family="JetBrains Mono,monospace" font-size="8" font-weight="700" fill="#00f0ff">[Brand]</text>
+          <text x="280" y="59" font-family="Space Grotesk,sans-serif" font-size="6" fill="rgba(255,255,255,.35)">Főoldal    Szolgáltatások    Rólunk    Kapcsolat</text>
+          <rect x="456" y="48" width="36" height="14" rx="2" fill="#00f0ff"/>
+          <text x="460" y="58" font-family="Space Grotesk,sans-serif" font-size="5.5" font-weight="600" fill="#0a0a0a">CTA →</text>
+        </g>
+        <!-- Hero -->
+        <g class="s-el s-hero">
+          <rect x="16" y="78" width="488" height="100" rx="2" fill="rgba(0,240,255,.03)"/>
+          <text x="40" y="112" font-family="Space Grotesk,sans-serif" font-size="18" font-weight="700" fill="#ffffff">Üdvözöljük a <tspan fill="#00f0ff">Brand</tspan> oldalán</text>
+          <text x="40" y="130" font-family="Space Grotesk,sans-serif" font-size="8" fill="rgba(255,255,255,.45)">Rövid, meggyőző szlogen — ami azonnal megmondja, miért vagy itt.</text>
+          <rect x="40" y="142" width="80" height="20" rx="4" fill="#00f0ff"/>
+          <text x="50" y="155" font-family="JetBrains Mono,monospace" font-size="6.5" font-weight="600" fill="#0a0a0a">Ajánlatkérés →</text>
+          <rect x="300" y="90" width="180" height="76" rx="4" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.05)" stroke-width=".5"/>
+          <text x="360" y="134" font-family="Space Grotesk,sans-serif" font-size="7" fill="rgba(255,255,255,.15)" text-anchor="middle">[Hero kép]</text>
+        </g>
+        <!-- Service cards -->
+        <g class="s-el s-cards">
+          <text x="16" y="200" font-family="JetBrains Mono,monospace" font-size="5.5" fill="#00f0ff" letter-spacing="1.5">SZOLGÁLTATÁSOK</text>
+          <text x="16" y="214" font-family="Space Grotesk,sans-serif" font-size="11" font-weight="700" fill="#ffffff">Amiben segítünk</text>
+        </g>
+        <g class="s-el s-card1">
+          <rect x="16" y="224" width="152" height="68" rx="4" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.05)" stroke-width=".5"/>
+          <circle cx="40" cy="244" r="10" fill="rgba(0,240,255,.1)" stroke="rgba(0,240,255,.2)" stroke-width=".5"/>
+          <text x="35" y="247" font-size="8" fill="#00f0ff">◎</text>
+          <text x="28" y="264" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="600" fill="#ffffff">Weboldal készítés</text>
+          <text x="28" y="276" font-family="Space Grotesk,sans-serif" font-size="5.5" fill="rgba(255,255,255,.35)">Modern, gyors, EAA-konform</text>
+        </g>
+        <g class="s-el s-card2">
+          <rect x="184" y="224" width="152" height="68" rx="4" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.05)" stroke-width=".5"/>
+          <circle cx="208" cy="244" r="10" fill="rgba(191,0,255,.1)" stroke="rgba(191,0,255,.2)" stroke-width=".5"/>
+          <text x="203" y="247" font-size="8" fill="#bf00ff">◆</text>
+          <text x="196" y="264" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="600" fill="#ffffff">Webáruház</text>
+          <text x="196" y="276" font-family="Space Grotesk,sans-serif" font-size="5.5" fill="rgba(255,255,255,.35)">Shopify, WooCommerce, egyedi</text>
+        </g>
+        <g class="s-el s-card3">
+          <rect x="352" y="224" width="152" height="68" rx="4" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.05)" stroke-width=".5"/>
+          <circle cx="376" cy="244" r="10" fill="rgba(255,107,0,.1)" stroke="rgba(255,107,0,.2)" stroke-width=".5"/>
+          <text x="371" y="247" font-size="8" fill="#ff6b00">✦</text>
+          <text x="364" y="264" font-family="Space Grotesk,sans-serif" font-size="7" font-weight="600" fill="#ffffff">AI integráció</text>
+          <text x="364" y="276" font-family="Space Grotesk,sans-serif" font-size="5.5" fill="rgba(255,255,255,.35)">Chatbot, MCP, automatizáció</text>
+        </g>
+        <!-- Testimonial -->
+        <g class="s-el s-testimonial">
+          <rect x="16" y="304" width="488" height="40" rx="4" fill="rgba(0,240,255,.02)" stroke="rgba(0,240,255,.06)" stroke-width=".5"/>
+          <text x="32" y="320" font-family="Space Grotesk,sans-serif" font-size="14" fill="rgba(0,240,255,.3)">"</text>
+          <text x="46" y="322" font-family="Space Grotesk,sans-serif" font-size="6.5" fill="rgba(255,255,255,.55)" font-style="italic">Az ajánlatadás folyamatát három hét alatt felére csökkentettük.</text>
+          <text x="46" y="334" font-family="JetBrains Mono,monospace" font-size="5" fill="rgba(255,255,255,.3)">— Kovács Eszter · Pénzügyi vezető</text>
+        </g>
+        <!-- Footer -->
+        <g class="s-el s-footer">
+          <line x1="16" y1="354" x2="504" y2="354" stroke="rgba(255,255,255,.04)"/>
+          <text x="16" y="368" font-family="JetBrains Mono,monospace" font-size="5" fill="rgba(255,255,255,.15)">© 2026 Brand. Minden jog fenntartva.</text>
+          <text x="430" y="368" font-family="JetBrains Mono,monospace" font-size="5" fill="rgba(0,240,255,.25)">CENTAUR</text>
+        </g>
+      </svg>
       <div class="intro-cta" id="introCta">
         <div class="intro-cta-text">Most a tied. Tervezd meg.</div>
         <button id="introStart" class="btn btn-p">Kezdés →</button>
@@ -2078,15 +2157,17 @@ function playIntro() {
     </div>`;
 
   const stage = el.querySelector('.intro-stage');
-  // Phase 1 (500ms): grid + IKER logo reveal
-  setTimeout(() => { stage.dataset.phase = '1'; el.classList.add('phase-1'); }, 500);
-  // Phase 2 (1600ms): subtitle + line
-  setTimeout(() => { stage.dataset.phase = '2'; el.classList.add('phase-2'); }, 1600);
-  // Phase 3 (3000ms): CTA appears
+  // Phase 1 (400ms): grid + IKER logo + subtitle
+  setTimeout(() => { stage.dataset.phase = '1'; el.classList.add('phase-1'); }, 400);
+  // Phase 2 (1400ms): SVG appears — browser chrome + header + hero
+  setTimeout(() => { stage.dataset.phase = '2'; el.classList.add('phase-2'); }, 1400);
+  // Phase 3 (2800ms): cards + testimonial + footer stagger in
+  setTimeout(() => { stage.dataset.phase = '3'; el.classList.add('phase-3'); }, 2800);
+  // Phase 4 (4200ms): CTA
   setTimeout(() => {
-    stage.dataset.phase = '3'; el.classList.add('phase-3');
+    stage.dataset.phase = '4'; el.classList.add('phase-4');
     document.getElementById('introCta').classList.add('vis');
-  }, 3000);
+  }, 4200);
 
   document.getElementById('introStart').addEventListener('click', endIntro);
   document.getElementById('introSkip').addEventListener('click', endIntro);
