@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const categories = [...new Set(posts.map((p) => p.data.category))];
+
+  return categories.map((category) => ({
+    params: { category: category.toLowerCase().replace(/\s+/g, '-') },
+    props: {
+      categoryName: category,
+      posts: posts
+        .filter((p) => p.data.category === category)
+        .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()),
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { categoryName, posts } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title={`${categoryName} cikkek`}
+  description={`${categoryName} témájú szakmai cikkek a Conen Digital blogján.`}
+>
+  <section class="cat-hero">
+    <div class="container">
+      <a href={base} class="cat-hero__back">← Vissza a blogra</a>
+      <div class="cat-hero__label">Kategória</div>
+      <h1 class="cat-hero__title">{categoryName}</h1>
+      <p class="cat-hero__count">
+        {posts.length} cikk ebben a kategóriában
+      </p>
+    </div>
+  </section>
+
+  <section class="cat-list">
+    <div class="container">
+      <div class="cat-grid">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .cat-hero {
+    padding: 5rem 0 3rem;
+    text-align: center;
+  }
+
+  .cat-hero__back {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--gray-text);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+
+  .cat-hero__back:hover {
+    color: var(--cyan);
+  }
+
+  .cat-hero__label {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--cyan);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .cat-hero__title {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+  }
+
+  .cat-hero__count {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--gray-text);
+    letter-spacing: 0.05em;
+  }
+
+  .cat-list {
+    padding-bottom: 4rem;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 968px) {
+    .cat-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

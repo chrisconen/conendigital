@@ -1,0 +1,100 @@
+---
+/**
+ * SEO komponens
+ * - Standard OG / Twitter tagek
+ * - JSON-LD Article schema.org markup → ez teszi a cikket AI-engines által idézhetővé
+ *   (Google AI Overviews, ChatGPT, Perplexity, Claude mind ezt olvassák first).
+ */
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedAt?: Date;
+  updatedAt?: Date;
+  author?: string;
+  category?: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  image,
+  type = 'website',
+  publishedAt,
+  updatedAt,
+  author,
+  category,
+  tags = [],
+} = Astro.props;
+
+const siteName = 'Conen Digital';
+const siteUrl = 'https://conendigital.hu';
+const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName} Blog`;
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const ogImage = image ? new URL(image, siteUrl).toString() : `${siteUrl}/og-default.jpg`;
+
+// JSON-LD structured data — only emitted on article pages.
+// Schema.org Article markup is the strongest single signal for AI engine citations.
+const articleSchema = type === 'article' && publishedAt ? {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  image: ogImage,
+  datePublished: publishedAt.toISOString(),
+  dateModified: (updatedAt || publishedAt).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: author || 'Chris Conen',
+    url: siteUrl,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: siteName,
+    url: siteUrl,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalUrl,
+  },
+  ...(category && { articleSection: category }),
+  ...(tags.length > 0 && { keywords: tags.join(', ') }),
+} : null;
+---
+
+<!-- Primary -->
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="hu_HU" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Article-specific -->
+{publishedAt && <meta property="article:published_time" content={publishedAt.toISOString()} />}
+{updatedAt && <meta property="article:modified_time" content={updatedAt.toISOString()} />}
+{author && <meta property="article:author" content={author} />}
+{category && <meta property="article:section" content={category} />}
+{tags.map((tag) => <meta property="article:tag" content={tag} />)}
+
+<!-- JSON-LD: AI engine citation booster -->
+{articleSchema && (
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+)}

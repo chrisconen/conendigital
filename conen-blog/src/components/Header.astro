@@ -1,0 +1,72 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
+<header class="hd">
+  <div class="container hd__inner">
+    <a href="/" class="hd__logo" aria-label="Vissza a főoldalra">
+      <span class="hd__bracket">[</span><span class="hd__logo-text">ConenDigital</span><span class="hd__bracket">]</span>
+      <span class="hd__blog-badge">BLOG</span>
+    </a>
+
+    <nav class="hd__nav" aria-label="Fő navigáció">
+      <a href={base}>Cikkek</a>
+      <a href="/szolgaltatasok">Szolgáltatások</a>
+      <a href="/weboldal-konfigurator-v2.html" class="hd__nav-iker">IKER</a>
+      <a href="/kapcsolat">Kapcsolat</a>
+    </nav>
+
+    <a href="/weboldal-konfigurator-v2.html" class="hd__cta">
+      Tervezd meg <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  .hd {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(5,5,7,.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,.04);
+  }
+  .hd__inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1rem; padding-bottom: 1rem; gap: 1.5rem;
+  }
+  .hd__logo {
+    display: flex; align-items: center; gap: .4rem;
+    font-family: var(--font-mono); font-size: 1rem; font-weight: 700; flex-shrink: 0;
+  }
+  .hd__bracket { color: var(--cyan); }
+  .hd__logo-text {
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hd__blog-badge {
+    font-size: .55rem; letter-spacing: .18em; text-transform: uppercase;
+    padding: .2rem .45rem; border: 1px solid rgba(0,240,255,.25);
+    color: var(--cyan); border-radius: 3px; margin-left: .25rem;
+  }
+  .hd__nav {
+    display: flex; gap: 1.75rem;
+    font-family: var(--font-mono); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .12em;
+  }
+  .hd__nav a { color: rgba(255,255,255,.5); transition: color .25s; }
+  .hd__nav a:hover { color: var(--cyan); }
+  .hd__nav-iker { color: var(--cyan) !important; font-weight: 700; }
+  .hd__cta {
+    font-family: var(--font-mono); font-size: .7rem;
+    text-transform: uppercase; letter-spacing: .1em;
+    padding: .65rem 1.2rem; border: 1px solid var(--cyan);
+    color: var(--cyan); transition: all .3s; flex-shrink: 0;
+  }
+  .hd__cta:hover { background: var(--cyan); color: var(--black); }
+
+  @media (max-width: 768px) {
+    .hd__nav { display: none; }
+    .hd__inner { gap: .75rem; }
+    .hd__cta { padding: .5rem .8rem; font-size: .65rem; }
+  }
+</style>

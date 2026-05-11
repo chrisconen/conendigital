@@ -1,0 +1,126 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  featured?: boolean;
+}
+
+const { post, featured = false } = Astro.props;
+const { title, summary, publishedAt, category, tags, readingTime } = post.data;
+const base = import.meta.env.BASE_URL;
+const href = `${base}/${post.id.replace(/\.md$/, '')}`;
+
+const dateStr = publishedAt.toLocaleDateString('hu-HU', {
+  year: 'numeric', month: 'short', day: 'numeric',
+});
+const reading = readingTime || Math.ceil(summary.length / 120);
+---
+
+<article class={`pc ${featured ? 'pc--feat' : ''} reveal`}>
+  <a href={href} class="pc__link" aria-label={title}>
+    <div class="pc__top">
+      <div class="pc__meta">
+        <span class="pc__cat">{category}</span>
+        <span class="pc__sep" aria-hidden="true">·</span>
+        <time datetime={publishedAt.toISOString()}>{dateStr}</time>
+        <span class="pc__sep" aria-hidden="true">·</span>
+        <span>{reading} perc</span>
+      </div>
+      {featured && <span class="pc__badge">Kiemelt</span>}
+    </div>
+
+    <h2 class="pc__title">{title}</h2>
+    <p class="pc__summary">{summary}</p>
+
+    {tags.length > 0 && (
+      <div class="pc__tags">
+        {tags.slice(0, 4).map((tag) => <span class="pc__tag">#{tag}</span>)}
+      </div>
+    )}
+
+    <div class="pc__read">
+      Olvasás <span aria-hidden="true">→</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .pc {
+    position: relative;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: all .45s cubic-bezier(.4,0,.2,1);
+  }
+  .pc::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
+    opacity: 0; transition: opacity .45s;
+  }
+  .pc:hover {
+    border-color: rgba(0,240,255,.15);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px -15px rgba(0,240,255,.08), 0 0 0 1px rgba(0,240,255,.06);
+  }
+  .pc:hover::before { opacity: 1; }
+
+  .pc--feat { grid-column: span 2; }
+
+  .pc__link {
+    display: flex; flex-direction: column;
+    padding: 2rem; gap: 1rem; height: 100%;
+  }
+  .pc__top {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .pc__meta {
+    font-family: var(--font-mono); font-size: .68rem;
+    color: var(--gray-text); text-transform: uppercase; letter-spacing: .1em;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .pc__cat { color: var(--cyan); }
+  .pc__sep { opacity: .3; }
+  .pc__badge {
+    font-family: var(--font-mono); font-size: .55rem; letter-spacing: .15em;
+    text-transform: uppercase; padding: .25rem .6rem;
+    background: rgba(0,240,255,.08); border: 1px solid rgba(0,240,255,.2);
+    color: var(--cyan); border-radius: 2px;
+  }
+
+  .pc__title {
+    font-size: 1.35rem; font-weight: 600; line-height: 1.25;
+    letter-spacing: -.01em; transition: color .25s;
+  }
+  .pc--feat .pc__title { font-size: 1.75rem; }
+  .pc:hover .pc__title { color: var(--cyan); }
+
+  .pc__summary {
+    font-size: .92rem; color: rgba(255,255,255,.5); line-height: 1.65;
+    flex: 1;
+  }
+
+  .pc__tags {
+    display: flex; flex-wrap: wrap; gap: .4rem;
+  }
+  .pc__tag {
+    font-family: var(--font-mono); font-size: .62rem;
+    color: rgba(255,255,255,.25); letter-spacing: .04em;
+  }
+
+  .pc__read {
+    font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--cyan);
+    opacity: 0; transform: translateX(-8px);
+    transition: all .35s;
+  }
+  .pc:hover .pc__read { opacity: 1; transform: translateX(0); }
+
+  @media (max-width: 768px) {
+    .pc--feat { grid-column: span 1; }
+    .pc--feat .pc__title { font-size: 1.35rem; }
+    .pc__link { padding: 1.5rem; }
+  }
+</style>

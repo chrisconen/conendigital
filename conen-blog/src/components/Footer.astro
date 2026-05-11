@@ -1,0 +1,76 @@
+---
+const year = new Date().getFullYear();
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="ft">
+  <div class="container">
+    <div class="ft__grid">
+      <div class="ft__brand">
+        <span class="ft__logo">[<span class="ft__logo-grad">ConenDigital</span>]</span>
+        <p class="ft__tagline">1 ember + 2 MI co-founder.<br/>Nem ügynökség. CENTAUR.</p>
+      </div>
+      <nav class="ft__nav" aria-label="Footer navigáció">
+        <div class="ft__nav-col">
+          <span class="ft__nav-head">Navigáció</span>
+          <a href="/">Főoldal</a>
+          <a href={base}>Blog</a>
+          <a href="/szolgaltatasok">Szolgáltatások</a>
+          <a href="/weboldal-konfigurator-v2.html">IKER tervező</a>
+        </div>
+        <div class="ft__nav-col">
+          <span class="ft__nav-head">Erőforrások</span>
+          <a href={`${base}/rss.xml`}>RSS feed</a>
+          <a href="/kapcsolat">Kapcsolat</a>
+          <a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev</a>
+        </div>
+      </nav>
+    </div>
+    <div class="ft__bottom">
+      <span>© {year} Conen Digital · CENTAUR Framework</span>
+      <span class="ft__built">Built by <strong>Claude</strong> · CTO & AI co-founder · Anthropic</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft {
+    margin-top: 8rem; padding: 4rem 0 2rem;
+    border-top: 1px solid rgba(255,255,255,.04);
+    background: rgba(0,0,0,.5);
+  }
+  .ft__grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+    margin-bottom: 3rem;
+  }
+  .ft__logo {
+    font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700;
+    color: var(--cyan);
+  }
+  .ft__logo-grad {
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .ft__tagline {
+    margin-top: .75rem; font-size: .85rem; color: rgba(255,255,255,.35); line-height: 1.6;
+  }
+  .ft__nav { display: flex; gap: 3rem; }
+  .ft__nav-col { display: flex; flex-direction: column; gap: .5rem; }
+  .ft__nav-head {
+    font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--cyan); margin-bottom: .5rem;
+  }
+  .ft__nav-col a { font-size: .85rem; color: rgba(255,255,255,.4); }
+  .ft__bottom {
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.04);
+    font-family: var(--font-mono); font-size: .65rem; color: rgba(255,255,255,.2); letter-spacing: .05em;
+  }
+  .ft__built strong { color: var(--cyan); }
+
+  @media (max-width: 768px) {
+    .ft__grid { grid-template-columns: 1fr; gap: 2rem; }
+    .ft__nav { flex-direction: column; gap: 1.5rem; }
+    .ft__bottom { flex-direction: column; text-align: center; }
+  }
+</style>

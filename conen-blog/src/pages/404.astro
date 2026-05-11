@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="Nem található" description="A keresett oldal nem található.">
+  <section class="notfound">
+    <div class="container">
+      <div class="notfound__code">404</div>
+      <h1 class="notfound__title">Nincs ilyen cikk.</h1>
+      <p class="notfound__lead">
+        A keresett oldal nem található, vagy időközben átkerült.
+      </p>
+      <div class="notfound__actions">
+        <a href={base} class="btn">← Blog főoldal</a>
+        <a href="/" class="btn btn--secondary">conendigital.hu</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .notfound {
+    padding: 8rem 0;
+    text-align: center;
+  }
+
+  .notfound__code {
+    font-family: var(--font-mono);
+    font-size: clamp(5rem, 15vw, 10rem);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--cyan), var(--magenta));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .notfound__title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .notfound__lead {
+    color: var(--gray-text);
+    margin-bottom: 2.5rem;
+  }
+
+  .notfound__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    padding: 0.85rem 1.5rem;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    transition: all 0.3s;
+  }
+
+  .btn:hover {
+    background: var(--cyan);
+    color: var(--black);
+  }
+
+  .btn--secondary {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .btn--secondary:hover {
+    background: var(--white);
+    color: var(--black);
+    border-color: var(--white);
+  }
+</style>

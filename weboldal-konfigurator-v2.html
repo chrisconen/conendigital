@@ -119,7 +119,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .stage{position:relative;grid-row:1;overflow:hidden;background:radial-gradient(ellipse at top,rgba(0,240,255,.04),transparent 50%),var(--black);display:flex;align-items:center;justify-content:center;padding:var(--stage-padding);z-index:var(--z-stage)}
 
 /* --- Device-frame + Bezel --- */
-.device-frame{position:relative;width:100%;height:100%;max-width:1400px;display:flex;z-index:var(--z-device);transition:all var(--t-slow) var(--e-in-out)}
+.device-frame{position:relative;width:100%;height:100%;max-width:1400px;display:flex;z-index:var(--z-device);transition:all var(--t-slow) var(--e-in-out);background:var(--bg)}
 .device-frame[data-device="desktop"]{border-radius:var(--r-md);box-shadow:0 30px 60px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.05);overflow:hidden}
 .device-frame[data-device="tablet"]{max-width:840px;border-radius:22px;padding:16px;background:#1a1a1a;box-shadow:0 0 0 1.5px #2a2a2a,0 30px 60px rgba(0,0,0,.5);max-height:calc(100dvh - 120px)}
 .device-frame[data-device="tablet"] .preview-frame{border-radius:8px}
@@ -134,7 +134,7 @@ button:disabled{opacity:.4;cursor:not-allowed}
 .preview-frame[data-role="variant"][hidden]{display:none}
 
 /* --- Variant-seam --- */
-.variant-seam{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:32px;z-index:var(--z-seam);cursor:ew-resize;pointer-events:none}
+.variant-seam{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:20px;z-index:var(--z-seam);cursor:ew-resize;pointer-events:none}
 .variant-seam[hidden]{display:none}
 .seam-line{position:absolute;top:0;bottom:0;left:50%;width:1.5px;background:linear-gradient(180deg,transparent 0%,var(--accent) 15%,var(--accent-2) 85%,transparent 100%);transform:translateX(-50%);filter:drop-shadow(0 0 4px var(--accent))}
 .seam-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:var(--bg);border:1.5px solid var(--accent);color:var(--accent);pointer-events:auto;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(0,240,255,.4),0 4px 12px rgba(0,0,0,.3);cursor:ew-resize;transition:transform var(--t-fast) var(--e-out),box-shadow var(--t-fast)}
@@ -1866,9 +1866,10 @@ function applySeamClip() {
   const pos = State.variant_seam_pos;
   const pvP = document.getElementById('pvPrimary');
   const pvV = document.getElementById('pvVariant');
-  pvP.style.clipPath = `polygon(0 0, ${pos * 100}% 0, ${pos * 100}% 100%, 0 100%)`;
-  pvV.style.clipPath = `polygon(${pos * 100}% 0, 100% 0, 100% 100%, ${pos * 100}% 100%)`;
-  seamEl.style.left = (pos * 100) + '%';
+  const pct = pos * 100;
+  pvP.style.clipPath = `polygon(0 0, calc(${pct}% + 1px) 0, calc(${pct}% + 1px) 100%, 0 100%)`;
+  pvV.style.clipPath = `polygon(calc(${pct}% - 1px) 0, 100% 0, 100% 100%, calc(${pct}% - 1px) 100%)`;
+  seamEl.style.left = pct + '%';
 }
 
 function clearSeamClip() {
