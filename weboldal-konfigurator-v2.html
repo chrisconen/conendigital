@@ -3919,6 +3919,428 @@ function init() {
 
 init();
 
+/* ============================================
+   ACTION 3 — Analytics-event layer
+   Funnel-instrumentation a teljes konfigurátorra.
+   Két destination: GA4 (window.gtag/dataLayer) + opcionális n8n-webhook.
+   Debug overlay: ?debug=1 URL paraméterrel.
+   ============================================ */
+(function() {
+  'use strict';
+
+  // === CONFIG ===
+  // A deployolás előtt csak ezt a configot kell átírni.
+  // Az n8n webhook URL-t itt kell megadni.
+  const ANALYTICS_CONFIG = {
+    ga4: {
+      enabled: true,           // ha van window.gtag vagy window.dataLayer, automatikusan használja
+    },
+    webhook: {
+      enabled: false,          // ÁLLÍTSD `true`-ra a n8n hookhoz
+      url: 'https://n8n.conendigital.hu/webhook/iker-funnel',
+      method: 'POST',
+    },
+    console_debug: false,      // dev: console.log minden event
+    buffer_size: 25,            // event-buffer, ezt elérve flush
+    flush_interval_ms: 10000,   // 10 mp-onként flush, ha van eventek
+    session_storage_key: 'iker_session_v1',
+  };
+
+  // === Helpers ===
+  function generateSessionId() {
+    return 'iker-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 9);
+  }
+
+  function getOrCreateSession() {
+    try {
+      const stored = sessionStorage.getItem(ANALYTICS_CONFIG.session_storage_key);
+      if (stored) {
+        const s = JSON.parse(stored);
+        if (s.id && (Date.now() - s.created_at) < 7200000) { // 2 hours
+          return s;
+        }
+      }
+    } catch(e) {}
+    const fresh = {
+      id: generateSessionId(),
+      created_at: Date.now(),
+      referrer: document.referrer || 'direct',
+      viewport: window.innerWidth + 'x' + window.innerHeight,
+      ua_short: navigator.userAgent.includes('Mobile') ? 'mobile' : navigator.userAgent.includes('Tablet') ? 'tablet' : 'desktop',
+      lang: navigator.language || 'unknown',
+      step_max: 1,
+      events_sent: 0,
+    };
+    try { sessionStorage.setItem(ANALYTICS_CONFIG.session_storage_key, JSON.stringify(fresh)); } catch(e) {}
+    return fresh;
+  }
+
+  function persistSession(s) {
+    try { sessionStorage.setItem(ANALYTICS_CONFIG.session_storage_key, JSON.stringify(s)); } catch(e) {}
+  }
+
+  const session = getOrCreateSession();
+  const eventBuffer = [];
+  let flushTimer = null;
+  let stepEnteredAt = Date.now();
+  let lastStepNum = 1;
+
+  // === Core: track() ===
+  function track(eventName, props) {
+    const evt = {
+      event: eventName,
+      session_id: session.id,
+      ts: Date.now(),
+      step: (window.State && State.meta && State.meta.step) || null,
+      device: (window.State && State.meta && State.meta.device) || 'desktop',
+      site_type: (window.State && State.site && State.site.type) || null,
+      ...props,
+    };
+    eventBuffer.push(evt);
+    if (ANALYTICS_CONFIG.console_debug) console.log('[IKER]', eventName, evt);
+
+    // Debug overlay update
+    if (window.__IKER_DEBUG_UPDATE__) window.__IKER_DEBUG_UPDATE__(evt);
+
+    if (eventBuffer.length >= ANALYTICS_CONFIG.buffer_size) flush('buffer_full');
+  }
+
+  // === Destinations ===
+  function sendGA4(events) {
+    if (!ANALYTICS_CONFIG.ga4.enabled) return;
+    // Prefer gtag, fall back to dataLayer push
+    if (typeof window.gtag === 'function') {
+      events.forEach(e => {
+        try {
+          window.gtag('event', e.event, {
+            event_category: 'iker_funnel',
+            session_id: e.session_id,
+            step: e.step,
+            site_type: e.site_type,
+            device: e.device,
+            ...Object.fromEntries(Object.entries(e).filter(([k]) => !['event','session_id','ts','step','site_type','device'].includes(k))),
+          });
+        } catch(err) {}
+      });
+    } else if (Array.isArray(window.dataLayer)) {
+      events.forEach(e => {
+        try { window.dataLayer.push({event: 'iker_' + e.event, ...e}); } catch(err) {}
+      });
+    }
+  }
+
+  function sendWebhook(events) {
+    if (!ANALYTICS_CONFIG.webhook.enabled || !ANALYTICS_CONFIG.webhook.url) return;
+    try {
+      const payload = JSON.stringify({
+        session: { id: session.id, referrer: session.referrer, viewport: session.viewport, ua: session.ua_short, lang: session.lang },
+        events: events,
+      });
+      // Use sendBeacon for reliability on unload, fallback to fetch
+      if (navigator.sendBeacon && events[0]?.event === 'session_end') {
+        navigator.sendBeacon(ANALYTICS_CONFIG.webhook.url, new Blob([payload], {type: 'application/json'}));
+      } else {
+        fetch(ANALYTICS_CONFIG.webhook.url, {
+          method: ANALYTICS_CONFIG.webhook.method || 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: payload,
+          keepalive: true,
+          mode: 'cors',
+        }).catch(() => {}); // silent fail
+      }
+    } catch(e) {}
+  }
+
+  function flush(reason) {
+    if (!eventBuffer.length) return;
+    const batch = eventBuffer.splice(0);
+    session.events_sent += batch.length;
+    persistSession(session);
+    sendGA4(batch);
+    sendWebhook(batch);
+    if (ANALYTICS_CONFIG.console_debug) console.log('[IKER] flushed', batch.length, 'events (', reason, ')');
+  }
+
+  // Periodic flush
+  flushTimer = setInterval(() => flush('interval'), ANALYTICS_CONFIG.flush_interval_ms);
+
+  // === Auto-hooks ===
+
+  // Session-start (only once per session)
+  if (!session.session_start_sent) {
+    track('session_start', {
+      referrer: session.referrer,
+      viewport: session.viewport,
+      ua: session.ua_short,
+      lang: session.lang,
+      url_has_shared: location.search.includes('s='),
+    });
+    session.session_start_sent = true;
+    persistSession(session);
+  }
+
+  // Step navigation hooks — monkey-patch goStep
+  if (typeof window.goStep === 'function') {
+    const _origGoStep = window.goStep;
+    window.goStep = function(n) {
+      const prev = lastStepNum;
+      const timeOnPrev = Date.now() - stepEnteredAt;
+      const direction = n > prev ? 'forward' : n < prev ? 'back' : 'same';
+      if (prev !== n) {
+        track('step_leave', {
+          from_step: prev,
+          to_step: n,
+          time_on_step_ms: timeOnPrev,
+          direction: direction,
+        });
+      }
+      _origGoStep(n);
+      track('step_view', {
+        step_num: n,
+        from_step: prev,
+        direction: direction,
+      });
+      if (n > session.step_max) { session.step_max = n; persistSession(session); }
+      if (n === 10) track('funnel_reached_end', { total_session_time_ms: Date.now() - session.created_at });
+      lastStepNum = n;
+      stepEnteredAt = Date.now();
+    };
+  }
+
+  // Choice hooks — monkey-patch commit
+  if (typeof window.commit === 'function') {
+    const _origCommit = window.commit;
+    window.commit = function(changeFn, opts) {
+      // Snapshot state before change for diff
+      const snapshotBefore = window.State ? {
+        type: State.site.type,
+        color_scheme: State.site.style?.color_scheme,
+        font_family: State.site.style?.font_family,
+        header_style: State.site.nav?.header_style,
+        hero_style: State.site.nav?.hero_style,
+        content_state: State.site.content_state,
+        timeline: State.site.timeline,
+      } : null;
+      _origCommit(changeFn, opts);
+      // Diff and emit choice_made if anything changed
+      if (window.State && snapshotBefore) {
+        const after = {
+          type: State.site.type,
+          color_scheme: State.site.style?.color_scheme,
+          font_family: State.site.style?.font_family,
+          header_style: State.site.nav?.header_style,
+          hero_style: State.site.nav?.hero_style,
+          content_state: State.site.content_state,
+          timeline: State.site.timeline,
+        };
+        for (const [k, v] of Object.entries(after)) {
+          if (snapshotBefore[k] !== v && v !== undefined && v !== null) {
+            track('choice_made', { field: k, value: String(v), step: State.meta.step });
+          }
+        }
+      }
+    };
+  }
+
+  // === Direct event-handler hooks ===
+
+  // Variant compare
+  const _origOpenVariant = window.openVariant;
+  if (typeof _origOpenVariant === 'function') {
+    window.openVariant = function() {
+      _origOpenVariant.apply(this, arguments);
+      track('variant_open', {});
+    };
+  }
+  const _origCloseVariant = window.closeVariant;
+  if (typeof _origCloseVariant === 'function') {
+    window.closeVariant = function() {
+      _origCloseVariant.apply(this, arguments);
+      track('variant_close', {});
+    };
+  }
+  const seamSwap = document.getElementById('seamSwap');
+  if (seamSwap) seamSwap.addEventListener('click', () => track('variant_swap', {}), {capture: true});
+
+  // Live cursor demo — manual vs auto-idle distinction via button-click flag
+  let _cursorManualFlag = false;
+  const cursorBtn = document.getElementById('cursorToggle');
+  if (cursorBtn) {
+    cursorBtn.addEventListener('click', () => {
+      _cursorManualFlag = true;
+      setTimeout(() => { _cursorManualFlag = false; }, 500);
+    }, true);
+  }
+  if (window.liveCursorDemo) {
+    const _ca = liveCursorDemo.activate;
+    const _cd = liveCursorDemo.deactivate;
+    liveCursorDemo.activate = function() {
+      _ca.apply(this, arguments);
+      track('cursor_demo_activate', { trigger: _cursorManualFlag ? 'manual' : 'auto_idle' });
+    };
+    liveCursorDemo.deactivate = function() {
+      _cd.apply(this, arguments);
+      track('cursor_demo_deactivate', {});
+    };
+  }
+
+  // Heat-map
+  if (window.heatMapViz) {
+    const _ha = heatMapViz.activate;
+    const _hd = heatMapViz.deactivate;
+    heatMapViz.activate = function() { _ha.apply(this, arguments); track('heatmap_activate', {}); };
+    heatMapViz.deactivate = function() { _hd.apply(this, arguments); track('heatmap_deactivate', {}); };
+  }
+
+  // Device change
+  document.querySelectorAll('[data-dev]').forEach(b => {
+    b.addEventListener('click', () => track('device_change', { device: b.dataset.dev }));
+  });
+
+  // Industry pill
+  const indRow = document.getElementById('indRow');
+  if (indRow) {
+    indRow.addEventListener('click', (e) => {
+      const p = e.target.closest('.ind-pill');
+      if (p) track('industry_selected', { industry: p.dataset.ind });
+    });
+  }
+
+  // PDF export
+  const rPdfBtn = document.getElementById('rPdf');
+  if (rPdfBtn) rPdfBtn.addEventListener('click', () => {
+    const s = window.State?.site;
+    track('pdf_export', { has_brand: !!(s?.brand), has_logo: !!(s?.logo), features_count: s?.features?.length || 0 });
+  });
+
+  // TXT export
+  const rTxtBtn = document.getElementById('rTxt');
+  if (rTxtBtn) rTxtBtn.addEventListener('click', () => track('txt_export', {}));
+
+  // Scope form submit — the conversion event
+  const scopeForm = document.getElementById('scopeForm');
+  if (scopeForm) {
+    scopeForm.addEventListener('submit', () => {
+      const s = window.State?.site;
+      track('scope_submitted', {
+        total_session_time_ms: Date.now() - session.created_at,
+        step_max: session.step_max,
+        site_type: s?.type,
+        pages_count: s?.pages?.length || 0,
+        features_count: s?.features?.length || 0,
+        extras_count: s?.extras?.length || 0,
+        content_state: s?.content_state,
+        timeline: s?.timeline,
+        has_brand: !!(s?.brand),
+        has_logo: !!(s?.logo),
+        has_hero_img: !!(s?.hero_img),
+      });
+      flush('form_submit'); // ensure event leaves before navigation
+    });
+  }
+
+  // Reset
+  const cfgResetBtn = document.getElementById('cfgReset');
+  if (cfgResetBtn) cfgResetBtn.addEventListener('click', () => track('reset_clicked', { step_max: session.step_max }), true);
+
+  // Share link copy
+  const shareBtnEl = document.getElementById('shareBtn');
+  if (shareBtnEl) shareBtnEl.addEventListener('click', () => track('share_link_copy', {}));
+
+  // Logo upload
+  const uLogoInput = document.querySelector('#uLogo input');
+  if (uLogoInput) uLogoInput.addEventListener('change', () => track('logo_uploaded', {}));
+  const uHeroInput = document.querySelector('#uHero input');
+  if (uHeroInput) uHeroInput.addEventListener('change', () => track('hero_uploaded', {}));
+
+  // Logo color suggestion accept
+  const logoSuggest = document.getElementById('logoSuggest');
+  if (logoSuggest) logoSuggest.addEventListener('click', () => track('logo_color_suggestion_accepted', {}));
+
+  // Intro skip/start
+  document.addEventListener('click', (e) => {
+    if (e.target?.id === 'introStart') track('intro_finished', { method: 'start_button' });
+    else if (e.target?.id === 'introSkip') track('intro_finished', { method: 'skip' });
+  }, true);
+
+  // Session-end on unload
+  window.addEventListener('beforeunload', () => {
+    track('session_end', {
+      total_session_time_ms: Date.now() - session.created_at,
+      step_max: session.step_max,
+      events_sent: session.events_sent,
+    });
+    flush('beforeunload');
+  });
+
+  // Visibility change → flush (mobile tab swap)
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') flush('visibility_hidden');
+  });
+
+  // === Debug overlay (only with ?debug=1) ===
+  if (new URLSearchParams(location.search).get('debug') === '1') {
+    const dbg = document.createElement('div');
+    dbg.id = 'ikerDebug';
+    dbg.style.cssText = 'position:fixed;bottom:70px;left:16px;z-index:99999;background:rgba(10,10,10,.95);backdrop-filter:blur(12px);border:1px solid #00f0ff;border-radius:8px;padding:12px;font-family:"JetBrains Mono",monospace;font-size:11px;color:#00f0ff;max-width:420px;max-height:60vh;overflow:auto;box-shadow:0 8px 32px rgba(0,0,0,.6)';
+    dbg.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;border-bottom:1px solid rgba(0,240,255,.2);padding-bottom:6px">
+        <div style="font-weight:700;letter-spacing:.1em">// IKER ANALYTICS DEBUG</div>
+        <div>
+          <button id="ikerDbgFlush" style="background:transparent;border:1px solid #00f0ff;color:#00f0ff;font-family:inherit;font-size:9px;padding:2px 6px;border-radius:3px;cursor:pointer;margin-right:4px">FLUSH</button>
+          <button id="ikerDbgClose" style="background:transparent;border:0;color:#888;cursor:pointer;font-size:14px;padding:0 4px">&times;</button>
+        </div>
+      </div>
+      <div id="ikerDbgStats" style="font-size:10px;color:rgba(255,255,255,.7);margin-bottom:8px;line-height:1.6"></div>
+      <div id="ikerDbgEvents" style="font-size:9.5px;color:rgba(255,255,255,.55);line-height:1.5;max-height:40vh;overflow:auto"></div>
+    `;
+    document.body.appendChild(dbg);
+    const eventsDiv = dbg.querySelector('#ikerDbgEvents');
+    const statsDiv = dbg.querySelector('#ikerDbgStats');
+    const eventLog = [];
+
+    function refreshStats() {
+      statsDiv.innerHTML = `Session: <span style="color:#00f0ff">${session.id.slice(-8)}</span> · Eltelt: ${Math.round((Date.now() - session.created_at)/1000)}s · Step max: ${session.step_max} · Buffered: ${eventBuffer.length} · Küldve: ${session.events_sent}`;
+    }
+    setInterval(refreshStats, 1000);
+    refreshStats();
+
+    window.__IKER_DEBUG_UPDATE__ = (evt) => {
+      eventLog.unshift(evt);
+      if (eventLog.length > 30) eventLog.pop();
+      eventsDiv.innerHTML = eventLog.map(e => {
+        const props = Object.entries(e).filter(([k]) => !['event','session_id','ts','step','device','site_type'].includes(k)).map(([k,v]) => `${k}:${v}`).join(' ');
+        const stepBadge = e.step ? `<span style="color:#bf00ff">[${e.step}]</span>` : '';
+        return `<div style="margin-bottom:3px;padding:3px 5px;background:rgba(0,240,255,.04);border-left:2px solid #00f0ff"><span style="color:#00ff88">${e.event}</span> ${stepBadge} <span style="color:rgba(255,255,255,.45)">${props}</span></div>`;
+      }).join('');
+      refreshStats();
+    };
+
+    dbg.querySelector('#ikerDbgFlush').addEventListener('click', () => flush('manual_debug'));
+    dbg.querySelector('#ikerDbgClose').addEventListener('click', () => dbg.style.display = 'none');
+  }
+
+  // === Public API ===
+  window.__IKER_ANALYTICS__ = {
+    session,
+    config: ANALYTICS_CONFIG,
+    track,
+    flush,
+    buffer: () => [...eventBuffer],
+    summary: () => ({
+      session_id: session.id,
+      duration_s: Math.round((Date.now() - session.created_at) / 1000),
+      step_max: session.step_max,
+      current_step: window.State?.meta?.step,
+      site_type: window.State?.site?.type,
+      events_sent: session.events_sent,
+      events_buffered: eventBuffer.length,
+    }),
+  };
+
+  if (ANALYTICS_CONFIG.console_debug) console.log('[IKER] Analytics module loaded. window.__IKER_ANALYTICS__ available.');
+})();
+
 /* ==============================
    Sequential attention animation — preview controls
    ============================== */
