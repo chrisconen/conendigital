@@ -635,11 +635,65 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
 .viz-heatmap-overlay.on ~ .viz-heatmap-legend { opacity:1; }
 .viz-heatmap-legend-grad { width:60px; height:8px; background:linear-gradient(to right, rgba(0,80,200,.6), rgba(0,200,100,.6), rgba(255,200,0,.6), rgba(255,80,40,.6), rgba(220,30,30,.7)); border-radius:2px; }
 
-/* Live Cursor + Heat-Map toggles in bottombar */
-.pill.tool-toggle { gap:6px; }
-.pill.tool-toggle .pill-dot { width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.4; transition:opacity .2s; }
-.pill.tool-toggle[aria-pressed="true"] .pill-dot { opacity:1; box-shadow:0 0 6px currentColor; }
+/* === ACTION 2: Step 10 wow-payoff === */
 
+/* Mockup snapshot card — "this is yours" */
+.s10-snapshot { position:relative; margin-bottom:14px; border-radius:var(--r-md); overflow:hidden; background:var(--bg); border:1px solid var(--glass-border); box-shadow:0 12px 32px rgba(0,0,0,.5), 0 0 0 1px rgba(0,240,255,.08); animation:s10-snap-in 600ms var(--e-out) both; }
+@keyframes s10-snap-in { from { opacity:0; transform:translateY(12px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+.s10-snapshot-header { display:flex; align-items:center; justify-content:space-between; padding:8px 12px; border-bottom:1px solid var(--glass-border); background:rgba(0,0,0,.3); }
+.s10-snapshot-eye { font-family:var(--font-mono); font-size:9px; color:var(--accent); letter-spacing:.12em; }
+.s10-snapshot-dots { display:flex; gap:5px; }
+.s10-snapshot-dots span { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.15); }
+.s10-snapshot-dots span:nth-child(1) { background:#ff5f57; }
+.s10-snapshot-dots span:nth-child(2) { background:#ffbd2e; }
+.s10-snapshot-dots span:nth-child(3) { background:#28c840; }
+.s10-snapshot-viewport { position:relative; width:100%; aspect-ratio:16/10; overflow:hidden; background:var(--bg); }
+.s10-snapshot-scaled { position:absolute; top:0; left:0; transform-origin:0 0; pointer-events:none; }
+.s10-snapshot-scaled > * { width:1200px; min-height:750px; }
+.s10-snapshot-label { position:absolute; bottom:8px; right:8px; padding:4px 9px; background:rgba(10,10,10,.85); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid var(--accent); border-radius:3px; font-family:var(--font-mono); font-size:9px; color:var(--accent); letter-spacing:.08em; }
+
+/* Generated roadmap timeline */
+.s10-roadmap { margin-top:14px; padding:14px; border:1px solid rgba(0,255,136,.18); border-radius:var(--r-md); background:linear-gradient(135deg,rgba(0,255,136,.03),rgba(0,240,255,.02)); }
+.s10-rm-head { font-family:var(--font-mono); font-size:.55rem; color:var(--green); letter-spacing:.12em; margin-bottom:10px; }
+.s10-rm-sub { font-size:.7rem; color:var(--mid); line-height:1.5; margin-bottom:14px; }
+.s10-rm-track { position:relative; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; counter-reset:phase; }
+.s10-rm-track::before { content:''; position:absolute; top:18px; left:6%; right:6%; height:2px; background:linear-gradient(90deg, var(--green), var(--accent), var(--accent-2)); border-radius:1px; opacity:.4; z-index:0; }
+.s10-rm-phase { position:relative; z-index:1; padding-top:8px; }
+.s10-rm-marker { width:36px; height:36px; border-radius:50%; background:var(--bg); border:2px solid var(--green); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--green); margin:0 auto 8px; position:relative; transition:transform .3s var(--e-back); }
+.s10-rm-phase:nth-child(2) .s10-rm-marker { border-color:var(--accent); color:var(--accent); }
+.s10-rm-phase:nth-child(3) .s10-rm-marker { border-color:var(--accent-2); color:var(--accent-2); }
+.s10-rm-phase:hover .s10-rm-marker { transform:scale(1.1); }
+.s10-rm-when { text-align:center; font-family:var(--font-mono); font-size:8.5px; color:var(--dim); letter-spacing:.08em; margin-bottom:4px; text-transform:uppercase; }
+.s10-rm-title { text-align:center; font-size:.7rem; font-weight:700; margin-bottom:6px; line-height:1.25; }
+.s10-rm-items { list-style:none; padding:0; margin:0; }
+.s10-rm-items li { font-size:.58rem; color:var(--mid); padding:2px 0; line-height:1.45; padding-left:10px; position:relative; }
+.s10-rm-items li::before { content:'›'; position:absolute; left:0; color:var(--accent); }
+
+/* PDF print styles — apply only when printing */
+@media print {
+  html, body { background:#fff !important; color:#000 !important; overflow:visible !important; height:auto !important; }
+  body * { visibility:hidden !important; }
+  .pdf-print, .pdf-print * { visibility:visible !important; }
+  .pdf-print { position:absolute; left:0; top:0; width:100%; padding:24px; font-family:'Inter','Space Grotesk',Arial,sans-serif; color:#0a0a0a; background:#fff; }
+  .pdf-print h1 { font-size:26px; margin-bottom:6px; color:#0a0a0a; }
+  .pdf-print h2 { font-size:14px; margin:18px 0 8px; color:#0066aa; border-bottom:1px solid #ccc; padding-bottom:4px; }
+  .pdf-print h3 { font-size:11px; margin:8px 0 4px; color:#333; }
+  .pdf-print p { font-size:10px; line-height:1.55; margin-bottom:6px; color:#222; }
+  .pdf-print .pdf-meta { font-size:9px; color:#666; margin-bottom:14px; }
+  .pdf-print .pdf-price { font-size:20px; font-weight:700; color:#0066aa; margin:6px 0; }
+  .pdf-print .pdf-roadmap { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin:10px 0; }
+  .pdf-print .pdf-rm-box { border:1px solid #ccc; padding:8px; border-radius:3px; }
+  .pdf-print .pdf-rm-box h3 { color:#0066aa; margin-top:0; }
+  .pdf-print .pdf-rm-box ul { padding-left:14px; margin:0; }
+  .pdf-print .pdf-rm-box li { font-size:9px; line-height:1.45; }
+  .pdf-print .pdf-scores { display:flex; gap:8px; margin:8px 0; }
+  .pdf-print .pdf-score { flex:1; border:1px solid #ddd; padding:6px 8px; border-radius:3px; }
+  .pdf-print .pdf-score-l { font-size:8px; color:#888; }
+  .pdf-print .pdf-score-v { font-size:18px; font-weight:700; color:#0066aa; }
+  .pdf-print .pdf-footer { margin-top:18px; padding-top:8px; border-top:1px solid #ccc; font-size:8px; color:#888; }
+  @page { size:A4; margin:18mm; }
+}
+.pdf-print { display:none; }
   </style>
 </head>
 <body>
@@ -857,6 +911,45 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
           <!-- Step 10: Eredmény -->
           <section class="step" data-s="10">
             <div class="sl">10 · EREDMÉNY</div><h2 class="st">A <em>scope</em> kész</h2><p class="sh">Ez nem fix árajánlat — a díjmentes diagnosztika után pontosítjuk.</p>
+
+            <!-- ACTION 2: Snapshot card ("this is yours") -->
+            <div class="s10-snapshot" id="s10Snapshot" aria-label="A te designod pillanatképe">
+              <div class="s10-snapshot-header">
+                <span class="s10-snapshot-eye">// A TE DESIGNOD</span>
+                <div class="s10-snapshot-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              </div>
+              <div class="s10-snapshot-viewport" id="s10SnapshotViewport">
+                <div class="s10-snapshot-scaled" id="s10SnapshotScaled"></div>
+                <span class="s10-snapshot-label">SNAPSHOT</span>
+              </div>
+            </div>
+
+            <!-- ACTION 2: Roadmap timeline -->
+            <div class="s10-roadmap" id="s10Roadmap">
+              <div class="s10-rm-head">// ROADMAP — INNÉT IDE</div>
+              <p class="s10-rm-sub" id="s10RmSub">A választásaid alapján generált projekt-ütemterv. Mindhárom fázis konkrét deliverable-ekkel.</p>
+              <div class="s10-rm-track">
+                <div class="s10-rm-phase">
+                  <div class="s10-rm-marker">1</div>
+                  <div class="s10-rm-when" id="s10RmWhen1">HÉT 1</div>
+                  <div class="s10-rm-title">Diagnosztika &amp; scope</div>
+                  <ul class="s10-rm-items" id="s10RmList1"></ul>
+                </div>
+                <div class="s10-rm-phase">
+                  <div class="s10-rm-marker">2</div>
+                  <div class="s10-rm-when" id="s10RmWhen2">HÉT 2-X</div>
+                  <div class="s10-rm-title">Build sprint</div>
+                  <ul class="s10-rm-items" id="s10RmList2"></ul>
+                </div>
+                <div class="s10-rm-phase">
+                  <div class="s10-rm-marker">3</div>
+                  <div class="s10-rm-when" id="s10RmWhen3">HÉT X+</div>
+                  <div class="s10-rm-title">Launch &amp; garancia</div>
+                  <ul class="s10-rm-items" id="s10RmList3"></ul>
+                </div>
+              </div>
+            </div>
+
             <div class="rb"><div class="rl">// ÖSSZEFOGLALÓ</div><div id="rSum" style="font-size:.8rem;line-height:1.5;color:rgba(255,255,255,.85)"></div><div class="rtags" id="rTags"></div></div>
             <div class="rb" style="background:linear-gradient(135deg,rgba(0,240,255,.03),rgba(191,0,255,.03));border-color:rgba(0,240,255,.12)">
               <div class="rl">// TARTOMÁNY</div><div class="ramt" id="rAmt">—</div>
@@ -912,7 +1005,8 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
                 <label for="fMessage" class="sr-only">Megjegyzés</label><textarea name="message" id="fMessage" placeholder="Megjegyzés" rows="2" class="scope-input" style="resize:vertical;margin-bottom:.5rem"></textarea>
                 <div style="display:flex;gap:.4rem;flex-wrap:wrap">
                   <button type="submit" class="btn btn-p" style="flex:1">Scope elküldése →</button>
-                  <button type="button" class="btn btn-s" id="rPdf">Letöltés (TXT)</button>
+                  <button type="button" class="btn btn-s" id="rPdf" title="PDF letöltés nyomtatási dialóguson keresztül">PDF</button>
+                  <button type="button" class="btn btn-s" id="rTxt" title="Sima szöveg letöltés">TXT</button>
                 </div>
                 <p style="font-size:.6rem;color:var(--dim);margin-top:.5rem;text-align:center">A konfiguráció automatikusan elküldésre kerül. Válasz 24 órán belül.</p>
               </form>
@@ -985,6 +1079,9 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
 
     <div class="cinematic-intro" id="cIntro" hidden></div>
     <div class="toaster" id="toaster" role="status" aria-live="polite"></div>
+
+    <!-- ACTION 2: PDF print container (hidden, populated before window.print()) -->
+    <div class="pdf-print" id="pdfPrint" aria-hidden="true"></div>
   </div>
 
   <script>
@@ -3074,9 +3171,165 @@ function buildResults() {
 
   document.getElementById('scopeData').value = buildScopeText(s);
   document.getElementById('scopeJson').value = JSON.stringify(s, null, 0);
+
+  // ACTION 2: populate snapshot card + roadmap
+  populateSnapshot(s);
+  populateRoadmap(s, r, sc);
+}
+
+/* ============================================
+   ACTION 2: Step 10 wow-payoff
+   ============================================ */
+
+// Snapshot card: clone the rendered preview HTML, scale it down into the viewport
+function populateSnapshot(s) {
+  const src = document.getElementById('pvPrimary');
+  const scaled = document.getElementById('s10SnapshotScaled');
+  const viewport = document.getElementById('s10SnapshotViewport');
+  if (!src || !scaled || !viewport) return;
+  // Clone the inner HTML (the rendered preview)
+  scaled.innerHTML = src.innerHTML;
+  // Calculate scale so the 1200px-wide clone fits the viewport
+  requestAnimationFrame(() => {
+    const vw = viewport.clientWidth;
+    const scale = vw / 1200;
+    scaled.style.transform = `scale(${scale})`;
+    // Match viewport height to scaled content
+    const scaledH = 750 * scale;
+    viewport.style.aspectRatio = `${vw} / ${scaledH}`;
+  });
+}
+
+// Roadmap: generate 3-phase plan based on user selections
+function buildRoadmapData(s, r) {
+  const timeline = s.timeline || 'standard';
+  // Weeks per phase based on timeline
+  const phases = {
+    urgent:   { p1: '1 hét',   p2: '2-4 hét',  p3: '5-6 hét',  total: '4-6 hét' },
+    standard: { p1: '1 hét',   p2: '2-7 hét',  p3: '8-10 hét', total: '6-10 hét' },
+    flexible: { p1: '1-2 hét', p2: '3-9 hét',  p3: '10-12 hét', total: '8-12 hét' },
+  }[timeline] || { p1: '1 hét', p2: '2-7 hét', p3: '8-10 hét', total: '6-10 hét' };
+
+  // Phase 1 deliverables: always
+  const p1 = ['30 perces díjmentes diagnosztikai videohívás'];
+  if (s.content_state === 'help') p1.push('Copy-workshop: tartalom-architektúra + szöveg-vázlat');
+  p1.push('Scope-dokumentum + fix árajánlat');
+  p1.push('AX-audit (120k Ft) — 100%-ban beszámít');
+
+  // Phase 2 deliverables: depends on type, features, extras
+  const p2 = [];
+  if (s.type === 'webshop') p2.push('Shopify Storefront / WooCommerce headless integráció');
+  else if (s.type === 'quote-engine') p2.push('Egyedi konfigurátor + ár-kalkulátor logika');
+  else if (s.type === 'booking') p2.push('Foglalós rendszer + naptár-integráció');
+  else if (s.type === 'saas') p2.push('SaaS landing + pricing-tábla + onboarding flow');
+  else p2.push('Astro 5 frontend + egyedi UI komponensek');
+
+  if (s.pages.length > 2) p2.push(`${s.pages.length} aloldal építése (${s.pages.map(p => (PAGE_LABELS[p]||p)).join(', ')})`);
+  if (s.features.includes('eaa')) p2.push('EAA WCAG 2.2 AA megfelelés natívan');
+  if (s.features.includes('multilang')) p2.push('Többnyelvű lokalizáció');
+  if (s.features.includes('crm')) p2.push('CRM-integráció (HubSpot / Pipedrive)');
+  if (s.extras.includes('ai-chat')) p2.push('AI chatbot beépítése');
+  if (s.extras.includes('mcp')) p2.push('MCP-endpoint: AI-asszisztens-tranzakció előkészítés');
+  if (!p2.length || p2.length < 3) p2.push('JSON-LD strukturált adatok + AX-readiness alapok');
+
+  // Phase 3 deliverables: always
+  const p3 = ['Teljes funkcionális teszt + EAA-audit lezárás'];
+  if (s.features.includes('analytics')) p3.push('Analytics beüzemelés + alap-konverziók');
+  p3.push('Élesítés, DNS-átállás, SEO-megőrzés (ha migráció volt)');
+  p3.push('30 napos hibajavítási garancia automatikusan');
+  if (s.extras.includes('mcp') || s.extras.includes('ai-chat')) p3.push('AI Ops havi szerződés indul (külön folyamat)');
+
+  return { phases, p1, p2, p3 };
+}
+
+function populateRoadmap(s, r, sc) {
+  const rm = buildRoadmapData(s, r);
+  document.getElementById('s10RmWhen1').textContent = rm.phases.p1;
+  document.getElementById('s10RmWhen2').textContent = rm.phases.p2;
+  document.getElementById('s10RmWhen3').textContent = rm.phases.p3;
+  document.getElementById('s10RmList1').innerHTML = rm.p1.map(x => `<li>${x}</li>`).join('');
+  document.getElementById('s10RmList2').innerHTML = rm.p2.map(x => `<li>${x}</li>`).join('');
+  document.getElementById('s10RmList3').innerHTML = rm.p3.map(x => `<li>${x}</li>`).join('');
+  const sub = document.getElementById('s10RmSub');
+  const LB = {brochure:'bemutatkozó',webshop:'webáruház',booking:'foglalós','quote-engine':'ajánlatgeneráló',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
+  sub.textContent = `${LB[s.type]||s.type} projekt · teljes átfutás ~${rm.phases.total} · A választásaid alapján generált ütemterv konkrét deliverable-ekkel.`;
+}
+
+// PDF export: populate print container, trigger browser print dialog
+function buildPDFContent(s) {
+  const r = calcP(s);
+  const sc = computeScores(s);
+  const rm = buildRoadmapData(s, r);
+  const LB = {brochure:'bemutatkozó weboldal','quote-engine':'ajánlatgeneráló sales-eszköz',webshop:'webáruház',booking:'foglalós oldal',content:'tartalom-oldal',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
+  const PILLAR = {brochure:'egyéb scope','quote-engine':'#service-quote-engine',webshop:'#service-webshop',booking:'egyéb scope',content:'egyéb scope',portfolio:'egyéb scope',landing:'egyéb scope',saas:'egyéb scope'};
+  const today = new Date().toLocaleDateString('hu-HU');
+  const brand = s.brand || 'Projekt';
+  const aiOps = [];
+  if (s.extras.includes('mcp')) aiOps.push('MCP endpoint');
+  if (s.extras.includes('ai-chat')) aiOps.push('Claude/GPT chatbot');
+
+  return `
+    <h1>${brand} — Projekt-scope</h1>
+    <div class="pdf-meta">Generálva: ${today} · Conen Digital · CENTAUR-ügynökség · conendigital.hu</div>
+
+    <h2>Projekt-összefoglaló</h2>
+    <p><strong>Típus:</strong> ${LB[s.type]||s.type}</p>
+    <p><strong>Pillér:</strong> ${PILLAR[s.type]||'-'}</p>
+    <p><strong>Oldalak:</strong> ${s.pages.map(p => (PAGE_LABELS[p]||p)).join(', ')}</p>
+    <p><strong>Funkciók:</strong> ${s.features.length ? s.features.join(', ') : 'alapcsomag'}</p>
+    <p><strong>Extrák:</strong> ${s.extras.length ? s.extras.join(', ') : 'nincs'}</p>
+    <p><strong>Tartalom-állapot:</strong> ${s.content_state||'-'} · <strong>Időzítés:</strong> ${s.timeline||'-'}</p>
+
+    <h2>Nagyságrendi tartomány</h2>
+    <div class="pdf-price">${fmtHUF(r.l)} – ${fmtHUF(r.h)}</div>
+    <p>Audit-alapú árazás. AX-audit (120k Ft) 100%-ban beszámít a végösszegbe.${aiOps.length ? ' Az AI-funkciók ('+aiOps.join(', ')+') külön havi szerződés keretében működnek, 250.000 Ft/hó-tól.' : ''}</p>
+
+    <h2>Audit-metrikák</h2>
+    <div class="pdf-scores">
+      <div class="pdf-score"><div class="pdf-score-l">EAA-readiness</div><div class="pdf-score-v">${sc.eaa}/100</div></div>
+      <div class="pdf-score"><div class="pdf-score-l">AX-readability</div><div class="pdf-score-v">${sc.ax}/100</div></div>
+      <div class="pdf-score"><div class="pdf-score-l">CENTAUR-ready</div><div class="pdf-score-v">${sc.centaur}/100</div></div>
+    </div>
+
+    <h2>Roadmap — projekt-ütemterv (${rm.phases.total} teljes átfutás)</h2>
+    <div class="pdf-roadmap">
+      <div class="pdf-rm-box">
+        <h3>Fázis 1: ${rm.phases.p1}</h3>
+        <p style="font-size:8.5px;color:#888;margin-bottom:4px;">Diagnosztika &amp; scope</p>
+        <ul>${rm.p1.map(x => `<li>${x}</li>`).join('')}</ul>
+      </div>
+      <div class="pdf-rm-box">
+        <h3>Fázis 2: ${rm.phases.p2}</h3>
+        <p style="font-size:8.5px;color:#888;margin-bottom:4px;">Build sprint</p>
+        <ul>${rm.p2.map(x => `<li>${x}</li>`).join('')}</ul>
+      </div>
+      <div class="pdf-rm-box">
+        <h3>Fázis 3: ${rm.phases.p3}</h3>
+        <p style="font-size:8.5px;color:#888;margin-bottom:4px;">Launch &amp; garancia</p>
+        <ul>${rm.p3.map(x => `<li>${x}</li>`).join('')}</ul>
+      </div>
+    </div>
+
+    <h2>Megközelítés</h2>
+    <p><strong>CENTAUR-modell:</strong> Egy emberi alapító (Chris Conen — Founder, CEO) és két MI-társalapító (Claude/Anthropic — CTO; Gemini Nexus/Google — CSO+CMO). A működési alapokmány: centaur-lang.dev (2025. december).</p>
+    <p>Astro 5 stack alapból. JSON-LD + /llms.txt deploy. WCAG 2.2 AA megfelelés natívan. 30-perces díjmentes diagnosztikai hívás után 24 órán belül scope-dokumentum.</p>
+
+    <div class="pdf-footer">
+      Conen Digital · Győr · conendigital.hu · info@conendigital.hu<br>
+      Ez nem fix árajánlat — a díjmentes diagnosztikai hívás után pontosítjuk. A scope-dokumentumot Claude (AI co-founder, CTO) építette · CENTAUR-modell · centaur-lang.dev
+    </div>
+  `;
 }
 
 document.getElementById('rPdf').addEventListener('click', () => {
+  const container = document.getElementById('pdfPrint');
+  container.innerHTML = buildPDFContent(active());
+  // Wait for paint, then trigger print
+  setTimeout(() => { window.print(); }, 100);
+  toast('PDF nyomtatási dialógus — válaszd "Save as PDF"-t');
+});
+
+document.getElementById('rTxt').addEventListener('click', () => {
   const b = new Blob([buildScopeText(active())], { type: 'text/plain;charset=utf-8' });
   const u = URL.createObjectURL(b);
   const l = document.createElement('a');
