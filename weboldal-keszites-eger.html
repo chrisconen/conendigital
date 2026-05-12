@@ -903,24 +903,31 @@
             color: var(--cyan);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
         .nav-konfigurator-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.85rem 1.6rem;
-            background: transparent;
-            color: var(--black);
+            padding: 0.65rem 1.2rem;
+            background: #0a0a0a;
+            color: #fff;
             font-family: var(--font-mono);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
             border-radius: 4px;
             letter-spacing: 0.05em;
-            transition: color 0.3s;
+            transition: color 0.3s, box-shadow 0.3s;
             text-decoration: none;
         }
 
         .nav-konfigurator-btn:hover {
-            color: var(--cyan);
+            color: #d8b4fe;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
         }
 
         .nav-hamburger {
@@ -1026,9 +1033,10 @@
             position: absolute;
             inset: -2px;
             border-radius: 6px;
-            background: conic-gradient(from var(--border-angle), var(--cyan), var(--magenta), var(--orange, #ff6b00), var(--cyan));
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
             z-index: -2;
-            animation: borderRotate 3s linear infinite;
+            animation: borderRotate 2.5s linear infinite;
+            filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
         }
 
         .nav-konfigurator-btn::after {
@@ -1036,13 +1044,8 @@
             position: absolute;
             inset: 0;
             border-radius: 4px;
-            background: var(--cyan);
+            background: #0a0a0a;
             z-index: -1;
-            transition: background 0.3s;
-        }
-
-        .nav-konfigurator-btn:hover::after {
-            background: rgba(10, 10, 10, 0.9);
         }
 
 
@@ -2736,11 +2739,13 @@
             <li><a href="#varosok">Városok</a></li>
             <li><a href="#contact" class="mobile-cta">Audit Eger →</a></li>
         </ul>
-        <a href="weboldal-konfigurator-v2.html" class="nav-konfigurator-btn">Weboldal tervező</a>
-        <div class="nav-hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+        <div class="nav-right">
+            <div class="nav-hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="weboldal-konfigurator-v2.html" class="nav-konfigurator-btn">Weboldal tervező</a>
         </div>
     </nav>
 
