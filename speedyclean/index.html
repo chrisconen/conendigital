@@ -129,16 +129,17 @@ header {
 }
 .nav-links a:hover { color: var(--copper); }
 .nav-cta {
-  background: var(--ink);
-  color: var(--paper);
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
   padding: 12px 22px;
   border-radius: 2px;
   font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-.nav-cta:hover { background: var(--copper); color: var(--paper); }
+.nav-cta:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 
 .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
 
