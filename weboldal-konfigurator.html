@@ -244,7 +244,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
         <div class="welcome-actions">
             <button class="btn btn-p" id="welcomeStart" type="button">Kezdés →</button>
         </div>
-        <div class="welcome-attrib">developed by <strong>Claude the CTO</strong> · Anthropic · CENTAUR-modell · <a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev</a></div>
+        <div class="welcome-attrib">developed by <strong>Grok</strong> · Anthropic · CENTAUR-modell · <a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev</a></div>
     </div>
 </div>
 <div class="bg"></div>
@@ -363,7 +363,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
                 <div class="ti" data-v="scroll-anim" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Scroll-animációk</span><span class="ti-t">reveal, parallax</span></div><div class="sw" aria-hidden="true"></div></div>
                 <div class="ti" data-v="dark-mode" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Dark/Light toggle</span><span class="ti-t">témaváltó</span></div><div class="sw" aria-hidden="true"></div></div>
                 <div class="ti" data-v="micro" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Mikro-interakciók</span><span class="ti-t">hover, animációk</span></div><div class="sw" aria-hidden="true"></div></div>
-                <div class="ti" data-v="ai-chat" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">AI chatbot</span><span class="ti-t">Claude/GPT · havi díj</span></div><div class="sw" aria-hidden="true"></div></div>
+                <div class="ti" data-v="ai-chat" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">AI chatbot</span><span class="ti-t">GPT · havi díj</span></div><div class="sw" aria-hidden="true"></div></div>
                 <div class="ti" data-v="mcp" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">MCP endpoint</span><span class="ti-t">AI-tranzakció · havi díj</span></div><div class="sw" aria-hidden="true"></div></div>
                 <div class="ti" data-v="pwa" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">PWA</span><span class="ti-t">telepíthető app</span></div><div class="sw" aria-hidden="true"></div></div>
                 <div class="ti" data-v="perf" role="button" tabindex="0" aria-pressed="false"><div class="ti-i"><span class="ti-n">Core Web Vitals</span><span class="ti-t">100/100 Lighthouse</span></div><div class="sw" aria-hidden="true"></div></div>
@@ -445,7 +445,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
                 </form>
             </div>
             <div class="cto-credit">
-                <span class="cto-line">Ezt a konfigurátort <strong>Claude (CTO, AI co-founder)</strong> építette · Anthropic · CENTAUR-modell</span>
+                <span class="cto-line">Ezt a konfigurátort <strong>Grok (CTO, AI co-founder)</strong> építette · Anthropic · CENTAUR-modell</span>
                 <span class="cto-link"><a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev →</a></span>
             </div>
         </section>
@@ -754,7 +754,7 @@ const REALISTIC={
     ],
     team:[
         {n:'Conen Krisztián',t:'Founder · Stratégia'},
-        {n:'Claude (Anthropic)',t:'Co-founder · CTO'},
+        {n:'Grok (xAI)',t:'Co-founder · CTO'},
         {n:'Gemini Nexus',t:'Co-founder · Marketing'},
         {n:'Tóth Mária',t:'Senior Designer'}
     ],
@@ -762,7 +762,7 @@ const REALISTIC={
     faq:[
         {q:'Mennyi időbe telik egy projekt?',a:'Standard scope 6-10 hét, sürgős 4-6. Audit-fázissal kezdünk, ami 100%-ban beszámít.'},
         {q:'EAA-megfelelő minden projekt?',a:'Igen — ez most már jogi elvárás. A diagnosztika kiderít minden szempontot, és WCAG 2.2 AA szintre vagyunk hangolva.'},
-        {q:'Mi az AX-readiness?',a:'AI-asszisztens-olvasható alap: JSON-LD, llms.txt, semantic HTML. Claude/ChatGPT/Perplexity is olvashatja a céged adatait.'}
+        {q:'Mi az AX-readiness?',a:'AI-olvasható alap: JSON-LD, llms.txt, semantic HTML. Az AI-keresők is olvashatják a céged adatait.'}
     ]
 };
 
@@ -911,7 +911,7 @@ function buildScopeText(){
     const r=calcP();
     const aiOps=[];
     if(S.extras.includes('mcp'))aiOps.push('MCP endpoint');
-    if(S.extras.includes('ai-chat'))aiOps.push('Claude/GPT chatbot');
+    if(S.extras.includes('ai-chat'))aiOps.push('GPT chatbot');
     let lines=['=== CONEN DIGITAL — PROJEKT SCOPE ===','',
         'PILLÉR: '+(PILLAR[S.site_type]||'-'),
         'TÍPUS: '+(LB[S.site_type]||S.site_type||'-'),
@@ -942,7 +942,7 @@ function buildScopeText(){
     lines.push('','NAGYSÁGRENDI TARTOMÁNY (build): '+fmtHUF(r.l)+' – '+fmtHUF(r.h));
     if(aiOps.length)lines.push('+ AI OPS HAVI: 250.000 Ft/hó-tól ('+aiOps.join(', ')+') — külön szerződés');
     lines.push('','Ez nem fix árajánlat. A diagnosztika díjmentes.','Konfigurátor link: '+(document.getElementById('shareUrl').value||location.href));
-    lines.push('','— Built by Claude (CTO, AI co-founder) · Anthropic · CENTAUR-modell · centaur-lang.dev');
+    lines.push('','— Built by Grok (CTO, AI co-founder) · Anthropic · CENTAUR-modell · centaur-lang.dev');
     return lines.join('\n');
 }
 function buildResults(){
@@ -959,7 +959,7 @@ function buildResults(){
     // AI Ops monthly fee block — show when mcp or ai-chat picked
     const aiOps=[];
     if(S.extras.includes('mcp'))aiOps.push('MCP endpoint');
-    if(S.extras.includes('ai-chat'))aiOps.push('Claude/GPT chatbot');
+    if(S.extras.includes('ai-chat'))aiOps.push('GPT chatbot');
     const aiBlock=document.getElementById('aiOpsBlock');
     if(aiOps.length){aiBlock.style.display='block';document.getElementById('aiOpsList').textContent=aiOps.join(' és ')}else{aiBlock.style.display='none'}
     // Audit metrics — EAA + AX scores
@@ -988,7 +988,7 @@ function buildResults(){
     const tips=[];
     if(eaaScore<70&&!f.includes('eaa'))tips.push('Az EAA-score emelhető: kapcsold be az "Akadálymentesség" funkciót.');
     if(axScore<70&&!e.includes('ax-ready'))tips.push('Az AX-score emelhető: vedd be az "AX-readiness" extrát.');
-    if(!tips.length)tips.push('Mindkét score erős — a projekt EAA-megfelelő és AI-asszisztens-olvasható alapra épül.');
+    if(!tips.length)tips.push('Mindkét score erős — a projekt EAA-megfelelő és AI-olvasható alapra épül.');
     document.getElementById('scoreNote').textContent=tips.join(' ');
     // Fill hidden scope field
     document.getElementById('scopeData').value=buildScopeText();

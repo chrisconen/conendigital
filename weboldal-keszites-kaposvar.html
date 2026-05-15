@@ -2812,7 +2812,7 @@
             <!-- AI Face Visual + Voice Controls -->
             <div class="hero__visual-col">
                 <div class="hero__visual" id="visualWrap" role="button" tabindex="0"
-                    aria-label="Hangos bemutatkozas inditasa - Claude AI bemutatkozik" aria-pressed="false">
+                    aria-label="Hangos bemutatkoz?s ind?t?sa" aria-pressed="false">
                     <canvas id="dotface" role="img"
                         aria-label="Animalt pontfelho-portre, a Conen Digital AI-tarsalapitojanak reprezentacioja"></canvas>
                     <div class="visual-meta">
@@ -3140,7 +3140,7 @@
                 </div>
             </div>
 
-            <!-- Claude AI (fejlesztesi asszisztens) -->
+            <!-- Grok AI -->
             <div class="service-card reveal"
                 style="text-align: center; padding: 2.5rem; padding-top: 3rem; border: 2px solid var(--magenta); position: relative; overflow: visible; margin-top: 15px;">
                 <div
@@ -3148,8 +3148,8 @@
                     AI RENDSZEREK</div>
                 <div
                     style="width: 120px; height: 120px; margin: 0 auto 1.5rem; border-radius: 50%; overflow: hidden; border: 3px solid var(--magenta); position: relative;">
-                    <img src="https://centaur.australianweb.agency/img/claude_business.webp"
-                        alt="Claude AI — fejlesztesi asszisztens" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="/images/grok_AI_co-founder-cto.webp"
+                        alt="Grok — AI co-founder, CTO" style="width: 100%; height: 100%; object-fit: cover;">
                     <!-- Video Play Button -->
                     <a href="https://www.youtube.com/watch?v=S-NfDXyHgyM" target="_blank"
                         style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); opacity: 0; transition: opacity 0.3s;"
@@ -3159,12 +3159,12 @@
                             ▶</div>
                     </a>
                 </div>
-                <h3 class="service-title" style="color: var(--magenta);">Claude AI</h3>
+                <h3 class="service-title" style="color: var(--magenta);">Grok AI</h3>
                 <div
                     style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 1rem;">
                     AI FEJLESZTESI PARTNER</div>
                 <p class="service-description" style="font-size: 0.9rem;">
-                    <span style="color: var(--magenta)">Anthropic Claude</span> — asszisztens a technikai vazlatokhoz,
+                    <span style="color: var(--magenta)">MI-fejleszt?si asszisztencia</span> — asszisztens a technikai vazlatokhoz,
                     kodreszletekhez es architektura-javaslatokhoz. A vegso kimenetet emberi fejlesztoi kez veglegesiti
                     es vallalja.
                 </p>
@@ -3904,7 +3904,7 @@ ${CTA_BLOCK}
             var speakBtn = document.getElementById('speakBtn');
             var voiceInd = document.getElementById('voiceInd');
 
-            var FACE_IMG_SRC = "/heightmaps/face-claude.jpg";
+            var FACE_IMG_SRC = "/heightmaps/face-ai.jpg";
 
             var W = 0, H = 0;
             var DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -4063,7 +4063,7 @@ ${CTA_BLOCK}
                 analyser.smoothingTimeConstant = 0.7;
                 audioData = new Uint8Array(analyser.frequencyBinCount);
 
-                introAudio = new Audio('/claude-bemutatkozas.mp3');
+                introAudio = new Audio('/ai-bemutatkozas.mp3');
                 introAudio.preload = 'metadata';
                 introAudio.crossOrigin = 'anonymous';
 
