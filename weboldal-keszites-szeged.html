@@ -2818,28 +2818,25 @@
                 <div class="hero__visual" id="visualWrap" role="button" tabindex="0"
                     aria-label="Hangos bemutatkoz?s ind?t?sa" aria-pressed="false">
                     <canvas id="dotface" role="img"
-                        aria-label="Animalt pontfelho-portre, a Conen Digital AI-tarsalapitojanak reprezentacioja"></canvas>
+                        aria-label="Animalt pontfelho-portre, Chris Conen, Conen Digital alapito"></canvas>
                     <div class="visual-meta">
                         <div>NEURAL//SURFACE.v1</div>
                         <div>Status: <span id="statusText">Loading</span></div>
                     </div>
                     <div class="visual-affordance" aria-hidden="true">
                         <span class="voice-indicator idle"></span>
-                        <span class="visual-affordance-text">Kattints, es bemutatkozom</span>
+                        <span class="visual-affordance-text">Kattints, Chris bemutatkozik</span>
                     </div>
                 </div>
 
                 <button class="hero-speak-btn" id="speakBtn" type="button" aria-label="Hangos bemutatkozas inditasa"
                     aria-pressed="false">
                     <span class="voice-indicator idle" id="voiceInd"></span>
-                    Mondd el, kik vagytok
+                    Chris bemutatkozása
                 </button>
                 <details class="hero-narration-toggle">
                     <summary>Olvasd el szovegben</summary>
-                    <p>Udvozollek a Conen Digital vilagaban. Mi egy ember es mestersiges intelligencia partnerseg
-                        vagyunk, ahol a kreativitas es az algoritmus kez a kezben dolgozik. Tizennegy ev webfejlesztesi
-                        tapasztalattal epitunk villamgyors Astro oldalakat, intelligens automatizaciokat es olyan
-                        digitalis termekeket, amelyek merhetoen jobbak, mint a piaci atlag.</p>
+                    <p>Udvozollek, Chris Conen vagyok, a Conen Digital alapitoja. Huszonegy ev digitalis tapasztalattal epitek villamgyors Astro oldalakat, intelligens automatizaciokat es olyan uzleti weboldalakat, amelyek merhetoen jobbak, mint a piaci atlag. Strategiatol a technikai architekturáig egyedul vezetem az ugynokseget — AI-eszkozokkel tamogatva.</p>
                 </details>
             </div>
         </div>
@@ -3844,7 +3841,7 @@ ${CTA_BLOCK}
             var speakBtn = document.getElementById('speakBtn');
             var voiceInd = document.getElementById('voiceInd');
 
-            var FACE_IMG_SRC = "/heightmaps/face-ai.jpg";
+            var FACE_IMG_SRC = "/heightmaps/face-chris.jpg";
 
             var W = 0, H = 0;
             var DPR = Math.min(window.devicePixelRatio || 1, 2);
@@ -4003,7 +4000,7 @@ ${CTA_BLOCK}
                 analyser.smoothingTimeConstant = 0.7;
                 audioData = new Uint8Array(analyser.frequencyBinCount);
 
-                introAudio = new Audio('/ai-bemutatkozas.mp3');
+                introAudio = new Audio('/chris-bemutatkozas.mp3');
                 introAudio.preload = 'metadata';
                 introAudio.crossOrigin = 'anonymous';
 
