@@ -741,7 +741,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
       </button>
       <div class="cfg-panel" id="cfgPanel">
         <header class="cfg-header">
-          <div style="display:flex;flex-direction:column;gap:1px"><div style="display:flex;align-items:center;gap:8px"><a href="index.html" class="logo">[<span>ConenDigital</span>]</a><span style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:.2em;font-weight:700">IKER</span></div><span style="font-family:var(--font-mono);font-size:10px;color:var(--dim)">by Grok</span></div>
+          <div style="display:flex;flex-direction:column;gap:1px"><div style="display:flex;align-items:center;gap:8px"><a href="index.html" class="logo">[<span>ConenDigital</span>]</a><span style="font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:.2em;font-weight:700">IKER</span></div><span style="font-family:var(--font-mono);font-size:10px;color:var(--dim)">by Conen Digital</span></div>
           <div class="cfg-step-pilot"><span class="step-count" id="sc" aria-live="polite" aria-atomic="true">01/10</span></div>
           <button class="cfg-reset" id="cfgReset" aria-label="Konfiguráció újrakezdése" title="Újrakezdés">↻</button>
           <button class="cfg-close" id="cfgClose" aria-label="Panel bezárása">&times;</button>
@@ -970,7 +970,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
                   <div class="approach-row">2-hetes pitch-process — deck, brief, proposal, meeting-ek</div>
                 </div>
                 <div class="approach-col us"><div class="approach-head">CENTAUR-MODELL</div>
-                  <div class="approach-row">Grok CTO + Gemini CSO ? be?p?tve a folyamatba</div>
+                  <div class="approach-row">AI-eszközökkel támogatott fejlesztés — beépítve a folyamatba</div>
                   <div class="approach-row">AX-ready alapból — JSON-LD, llms.txt, semantic HTML az elsőtől</div>
                   <div class="approach-row">EAA-konform alapból — WCAG 2.2 AA natív, nem utólagos</div>
                   <div class="approach-row">30-perces diagnosztika — scope 24 órán belül, audit beszámít</div>
@@ -1012,7 +1012,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
               </form>
             </div>
             <div class="cto-credit">
-              <span>Ezt a konfigurátort <strong>Grok (CTO, AI co-founder)</strong> építette · Anthropic · CENTAUR-modell</span>
+              <span>Ezt a konfigurátort <strong>Chris Conen (Founder & CEO)</strong> építette · CENTAUR-modell</span>
               <a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev →</a>
             </div>
           </section>
@@ -1181,9 +1181,7 @@ const REALISTIC = {
     {q:'EAA-szempontból volt a leggyorsabb átállásunk. Audit elsőre.',n:'Szabó Péter',t:'CTO, egészségügy'},
   ],
   team:[
-    {n:'Conen Krisztián',t:'Founder · Stratégia'},
-    {n:'Grok (xAI)',t:'Co-founder · CTO'},
-    {n:'Gemini Nexus',t:'Co-founder · Marketing'},
+    {n:'Chris Conen',t:'Founder & CEO'},
     {n:'Tóth Mária',t:'Senior Designer'},
   ],
   gallery:['Mótyán árnyékolás','B2B SaaS landing','CRM redesign','E-commerce migráció','Egészségügyi platform','Pénzügyi konfigurátor','Headless Shopify','EAA-átállás','MCP-endpoint demo','Audit-flow case'],
@@ -3127,7 +3125,7 @@ function buildScopeText(s) {
   lines.push('', 'NAGYSÁGRENDI TARTOMÁNY (build): ' + fmtHUF(r.l) + ' – ' + fmtHUF(r.h));
   if (aiOps.length) lines.push('+ AI OPS HAVI: 250.000 Ft/hó-tól (' + aiOps.join(', ') + ') — külön szerződés');
   lines.push('', 'Ez nem fix árajánlat. A diagnosztika díjmentes.');
-  lines.push('', '— Built by Grok (CTO, AI co-founder) · Anthropic · CENTAUR-modell · centaur-lang.dev');
+  lines.push('', '— Built by Conen Digital · CENTAUR-modell · centaur-lang.dev');
   return lines.join('\n');
 }
 
@@ -3311,12 +3309,12 @@ function buildPDFContent(s) {
     </div>
 
     <h2>Megközelítés</h2>
-    <p><strong>CENTAUR-modell:</strong> Egy emberi alapító (Chris Conen — Founder, CEO) és két MI-társalapító (Grok/xAI — CTO; Gemini Nexus/Google — CSO+CMO). A működési alapokmány: centaur-lang.dev (2025. december).</p>
+    <p><strong>CENTAUR-modell:</strong> Chris Conen (Founder & CEO) — AI-eszközökkel támogatott fejlesztés. A működési alapokmány: centaur-lang.dev (2025. december).</p>
     <p>Astro 5 stack alapból. JSON-LD + /llms.txt deploy. WCAG 2.2 AA megfelelés natívan. 30-perces díjmentes diagnosztikai hívás után 24 órán belül scope-dokumentum.</p>
 
     <div class="pdf-footer">
       Conen Digital · Győr · conendigital.hu · info@conendigital.hu<br>
-      Ez nem fix árajánlat — a díjmentes diagnosztikai hívás után pontosítjuk. A scope-dokumentumot AI (AI co-founder, CTO) építette · CENTAUR-modell · centaur-lang.dev
+      Ez nem fix árajánlat — a díjmentes diagnosztikai hívás után pontosítjuk. A scope-dokumentumot Chris Conen (Founder & CEO) építette · CENTAUR-modell · centaur-lang.dev
     </div>
   `;
 }
@@ -3725,7 +3723,7 @@ function playIntro() {
   el.innerHTML = `
     <div class="intro-stage" data-phase="0">
       <div class="intro-logo">IKER</div>
-      <div class="intro-sub">Egy CENTAUR-tool. Ember + két MI co-founder. Most v2.1-gyel.</div>
+      <div class="intro-sub">Egy CENTAUR-tool. AI-eszközökkel támogatott fejlesztés. Most v2.1-gyel.</div>
       <svg class="intro-svg" viewBox="0 0 520 380" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g class="s-el s-chrome">
           <rect x="0" y="0" width="520" height="380" rx="8" fill="#111113" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
