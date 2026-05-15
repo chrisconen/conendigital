@@ -244,7 +244,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
         <div class="welcome-actions">
             <button class="btn btn-p" id="welcomeStart" type="button">Kezdés →</button>
         </div>
-        <div class="welcome-attrib">developed by <strong>Grok</strong> · Anthropic · CENTAUR-modell · <a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev</a></div>
+        <div class="welcome-attrib">developed by <strong>Conen Digital</strong> · AI-támogatott fejlesztés · <a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev</a></div>
     </div>
 </div>
 <div class="bg"></div>
@@ -445,7 +445,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline
                 </form>
             </div>
             <div class="cto-credit">
-                <span class="cto-line">Ezt a konfigurátort <strong>Grok (CTO, AI co-founder)</strong> építette · Anthropic · CENTAUR-modell</span>
+                <span class="cto-line">Ezt a konfigurátort a <strong>Conen Digital</strong> építette · AI-támogatott fejlesztés · CENTAUR-modell</span>
                 <span class="cto-link"><a href="https://centaur-lang.dev" target="_blank" rel="noopener">centaur-lang.dev →</a></span>
             </div>
         </section>
@@ -754,8 +754,7 @@ const REALISTIC={
     ],
     team:[
         {n:'Conen Krisztián',t:'Founder · Stratégia'},
-        {n:'Grok (xAI)',t:'Co-founder · CTO'},
-        {n:'Gemini Nexus',t:'Co-founder · Marketing'},
+        {n:'AI-eszközök',t:'Fejlesztési asszisztencia'},
         {n:'Tóth Mária',t:'Senior Designer'}
     ],
     gallery:['Mótyán árnyékolás','B2B SaaS landing','CRM redesign','E-commerce migráció','Egészségügyi platform','Pénzügyi konfigurátor','Headless Shopify','EAA-átállás','MCP-endpoint demo','Audit-flow case'],
@@ -942,7 +941,7 @@ function buildScopeText(){
     lines.push('','NAGYSÁGRENDI TARTOMÁNY (build): '+fmtHUF(r.l)+' – '+fmtHUF(r.h));
     if(aiOps.length)lines.push('+ AI OPS HAVI: 250.000 Ft/hó-tól ('+aiOps.join(', ')+') — külön szerződés');
     lines.push('','Ez nem fix árajánlat. A diagnosztika díjmentes.','Konfigurátor link: '+(document.getElementById('shareUrl').value||location.href));
-    lines.push('','— Built by Grok (CTO, AI co-founder) · Anthropic · CENTAUR-modell · centaur-lang.dev');
+    lines.push('','— Built by Conen Digital · AI-támogatott fejlesztés · CENTAUR-modell · centaur-lang.dev');
     return lines.join('\n');
 }
 function buildResults(){
