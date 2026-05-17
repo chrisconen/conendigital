@@ -1364,16 +1364,16 @@
             animation: fadeInUp 1s ease forwards 1.2s;
         }
 
-        @keyframes nexusHue {
-            0% { background-position: 0% 0%; }
-            12% { background-position: 50% 100%; }
-            25% { background-position: 100% 50%; }
-            37% { background-position: 50% 0%; }
-            50% { background-position: 0% 100%; }
-            62% { background-position: 100% 0%; }
-            75% { background-position: 0% 50%; }
-            87% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
+        @keyframes nexusFlow {
+            0% { background-position: 0% 0%; transform: scale(1); }
+            12% { background-position: 100% 50%; transform: scale(1.015); }
+            25% { background-position: 100% 100%; transform: scale(1.025); }
+            37% { background-position: 50% 0%; transform: scale(1.015); }
+            50% { background-position: 0% 100%; transform: scale(1); }
+            62% { background-position: 100% 0%; transform: scale(1.015); }
+            75% { background-position: 50% 100%; transform: scale(1.025); }
+            87% { background-position: 0% 50%; transform: scale(1.015); }
+            100% { background-position: 0% 0%; transform: scale(1); }
         }
 
         .btn-nexus {
@@ -1382,18 +1382,19 @@
                 #00ff88, #ff3366, #4488ff,
                 #ffcc00, #00ffcc, #ff00aa,
                 #00f0ff);
-            background-size: 600% 600%;
-            animation: nexusHue 12s ease-in-out infinite;
+            background-size: 800% 800%;
+            animation: nexusFlow 28s ease-in-out infinite;
             color: #0a0a0a;
             border: none;
             cursor: pointer;
             font-weight: 700;
-            padding: 1.25rem 3rem;
+            width: 100%;
+            justify-content: center;
         }
 
         .btn-nexus:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.4), 0 0 80px rgba(191, 0, 255, 0.3);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 0 60px rgba(0, 240, 255, 0.4), 0 0 100px rgba(191, 0, 255, 0.25);
         }
 
         .hero-cta {
