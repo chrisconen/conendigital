@@ -1387,9 +1387,20 @@
             color: #0a0a0a;
             border: none;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 0.08em;
             width: 100%;
             justify-content: center;
+            padding: 1.5rem 3rem;
+            min-height: 72px;
+        }
+
+        .typing-cursor {
+            animation: blink 0.7s step-end infinite;
+            margin-left: 3px;
+            font-weight: 200;
+            opacity: 0.9;
         }
 
         .btn-nexus:hover {
@@ -2998,7 +3009,7 @@
 
                 <div class="hero-cta">
                     <button type="button" class="btn btn-nexus" onclick="document.querySelector('.conen-chat-fab')?.click()">
-                        Kérdezd NEXUS AI-t!
+                        <span id="nexusTyping"></span><span class="typing-cursor">▊</span>
                     </button>
                 </div>
 
@@ -4641,6 +4652,32 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
 <script src="/blog-widget.js" defer></script>
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
+
+<script>
+    (function() {
+        var el = document.getElementById('nexusTyping');
+        if (!el) return;
+        var text = 'Kérdezd NEXUS AI-t!';
+        var i = 0;
+        var del = false;
+        var t;
+
+        function tick() {
+            if (!del) {
+                el.textContent = text.slice(0, i + 1);
+                i++;
+                if (i === text.length) { del = true; t = setTimeout(tick, 2800); return; }
+                t = setTimeout(tick, 65 + Math.random() * 45);
+            } else {
+                el.textContent = text.slice(0, i - 1);
+                i--;
+                if (i === 0) { del = false; t = setTimeout(tick, 900); return; }
+                t = setTimeout(tick, 35 + Math.random() * 20);
+            }
+        }
+        t = setTimeout(tick, 600);
+    })();
+</script>
 </body>
 
 <script>
