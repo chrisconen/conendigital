@@ -626,7 +626,8 @@
         }
 
         .contact {
-            padding: 4rem 4rem 8rem;
+            padding: 8rem 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .contact-grid {
@@ -634,99 +635,50 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            padding: 2rem 0;
+            gap: 6rem;
         }
 
         .contact-info h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
         }
 
-        .contact-info>p {
+        .contact-info p {
             color: rgba(255, 255, 255, 0.5);
             line-height: 1.8;
             margin-bottom: 3rem;
         }
 
-        .contact-cards {
+        .contact-details {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            margin-bottom: 3rem;
         }
 
-        .contact-card {
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
+        .contact-item {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            border-color: rgba(0, 240, 255, 0.3);
-            transform: translateX(5px);
-        }
-
-        .contact-card-icon {
-            width: 50px;
-            height: 50px;
-            border: 1px solid var(--cyan);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .contact-card-content {
-            flex: 1;
-        }
-
-        .contact-card-label {
-            font-family: var(--font-mono);
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-card-value {
-            font-size: 1rem;
-        }
-
-        .contact-card-value a:hover {
-            color: var(--cyan);
-        }
-
-        .contact-social {
-            display: flex;
             gap: 1rem;
         }
 
-        .contact-social a {
-            width: 45px;
-            height: 45px;
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            font-size: 1.25rem;
         }
 
-        .contact-social a:hover {
-            border-color: var(--cyan);
+        .contact-item-text {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        .contact-item-text a:hover {
             color: var(--cyan);
-            background: rgba(0, 240, 255, 0.05);
         }
 
         .contact-form {
@@ -735,19 +687,7 @@
             padding: 3rem;
         }
 
-        .form-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
 
-        .form-subtitle {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 2rem;
-        }
-
-        .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
@@ -831,47 +771,7 @@
             box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
         }
 
-        .map {
-            padding: 0 4rem 8rem;
-        }
 
-        .map-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            height: 400px;
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            filter: grayscale(100%) invert(92%) contrast(83%);
-        }
-
-        .map-overlay {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            background: var(--black);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            max-width: 300px;
-        }
-
-        .map-overlay h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .map-overlay p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.6;
-        }
 
         .faq {
             padding: 0 4rem 8rem;
@@ -1045,7 +945,6 @@
 
             .hero,
             .contact,
-            .map,
             .faq {
                 padding-left: 2rem;
                 padding-right: 2rem;
@@ -1058,18 +957,6 @@
 
             .form-row {
                 grid-template-columns: 1fr;
-            }
-
-            .map-container {
-                height: 300px;
-            }
-
-            .map-overlay {
-                position: relative;
-                top: auto;
-                left: auto;
-                max-width: 100%;
-                margin-top: -1px;
             }
 
             .footer-inner {
@@ -1113,48 +1000,30 @@
             }
 
             .contact {
-                padding: 3rem 1.25rem 5rem;
+                padding: 3rem 1.25rem;
             }
 
             .contact-info h2 {
                 font-size: 1.5rem;
             }
 
-            .contact-info>p {
+            .contact-info p {
                 font-size: 0.95rem;
             }
 
-            .contact-card {
-                padding: 1.25rem;
-                gap: 1rem;
-            }
-
-            .contact-card-icon {
+            .contact-item-icon {
                 width: 40px;
                 height: 40px;
-                font-size: 1rem;
             }
 
-            .contact-card-value {
-                font-size: 0.9rem;
-            }
-
-            .contact-social a {
-                width: 40px;
-                height: 40px;
+            .contact-item-text {
+                font-size: 0.85rem;
             }
 
             .contact-form {
                 padding: 2rem 1.5rem;
             }
 
-            .form-title {
-                font-size: 1.25rem;
-            }
-
-            .form-subtitle {
-                font-size: 0.85rem;
-            }
 
             .form-group label {
                 font-size: 0.7rem;
@@ -1169,26 +1038,6 @@
 
             .form-submit {
                 padding: 1rem;
-                font-size: 0.85rem;
-            }
-
-            .map {
-                padding: 0 1.25rem 5rem;
-            }
-
-            .map-container {
-                height: 250px;
-            }
-
-            .map-overlay {
-                padding: 1.25rem;
-            }
-
-            .map-overlay h3 {
-                font-size: 1rem;
-            }
-
-            .map-overlay p {
                 font-size: 0.85rem;
             }
 
@@ -1244,10 +1093,6 @@
 
             .centaur-footer-badge-name {
                 font-size: 11px;
-            }
-
-            .contact-social {
-                justify-content: center;
             }
 
             .footer-logo {
@@ -1441,79 +1286,59 @@
         </div>
     </section>
 
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="contact-grid">
             <div class="contact-info reveal">
-                <h2>Lépj kapcsolatba velünk</h2>
+                <h2>Beszéljünk!</h2>
                 <p>
-                    Ajánlatgeneráló weboldal, EAA-felújítás, AI Ops, vagy csak egy AX-audit a meglévő rendszerre —
-                    írd le röviden a helyzetet, és visszajelzünk a következő lépéssel. Az első konzultáció díjmentes.
+                    Írd meg röviden, milyen üzleti célt kell megtámogatni: új ajánlatgeneráló weboldal,
+                    WordPress-felújítás EAA-megfeleléssel, vagy AI Ops réteg meglévő rendszerre.
+                    Onnan visszafelé rakjuk össze a megfelelő stack-et.
                 </p>
-
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <div class="contact-card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
                                 <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                                 <path d="M3 7l9 6 9-6"></path>
                             </svg>
                         </div>
-                        <div class="contact-card-content">
-                            <div class="contact-card-label">Email</div>
-                            <div class="contact-card-value"><a href="#"
-                                    onclick="window.location.href='mail'+'to:'+'info'+'@'+'conendigital.hu'; return false;">info&#64;conendigital.hu</a>
-                            </div>
+                        <div class="contact-item-text">
+                            <a href="#"
+                                onclick="window.location.href='mail'+'to:'+'info'+'@'+'conendigital.hu'; return false;">info&#64;conendigital.hu</a>
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
-                                <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path>
-                            </svg>
-                        </div>
-                        <div class="contact-card-content">
-                            <div class="contact-card-label">Telefon</div>
-                            <div class="contact-card-value"><a href="tel:+36305696550">+36 30 569 6550</a></div>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                    <div class="contact-item">
+                        <div class="contact-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                 <circle cx="12" cy="10" r="3"></circle>
                             </svg>
                         </div>
-                        <div class="contact-card-content">
-                            <div class="contact-card-label">Lokáció</div>
-                            <div class="contact-card-value">Győr (HU) + Bécs (AT) · DACH</div>
+                        <div class="contact-item-text">
+                            Győr, Magyarország<br>
+                            + Ausztria
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 6v6l4 2"></path>
+                    <div class="contact-item">
+                        <div class="contact-item-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                                <circle cx="12" cy="12" r="9"></circle>
+                                <path d="M12 7v5l3 2"></path>
                             </svg>
                         </div>
-                        <div class="contact-card-content">
-                            <div class="contact-card-label">Válaszidő</div>
-                            <div class="contact-card-value">24 órán belül</div>
+                        <div class="contact-item-text">
+                            Válasz 24 órán belül
                         </div>
                     </div>
-                </div>
-
-                <div class="contact-social">
-                    <a href="#" title="LinkedIn">in</a>
-                    <a href="#" title="Instagram">ig</a>
-                    <a href="#" title="Facebook">fb</a>
                 </div>
             </div>
 
             <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/movgkdoz" method="POST">
                 <input type="hidden" name="_next" value="https://conendigital.hu/email-sikeresen-elkuldve.html">
-                <h3 class="form-title">Küldj üzenetet</h3>
-                <p class="form-subtitle">Töltsd ki az űrlapot és hamarosan jelentkezünk!</p>
-
                 <div class="form-row">
                     <div class="form-group">
                         <label for="name">Név *</label>
@@ -1524,71 +1349,40 @@
                         <input type="email" id="email" name="email" required placeholder="kovacs@ceg.hu">
                     </div>
                 </div>
-
                 <div class="form-row">
-                    <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone" placeholder="+36 30 123 4567">
-                    </div>
                     <div class="form-group">
                         <label for="company">Cég</label>
                         <input type="text" id="company" name="company" placeholder="Cégnév Kft.">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="service">Szolgáltatás *</label>
-                        <select id="service" name="service" required>
-                            <option value="">Válassz...</option>
-                            <option value="quote-engine">Ajánlatgeneráló weboldal</option>
-                            <option value="renovation-eaa">Felújítás + EAA-megfelelés</option>
-                            <option value="ai-ops">AI Ops</option>
-                            <option value="webshop">Webáruház / E-commerce</option>
-                            <option value="ax-audit">AX-audit (120k Ft, ~2 hét)</option>
-                            <option value="other">Egyéb / Még nem tudom</option>
-                        </select>
                     </div>
                     <div class="form-group">
                         <label for="budget">Költségkeret</label>
                         <select id="budget" name="budget">
                             <option value="">Válassz...</option>
-                            <option value="audit-first">Először auditot kérek, utána döntök</option>
-                            <option value="small">200k - 500k Ft (kisebb scope, AX-audit)</option>
-                            <option value="medium">500k - 1.2M Ft (felújítás, közepes pillér)</option>
-                            <option value="large">1.2M - 2.5M Ft (komplex projekt)</option>
-                            <option value="enterprise">2.5M Ft + (több pilléres)</option>
-                            <option value="recurring">Havi keret (AI Ops)</option>
+                            <option value="small">Alap weboldal, 5 ezer Ft/hó</option>
+                            <option value="medium">Starter weboldal 15 ezer F/hó</option>
+                            <option value="large">Profi weboldal 25 ezer Ft/hó</option>
+                            <option value="enterprise">Egyedi weboldal és üzleti rendszer</option>
                         </select>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <label for="service">Szolgáltatás *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Válassz szolgáltatást...</option>
+                        <option value="quote-engine">Ajánlatgeneráló weboldal (új projekt)</option>
+                        <option value="renovation-eaa">Felújítás + EAA-megfelelés (meglévő oldalra)</option>
+                        <option value="ai-ops">AI Ops (folyamat-automatizáció)</option>
+                        <option value="webshop">Webáruház / E-commerce</option>
+                        <option value="ax-audit">AX-audit (AI-readiness review)</option>
+                        <option value="other">Egyéb / nem tudom még</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="message">Üzenet *</label>
-                    <textarea id="message" name="message" required
-                        placeholder="Mit szeretnél elérni? Mi a jelenlegi rendszer (URL, ha van)? Milyen határidő reális?"></textarea>
+                    <textarea id="message" name="message" required placeholder="Mesélj a projektedről..."></textarea>
                 </div>
-
                 <button type="submit" class="form-submit">Üzenet küldése →</button>
             </form>
-        </div>
-    </section>
-
-    <section class="map">
-        <div class="map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86068.80758800915!2d17.5844!3d47.6875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476bbf87407ea035%3A0x400c4290c1e11e0!2sGy%C5%91r!5e0!3m2!1shu!2shu!4v1699999999999!5m2!1shu!2shu"
-                allowfullscreen="" loading="lazy"></iframe>
-            <div class="map-overlay">
-                <h3 style="display: flex; align-items: center; gap: 0.5rem;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px;" aria-hidden="true">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                        <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Győr, Magyarország
-                </h3>
-                <p>Személyes találkozó előzetes egyeztetés alapján. Bécsben (PIXELLA) is elérhetők vagyunk.</p>
-            </div>
         </div>
     </section>
 
@@ -1784,7 +1578,7 @@
                 requestAnimationFrame(animateCursor);
             }
             animateCursor();
-            document.querySelectorAll('a, button, input, textarea, select, .contact-card, .faq-question').forEach(el => {
+            document.querySelectorAll('a, button, input, textarea, select, .faq-question').forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
                 el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
             });
