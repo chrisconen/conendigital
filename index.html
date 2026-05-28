@@ -1278,7 +1278,7 @@
         .hero-cta {
             display: flex;
             left: 0;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 1.5rem;
             flex-wrap: wrap;
             opacity: 0;
@@ -2922,7 +2922,17 @@
           .nxt-header{flex-direction:column;align-items:flex-start}
           .nxt-form{padding:1.25rem}
         }
-        
+
+        @media (max-width: 700px) {
+            #centaur-model .service-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            #centaur-model .service-card .service-title {
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
@@ -3492,7 +3502,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
         <!-- Chris Conen - Founder card -->
         <div class="service-card reveal"
-            style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center; gap: 2.5rem; max-width: 900px; margin: 3rem auto 0; padding: 2.5rem; border-top: 3px solid var(--cyan);">
+            style="display: flex; align-items: flex-start; gap: 2.5rem; max-width: 900px; margin: 3rem auto 0; padding: 2.5rem; border-top: 3px solid var(--cyan);">
             <!-- Bal: kép -->
             <div style="flex-shrink: 0;">
                 <div
@@ -3502,7 +3512,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 </div>
             </div>
             <!-- Jobb: tartalom -->
-            <div>
+            <div style="flex: 1; min-width: 0;">
                 <h3 class="service-title" style="color: var(--cyan); margin-bottom: 0.25rem;">Chris Conen</h3>
                 <div
                     style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--magenta); margin-bottom: 1rem; letter-spacing: 0.05em;">
@@ -3523,7 +3533,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 </div>
             </div>
         </div>
-       
+        
     </section>
 
     <!-- Flagship Case Study Teaser -->
