@@ -831,7 +831,7 @@
         /* Navigation */
         .nav {
             position: fixed;
-            top: 50px;
+            top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
@@ -840,22 +840,6 @@
             justify-content: space-between;
             align-items: center;
             transition: all 0.4s ease;
-        }
-
-        body.announcement-closed .nav {
-            top: 0;
-        }
-
-        @media (max-width: 768px) {
-            .nav {
-                top: 70px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav {
-                top: 65px;
-            }
         }
 
         .nav.scrolled {
@@ -1180,7 +1164,7 @@
         }
 
         .hero-title {
-            font-size: clamp(2rem, 4.5vw, 4rem);
+            font-size: clamp(2rem, 4.5vw, 2rem);
             font-weight: 700;
             line-height: 1.0;
             letter-spacing: -0.025em;
@@ -1190,6 +1174,12 @@
         }
 
         .hero-title-line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-title-subline {
+            font-size: clamp(1rem, 4.5vw, 2rem);
             display: block;
             overflow: hidden;
         }
@@ -1280,6 +1270,8 @@
             left: 0;
             justify-content: flex-start;
             gap: 1.5rem;
+            font-weight: 600;
+            color: white;
             flex-wrap: wrap;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 1.4s;
@@ -1671,7 +1663,6 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 3rem;
             position: relative;
-            overflow: hidden;
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
             transform-style: preserve-3d;
             perspective: 1000px;
@@ -2512,11 +2503,6 @@
                 gap: 4rem;
             }
 
-            .hero-stats {
-                flex-direction: column;
-                gap: 2rem;
-            }
-
             .hero-morphing {
                 min-width: auto;
                 display: block;
@@ -2534,7 +2520,7 @@
 
         @media (max-width: 600px) {
             .hero-title {
-                font-size: clamp(2.5rem, 15vw, 5rem);
+                font-size: clamp(1.5rem, 8vw, 2.5rem);
             }
 
             .hero-cta {
@@ -2570,25 +2556,13 @@
             }
 
             .hero-title {
-                font-size: clamp(2rem, 12vw, 4rem);
+                font-size: clamp(1.25rem, 6vw, 2rem);
                 margin-bottom: 1.5rem;
             }
 
             .hero-description {
                 font-size: 0.95rem;
                 margin-bottom: 2rem;
-            }
-
-            .hero-stats {
-                gap: 1.5rem;
-            }
-
-            .hero-stat-number {
-                font-size: 1.5rem;
-            }
-
-            .hero-stat-label {
-                font-size: 0.7rem;
             }
 
             .centaur-badge {
@@ -2725,9 +2699,7 @@
             }
 
             .footer-logo {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                text-align: center;
             }
 
             .footer-links {
@@ -2893,6 +2865,117 @@
                 text-align: center;
             }
         }
+
+        /* Certificate gallery modal */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.25rem;
+        }
+        .cert-thumb {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+            cursor: pointer;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .cert-thumb:hover {
+            border-color: var(--cyan);
+            transform: translateY(-4px);
+        }
+        .cert-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .cert-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.88);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .cert-modal.open {
+            display: flex;
+        }
+        .cert-modal-img {
+            max-width: 92vw;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        }
+        .cert-modal-close {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 10000;
+            line-height: 1;
+        }
+        .cert-modal-close:hover {
+            background: rgba(255,255,255,0.18);
+        }
+        .cert-modal-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, opacity 0.3s;
+            z-index: 10000;
+            opacity: 0.6;
+            line-height: 1;
+        }
+        .cert-modal-nav:hover {
+            background: rgba(255,255,255,0.16);
+            opacity: 1;
+        }
+        .cert-modal-prev { left: 1.25rem; }
+        .cert-modal-next { right: 1.25rem; }
+        .cert-modal-nav.hidden { opacity: 0; pointer-events: none; }
+        .cert-modal-counter {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.1em;
+            z-index: 10000;
+        }
+        @media (max-width: 600px) {
+            .cert-thumb img { cursor: default; }
+            .cert-modal-nav { width: 40px; height: 40px; font-size: 1.4rem; }
+            .cert-modal-close { top: 0.75rem; right: 0.75rem; width: 40px; height: 40px; font-size: 1.4rem; }
+        }
     </style>
 </head>
 
@@ -2951,15 +3034,14 @@
         <div class="hero-content">
             <div class="hero-text-col">
                 <div class="hero-label">
-                    Chris Conen · Weboldal & webáruház · Győr
+                    Conen DIGITAL · Weboldal & webáruház · Győr
                 </div>
 
                 <h1 class="hero-title">
-                    <span class="hero-title-line"><span>Webáruház & weboldal készítés Győr -</span></span>
-                    <span class="hero-title-line"><span class="hero-title-gradient">havi 5 ezer Ft-tól</span></span>
-                    <span class="hero-title-line">
-                        <span>bérelhető weboldalak</span>
-                    </span>
+                    <span class="hero-title-line">Webáruház & weboldal készítés Győr -
+                    <span class="hero-title-gradient">havi 5 ezer Ft-tól</span> 
+                    <span class="hero-title-subline">bérelhető weboldalak és webáruházak
+                    </span></span>
                 </h1>
                 <p class="hero-description">
                     A weboldal, webáruház akkor ér valamit, ha a látogató 30 másodperc alatt el tud indítani egy
@@ -2970,17 +3052,19 @@
                 </p>
 
                 <div class="hero-cta">
-                    <button type="button" class="btn btn-primary" onclick="document.querySelector('.conen-chat-fab')?.click()">
-                        Kérdésed van? Chat indítása <span>→</span>
-                    </button>
-                </div>
+                <a href="https://app.conendigital.hu"
+                style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;"
+                onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'"
+                onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor
+                megnyitása →</a>
+            </div>
             </div>
            
 
             <!-- AI Face Visual + Voice Controls -->
             <div class="hero__visual-col">
                 <div class="hero__visual" id="visualWrap" role="button" tabindex="0"
-                    aria-label="Hangos bemutatkoz?s ind?t?sa" aria-pressed="false">
+                    aria-label="Hangos bemutatkozás indítása" aria-pressed="false">
                     <canvas id="dotface" role="img"
                         aria-label="Animalt pontfelho-portre, Chris Conen, Conen Digital alapito"></canvas>
                     <div class="visual-meta">
@@ -3483,7 +3567,41 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 </div>
             </div>
         </div>
-        
+
+        <!-- Certificates -->
+        <div class="reveal" style="max-width: 900px; margin: 3rem auto 0; padding: 0 2rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="section-label">Tanúsítványok</div>
+                <h3 class="service-title" style="color: var(--cyan); margin-bottom: 0.25rem;">Szaktudás &amp; Képzettség</h3>
+                <p style="font-size: 0.85rem; color: var(--gray-text); margin-top: 0.5rem;">
+                    Google + szakmai certifikációk — kattints a képre a nagyításhoz
+                </p>
+            </div>
+            <div class="cert-grid" id="certGrid">
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/UX Design.png" data-alt="UX Design tanúsítvány">
+                    <img src="images/UX Design-s.webp" alt="UX Design tanúsítvány" loading="lazy">
+                </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Google Cyber Security - Foundations.png" data-alt="Google Cyber Security Foundations tanúsítvány">
+                    <img src="images/Google Cyber Security - Foundations-s.webp" alt="Google Cyber Security Foundations tanúsítvány" loading="lazy">
+                </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Front-End Dev.png" data-alt="Front-End Development tanúsítvány">
+                    <img src="images/Front-End Dev-s.webp" alt="Front-End Development tanúsítvány" loading="lazy">
+                </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Cyber Security - Linux and SQL.png" data-alt="Cyber Security Linux and SQL tanúsítvány">
+                    <img src="images/Cyber Security - Linux and SQL-s.webp" alt="Cyber Security Linux and SQL tanúsítvány" loading="lazy">
+                </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Cyber Sec - Network Protection.png" data-alt="Cyber Security Network Protection tanúsítvány">
+                    <img src="images/Cyber Sec - Network Protection-s.webp" alt="Cyber Security Network Protection tanúsítvány" loading="lazy">
+                </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Cyber Sec - Manage Security Rsiks.png" data-alt="Cyber Security Manage Security Risks tanúsítvány">
+                    <img src="images/Cyber Sec - Manage Security Rsiks-s.webp" alt="Cyber Security Manage Security Risks tanúsítvány" loading="lazy">
+                </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Build Wireframes an Low-Fidelity Prototypes.png" data-alt="Build Wireframes and Low-Fidelity Prototypes tanúsítvány">
+                    <img src="images/Build Wireframes an Low-Fidelity Prototypes-s.webp" alt="Build Wireframes and Low-Fidelity Prototypes tanúsítvány" loading="lazy">
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <!-- Flagship Case Study Teaser -->
@@ -3904,24 +4022,12 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     </section>
 
 
-    <!-- Vizuális konfigurátor CTA -->
+    <!-- Vizualis konfigurator CTA -->
     <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
         <div style="max-width: 640px; margin: 0 auto;">
-            <div
-                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); letter-spacing: 0.15em; margin-bottom: 1rem;">
-                // VIZUÁLIS TERVEZŐ</div>
-            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">
-                Próbáld ki a <span
-                    style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális
-                    tervezőt</span></h2>
-            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben
-                összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi
-                tartomány a végén. Nem kötelez semmire.</p>
-            <a href="weboldal-konfigurator-v2.html"
-                style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;"
-                onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'"
-                onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor
-                megnyitása →</a>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
+            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
@@ -4714,6 +4820,15 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
 
 
+<!-- Certificate modal -->
+<div class="cert-modal" id="certModal" role="dialog" aria-label="Tanúsítvány nagy kép" aria-modal="true">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Bezárás">&times;</button>
+    <button class="cert-modal-nav cert-modal-prev" id="certModalPrev" aria-label="Előző kép">&#8249;</button>
+    <button class="cert-modal-nav cert-modal-next" id="certModalNext" aria-label="Következő kép">&#8250;</button>
+    <img class="cert-modal-img" id="certModalImg" src="" alt="">
+    <div class="cert-modal-counter" id="certModalCounter"></div>
+</div>
+
 </body>
 
 <script>
@@ -4738,6 +4853,79 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             console.error('Announcement cleanup error:', e);
         }
     });
+</script>
+
+<script>
+(function() {
+    'use strict';
+
+    var modal = document.getElementById('certModal');
+    var img = document.getElementById('certModalImg');
+    var closeBtn = document.getElementById('certModalClose');
+    var prevBtn = document.getElementById('certModalPrev');
+    var nextBtn = document.getElementById('certModalNext');
+    var counter = document.getElementById('certModalCounter');
+
+    var thumbs = Array.prototype.slice.call(document.querySelectorAll('.cert-thumb'));
+    var currentIndex = -1;
+
+    function openModal(index) {
+        if (index < 0 || index >= thumbs.length) return;
+        currentIndex = index;
+        var thumb = thumbs[currentIndex];
+        img.src = thumb.getAttribute('data-full');
+        img.alt = thumb.getAttribute('data-alt') || '';
+        counter.textContent = (currentIndex + 1) + ' / ' + thumbs.length;
+        prevBtn.classList.toggle('hidden', currentIndex === 0);
+        nextBtn.classList.toggle('hidden', currentIndex === thumbs.length - 1);
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        currentIndex = -1;
+    }
+
+    function prevImage() {
+        if (currentIndex > 0) openModal(currentIndex - 1);
+    }
+
+    function nextImage() {
+        if (currentIndex < thumbs.length - 1) openModal(currentIndex + 1);
+    }
+
+    // Click handlers on thumbs
+    thumbs.forEach(function(thumb, i) {
+        thumb.addEventListener('click', function() { openModal(i); });
+        thumb.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(i);
+            }
+        });
+    });
+
+    // Close handlers
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+
+    // Navigation
+    prevBtn.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', nextImage);
+
+    // Keyboard
+    document.addEventListener('keydown', function(e) {
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') prevImage();
+        if (e.key === 'ArrowRight') nextImage();
+    });
+
+})();
 </script>
 
 </html>
