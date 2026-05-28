@@ -1371,50 +1371,7 @@
             animation: fadeInUp 1s ease forwards 1.2s;
         }
 
-        @keyframes nexusFlow {
-            0% { background-position: 0% 0%; transform: scale(1); }
-            12% { background-position: 100% 50%; transform: scale(1.015); }
-            25% { background-position: 100% 100%; transform: scale(1.025); }
-            37% { background-position: 50% 0%; transform: scale(1.015); }
-            50% { background-position: 0% 100%; transform: scale(1); }
-            62% { background-position: 100% 0%; transform: scale(1.015); }
-            75% { background-position: 50% 100%; transform: scale(1.025); }
-            87% { background-position: 0% 50%; transform: scale(1.015); }
-            100% { background-position: 0% 0%; transform: scale(1); }
-        }
-
-        .btn-nexus {
-            background: linear-gradient(135deg,
-                #00f0ff, #bf00ff, #ff6b00,
-                #00ff88, #ff3366, #4488ff,
-                #ffcc00, #00ffcc, #ff00aa,
-                #00f0ff);
-            background-size: 800% 800%;
-            animation: nexusFlow 28s ease-in-out infinite;
-            color: #0a0a0a;
-            border: none;
-            cursor: pointer;
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: 0.08em;
-            width: 100%;
-            justify-content: center;
-            padding: 1.5rem 3rem;
-            min-height: 72px;
-        }
-
-        .typing-cursor {
-            animation: blink 0.7s step-end infinite;
-            margin-left: 3px;
-            font-weight: 200;
-            opacity: 0.9;
-        }
-
-        .btn-nexus:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 0 60px rgba(0, 240, 255, 0.4), 0 0 100px rgba(191, 0, 255, 0.25);
-        }
-
+        
         .hero-cta {
             display: flex;
             justify-content: center;
@@ -3022,8 +2979,8 @@
                 </p>
 
                 <div class="hero-cta">
-                    <button type="button" class="btn btn-nexus" onclick="document.querySelector('.conen-chat-fab')?.click()">
-                        <span id="nexusTyping"></span><span class="typing-cursor">▊</span>
+                    <button type="button" class="btn btn-primary" onclick="document.querySelector('.conen-chat-fab')?.click()">
+                        Chat indítása <span>→</span>
                     </button>
                 </div>
 
@@ -4667,45 +4624,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 <script src="/blog-widget.js" defer></script>
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
 
-<script>
-    (function() {
-        var el = document.getElementById('nexusTyping');
-        if (!el) return;
-        var texts = [
-            'Beszélj NEXUS-al a projektedről!',
-            'Kérdezd NEXUS AI-t webáruház készítésről!',
-            'AI chatbot kell az oldaladra?',
-            'EAA-megfelelés szükséges?',
-            'Felújítanád a weboldalad?',
-            'Automatizálnád a folyamataid?',
-        ];
-        var idx = 0;
-        var i = 0;
-        var del = false;
-        var t;
 
-        function tick() {
-            var text = texts[idx];
-            if (!del) {
-                el.textContent = text.slice(0, i + 1);
-                i++;
-                if (i === text.length) { del = true; t = setTimeout(tick, 2600); return; }
-                t = setTimeout(tick, 55 + Math.random() * 50);
-            } else {
-                el.textContent = text.slice(0, i - 1);
-                i--;
-                if (i === 0) {
-                    del = false;
-                    idx = (idx + 1) % texts.length;
-                    t = setTimeout(tick, 700);
-                    return;
-                }
-                t = setTimeout(tick, 30 + Math.random() * 20);
-            }
-        }
-        t = setTimeout(tick, 800);
-    })();
-</script>
 </body>
 
 <script>
