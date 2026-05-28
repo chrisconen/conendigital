@@ -1322,46 +1322,6 @@
             color: var(--cyan);
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 4rem;
-            margin-top: 6rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease forwards 1.6s;
-        }
-
-        .hero-stat {
-            position: relative;
-        }
-
-        .hero-stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: linear-gradient(90deg, var(--cyan), transparent);
-        }
-
-        .hero-stat-number {
-            font-family: var(--font-mono);
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: linear-gradient(180deg, var(--white), rgba(255, 255, 255, 0.5));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            padding-top: 1rem;
-        }
-
-        .hero-stat-label {
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
         /* AI Face Visual */
         .hero__visual {
             position: relative;
@@ -1687,7 +1647,7 @@
         }
 
         .section-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(1.2rem, 5vw, 2rem);
             font-weight: 700;
             line-height: 1.1;
         }
@@ -3014,23 +2974,8 @@
                         Kérdésed van? Chat indítása <span>→</span>
                     </button>
                 </div>
-
-                <div class="hero-stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat-number"><span style="color: var(--cyan)">AI</span> is ajánl</div>
-                        <div class="hero-stat-label">AI · ChatGPT · Perplexity megtalál</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number"><span style="color: var(--cyan)">AX</span>-ready</div>
-                        <div class="hero-stat-label">/llms.txt + JSON-LD telepítve</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat-number"><span style="color: var(--magenta)">0</span> Ft</div>
-                        <div class="hero-stat-label">Első diagnosztika</div>
-                    </div>
-                </div>
-
             </div>
+           
 
             <!-- AI Face Visual + Voice Controls -->
             <div class="hero__visual-col">
