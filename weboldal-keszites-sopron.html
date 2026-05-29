@@ -2560,108 +2560,6 @@
             .cert-modal-nav { width: 40px; height: 40px; font-size: 1.4rem; }
             .cert-modal-close { top: 0.75rem; right: 0.75rem; width: 40px; height: 40px; font-size: 1.4rem; }
         }
-        /* NXT tesztprogram section */
-        .nxt-section{
-          position:relative;
-          padding:5rem 1.5rem;
-          background:var(--black, #0a0a0a);
-          overflow:hidden;
-          border-top:1px solid rgba(255,255,255,.06);
-        }
-        .nxt-bg-glow{
-          position:absolute;border-radius:50%;filter:blur(120px);opacity:.5;pointer-events:none;
-        }
-        .nxt-glow-1{width:500px;height:500px;background:rgba(0,240,255,.12);top:-150px;left:-100px}
-        .nxt-glow-2{width:500px;height:500px;background:rgba(191,0,255,.12);bottom:-150px;right:-100px}
-        .nxt-container{max-width:1100px;margin:0 auto;position:relative;z-index:1}
-        .nxt-header{
-          display:flex;justify-content:space-between;align-items:center;
-          flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;
-        }
-        .nxt-label{
-          font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
-          color:var(--cyan, #00f0ff);font-weight:700;
-          display:flex;align-items:center;gap:.6rem;
-        }
-        .nxt-dot{
-          width:9px;height:9px;border-radius:50%;background:var(--cyan, #00f0ff);
-          box-shadow:0 0 0 0 rgba(0,240,255,.6);animation:nxt-pulse 2s infinite;
-        }
-        @keyframes nxt-pulse{
-          0%{box-shadow:0 0 0 0 rgba(0,240,255,.6)}
-          70%{box-shadow:0 0 0 11px rgba(0,240,255,0)}
-          100%{box-shadow:0 0 0 0 rgba(0,240,255,0)}
-        }
-        .nxt-slots{
-          font-size:.9rem;color:rgba(255,255,255,.65);
-          padding:.4rem 1rem;border-radius:99px;
-          background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.3);
-        }
-        .nxt-slots strong{color:var(--orange, #ff6b00);font-size:1.05rem}
-        .nxt-grid{
-          display:grid;
-          grid-template-columns:1fr 1.1fr;
-          gap:3rem;
-          align-items:start;
-        }
-        .nxt-title{
-          font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.25;font-weight:800;
-          color:var(--white,#fff);margin-bottom:1rem;
-        }
-        .nxt-hl{color:var(--magenta,#bf00ff);text-shadow:0 0 24px rgba(191,0,255,.4)}
-        .nxt-lead{
-          font-size:1.05rem;line-height:1.6;color:rgba(255,255,255,.75);margin-bottom:2rem;
-        }
-        .nxt-lead strong{color:var(--white,#fff)}
-        .nxt-form{
-          display:flex;flex-direction:column;gap:1rem;
-          background:rgba(26,26,26,.6);
-          border:1px solid rgba(255,255,255,.1);
-          border-radius:16px;padding:1.75rem;
-          backdrop-filter:blur(8px);
-        }
-        .nxt-field label{display:block;font-size:.85rem;margin-bottom:.4rem;color:rgba(255,255,255,.8)}
-        .nxt-field input, .nxt-field textarea{
-          width:100%;padding:.8rem 1rem;
-          background:var(--black,#0a0a0a);
-          border:1px solid rgba(255,255,255,.15);
-          border-radius:10px;color:var(--white,#fff);font-size:1rem;
-          font-family:inherit;transition:border-color .15s;
-        }
-        .nxt-field input:focus, .nxt-field textarea:focus{outline:none;border-color:var(--cyan,#00f0ff)}
-        .nxt-field textarea{resize:vertical;min-height:80px}
-        .nxt-submit{
-          padding:.9rem;background:var(--cyan,#00f0ff);color:var(--black,#0a0a0a);
-          font-weight:700;font-size:1rem;border:none;border-radius:10px;
-          cursor:pointer;transition:transform .15s, box-shadow .15s;
-        }
-        .nxt-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,240,255,.35)}
-        .nxt-fineprint{font-size:.75rem;color:rgba(255,255,255,.45);text-align:center;margin-top:.25rem}
-        .nxt-fineprint a{color:rgba(255,255,255,.6)}
-        .nxt-right{display:flex;flex-direction:column;gap:1.75rem}
-        .nxt-block{display:flex;gap:1rem;align-items:flex-start}
-        .nxt-block-icon{font-size:1.6rem;flex-shrink:0;line-height:1.4}
-        .nxt-block-body h3{
-          font-size:1.1rem;color:var(--white,#fff);margin-bottom:.5rem;font-weight:700;
-        }
-        .nxt-block-body p{font-size:.95rem;line-height:1.6;color:rgba(255,255,255,.7)}
-        .nxt-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-        .nxt-list li{font-size:.95rem;line-height:1.5;color:rgba(255,255,255,.7);display:flex;gap:.6rem}
-        .nxt-list li::before{content:"✓";color:var(--cyan,#00f0ff);font-weight:700;flex-shrink:0}
-        .nxt-list strong{color:rgba(255,255,255,.95)}
-        .nxt-why{
-          font-size:.92rem;line-height:1.6;color:rgba(255,255,255,.65);
-          padding:1.25rem;border-radius:12px;
-          background:rgba(0,240,255,.05);border-left:3px solid var(--cyan,#00f0ff);
-        }
-        .nxt-why strong{color:var(--cyan,#00f0ff);display:block;margin-bottom:.3rem}
-        @media(max-width:860px){
-          .nxt-grid{grid-template-columns:1fr;gap:2.5rem}
-          .nxt-right{order:-1}
-        }
-        @media(max-width:600px){
-          .nxt-section{padding:3.5rem 1rem}
-        }
     </style>
 </head>
 
@@ -2707,7 +2605,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <a href="https://app.conendigital.hu" class="nav-konfigurator-btn">Weboldal tervező</a>
+            <a href="weboldal-konfigurator-v2.html" class="nav-konfigurator-btn">Weboldal tervező</a>
         </div>
     </nav>
 
@@ -2738,7 +2636,7 @@
             </p>
 
 <div class="hero-cta">
-                <a href="https://app.conendigital.hu"
+                <a href="weboldal-konfigurator-v2.html"
                 style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;"
                 onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'"
                 onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor
@@ -2798,114 +2696,6 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             <div class="marquee-item">Support <span class="marquee-dot"></span></div>
         </div>
     </section>
-
-    <section class="nxt-section" id="teszt">
-      <div class="nxt-bg-glow nxt-glow-1"></div>
-      <div class="nxt-bg-glow nxt-glow-2"></div>
-     
-      <div class="nxt-container">
-     
-        <!-- Szekció fejléc (mindkét oszlop felett) -->
-        <div class="nxt-header">
-          <div class="nxt-label">
-            <span class="nxt-dot"></span> Tesztprogram · Győr és környéke
-          </div>
-          <div class="nxt-slots">⚡ Már csak <strong>3</strong> / 5 hely szabad</div>
-        </div>
-     
-        <div class="nxt-grid">
-     
-          <!-- ============ BAL OSZLOP: felhívás + CTA + űrlap ============ -->
-          <div class="nxt-left">
-            <h2 class="nxt-title">
-              Keresek <span class="nxt-hl">5 vállalkozót</span>,<br>
-              aki kipróbálja az új<br>AI weboldal-készítőt
-            </h2>
-            <p class="nxt-lead">
-              Te kapsz egy kész, szerkeszthető weboldalt —
-              én cserébe csak a véleményedet kérem.
-              <strong>Nincs költség, nincs kötelezettség.</strong>
-            </p>
-     
-            <form class="nxt-form" action="https://formspree.io/f/SAJAT_ENDPOINT_ID" method="POST">
-              <div class="nxt-field">
-                <label for="nxt-email">E-mail *</label>
-                <input type="email" id="nxt-email" name="email" required placeholder="te@pelda.hu">
-              </div>
-              <div class="nxt-field">
-                <label for="nxt-phone">Telefon *</label>
-                <input type="tel" id="nxt-phone" name="telefon" required placeholder="+36 ...">
-              </div>
-              <div class="nxt-field">
-                <label for="nxt-biz">Mivel foglalkozol? *</label>
-                <textarea id="nxt-biz" name="vallalkozas" required
-                  placeholder="Pl. fodrászat Győrben, autószerviz, étterem, masszázs..."></textarea>
-              </div>
-              <input type="hidden" name="_subject" value="Új NEXUS teszter jelentkezés">
-              <input type="text" name="_gotcha" style="display:none">
-              <button type="submit" class="nxt-submit">Jelentkezem teszterként →</button>
-              <p class="nxt-fineprint">
-                Az adataidat kizárólag a kapcsolatfelvételhez használom.
-                <a href="/adatvedelem">Adatkezelési tájékoztató</a>
-              </p>
-            </form>
-          </div>
-     
-          <!-- ============ JOBB OSZLOP: részletes magyarázat ============ -->
-          <div class="nxt-right">
-     
-            <div class="nxt-block">
-              <div class="nxt-block-icon">🎯</div>
-              <div class="nxt-block-body">
-                <h3>Mi ez pontosan?</h3>
-                <p>
-                  Egy új, AI-alapú weboldal-készítőt fejlesztek kifejezetten magyar
-                  kisvállalkozóknak. Megadod, mivel foglalkozol, és a rendszer pár perc
-                  alatt összerak egy kész, magyar nyelvű weboldalt — szövegekkel, szolgáltatás-
-                  kártyákkal, kapcsolati résszel együtt. Most az utolsó simításoknál tartok,
-                  és valódi vállalkozókon szeretném tesztelni, mielőtt élesben elindul.
-                </p>
-              </div>
-            </div>
-     
-            <div class="nxt-block">
-              <div class="nxt-block-icon">🎁</div>
-              <div class="nxt-block-body">
-                <h3>Mit kapsz te?</h3>
-                <ul class="nxt-list">
-                  <li>Egy kész weboldalt a vállalkozásodnak, néhány nap alatt</li>
-                  <li>Amit <strong>magad is szerkeszthetsz</strong>: árak, képek, szövegek — egy kattintással átírod, amikor változik valami</li>
-                  <li>Modern, mobilbarát megjelenést, ami a Google-ben és az AI-keresőkben is megtalálható</li>
-                  <li>Mindezt <strong>ingyen</strong>, a tesztelési időszak alatt</li>
-                </ul>
-              </div>
-            </div>
-     
-            <div class="nxt-block">
-              <div class="nxt-block-icon">🤝</div>
-              <div class="nxt-block-body">
-                <h3>Mit kérek cserébe?</h3>
-                <p>
-                  Annyit, hogy próbáld ki, és <strong>mondd el őszintén a véleményed</strong>:
-                  mi volt egyértelmű, hol akadtál el, mi hiányzott. Egy rövid beszélgetés,
-                  ennyi az egész. A visszajelzésed alapján csiszolom a végleges terméket —
-                  ezért nevezem tesztprogramnak, nem ingyen akciónak.
-                </p>
-              </div>
-            </div>
-     
-            <div class="nxt-why">
-              <strong>Miért csak 5 hely?</strong>
-              Mert minden teszterrel személyesen foglalkozom, és időt szánok a
-              visszajelzésére. Ennél többet most nem tudok rendesen végigkísérni.
-            </div>
-     
-          </div>
-     
-        </div>
-      </div>
-    </section>
-
 
     <!-- Problem Section -->
     <section class="services" id="hogyan-mukodik">
@@ -3537,7 +3327,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div style="max-width: 640px; margin: 0 auto;">
             <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
             <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+            <a href="weboldal-konfigurator-v2.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
