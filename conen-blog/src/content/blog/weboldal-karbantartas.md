@@ -29,10 +29,10 @@ Az EAA-konformitás nem egyszeri feladat — új tartalom hozzáadásakor az aka
 
 | Tétel | Gyakoriság | Ár |
 |---|---|---|
-| Tartalom-frissítés | Igény szerint | 15k Ft/alkalom |
+| Tartalom-frissítés | Igény szerint | Egyedi megállapodás |
 | PageSpeed audit | Negyedéves | Díjmentes |
 | SSL/DNS monitoring | Folyamatos | Díjmentes |
-| Éves felülvizsgálat | Éves | 50k Ft |
+| Éves felülvizsgálat | Éves | Egyedi megállapodás |
 
 **Miért olcsó?** Mert nincs plugin, nincs adatbázis, nincs szerver-frissítés. A statikus oldal karbantartási igénye minimális.
 
@@ -40,10 +40,10 @@ Az EAA-konformitás nem egyszeri feladat — új tartalom hozzáadásakor az aka
 
 | Tétel | Gyakoriság | Ár |
 |---|---|---|
-| Plugin frissítés | Havi | 25k Ft/hó |
+| Plugin frissítés | Havi | Egyedi megállapodás |
 | Biztonsági monitoring | Folyamatos | Benne |
 | Backup | Heti | Benne |
-| Tartalom-frissítés | Igény szerint | 15k Ft/alkalom |
+| Tartalom-frissítés | Igény szerint | Egyedi megállapodás |
 
 ## A tanulság
 

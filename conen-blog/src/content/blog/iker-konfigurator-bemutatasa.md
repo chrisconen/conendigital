@@ -41,4 +41,4 @@ Nem csak árat adsz — hanem **három tengelyen méred a projektet**:
 
 ## Hogyan próbáld ki?
 
-Nyisd meg az [IKER konfigurátor](/weboldal-konfigurator-v2.html)-t. Az első frame-en egy cinematic intro fogad — utána 10 lépésben megtervezheted a weboldaladat. A végén scope-ot küldhetsz, és 24 órán belül visszahívunk.
+Nyisd meg az [IKER konfigurátor](https://app.conendigital.hu)-t. Az első frame-en egy cinematic intro fogad — utána 10 lépésben megtervezheted a weboldaladat. A végén scope-ot küldhetsz, és 24 órán belül visszahívunk.

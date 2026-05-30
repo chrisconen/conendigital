@@ -40,4 +40,4 @@ De a bírságnál nagyobb kockázat a **reputációs kár**: ha egy akadályment
 2. **Prioritás-lista** — nem kell mindent egyszerre, de a kritikus elemeket igen
 3. **Implementáció** — a CENTAUR-modellben az EAA-konformitás alapból benne van, nem felár
 
-Az AX-audit (120.000 Ft) 100%-ban beszámít a projekt költségébe. Ez nem extra — ez a kiindulópont.
+Az AX-audit (díjmentes beszámítással) 100%-ban beszámít a projekt költségébe. Ez nem extra — ez a kiindulópont.

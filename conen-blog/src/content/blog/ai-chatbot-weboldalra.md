@@ -30,9 +30,9 @@ draft: false
 
 ## Mennyibe kerül?
 
-**Build**: a chatbot integrálása a weboldalra: 150-300k Ft (a komplexitástól függ).
+**Build**: a chatbot integrálása a weboldalra: egyedi scope alapján.
 
-**Havi díj**: 250.000 Ft/hó-tól (#service-ai-ops). Ez tartalmazza a Claude/GPT API költséget, a hosting-ot, a monitoring-ot, és a tartalom-frissítéseket.
+**Havi díj**: egyedi ajánlat szerint (#service-ai-ops). Ez tartalmazza a Claude/GPT API költséget, a hosting-ot, a monitoring-ot, és a tartalom-frissítéseket.
 
 ## Claude vs GPT
 

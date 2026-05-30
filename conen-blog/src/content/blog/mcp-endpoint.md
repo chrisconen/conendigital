@@ -41,4 +41,4 @@ A biztonság: API key + rate limiting + CORS. Nem nyitott kapu — hanem kontrol
 
 ## Mi kell hozzá?
 
-Az MCP endpoint havi díjas szolgáltatás (#service-ai-ops). A build-költségen felül, külön szerződéssel. Az alap: 250.000 Ft/hó-tól, ami tartalmazza a hosting-ot, monitoringot, és a frissítéseket.
+Az MCP endpoint havi díjas szolgáltatás (#service-ai-ops). A build-költségen felül, külön szerződéssel. Egyedi havi díj alapján, ami tartalmazza a hosting-ot, monitoringot, és a frissítéseket.

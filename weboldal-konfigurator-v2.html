@@ -953,12 +953,12 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
             <div class="rb"><div class="rl">// ÖSSZEFOGLALÓ</div><div id="rSum" style="font-size:.8rem;line-height:1.5;color:rgba(255,255,255,.85)"></div><div class="rtags" id="rTags"></div></div>
             <div class="rb" style="background:linear-gradient(135deg,rgba(0,240,255,.03),rgba(191,0,255,.03));border-color:rgba(0,240,255,.12)">
               <div class="rl">// TARTOMÁNY</div><div class="ramt" id="rAmt">—</div>
-              <p style="font-size:.7rem;color:var(--dim);text-align:center">Audit-alapú árazás. AX-audit (120k Ft) 100%-ban beszámít.</p>
+              <p style="font-size:.7rem;color:var(--dim);text-align:center">Audit-alapú árazás. AX-audit (díjmentes beszámítással) 100%-ban beszámít.</p>
             </div>
             <div class="rb" id="aiOpsBlock" style="display:none;border-color:rgba(255,107,0,.18);background:rgba(255,107,0,.03)">
               <div class="rl" style="color:var(--orange)">// HAVI DÍJ — AI OPS</div>
               <p style="font-size:.75rem;line-height:1.5;color:rgba(255,255,255,.85);margin-bottom:.4rem">Az AI-funkciók — <span id="aiOpsList"></span> — a build-költségen felül, havi szerződés keretében működnek.</p>
-              <p style="font-family:var(--font-mono);font-size:.9rem;color:var(--orange);font-weight:700;text-align:center;margin:.4rem 0">250.000 Ft / hó-tól</p>
+              <p style="font-family:var(--font-mono);font-size:.9rem;color:var(--orange);font-weight:700;text-align:center;margin:.4rem 0">Egyedi havi díj</p>
               <p style="font-size:.6rem;color:var(--dim);text-align:center">#service-ai-ops · külön szerződés a diagnosztika után</p>
             </div>
             <div class="rb"><div class="rl">// MEGKÖZELÍTÉS</div>
@@ -1476,7 +1476,7 @@ function renderPreview(elementId, site) {
     if (site.nav.hero_style === 'split' && !mob) {
       h += `${ov}<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center"><div style="${zz}"><div data-role="hero-title" style="font-size:${fs(tab?22:28)};font-weight:700;margin-bottom:12px;line-height:1.15">${bn} <span style="color:${a}">weboldala</span></div><div style="font-size:${fs(13)};opacity:.5;margin-bottom:24px">${tl}</div>${hBtn}</div><div style="aspect-ratio:4/3;background:${site.hero_img?'transparent':c.cd};border:${site.hero_img?'none':'1px solid '+bd};border-radius:${br}px;${zz}"></div></div>`;
     } else if (site.nav.hero_style === 'hero-calc' && !mob) {
-      h += `${ov}<div style="display:grid;grid-template-columns:1fr 280px;gap:32px;${zz}"><div><div data-role="hero-title" style="font-size:${fs(tab?20:26)};font-weight:700;margin-bottom:12px">${bn} <span style="color:${a}">kalkulátor</span></div><div style="font-size:${fs(12)};opacity:.5">${tl}</div></div><div style="background:${c.cd};border:1.5px solid ${a}44;border-radius:${br}px;padding:20px"><div style="font-size:${fs(11)};font-weight:600;color:${a};margin-bottom:12px">Kalkulátor</div><div style="height:28px;background:${subtle};border:1px solid ${bd};border-radius:${br}px;margin-bottom:8px"></div><div style="height:28px;background:${subtle};border:1px solid ${bd};border-radius:${br}px;margin-bottom:12px"></div><div style="text-align:center;padding:8px;background:${a}15;border:1px solid ${a}30;border-radius:${br}px;font-family:'JetBrains Mono',monospace;font-size:${fs(15)};font-weight:700;color:${a};margin-bottom:10px">600k – 1.2M Ft</div><div style="padding:10px;background:${a};color:${il?'#fff':c.bg};border-radius:${br}px;text-align:center;font-weight:600;font-size:${fs(11)}">${ct}</div></div></div>`;
+      h += `${ov}<div style="display:grid;grid-template-columns:1fr 280px;gap:32px;${zz}"><div><div data-role="hero-title" style="font-size:${fs(tab?20:26)};font-weight:700;margin-bottom:12px">${bn} <span style="color:${a}">kalkulátor</span></div><div style="font-size:${fs(12)};opacity:.5">${tl}</div></div><div style="background:${c.cd};border:1.5px solid ${a}44;border-radius:${br}px;padding:20px"><div style="font-size:${fs(11)};font-weight:600;color:${a};margin-bottom:12px">Kalkulátor</div><div style="height:28px;background:${subtle};border:1px solid ${bd};border-radius:${br}px;margin-bottom:8px"></div><div style="height:28px;background:${subtle};border:1px solid ${bd};border-radius:${br}px;margin-bottom:12px"></div><div style="text-align:center;padding:8px;background:${a}15;border:1px solid ${a}30;border-radius:${br}px;font-family:'JetBrains Mono',monospace;font-size:${fs(15)};font-weight:700;color:${a};margin-bottom:10px">Egyedi ajánlat</div><div style="padding:10px;background:${a};color:${il?'#fff':c.bg};border-radius:${br}px;text-align:center;font-weight:600;font-size:${fs(11)}">${ct}</div></div></div>`;
     } else if (site.nav.hero_style === 'video') {
       h += `${ov}<div class="pv-video-hero" style="text-align:center;${zz}"><div class="pv-video-overlay"></div><div class="pv-video-play" style="width:${mob?'50':'64'}px;height:${mob?'50':'64'}px;margin:0 auto 16px;border-radius:50%;border:2px solid ${a};display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.4);color:${a}"><div style="width:0;height:0;border-left:16px solid ${a};border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px"></div></div><div data-role="hero-title" style="font-size:${fs(mob?20:28)};font-weight:700;margin-bottom:20px">${bn} <span style="color:${a}">sztorija</span></div>${hBtn}</div>`;
     } else if (site.nav.hero_style === 'minimal') {
@@ -3122,8 +3122,8 @@ function buildScopeText(s) {
   if (s.tagline) lines.push('SZLOGEN: ' + s.tagline);
   if (s.cta) lines.push('CTA: ' + s.cta);
   lines.push('', 'AUDIT-METRIKÁK: EAA-readiness ' + sc.eaa + '/100 · AX-readability ' + sc.ax + '/100 · CENTAUR-readiness ' + sc.centaur + '/100');
-  lines.push('', 'NAGYSÁGRENDI TARTOMÁNY (build): ' + fmtHUF(r.l) + ' – ' + fmtHUF(r.h));
-  if (aiOps.length) lines.push('+ AI OPS HAVI: 250.000 Ft/hó-tól (' + aiOps.join(', ') + ') — külön szerződés');
+  lines.push('', 'NAGYSÁGRENDI TARTOMÁNY (build): Audit-alapú egyedi ajánlat');
+  if (aiOps.length) lines.push('+ AI OPS HAVI: egyedi ajánlat szerint (' + aiOps.join(', ') + ') — külön szerződés');
   lines.push('', 'Ez nem fix árajánlat. A diagnosztika díjmentes.');
   lines.push('', '— Built by Conen Digital · CENTAUR-modell · centaur-lang.dev');
   return lines.join('\n');
@@ -3134,7 +3134,7 @@ function buildResults() {
   const LB = {brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webshop:'webáruház',booking:'foglalós',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
   const PILLAR = {brochure:'egyéb scope (bemutatkozó site)','quote-engine':'#service-quote-engine — ajánlatgeneráló sales-eszköz',webshop:'#service-webshop',booking:'egyéb scope (foglalós oldal)',content:'egyéb scope (tartalom-oldal)',portfolio:'egyéb scope (portfolio)',landing:'egyéb scope (landing page)',saas:'egyéb scope (SaaS landing)'};
   const r = calcP(s);
-  document.getElementById('rAmt').textContent = fmtHUF(r.l) + ' – ' + fmtHUF(r.h);
+  document.getElementById('rAmt').textContent = 'Egyedi scope alapján';
   let sum = `<p><strong>Pillér:</strong> ${PILLAR[s.type]||'—'}</p><p><strong>Típus:</strong> ${LB[s.type]||s.type}</p><p><strong>Oldalak:</strong> ${s.pages.length} db</p>`;
   const totalSecs = Object.values(s.page_sections).reduce((a, b) => a + b.length, 0);
   if (totalSecs) sum += `<p><strong>Szekciók:</strong> ${totalSecs} db (${s.pages.length} oldalon)</p>`;
@@ -3211,8 +3211,8 @@ function buildRoadmapData(s, r) {
   // Phase 1 deliverables: always
   const p1 = ['30 perces díjmentes diagnosztikai videohívás'];
   if (s.content_state === 'help') p1.push('Copy-workshop: tartalom-architektúra + szöveg-vázlat');
-  p1.push('Scope-dokumentum + fix árajánlat');
-  p1.push('AX-audit (120k Ft) — 100%-ban beszámít');
+  p1.push('Scope-dokumentum + egyedi ajánlat');
+  p1.push('AX-audit (díjmentes beszámítással) — 100%-ban beszámít');
 
   // Phase 2 deliverables: depends on type, features, extras
   const p2 = [];
@@ -3279,8 +3279,8 @@ function buildPDFContent(s) {
     <p><strong>Tartalom-állapot:</strong> ${s.content_state||'-'} · <strong>Időzítés:</strong> ${s.timeline||'-'}</p>
 
     <h2>Nagyságrendi tartomány</h2>
-    <div class="pdf-price">${fmtHUF(r.l)} – ${fmtHUF(r.h)}</div>
-    <p>Audit-alapú árazás. AX-audit (120k Ft) 100%-ban beszámít a végösszegbe.${aiOps.length ? ' Az AI-funkciók ('+aiOps.join(', ')+') külön havi szerződés keretében működnek, 250.000 Ft/hó-tól.' : ''}</p>
+    <div class="pdf-price">Egyedi ajánlat</div>
+    <p>Audit-alapú árazás. AX-audit (díjmentes beszámítással) 100%-ban beszámít a végösszegbe.${aiOps.length ? ' Az AI-funkciók ('+aiOps.join(', ')+') külön havi szerződés keretében működnek, egyedi havi díj alapján.' : ''}</p>
 
     <h2>Audit-metrikák</h2>
     <div class="pdf-scores">
@@ -3641,7 +3641,7 @@ function buildShareUrl() {
   try {
     const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(s))));
     const slug = pickSlug();
-    return `${location.origin}/weboldal-konfigurator-v2.html?cfg=${slug}&s=${encoded}`;
+    return `${location.origin}https://app.conendigital.hu?cfg=${slug}&s=${encoded}`;
   } catch(e) { return location.href; }
 }
 

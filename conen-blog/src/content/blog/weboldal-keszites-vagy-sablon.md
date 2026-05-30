@@ -27,7 +27,7 @@ A sablonos builder-ek **nem garantálják az akadálymentességet**. A Wix és S
 
 | | Sablon | Egyedi |
 |---|---|---|
-| Induló költség | 0-50k Ft | 400k+ Ft |
+| Induló költség | Minimális | Érték- és scope alapú |
 | Havi díj | 5-30 EUR | 0 EUR (statikus) |
 | 3 éves TCO | 180-1080 EUR | 0 EUR hosting |
 | Teljesítmény | Közepes | Kiváló |

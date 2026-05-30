@@ -13,7 +13,7 @@ draft: false
 
 - **Tartalomalapú oldal** sok szerzővel, akik admin-felületről szerkesztenek
 - **Bővítményfüggő funkciók**: WooCommerce, Yoast, WPML — ha ezekre építesz
-- **Rövid távú budget**: egy sablonos WordPress oldal 150-250k Ft-ból megvan
+- **Rövid távú budget**: egy egyszerű sablonos WordPress oldal alacsony induló költséggel is megoldható
 
 ## WordPress: mikor nem
 

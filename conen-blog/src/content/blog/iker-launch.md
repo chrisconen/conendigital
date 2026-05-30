@@ -91,7 +91,7 @@ A **v3.0** nagyot lép: az IKER-nek saját [MCP-endpointja](/blog/mcp-endpoint) 
 
 Az IKER mostantól elérhető:
 
-**[conendigital.hu/weboldal-konfigurator-v2 →](/weboldal-konfigurator-v2.html)**
+**[conendigital.hu/weboldal-konfigurator-v2 →](https://app.conendigital.hu)**
 
 A teljes flow nyitott — nem kell regisztráció, nem kell bejelentkezés. Tervezz, ahogy szeretnél, oszd meg a linket másokkal, és ha készen állsz, küldd el a scope-od egy klikkre.
 
