@@ -196,10 +196,35 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-        as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --black: #09090b;          /* Pure obsidian black */
+            --white: #ffffff;
+            --gray: #141416;           /* Premium charcoal */
+            --gray-light: #222225;
+            --cyan: #C9A962;           /* Champagne Gold */
+            --magenta: #8A8A8F;        /* Muted gold-glow/silver */
+            --orange: #C99566;         /* Warm copper */
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter Tight', -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        body, p, li, a, td, th, input, textarea, select {
+            font-family: var(--font-body) !important;
+        }
+        h1, h2, h3, h4, h5, h6, .glitch, .nav-logo, .nav-logo-text, .hero-title-line, .hero-title-gradient, .hero-title-subline {
+            font-family: var(--font-main) !important;
+        }
+        .cursor, .cursor-trail, #cursorTrailContainer, .scanlines {
+            display: none !important;
+        }
+        body {
+            cursor: auto !important;
+        }
+
         :root {
             --black: #0a0a0a;
             --white: #ffffff;
@@ -2906,17 +2931,14 @@
                 </div>
 
                 <h1 class="hero-title">
-                    <span class="hero-title-line">Webáruház & weboldal készítés Győr -
-                    <span class="hero-title-gradient">Egyedi fejlesztés</span> 
-                    <span class="hero-title-subline">& AI automatizáció
+                    <span class="hero-title-line">Prémium webáruház & egyedi weboldal készítés Győr szívében -
+                    <span class="hero-title-gradient">Valódi vevőket szerző rendszerek</span> 
+                    <span class="hero-title-subline">& Önműködő folyamatok
                     </span></span>
                 </h1>
                 <p class="hero-description">
-                    A weboldal, webáruház akkor ér valamit, ha a látogató 30 másodperc alatt el tud indítani egy
-                    ajánlatkérést, foglalást vagy vásárlást — segítség nélkül. Ilyen oldalakat építünk:
-                    ajánlatgenerálóval, foglalós rendszerrel, vagy AI-olvasható webshoppal. <span style="color: var(--cyan)">Mellékhatás</span>:
-                    a Google és az AI-keresők is látják és ajánlják az ügyfeleknek a webáruházad és weboldalad
-                    még munkaidőn kívül is, 24/7 beosztásban.
+                    Egy weboldal vagy webáruház akkor ér igazán valamit, ha nemcsak szép, hanem új ügyfeleket és vásárlókat szerez neked – teljesen önműködően. Nem sablonokat másolunk: teljesen egyedi tervezésű, villámgyors és mesterséges intelligenciával támogatott megoldásokat adunk át, amelyek bizonyíthatóan behozzák az árukat. 
+                    Ráadásul a keresők és a legújabb AI-asszisztensek is látják és ajánlják a vállalkozásodat az ügyfeleknek – a nap 24 órájában, Győrtől az egész országig.
                 </p>
 
                 <div class="hero-cta">
@@ -2985,7 +3007,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="section-header reveal">
             <div>
                 <div class="section-label">Mikor érdemes rendszerszinten újragondolni a webes jelenlétet?</div>
-                <h2 class="section-title">Három helyzet, ahol egy "szebb weboldal" már nem segít</h2>
+                <h2 class="section-title">Három helyzet, ahol a hagyományos weboldal már nem elég</h2>
             </div>
             <p class="section-description">
                 Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak építünk. Akkor érdemes hozzányúlni,
@@ -3003,7 +3025,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         <path d="M12 7v5l3 2"></path>
                     </svg>
                 </div>
-                <h3 class="service-title">Az adminisztráció felemészti a napot</h3>
+                <h3 class="service-title">Elveszel a napi papírmunkában és adminisztrációban?</h3>
                 <p class="service-description">
                     Naponta <span style="color: var(--cyan)">2-3 órát</span> visz el az e-mail, az ajánlatkérés és a
                     visszaigazolás. Évi <span style="color: var(--magenta)">500+ óra</span>, ami a vállalkozás
@@ -3021,7 +3043,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
                 </div>
-                <h3 class="service-title">Az érdeklődő nem ér rá várni</h3>
+                <h3 class="service-title">Vevőket veszítesz azért, mert túl lassan adsz árajánlatot?</h3>
                 <p class="service-description">
                     Mire elérhető vagy a visszahíváshoz, az érdeklődő már a versenytársnál van. Ha az oldal
                     nem szűri-osztályozza-rögzíti a leadet
@@ -3038,7 +3060,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         <path d="M14 7h7v7"></path>
                     </svg>
                 </div>
-                <h3 class="service-title">A meglévő oldal csak viszi a pénzt</h3>
+                <h3 class="service-title">A weboldalad csak egy digitális névjegykártya, ami nem hoz vevőt?</h3>
                 <p class="service-description">
                     Régi WordPress, lassú mobilon, nem felel meg a 2025-ös <strong>EAA-akadálymentesítési</strong>
                     követelményeknek, és <span style="color: var(--magenta)">nem hoz mérhető bevételt</span>.
