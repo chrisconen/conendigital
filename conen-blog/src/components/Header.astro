@@ -29,7 +29,9 @@ const base = import.meta.env.BASE_URL;
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border-bottom: 1px solid rgba(255,255,255,.04);
+    transition: transform .3s ease;
   }
+  .hd--hidden { transform: translateY(-100%); }
   .hd__inner {
     display: flex; align-items: center; justify-content: space-between;
     padding-top: 1rem; padding-bottom: 1rem; gap: 1.5rem;
@@ -70,3 +72,7 @@ const base = import.meta.env.BASE_URL;
     .hd__cta { padding: .5rem .8rem; font-size: .65rem; }
   }
 </style>
+
+<script is:inline>
+  (function(){var h=document.querySelector('.hd');if(!h)return;var l=0,t=!1;function s(){var c=window.scrollY;if(c>l&&c>100){h.classList.add('hd--hidden')}else if(c<l){h.classList.remove('hd--hidden')}l=c;t=!1}window.addEventListener('scroll',function(){if(!t){requestAnimationFrame(s);t=!0}},{passive:!0})})();
+</script>
