@@ -1,0 +1,108 @@
+<body>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-terminal">
+            <div class="loader-line" id="line1">> Bejelentkezés -> ConenDigital...</div>
+            <div class="loader-line" id="line2">> Kreatív modulok betöltése...</div>
+            <div class="loader-line" id="line3">> Dizájn mátrixhoz csatlakozás...</div>
+            <div class="loader-line" id="line4">> Sikeres bejelentkezés.<span class="loader-cursor"></span></div>
+        </div>
+    </div>
+
+    <!-- Effects -->
+    <div class="scanlines"></div>
+    <div class="grain"></div>
+    <div class="cursor" id="cursor"></div>
+    <div id="cursorTrailContainer"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo glitch">
+            <span class="nav-logo-bracket">[</span>
+            <span class="nav-logo-text">ConenDigital</span>
+            <span class="nav-logo-bracket">]</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
+            <li><a href="weboldal-keszites.html">Weboldal készítés</a></li>
+            <li><a href="webaruhaz-keszites.html">Webáruház készítés</a></li>
+            <li><a href="portfolio.html">Portfólió</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="/blog/">BLOG</a></li>
+            <li><a href="#varosok">Városok</a></li>
+            <li><a href="#contact" class="mobile-cta">Ajánlatkérés →</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="nav-hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="https://app.conendigital.hu" class="nav-konfigurator-btn">Weboldal tervező</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+
+        <div class="hero-content">
+            <div class="hero-text-col">
+                <div class="hero-label">
+                    Conen DIGITAL · Weboldal & webáruház · Győr
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="hero-title-line">Webáruház & weboldal készítés Győr -
+                    <span class="hero-title-gradient">Egyedi fejlesztés</span> 
+                    <span class="hero-title-subline">& AI automatizáció
+                    </span></span>
+                </h1>
+                <p class="hero-description">
+                    A weboldal, webáruház akkor ér valamit, ha a látogató 30 másodperc alatt el tud indítani egy
+                    ajánlatkérést, foglalást vagy vásárlást — segítség nélkül. Ilyen oldalakat építünk:
+                    ajánlatgenerálóval, foglalós rendszerrel, vagy AI-olvasható webshoppal. <span style="color: var(--cyan)">Mellékhatás</span>:
+                    a Google és az AI-keresők is látják és ajánlják az ügyfeleknek a webáruházad és weboldalad
+                    még munkaidőn kívül is, 24/7 beosztásban.
+                </p>
+
+                <div class="hero-cta">
+                <a href="https://app.conendigital.hu"
+                style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;"
+                onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'"
+                onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor
+                megnyitása →</a>
+            </div>
+            </div>
+           
+
+            <!-- AI Face Visual + Voice Controls -->
+            <div class="hero__visual-col">
+                <div class="hero__visual" id="visualWrap" role="button" tabindex="0"
+                    aria-label="Hangos bemutatkozás indítása" aria-pressed="false">
+                    <canvas id="dotface" role="img"
+                        aria-label="Animalt pontfelho-portre, Chris Conen, Conen Digital alapito"></canvas>
+                    <div class="visual-meta">
+                        <div>NEURAL//SURFACE.v1</div>
+                        <div>Status: <span id="statusText">Loading</span></div>
+                    </div>
+                    <div class="visual-affordance" aria-hidden="true">
+                        <span class="voice-indicator idle"></span>
+                        <span class="visual-affordance-text">Kattints, Chris bemutatkozik</span>
+                    </div>
+                </div>
+
+                <button class="hero-speak-btn" id="speakBtn" type="button" aria-label="Hangos bemutatkozas inditasa"
+                    aria-pressed="false">
+                    <span class="voice-indicator idle" id="voiceInd"></span>
+                    Chris bemutatkozása
+                </button>
+                <details class="hero-narration-toggle">
+                    <summary>Olvasd el szovegben</summary>
+                    <p>Üdvözöllek. Chris Conen vagyok, a Conen Digital technikai igazgatója.
+A Conen Digital nem hagyományos webes ügynökség. Sokkal inkább egy ember és mesterséges intelligencia partnerség, ahol a kreatív döntés emberi, a kivitelezés pedig gépi sebességű. A huszonegyedik század elvárásait megelőző megoldásokat és versenyelőnyt kínálunk ügyfeleink számára, egyedülálló technikai fejlesztéseinken keresztül.
+Három pillérre építünk. Először: villámgyors weboldalak Astro keretrendszerrel - a legutóbbi projektünknél tizenhárom és fél másodpercről egy és nyolc tizedre csökkent a betöltési idő. Másod

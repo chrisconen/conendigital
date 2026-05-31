@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Herbarium Bistro Győr - Növényközpontú modern konyha, heti változó menüvel. Friss alapanyagok, helyi termelők, kreatív ízvilág.">
+<title>Herbarium Bistro Győr - Modern növényközpontú konyha</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --sage: #7a8a6f;
+  --sage-deep: #5d6e54;
+  --moss: #3d4a36;
+  --cream: #f4f1ea;
+  --cream-soft: #faf8f3;
+  --bone: #ebe6db;
+  --black: #1a1d1a;
+  --black-soft: #2a2e29;
+  --white: #ffffff;
+  --text: #1a1d1a;
+  --text-soft: #5a6058;
+  --accent: #c8a96a;
+  --shadow: 0 4px 20px rgba(26, 29, 26, 0.06);
+  --shadow-hover: 0 12px 40px rgba(26, 29, 26, 0.12);
+  --radius: 0;
+  --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --sage: #9aab8d;
+  --sage-deep: #7a8a6f;
+  --moss: #c4d4b8;
+  --cream: #1f211e;
+  --cream-soft: #181a17;
+  --bone: #2a2e29;
+  --black: #ebe6db;
+  --black-soft: #c4c0b5;
+  --white: #14161300;
+  --text: #ebe6db;
+  --text-soft: #a8a8a0;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--cream-soft);
+  line-height: 1.65;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  font-weight: 400;
+}
+
+[data-theme="dark"] body { background: var(--cream-soft); }
+
+h1, h2, h3, .serif {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  font-variation-settings: "opsz" 144;
+}
+
+h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 0.95; }
+h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); line-height: 1.05; margin-bottom: 1rem; }
+h3 { font-size: 1.5rem; line-height: 1.3; }
+
+.italic-serif { font-style: italic; font-weight: 400; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* === NAVIGATION === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(250, 248, 243, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+  padding: 1.2rem 0;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] nav {
+  background: rgba(24, 26, 23, 0.92);
+}
+
+nav.scrolled {
+  padding: 0.7rem 0;
+  box-shadow: 0 1px 0 rgba(26, 29, 26, 0.08);
+}
+
+[data-theme="dark"] nav.scrolled {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.55rem;
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  font-variation-settings: "opsz" 144;
+}
+
+.logo .italic-serif { color: var(--sage-deep); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--sage-deep);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--sage-deep); }
+.nav-links a:hover::after { width: 100%; }
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--text);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  opacity: 0.7;
+}
+
+.theme-toggle:hover {
+  background: var(--sage-deep);
+  color: var(--cream-soft);
+  border-color: var(--sage-deep);
+  opacity: 1;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--black);
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0 4rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  width: 50%;
+  height: 70%;
+  background: radial-gradient(ellipse, var(--sage) 0%, transparent 60%);
+  opacity: 0.18;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  left: -10%;
+  width: 35%;
+  height: 35%;
+  background: radial-gradient(ellipse, var(--accent) 0%, transparent 60%);
+  opacity: 0.12;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 780px;
+  animation: fadeUp 1s ease-out;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: var(--sage-deep);
+  margin-bottom: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.hero h1 {
+  margin-bottom: 1.8rem;
+}
+
+.hero h1 .italic-serif {
+  color: var(--sage-deep);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: var(--text-soft);
+  margin-bottom: 2.8rem;
+  max-width: 580px;
+  line-height: 1.6;
+}
+
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: var(--transition);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--moss);
+  color: var(--cream-soft);
+}
+
+.btn-primary:hover {
+  background: var(--black);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--black);
+  border-color: var(--black);
+}
+
+.btn-outline:hover {
+  background: var(--black);
+  color: var(--cream-soft);
+}
+
+/* === SECTIONS === */
+section { padding: 6rem 0; }
+
+.section-tag {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--sage-deep);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header h2 { margin-bottom: 1.2rem; }
+.section-header p {
+  color: var(--text-soft);
+  font-size: 1.1rem;
+}
+
+/* === WEEKLY MENU === */
+.weekly-menu {
+  background: var(--cream-soft);
+}
+
+.weekly-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.day-card {
+  background: var(--white);
+  padding: 2rem 1.8rem;
+  position: relative;
+  transition: var(--transition);
+  border-top: 2px solid var(--sage-deep);
+}
+
+[data-theme="dark"] .day-card { background: var(--bone); }
+
+.day-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.day-card .day-name {
+  font-family: 'Fraunces', serif;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sage-deep);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--bone);
+}
+
+[data-theme="dark"] .day-card .day-name { border-bottom-color: var(--cream); }
+
+.day-course {
+  margin-bottom: 1.2rem;
+}
+
+.day-course:last-child { margin-bottom: 0; }
+
+.course-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-soft);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.course-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  color: var(--black);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.day-card .day-price {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed var(--bone);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+[data-theme="dark"] .day-card .day-price { border-top-color: var(--cream); }
+
+.day-price-label {
+  font-size: 0.8rem;
+  color: var(--text-soft);
+}
+
+.day-price-value {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* === MENU (ÉTLAP) === */
+.menu {
+  background: var(--bone);
+  position: relative;
+}
+
+[data-theme="dark"] .menu { background: var(--cream); }
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem 5rem;
+}
+
+.menu-category h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+  font-style: italic;
+}
+
+.menu-category h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 1px;
+  background: var(--sage-deep);
+}
+
+.menu-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px dashed rgba(122, 138, 111, 0.3);
+}
+
+.menu-item:last-child { border-bottom: none; }
+
+.menu-item-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--black);
+  margin-bottom: 0.3rem;
+}
+
+.menu-item-desc {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.menu-item-price {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.menu-vegan {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--sage-deep);
+  background: rgba(122, 138, 111, 0.15);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+/* === ABOUT === */
+.about {
+  background: var(--cream-soft);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  background:
+    linear-gradient(135deg, var(--sage) 0%, var(--moss) 100%);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.about-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(244, 241, 234, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(200, 169, 106, 0.3) 0%, transparent 50%);
+}
+
+.about-visual-tag {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  color: var(--cream-soft);
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+.about-visual-bottom {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  color: var(--cream-soft);
+}
+
+.about-visual-bottom .big {
+  font-family: 'Fraunces', serif;
+  font-size: 3rem;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.about-visual-bottom .sub {
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.about-content h2 {
+  margin-bottom: 2rem;
+}
+
+.about-content p {
+  color: var(--text-soft);
+  margin-bottom: 1.4rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.about-signature {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--bone);
+}
+
+[data-theme="dark"] .about-signature { border-top-color: var(--cream); }
+
+.signature-name {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--black);
+  margin-bottom: 0.3rem;
+}
+
+.signature-role {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+/* === CONTACT === */
+.contact {
+  background: var(--black);
+  color: var(--cream-soft);
+}
+
+[data-theme="dark"] .contact {
+  background: var(--cream);
+}
+
+.contact .section-tag {
+  color: var(--sage);
+}
+
+.contact h2 {
+  color: var(--cream-soft);
+}
+
+[data-theme="dark"] .contact h2 { color: var(--black); }
+
+.contact .section-header p {
+  color: rgba(244, 241, 234, 0.7);
+}
+
+[data-theme="dark"] .contact .section-header p {
+  color: var(--text-soft);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info h3 {
+  margin-bottom: 2rem;
+  color: var(--cream-soft);
+  font-style: italic;
+}
+
+[data-theme="dark"] .contact-info h3 { color: var(--black); }
+
+.contact-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid rgba(244, 241, 234, 0.1);
+}
+
+[data-theme="dark"] .contact-item { border-bottom-color: var(--bone); }
+
+.contact-item:last-child { border-bottom: none; }
+
+.contact-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--sage);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sage);
+}
+
+.contact-text strong {
+  display: block;
+  color: var(--cream-soft);
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .contact-text strong { color: var(--black); }
+
+.contact-text a {
+  color: rgba(244, 241, 234, 0.7);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .contact-text a { color: var(--text-soft); }
+
+.contact-text a:hover { color: var(--accent); }
+
+.contact-text span {
+  color: rgba(244, 241, 234, 0.7);
+}
+
+[data-theme="dark"] .contact-text span { color: var(--text-soft); }
+
+.map-container {
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(40%) brightness(0.95);
+}
+
+[data-theme="dark"] .map-container iframe {
+  filter: invert(0.9) hue-rotate(180deg) saturate(0.5);
+}
+
+/* === FOOTER === */
+footer {
+  background: var(--black-soft);
+  color: var(--cream-soft);
+  padding: 3rem 0 1.5rem;
+  text-align: center;
+}
+
+[data-theme="dark"] footer { background: var(--bone); color: var(--black); }
+
+footer .logo {
+  color: var(--cream-soft);
+}
+
+[data-theme="dark"] footer .logo { color: var(--black); }
+
+footer .logo .italic-serif { color: var(--sage); }
+
+.footer-tagline {
+  color: rgba(244, 241, 234, 0.5);
+  margin: 1.2rem 0 2rem;
+  font-style: italic;
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+}
+
+[data-theme="dark"] .footer-tagline { color: var(--text-soft); }
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(244, 241, 234, 0.1);
+  font-size: 0.85rem;
+  color: rgba(244, 241, 234, 0.4);
+}
+
+[data-theme="dark"] .footer-bottom {
+  border-top-color: var(--text-soft);
+  color: var(--text-soft);
+}
+
+/* === FLOATING WHATSAPP === */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 99;
+  transition: var(--transition);
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  animation: none;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.15); }
+}
+
+/* === COOKIE BANNER === */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 100px;
+  max-width: 480px;
+  background: var(--black);
+  color: var(--cream-soft);
+  padding: 1.5rem 1.8rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  z-index: 98;
+  transform: translateY(120%);
+  transition: transform 0.4s ease;
+  border-left: 3px solid var(--sage);
+}
+
+.cookie-banner.visible { transform: translateY(0); }
+
+.cookie-banner p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: rgba(244, 241, 234, 0.85);
+}
+
+.cookie-banner a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.cookie-btns { display: flex; gap: 0.75rem; }
+
+.cookie-btn {
+  padding: 0.65rem 1.4rem;
+  font-size: 0.85rem;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.cookie-btn.accept { background: var(--sage); color: var(--black); }
+.cookie-btn.accept:hover { background: var(--cream-soft); }
+.cookie-btn.decline {
+  background: transparent;
+  color: var(--cream-soft);
+  border-color: rgba(244, 241, 234, 0.3);
+}
+.cookie-btn.decline:hover { border-color: var(--cream-soft); }
+
+/* === ANIMATIONS === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--cream-soft);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s ease;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-links.open { right: 0; }
+
+  .mobile-toggle { display: block; }
+
+  .about-grid, .contact-grid, .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .menu-grid { gap: 3.5rem; }
+
+  .about-visual { max-width: 420px; margin: 0 auto; }
+
+  section { padding: 4rem 0; }
+
+  .hero { padding: 6rem 0 3rem; }
+
+  .cookie-banner {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+
+  .whatsapp-float {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  .section-header { margin-bottom: 3.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- === NAVIGATION === -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">Herbarium <span class="italic-serif">Bistro</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#heti-menu">Heti menü</a></li>
+      <li><a href="#etlap">Étlap</a></li>
+      <li><a href="#rolunk">Rólunk</a></li>
+      <li><a href="#kapcsolat">Kapcsolat</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" aria-label="Sötét mód">
+          <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menü">&#9776;</button>
+  </div>
+</nav>
+
+<!-- === HERO === -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-tag">Győr · 2021 óta</span>
+      <h1>A növények <span class="italic-serif">újragondolva,</span><br>az ízek megemelve.</h1>
+      <p>Növényközpontú modern bistro a győri belvárosban. Heti váltakozó menü, helyi termelőktől beszerzett alapanyagok, kreatív ízpárosítások. Húsételeink is megjelennek az étlapon, de a hangsúly a zöldségeken van.</p>
+      <div class="btn-group">
+        <a href="#kapcsolat" class="btn btn-primary">Asztalt foglalok</a>
+        <a href="#heti-menu" class="btn btn-outline">Heti menü</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === HETI MENÜ === -->
+<section class="weekly-menu" id="heti-menu">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Heti ajánlat · 2026. 20. hét</span>
+      <h2>Ezen a héten <span class="italic-serif">a tányéron</span></h2>
+      <p>Minden héten négy különleges menüsor, friss alapanyagokból, a séfünk aktuális inspirációja szerint. Foglalás előtt érdemes telefonon érdeklődni.</p>
+    </div>
+
+    <div class="weekly-grid">
+      <div class="day-card reveal">
+        <div class="day-name">Hétfő — Szerda</div>
+        <div class="day-course">
+          <span class="course-label">Előétel</span>
+          <span class="course-name">Sült cékla, kecskesajt-mousse, dió</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Főétel</span>
+          <span class="course-name">Karamellizált sütőtök rizottó, parmezán habbal</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Desszert</span>
+          <span class="course-name">Mandula-citrom panna cotta</span>
+        </div>
+        <div class="day-price">
+          <span class="day-price-label">3 fogásos menü</span>
+          <span class="day-price-value">5 900 Ft</span>
+        </div>
+      </div>
+
+      <div class="day-card reveal">
+        <div class="day-name">Csütörtök</div>
+        <div class="day-course">
+          <span class="course-label">Előétel</span>
+          <span class="course-name">Sárgarépa-velouté, gyömbéres olaj, koriander</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Főétel</span>
+          <span class="course-name">Konfitált kacsacomb, lila káposzta, almapüré</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Desszert</span>
+          <span class="course-name">Csokoládé fondant, vaníliafagylalt</span>
+        </div>
+        <div class="day-price">
+          <span class="day-price-label">3 fogásos menü</span>
+          <span class="day-price-value">6 500 Ft</span>
+        </div>
+      </div>
+
+      <div class="day-card reveal">
+        <div class="day-name">Péntek — Szombat</div>
+        <div class="day-course">
+          <span class="course-label">Előétel</span>
+          <span class="course-name">Sült padlizsán-krém, granátalma, pisztácia</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Főétel</span>
+          <span class="course-name">Lassan sült bárányváll, polenta, friss zsálya</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Desszert</span>
+          <span class="course-name">Görögdinnye-mojito sorbet</span>
+        </div>
+        <div class="day-price">
+          <span class="day-price-label">3 fogásos menü</span>
+          <span class="day-price-value">7 900 Ft</span>
+        </div>
+      </div>
+
+      <div class="day-card reveal">
+        <div class="day-name">Vasárnapi brunch</div>
+        <div class="day-course">
+          <span class="course-label">Választható tálak</span>
+          <span class="course-name">Buggyantott tojás, avokádós toast, házi pirított müzli</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Édes oldal</span>
+          <span class="course-name">Hollandiai palacsinta, juharszirup, friss bogyók</span>
+        </div>
+        <div class="day-course">
+          <span class="course-label">Italok</span>
+          <span class="course-name">Frissen facsart narancslé, kézműves kávé</span>
+        </div>
+        <div class="day-price">
+          <span class="day-price-label">All-you-can-eat</span>
+          <span class="day-price-value">6 900 Ft</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === ÉTLAP === -->
+<section class="menu" id="etlap">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Általános étlap</span>
+      <h2>Az állandó <span class="italic-serif">kínálat</span></h2>
+      <p>Klasszikus fogásaink, amik mindig elérhetők. A jelölt ételek növényi alapúak.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-category reveal">
+        <h3>Előételek</h3>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Hummusz-trió<span class="menu-vegan">vegán</span></div>
+            <div class="menu-item-desc">Klasszikus, cékla és sült paprika változat, friss kovászos kenyérrel</div>
+          </div>
+          <div class="menu-item-price">2 400 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Sült padlizsánkrém</div>
+            <div class="menu-item-desc">Tahini, gránátalma, mentás joghurt, pirított pinjamag</div>
+          </div>
+          <div class="menu-item-price">2 600 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Burrata-tál</div>
+            <div class="menu-item-desc">Friss paradicsom, fűszervirágok, balsamico-redukció, olívaolaj</div>
+          </div>
+          <div class="menu-item-price">3 200 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Marhatatár</div>
+            <div class="menu-item-desc">Klasszikus elkészítésben, fokhagymás pirítóssal és sárgával</div>
+          </div>
+          <div class="menu-item-price">3 800 Ft</div>
+        </div>
+      </div>
+
+      <div class="menu-category reveal">
+        <h3>Levesek</h3>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Sütőtök-velouté<span class="menu-vegan">vegán</span></div>
+            <div class="menu-item-desc">Kókusztejjel, gyömbérrel, pirított tökmaggal</div>
+          </div>
+          <div class="menu-item-price">1 800 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Pho bo</div>
+            <div class="menu-item-desc">Vietnami marhaleves, rizstészta, koriander, lime, friss chili</div>
+          </div>
+          <div class="menu-item-price">2 400 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Halászlé</div>
+            <div class="menu-item-desc">Tisza-vidéki recept szerint, ponty és harcsa, friss erős paprika</div>
+          </div>
+          <div class="menu-item-price">2 200 Ft</div>
+        </div>
+      </div>
+
+      <div class="menu-category reveal">
+        <h3>Főételek</h3>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Mushroom risotto<span class="menu-vegan">vegán</span></div>
+            <div class="menu-item-desc">Vargánya, csiperke, shiitake gombák keveréke, friss kakukkfű</div>
+          </div>
+          <div class="menu-item-price">4 200 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Sült pisztráng</div>
+            <div class="menu-item-desc">Citromos vajban sült teljes hal, sült burgonya, kapor</div>
+          </div>
+          <div class="menu-item-price">5 400 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Lassan sült sertésdagadó</div>
+            <div class="menu-item-desc">12 órán át sütve, almás káposzta, sült burgonya, almás chutney</div>
+          </div>
+          <div class="menu-item-price">5 800 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Bárány-rib</div>
+            <div class="menu-item-desc">Friss rozmaring, fokhagyma, mézes glazúr, sült édesburgonya</div>
+          </div>
+          <div class="menu-item-price">6 800 Ft</div>
+        </div>
+      </div>
+
+      <div class="menu-category reveal">
+        <h3>Desszertek</h3>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Csokoládé fondant</div>
+            <div class="menu-item-desc">Belül folyékony belsővel, vaníliafagylalt, friss málna</div>
+          </div>
+          <div class="menu-item-price">2 200 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Citromos panna cotta</div>
+            <div class="menu-item-desc">Bazsalikomos szirup, candírozott citromhéj</div>
+          </div>
+          <div class="menu-item-price">1 900 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Sütőtök-tiramisu</div>
+            <div class="menu-item-desc">Mascarpone, fahéj, dió, házi piskóta</div>
+          </div>
+          <div class="menu-item-price">2 100 Ft</div>
+        </div>
+
+        <div class="menu-item">
+          <div>
+            <div class="menu-item-name">Mandulás panna cotta<span class="menu-vegan">vegán</span></div>
+            <div class="menu-item-desc">Kókusztejjel, mandulakrém, friss bogyós</div>
+          </div>
+          <div class="menu-item-price">1 900 Ft</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === ABOUT === -->
+<section class="about" id="rolunk">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <span class="about-visual-tag">A séf</span>
+        <div class="about-visual-bottom">
+          <div class="big">"A zöldség<br>nem köret."</div>
+          <div class="sub">— Kovács Anna, séf</div>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-tag">A bistro</span>
+        <h2>Egy <span class="italic-serif">tál,</span><br>egy gondolat</h2>
+        <p>A Herbarium 2021-ben nyílt egy egyszerű meggyőződéssel: a növényi alapanyagok megérdemlik, hogy a főszerepet játsszák. Nem mint diétás kompromisszum, hanem mint az ízek egyenrangú építőkockái.</p>
+        <p>Heti változó menünket minden hétfőn frissítjük, az aktuális piac kínálata és a győri kerteszek termése szerint. A halat dunai halászoktól, a húst a győri öregkertesektől szerezzük be.</p>
+        <p>16 terítékkel dolgozunk, és minden vendéget név szerint ismerünk meg. Foglalás ajánlott, péntek és szombat este szinte mindig telt házzal megyünk.</p>
+
+        <div class="about-signature">
+          <div class="signature-name">Kovács Anna</div>
+          <div class="signature-role">Séf · Tulajdonos</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === CONTACT === -->
+<section class="contact" id="kapcsolat">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Asztalfoglalás</span>
+      <h2>Foglaljon <span class="italic-serif">helyet</span></h2>
+      <p>Telefonon érdeklődjön nyitvatartási időnk alatt, vagy írjon egy e-mailt. Csoportos foglalás (8+ fő) esetén egyeztessünk előre.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Elérhetőség</h3>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Cím</strong>
+            <span>9021 Győr, Király utca 7.</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Telefon</strong>
+            <a href="tel:+36301234567">+36 30 123 4567</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>E-mail</strong>
+            <a href="mailto:foglalas@herbariumbistro.hu">foglalas@herbariumbistro.hu</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Nyitvatartás</strong>
+            <span>K-Cs: 12:00 - 22:00<br>P-Szo: 12:00 - 23:00<br>V: 10:00 - 16:00 (brunch)<br>H: zárva</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2680.4567!2d17.6358!3d47.6849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476bcd123!2sGy%C5%91r!5e0!3m2!1shu!2shu!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Herbarium Bistro helyszín">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === FOOTER === -->
+<footer>
+  <div class="container">
+    <a href="#" class="logo">Herbarium <span class="italic-serif">Bistro</span></a>
+    <p class="footer-tagline">A növények újragondolva, az ízek megemelve.</p>
+    <div class="footer-bottom">
+      © 2026 Herbarium Bistro Győr · Minden jog fenntartva
+    </div>
+  </div>
+</footer>
+
+<!-- === WHATSAPP FLOATING === -->
+<a href="https://wa.me/36301234567?text=J%C3%B3%20napot%2C%20asztalt%20szeretn%C3%A9k%20foglalni" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp foglalás">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- === COOKIE BANNER === -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>Weboldalunk sütiket használ a böngészési élmény javítása érdekében. A részletekért tekintse meg <a href="#">Adatvédelmi tájékoztatónkat</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn accept" onclick="acceptCookies()">Elfogadom</button>
+    <button class="cookie-btn decline" onclick="declineCookies()">Csak szükséges</button>
+  </div>
+</div>
+
+<script>
+// === THEME TOGGLE ===
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const root = document.documentElement;
+
+const sunIcon = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+  root.setAttribute('data-theme', 'dark');
+  themeIcon.innerHTML = sunIcon;
+}
+
+themeToggle.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  if (current === 'dark') {
+    root.removeAttribute('data-theme');
+    themeIcon.innerHTML = moonIcon;
+    localStorage.setItem('theme', 'light');
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    themeIcon.innerHTML = sunIcon;
+    localStorage.setItem('theme', 'dark');
+  }
+});
+
+// === MOBILE MENU ===
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// === NAV SCROLL ===
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// === SCROLL REVEAL ===
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
+// === COOKIE BANNER ===
+const cookieBanner = document.getElementById('cookieBanner');
+
+function acceptCookies() {
+  localStorage.setItem('cookies', 'accepted');
+  cookieBanner.classList.remove('visible');
+}
+
+function declineCookies() {
+  localStorage.setItem('cookies', 'declined');
+  cookieBanner.classList.remove('visible');
+}
+
+window.addEventListener('load', () => {
+  if (!localStorage.getItem('cookies')) {
+    setTimeout(() => cookieBanner.classList.add('visible'), 1500);
+  }
+});
+</script>
+
+</body>
+</html>

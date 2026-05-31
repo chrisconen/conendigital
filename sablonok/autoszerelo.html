@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Turbo Gyorsszerviz Győr - Olajcsere, gumiszerelés, műszaki vizsga. Gyorsan, megbízhatóan, előzetes időpontfoglalással.">
+<title>Turbo Gyorsszerviz Győr - Olajcsere, gumiszerelés, műszaki vizsga</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --orange: #ff6b1a;
+  --orange-deep: #e55a0d;
+  --steel: #4a5560;
+  --steel-light: #8492a0;
+  --antracit: #1c2128;
+  --antracit-soft: #252b33;
+  --concrete: #e8eaed;
+  --concrete-light: #f4f5f7;
+  --white: #ffffff;
+  --text: #1c2128;
+  --text-soft: #5a6470;
+  --shadow: 0 4px 16px rgba(28, 33, 40, 0.08);
+  --shadow-hover: 0 8px 32px rgba(28, 33, 40, 0.15);
+  --shadow-strong: 0 12px 40px rgba(255, 107, 26, 0.25);
+  --radius: 2px;
+  --transition: all 0.25s ease;
+}
+
+[data-theme="dark"] {
+  --orange: #ff7a2e;
+  --orange-deep: #ff6b1a;
+  --steel: #8492a0;
+  --steel-light: #aab4be;
+  --antracit: #e8eaed;
+  --antracit-soft: #c4c9d0;
+  --concrete: #1c2128;
+  --concrete-light: #252b33;
+  --white: #14181d;
+  --text: #e8eaed;
+  --text-soft: #aab4be;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Bebas Neue', 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--antracit);
+  text-transform: uppercase;
+}
+
+h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); line-height: 0.95; }
+h2 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.05; margin-bottom: 1rem; }
+h3 { font-size: 1.4rem; line-height: 1.2; letter-spacing: 0.04em; }
+
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* === NAVIGATION === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 100;
+  padding: 0.9rem 0;
+  transition: var(--transition);
+  border-bottom: 2px solid transparent;
+}
+
+[data-theme="dark"] nav {
+  background: rgba(20, 24, 29, 0.96);
+}
+
+nav.scrolled {
+  padding: 0.5rem 0;
+  border-bottom-color: var(--orange);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--antracit);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+}
+
+.logo span { color: var(--orange); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  position: relative;
+  transition: var(--transition);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--orange);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover { color: var(--orange); }
+.nav-links a:hover::after { width: 100%; }
+
+.theme-toggle {
+  background: var(--concrete-light);
+  border: 1px solid var(--steel-light);
+  color: var(--steel);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--antracit);
+  cursor: pointer;
+  font-size: 1.7rem;
+}
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--antracit);
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0 4rem;
+  color: var(--white);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255, 107, 26, 0.03) 35px, rgba(255, 107, 26, 0.03) 70px),
+    radial-gradient(circle at 80% 30%, rgba(255, 107, 26, 0.12) 0%, transparent 50%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(90deg, var(--orange) 0, var(--orange) 30px, var(--antracit-soft) 30px, var(--antracit-soft) 60px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  animation: slideIn 0.7s ease-out;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--orange);
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--orange);
+  border-radius: var(--radius);
+}
+
+.hero h1 {
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 .highlight {
+  color: var(--orange);
+  display: inline-block;
+  position: relative;
+}
+
+.hero h1 .highlight::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.15em;
+  height: 0.08em;
+  background: var(--orange);
+  opacity: 0.4;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  flex-wrap: wrap;
+}
+
+.hero-stat .num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  color: var(--orange);
+  display: block;
+  line-height: 1;
+}
+
+.hero-stat .lbl {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.3rem;
+}
+
+.btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--orange-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--antracit);
+  border-color: var(--white);
+}
+
+/* === SECTIONS === */
+section { padding: 6rem 0; }
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--orange);
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.section-tag::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.5rem;
+  height: 2px;
+  background: var(--orange);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header .section-tag {
+  padding-left: 0;
+}
+
+.section-header .section-tag::before {
+  position: static;
+  display: inline-block;
+  margin-right: 0.6rem;
+  vertical-align: middle;
+  width: 1.5rem;
+}
+
+.section-header .section-tag::after {
+  content: '';
+  display: inline-block;
+  margin-left: 0.6rem;
+  vertical-align: middle;
+  width: 1.5rem;
+  height: 2px;
+  background: var(--orange);
+}
+
+.section-header h2 { margin-bottom: 1rem; }
+.section-header p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--text-soft);
+}
+
+/* === SERVICES === */
+.services {
+  background: var(--concrete-light);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  padding: 2.2rem 2rem;
+  background: var(--white);
+  border-radius: var(--radius);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid var(--steel-light);
+}
+
+[data-theme="dark"] .service-card { background: var(--concrete); }
+
+.service-card::before {
+  content: attr(data-num);
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  color: var(--concrete);
+  line-height: 1;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .service-card::before { color: var(--antracit-soft); }
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-top-color: var(--orange);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-card:hover::before { color: var(--orange); }
+
+.service-card h3 {
+  margin-bottom: 1rem;
+  color: var(--antracit);
+  position: relative;
+  z-index: 1;
+}
+
+.service-card p {
+  color: var(--text-soft);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.service-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--steel-light);
+  position: relative;
+  z-index: 1;
+}
+
+.service-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem;
+  color: var(--orange);
+  letter-spacing: 0.02em;
+}
+
+.service-time {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  font-weight: 600;
+}
+
+/* === ABOUT === */
+.about {
+  background: var(--white);
+}
+
+[data-theme="dark"] .about { background: var(--white); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.about-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: var(--antracit);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.about-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(135deg, transparent, transparent 25px, rgba(255, 107, 26, 0.04) 25px, rgba(255, 107, 26, 0.04) 50px),
+    radial-gradient(circle at 60% 40%, rgba(255, 107, 26, 0.2) 0%, transparent 60%);
+}
+
+.about-visual-content {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: 2rem;
+  color: var(--white);
+}
+
+.about-visual-content .big {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--orange);
+}
+
+.about-visual-content .sub {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.about-visual-placeholder {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+}
+
+.about-content .section-tag { margin-bottom: 1rem; }
+
+.about-content h2 { margin-bottom: 1.5rem; }
+
+.about-content p {
+  color: var(--text-soft);
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+}
+
+.features-list {
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.features-list li {
+  padding: 0.8rem 0 0.8rem 2.2rem;
+  position: relative;
+  font-weight: 500;
+  color: var(--text);
+  border-bottom: 1px solid var(--concrete);
+}
+
+.features-list li:last-child { border-bottom: none; }
+
+.features-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.2rem;
+  height: 1.2rem;
+  background: var(--orange);
+  clip-path: polygon(20% 50%, 40% 70%, 80% 25%, 90% 35%, 40% 90%, 10% 60%);
+}
+
+/* === CONTACT === */
+.contact { background: var(--concrete-light); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info h3 {
+  margin-bottom: 2rem;
+  color: var(--antracit);
+}
+
+.contact-item {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  padding: 1.2rem;
+  background: var(--white);
+  border-left: 3px solid var(--orange);
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .contact-item { background: var(--concrete); }
+
+.contact-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow);
+}
+
+.contact-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--antracit);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+}
+
+[data-theme="dark"] .contact-icon { background: var(--antracit-soft); }
+
+.contact-text strong {
+  display: block;
+  color: var(--antracit);
+  margin-bottom: 0.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+}
+
+.contact-text a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.contact-text a:hover { color: var(--orange); }
+
+.contact-text span {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.map-container {
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  aspect-ratio: 4/3;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+[data-theme="dark"] .map-container iframe {
+  filter: invert(0.9) hue-rotate(180deg) saturate(0.7);
+}
+
+/* === FOOTER === */
+footer {
+  background: var(--antracit);
+  color: var(--white);
+  padding: 3rem 0 1.5rem;
+  text-align: center;
+}
+
+[data-theme="dark"] footer { background: #0a0d11; }
+
+footer .logo { color: var(--white); }
+
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 1.5rem 0 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.footer-bottom {
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* === FLOATING WHATSAPP === */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 99;
+  transition: var(--transition);
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  animation: none;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 4px 28px rgba(37, 211, 102, 0.7), 0 0 0 8px rgba(37, 211, 102, 0.15); }
+}
+
+/* === COOKIE BANNER === */
+.cookie-banner {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 100px;
+  max-width: 480px;
+  background: var(--antracit);
+  color: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border-left: 4px solid var(--orange);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: 98;
+  transform: translateY(120%);
+  transition: transform 0.4s ease;
+}
+
+.cookie-banner.visible { transform: translateY(0); }
+
+.cookie-banner p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cookie-banner a {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+.cookie-btns { display: flex; gap: 0.75rem; }
+
+.cookie-btn {
+  padding: 0.7rem 1.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.cookie-btn.accept { background: var(--orange); color: var(--white); }
+.cookie-btn.accept:hover { background: var(--orange-deep); }
+.cookie-btn.decline {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.cookie-btn.decline:hover { border-color: var(--white); }
+
+/* === ANIMATIONS === */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: var(--white);
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    transition: right 0.4s ease;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+  }
+
+  [data-theme="dark"] .nav-links { background: var(--concrete); }
+
+  .nav-links.open { right: 0; }
+
+  .mobile-toggle { display: block; }
+
+  .about-grid, .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-visual { max-width: 420px; margin: 0 auto; }
+
+  .hero-stats { gap: 2rem; }
+
+  section { padding: 4rem 0; }
+
+  .hero { padding: 6rem 0 3rem; }
+
+  .cookie-banner {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    max-width: none;
+  }
+
+  .whatsapp-float {
+    bottom: 16px;
+    right: 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- === NAVIGATION === -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">T</span>
+      Turbo <span>Gyorsszerviz</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#szolgaltatasok">Szolgáltatások</a></li>
+      <li><a href="#rolunk">Rólunk</a></li>
+      <li><a href="#kapcsolat">Kapcsolat</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" aria-label="Sötét mód">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+      </li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menü">&#9776;</button>
+  </div>
+</nav>
+
+<!-- === HERO === -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <span class="hero-tag">Győr · Gyorsszerviz · 2009 óta</span>
+      <h1>Gyors. Megbízható.<br><span class="highlight">Szakszerű.</span></h1>
+      <p>Olajcsere 20 perc alatt. Gumiszerelés várakozás nélkül. Műszaki vizsga előkészítés egy nap alatt. A Turbo Gyorsszervizben az Ön ideje a legfontosabb.</p>
+      <div class="btn-group">
+        <a href="#kapcsolat" class="btn btn-primary">Időpontfoglalás</a>
+        <a href="#szolgaltatasok" class="btn btn-outline">Szolgáltatások</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="num">15+</span>
+          <span class="lbl">év tapasztalat</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">12000+</span>
+          <span class="lbl">elvégzett munka</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num">20p</span>
+          <span class="lbl">átlagos olajcsere</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === SERVICES === -->
+<section class="services" id="szolgaltatasok">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Szolgáltatások</span>
+      <h2>Amire szüksége van</h2>
+      <p>Gyors átfutási idő, fix árak, garancia minden munkára. Időpontot előzetes egyeztetéssel adunk, hogy ne kelljen sorban állnia.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal" data-num="01">
+        <h3>Olajcsere</h3>
+        <p>Motor- és váltóolaj csere, szűrőcsere. Castrol, Mobil 1, Shell, Total termékek raktárról. Pecsétel a szervizkönyvbe.</p>
+        <div class="service-meta">
+          <span class="service-price">12 500 Ft-tól</span>
+          <span class="service-time">~20 perc</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-num="02">
+        <h3>Gumiszerelés</h3>
+        <p>Szezonális gumicsere, centrírozás, javítás. Saját gumi tárolás lehetséges. 13-22 colos méretekig minden autóhoz.</p>
+        <div class="service-meta">
+          <span class="service-price">8 000 Ft-tól</span>
+          <span class="service-time">~30 perc</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-num="03">
+        <h3>Műszaki vizsga előkészítés</h3>
+        <p>Komplett átvizsgálás vizsga előtt, hibák javítása helyben. Vizsgára kísérés kérésre. 95% sikerességi arány.</p>
+        <div class="service-meta">
+          <span class="service-price">14 000 Ft-tól</span>
+          <span class="service-time">1 nap</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-num="04">
+        <h3>Fékrendszer</h3>
+        <p>Fékbetét, féktárcsa csere. Fékfolyadék frissítés. Hibakód-olvasás Bosch diagnosztikai műszerrel.</p>
+        <div class="service-meta">
+          <span class="service-price">18 000 Ft-tól</span>
+          <span class="service-time">2-3 óra</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-num="05">
+        <h3>Klíma szerviz</h3>
+        <p>Klímatöltés, baktériumtelenítés, kompresszor ellenőrzés. R134a és R1234yf gázzal egyaránt.</p>
+        <div class="service-meta">
+          <span class="service-price">15 000 Ft-tól</span>
+          <span class="service-time">~45 perc</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal" data-num="06">
+        <h3>Akkumulátor csere</h3>
+        <p>Új akkumulátor és csere helyben. Varta, Bosch, Banner termékek. Régi akku elszállítása ingyenes.</p>
+        <div class="service-meta">
+          <span class="service-price">25 000 Ft-tól</span>
+          <span class="service-time">~15 perc</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === ABOUT === -->
+<section class="about" id="rolunk">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-visual-placeholder">Cserélje le saját műhely fotójára</div>
+        <div class="about-visual-content">
+          <div class="big">15+</div>
+          <div class="sub">év a szakmában</div>
+        </div>
+      </div>
+      <div class="about-content reveal">
+        <span class="section-tag">Rólunk</span>
+        <h2>Csapat, ami<br>érti az autóját</h2>
+        <p>A Turbo Gyorsszervizt 2009-ben alapítottuk Győrben azzal a céllal, hogy az autószerelés ne legyen időrabló kínszenvedés. Fix árak, becsületes hozzáállás, és minden munkára 12 hónap garancia.</p>
+        <p>Három OKJ-s szakképzett szerelő, két szerelőaknás állás, és minden fontos diagnosztikai eszköz a helyén. Magyar, német, osztrák gyártmányokra szakosodtunk, de minden autót szívesen fogadunk.</p>
+
+        <ul class="features-list">
+          <li>Fix árak előzetes árajánlattal, nincs meglepetés</li>
+          <li>12 hónap garancia minden munkára</li>
+          <li>Bosch diagnosztika, márkafüggetlen szerviz</li>
+          <li>Eredeti vagy ekvivalens minőségű alkatrészek</li>
+          <li>Pontos időpontok, nem várakoztatunk</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === CONTACT === -->
+<section class="contact" id="kapcsolat">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Kapcsolat</span>
+      <h2>Időpontot kér?</h2>
+      <p>Hívjon minket telefonon, írjon emailt, vagy ugorjon be a műhelybe egyeztetni. Sürgős esetben próbálkozzon a telefonnal, hamarabb visszahívjuk.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Elérhetőségek</h3>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Cím</strong>
+            <span>9024 Győr, Ipar út 12.</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Telefon</strong>
+            <a href="tel:+36301234567">+36 30 123 4567</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>E-mail</strong>
+            <a href="mailto:info@turboszerviz.hu">info@turboszerviz.hu</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Nyitvatartás</strong>
+            <span>H-P: 7:30 - 17:00<br>Szo: 8:00 - 12:00<br>V: zárva</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2680.4567!2d17.6358!3d47.6849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476bcd123!2sGy%C5%91r!5e0!3m2!1shu!2shu!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Turbo Gyorsszerviz helyszín">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === FOOTER === -->
+<footer>
+  <div class="container">
+    <a href="#" class="logo">
+      <span class="logo-mark">T</span>
+      Turbo <span>Gyorsszerviz</span>
+    </a>
+    <p class="footer-tagline">Gyors · Megbízható · Szakszerű</p>
+    <div class="footer-bottom">
+      © 2026 Turbo Gyorsszerviz Győr · Minden jog fenntartva
+    </div>
+  </div>
+</footer>
+
+<!-- === WHATSAPP FLOATING === -->
+<a href="https://wa.me/36301234567?text=J%C3%B3%20napot%2C%20id%C5%91pontot%20szeretn%C3%A9k%20foglalni" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp üzenet">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- === COOKIE BANNER === -->
+<div class="cookie-banner" id="cookieBanner">
+  <p>Weboldalunk sütiket használ a böngészési élmény javítása érdekében. A részletekért tekintse meg <a href="#">Adatvédelmi tájékoztatónkat</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn accept" onclick="acceptCookies()">Elfogadom</button>
+    <button class="cookie-btn decline" onclick="declineCookies()">Csak szükséges</button>
+  </div>
+</div>
+
+<script>
+// === THEME TOGGLE ===
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+const root = document.documentElement;
+
+const sunIcon = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>';
+const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+  root.setAttribute('data-theme', 'dark');
+  themeIcon.innerHTML = sunIcon;
+}
+
+themeToggle.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  if (current === 'dark') {
+    root.removeAttribute('data-theme');
+    themeIcon.innerHTML = moonIcon;
+    localStorage.setItem('theme', 'light');
+  } else {
+    root.setAttribute('data-theme', 'dark');
+    themeIcon.innerHTML = sunIcon;
+    localStorage.setItem('theme', 'dark');
+  }
+});
+
+// === MOBILE MENU ===
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+
+mobileToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// === NAV SCROLL ===
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// === SCROLL REVEAL ===
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+reveals.forEach(el => observer.observe(el));
+
+// === COOKIE BANNER ===
+const cookieBanner = document.getElementById('cookieBanner');
+
+function acceptCookies() {
+  localStorage.setItem('cookies', 'accepted');
+  cookieBanner.classList.remove('visible');
+}
+
+function declineCookies() {
+  localStorage.setItem('cookies', 'declined');
+  cookieBanner.classList.remove('visible');
+}
+
+window.addEventListener('load', () => {
+  if (!localStorage.getItem('cookies')) {
+    setTimeout(() => cookieBanner.classList.add('visible'), 1500);
+  }
+});
+</script>
+
+</body>
+</html>

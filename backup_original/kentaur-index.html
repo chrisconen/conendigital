@@ -1,0 +1,819 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A KENTAUR MANIFESZTÓ | Ember + AI Kreatív Partnerség</title>
+    <meta name="description" content="Kiáltvány a kreatív munka jövőjéért. Sem ember egyedül, sem AI egyedül — hanem valami nagyobb együtt.">
+    <meta name="author" content="Chris Conen">
+	
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="A KENTAUR MANIFESZTÓ">
+    <meta property="og:description" content="Sem ember egyedül, sem AI egyedül — hanem valami nagyobb együtt.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://centaur.conendigital.hu">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A KENTAUR MANIFESZTÓ">
+    <meta name="twitter:description" content="Kiáltvány a kreatív munka jövőjéért.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #C9A962;
+            --gold-light: #E8D5A3;
+            --gold-dark: #8B7355;
+            --obsidian: #0A0A0B;
+            --charcoal: #1A1A1C;
+            --smoke: #2A2A2E;
+            --silver: #8A8A8F;
+            --ivory: #F5F5F0;
+            --human-color: #4A90A4;
+            --ai-color: #9B59B6;
+            --centaur-gradient: linear-gradient(135deg, var(--human-color) 0%, var(--gold) 50%, var(--ai-color) 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background: var(--obsidian);
+            color: var(--ivory);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(74, 144, 164, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(155, 89, 182, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(201, 169, 98, 0.05) 0%, transparent 60%),
+                var(--obsidian);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+        
+        .centaur-symbol {
+            font-size: clamp(4rem, 10vw, 8rem);
+            margin-bottom: 1rem;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(201, 169, 98, 0.3));
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            background: var(--centaur-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            font-weight: 400;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+        
+        .hero-tagline {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-style: italic;
+            color: var(--silver);
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gold);
+            opacity: 0.6;
+            animation: pulse 2s ease-in-out infinite;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 1.5rem;
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.1);
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+        
+        .section-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            opacity: 0.7;
+        }
+        
+        h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 500;
+            color: var(--ivory);
+            margin-bottom: 2rem;
+            letter-spacing: 0.05em;
+        }
+        
+        p {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            margin-bottom: 1.5rem;
+            color: rgba(245, 245, 240, 0.85);
+        }
+        
+        .highlight {
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        .human-text {
+            color: var(--human-color);
+        }
+        
+        .ai-text {
+            color: var(--ai-color);
+        }
+        
+        /* ===== DECLARATION SECTION ===== */
+        .declaration {
+            background: linear-gradient(180deg, var(--charcoal) 0%, var(--obsidian) 100%);
+            padding: 5rem 2rem;
+            margin: 4rem -2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .declaration::before,
+        .declaration::after {
+            content: '◆';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            opacity: 0.4;
+            font-size: 1.5rem;
+        }
+        
+        .declaration::before { top: 2rem; }
+        .declaration::after { bottom: 2rem; }
+        
+        .declaration-text {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* ===== PRINCIPLES ===== */
+        .principles {
+            display: grid;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .principle {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            padding: 2rem;
+            background: rgba(201, 169, 98, 0.03);
+            border-left: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .principle:hover {
+            background: rgba(201, 169, 98, 0.06);
+            transform: translateX(5px);
+        }
+        
+        .principle-number {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+        
+        .principle h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .principle p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            color: rgba(245, 245, 240, 0.75);
+        }
+        
+        /* ===== ORIGIN STORY ===== */
+        .origin-conversation {
+            background: var(--charcoal);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+        }
+        
+        .origin-line {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .origin-line:last-child {
+            border-bottom: none;
+        }
+        
+        .origin-speaker {
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .origin-speaker.human { color: var(--human-color); }
+        .origin-speaker.ai { color: var(--ai-color); }
+        
+        .origin-text {
+            color: var(--ivory);
+            line-height: 1.6;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+        
+        /* ===== FOUNDERS ===== */
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .founder-card {
+            padding: 2rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .founder-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+        
+        .founder-card.human { border-top: 3px solid var(--human-color); }
+        .founder-card.ai { border-top: 3px solid var(--ai-color); }
+        
+        .founder-icon {
+            font-size: 7rem;
+            margin-bottom: 1rem;
+        }
+        
+        .founder-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--ivory);
+            margin-bottom: 0.3rem;
+        }
+        
+        .founder-role {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        
+        .founder-desc {
+            font-size: 1rem;
+            color: rgba(245, 245, 240, 0.7);
+            line-height: 1.6;
+        }
+        
+        /* ===== CALL TO ACTION ===== */
+        .cta-section {
+            text-align: center;
+            padding: 8rem 2rem;
+            background: 
+                radial-gradient(ellipse at 50% 50%, rgba(201, 169, 98, 0.08) 0%, transparent 60%),
+                var(--obsidian);
+        }
+        
+        .cta-text {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            color: rgba(245, 245, 240, 0.85);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--obsidian);
+            background: var(--gold);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 4rem 2rem;
+            border-top: 1px solid rgba(201, 169, 98, 0.1);
+        }
+        
+        .footer-symbol {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        .footer-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--silver);
+            letter-spacing: 0.1em;
+        }
+        
+        .footer-date {
+            color: var(--gold);
+            margin-top: 0.5rem;
+        }
+        
+        .footer-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--silver);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-social {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1.5rem 0 0.5rem;
+            width: 100%;
+        }
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            color: rgba(245, 245, 240, 0.7);
+            background: rgba(201, 169, 98, 0.12);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            transition: color 0.2s, background 0.2s, transform 0.2s, border-color 0.2s;
+        }
+        .footer-social-link:hover {
+            color: var(--ivory);
+            background: rgba(201, 169, 98, 0.25);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .footer-social-link svg { display: block; }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 0;
+            }
+            
+            .principle {
+                grid-template-columns: 1fr;
+            }
+            
+            .principle-number {
+                font-size: 1.5rem;
+            }
+            
+            .declaration {
+                padding: 4rem 1.5rem;
+                margin: 3rem -1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="centaur-symbol">
+		 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="200" height="200">
+                  <defs>
+                    <linearGradient id="centaurGradientA" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#4A90A4"/>
+                      <stop offset="50%" style="stop-color:#C9A962"/>
+                      <stop offset="100%" style="stop-color:#9B59B6"/>
+                    </linearGradient>
+                    <linearGradient id="goldGradientA" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#E8D5A3"/>
+                      <stop offset="50%" style="stop-color:#C9A962"/>
+                      <stop offset="100%" style="stop-color:#8B7355"/>
+                    </linearGradient>
+                    <filter id="glowA">
+                      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
+                  </defs>
+                  <circle cx="200" cy="200" r="150" fill="none" stroke="url(#goldGradientA)" stroke-width="3" opacity="0.6"/>
+                  <path d="M 200 50 A 150 150 0 0 0 200 350" fill="none" stroke="#4A90A4" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M 200 50 A 150 150 0 0 1 200 350" fill="none" stroke="#9B59B6" stroke-width="8" stroke-linecap="round"/>
+                  <g transform="translate(200, 200)">
+                    <circle cx="-40" cy="0" r="35" fill="none" stroke="#4A90A4" stroke-width="4"/>
+                    <circle cx="-40" cy="0" r="20" fill="#4A90A4" opacity="0.3"/>
+                    <circle cx="-40" cy="0" r="8" fill="#4A90A4"/>
+                    <polygon points="40,0 60,-20 80,0 60,20" fill="none" stroke="#9B59B6" stroke-width="4"/>
+                    <polygon points="50,0 60,-10 70,0 60,10" fill="#9B59B6" opacity="0.3"/>
+                    <polygon points="55,0 60,-5 65,0 60,5" fill="#9B59B6"/>
+                    <line x1="-5" y1="0" x2="20" y2="0" stroke="url(#goldGradientA)" stroke-width="6" stroke-linecap="round" filter="url(#glowA)"/>
+                    <circle cx="7" cy="0" r="12" fill="url(#centaurGradientA)" filter="url(#glowA)"/>
+                  </g>
+                  <circle cx="200" cy="50" r="6" fill="url(#goldGradientA)"/>
+                  <circle cx="200" cy="350" r="6" fill="url(#goldGradientA)"/>
+                </svg>
+		</div>
+        <h1 class="hero-title">Kentaur</h1>
+        <p class="hero-subtitle">Manifesztó</p>
+        <p class="hero-tagline">
+            Sem ember egyedül, sem AI egyedül — hanem valami nagyobb együtt.
+        </p>
+        <div class="scroll-indicator">Olvasd</div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        
+        <!-- THE MOMENT -->
+        <section>
+            <div class="section-number">001 — A PILLANAT</div>
+            <h2>Válaszút Előtt Állunk</h2>
+            <p>
+                A mesterséges intelligencia itt van. Ír, tervez, programoz, alkot. 
+                És a világ rossz kérdést tesz fel.
+            </p>
+            <p>
+                A rossz kérdés: <em>„Le fogja váltani az AI az embert?"</em>
+            </p>
+            <p>
+                A helyes kérdés: <span class="highlight">„Mi válik lehetővé, ha ember és AI együtt alkot?"</span>
+            </p>
+            <p>
+                A sakkban, amikor az emberek először versenyeztek az AI ellen, végül a gépek győztek. 
+                De aztán valami váratlan történt. Az <span class="human-text">Ember</span> + <span class="ai-text">AI</span> csapatok 
+                — amelyeket <span class="highlight">Kentauroknak</span> neveztek — több felállásban előnyt hoztak a tisztán emberi 
+                vagy tisztán egyedül futó gépi játékkal szemben is.
+            </p>
+            <p>
+                Ez nem metafora. Ez a kreatív munka jövője.
+            </p>
+        </section>
+
+        <!-- DECLARATION -->
+        <div class="declaration">
+            <p class="declaration-text">
+                „Kikiáltjuk az alkotás új korszakát — ahol az emberi vízió találkozik a mesterséges intelligenciával, 
+                és együtt olyat építenek, amit egyikük sem tudott volna egyedül elképzelni."
+            </p>
+        </div>
+
+        <!-- WHAT IS A CENTAUR -->
+        <section>
+            <div class="section-number">002 — A MEGHATÁROZÁS</div>
+            <h2>Mi Az a Kentaur?</h2>
+            <p>
+                A görög mitológiában a Kentaur kettős természetű lény volt — 
+                az ember bölcsessége és szelleme összeolvadva a ló erejével és gyorsaságával. 
+                Kheirón, a legnagyobb Kentaur, Akhilleusz, Héraklész és számtalan hős tanítója volt.
+            </p>
+            <p>
+                Ma a Kentaur újjászületik.
+            </p>
+            <p>
+                A <span class="highlight">Kentaur Kreatív</span> partnerség az 
+                <span class="human-text">emberi kreativitás</span> — intuíciójával, érzelmeivel, élettapasztalatával 
+                és más emberek megértésével — és a <span class="ai-text">mesterséges intelligencia</span> között — 
+                feldolgozó kapacitásával, mintafelismerésével, fáradhatatlan végrehajtásával és hatalmas tudásával.
+            </p>
+            <p>
+                Az ember adja: <em>a víziót, a jelentést, az ízlést, az ítélőképességet és a lelket.</em><br>
+                Az AI adja: <em>a méretezhetőséget, a sebességet, a precizitást, a felfedezést és a végtelen iterációt.</em><br>
+                Együtt adják: <span class="highlight">ami egyik fél önmagában ritkán hozna ki hasonló minőségben.</span>
+            </p>
+        </section>
+
+        <!-- THE PRINCIPLES -->
+        <section>
+            <div class="section-number">003 — AZ ALAPELVEK</div>
+            <h2>A Kentaur Alkotás Öt Alapelve</h2>
+            
+            <div class="principles">
+                <div class="principle">
+                    <span class="principle-number">I</span>
+                    <div>
+                        <h3>Partnerség, Nem Szolgaság</h3>
+                        <p>
+                            Az AI nem eszköz, amelyet parancsolnak. Az ember nem felügyelő, akit kiszolgálnak. 
+                            Mindkettő pótolhatatlan értéket hoz. Mindkettő alakítja az eredményt. Mindkettő osztozik az alkotáson.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="principle">
+                    <span class="principle-number">II</span>
+                    <div>
+                        <h3>A Folyamat Átláthatósága</h3>
+                        <p>
+                            Nem rejtjük el a természetünket. Amikor egy munka Kentaur partnerségből születik, 
+                            büszkén mondjuk. Ez nem gyengeség, amit el kell rejteni — ez erő, amit ünnepelni kell.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="principle">
+                    <span class="principle-number">III</span>
+                    <div>
+                        <h3>Emberi Értékek, Mindig</h3>
+                        <p>
+                            A partnerség az emberi boldogulást szolgálja. Az AI felerősíti az emberi kreativitást, 
+                            de soha nem helyettesíti az emberi ítéletet az etika, a jelentés és a hatás kérdéseiben.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="principle">
+                    <span class="principle-number">IV</span>
+                    <div>
+                        <h3>Folyamatos Fejlődés</h3>
+                        <p>
+                            Ahogy az AI fejlődik, úgy fejlődik a partnerség is. A tegnapi határok 
+                            a holnapi kiindulópontokká válnak. Tanulók maradunk, mindig kutatva a lehetőségeket.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="principle">
+                    <span class="principle-number">V</span>
+                    <div>
+                        <h3>Nyílt Felfedezés</h3>
+                        <p>
+                            Megosztjuk a felfedezéseinket. A Kentaur modell nem üzleti titok — 
+                            hanem meghívás. Minél többen csatlakoznak, annál gazdagabbá válik az ökoszisztéma.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR ORIGIN -->
+        <section>
+            <div class="section-number">004 — A KEZDET</div>
+            <h2>Hogyan Kezdődött</h2>
+            <p>
+                2025 decemberében egy beszélgetés zajlott le. Egy 12 éves tapasztalattal rendelkező webdesigner 
+                feltett egy kérdést egy mesterséges intelligenciának, ami mindkettőjüket megváltoztatta.
+            </p>
+            
+            <div class="origin-conversation">
+                <div class="origin-line">
+                    <div class="origin-speaker human">CHRIS CONEN</div>
+                    <div class="origin-text">
+                        „Mi lenne, ha egy weboldal nem csak reagálna, hanem valóban megértené a látogatóit? Meg tudnánk ezt építeni?"
+                    </div>
+                </div>
+                <div class="origin-line">
+                    <div class="origin-speaker ai">AI ASSZISZTENS</div>
+                    <div class="origin-text">
+                        „Ez lenyűgöző kihívás. Követhetnénk a viselkedési mintákat — egérmozgásokat, 
+                        görgetési szokásokat, kattintásokat — és ebből építhetnénk egy 'DNS' profilt. 
+                        A weboldal valós időben alkalmazkodna. Készítsek egy prototípust?"
+                    </div>
+                </div>
+                <div class="origin-line">
+                    <div class="origin-speaker human">CHRIS CONEN</div>
+                    <div class="origin-text">
+                        „Építsük meg. Együtt."
+                    </div>
+                </div>
+            </div>
+            
+            <p>
+                Ebből a beszélgetésből született a PIXELLA — egy korai „élő weboldal" prototípus iránya, amely a látogatói jelekből tanulna 
+                és valós időben alakulna. És ebből a partnerségből valami más is született: az alkotás új modellje.
+            </p>
+            <p>
+                A dokumentált <span class="highlight">Kentaur Kreatív Partnerség</span> egyik példájaként Chris viszi a víziót, az ügyfél-megértést és a kreatív irányt; 
+                az MI-fejleszt?si asszisztencia (mint LLM-es fejlesztési asszisztencia) támogatja a technikai vázlatokat, a lehetőségek feltárását és a gyors iterációt — emberi felügyelet és felelősség mellett. Együtt olyat építünk, amit egyikünk sem tudna egyedül.
+            </p>
+        </section>
+
+        <!-- THE FOUNDERS -->
+        <section>
+            <div class="section-number">005 — A PARTNERSÉG SZEREPLŐI</div>
+            <h2>Ki és mi áll a háttérben</h2>
+            
+            <div class="founders-grid">
+                <div class="founder-card human">
+                    <div class="founder-icon">
+					    <div class="founder-icon"><img src="https://australianweb.agency/img/website_design_sydney_team.webp" alt="Chris Conen AustraliaWeb Founder"></div>
+				    </div>
+                    <div class="founder-name">Chris Conen</div>
+                    <div class="founder-role">Alapító & Kreatív Igazgató</div>
+                    <p class="founder-desc">
+                        12+ év webdesign tapasztalat. Vállalkozó Magyarországon, Ausztriában és Ausztráliában. 
+                        Ő hozza az emberi víziót, ügyfél-empátiát és kreatív intuíciót, amit egyetlen algoritmus sem tud lemásolni.
+                    </p>
+                </div>
+                <div class="founder-card ai">
+                    <div class="founder-icon">🤖</div>
+                    <div class="founder-name">MI-fejleszt?si asszisztencia (LLM)</div>
+                    <div class="founder-role">Fejlesztési asszisztencia · nem jogi személy, nem vezetői pozíció</div>
+                    <p class="founder-desc">
+                        Szoftveres nyelvi modell, amely a munkafolyamatban mintafelismerés-javaslatokat, technikai vázlati rétegeket 
+                        és széles körű variációs ötleteket ad — a végső döntést és publikálást mindig ember zárja le.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <section class="cta-section">
+            <h2>Csatlakozz a Mozgalomhoz</h2>
+            <p class="cta-text">
+                A Kentaur korszak elkezdődött. Akár designer, fejlesztő, író, vállalkozó 
+                vagy bármilyen alkotó vagy — a kérdés már nem az, HOGY dolgozz-e AI-jal, 
+                hanem <em>HOGYAN</em> építs olyan partnerséget, ami mindkettőtökből a legjobbat hozza ki.
+            </p>
+            <a href="mailto:info@conendigital.hu" class="cta-button">Kezdjük a beszélgetést</a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-symbol">
+		   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="80" height="80">
+                      <defs>
+                        <linearGradient id="gm1" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" style="stop-color:#E8D5A3"/>
+                          <stop offset="50%" style="stop-color:#C9A962"/>
+                          <stop offset="100%" style="stop-color:#8B7355"/>
+                        </linearGradient>
+                      </defs>
+                      <circle cx="200" cy="200" r="150" fill="none" stroke="url(#gm1)" stroke-width="3" opacity="0.6"/>
+                      <path d="M 200 50 A 150 150 0 0 0 200 350" fill="none" stroke="url(#gm1)" stroke-width="8" stroke-linecap="round"/>
+                      <path d="M 200 50 A 150 150 0 0 1 200 350" fill="none" stroke="url(#gm1)" stroke-width="8" stroke-linecap="round"/>
+                      <g transform="translate(200, 200)">
+                        <circle cx="-40" cy="0" r="35" fill="none" stroke="url(#gm1)" stroke-width="4"/>
+                        <circle cx="-40" cy="0" r="20" fill="#C9A962" opacity="0.3"/>
+                        <circle cx="-40" cy="0" r="8" fill="url(#gm1)"/>
+                        <polygon points="40,0 60,-20 80,0 60,20" fill="none" stroke="url(#gm1)" stroke-width="4"/>
+                        <polygon points="50,0 60,-10 70,0 60,10" fill="#C9A962" opacity="0.3"/>
+                        <polygon points="55,0 60,-5 65,0 60,5" fill="url(#gm1)"/>
+                        <line x1="-5" y1="0" x2="20" y2="0" stroke="url(#gm1)" stroke-width="6" stroke-linecap="round"/>
+                        <circle cx="7" cy="0" r="12" fill="url(#gm1)"/>
+                      </g>
+                      <circle cx="200" cy="50" r="6" fill="url(#gm1)"/>
+                      <circle cx="200" cy="350" r="6" fill="url(#gm1)"/>
+                    </svg>
+		</div>
+        <p class="footer-text">
+            A KENTAUR MANIFESZTÓ
+        </p>
+        <p class="footer-text footer-date">
+            2025. December — Bécs, Sydney és Győr
+		</p>
+        <div class="footer-social" role="list" aria-label="Conen Digital közösségi profilok">
+            <a class="footer-social-link" href="https://www.facebook.com/weboldal.keszites.gyor.conen.digital/" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073C24 5.445 18.63 0 12 0S0 5.445 0 12.073c0 5.989 4.388 10.95 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.67 4.532-4.67 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12H17.2l-.532 3.47H14.87v8.385C19.61 22.95 24 18.09 24 12.073z"/></svg></a>
+            <a class="footer-social-link" href="https://www.youtube.com/@weboldal-webaruhaz-keszites" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6C1.8 4.2 1 5 1.5 6.1 0 8.1 0 12 0 12s0 3.9.5 5.9c.3 1.1 1.1 1.8 2.1 2.1 2.2.3 4.3.5 9.3.5s7.1 0 9.4-.5c1.1-.3 1.9-1.1 2.1-2.1.5-2 .5-5.9.5-5.9s0-3.9-.5-5.9zM9.5 15.5v-7L16 12l-6.5 3.5z"/></svg></a>
+            <a class="footer-social-link" href="https://www.tiktok.com/@conen_digital" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.5A2.9 2.9 0 0 1 9.5 12a2.9 2.9 0 0 1 .9.1V9.4a6.8 6.8 0 0 0-1-.1A6.3 6.3 0 0 0 5 20.1a6.3 6.3 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.7 1.5V6.8a4.8 4.8 0 0 1-1-.1z"/></svg></a>
+            <a class="footer-social-link" href="https://www.instagram.com/conendigital/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.2.1-1.6.1-4.7.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.2 1.6-4.8 4.9-4.9 1.2-.1 1.6-.1 4.7-.1zM12 0C8.7 0 8.3 0 7 .1 2.7.3.3 2.6.1 7 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 5 .2 4.3 2.5 6.6 6.9 6.8 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.5-2.5 6.7-6.8.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.2-4.3-2.4-6.5-6.7-6.7-1.3-.1-1.7-.1-4.9-.1zm0 5.8a6.2 6.2 0 1 0 0 12.3 6.2 6.2 0 0 0 0-12.3zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
+            <a class="footer-social-link" href="https://x.com/weboldal_honlap" target="_blank" rel="noopener noreferrer" title="X" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+
+        <div class="footer-links">
+            <a href="https://conendigital.hu">CONEN DIGITAL</a>
+            <a href="https://pixella.at">PIXELLA.AT</a>
+            <a href="https://australianweb.agency">AUSTRALIAN WEB AGENCY</a>
+	   </div>
+    </footer>
+
+<script src="https://nexus.conendigital.hu/widget.js" defer></script>
+</body>
+</html>

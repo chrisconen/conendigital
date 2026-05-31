@@ -1,0 +1,2237 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conen Digital — Szolgáltatások | Ajánlatgeneráló weboldalak, EAA-felújítás, AI Ops</title>
+    <meta name="description"
+        content="Három pillér audit-alapú egyedi árazással: Ajánlatgeneráló weboldalak, Felújítás + EAA-megfelelés és AI Ops automatizáció. Conen Digital, Győr.">
+    <meta name="author" content="Chris Conen">
+    <link rel="canonical" href="https://conendigital.hu/szolgaltatasok">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" type="text/plain" title="llms.txt — AI-readable site summary" href="/.well-known/llms.txt">
+    <meta property="og:title" content="Szolgáltatások | Conen Digital — CENTAUR ügynökség">
+    <meta property="og:description" content="Három pillér audit-alapú árazással: Ajánlatgeneráló weboldalak, EAA-felújítás, AI Ops. Audit utáni egyedi árajánlat.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conendigital.hu/szolgaltatasok">
+    <meta property="og:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Conen Digital — CENTAUR ügynökség, szolgáltatások">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+
+    <!-- CENTAUR PROTOCOL SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://conendigital.hu/#service-quote-engine",
+          "name": "Ajánlatgeneráló weboldalak",
+          "provider": { "@id": "https://conendigital.hu/#organization" },
+          "serviceType": "Weboldal és konfigurátor fejlesztés",
+          "description": "Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak: kalkulátor, konfigurátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve.",
+          "areaServed": ["HU", "AT", "DE"],
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "HUF",
+            "lowPrice": "600000",
+            "highPrice": "1500000",
+            "description": "Audit utáni egyedi árazás, tipikus tartomány."
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://conendigital.hu/#service-eaa-renovation",
+          "name": "Felújítás + EAA-megfelelés",
+          "provider": { "@id": "https://conendigital.hu/#organization" },
+          "serviceType": "WordPress migráció és akadálymentesítés",
+          "description": "Meglévő WordPress / Elementor oldalak migrálása Astro 5-re. EAA WCAG 2.2 AA megfelelés. Core Web Vitals javítás.",
+          "areaServed": ["HU", "AT", "DE"],
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "HUF",
+            "lowPrice": "450000",
+            "highPrice": "1200000",
+            "description": "Audit utáni egyedi árazás, tipikus tartomány."
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://conendigital.hu/#service-ai-ops",
+          "name": "AI Ops",
+          "provider": { "@id": "https://conendigital.hu/#organization" },
+          "serviceType": "Folyamat-automatizáció és AI-integráció",
+          "description": "Produktizált AI-csomag: ChatBot, lead-qualification, ajánlat-automatizáció, n8n / Make flow-k, CRM-integráció.",
+          "areaServed": ["HU", "AT", "DE"],
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "HUF",
+            "description": "Audit-alapú egyedi árazás."
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://conendigital.hu/szolgaltatasok#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Miért nem fix árak a weboldalon?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Mert a fix ár csak látszólag átlátható: a valóságban vagy alulárazott (és csúszik a projekt), vagy túlbiztosított (és többet fizetsz, mint amit a scope indokol). Mi audittal indítunk, scope-pal, és onnan készül egyedi ajánlat. A weboldalon szereplő tartományok tipikus referenciák, nem fix árajánlatok."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mit jelent az EAA-megfelelés?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Az European Accessibility Act 2025. június 28. óta kötelező az EU-ban a legtöbb e-kereskedelmi és szolgáltató oldalra. Mi WCAG 2.2 AA szintű audit + javítást végzünk: szín-kontraszt, billentyűzet-navigáció, képernyőolvasó-kompatibilitás, ARIA-szerepek, dokumentált teszt-eredmények."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mennyi idő alatt készül el egy projekt?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ajánlatgeneráló weboldal: tipikusan 4-8 hét. EAA-felújítás: 3-6 hét, a meglévő oldal komplexitásától függően. AI Ops bevezetés: 2-4 hét az első fázisra, utána havi iteráció. A pontos ütemterv az audit végén készül el."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Mit jelent a CENTAUR-ügynökség?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Conen Digital-t Chris Conen alapította (Founder & CEO). Nincsenek MI-társalapítók — Chris egyedüli alapítóként vezeti az ügynökséget, és az AI-eszközöket (Claude, Gemini stb.) munkaeszközként használja a tervezés, fejlesztés és stratégia során. Ez a CENTAUR-modell lényege: ember + MI együttműködés, nem MI-vezetés."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray: #1a1a1a;
+            --gray-light: #2a2a2a;
+            --cyan: #00f0ff;
+            --magenta: #bf00ff;
+            --orange: #ff6b00;
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            body {
+                cursor: none;
+            }
+        }
+
+        @media (hover: none),
+        (pointer: coarse) {
+            .cursor {
+                display: none !important;
+            }
+        }
+
+        ::selection {
+            background: var(--cyan);
+            color: var(--black);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9997;
+            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
+            opacity: 0.15;
+        }
+
+        .grain {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            pointer-events: none;
+            z-index: 9996;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            animation: grain 0.5s steps(1) infinite;
+        }
+
+        @keyframes grain {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            10% {
+                transform: translate(-5%, -10%);
+            }
+
+            30% {
+                transform: translate(7%, -25%);
+            }
+
+            50% {
+                transform: translate(-15%, 10%);
+            }
+
+            70% {
+                transform: translate(0%, 15%);
+            }
+
+            90% {
+                transform: translate(-10%, 10%);
+            }
+        }
+
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            width: 60px;
+            height: 60px;
+            border-color: var(--magenta);
+            background: rgba(191, 0, 255, 0.1);
+        }
+
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--black);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-terminal {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--cyan);
+            text-align: left;
+        }
+
+        .loader-line {
+            opacity: 0;
+            margin: 0.3rem 0;
+        }
+
+        .loader-line.visible {
+            opacity: 1;
+        }
+
+        .loader-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: var(--cyan);
+            margin-left: 2px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+        }
+
+        .nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-logo-bracket {
+            color: var(--cyan);
+        }
+
+        .nav-logo-text {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::before {
+            content: '//';
+            margin-right: 0.3rem;
+            color: var(--cyan);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            opacity: 1;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-konfigurator-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.2rem;
+            background: #0a0a0a;
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+            transition: color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .nav-konfigurator-btn {
+                font-size: 0.6rem;
+                padding: 0.45rem 0.7rem;
+            }
+        }
+
+        .nav-konfigurator-btn:hover {
+            color: #d8b4fe;
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+
+        .nav-hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-hamburger span {
+            width: 30px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .nav-links.active {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(20px);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            z-index: 999;
+        }
+
+        .nav-links.active a {
+            font-size: 1.5rem;
+            padding: 0.75rem 1rem;
+        }
+
+        .nav-links.active a::before {
+            opacity: 1;
+        }
+
+        .nav-links.active::after {
+            content: 'NAVIGACIO';
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links.active .mobile-cta {
+            display: block;
+            margin-top: 2rem;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .mobile-cta {
+            display: none;
+        }
+
+        /* Rotating border effect for konfigurator button */
+        @keyframes borderRotate {
+            0% { --border-angle: 0deg; }
+            100% { --border-angle: 360deg; }
+        }
+
+        @property --border-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
+        .nav-konfigurator-btn {
+            position: relative;
+            z-index: 0;
+        }
+
+        .nav-konfigurator-btn::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 6px;
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
+            z-index: -2;
+            animation: borderRotate 2.5s linear infinite;
+            filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
+        }
+
+        .nav-konfigurator-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 4px;
+            background: #0a0a0a;
+            z-index: -1;
+        }
+
+
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10rem 4rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .hero-glow-1 {
+            top: -200px;
+            right: -200px;
+            background: var(--cyan);
+        }
+
+        .hero-glow-2 {
+            bottom: -200px;
+            left: -200px;
+            background: var(--magenta);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--cyan);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.3s;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero-title-gradient {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.7s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .services {
+            padding: 6rem 4rem;
+        }
+
+        .services-intro {
+            max-width: 1400px;
+            margin: 0 auto 6rem;
+            text-align: center;
+        }
+
+        .services-intro h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .services-intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+        }
+
+        .service-block {
+            max-width: 1400px;
+            margin: 0 auto 8rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .service-block:nth-child(even) {
+            direction: rtl;
+        }
+
+        .service-block:nth-child(even)>* {
+            direction: ltr;
+        }
+
+        .service-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-content {
+            padding: 2rem 0;
+        }
+
+        .service-number {
+            font-family: var(--font-mono);
+            font-size: 5rem;
+            font-weight: 700;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .service-features li::before {
+            content: '→';
+            color: var(--cyan);
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-visual {
+            background: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-visual-icon {
+            font-size: 8rem;
+            opacity: 0.1;
+            position: absolute;
+        }
+
+        .service-visual-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 3rem;
+        }
+
+        .service-price {
+            font-family: var(--font-mono);
+            margin-bottom: 1rem;
+        }
+
+        .service-price-label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .service-price-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .service-price-note {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .service-cta {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .service-cta:hover {
+            background: var(--cyan);
+            color: var(--black);
+        }
+
+        .pricing {
+            padding: 8rem 4rem;
+            background: var(--gray);
+        }
+
+        .pricing-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .pricing-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-header p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .pricing-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--black);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--cyan);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'NÉPSZERŰ';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.4rem 1rem;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-name {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .pricing-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            font-size: 0.9rem;
+            padding: 0.6rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--cyan);
+            font-weight: bold;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            padding: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: var(--white);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: block;
+        }
+
+        .pricing-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+        }
+
+        .pricing-card.featured .pricing-btn {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            border: none;
+            color: var(--black);
+        }
+
+        .pricing-card.featured .pricing-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3);
+        }
+
+        .faq {
+            padding: 8rem 4rem;
+        }
+
+        .faq-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .faq-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 0;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--cyan);
+        }
+
+        .faq-icon {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-answer-inner {
+            padding: 0 0 1.5rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .cta {
+            padding: 10rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(200px);
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            pointer-events: none;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-title span {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 1.25rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            color: var(--black);
+            border: none;
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-mono);
+            font-size: 1.65rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cyan);
+        }
+
+        .footer-copyright {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .footer-copyright a {
+            color: var(--cyan);
+        }
+
+        .footer-social {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin: 1rem 0 0.25rem;
+            width: 100%;
+        }
+
+        .footer-social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .footer-social-link:hover {
+            color: var(--cyan);
+            background: rgba(0, 240, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .footer-social-link svg {
+            display: block;
+        }
+
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1200px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero,
+            .services,
+            .pricing,
+            .faq,
+            .cta {
+                padding: 5rem 2rem;
+            }
+
+            .service-block {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .service-block:nth-child(even) {
+                direction: ltr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-logo {
+                font-size: 1rem;
+            }
+
+            .nav-links.active a {
+                font-size: 1.25rem;
+            }
+
+            .hero {
+                padding: 7rem 1.25rem 3rem;
+            }
+
+            .hero-label {
+                font-size: 0.75rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 10vw, 4rem);
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .services,
+            .pricing,
+            .faq,
+            .cta {
+                padding: 3.5rem 1.25rem;
+            }
+
+            .services-intro {
+                margin-bottom: 3rem;
+            }
+
+            .services-intro h2 {
+                font-size: 1.75rem;
+            }
+
+            .services-intro p {
+                font-size: 0.95rem;
+            }
+
+            .service-block {
+                margin-bottom: 4rem;
+                gap: 2rem;
+            }
+
+            .service-number {
+                font-size: 3.5rem;
+            }
+
+            .service-title {
+                font-size: 1.5rem;
+            }
+
+            .service-description {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .service-features {
+                gap: 0.6rem;
+            }
+
+            .service-features li {
+                font-size: 0.85rem;
+            }
+
+            .service-visual {
+                height: auto;
+                min-height: 220px;
+                aspect-ratio: auto;
+            }
+
+            .service-visual-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .service-price-value {
+                font-size: 1.75rem;
+            }
+
+            .pricing-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .pricing-header p {
+                font-size: 0.95rem;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-price {
+                font-size: 2.5rem;
+            }
+
+            .pricing-title {
+                font-size: 1.1rem;
+            }
+
+            .pricing-features li {
+                font-size: 0.85rem;
+            }
+
+            .faq-header h2 {
+                font-size: 1.75rem;
+            }
+
+            .faq-question {
+                font-size: 0.95rem;
+                padding: 1.25rem 1rem;
+            }
+
+            .faq-answer-inner {
+                font-size: 0.9rem;
+                padding: 0 1rem 1.25rem;
+            }
+
+            .cta-title {
+                font-size: 1.75rem;
+            }
+
+            .cta-description {
+                font-size: 0.95rem;
+            }
+
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .footer {
+                padding: 2.5rem 1.25rem;
+            }
+
+            .footer-logo {
+                font-size: 1rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .footer-copyright {
+                font-size: 0.75rem;
+            }
+
+            .footer-logo {
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .centaur-badge {
+                padding: 8px 16px 8px 12px;
+            }
+
+            .centaur-badge-icon {
+                width: 26px;
+                height: 26px;
+            }
+
+            .centaur-badge-label {
+                font-size: 8px;
+            }
+
+            .centaur-badge-title {
+                font-size: 12px;
+            }
+
+            .centaur-footer-badge {
+                padding: 10px 16px;
+            }
+
+            .centaur-footer-badge svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .centaur-footer-badge-label {
+                font-size: 8px;
+            }
+
+            .centaur-footer-badge-name {
+                font-size: 11px;
+            }
+        }
+
+        /* HERO BADGE */
+        .centaur-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(74, 144, 164, 0.1) 0%, rgba(201, 169, 98, 0.15) 50%, rgba(155, 89, 182, 0.1) 100%);
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            border-radius: 50px;
+            padding: 10px 24px 10px 16px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .centaur-badge:hover {
+            border-color: #C9A962;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(201, 169, 98, 0.2);
+        }
+
+        .centaur-badge-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .centaur-badge-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .centaur-badge-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #C9A962;
+        }
+
+        .centaur-badge-title {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #F5F5F0;
+            letter-spacing: 0.05em;
+        }
+
+        .centaur-badge-arrow {
+            margin-left: 8px;
+            color: #C9A962;
+            transition: transform 0.3s ease;
+        }
+
+        .centaur-badge:hover .centaur-badge-arrow {
+            transform: translateX(4px);
+        }
+
+        /* FOOTER BADGE */
+        .centaur-footer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 12px 20px;
+            background: rgba(201, 169, 98, 0.05);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .centaur-footer-badge:hover {
+            background: rgba(201, 169, 98, 0.1);
+            border-color: rgba(201, 169, 98, 0.4);
+        }
+
+        .centaur-footer-badge svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .centaur-footer-badge-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .centaur-footer-badge-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #8A8A8F;
+        }
+
+        .centaur-footer-badge-name {
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #C9A962;
+            letter-spacing: 0.08em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loader" id="loader">
+        <div class="loader-terminal">
+            <div class="loader-line" id="line1">> Szolgáltatások betöltése...</div>
+            <div class="loader-line" id="line2">> Megoldások kalkulációja...</div>
+            <div class="loader-line" id="line3">> Sikeres betöltés.<span class="loader-cursor"></span></div>
+        </div>
+    </div>
+
+    <div class="scanlines"></div>
+    <div class="grain"></div>
+    <div class="cursor" id="cursor"></div>
+
+    <nav class="nav" id="nav">
+        <a href="index.html" class="nav-logo">
+            <span class="nav-logo-bracket">[</span>
+            <span class="nav-logo-text">ConenDigital</span>
+            <span class="nav-logo-bracket">]</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="szolgaltatasok.html" class="active">Szolgáltatások</a></li>
+            <li><a href="weboldal-keszites.html">Weboldal készítés</a></li>
+            <li><a href="webaruhaz-keszites.html">Webáruház készítés</a></li>
+            <li><a href="portfolio.html">Portfólió</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="/blog/">BLOG</a></li>
+            <li><a href="index.html#varosok">Városok</a></li>
+            <li><a href="kapcsolat.html" class="mobile-cta">Ajánlatkérés →</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="nav-hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="https://app.conendigital.hu" class="nav-konfigurator-btn">Weboldal tervező</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-label">// CENTAUR ÜGYNÖKSÉG · SZOLGÁLTATÁSOK</div>
+            <h1 class="hero-title">Három pillér, <span class="hero-title-gradient">audit-alapú árazás</span></h1>
+            <p class="hero-description">
+                Nem csomagok, nem fix árak. <span style="color: var(--cyan)">Üzleti rendszereket</span> építünk
+                szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak. Mindhárom pillér audittal indul,
+                és a tényleges scope-ra szabva épül.
+            </p>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="services-intro reveal">
+            <h2>A <span style="color: var(--cyan)">három pillér</span></h2>
+            <p>
+                Egy rendszer, három belépési pont. Mindhárom pillér audit utáni egyedi árazással;
+                az alábbi tartományok tipikus referenciák, nem fix árajánlatok.
+            </p>
+        </div>
+
+        <!-- Pillér 01: Ajánlatgeneráló weboldalak -->
+        <div class="service-block reveal" id="ajanlatgenerlo-weboldalak">
+            <div class="service-content">
+                <div class="service-number">01</div>
+                <h3 class="service-title">Ajánlatgeneráló weboldalak</h3>
+                <p class="service-description">
+                    Nem bemutatkozó site — sales-eszköz. Konfigurátor, kalkulátor és lead-szűrő ajánlatkérő-flow
+                    Astro 5 stackre építve. A felhasználó már az oldalon lát egy nagyságrendi árat, és csak minőségi
+                    lead jut el hozzád. Tipikus forgatókönyv: szolgáltató cég, ahol a klasszikus "küldj e-mailt és
+                    visszahívunk" flow-t felváltja egy strukturált ajánlatkérési folyamat.
+                </p>
+                <p class="service-description" style="margin-top: 1rem;">
+                    A pozícionálás, árazási logika és a WordPress vs. Astro választás részletei a dedikált
+                    <a href="weboldal-keszites.html" style="color: var(--cyan); text-decoration: underline;">weboldal készítés</a> landingen.
+                </p>
+                <ul class="service-features">
+                    <li>Termék- vagy szolgáltatás-konfigurátor</li>
+                    <li>Árkalkulátor + lead-szűrő ajánlatkérő-flow</li>
+                    <li>JSON-LD strukturált adatok (SEO + AX)</li>
+                    <li>Astro 5: zöld Core Web Vitals</li>
+                    <li>EAA WCAG 2.2 AA megfelelés</li>
+                    <li>301-redirect térkép (ha van meglévő oldal)</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <span class="service-visual-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--cyan);">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <path d="M14 2v6h6"></path>
+                        <path d="M9 13h6"></path>
+                        <path d="M9 17h6"></path>
+                        <circle cx="9" cy="9" r="0.5" fill="currentColor"></circle>
+                    </svg>
+                </span>
+                <div class="service-visual-content">
+                    <div class="service-price">
+                        <div class="service-price-label">Árazási modell</div>
+                        <div class="service-price-value" style="font-size: 1.4rem;">Audit-alapú</div>
+                        <div class="service-price-note">egyedi scope szerint</div>
+                    </div>
+                    <a href="kapcsolat.html" class="service-cta">Kérek auditot →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillér 02: Felújítás + EAA -->
+        <div class="service-block reveal" id="felujitas-eaa">
+            <div class="service-content">
+                <div class="service-number">02</div>
+                <h3 class="service-title">Felújítás + EAA-megfelelés</h3>
+                <p class="service-description">
+                    WordPress / Elementor-örökségből 2026-os szabvány. Astro 5 migráció, Core Web Vitals javítás,
+                    European Accessibility Act audit + WCAG 2.2 AA megfelelés (2025. június 28. óta kötelező az EU-ban).
+                    SEO-megőrzéssel, dokumentáltan. Ez a leggyakoribb belépési pont: meglévő oldal van, lassú mobilon,
+                    EAA-szempontból nem megfelelő, és a Google sem jutalmazza.
+                </p>
+                <p class="service-description" style="margin-top: 1rem;">
+                    Részletes megközelítés és case study a
+                    <a href="wordpress-weboldal-modernizalas.html" style="color: var(--magenta); text-decoration: underline;">WordPress modernizálás</a> oldalon.
+                </p>
+                <ul class="service-features">
+                    <li>WordPress / Elementor → Astro 5 migráció</li>
+                    <li>EAA WCAG 2.2 AA audit + javítás</li>
+                    <li>PageSpeed: LCP / CLS / INP zöldbe</li>
+                    <li>301-redirect térkép, SEO-megőrzés</li>
+                    <li>Dokumentált akadálymentesítési teszt</li>
+                    <li>Core Web Vitals havi monitoring (opt.)</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <span class="service-visual-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--magenta);">
+                        <path d="M21 12a9 9 0 1 1-3.5-7.1"></path>
+                        <path d="M21 4v5h-5"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                </span>
+                <div class="service-visual-content">
+                    <div class="service-price">
+                        <div class="service-price-label">Árazási modell</div>
+                        <div class="service-price-value" style="font-size: 1.4rem;">Audit-alapú</div>
+                        <div class="service-price-note">egyedi scope szerint</div>
+                    </div>
+                    <a href="kapcsolat.html" class="service-cta">EAA-audit kérése →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pillér 03: AI Ops -->
+        <div class="service-block reveal" id="ai-ops">
+            <div class="service-content">
+                <div class="service-number">03</div>
+                <h3 class="service-title">AI Ops</h3>
+                <p class="service-description">
+                    Produktizált folyamat-automatizáció: ChatBot, lead-qualification, ajánlat-automatizáció,
+                    n8n / Make flow-k, CRM-integráció. Havi performance review-val. Meglévő oldalra is telepíthető —
+                    nem kell hozzá teljes újratervezés. Tipikus eredmény: napi 1-3 óra adminisztráció megtakarítás
+                    és gyorsabb első válasz az érdeklődőknek.
+                </p>
+                <ul class="service-features">
+                    <li>Custom ChatBot (GPT)</li>
+                    <li>Lead-qualification + e-mail flow</li>
+                    <li>n8n / Make automatizációs flow-k</li>
+                    <li>CRM-szinkron (HubSpot, Pipedrive, MiniCRM, Notion)</li>
+                    <li>Havi mérőriport és iteráció</li>
+                    <li>Opcionális MCP-endpoint AI-asszisztenseknek</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <span class="service-visual-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--cyan);">
+                        <rect x="3" y="3" width="6" height="6" rx="1"></rect>
+                        <rect x="15" y="3" width="6" height="6" rx="1"></rect>
+                        <rect x="9" y="15" width="6" height="6" rx="1"></rect>
+                        <path d="M6 9v3a3 3 0 0 0 3 3h3"></path>
+                        <path d="M18 9v3a3 3 0 0 1-3 3h0"></path>
+                    </svg>
+                </span>
+                <div class="service-visual-content">
+                    <div class="service-price">
+                        <div class="service-price-label">Árazási modell</div>
+                        <div class="service-price-value" style="font-size: 1.4rem;">250k+ Ft / hó</div>
+                        <div class="service-price-note">egyedi havi díj</div>
+                    </div>
+                    <a href="kapcsolat.html" class="service-cta">AI-audit kérése →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section divider: kiegészítő szolgáltatások -->
+        <div class="services-intro reveal" style="margin-top: 4rem;">
+            <h2>Kiegészítő <span style="color: var(--orange)">szolgáltatások</span></h2>
+            <p>
+                Önállóan vagy a három pillér mellé választható elemek. Ezeket általában már létező rendszerre
+                telepítjük, vagy egy nagyobb projekt részeként.
+            </p>
+        </div>
+
+        <!-- Sub-service: Webshop -->
+        <div class="service-block reveal" id="webshop-fejlesztes">
+            <div class="service-content">
+                <div class="service-number">04</div>
+                <h3 class="service-title">Webáruház / E-commerce</h3>
+                <p class="service-description">
+                    Shopify Storefront API + Astro 5 frontend, vagy WooCommerce-felújítás Astro headless
+                    front-enddel. MCP-Commerce angle: AI-asszisztensek számára olvasható és tranzaktálható
+                    katalógus.
+                </p>
+                <p class="service-description" style="margin-top: 1rem;">
+                    Részletes megközelítés a
+                    <a href="webaruhaz-keszites.html" style="color: var(--cyan); text-decoration: underline;">webáruház készítés</a> landingen.
+                </p>
+                <ul class="service-features">
+                    <li>Shopify Storefront API + Astro 5</li>
+                    <li>WooCommerce headless migráció</li>
+                    <li>Stripe / Barion / Simple integráció</li>
+                    <li>Készletkezelés-szinkron</li>
+                    <li>JSON-LD Product / Offer schema</li>
+                    <li>MCP-előkészítés (AX-ready katalógus)</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <span class="service-visual-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--orange);">
+                        <circle cx="9" cy="20" r="1.5"></circle>
+                        <circle cx="17" cy="20" r="1.5"></circle>
+                        <path d="M3 4h2l2.5 11.5a2 2 0 0 0 2 1.5h7a2 2 0 0 0 2-1.5L21 7H6"></path>
+                    </svg>
+                </span>
+                <div class="service-visual-content">
+                    <div class="service-price">
+                        <div class="service-price-label">Árazási modell</div>
+                        <div class="service-price-value" style="font-size: 1.4rem;">Audit-alapú</div>
+                        <div class="service-price-note">platformtól függően</div>
+                    </div>
+                    <a href="kapcsolat.html" class="service-cta">Webshop-audit →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub-service: AX-audit -->
+        <div class="service-block reveal" id="ax-audit">
+            <div class="service-content">
+                <div class="service-number">05</div>
+                <h3 class="service-title">AX-audit (Agent Experience)</h3>
+                <p class="service-description">
+                    Önálló diagnosztika, ami megnézi, hogy a meglévő oldalad mennyire AI-asszisztens-kompatibilis.
+                    /llms.txt, JSON-LD lefedettség, robots.txt vs. agents.txt, struktúra-olvashatóság, MCP-telepítés
+                    lehetősége. Eredmény: egy konkrét, számozott akcióterv, amit önállóan vagy velünk valósítasz meg.
+                </p>
+                <ul class="service-features">
+                    <li>JSON-LD lefedettség és validáció</li>
+                    <li>/llms.txt és agents.txt javaslat</li>
+                    <li>Crawl-friendly URL és sitemap audit</li>
+                    <li>MCP-endpoint feasibility-vizsgálat</li>
+                    <li>Versenytárs-benchmark (3-5 cég)</li>
+                    <li>Számozott, prioritás-rangsor riport</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <span class="service-visual-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--cyan);">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path d="M21 21l-4.35-4.35"></path>
+                        <path d="M8 11h6"></path>
+                        <path d="M11 8v6"></path>
+                    </svg>
+                </span>
+                <div class="service-visual-content">
+                    <div class="service-price">
+                        <div class="service-price-label">Diagnosztika</div>
+                        <div class="service-price-value" style="font-size: 1.4rem;">Egyedi ajánlat</div>
+                        <div class="service-price-note">~2 hét, írásos riport</div>
+                    </div>
+                    <a href="kapcsolat.html" class="service-cta">AX-audit →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub-service: Brand + tartalom -->
+        <div class="service-block reveal" id="brand-tartalom">
+            <div class="service-content">
+                <div class="service-number">06</div>
+                <h3 class="service-title">Brand + Tartalom</h3>
+                <p class="service-description">
+                    Logó, vizuális rendszer, márkadokumentum, és a CENTAUR-modellben kéz-a-kézzel: tartalom-stratégia,
+                    blogposzt-séma, AI-readable copy. Önállóan vagy egy weboldal-projekt részeként.
+                </p>
+                <ul class="service-features">
+                    <li>Logó (több variáció), brand guideline</li>
+                    <li>Színpaletta, tipográfia, design tokens</li>
+                    <li>Tartalom-stratégia + szerkesztői naptár</li>
+                    <li>AI-readable copy (LLM-friendly markup)</li>
+                    <li>Social sablon és print-anyagok</li>
+                    <li>4-6 blogposzt / hó (opcionális)</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <span class="service-visual-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--magenta);">
+                        <circle cx="13.5" cy="6.5" r="1.5"></circle>
+                        <circle cx="17.5" cy="10.5" r="1.5"></circle>
+                        <circle cx="8.5" cy="7.5" r="1.5"></circle>
+                        <circle cx="6.5" cy="12.5" r="1.5"></circle>
+                        <path d="M12 22a10 10 0 1 1 10-10c0 4-3 6-5 6h-3a3 3 0 0 0 0 6"></path>
+                    </svg>
+                </span>
+                <div class="service-visual-content">
+                    <div class="service-price">
+                        <div class="service-price-label">Árazási modell</div>
+                        <div class="service-price-value" style="font-size: 1.4rem;">Audit-alapú</div>
+                        <div class="service-price-note">scope-tól függően</div>
+                    </div>
+                    <a href="kapcsolat.html" class="service-cta">Konzultáció →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="pricing-header reveal">
+            <h2>Hogyan működik az <span style="color: var(--cyan)">audit-alapú árazás</span>?</h2>
+            <p>
+                Nem fix árcédula. Először megnézzük, hol tart a meglévő rendszer, és mire kell új réteg.
+                Onnan jön az írásos ajánlat — a tipikus tartomány csak referencia.
+            </p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card reveal">
+                <div class="pricing-name">1. Diagnosztika</div>
+                <div class="pricing-price"><span style="color: var(--cyan)">Díjmentes</span> <span>~30 perc</span></div>
+                <p class="pricing-description">
+                    Rövid videohívás. Megnézzük a meglévő oldalt, az ajánlatkérési folyamatot és a célt.
+                    Itt eldönthető, hogy van-e értelme tovább menni.
+                </p>
+                <ul class="pricing-features">
+                    <li>Cél, célközönség, jelenlegi rendszer</li>
+                    <li>Hol szivárog a lead, hol az idő</li>
+                    <li>Melyik pillérre lenne szükség</li>
+                    <li>Becsült nagyságrendi tartomány</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card featured reveal">
+                <div class="pricing-name">2. AX-audit (opt.)</div>
+                <div class="pricing-price"><span style="color: var(--magenta)">Egyedi ajánlat</span> <span>~2 hét</span></div>
+                <p class="pricing-description">
+                    Ha a meglévő oldal AI-readiness szempontjából érdekes, ez egy önálló diagnosztikai termék.
+                    Akkor van értelme, ha nem akarsz azonnal új projektet, csak tudni szeretnéd, hol tartasz.
+                </p>
+                <ul class="pricing-features">
+                    <li>JSON-LD lefedettség, /llms.txt javaslat</li>
+                    <li>MCP-feasibility</li>
+                    <li>Versenytárs-benchmark</li>
+                    <li>Számozott akcióterv</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card reveal">
+                <div class="pricing-name">3. Scope + ajánlat</div>
+                <div class="pricing-price"><span style="color: var(--cyan)">Egyedi</span> <span>~1 hét</span></div>
+                <p class="pricing-description">
+                    A diagnosztika alapján megírjuk a tényleges scope-ot, ütemtervet és írásos ajánlatot.
+                    Ez a tartalmas csomag — itt válik a "tipikus tartomány" konkrét számmá.
+                </p>
+                <ul class="pricing-features">
+                    <li>Részletes scope dokumentum</li>
+                    <li>Ütemterv mérföldkövekkel</li>
+                    <li>Fix árú ajánlat (egy vagy több verzió)</li>
+                    <li>Mérési és átadási terv</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" style="padding-top: 0;">
+        <div class="pricing-header reveal">
+            <h2>Így néz ki a gyakorlatban egy <span style="color: var(--cyan)">CENTAUR-projekt</span></h2>
+            <p>
+                A Tata, Tatabánya, Komárom és környéke piacára készült árnyékolástechnikai projektben
+                egy régi WordPress oldalból gyorsabb, ajánlatgeneráló Astro 5.x rendszert építettünk
+                egyedi árkalkulátorral, kosárlogikával és lead-szűrő flow-val.
+            </p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card reveal">
+                <div class="pricing-name">Migráció</div>
+                <div class="pricing-price"><span style="color: var(--cyan)">WP</span> <span>→ Astro 5.x</span></div>
+                <p class="pricing-description">A cél nem szépítés volt: a lassú, pluginhalmozott rendszer helyett
+                    egy karbantartható, gyors front-end Astro 5 stackre.</p>
+                <ul class="pricing-features">
+                    <li>Tiszta információs architektúra</li>
+                    <li>Mobil-first front-end Astro 5-tel</li>
+                    <li>Jobb SEO- és teljesítmény-alapok</li>
+                    <li>EAA-előkészítés (WCAG 2.2 AA)</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card featured reveal">
+                <div class="pricing-name">Konfigurátor</div>
+                <div class="pricing-price"><span style="color: var(--magenta)">Kosár</span> <span>+ ajánlatkérés</span></div>
+                <p class="pricing-description">A felhasználó nem vakon érdeklődik: összerakja a projektet, becslést
+                    kap a beruházási sávról, majd strukturált ajánlatkérést küld.</p>
+                <ul class="pricing-features">
+                    <li>Redőny / zsalúzia / ZIP Screen logika</li>
+                    <li>Kosárjellegű konfiguráció</li>
+                    <li>Lead-szűrő ajánlatkérő-flow</li>
+                    <li>MCP-előkészítés AI-asszisztenseknek</li>
+                </ul>
+            </div>
+
+            <div class="pricing-card reveal">
+                <div class="pricing-name">Mért gyorsulás</div>
+                <div class="pricing-price"><span style="color: var(--cyan)">57 → 99</span> <span>mobil PSI</span></div>
+                <p class="pricing-description">A Core Web Vitals nem dekoráció: gyorsabb első benyomás, jobb mobilos
+                    UX, erősebb konverziós alap. Az eredmény mérőszámmal igazolt.</p>
+                <ul class="pricing-features">
+                    <li>Mobil PSI: 57 → 99</li>
+                    <li>Asztali PSI: 89 → 100</li>
+                    <li>LCP: 13,5 mp → 1,8 mp</li>
+                    <li>Részletes esettanulmány a portfólióban</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="reveal"
+            style="text-align: center; margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+            <a href="portfolio.html#arnyekolas-case" class="btn">Részletes esettanulmány →</a>
+            <a href="wordpress-weboldal-modernizalas.html" class="btn">WordPress modernizálás →</a>
+            <a href="https://motyanarnyekolas.hu/" class="btn" target="_blank" rel="noopener">Élő projekt →</a>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="faq-header reveal">
+            <h2>Gyakori kérdések</h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    Miért nincsenek fix árak a weboldalon?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Mert a fix ár csak látszólag átlátható: a valóságban vagy alulárazott (és csúszik a projekt),
+                        vagy túlbiztosított (és többet fizetsz, mint amit a scope indokol). Mi audittal indítunk,
+                        scope-pal, és onnan készül egyedi ajánlat. A weboldalon szereplő tartományok tipikus
+                        referenciák, nem fix árajánlatok.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    Mit jelent az EAA-megfelelés és kinek kötelező?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Az European Accessibility Act (EAA) 2025. június 28. óta kötelező az EU-ban a legtöbb
+                        e-kereskedelmi és szolgáltató oldalra. Mi WCAG 2.2 AA szintű audit + javítást végzünk:
+                        szín-kontraszt, billentyűzet-navigáció, képernyőolvasó-kompatibilitás, ARIA-szerepek.
+                        Az eredményt dokumentáljuk, így ha valaki kérdezi, van mire mutatni.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    Mit jelent, hogy CENTAUR-ügynökség vagytok?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        A Conen Digital-t Chris Conen alapította (Founder &amp; CEO). Nincsenek MI-társalapítók
+                        — Chris egyedüli alapítóként vezeti az ügynökséget, és az AI-eszközöket (Claude, Gemini stb.)
+                        munkaeszközként használja a tervezés, fejlesztés és stratégia során. Ez a
+                        <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--cyan);">CENTAUR-modell</a>
+                        lényege: ember + MI együttműködés, nem MI-vezetés.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    Mennyi idő alatt készül el egy projekt?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Ajánlatgeneráló weboldal: tipikusan 4-8 hét. EAA-felújítás: 3-6 hét, a meglévő oldal
+                        komplexitásától függően. AI Ops bevezetés: 2-4 hét az első fázisra, utána havi iteráció.
+                        A pontos ütemterv az audit végén készül el.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    Tudok majd én szerkeszteni a weboldalon?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Astro-projekteknél tartalom-szerkesztő réteget telepítünk (jellemzően Decap CMS, Sanity vagy
+                        egyedi admin), és írásos átadási dokumentumot kapsz. Ha továbbra is fejlesztői támogatás kell,
+                        az havi karbantartási csomaggal megoldható, de nem kötelező — a kód és a hozzáférés a Tiéd.
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-question">
+                    Dolgoztok DACH-ban (Ausztria, Németország) is?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Igen. Aktív DACH-irány a 2026-os stratégiánk része: német nyelvű kommunikáció, EUR számlázás,
+                        EAA + Datensouveränität-fókuszú megközelítés. A PIXELLA brandünk Bécsben aktív, a Conen Digital
+                        magyar és osztrák ügyfelekkel egyaránt dolgozik.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-glow"></div>
+        <div class="cta-content reveal">
+            <h2 class="cta-title">Készen állsz <span>elkezdeni</span>?</h2>
+            <p class="cta-description">Beszéljük meg a projektedet. Az első konzultáció ingyenes.</p>
+            <a href="kapcsolat.html" class="btn">Ingyenes konzultáció →</a>
+        </div>
+    </section>
+
+    <!-- Vizualis konfigurator CTA -->
+    <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
+        <div style="max-width: 640px; margin: 0 auto;">
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
+            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">[<span>ConenDigital</span>]
+                <div style="margin-top: 20px">
+                    <a href="https://centaur-lang.dev" class="centaur-footer-badge" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="cfb1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4A90A4" />
+                                    <stop offset="50%" style="stop-color:#C9A962" />
+                                    <stop offset="100%" style="stop-color:#9B59B6" />
+                                </linearGradient>
+                                <linearGradient id="cfb2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#E8D5A3" />
+                                    <stop offset="100%" style="stop-color:#C9A962" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(32, 32)">
+                                <path d="M 0 -24 A 24 24 0 0 0 0 24" fill="none" stroke="#4A90A4" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <path d="M 0 -24 A 24 24 0 0 1 0 24" fill="none" stroke="#9B59B6" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <circle cx="0" cy="0" r="7" fill="url(#cfb1)" />
+                                <circle cx="0" cy="0" r="3" fill="#F5F5F0" />
+                                <circle cx="0" cy="-24" r="3" fill="url(#cfb2)" />
+                                <circle cx="0" cy="24" r="3" fill="url(#cfb2)" />
+                            </g>
+                        </svg>
+                        <div class="centaur-footer-badge-text">
+                            <span class="centaur-footer-badge-label">Chris Conen · Founder & CEO</span>
+                            <span class="centaur-footer-badge-name">CENTAUR PROJEKT</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="szolgaltatasok.html">Szolgáltatások</a>
+                <a href="portfolio.html">Munkák</a>
+                <a href="rolunk.html">Rólunk</a>
+                <a href="kapcsolat.html">Kapcsolat</a>
+            </div>
+            <div class="footer-social" role="list" aria-label="Conen Digital közösségi profilok">
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.facebook.com/weboldal.keszites.gyor.conen.digital/" target="_blank"
+                    rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M24 12.073C24 5.445 18.63 0 12 0S0 5.445 0 12.073c0 5.989 4.388 10.95 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.67 4.532-4.67 1.312 0 2.686.234 2.686.234v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12H17.2l-.532 3.47H14.87v8.385C19.61 22.95 24 18.09 24 12.073z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link"
+                    href="https://www.youtube.com/@weboldal-webaruhaz-keszites" target="_blank"
+                    rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M23.5 6.2a3.02 3.02 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6C1.8 4.2 1 5 1.5 6.1 0 8.1 0 12 0 12s0 3.9.5 5.9c.3 1.1 1.1 1.8 2.1 2.1 2.2.3 4.3.5 9.3.5s7.1 0 9.4-.5c1.1-.3 1.9-1.1 2.1-2.1.5-2 .5-5.9.5-5.9s0-3.9-.5-5.9zM9.5 15.5v-7L16 12l-6.5 3.5z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.tiktok.com/@conen_digital"
+                    target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 0 1-5.2 1.5A2.9 2.9 0 0 1 9.5 12a2.9 2.9 0 0 1 .9.1V9.4a6.8 6.8 0 0 0-1-.1A6.3 6.3 0 0 0 5 20.1a6.3 6.3 0 0 0 10.9-4.4v-7a8.2 8.2 0 0 0 4.7 1.5V6.8a4.8 4.8 0 0 1-1-.1z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://www.instagram.com/conendigital/"
+                    target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.6 4.8-4.9 4.9-1.2.1-1.6.1-4.7.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.2 1.6-4.8 4.9-4.9 1.2-.1 1.6-.1 4.7-.1zM12 0C8.7 0 8.3 0 7 .1 2.7.3.3 2.6.1 7 0 8.3 0 8.7 0 12c0 3.3 0 3.7.1 5 .2 4.3 2.5 6.6 6.9 6.8 1.3.1 1.7.1 5 .1s3.7 0 5-.1c4.3-.2 6.5-2.5 6.7-6.8.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.2-4.3-2.4-6.5-6.7-6.7-1.3-.1-1.7-.1-4.9-.1zm0 5.8a6.2 6.2 0 1 0 0 12.3 6.2 6.2 0 0 0 0-12.3zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z" />
+                    </svg>
+                </a>
+                <a role="listitem" class="footer-social-link" href="https://x.com/weboldal_honlap" target="_blank"
+                    rel="noopener noreferrer" title="X" aria-label="X (Twitter)">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+            <div
+                style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 2; max-width: 800px;">
+                Weboldal készítés:
+                <a href="index.html" style="color: rgba(0,240,255,0.5); text-decoration: none;">Győr</a> ·
+                <a href="weboldal-keszites-budapest.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Budapest</a> ·
+                <a href="weboldal-keszites-debrecen.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Debrecen</a> ·
+                <a href="weboldal-keszites-szeged.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szeged</a> ·
+                <a href="weboldal-keszites-miskolc.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Miskolc</a> ·
+                <a href="weboldal-keszites-pecs.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Pécs</a> ·
+                <a href="weboldal-keszites-nyiregyhaza.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Nyíregyháza</a> ·
+                <a href="weboldal-keszites-kecskemet.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kecskemét</a> ·
+                <a href="weboldal-keszites-szekesfehervar.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Székesfehérvár</a> ·
+                <a href="weboldal-keszites-szombathely.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szombathely</a> ·
+                <a href="weboldal-keszites-sopron.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Sopron</a> ·
+                <a href="weboldal-keszites-szolnok.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szolnok</a> ·
+                <a href="weboldal-keszites-eger.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Eger</a> ·
+                <a href="weboldal-keszites-veszprem.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Veszprém</a> ·
+                <a href="weboldal-keszites-zalaegerszeg.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Zalaegerszeg</a> ·
+                <a href="weboldal-keszites-kaposvar.html"
+                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kaposvár</a>
+            </div>
+            <div class="footer-copyright">© 2025 ConenDigital. Chris Conen; a kivitelezésben AI-eszközöket is használunk emberi
+                felügyelet mellett.</div>
+        </div>
+    </footer>
+
+    <script>
+        const loader = document.getElementById('loader'), lines = ['line1', 'line2', 'line3']; lines.forEach((id, i) => { setTimeout(() => { document.getElementById(id).classList.add('visible') }, i * 400) }); window.addEventListener('load', () => { setTimeout(() => { loader.classList.add('hidden') }, 1500) });
+        const cursor = document.getElementById('cursor'); let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0; document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY }); function animateCursor() { cursorX += (mouseX - cursorX) * 0.1; cursorY += (mouseY - cursorY) * 0.1; cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px'; requestAnimationFrame(animateCursor) } animateCursor(); document.querySelectorAll('a,button,.pricing-card,.service-visual').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')) });
+        const nav = document.getElementById('nav'), hamburger = document.getElementById('hamburger'), navLinks = document.getElementById('navLinks'); window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50) }); hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '' }); document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('active'); document.body.style.overflow = '' }) }); document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navLinks.classList.contains('active')) { hamburger.classList.remove('active'); navLinks.classList.remove('active'); document.body.style.overflow = '' } });
+        const reveals = document.querySelectorAll('.reveal'); function revealOnScroll() { reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active') }) } window.addEventListener('scroll', revealOnScroll); window.addEventListener('load', revealOnScroll);
+        document.querySelectorAll('.faq-question').forEach(btn => { btn.addEventListener('click', () => { const item = btn.parentElement; document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('active') }); item.classList.toggle('active') }) });
+    </script>
+<script src="/blog-widget.js" defer></script>
+<script src="https://nexus.conendigital.hu/widget.js" defer></script>
+</body>
+
+</html>
+

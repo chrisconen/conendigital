@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adatvédelmi tájékoztató | Conen Digital</title>
+    <meta name="description"
+        content="A Conen Digital adatvédelmi tájékoztatója — milyen adatokat kezelünk, miért, mennyi ideig, és milyen jogaid vannak a GDPR alapján.">
+    <meta name="author" content="Chris Conen">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://conendigital.hu/adatvedelem">
+
+    <meta property="og:title" content="Adatvédelmi tájékoztató | Conen Digital">
+    <meta property="og:description" content="Milyen adatokat kezelünk, miért, mennyi ideig, és milyen jogaid vannak a GDPR alapján.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://conendigital.hu/adatvedelem">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --gray: #1a1a1a;
+            --gray-light: #2a2a2a;
+            --cyan: #00f0ff;
+            --magenta: #bf00ff;
+            --font-main: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--black);
+            color: var(--white);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        ::selection { background: var(--cyan); color: var(--black); }
+        a { color: var(--cyan); text-decoration: none; transition: opacity .2s; }
+        a:hover { opacity: 0.75; }
+
+        .scanlines {
+            position: fixed; inset: 0; pointer-events: none; z-index: 9997;
+            background: repeating-linear-gradient(0deg, rgba(0,0,0,.1) 0px, rgba(0,0,0,.1) 1px, transparent 1px, transparent 2px);
+            opacity: 0.15;
+        }
+
+        .nav {
+            position: sticky; top: 0; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(10,10,10,0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-light);
+        }
+        .nav-logo {
+            font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;
+            color: var(--white); letter-spacing: 0.02em;
+        }
+        .nav-logo span { color: var(--cyan); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--white); opacity: 1; }
+        @media (max-width: 720px) { .nav-links { display: none; } }
+
+        main { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+
+        .header-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--cyan);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        h1 .accent { color: var(--cyan); }
+        .updated {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        h2 .num {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--cyan);
+            margin-right: 0.5rem;
+            opacity: 0.8;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: rgba(255,255,255,0.95);
+        }
+
+        p { margin-bottom: 1rem; color: rgba(255,255,255,0.82); }
+        ul { margin: 0.6rem 0 1rem 1.5rem; color: rgba(255,255,255,0.82); }
+        li { margin-bottom: 0.4rem; }
+
+        .info-block {
+            background: var(--gray);
+            border-left: 2px solid var(--cyan);
+            padding: 1rem 1.2rem;
+            margin: 1rem 0 1.5rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        .info-block strong { color: var(--white); }
+        .info-block p { margin-bottom: 0.3rem; }
+        .info-block p:last-child { margin-bottom: 0; }
+
+        .footer {
+            border-top: 1px solid var(--gray-light);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+        .footer a { color: rgba(255,255,255,0.7); }
+        .footer-links { margin-bottom: 1rem; }
+        .footer-links a { margin: 0 0.6rem; }
+    </style>
+</head>
+
+<body>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">[<span>ConenDigital</span>]</a>
+        <ul class="nav-links">
+            <li><a href="szolgaltatasok.html">Szolgáltatások</a></li>
+            <li><a href="portfolio.html">Portfólió</a></li>
+            <li><a href="rolunk.html">Rólunk</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="header-label">// JOGI · ADATVÉDELEM</div>
+        <h1>Adatvédelmi <span class="accent">tájékoztató</span></h1>
+        <p class="updated">Hatályos: 2026. május 17.</p>
+
+        <h2><span class="num">01</span>Az adatkezelő</h2>
+        <div class="info-block">
+            <p><strong>Név:</strong> Conen Digital (Chris Conen e.v.)</p>
+            <p><strong>Székhely:</strong> 9022 Győr, Magyarország</p>
+            <p><strong>E-mail:</strong> <a href="mailto:info@conendigital.hu">info@conendigital.hu</a></p>
+            <p><strong>Telefon:</strong> +36 30 569 6550</p>
+            <p><strong>Honlap:</strong> conendigital.hu</p>
+        </div>
+        <p>
+            A jelen tájékoztató a Conen Digital által üzemeltetett <a href="https://conendigital.hu">conendigital.hu</a>
+            weboldalon és kapcsolódó aldomaineken (pl. <a href="https://nexus.conendigital.hu">nexus.conendigital.hu</a>)
+            végzett személyesadat-kezelést szabályozza, az EU 2016/679 (GDPR) rendelet és a 2011. évi CXII. törvény (Infotv.) alapján.
+        </p>
+
+        <h2><span class="num">02</span>Milyen adatokat kezelünk és miért</h2>
+
+        <h3>2.1 Kapcsolatfelvételi űrlap / e-mail</h3>
+        <p>
+            Ha a kapcsolatfelvételi űrlapon keresztül, e-mailben vagy telefonon kapcsolatba lépsz velünk, az általad
+            megadott adatokat (név, e-mail cím, telefonszám, üzenet tartalma, opcionális cégadatok) kezeljük.
+        </p>
+        <ul>
+            <li><strong>Cél:</strong> a megkeresésre való válaszadás, ajánlatadás, szerződéskötés előkészítése.</li>
+            <li><strong>Jogalap:</strong> GDPR 6. cikk (1) b) — szerződéskötést megelőző lépések, vagy 6. cikk (1) f) — jogos érdek (üzleti kommunikáció).</li>
+            <li><strong>Megőrzés:</strong> aktív projekt esetén a projekt lezárásáig + 5 év (számviteli kötelezettség). Ha nem jön létre együttműködés: 12 hónap.</li>
+        </ul>
+
+        <h3>2.2 NEXUS AI chatbot beszélgetések</h3>
+        <p>
+            A weboldalba ágyazott NEXUS AI chatbot beszélgetéseit (a látogató által beírt üzenetek és a bot által
+            adott válaszok szövege, időbélyeg, használt nyelvi model azonosítója, technikai meta-adatok) naplózzuk.
+        </p>
+        <ul>
+            <li><strong>Cél:</strong> a szolgáltatás minőségének fejlesztése, a tudásbázis bővítése, hibakeresés.</li>
+            <li><strong>Jogalap:</strong> GDPR 6. cikk (1) f) — jogos érdek (szolgáltatás-minőség javítása).</li>
+            <li><strong>Megőrzés:</strong> legfeljebb 30 nap, ezt követően automatikusan törlésre kerül.</li>
+            <li>
+                <strong>Fontos:</strong> a bot nem azonosít be — ne adj meg személyes adatot (teljes név, lakcím,
+                bankkártya, jelszó) a beszélgetésben. Ha mégis megteszed, ezeket a megőrzési időn belül kérésre törüljük.
+            </li>
+        </ul>
+
+        <h3>2.3 Technikai logok</h3>
+        <p>
+            A weboldalt kiszolgáló infrastruktúra (Vercel) automatikusan naplózza a HTTP kéréseket: IP-cím, böngésző
+            User-Agent, kérés időbélyege, lekért URL, válaszkód. Ezek a logok a szolgáltató rendszerében ~30 napig tárolódnak.
+        </p>
+        <ul>
+            <li><strong>Cél:</strong> biztonsági incidensek észlelése, hibadiagnosztika, visszaélések elhárítása.</li>
+            <li><strong>Jogalap:</strong> GDPR 6. cikk (1) f) — jogos érdek (rendszerbiztonság).</li>
+            <li><strong>Megőrzés:</strong> 30 nap.</li>
+        </ul>
+
+        <h3>2.4 Sütik (cookies)</h3>
+        <p>
+            A weboldal nem helyez el marketingcélú vagy nyomkövető sütiket. A működéshez feltétlenül szükséges sütik
+            (pl. session, beállítások) használata során nem keletkezik személyes adat. Külső analitikai szolgáltatást
+            (pl. Google Analytics) jelenleg nem üzemeltetünk.
+        </p>
+
+        <h2><span class="num">03</span>Adatfeldolgozók és adattovábbítás</h2>
+        <p>Az adatok feldolgozásához az alábbi külső szolgáltatókat vesszük igénybe:</p>
+        <ul>
+            <li>
+                <strong>Vercel Inc.</strong> (440 N Barranca Ave #4133, Covina, CA 91723, USA) — hosting, szerver-logok.
+                EU–US adattovábbítás a Bizottság megfelelőségi határozata (Adequacy Decision, Data Privacy Framework) alapján.
+            </li>
+            <li>
+                <strong>LLM-szolgáltatók</strong> (OpenAI, Anthropic, Google, DeepSeek, Groq — a beállított modeltől függően,
+                jellemzően az egyik egyszerre) — a chatbot válaszainak generálásához a beszélgetés szövege továbbításra
+                kerül a szolgáltató API-jához. Az adott szolgáltató saját adatvédelmi szabályzata vonatkozik az
+                ottani feldolgozásra (jellemzően USA, SCC vagy Adequacy Decision alapján). A chat tartalmát a
+                szolgáltatók szerződéses kötelezettség szerint nem használják fel további tréninghez.
+            </li>
+            <li>
+                <strong>GitHub Inc.</strong> — a weboldal forráskódja itt tárolódik; végfelhasználói személyes adat nem kerül ide.
+            </li>
+        </ul>
+        <p>Egyéb harmadik fél részére adatot nem adunk át.</p>
+
+        <h2><span class="num">04</span>A te jogaid</h2>
+        <p>A GDPR alapján az alábbi jogok illetnek meg:</p>
+        <ul>
+            <li><strong>Tájékoztatáshoz való jog</strong> — visszajelzést kérhetsz arról, hogy kezelünk-e rólad adatot, és ha igen, milyet.</li>
+            <li><strong>Helyesbítéshez való jog</strong> — pontatlan adataid kijavítását kérheted.</li>
+            <li><strong>Törléshez való jog ("elfeledtetéshez való jog")</strong> — bizonyos feltételek esetén adataid törlését kérheted.</li>
+            <li><strong>Az adatkezelés korlátozásához való jog</strong> — kérheted, hogy az adatokat csak tárolva, de ne aktívan kezeljük.</li>
+            <li><strong>Adathordozhatósághoz való jog</strong> — strukturált, géppel olvasható formában megkaphatod az általad megadott adatokat.</li>
+            <li><strong>Tiltakozáshoz való jog</strong> — jogos érdeken alapuló adatkezelés ellen tiltakozhatsz.</li>
+        </ul>
+        <p>
+            Jogaid gyakorlásához írj az <a href="mailto:info@conendigital.hu">info@conendigital.hu</a> címre.
+            A kérésre 30 napon belül érdemi választ adunk.
+        </p>
+
+        <h2><span class="num">05</span>Panasz, jogorvoslat</h2>
+        <p>
+            Ha úgy érzed, hogy az adatkezelés nem felel meg a jogszabályoknak, panaszt nyújthatsz be a felügyeleti hatósághoz:
+        </p>
+        <div class="info-block">
+            <p><strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong></p>
+            <p>Cím: 1055 Budapest, Falk Miksa utca 9–11.</p>
+            <p>Postacím: 1363 Budapest, Pf. 9.</p>
+            <p>Telefon: +36 1 391 1400</p>
+            <p>E-mail: <a href="mailto:ugyfelszolgalat@naih.hu">ugyfelszolgalat@naih.hu</a></p>
+            <p>Honlap: <a href="https://naih.hu" target="_blank" rel="noopener">naih.hu</a></p>
+        </div>
+        <p>Bírósági jogorvoslat is rendelkezésedre áll: az adatkezelővel szemben polgári pert indíthatsz a lakóhelyed szerinti törvényszéken.</p>
+
+        <h2><span class="num">06</span>Adatbiztonság</h2>
+        <p>
+            Az adatokat ipari szabványnak megfelelő titkosított csatornán (HTTPS/TLS) továbbítjuk és tároljuk.
+            A hozzáférés szigorúan korlátozott, csak a Conen Digital projekteken dolgozó személyek számára.
+            Adatvédelmi incidens esetén a vonatkozó jogszabályok szerint 72 órán belül értesítjük a NAIH-ot és — ha az
+            érintetteket valószínűsíthetően magas kockázat éri — közvetlenül az érintetteket is.
+        </p>
+
+        <h2><span class="num">07</span>A tájékoztató módosítása</h2>
+        <p>
+            A tájékoztatót szükség szerint frissítjük (új szolgáltatás bevezetése, jogszabályváltozás esetén). A módosítás
+            tényét és a hatálybalépés dátumát az oldal tetején jelezzük. Lényeges változásról aktív ügyfeleinket e-mailben is
+            értesítjük.
+        </p>
+
+        <h2><span class="num">08</span>Kapcsolat adatvédelmi ügyekben</h2>
+        <p>
+            Minden adatvédelemmel kapcsolatos kérdéseddel keress minket az
+            <a href="mailto:info@conendigital.hu">info@conendigital.hu</a> címen. Külön adatvédelmi tisztviselőt (DPO)
+            nem nevezünk ki, mert a tevékenység nem éri el a GDPR 37. cikk szerinti küszöböt; az adatvédelmi
+            kérdésekért közvetlenül az adatkezelő (Chris Conen) felelős.
+        </p>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">Főoldal</a>
+            <a href="szolgaltatasok.html">Szolgáltatások</a>
+            <a href="kapcsolat.html">Kapcsolat</a>
+        </div>
+        <div>© 2026 Conen Digital · Chris Conen</div>
+    </footer>
+
+    <script src="https://nexus.conendigital.hu/widget.js" defer></script>
+</body>
+
+</html>
