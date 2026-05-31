@@ -6,3 +6,7 @@ __pycache__/
 *.mp3
 *.pdf
 Untitled
+
+# Nested git repos (submodules) — not part of this project
+centaur-lang/
+conendigital-chat-worker/
