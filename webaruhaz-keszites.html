@@ -903,6 +903,40 @@
                 font-size: 0.68rem;
             }
         }
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.85rem 1.5rem;
+            background: var(--gold);
+            color: #09090b;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 9999;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        .sticky-cta:hover {
+            background: var(--gold-text);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
     </style>
 <script defer src="js/nav-auto-hide.js"></script>
 </head>
@@ -980,22 +1014,34 @@
                     <h3>JSON-LD minden termékre</h3>
                     <p>Product, Offer, AggregateRating schema. A Google rich snippet, az AI-asszisztens
                         strukturált válasz — egy adathalmaz, két csatorna.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Astro 5 + Storefront API</h3>
                     <p>Default választás 2026-ban: Shopify backend a tartalom-csapatnak, Astro 5 frontend
                         a teljesítményhez. Zöld Core Web Vitals, hosszú távon olcsóbb karbantartás.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>EAA-megfelelés napi 1-től</h3>
                     <p>WCAG 2.2 AA szint a checkout flow-ig: szín-kontraszt, billentyűzet-navigáció,
                         képernyőolvasó-kompatibilitás. 8% potenciális vásárló, akit különben elveszítesz.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>MCP-endpoint (opcionális)</h3>
                     <p>Ha készen állsz a következő lépésre: egy MCP-endpoint, amin keresztül az AI-asszisztens
                         közvetlenül tud terméket keresni, kosárba tenni, checkout-ot indítani. 2026-ban
                         kategória-elsőség, 2027-re alapfeltétel.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1015,23 +1061,35 @@
                     <h3>Márkaépítő D2C márkák</h3>
                     <p>Ahol a termékhez tartozik egy "melyik nekem való?" típusú kérdés, és az AI-asszisztens
                         a vásárlási döntést tudja gyorsítani: kozmetikum, kiegészítők, niche divat, lifestyle.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Szakipar és B2B</h3>
                     <p>Variánsok, egységár, kompatibilitási mátrix, projekt-jellegű kosár. Ha egy mérnök
                         AI-tól kérdezi meg "milyen csavar való ehhez a tervhez", a válaszban szerepelni érdemes.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Konfigurátoros értékesítés</h3>
                     <p>Ha a vevőnek össze kell állítania a terméket méretekkel és opciókkal — a Mótyán-féle
                         árnyékolás-konfigurátor mintája. Ezt MCP-vel egy AI-asszisztens is végig tudja vezetni
                         a vásárlót.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Woo/Shopify kinőtte</h3>
                     <p>Ha a pluginok vagy a sablon már fék, érdemes egy tiszta új alapot tervezni headless
                         front-enddel. Részletek a
                         <a class="text-link" href="wordpress-weboldal-modernizalas.html">modernizálás oldalon</a>.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1111,17 +1169,26 @@
                     <p style="font-size: 1.4rem; color: var(--gold); font-weight: 700;">Egyedi ajánlat</p>
                     <p>Shopify Storefront API + Astro 5 frontend, alap MCP-előkészítés, EAA WCAG 2.2 AA, Stripe vagy
                         Barion integráció, JSON-LD Product schema.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Mi tolja felfelé?</h3>
                     <p>Élő MCP-endpoint (nem csak előkészítés), 2+ nyelv, ERP/készlet-szinkron, egyedi B2B
                         árazási logika, custom checkout flow, magas variáns-szám (1000+ SKU), egyedi
                         konfigurátor.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Mi tolja lefelé?</h3>
                     <p>Standard Shopify-ökoszisztéma használata, 1 nyelv, kis termékkatalógus,
                         kész copy és termékfotók, alapszintű MCP-előkészítés (csak JSON-LD + llms.txt).</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
             </div>
             <p class="section-intro" style="margin-top: 2rem;">
@@ -1400,6 +1467,7 @@
     </script>
 <script src="/blog-widget.js" defer></script>
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
+<a href="kapcsolat.html" class="sticky-cta">Ajánlatot kérek 24 órán belül →</a>
 </body>
 
 </html>

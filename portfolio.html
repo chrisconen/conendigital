@@ -1899,6 +1899,40 @@
                 font-size: 2.5rem;
             }
         }
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.85rem 1.5rem;
+            background: var(--gold);
+            color: #09090b;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 9999;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        .sticky-cta:hover {
+            background: var(--gold-text);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
     </style>
 <script defer src="js/nav-auto-hide.js"></script>
 </head>
@@ -2844,6 +2878,7 @@
     </script>
 <script src="/blog-widget.js" defer></script>
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
+<a href="kapcsolat.html" class="sticky-cta">Ajánlatot kérek 24 órán belül →</a>
 </body>
 
 </html>

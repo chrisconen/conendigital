@@ -927,6 +927,40 @@
                 content: "Astro";
             }
         }
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.85rem 1.5rem;
+            background: var(--gold);
+            color: #09090b;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 9999;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        .sticky-cta:hover {
+            background: var(--gold-text);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
     </style>
 <script defer src="js/nav-auto-hide.js"></script>
 </head>
@@ -1001,6 +1035,9 @@
                         szint: szín-kontraszt, billentyűzet-navigáció, képernyőolvasó. NAH-bejelentés bírsággal jár,
                         és ~8% potenciális ügyfél (vakok, képernyőolvasósok) sem fér hozzá az oldalhoz.
                     </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>AX-readiness: 2027-re alapfeltétel</h3>
@@ -1009,6 +1046,9 @@
                         A meglévő WP-oldalak strukturált adatai szegényesek, /llms.txt nincs, agents.txt nincs.
                         Aki ma frissít, két év múlva már nem lesz lemaradva.
                     </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Core Web Vitals: SEO-büntetés</h3>
@@ -1017,6 +1057,9 @@
                         értékeket produkálnak mobilon — és a Google láthatóan büntet érte. Egy Astro 5 migráció után
                         ezek zöldbe kerülnek.
                     </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
             </div>
 
@@ -1198,18 +1241,27 @@
                     <p style="font-size: 1.4rem; color: var(--gold); font-weight: 700;">Egyedi ajánlat</p>
                     <p>Felújítás + EAA-megfelelés komplett scope: WP→Astro 5 migráció, 301-redirect térkép,
                         WCAG 2.2 AA audit + javítás, Core Web Vitals zöldbe, alap AX-readiness.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Mi tolja felfelé?</h3>
                     <p>Nagy oldalszám (50+ aloldal), magas plugin-szám, egyedi PHP-funkciók migrálása,
                         2+ nyelv, komplex tartalom-átemelés, EAA-szempontból kritikus kiindulóállapot
                         (sok komponens nem akadálymentes), CRM-integráció.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Mi tolja lefelé?</h3>
                     <p>Kisebb oldal (10-15 aloldal), tiszta tartalom, kevés plugin, 1 nyelv, részben jó kiinduló
                         EAA-állapot. Ha csak finomhangolás (cache, képek, plugin-tisztítás) kell migráció helyett,
                         külön scope, sokkal kisebb keret.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
             </div>
             <p class="section-intro" style="margin-top: 2rem;">
@@ -1231,6 +1283,9 @@
                         Egészségügy, oktatás, közigazgatás, e-kereskedelem, banki és pénzügyi szolgáltatás —
                         ahol a WCAG 2.2 AA megfelelés nem csak versenyelőny, hanem kötelező és kontrollált.
                     </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Szolgáltató cégeknek</h3>
@@ -1240,6 +1295,9 @@
                         részletek az <a href="weboldal-keszites.html"
                             style="color: var(--gold); text-decoration: underline;">ajánlatgeneráló weboldalak</a> oldalon.
                     </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>Webshop-tulajdonosoknak</h3>
@@ -1248,6 +1306,9 @@
                         Astro 5-re, MCP-Commerce-előkészítéssel. Részletek a <a href="webaruhaz-keszites.html"
                             style="color: var(--gold); text-decoration: underline;">webáruház készítés</a> oldalon.
                     </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
                 <div class="card">
                     <h3>SEO-büntetést szenvedőknek</h3>
@@ -1256,6 +1317,9 @@
                         rontja a pozíciókat. Egy migráció után ezek tipikusan 2-4 hét alatt zöldbe kerülnek,
                         és a SEO-érték visszaáll vagy javul.
                     </p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1451,6 +1515,7 @@
     </script>
 <script src="/blog-widget.js" defer></script>
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
+<a href="kapcsolat.html" class="sticky-cta">Ajánlatot kérek 24 órán belül →</a>
 </body>
 
 </html>

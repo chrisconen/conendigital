@@ -1449,6 +1449,40 @@
             color: #C9A962;
             letter-spacing: 0.08em;
         }
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.85rem 1.5rem;
+            background: var(--gold);
+            color: #09090b;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 9999;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        .sticky-cta:hover {
+            background: var(--gold-text);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
     </style>
 <script defer src="js/nav-auto-hide.js"></script>
 </head>
@@ -1535,6 +1569,9 @@
                     <li>EAA WCAG 2.2 AA megfelelés</li>
                     <li>301-redirect térkép (ha van meglévő oldal)</li>
                 </ul>
+                <div style="margin-top: 1.5rem;">
+                    <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
@@ -1580,6 +1617,9 @@
                     <li>Dokumentált akadálymentesítési teszt</li>
                     <li>Core Web Vitals havi monitoring (opt.)</li>
                 </ul>
+                <div style="margin-top: 1.5rem;">
+                    <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
@@ -1619,6 +1659,9 @@
                     <li>Havi mérőriport és iteráció</li>
                     <li>Opcionális MCP-endpoint AI-asszisztenseknek</li>
                 </ul>
+                <div style="margin-top: 1.5rem;">
+                    <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
@@ -1672,6 +1715,9 @@
                     <li>JSON-LD Product / Offer schema</li>
                     <li>MCP-előkészítés (AX-ready katalógus)</li>
                 </ul>
+                <div style="margin-top: 1.5rem;">
+                    <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
@@ -1710,6 +1756,9 @@
                     <li>Versenytárs-benchmark (3-5 cég)</li>
                     <li>Számozott, prioritás-rangsor riport</li>
                 </ul>
+                <div style="margin-top: 1.5rem;">
+                    <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
@@ -1748,6 +1797,9 @@
                     <li>Social sablon és print-anyagok</li>
                     <li>4-6 blogposzt / hó (opcionális)</li>
                 </ul>
+                <div style="margin-top: 1.5rem;">
+                    <a href="kapcsolat.html" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
@@ -2131,6 +2183,7 @@
     </script>
 <script src="/blog-widget.js" defer></script>
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
+<a href="kapcsolat.html" class="sticky-cta">Ajánlatot kérek 24 órán belül →</a>
 </body>
 
 </html>

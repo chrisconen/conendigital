@@ -992,6 +992,42 @@
             display: none;
         }
 
+        /* Sticky mobile CTA */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.85rem 1.5rem;
+            background: var(--gold);
+            color: #09090b;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 9999;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        .sticky-cta:hover {
+            background: var(--gold-text);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
+
 
 
         /* Hero Section */
@@ -2935,11 +2971,10 @@
                     <span class="hero-title-subline">bérelhető weboldalak és webáruházak</span>
                 </h1>
                 <p class="hero-description">
-                    A weboldal, webáruház akkor ér valamit, ha a látogató 30 másodperc alatt el tud indítani egy
-                    ajánlatkérést, foglalást vagy vásárlást — segítség nélkül. Ilyen oldalakat építünk:
-                    ajánlatgenerálóval, foglalós rendszerrel, vagy AI-olvasható webshoppal. <span class="hero-description-accent">Mellékhatás</span>:
-                    a Google és az AI-keresők is látják és ajánlják az ügyfeleknek a webáruházad és weboldalad
-                    még munkaidőn kívül is, 24/7 beosztásban.
+                    Weboldal, webáruház — 30 másodperc alatt elindít egy ajánlatkérést, foglalást vagy vásárlást,
+                    segítség nélkül. Ez nem dizájn, hanem <span class="hero-description-accent">konverziós architektúra</span>:
+                    gyors oldal, érthető ajánlat, automatikus lead-kvalifikálás. Mellékhatás: a Google és az AI-keresők
+                    is ajánlják az ügyfeleidnek — 24/7, akkor is, amikor te alszol.
                 </p>
 
                 <div class="hero-cta">
@@ -3029,6 +3064,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     visszaigazolás. Évi <span class="gold-text">500+ óra</span>, ami a vállalkozás
                     építésére is mehetne. Egy ajánlatgeneráló oldal ezt a flow-t legalább részben automatizálja.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <div class="service-card reveal">
@@ -3048,6 +3086,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <span class="gold-text">azonnal és 24/7</span>, az minden alkalommal pénz az asztalon
                     hagyva.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <div class="service-card reveal">
@@ -3064,6 +3105,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     követelményeknek, és <span class="gold-text">nem hoz mérhető bevételt</span>.
                     Ez nem dizájn-kérdés — technikai és stratégiai újrahuzalozás kell.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -3116,6 +3160,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         tipikus tartomány: 100.000 – 300.000 Ft
                     </div>
                 </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <!-- Pillar 2: Felújítás + EAA - FEATURED -->
@@ -3149,6 +3196,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
                         tipikus tartomány: 250.000 – 600.000 Ft
                     </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
                 </div>
             </div>
 
@@ -3184,6 +3234,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
                         tipikus: 50.000 Ft-tól / hó
                     </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
                 </div>
             </div>
         </div>
@@ -3630,6 +3683,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 Először átnézzük a jelenlegi oldalt, az ajánlatodat és a szűk keresztmetszeteket.
                 Az első konzultáció <span class="gold-text">díjmentes</span>.
             </p>
+            <p style="font-size: 0.85rem; color: var(--text-tertiary); margin-bottom: 2rem; font-family: var(--font-mono);">
+                ✓ 30 napos elégedettségi garancia · Átlátható árazás, rejtett költségek nélkül
+            </p>
             <a href="#contact" class="btn btn-primary">
                 Kapcsolatfelvétel
                 <span>→</span>
@@ -3800,7 +3856,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="config-cta-inner">
             <h2 class="config-cta-title">Próbáld ki a <span>vizuális tervezőt</span></h2>
             <p class="config-cta-desc">Néhány lépésben összeállítod a projekted , vállalkozásod vagy terméked weboldalát. Kódolás nélkül készíthetsz weboldalt, letöltheted és bárhol, bármikor használhatod!</p>
-            <a href="https://conendigital.hu/" class="btn btn-primary">Konfigurátor megnyitása →</a>
+            <a href="https://app.conendigital.hu/" class="btn btn-primary">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
@@ -4564,8 +4620,6 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     <div class="cert-modal-counter" id="certModalCounter"></div>
 </div>
 
-</body>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         try {
@@ -4665,6 +4719,10 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
 })();
 </script>
+
+<a href="#contact" class="sticky-cta">Ajánlatot kérek 24 órán belül →</a>
+
+</body>
 
 </html>
 

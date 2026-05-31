@@ -2513,6 +2513,40 @@
             .cert-modal-nav { width: 40px; height: 40px; font-size: 1.4rem; }
             .cert-modal-close { top: 0.75rem; right: 0.75rem; width: 40px; height: 40px; font-size: 1.4rem; }
         }
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.85rem 1.5rem;
+            background: var(--gold);
+            color: #09090b;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 9999;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        .sticky-cta:hover {
+            background: var(--gold-text);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
     </style>
 </head>
 
@@ -2675,6 +2709,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     A <span style="color: var(--cyan)">kétlaki ügyfélszolgálat</span> időzónák és nyelvek miatt
                     megterhelő. Automatizált FAQ, chat és e-mail lánc sokat segít.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <div class="service-card reveal" style="border-top: 3px solid var(--magenta);">
@@ -2684,6 +2721,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     Ha <span style="color: var(--magenta)">nem vagy elérhető</span> este, a lead máshova megy. AI első
                     válasz nem luxus.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <div class="service-card reveal" style="border-top: 3px solid var(--cyan);">
@@ -2693,6 +2733,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     A <strong>weboldal készítés Szombathely</strong> kulcsszó mögött gyakran elavult motor áll.
                     Technikai frissítés kell a jobb láthatósághoz.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -2734,6 +2777,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <div style="font-size: 1.5rem; font-weight: 700;"><span style="color: var(--cyan)">250.000</span> Ft
                     </div>
                 </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <!-- Pillar 2: 24/7 Employee - FEATURED -->
@@ -2763,6 +2809,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <div style="font-size: 1.5rem; font-weight: 700;"><span style="color: var(--magenta)">450.000</span>
                         Ft + havi díj</div>
                 </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <!-- Pillar 3: Growth Engine -->
@@ -2786,6 +2835,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">HAVI DÍJ:</div>
                     <div style="font-size: 1.5rem; font-weight: 700;"><span style="color: var(--cyan)">Egyedi</span>
                         árazás</div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
                 </div>
             </div>
         </div>
@@ -3290,6 +3342,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(201,169,98,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
+
+<a href="#contact" class="sticky-cta">Ajánlatot kérek 24 órán belül →</a>
 
     </main>
 

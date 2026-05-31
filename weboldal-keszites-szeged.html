@@ -2510,6 +2510,40 @@
             .cert-modal-nav { width: 40px; height: 40px; font-size: 1.4rem; }
             .cert-modal-close { top: 0.75rem; right: 0.75rem; width: 40px; height: 40px; font-size: 1.4rem; }
         }
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.85rem 1.5rem;
+            background: var(--gold);
+            color: #09090b;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 700;
+            text-align: center;
+            z-index: 9999;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+        .sticky-cta:hover {
+            background: var(--gold-text);
+        }
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
     </style>
 <script defer src="js/nav-auto-hide.js"></script>
 </head>
@@ -2661,8 +2695,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <h3 class="service-title">Nincs időd</h3>
                 <p class="service-description">
                     A <span style="color: var(--cyan)">szezonális forgalom</span> miatt hol túl sok, hol túl kevés a
-                    megkeresés? Automatizált visszajelzések és előjegyzés segíthet kiegyenlíteni a hullámokat.
+                    megkeresés? Automatizált visszajelzések és előjegyzés segíthet                     kiegyenlíteni a hullámokat.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <div class="service-card reveal" style="border-top: 3px solid var(--magenta);">
@@ -2670,8 +2707,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <h3 class="service-title">Elvesztett vevők?</h3>
                 <p class="service-description">
                     A közösségi oldal pörög, de <span style="color: var(--magenta)">a web nem hoz vevőt</span>? Gyakran
-                    hiányzik a landing oldal, a célzott CTA és a mérés — nem a posztok száma.
+                    hiányzik a landing oldal, a célzott CTA és a                     mérés — nem a posztok száma.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <div class="service-card reveal" style="border-top: 3px solid var(--cyan);">
@@ -2679,8 +2719,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <h3 class="service-title">Láthatatlan vagy online?</h3>
                 <p class="service-description">
                     A <strong>weboldal készítés Szeged</strong> keresőben ott akarsz lenni, de a régi CMS lassú?
-                    Technikai frissítés + tartalmi struktúra nélkül nehéz feljönni a találati lista elejére.
+                    Technikai frissítés + tartalmi struktúra nélkül nehéz feljönni a                     találati lista elejére.
                 </p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
         </div>
     </section>
@@ -2722,6 +2765,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <div style="font-size: 1.5rem; font-weight: 700;"><span style="color: var(--cyan)">250.000</span> Ft
                     </div>
                 </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <!-- Pillar 2: 24/7 Employee - FEATURED -->
@@ -2751,6 +2797,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <div style="font-size: 1.5rem; font-weight: 700;"><span style="color: var(--magenta)">450.000</span>
                         Ft + havi díj</div>
                 </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
+                </div>
             </div>
 
             <!-- Pillar 3: Growth Engine -->
@@ -2774,6 +2823,10 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">HAVI DÍJ:</div>
                     <div style="font-size: 1.5rem; font-weight: 700;"><span style="color: var(--cyan)">Egyedi</span>
                         árazás</div>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Ajánlatot kérek →</a>
                 </div>
             </div>
         </div>
@@ -3994,6 +4047,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     <img class="cert-modal-img" id="certModalImg" src="" alt="">
     <div class="cert-modal-counter" id="certModalCounter"></div>
 </div>
+
+<a href="#contact" class="sticky-cta">Ajánlatot kérek 24 órán belül →</a>
 
 </body>
 
