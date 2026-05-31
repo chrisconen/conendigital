@@ -1,0 +1,54 @@
+# Conen Digital — CENTAUR ügynökség
+
+> Weboldal és webáruház készítés Győr. Ajánlatgeneráló weboldalak, WordPress felújítás + EAA-megfelelés, AI Ops.
+
+## Cím
+https://conendigital.hu
+
+## Alapítás
+Chris Conen (Founder & CEO), 21+ év digitális tapasztalat. Német-magyar vállalkozó.
+
+## Fő szolgáltatások
+
+### 1. Ajánlatgeneráló weboldalak
+Konfigurátor, kalkulátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve.
+- Termék- vagy szolgáltatás-konfigurátor
+- Árkalkulátor + ajánlatkérő űrlap
+- JSON-LD strukturált adatok (SEO + AX)
+- Core Web Vitals zöld
+
+### 2. Felújítás + EAA-megfelelés
+WordPress / Elementor → Astro 5 migráció. European Accessibility Act audit + WCAG 2.2 AA.
+- WordPress → Astro 5 migráció
+- EAA-audit + WCAG 2.2 AA javítás
+- PageSpeed: LCP / CLS / INP zöldbe
+- 301-redirect térkép, SEO-megőrzés
+
+### 3. AI Ops
+Folyamat-automatizáció: ChatBot, lead-qualification, ajánlat-automatizáció, n8n / Make flow-k, CRM-integráció.
+- Custom ChatBot (GPT)
+- Lead-qualification flow + email
+- n8n / Make integrációk, CRM-szinkron
+- Havi mérőriport és iteráció
+
+## Technológiai partnerek
+- Google (Gemini, Ads, GA4, Search Console)
+- n8n (adat-folyamok)
+- Make (SaaS integráció)
+- Astro 5, JSON-LD, MCP
+
+## Referencia projektek
+- Mótyán Árnyékolás: WordPress → Astro 5 migráció, LCP 13.5 mp → 1.8 mp, PSI 57 → 99
+- Pannonia Personal: álláskereső weboldal AI támogatással
+- ECO Clean kárpittisztítás: foglalási rendszer n8n automatizációval
+- Tophome24: prémium ingatlan értékesítő weboldal
+
+## Városok
+Győr (központ), Budapest, Debrecen, Szeged, Miskolc, Pécs, Nyíregyháza, Kecskemét, Székesfehérvár, Szombathely, Sopron, Szolnok, Eger, Veszprém, Zalaegerszeg, Kaposvár + Ausztria.
+
+## Kapcsolat
+- Email: info@conendigital.hu
+- Facebook: https://www.facebook.com/conendigital
+- LinkedIn: https://www.linkedin.com/company/conendigital
+- YouTube: https://www.youtube.com/@weboldal-webaruhaz-keszites
+- CENTAUR: https://centaur-lang.dev

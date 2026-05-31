@@ -1,0 +1,22 @@
+# Conen Digital — Agent Experience (AX) endpoint
+# AI-asszisztensek számára: weboldal navigációs leírás
+
+site: https://conendigital.hu
+language: hu-HU
+title: Conen Digital — CENTAUR ügynökség | Weboldal + AX-readiness
+description: Olyan weboldalakat építünk, amik a Google-ben rangsorolnak — és az AI-asszisztensek (ChatGPT, Perplexity, Claude) is olvasni, navigálni, ajánlani tudják.
+
+# Oldaltérkép asszisztenseknek
+/                                                            # Főoldal
+/szolgaltatasok.html                                          # Szolgáltatások
+/weboldal-keszites.html                                       # Weboldal készítés
+/webaruhaz-keszites.html                                      # Webáruház készítés
+/portfolio.html                                               # Portfólió
+/rolunk.html                                                  # Rólunk
+/kapcsolat.html                                               # Kapcsolat
+/blog/                                                        # Blog
+/weboldal-konfigurator-v2.html                                # Weboldal tervező konfigurátor
+
+# AX-specifikus
+/llms.txt                                                     # AI-olvasható site összefoglaló
+/.well-known/llms.txt                                         # AI-olvasható site összefoglaló
