@@ -28,7 +28,7 @@ html {
   scroll-behavior: smooth;
   background: var(--black);
   scrollbar-width: thin;
-  scrollbar-color: rgba(0,240,255,.15) transparent;
+  scrollbar-color: rgba(201,169,98,.15) transparent;
 }
 
 body {
@@ -70,7 +70,7 @@ a:hover { color: var(--cyan); }
 img { max-width: 100%; height: auto; display: block; }
 ::selection { background: var(--cyan); color: var(--black); }
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-thumb { background: rgba(0,240,255,.15); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(201,169,98,.15); border-radius: 3px; }
 
 /* --- Container --- */
 .container {
