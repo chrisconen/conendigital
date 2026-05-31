@@ -14,14 +14,23 @@
     <meta name="google-site-verification" content="URCJJL4cJHLR4KctZDNQsZmBO5B9UvjTvwSn-nLlgxo" />
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' https://nexus.conendigital.hu https://formspree.io;
+        script-src 'self' 'unsafe-inline' https://nexus.conendigital.hu https://formspree.io https://www.googletagmanager.com https://*.google-analytics.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         font-src 'self' https://fonts.gstatic.com;
-        img-src 'self' data: https:;
+        img-src 'self' data: https: https://*.google-analytics.com https://www.googletagmanager.com;
         form-action 'self' https://formspree.io;
+        connect-src 'self' https://*.google-analytics.com https://*.googleapis.com;
         frame-ancestors 'none';
         base-uri 'self';
     ">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -3560,6 +3569,26 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
             btn.textContent = 'Küldés...';
             btn.disabled = true;
+
+            // Lead scoring
+            const budget = document.getElementById('budget')?.value || '';
+            const service = document.getElementById('service')?.value || '';
+            let leadScore = 'normal';
+            if (budget === 'enterprise' || service === 'renovation-eaa' || service === 'ax-audit') leadScore = 'high';
+            else if (budget === 'large') leadScore = 'medium';
+
+            // GA4 event
+            try {
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'generate_lead', {
+                        value: leadScore === 'high' ? 150 : leadScore === 'medium' ? 75 : 25,
+                        currency: 'HUF',
+                        lead_score: leadScore,
+                        service: service,
+                        budget: budget
+                    });
+                }
+            } catch (_) {}
 
             try {
                 const response = await fetch(form.action, {
