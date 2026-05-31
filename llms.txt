@@ -47,8 +47,7 @@ Folyamat-automatizáció: ChatBot, lead-qualification, ajánlat-automatizáció,
 Győr (központ), Budapest, Debrecen, Szeged, Miskolc, Pécs, Nyíregyháza, Kecskemét, Székesfehérvár, Szombathely, Sopron, Szolnok, Eger, Veszprém, Zalaegerszeg, Kaposvár + Ausztria.
 
 ## Kapcsolat
-- Email: info@conendigital.hu
-- Facebook: https://www.facebook.com/conendigital
-- LinkedIn: https://www.linkedin.com/company/conendigital
+- Facebook: https://www.facebook.com/weboldal.keszites.gyor.conen.digital
+- LinkedIn: https://www.linkedin.com/in/chris-conen/
 - YouTube: https://www.youtube.com/@weboldal-webaruhaz-keszites
-- CENTAUR: https://centaur-lang.dev
+- x.com: https://x.com/weboldal_honlap
