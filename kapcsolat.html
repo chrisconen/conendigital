@@ -11,11 +11,11 @@
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' https://nexus.conendigital.hu https://formspree.io https://www.googletagmanager.com https://*.google-analytics.com;
+        script-src 'self' 'unsafe-inline' https://nexus.conendigital.hu https://formspree.io https://www.googletagmanager.com https://www.clarity.ms https://*.google-analytics.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         font-src 'self' https://fonts.gstatic.com;
-        img-src 'self' data: https: https://*.google-analytics.com https://www.googletagmanager.com;
-        connect-src 'self' https://*.google-analytics.com https://*.googleapis.com;
+        img-src 'self' data: https: https://*.google-analytics.com https://*.clarity.ms https://www.googletagmanager.com;
+        connect-src 'self' https://*.google-analytics.com https://*.googleapis.com https://*.clarity.ms;
         form-action 'self' https://formspree.io;
         frame-ancestors 'none';
         base-uri 'self';
@@ -27,6 +27,10 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-WQ6WZK9N4J');
+    </script>
+    <!-- Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wzu17gyedw");
     </script>
     <link rel="canonical" href="https://conendigital.hu/kapcsolat">
 
