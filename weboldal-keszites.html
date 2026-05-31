@@ -122,39 +122,31 @@
 
     <style>
         :root {
-            --black: #09090b;          /* Pure obsidian black */
-            --white: #ffffff;
-            --gray: #141416;           /* Premium charcoal */
-            --gray-light: #222225;
-            --cyan: #C9A962;           /* Champagne Gold */
-            --magenta: #8A8A8F;        /* Muted gold-glow/silver */
-            --orange: #C99566;         /* Warm copper */
+            --bg:          #09090b;
+            --surface:     #111113;
+            --surface-2:   #18181b;
+            --surface-3:   #1e1e22;
+            --border:      #27272a;
+            --border-hover: #3f3f46;
+            --text:        #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-tertiary:  #71717a;
+            --gold:        #C9A962;
+            --gold-glow:   rgba(201, 169, 98, 0.15);
+            --gold-text:   #e5d4a1;
+            --accent:      #8b7cf6;
+            --accent-glow: rgba(139, 124, 246, 0.12);
+            --success:     #4ade80;
+            --error:       #f87171;
+            --section-y:   clamp(80px, 12vw, 140px);
+            --section-x:   clamp(20px, 5vw, 80px);
+            --container:   1280px;
+            --radius-sm:   6px;
+            --radius-md:   12px;
+            --radius-lg:   20px;
+            --radius-full: 9999px;
             --font-main: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter Tight', -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-        body, p, li, a, td, th, input, textarea, select {
-            font-family: var(--font-body) !important;
-        }
-        h1, h2, h3, h4, h5, h6, .glitch, .nav-logo, .nav-logo-text, .hero-title-line, .hero-title-gradient, .hero-title-subline {
-            font-family: var(--font-main) !important;
-        }
-        .cursor, .cursor-trail, #cursorTrailContainer, .scanlines {
-            display: none !important;
-        }
-        body {
-            cursor: auto !important;
-        }
-
-        :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray: #1a1a1a;
-            --gray-light: #2a2a2a;
-            --cyan: #00f0ff;
-            --magenta: #bf00ff;
-            --orange: #ff6b00;
-            --font-main: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter Tight', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
@@ -169,8 +161,8 @@
         }
 
         body {
-            background: var(--black);
-            color: var(--white);
+            background: var(--bg);
+            color: var(--text);
             font-family: var(--font-main);
             overflow-x: hidden;
         }
@@ -180,29 +172,7 @@
             text-decoration: none;
         }
 
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9997;
-            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0px, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 2px);
-            opacity: 0.12;
-        }
 
-        .grain {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            pointer-events: none;
-            z-index: 9996;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
 
         .nav {
             position: sticky;
@@ -224,7 +194,7 @@
         }
 
         .nav-logo span {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .nav-links {
@@ -242,13 +212,13 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .nav-cta {
             padding: 0.85rem 1.4rem;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
             font-family: var(--font-mono);
             font-size: 0.78rem;
             text-transform: uppercase;
@@ -305,7 +275,7 @@
         .nav-hamburger span {
             width: 30px;
             height: 2px;
-            background: var(--white);
+            background: var(--text);
             transition: all 0.3s ease;
         }
 
@@ -366,8 +336,8 @@
             font-size: 0.9rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
             font-weight: 600;
         }
 
@@ -393,7 +363,7 @@
             position: absolute;
             inset: -2px;
             border-radius: 6px;
-            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, var(--gold) 48%, var(--gold-text) 50%, var(--gold) 52%, transparent 70%, transparent 100%);
             z-index: -2;
             animation: borderRotate 2.5s linear infinite;
             filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
@@ -445,7 +415,7 @@
         .hero-label,
         .section-label {
             font-family: var(--font-mono);
-            color: var(--cyan);
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-size: 0.78rem;
@@ -468,7 +438,7 @@
         .hero-title span,
         .section-title span,
         .cta-title span {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .hero-description,
@@ -523,22 +493,22 @@
 
         .quote-box {
             padding: 1.5rem;
-            border-left: 3px solid var(--magenta);
+            border-left: 3px solid var(--accent);
             margin-top: 1.5rem;
         }
 
         .quote-box strong {
-            color: var(--magenta);
+            color: var(--accent);
         }
 
         .text-link {
-            color: var(--cyan);
+            color: var(--gold);
             text-decoration: underline;
             text-underline-offset: 0.2em;
         }
 
         .text-link:hover {
-            color: var(--white);
+            color: var(--text);
         }
 
         /* Összehasonlító táblázat: széles nézetben vízszintes görgetés; mobilon kártya-elrendezés */
@@ -566,7 +536,7 @@
 
         .comparison-table th {
             text-align: left;
-            color: var(--white);
+            color: var(--text);
             background: rgba(255, 255, 255, 0.03);
             font-family: var(--font-mono);
             text-transform: uppercase;
@@ -575,7 +545,7 @@
         }
 
         .comparison-table td strong {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .steps {
@@ -598,8 +568,8 @@
         .step-num {
             font-family: var(--font-mono);
             font-weight: 700;
-            color: var(--black);
-            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            color: var(--bg);
+            background: linear-gradient(135deg, var(--gold), var(--accent));
             width: 2.5rem;
             height: 2.5rem;
             display: flex;
@@ -633,7 +603,7 @@
             width: 100%;
             background: transparent;
             border: 0;
-            color: var(--white);
+            color: var(--text);
             text-align: left;
             padding: 1.2rem 1.25rem;
             display: flex;
@@ -695,13 +665,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
         }
 
         .btn-secondary {
             border: 1px solid rgba(0, 240, 255, 0.35);
-            color: var(--cyan);
+            color: var(--gold);
             background: rgba(255, 255, 255, 0.02);
         }
 
@@ -724,7 +694,7 @@
         }
 
         .footer-logo span {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .footer-links {
@@ -769,7 +739,7 @@
         }
 
         .footer-social-link:hover {
-            color: var(--cyan);
+            color: var(--gold);
             background: rgba(0, 240, 255, 0.12);
             transform: translateY(-2px);
         }
@@ -899,8 +869,7 @@
 </head>
 
 <body>
-    <div class="scanlines"></div>
-    <div class="grain"></div>
+
 
     <nav class="nav" id="nav">
         <a href="index.html" class="nav-logo">[<span>ConenDigital</span>]</a>
@@ -1262,9 +1231,9 @@
     <!-- Vizualis konfigurator CTA -->
     <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
         <div style="max-width: 640px; margin: 0 auto;">
-            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--gold), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
             <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--gold); color: var(--bg); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--gold)';this.style.boxShadow='inset 0 0 0 1px var(--gold), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--gold)';this.style.color='var(--bg)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
 

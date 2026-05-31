@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hu">
 
 <head>
     <meta charset="UTF-8">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEBáruház & WEBoldal készítés Győr | Egyedi fejlesztés & AI automatizáció | Conen Digital</title>
+    <title>WEBáruház & WEBoldal készítés Győr | havi 5 ezer Ft-tól bérelhető weboldalak</title>
     <meta name="description"
         content="Weboldal és webáruház készítés Győr | a tegnapi webfejlesztés a múlt, a mai weboldal készítés a jelen, mi a jövő weboldalait készítjük! ">
     <meta name="author" content="Chris Conen">
@@ -121,8 +121,11 @@
           "description": "Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak: kalkulátor, konfigurátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve.",
           "areaServed": ["HU", "AT", "DE"],
           "offers": {
-            "@type": "Offer",
-            "description": "Audit-alapú egyedi árazás."
+            "@type": "AggregateOffer",
+            "priceCurrency": "HUF",
+            "lowPrice": "600000",
+            "highPrice": "1500000",
+            "description": "Audit utáni egyedi árazás, tipikus tartomány."
           }
         },
         {
@@ -134,8 +137,11 @@
           "description": "Meglévő WordPress / Elementor oldalak migrálása Astro 5-re. European Accessibility Act (EAA) audit és WCAG 2.2 AA megfelelés. Core Web Vitals javítás, SEO-megőrzés.",
           "areaServed": ["HU", "AT", "DE"],
           "offers": {
-            "@type": "Offer",
-            "description": "Audit-alapú egyedi árazás."
+            "@type": "AggregateOffer",
+            "priceCurrency": "HUF",
+            "lowPrice": "450000",
+            "highPrice": "1200000",
+            "description": "Audit utáni egyedi árazás, tipikus tartomány."
           }
         },
         {
@@ -149,7 +155,7 @@
           "offers": {
             "@type": "Offer",
             "priceCurrency": "HUF",
-            "description": "Audit-alapú egyedi árazás és havi támogatás az éles növekedésért."
+            "description": "Audit utáni egyedi árazás, havi modell. Tipikus: 250.000 Ft-tól / hó."
           }
         },
         {
@@ -196,44 +202,51 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
     <style>
         :root {
-            --black: #09090b;          /* Pure obsidian black */
-            --white: #ffffff;
-            --gray: #141416;           /* Premium charcoal */
-            --gray-light: #222225;
-            --cyan: #C9A962;           /* Champagne Gold */
-            --magenta: #8A8A8F;        /* Muted gold-glow/silver */
-            --orange: #C99566;         /* Warm copper */
-            --font-main: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter Tight', -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-        body, p, li, a, td, th, input, textarea, select {
-            font-family: var(--font-body) !important;
-        }
-        h1, h2, h3, h4, h5, h6, .glitch, .nav-logo, .nav-logo-text, .hero-title-line, .hero-title-gradient, .hero-title-subline {
-            font-family: var(--font-main) !important;
-        }
-        .cursor, .cursor-trail, #cursorTrailContainer, .scanlines {
-            display: none !important;
-        }
-        body {
-            cursor: auto !important;
-        }
+            /* === SURFACES === */
+            --bg:          #09090b;
+            --surface:     #111113;
+            --surface-2:   #18181b;
+            --surface-3:   #1e1e22;
 
-        :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray: #1a1a1a;
-            --gray-light: #2a2a2a;
-            --cyan: #00f0ff;
-            --magenta: #bf00ff;
-            --orange: #ff6b00;
+            /* === BORDERS === */
+            --border:      #27272a;
+            --border-hover: #3f3f46;
+
+            /* === TEXT === */
+            --text:        #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-tertiary:  #71717a;
+
+            /* === BRAND ACCENTS === */
+            --gold:        #C9A962;
+            --gold-glow:   rgba(201, 169, 98, 0.15);
+            --gold-text:   #e5d4a1;
+            --accent:      #8b7cf6;
+            --accent-glow: rgba(139, 124, 246, 0.12);
+
+            /* === SEMANTIC === */
+            --success:     #4ade80;
+            --error:       #f87171;
+
+            /* === SPACING === */
+            --section-y:   clamp(80px, 12vw, 140px);
+            --section-x:   clamp(20px, 5vw, 80px);
+            --container:   1280px;
+
+            /* === RADIUS === */
+            --radius-sm:   6px;
+            --radius-md:   12px;
+            --radius-lg:   20px;
+            --radius-full: 9999px;
+
+            /* === FONTS === */
             --font-main: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter Tight', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
@@ -248,53 +261,20 @@
         }
 
         body {
-            background: var(--black);
-            color: var(--white);
-            font-family: var(--font-main);
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
             overflow-x: hidden;
         }
 
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: none;
-            }
-        }
-
-        @media (hover: none),
-        (pointer: coarse) {
-
-            .cursor,
-            .cursor-trail,
-            #cursorTrailContainer {
-                display: none !important;
-            }
-        }
-
         ::selection {
-            background: var(--cyan);
-            color: var(--black);
+            background: var(--gold);
+            color: var(--bg);
         }
 
         a {
             color: inherit;
             text-decoration: none;
-        }
-
-        /* Scanlines Overlay */
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9997;
-            background: repeating-linear-gradient(0deg,
-                    rgba(0, 0, 0, 0.1) 0px,
-                    rgba(0, 0, 0, 0.1) 1px,
-                    transparent 1px,
-                    transparent 2px);
-            opacity: 0.15;
         }
 
         body.announcement-visible {
@@ -315,6 +295,85 @@
 
         body.announcement-hidden .nav {
             top: 0 !important;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 8rem 4rem;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item:hover {
+            border-color: var(--border-hover);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.5rem;
+            background: var(--surface-2);
+            border: none;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--surface-3);
+        }
+
+        .faq-icon {
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+            color: var(--gold);
+        }
+
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+            background: var(--surface);
+        }
+
+        .faq-answer.open {
+            max-height: 300px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 0.9rem;
         }
 
         .centaur-section {
@@ -366,7 +425,7 @@
         }
 
         .centaur-section-badge span {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 11px;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -374,7 +433,7 @@
         }
 
         .centaur-section-title {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-main);
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 600;
             color: #F5F5F0;
@@ -390,7 +449,7 @@
         }
 
         .centaur-section-subtitle {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-body);
             font-size: clamp(1.1rem, 2vw, 1.4rem);
             font-style: italic;
             color: #8A8A8F;
@@ -433,7 +492,7 @@
         }
 
         .centaur-story p {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: var(--font-body);
             font-size: 1.2rem;
             line-height: 1.8;
             color: rgba(245, 245, 240, 0.85);
@@ -483,7 +542,7 @@
         }
 
         .centaur-benefit-title {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-main);
             font-size: 1.1rem;
             color: #C9A962;
             margin-bottom: 12px;
@@ -491,7 +550,7 @@
         }
 
         .centaur-benefit-text {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.85rem;
             color: #8A8A8F;
             line-height: 1.6;
@@ -611,7 +670,7 @@
         }
 
         .founder-name {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-main);
             font-size: 1.2rem;
             font-weight: 600;
             color: #F5F5F0;
@@ -620,7 +679,7 @@
         }
 
         .founder-role {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.85rem;
             color: #C9A962;
             margin-bottom: 12px;
@@ -628,7 +687,7 @@
         }
 
         .founder-description {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-body);
             font-size: 0.8rem;
             color: #8A8A8F;
             line-height: 1.6;
@@ -637,7 +696,7 @@
         }
 
         .founder-contact {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.75rem;
             color: #C9A962;
         }
@@ -672,7 +731,7 @@
         }
 
         .centaur-footer-badge-label {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 9px;
             letter-spacing: 0.15em;
             text-transform: uppercase;
@@ -680,172 +739,18 @@
         }
 
         .centaur-footer-badge-name {
-            font-family: 'Cinzel', serif;
+            font-family: var(--font-main);
             font-size: 13px;
             font-weight: 600;
             color: #C9A962;
             letter-spacing: 0.08em;
         }
 
-        /* Grain Overlay */
-        .grain {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            pointer-events: none;
-            z-index: 9996;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            animation: grain 0.5s steps(1) infinite;
-        }
 
-        @keyframes grain {
 
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
 
-            10% {
-                transform: translate(-5%, -10%);
-            }
 
-            20% {
-                transform: translate(-15%, 5%);
-            }
 
-            30% {
-                transform: translate(7%, -25%);
-            }
-
-            40% {
-                transform: translate(-5%, 25%);
-            }
-
-            50% {
-                transform: translate(-15%, 10%);
-            }
-
-            60% {
-                transform: translate(15%, 0%);
-            }
-
-            70% {
-                transform: translate(0%, 15%);
-            }
-
-            80% {
-                transform: translate(3%, 35%);
-            }
-
-            90% {
-                transform: translate(-10%, 10%);
-            }
-        }
-
-        /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--cyan);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            transition: all 0.1s ease;
-            mix-blend-mode: difference;
-        }
-
-        .cursor::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 4px;
-            height: 4px;
-            background: var(--cyan);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            width: 60px;
-            height: 60px;
-            border-color: var(--magenta);
-            background: rgba(191, 0, 255, 0.1);
-        }
-
-        .cursor-trail {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99998;
-            opacity: 0;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--cyan), var(--magenta));
-        }
-
-        /* Loader */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--black);
-            z-index: 100000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-terminal {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--cyan);
-            text-align: left;
-            max-width: 500px;
-        }
-
-        .loader-line {
-            opacity: 0;
-            margin: 0.3rem 0;
-        }
-
-        .loader-line.visible {
-            opacity: 1;
-        }
-
-        .loader-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: var(--cyan);
-            margin-left: 2px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            50% {
-                opacity: 1;
-            }
-
-            51%,
-            100% {
-                opacity: 0;
-            }
-        }
 
         /* Navigation */
         .nav {
@@ -862,9 +767,10 @@
         }
 
         .nav.scrolled {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(9, 9, 11, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-logo {
@@ -877,14 +783,11 @@
         }
 
         .nav-logo-bracket {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .nav-logo-text {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text);
         }
 
         .nav-links {
@@ -894,42 +797,21 @@
         }
 
         .nav-links a {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
             position: relative;
             padding: 0.5rem 0;
+            color: var(--text-secondary);
             transition: color 0.3s ease;
         }
 
         .nav-links a::before {
-            content: '//';
-            margin-right: 0.3rem;
-            color: var(--cyan);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .nav-links a:hover::before {
-            opacity: 1;
+            content: '';
         }
 
         .nav-links a:hover {
-            color: var(--cyan);
-        }
-
-        .nav-cta {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid var(--cyan);
-            color: var(--cyan);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            color: var(--gold);
         }
 
         .nav-right {
@@ -938,7 +820,21 @@
             gap: 1rem;
         }
 
+        /* Rotating border effect for konfigurator button */
+        @keyframes borderRotate {
+            0% { --border-angle: 0deg; }
+            100% { --border-angle: 360deg; }
+        }
+
+        @property --border-angle {
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+
         .nav-konfigurator-btn {
+            position: relative;
+            z-index: 0;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -954,6 +850,26 @@
             text-decoration: none;
         }
 
+        .nav-konfigurator-btn::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 6px;
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, var(--gold) 48%, var(--gold-text) 50%, var(--gold) 52%, transparent 70%, transparent 100%);
+            z-index: -2;
+            animation: borderRotate 2.5s linear infinite;
+            filter: drop-shadow(0 0 6px rgba(201, 169, 98, 0.6)) drop-shadow(0 0 12px rgba(201, 169, 98, 0.3));
+        }
+
+        .nav-konfigurator-btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 4px;
+            background: #0a0a0a;
+            z-index: -1;
+        }
+
         @media (max-width: 480px) {
             .nav-konfigurator-btn {
                 font-size: 0.6rem;
@@ -962,29 +878,8 @@
         }
 
         .nav-konfigurator-btn:hover {
-            color: #d8b4fe;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
-        }
-
-        .nav-cta::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            transition: left 0.4s ease;
-            z-index: -1;
-        }
-
-        .nav-cta:hover {
-            color: var(--black);
-            border-color: transparent;
-        }
-
-        .nav-cta:hover::before {
-            left: 0;
+            color: var(--gold-text);
+            box-shadow: 0 0 20px rgba(201, 169, 98, 0.4);
         }
 
         .nav-hamburger {
@@ -998,7 +893,7 @@
         .nav-hamburger span {
             width: 30px;
             height: 2px;
-            background: var(--white);
+            background: var(--text);
             transition: all 0.3s ease;
         }
 
@@ -1035,10 +930,6 @@
             padding: 0.75rem 1rem;
         }
 
-        .nav-links.active a::before {
-            opacity: 1;
-        }
-
         .nav-links.active::after {
             content: 'NAVIGÁCIÓ';
             position: absolute;
@@ -1055,55 +946,21 @@
             display: block;
             margin-top: 2rem;
             padding: 1rem 2.5rem;
-            font-family: var(--font-mono);
+            font-family: var(--font-body);
             font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            letter-spacing: 0.03em;
+            background: var(--gold);
+            color: #09090b;
             font-weight: 600;
+            border-radius: var(--radius-sm);
+            text-align: center;
         }
 
         .mobile-cta {
             display: none;
         }
 
-        /* Rotating border effect for konfigurator button */
-        @keyframes borderRotate {
-            0% { --border-angle: 0deg; }
-            100% { --border-angle: 360deg; }
-        }
 
-        @property --border-angle {
-            syntax: "<angle>";
-            initial-value: 0deg;
-            inherits: false;
-        }
-
-        .nav-konfigurator-btn {
-            position: relative;
-            z-index: 0;
-        }
-
-        .nav-konfigurator-btn::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 6px;
-            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
-            z-index: -2;
-            animation: borderRotate 2.5s linear infinite;
-            filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
-        }
-
-        .nav-konfigurator-btn::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 4px;
-            background: #0a0a0a;
-            z-index: -1;
-        }
 
         /* Hero Section */
         .hero {
@@ -1120,8 +977,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(201, 169, 98, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 169, 98, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
         }
@@ -1132,20 +989,20 @@
             height: 600px;
             border-radius: 50%;
             filter: blur(150px);
-            opacity: 0.15;
+            opacity: 0.1;
             pointer-events: none;
         }
 
         .hero-glow-1 {
             top: -200px;
             right: -200px;
-            background: var(--cyan);
+            background: var(--gold);
         }
 
         .hero-glow-2 {
             bottom: -200px;
             left: -200px;
-            background: var(--magenta);
+            background: var(--accent);
         }
 
         .hero-content {
@@ -1169,8 +1026,8 @@
             align-items: center;
             gap: 1rem;
             font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--cyan);
+            font-size: 0.8rem;
+            color: var(--gold-text);
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.5s;
@@ -1179,158 +1036,93 @@
         .hero-label-line {
             width: 50px;
             height: 1px;
-            background: linear-gradient(90deg, var(--cyan), transparent);
+            background: var(--gold);
         }
 
         .hero-title {
-            font-size: clamp(2rem, 4.5vw, 2rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
-            line-height: 1.0;
-            letter-spacing: -0.025em;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
             margin-bottom: 1.75rem;
-            overflow-wrap: anywhere;
-            hyphens: auto;
         }
 
         .hero-title-line {
             display: block;
-            overflow: hidden;
         }
 
         .hero-title-subline {
-            font-size: clamp(1rem, 4.5vw, 2rem);
             display: block;
-            overflow: hidden;
-        }
-
-        .hero-title-line span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(100%);
-            animation: slideUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-        }
-
-        .hero-title-line:nth-child(1) span {
-            animation-delay: 0.7s;
-        }
-
-        .hero-title-line:nth-child(2) span {
-            animation-delay: 0.85s;
-        }
-
-        .hero-title-line:nth-child(3) span {
-            animation-delay: 1s;
-        }
-
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            font-size: clamp(1.25rem, 3vw, 2.5rem);
+            color: var(--text-secondary);
+            font-weight: 500;
         }
 
         .hero-title-gradient {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--orange));
+            background: linear-gradient(135deg, var(--gold), var(--gold-text));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-
-        .hero-title-outline {
-            color: transparent;
-            -webkit-text-stroke: 2px var(--white);
-        }
-
-        .hero-morphing {
-            position: relative;
-            display: inline-block;
-            min-width: 400px;
-        }
-
-        .hero-morphing-word {
-            position: absolute;
-            left: 0;
-            opacity: 0;
-            background: linear-gradient(90deg, var(--orange), var(--magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-morphing-word.active {
-            opacity: 1;
         }
 
         .hero-description {
             max-width: 550px;
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 1.2s;
         }
 
-        
+        .hero-description-accent {
+            color: var(--gold-text);
+        }
+
         .hero-cta {
             display: flex;
             left: 0;
             justify-content: flex-start;
             gap: 1.5rem;
-            font-weight: 600;
-            color: white;
             flex-wrap: wrap;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 1.4s;
         }
 
         .btn {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
             font-weight: 500;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            padding: 1.25rem 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
         }
 
         .btn-primary {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: var(--gold);
+            color: #09090b;
             border: none;
+            font-weight: 600;
         }
 
         .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+            opacity: 0.85;
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
             background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text);
+            border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
+            border-color: var(--gold);
+            color: var(--gold);
         }
 
         /* AI Face Visual */
@@ -1348,8 +1140,8 @@
             position: absolute;
             width: 14px;
             height: 14px;
-            border: 1px solid var(--cyan);
-            opacity: 0.5;
+            border: 1px solid var(--gold);
+            opacity: 0.4;
         }
 
         .hero__visual::before {
@@ -1381,24 +1173,22 @@
             justify-content: space-between;
             font-family: var(--font-mono);
             font-size: 0.66rem;
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--text-tertiary);
             letter-spacing: 0.18em;
             text-transform: uppercase;
         }
 
         .visual-meta span {
-            color: var(--cyan);
+            color: var(--gold-text);
         }
 
         .hero-speak-btn {
             background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: var(--text);
+            border: 1px solid var(--border);
             padding: 0.85rem 1.4rem;
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.18em;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
@@ -1406,12 +1196,13 @@
             gap: 0.75rem;
             margin-top: 1.5rem;
             align-self: flex-start;
+            border-radius: var(--radius-sm);
         }
 
         .hero-speak-btn:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
-            box-shadow: 0 0 24px -8px var(--cyan);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 0 24px -8px var(--gold);
         }
 
         .voice-indicator {
@@ -1446,27 +1237,26 @@
 
         .hero-narration-toggle {
             margin-top: 1rem;
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
         }
 
         .hero-narration-toggle summary {
             cursor: pointer;
-            letter-spacing: 0.1em;
             transition: color 0.2s;
         }
 
         .hero-narration-toggle summary:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .hero-narration-toggle p {
             margin-top: 0.75rem;
-            font-family: var(--font-main);
+            font-family: var(--font-body);
             font-size: 0.85rem;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.55);
+            color: var(--text-secondary);
             max-width: 48ch;
         }
 
@@ -1490,7 +1280,7 @@
         }
 
         .hero__visual:focus-visible {
-            outline: 2px solid var(--cyan);
+            outline: 2px solid var(--gold);
             outline-offset: 8px;
         }
 
@@ -1503,19 +1293,18 @@
             align-items: center;
             gap: 0.6rem;
             padding: 0.5rem 0.85rem;
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.25);
+            background: rgba(201, 169, 98, 0.08);
+            border: 1px solid rgba(201, 169, 98, 0.25);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            font-family: var(--font-mono);
-            font-size: 0.65rem;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.85);
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            color: var(--text);
             opacity: 0;
             animation: affordanceIn 0.6s ease 2s forwards;
             pointer-events: none;
             z-index: 2;
+            border-radius: var(--radius-sm);
         }
 
         @keyframes affordanceIn {
@@ -1541,7 +1330,7 @@
             position: absolute;
             inset: -2px;
             border-radius: inherit;
-            background: linear-gradient(90deg, var(--cyan), transparent, var(--cyan));
+            background: linear-gradient(90deg, var(--gold), transparent, var(--gold));
             background-size: 200% 100%;
             opacity: 0;
             z-index: -1;
@@ -1613,13 +1402,13 @@
         }
 
         .marquee-item:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .marquee-dot {
             width: 8px;
             height: 8px;
-            background: var(--magenta);
+            background: var(--gold);
             border-radius: 50%;
         }
 
@@ -1640,11 +1429,11 @@
 
         .section-label {
             font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--cyan);
-            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            color: var(--gold);
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -1652,9 +1441,9 @@
 
         .section-label::before {
             content: '';
-            width: 30px;
+            width: 24px;
             height: 1px;
-            background: var(--cyan);
+            background: var(--gold);
         }
 
         .section-title {
@@ -1673,46 +1462,53 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
         }
 
         .service-card {
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
+            transition: all 0.4s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 240, 255, 0.2);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 1px var(--gold), 0 8px 32px var(--gold-glow);
+            transform: translateY(-4px);
         }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
+        .service-card.featured {
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 0 1px var(--gold), 0 4px 20px var(--gold-glow);
+        }
+
+        .service-card.featured:hover {
+            box-shadow: 0 0 0 1px var(--gold), 0 8px 32px var(--gold-glow);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            padding: 4px 16px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: #09090b;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            letter-spacing: 0.05em;
+            white-space: nowrap;
         }
 
         .service-number {
             font-family: var(--font-mono);
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             color: rgba(255, 255, 255, 0.03);
             position: absolute;
@@ -1722,35 +1518,27 @@
         }
 
         .service-icon {
-            width: 60px;
-            height: 60px;
-            border: 1px solid var(--cyan);
+            width: 52px;
+            height: 52px;
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .service-icon::after {
-            content: '';
-            position: absolute;
-            inset: -5px;
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            margin-bottom: 1.5rem;
+            border-radius: var(--radius-sm);
         }
 
         .service-title {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .service-description {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             line-height: 1.7;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .service-features {
@@ -1758,11 +1546,11 @@
         }
 
         .service-features li {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
             padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             gap: 0.75rem;
@@ -1774,13 +1562,13 @@
 
         .service-features li::before {
             content: '→';
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         /* Process Section */
         .process {
             padding: 10rem 4rem;
-            background: var(--gray);
+            background: var(--surface);
             position: relative;
             overflow: hidden;
         }
@@ -1824,7 +1612,7 @@
             right: -1.5rem;
             width: 3rem;
             height: 1px;
-            background: linear-gradient(90deg, var(--cyan), transparent);
+            background: linear-gradient(90deg, var(--gold), transparent);
         }
 
         .process-step:last-child::after {
@@ -1832,25 +1620,19 @@
         }
 
         .process-number {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 2rem;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: var(--font-mono);
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--cyan);
-            border: 2px solid var(--cyan);
+            color: var(--gold);
+            border: 2px solid var(--gold);
             position: relative;
-        }
-
-        .process-number::before {
-            content: '';
-            position: absolute;
-            inset: 5px;
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: var(--radius-md);
         }
 
         .process-title {
@@ -1883,8 +1665,8 @@
             position: relative;
             aspect-ratio: 16/10;
             overflow: hidden;
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
         }
 
         .portfolio-item:nth-child(1) {
@@ -1900,7 +1682,7 @@
         .portfolio-image {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, var(--gray-light), var(--gray));
+            background: linear-gradient(135deg, var(--surface-2), var(--surface));
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -1954,26 +1736,26 @@
         }
 
         .screenshot-window::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, rgba(0, 240, 255, 0.22), rgba(201, 169, 98, 0.18));
+            background: linear-gradient(180deg, rgba(201, 169, 98, 0.22), rgba(201, 169, 98, 0.18));
             border-radius: 8px;
             border: 2px solid rgba(0, 0, 0, 0.08);
             box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25);
         }
 
         .screenshot-window::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, rgba(0, 240, 255, 0.32), rgba(201, 169, 98, 0.28));
+            background: linear-gradient(180deg, rgba(201, 169, 98, 0.32), rgba(201, 169, 98, 0.28));
         }
 
         /* Firefox scrollbar */
         .screenshot-window {
             scrollbar-width: thin;
-            scrollbar-color: rgba(0, 240, 255, 0.22) rgba(0, 0, 0, 0.06);
+            scrollbar-color: rgba(201, 169, 98, 0.22) rgba(0, 0, 0, 0.06);
             -ms-overflow-style: auto;
         }
 
         /* Focus outline for keyboard users */
         .screenshot-window:focus {
-            outline: 3px solid rgba(0, 240, 255, 0.12);
+            outline: 3px solid var(--gold-glow);
             outline-offset: 4px;
         }
 
@@ -2003,7 +1785,7 @@
         .portfolio-category {
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            color: var(--cyan);
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 0.5rem;
@@ -2026,7 +1808,7 @@
             right: 2rem;
             width: 50px;
             height: 50px;
-            border: 1px solid var(--white);
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2041,14 +1823,14 @@
         }
 
         .portfolio-link:hover {
-            background: var(--white);
-            color: var(--black);
+            background: var(--surface-2);
+            color: var(--gold);
         }
 
         /* Testimonial Section */
         .testimonial {
             padding: 10rem 4rem;
-            background: var(--gray);
+            background: var(--surface);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -2075,7 +1857,7 @@
             top: -2rem;
             left: -2rem;
             font-size: 8rem;
-            color: var(--cyan);
+            color: var(--gold);
             opacity: 0.1;
             font-family: Georgia, serif;
             line-height: 1;
@@ -2092,7 +1874,8 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            background: var(--gold);
+            color: #09090b;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -2107,7 +1890,7 @@
 
         .testimonial-role {
             font-size: 0.85rem;
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         /* CTA Section */
@@ -2124,11 +1907,11 @@
             height: 800px;
             border-radius: 50%;
             filter: blur(200px);
-            opacity: 0.1;
+            opacity: 0.08;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            background: var(--gold);
             pointer-events: none;
         }
 
@@ -2147,7 +1930,7 @@
         }
 
         .cta-title span {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(135deg, var(--gold), var(--gold-text));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -2213,13 +1996,14 @@
         }
 
         .contact-item-text a:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .contact-form {
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 2.5rem;
         }
 
         .form-row {
@@ -2235,24 +2019,23 @@
 
         .form-group label {
             display: block;
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 0.75rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            font-family: var(--font-main);
-            font-size: 1rem;
+            padding: 0.85rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
@@ -2260,46 +2043,45 @@
         .form-group textarea:focus,
         .form-group select:focus {
             outline: none;
-            border-color: var(--cyan);
-            background: rgba(0, 240, 255, 0.03);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px var(--gold-glow);
         }
 
         .form-group textarea {
-            min-height: 150px;
+            min-height: 140px;
             resize: vertical;
         }
 
         .form-group select {
             appearance: none;
             cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C9A962' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 16px;
         }
 
         .form-group select option {
-            background: var(--black);
+            background: var(--bg);
+            color: var(--text);
         }
 
         .form-submit {
             width: 100%;
-            padding: 1.25rem;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            padding: 1rem;
+            background: var(--gold);
             border: none;
-            color: var(--black);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
+            border-radius: var(--radius-sm);
+            color: #09090b;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: opacity 0.3s ease;
         }
 
         .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+            opacity: 0.85;
         }
 
         /* Footer */
@@ -2325,10 +2107,7 @@
         }
 
         .footer-logo span {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--gold);
         }
 
         .footer-links {
@@ -2337,25 +2116,23 @@
         }
 
         .footer-links a {
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
             transition: color 0.3s ease;
         }
 
         .footer-links a:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .footer-copyright {
             font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.3);
+            color: var(--text-tertiary);
         }
 
         .footer-copyright a {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .footer-social {
@@ -2375,15 +2152,15 @@
             width: 40px;
             height: 40px;
             border-radius: 10px;
-            color: rgba(255, 255, 255, 0.65);
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
             transition: color 0.2s, background 0.2s, transform 0.2s;
         }
 
         .footer-social-link:hover {
-            color: var(--cyan);
-            background: rgba(0, 240, 255, 0.12);
+            color: var(--gold);
+            background: rgba(201, 169, 98, 0.12);
             transform: translateY(-2px);
         }
 
@@ -2391,6 +2168,232 @@
             display: block;
         }
 
+
+        .gold-text {
+            color: var(--gold-text);
+        }
+
+        .city-tag {
+            display: inline-flex;
+            padding: 0.5rem 1.25rem;
+            background: rgba(201, 169, 98, 0.05);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .city-tag:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .config-cta {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .config-cta-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .config-cta-title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .config-cta-title span {
+            background: linear-gradient(135deg, var(--gold), var(--gold-text));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .trust-section {
+            padding: 4rem 0;
+            background: var(--surface);
+        }
+
+        .trust-header {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .trust-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            padding: 3rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            text-align: center;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .trust-item:hover {
+            opacity: 1;
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .trust-name {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .trust-desc {
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .founder-section {
+            padding: 6rem 0;
+            background: var(--bg);
+        }
+
+        .founder-header {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .founder-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            padding: 2.5rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+        }
+
+        .founder-card-avatar {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+
+        .founder-card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .founder-card-name {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .founder-card-role {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .founder-card-skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem 2rem;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+
+        .founder-cert-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .founder-cert-desc {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .founder-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .founder-card-avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .founder-card-skills {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .trust-badge {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .trust-badge-label {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--gold);
+        }
+
+        .trust-badge > span:last-child {
+            margin-left: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .config-cta-desc {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .city-tag-active {
+            background: rgba(201, 169, 98, 0.15);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
 
         /* Utilities */
         .reveal {
@@ -2402,41 +2405,6 @@
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
-        }
-
-        /* Glitch Effect */
-        .glitch {
-            position: relative;
-        }
-
-        .glitch:hover {
-            animation: glitch 0.3s infinite;
-        }
-
-        @keyframes glitch {
-            0% {
-                transform: translate(0);
-            }
-
-            20% {
-                transform: translate(-2px, 2px);
-            }
-
-            40% {
-                transform: translate(-2px, -2px);
-            }
-
-            60% {
-                transform: translate(2px, 2px);
-            }
-
-            80% {
-                transform: translate(2px, -2px);
-            }
-
-            100% {
-                transform: translate(0);
-            }
         }
 
         /* Responsive */
@@ -2775,7 +2743,7 @@
             transition: border-color 0.3s, transform 0.3s;
         }
         .cert-thumb:hover {
-            border-color: var(--cyan);
+            border-color: var(--gold);
             transform: translateY(-4px);
         }
         .cert-thumb img {
@@ -2874,25 +2842,9 @@
 
 <body>
 
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-terminal">
-            <div class="loader-line" id="line1">> Bejelentkezés -> ConenDigital...</div>
-            <div class="loader-line" id="line2">> Kreatív modulok betöltése...</div>
-            <div class="loader-line" id="line3">> Dizájn mátrixhoz csatlakozás...</div>
-            <div class="loader-line" id="line4">> Sikeres bejelentkezés.<span class="loader-cursor"></span></div>
-        </div>
-    </div>
-
-    <!-- Effects -->
-    <div class="scanlines"></div>
-    <div class="grain"></div>
-    <div class="cursor" id="cursor"></div>
-    <div id="cursorTrailContainer"></div>
-
     <!-- Navigation -->
     <nav class="nav" id="nav">
-        <a href="index.html" class="nav-logo glitch">
+        <a href="index.html" class="nav-logo">
             <span class="nav-logo-bracket">[</span>
             <span class="nav-logo-text">ConenDigital</span>
             <span class="nav-logo-bracket">]</span>
@@ -2914,7 +2866,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <a href="https://app.conendigital.hu" class="nav-konfigurator-btn">Weboldal tervező</a>
+            <a href="weboldal-konfigurator-v2.html" class="nav-konfigurator-btn">Weboldal tervező</a>
         </div>
     </nav>
 
@@ -2931,23 +2883,21 @@
                 </div>
 
                 <h1 class="hero-title">
-                    <span class="hero-title-line">Prémium webáruház & egyedi weboldal készítés Győr szívében -
-                    <span class="hero-title-gradient">Valódi vevőket szerző rendszerek</span> 
-                    <span class="hero-title-subline">& Önműködő folyamatok
-                    </span></span>
+                    <span class="hero-title-line">Webáruház & weboldal készítés Győr</span>
+                    <span class="hero-title-line"><span class="hero-title-gradient">havi 5 ezer Ft-tól</span></span>
+                    <span class="hero-title-subline">bérelhető weboldalak és webáruházak</span>
                 </h1>
                 <p class="hero-description">
-                    Egy weboldal vagy webáruház akkor ér igazán valamit, ha nemcsak szép, hanem új ügyfeleket és vásárlókat szerez neked – teljesen önműködően. Nem sablonokat másolunk: teljesen egyedi tervezésű, villámgyors és mesterséges intelligenciával támogatott megoldásokat adunk át, amelyek bizonyíthatóan behozzák az árukat. 
-                    Ráadásul a keresők és a legújabb AI-asszisztensek is látják és ajánlják a vállalkozásodat az ügyfeleknek – a nap 24 órájában, Győrtől az egész országig.
+                    A weboldal, webáruház akkor ér valamit, ha a látogató 30 másodperc alatt el tud indítani egy
+                    ajánlatkérést, foglalást vagy vásárlást — segítség nélkül. Ilyen oldalakat építünk:
+                    ajánlatgenerálóval, foglalós rendszerrel, vagy AI-olvasható webshoppal. <span class="hero-description-accent">Mellékhatás</span>:
+                    a Google és az AI-keresők is látják és ajánlják az ügyfeleknek a webáruházad és weboldalad
+                    még munkaidőn kívül is, 24/7 beosztásban.
                 </p>
 
                 <div class="hero-cta">
-                <a href="https://app.conendigital.hu"
-                style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;"
-                onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'"
-                onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor
-                megnyitása →</a>
-            </div>
+                    <a href="weboldal-konfigurator-v2.html" class="btn btn-primary">Konfigurátor megnyitása →</a>
+                </div>
             </div>
            
 
@@ -3007,7 +2957,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="section-header reveal">
             <div>
                 <div class="section-label">Mikor érdemes rendszerszinten újragondolni a webes jelenlétet?</div>
-                <h2 class="section-title">Három helyzet, ahol a hagyományos weboldal már nem elég</h2>
+                <h2 class="section-title">Három helyzet, ahol egy "szebb weboldal" már nem segít</h2>
             </div>
             <p class="section-description">
                 Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak építünk. Akkor érdemes hozzányúlni,
@@ -3017,53 +2967,53 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         </div>
 
         <div class="services-grid">
-            <div class="service-card reveal" style="border-top: 3px solid var(--orange);">
+            <div class="service-card reveal">
                 <div class="service-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--orange);">
+                        stroke-linejoin="round" style="width: 40px; height: 40px;">
                         <circle cx="12" cy="12" r="9"></circle>
                         <path d="M12 7v5l3 2"></path>
                     </svg>
                 </div>
-                <h3 class="service-title">Elveszel a napi papírmunkában és adminisztrációban?</h3>
+                <h3 class="service-title">Az adminisztráció felemészti a napot</h3>
                 <p class="service-description">
-                    Naponta <span style="color: var(--cyan)">2-3 órát</span> visz el az e-mail, az ajánlatkérés és a
-                    visszaigazolás. Évi <span style="color: var(--magenta)">500+ óra</span>, ami a vállalkozás
+                    Naponta <span class="gold-text">2-3 órát</span> visz el az e-mail, az ajánlatkérés és a
+                    visszaigazolás. Évi <span class="gold-text">500+ óra</span>, ami a vállalkozás
                     építésére is mehetne. Egy ajánlatgeneráló oldal ezt a flow-t legalább részben automatizálja.
                 </p>
             </div>
 
-            <div class="service-card reveal" style="border-top: 3px solid var(--magenta);">
+            <div class="service-card reveal">
                 <div class="service-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--magenta);">
+                        stroke-linejoin="round" style="width: 40px; height: 40px;">
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                         <circle cx="9" cy="7" r="4"></circle>
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
                 </div>
-                <h3 class="service-title">Vevőket veszítesz azért, mert túl lassan adsz árajánlatot?</h3>
+                <h3 class="service-title">Az érdeklődő nem ér rá várni</h3>
                 <p class="service-description">
                     Mire elérhető vagy a visszahíváshoz, az érdeklődő már a versenytársnál van. Ha az oldal
                     nem szűri-osztályozza-rögzíti a leadet
-                    <span style="color: var(--cyan)">azonnal és 24/7</span>, az minden alkalommal pénz az asztalon
+                    <span class="gold-text">azonnal és 24/7</span>, az minden alkalommal pénz az asztalon
                     hagyva.
                 </p>
             </div>
 
-            <div class="service-card reveal" style="border-top: 3px solid var(--cyan);">
+            <div class="service-card reveal">
                 <div class="service-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" style="width: 40px; height: 40px; color: var(--cyan);">
+                        stroke-linejoin="round" style="width: 40px; height: 40px;">
                         <path d="M3 17l6-6 4 4 8-8"></path>
                         <path d="M14 7h7v7"></path>
                     </svg>
                 </div>
-                <h3 class="service-title">A weboldalad csak egy digitális névjegykártya, ami nem hoz vevőt?</h3>
+                <h3 class="service-title">A meglévő oldal csak viszi a pénzt</h3>
                 <p class="service-description">
                     Régi WordPress, lassú mobilon, nem felel meg a 2025-ös <strong>EAA-akadálymentesítési</strong>
-                    követelményeknek, és <span style="color: var(--magenta)">nem hoz mérhető bevételt</span>.
+                    követelményeknek, és <span class="gold-text">nem hoz mérhető bevételt</span>.
                     Ez nem dizájn-kérdés — technikai és stratégiai újrahuzalozás kell.
                 </p>
             </div>
@@ -3090,7 +3040,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <span class="service-number">01</span>
                 <div class="service-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
+                        stroke-linejoin="round" style="width: 44px; height: 44px;">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <path d="M14 2v6h6"></path>
                         <path d="M9 13h6"></path>
@@ -3100,7 +3050,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 </div>
                 <h3 class="service-title">Ajánlatgeneráló weboldalak</h3>
                 <p class="service-description">
-                    Nem bemutatkozó site — <span style="color: var(--cyan)">sales-eszköz</span>. Konfigurátor,
+                    Nem bemutatkozó site — <span class="gold-text">sales-eszköz</span>. Konfigurátor,
                     kalkulátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve. A felhasználó már az oldalon
                     lát egy nagyságrendi árat, és csak minőségi lead jut el hozzád.
                 </p>
@@ -3111,25 +3061,22 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <li>Astro 5: Core Web Vitals zöld</li>
                 </ul>
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">ÁRAZÁS:</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold);">ÁRAZÁS:</div>
                     <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi</div>
                     <div
                         style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
-                        személyre szabott scope szerint
+                        tipikus tartomány: 100.000 – 300.000 Ft
                     </div>
                 </div>
             </div>
 
             <!-- Pillar 2: Felújítás + EAA - FEATURED -->
-            <div class="service-card reveal"
-                style="border: 2px solid var(--magenta); transform: scale(1.05); position: relative;">
-                <div
-                    style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--cyan), var(--magenta)); padding: 4px 16px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--black); font-weight: 600;">
-                    LEGTÖBB IGÉNY</div>
+            <div class="service-card featured reveal">
+                <div class="service-badge">LEGTÖBB IGÉNY</div>
                 <span class="service-number">02</span>
                 <div class="service-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--magenta);">
+                        stroke-linejoin="round" style="width: 44px; height: 44px;">
                         <path d="M21 12a9 9 0 1 1-3.5-7.1"></path>
                         <path d="M21 4v5h-5"></path>
                         <path d="M9 12l2 2 4-4"></path>
@@ -3138,7 +3085,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <h3 class="service-title">Felújítás + EAA-megfelelés</h3>
                 <p class="service-description">
                     WordPress / Elementor-örökségből 2026-os szabvány. Astro 5 migráció, Core Web Vitals javítás,
-                    <span style="color: var(--magenta)">European Accessibility Act</span> audit + WCAG 2.2 AA
+                    <span class="gold-text">European Accessibility Act</span> audit + WCAG 2.2 AA
                     megfelelés (2025. június 28. óta kötelező). SEO-megőrzéssel, dokumentáltan.
                 </p>
                 <ul class="service-features">
@@ -3148,11 +3095,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <li>301-redirect térkép, SEO-megőrzés</li>
                 </ul>
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--magenta);">ÁRAZÁS:</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold);">ÁRAZÁS:</div>
                     <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi</div>
                     <div
                         style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
-                        személyre szabott scope szerint
+                        tipikus tartomány: 250.000 – 600.000 Ft
                     </div>
                 </div>
             </div>
@@ -3162,7 +3109,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 <span class="service-number">03</span>
                 <div class="service-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" style="width: 44px; height: 44px; color: var(--cyan);">
+                        stroke-linejoin="round" style="width: 44px; height: 44px;">
                         <rect x="3" y="3" width="6" height="6" rx="1"></rect>
                         <rect x="15" y="3" width="6" height="6" rx="1"></rect>
                         <rect x="9" y="15" width="6" height="6" rx="1"></rect>
@@ -3172,7 +3119,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 </div>
                 <h3 class="service-title">AI Ops</h3>
                 <p class="service-description">
-                    Produktizált <span style="color: var(--cyan)">folyamat-automatizáció</span>: ChatBot,
+                    Produktizált <span class="gold-text">folyamat-automatizáció</span>: ChatBot,
                     lead-qualification, ajánlat-automatizáció, n8n / Make flow-k, CRM-integráció. Havi performance
                     review-val. Meglévő oldalra is telepíthető — nem kell hozzá teljes újratervezés.
                 </p>
@@ -3183,11 +3130,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     <li>Havi mérőriport és iteráció</li>
                 </ul>
                 <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">ÁRAZÁS:</div>
+                    <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold);">ÁRAZÁS:</div>
                     <div style="font-size: 1.1rem; font-weight: 700;">Audit utáni egyedi, havi</div>
                     <div
                         style="font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 4px;">
-                        személyre szabott scope szerint
+                        tipikus: 50.000 Ft-tól / hó
                     </div>
                 </div>
             </div>
@@ -3244,9 +3191,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     </section>
 
     <!-- Trust Partners Section -->
-    <section class="services" style="padding: 4rem 0; background: var(--gray);">
-        <div class="section-header reveal"
-            style="text-align: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+    <section class="trust-section">
+        <div class="section-header reveal trust-header">
             <div>
                 <div class="section-label">Technológiai partnerek</div>
                 <h2 class="section-title">Iparági alapok. Mérhető eredmények.</h2>
@@ -3258,86 +3204,61 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </p>
         </div>
 
-        <div
-            style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; padding: 3rem 2rem; max-width: 1000px; margin: 0 auto;">
-            <!-- OpenAI -->
-            <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧠</div>
-                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">
-                    OpenAI</div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">GPT · szöveg, asszisztens, belső
-                    tudásbázis</div>
+        <div class="trust-grid">
+            <div class="trust-item reveal">
+                <div class="trust-icon">🧠</div>
+                <div class="trust-name">GOOGLE</div>
+                <div class="trust-desc">Gemini · szöveg, asszisztens, belső tudásbázis</div>
             </div>
-            <!-- Google -->
-            <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
-                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--magenta);">
-                    Google</div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Ads · GA4 · Search Console</div>
+            <div class="trust-item reveal">
+                <div class="trust-icon">🔍</div>
+                <div class="trust-name">GOOGLE</div>
+                <div class="trust-desc">Ads · GA4 · Search Console</div>
             </div>
-            <!-- n8n -->
-            <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
-                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--orange);">n8n
-                </div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">n8n · önálló adat-folyamok</div>
+            <div class="trust-item reveal">
+                <div class="trust-icon">⚡</div>
+                <div class="trust-name">N8N</div>
+                <div class="trust-desc">n8n · önálló adat-folyamok</div>
             </div>
-            <!-- Make -->
-            <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔗</div>
-                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">Make
-                </div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Make · SaaS-ök összekötése</div>
+            <div class="trust-item reveal">
+                <div class="trust-icon">🔗</div>
+                <div class="trust-name">Make</div>
+                <div class="trust-desc">Make · SaaS-ök összekötése</div>
             </div>
         </div>
 
-        <!-- CENTAUR Mini Section -->
-        <div class="reveal" style="text-align: center; padding: 2rem; max-width: 800px; margin: 0 auto;">
-            <div
-                style="display: inline-block; padding: 1rem 2rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.2); border-radius: 8px;">
-                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">A
-                    CENTAUR-MEGKÖZELÍTÉS:</span>
-                <span style="margin-left: 0.5rem;">emberi felelősségvállalás + MI-társfejlesztés, dokumentáltan</span>
-            </div>
+        <div class="trust-badge reveal">
+            <span class="trust-badge-label">A CENTAUR-MEGKÖZELÍTÉS:</span>
+            <span>emberi felelősségvállalás + MI-társfejlesztés, dokumentáltan</span>
         </div>
     </section>
 
     <!-- Founder Section -->
-    <section class="services" id="centaur-model" style="padding: 6rem 0;">
-        <div class="section-header reveal"
-            style="text-align: center; max-width: 900px; margin: 0 auto; padding: 0 2rem;">
+    <section class="founder-section" id="centaur-model">
+        <div class="section-header reveal founder-header">
             <div>
                 <div class="section-label">Alapító</div>
-                <h2 class="section-title">Chris Conen — <span
-                        style="color: var(--cyan);">Founder &amp; CEO</span></h2>
+                <h2 class="section-title">Chris Conen<br />
+                    <span class="gold-text">Senior Manager</span></h2>
             </div>
             <p class="section-description">
-                21+ év digitális tapasztalat — stratégiától a technikai architektúráig. AI-eszközöket használunk a fejlesztésben és a tartalomgyártásban, de a döntéseket és a felelősséget mindig ember hozza.
+                21+ év weboldal készítő és webáruház tervező tapasztalat — stratégiától a technikai architektúráig.
             </p>
         </div>
 
         <!-- Chris Conen - Founder card -->
-        <div class="service-card reveal"
-            style="display: flex; align-items: flex-start; gap: 2.5rem; max-width: 900px; margin: 3rem auto 0; padding: 2.5rem; border-top: 3px solid var(--cyan);">
-            <!-- Bal: kép -->
-            <div style="flex-shrink: 0;">
-                <div
-                    style="width: 160px; height: 160px; border-radius: 50%; overflow: hidden; border: 3px solid var(--cyan);">
-                    <img src="images/chris_conen_weboldal_készítés_kreatív_igazgató.webp"
-                        alt="Chris Conen, Conen Digital alapító" style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
+        <div class="founder-card reveal">
+            <div class="founder-card-avatar">
+                <img src="images/chris_conen_weboldal_készítés_kreatív_igazgató.webp"
+                    alt="Chris Conen, Conen Digital alapító">
             </div>
-            <!-- Jobb: tartalom -->
-            <div style="flex: 1; min-width: 0;">
-                <h3 class="service-title" style="color: var(--cyan); margin-bottom: 0.25rem;">Chris Conen</h3>
-                <div
-                    style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--magenta); margin-bottom: 1rem; letter-spacing: 0.05em;">
-                    FOUNDER &amp; CEO</div>
+            <div class="founder-card-body">
+                <h3 class="founder-card-name">Chris Conen</h3>
+                <div class="founder-card-role">Alapító &amp; Vezető igazgató</div>
                 <p class="service-description" style="font-size: 0.9rem; margin-bottom: 1rem;">
-                    44 éves német-magyar vállalkozó, 21+ év digitális tapasztalat. Stratégiától a technikai architektúráig egyedül vezeti a Conen Digitalt — AI-eszközökkel támogatva.
+                    44 éves német-magyar vállalkozó vagyok, 21+ év webfejlesztés és üzleti stratégia tapasztalattal. Weboldal készítés és webáruház tervezéstől a technikai architektúráig az üzleti stratégián át a kreatív irányításig, egyedül vezetem a Conen Digitalt — AI-eszközökkel támogatva.
                 </p>
-                <div
-                    style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 2rem; font-size: 0.75rem; color: rgba(255,255,255,0.5);">
+                <div class="founder-card-skills">
                     <span>Stratégia &amp; vízió</span>
                     <span>Architektúra &amp; kódbázis</span>
                     <span>Ügyfélkapcsolatok</span>
@@ -3354,8 +3275,8 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div class="reveal" style="max-width: 900px; margin: 3rem auto 0; padding: 0 2rem;">
             <div style="text-align: center; margin-bottom: 2rem;">
                 <div class="section-label">Tanúsítványok</div>
-                <h3 class="service-title" style="color: var(--cyan); margin-bottom: 0.25rem;">Szaktudás &amp; Képzettség</h3>
-                <p style="font-size: 0.85rem; color: var(--gray-text); margin-top: 0.5rem;">
+                <h3 class="founder-cert-title">Szaktudás &amp; Képzettség</h3>
+                <p class="founder-cert-desc">
                     Google + szakmai certifikációk — kattints a képre a nagyításhoz
                 </p>
             </div>
@@ -3387,12 +3308,12 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     </section>
 
     <!-- Flagship Case Study Teaser -->
-    <section class="services" style="padding-top: 2rem; background: var(--gray);">
+    <section class="services" style="padding-top: 2rem; background: var(--surface);">
         <div class="section-header reveal">
             <div>
                 <div class="section-label">Flagship-előzetes · árnyékolástechnika</div>
                 <h2 class="section-title">Esettanulmány: WordPress-örökségből <span
-                        style="color: var(--cyan)">AI-vezérelt ajánlat-konfigurátor</span></h2>
+                        class="gold-text">AI-vezérelt ajánlat-konfigurátor</span></h2>
             </div>
             <p class="section-description">
                 A Tata–Tatabánya–Komárom régió egyik árnyékolástechnikai cége egy klasszikus WordPress / Elementor
@@ -3418,7 +3339,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         szétesik mobilon, a Google nem jutalmazza a technikai minőséget.
                     </p>
                     <p class="service-description" style="margin-bottom: 1rem;">
-                        Ez a klasszikus <span style="color: var(--magenta)">"banánnal fizetsz, majmot kapsz"</span>
+                        Ez a klasszikus <span class="gold-text">"banánnal fizetsz, majmot kapsz"</span>
                         helyzet: elsőre olcsónak tűnik, de hosszú távon üzletileg drága. Lassú oldal, gyenge konverzió,
                         EAA-szempontból nem megfelelő, AI-asszisztensek számára nem olvasható.
                     </p>
@@ -3447,28 +3368,28 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         <div
                             style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
                             <div
-                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); text-transform: uppercase;">
                                 Mobil PSI</div>
                             <div style="font-size: 1.35rem; font-weight: 700;">57 → 99</div>
                         </div>
                         <div
                             style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
                             <div
-                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); text-transform: uppercase;">
                                 Asztali PSI</div>
                             <div style="font-size: 1.35rem; font-weight: 700;">89 → 100</div>
                         </div>
                         <div
                             style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
                             <div
-                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); text-transform: uppercase;">
                                 LCP</div>
                             <div style="font-size: 1.35rem; font-weight: 700;">13,5 mp → 1,8 mp</div>
                         </div>
                         <div
                             style="border: 1px solid rgba(255,255,255,0.08); padding: 1rem; background: rgba(255,255,255,0.02);">
                             <div
-                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--cyan); text-transform: uppercase;">
+                                style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--gold); text-transform: uppercase;">
                                 Funkció</div>
                             <div style="font-size: 1.05rem; font-weight: 700;">Konfigurátor + kosár + flow</div>
                         </div>
@@ -3620,7 +3541,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     </section>
 
     <!-- City Landing Pages - Internal Linking -->
-    <section class="services" id="varosok" style="padding: 4rem 0; background: var(--gray);">
+    <section class="services" id="varosok" style="padding: 4rem 0; background: var(--surface);">
         <div class="section-header reveal"
             style="text-align: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
             <div>
@@ -3634,55 +3555,22 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         </div>
         <div
             style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 2rem; max-width: 1200px; margin: 0 auto;">
-            <a href="index.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.15); border: 1px solid var(--cyan); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Győr</a>
-            <a href="weboldal-keszites-budapest.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Budapest</a>
-            <a href="weboldal-keszites-debrecen.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Debrecen</a>
-            <a href="weboldal-keszites-szeged.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szeged</a>
-            <a href="weboldal-keszites-miskolc.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Miskolc</a>
-            <a href="weboldal-keszites-pecs.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Pécs</a>
-            <a href="weboldal-keszites-nyiregyhaza.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Nyíregyháza</a>
-            <a href="weboldal-keszites-kecskemet.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kecskemét</a>
-            <a href="weboldal-keszites-szekesfehervar.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Székesfehérvár</a>
-            <a href="weboldal-keszites-szombathely.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szombathely</a>
-            <a href="weboldal-keszites-sopron.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Sopron</a>
-            <a href="weboldal-keszites-szolnok.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szolnok</a>
-            <a href="weboldal-keszites-eger.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Eger</a>
-            <a href="weboldal-keszites-veszprem.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Veszprém</a>
-            <a href="weboldal-keszites-zalaegerszeg.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Zalaegerszeg</a>
-            <a href="weboldal-keszites-kaposvar.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kaposvár</a>
-        </div>
-    </section>
-
-    <!-- Testimonial -->
-    <section class="testimonial">
-        <div class="testimonial-content reveal">
-            <blockquote class="testimonial-quote">
-                "A közös munka után végre nem külön futott a weboldal, az ajánlatkérés és a követés. Átláthatóbbá vált,
-                honnan jönnek az érdeklődők, és melyik lépést kell javítani."
-            </blockquote>
-            <div class="testimonial-author">
-                <div class="testimonial-avatar">TP</div>
-                <div>
-                    <div class="testimonial-name">Tipikus projektvisszajelzes</div>
-                    <div class="testimonial-role">B2B szolgaltato / webshop / growth projekt</div>
-                </div>
-            </div>
+            <a href="index.html" class="city-tag city-tag-active">Győr</a>
+            <a href="weboldal-keszites-budapest.html" class="city-tag">Budapest</a>
+            <a href="weboldal-keszites-debrecen.html" class="city-tag">Debrecen</a>
+            <a href="weboldal-keszites-szeged.html" class="city-tag">Szeged</a>
+            <a href="weboldal-keszites-miskolc.html" class="city-tag">Miskolc</a>
+            <a href="weboldal-keszites-pecs.html" class="city-tag">Pécs</a>
+            <a href="weboldal-keszites-nyiregyhaza.html" class="city-tag">Nyíregyháza</a>
+            <a href="weboldal-keszites-kecskemet.html" class="city-tag">Kecskemét</a>
+            <a href="weboldal-keszites-szekesfehervar.html" class="city-tag">Székesfehérvár</a>
+            <a href="weboldal-keszites-szombathely.html" class="city-tag">Szombathely</a>
+            <a href="weboldal-keszites-sopron.html" class="city-tag">Sopron</a>
+            <a href="weboldal-keszites-szolnok.html" class="city-tag">Szolnok</a>
+            <a href="weboldal-keszites-eger.html" class="city-tag">Eger</a>
+            <a href="weboldal-keszites-veszprem.html" class="city-tag">Veszprém</a>
+            <a href="weboldal-keszites-zalaegerszeg.html" class="city-tag">Zalaegerszeg</a>
+            <a href="weboldal-keszites-kaposvar.html" class="city-tag">Kaposvár</a>
         </div>
     </section>
 
@@ -3693,12 +3581,62 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             <h2 class="cta-title">Kezdjük egy <span>értékelhető</span> diagnosztikával</h2>
             <p class="cta-description">
                 Először átnézzük a jelenlegi oldalt, az ajánlatodat és a szűk keresztmetszeteket.
-                Az első konzultáció <span style="color: var(--cyan)">díjmentes</span>.
+                Az első konzultáció <span class="gold-text">díjmentes</span>.
             </p>
             <a href="#contact" class="btn btn-primary">
                 Kapcsolatfelvétel
                 <span>→</span>
             </a>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="faq-inner">
+            <div class="section-header reveal" style="text-align: center; max-width: 800px; margin: 0 auto 3rem; display: block;">
+                <div>
+                    <div class="section-label" style="justify-content: center;">Gyakori kérdések</div>
+                    <h2 class="section-title">Amit még érdemes tudnod</h2>
+                </div>
+            </div>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Mit jelent a CENTAUR-ügynökség?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A Conen Digital alapítója Chris Conen (Founder &amp; CEO) — 21+ év digitális tapasztalat, stratégiától a technikai architektúráig. AI-eszközöket használunk a fejlesztésben és a tartalomgyártásban, de a döntéseket és a felelősséget mindig ember hozza.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Mit jelent az Agent Experience (AX) és miért fontos 2026-ban?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Az Agent Experience (AX) azt jelenti, hogy a weboldal nemcsak emberek, hanem AI-asszisztensek (ChatGPT, Perplexity, Claude) számára is olvasható, navigálható és ajánlható. 2026-ban ez versenyelőny: strukturált adatok, /llms.txt, JSON-LD és MCP-endpoint segítségével.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Mennyi idő alatt készül el egy ajánlatgeneráló weboldal?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A projekt méretétől függ. Egy szolgáltató céges ajánlatgeneráló oldal kalkulátorral és lead-flow-val tipikusan 4-8 hét. A folyamatot mindig audittal indítjuk, scope-pal, ütemezéssel és mérőfelszereléssel.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Mit jelent az EAA-megfelelés és kötelező-e?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Az European Accessibility Act (EAA) 2025. június 28. óta kötelező az EU-ban a legtöbb e-kereskedelmi és szolgáltató oldalra. Mi WCAG 2.2 AA szintű audit + javítást végzünk, dokumentálva.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -3775,9 +3713,9 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                         <label for="budget">Költségkeret</label>
                         <select id="budget" name="budget">
                             <option value="">Válassz...</option>
-                            <option value="small">Fókuszált céges honlap / landing</option>
-                            <option value="medium">Komplett üzleti honlap (blog, aloldalak)</option>
-                            <option value="large">Webáruház / E-commerce rendszer</option>
+                            <option value="small">Alap weboldal, 5 ezer Ft/hó</option>
+                            <option value="medium">Starter weboldal 15 ezer F/hó</option>
+                            <option value="large">Profi weboldal 25 ezer Ft/hó</option>
                             <option value="enterprise">Egyedi weboldal és üzleti rendszer</option>
                         </select>
                     </div>
@@ -3805,11 +3743,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
 
     <!-- Vizualis konfigurator CTA -->
-    <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
-        <div style="max-width: 640px; margin: 0 auto;">
-            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
-            <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+    <section class="config-cta">
+        <div class="config-cta-inner">
+            <h2 class="config-cta-title">Próbáld ki a <span>vizuális tervezőt</span></h2>
+            <p class="config-cta-desc">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
+            <a href="weboldal-konfigurator-v2.html" class="btn btn-primary">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
@@ -3897,45 +3835,45 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
             <div style="margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center;">
                 Fő profilunk: Személyre szabott <a href="/"
-                    style="color: var(--cyan); text-decoration: none; font-weight: 500;">Weboldal készítés Győr</a> |
+                    class="gold-text" style="text-decoration: none; font-weight: 500;">Weboldal készítés Győr</a> |
                 Professzionális <a href="/"
-                    style="color: var(--magenta); text-decoration: none; font-weight: 500;">Webáruház készítés Győr</a>
-                | Prémium <a href="/" style="color: var(--orange); text-decoration: none; font-weight: 500;">Webshop
+                    class="gold-text" style="text-decoration: none; font-weight: 500;">Webáruház készítés Győr</a>
+                | Prémium <a href="/" class="gold-text" style="text-decoration: none; font-weight: 500;">Webshop
                     készítés Győr</a>
             </div>
             <div
-                style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 2;">
+                style="margin-top: 12px; font-size: 0.7rem; color: var(--text-tertiary); text-align: center; line-height: 2;">
                 Weboldal készítés:
                 <a href="weboldal-keszites-budapest.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Budapest</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Budapest</a> ·
                 <a href="weboldal-keszites-debrecen.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Debrecen</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Debrecen</a> ·
                 <a href="weboldal-keszites-szeged.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szeged</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Szeged</a> ·
                 <a href="weboldal-keszites-miskolc.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Miskolc</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Miskolc</a> ·
                 <a href="weboldal-keszites-pecs.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Pécs</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Pécs</a> ·
                 <a href="weboldal-keszites-nyiregyhaza.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Nyíregyháza</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Nyíregyháza</a> ·
                 <a href="weboldal-keszites-kecskemet.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kecskemét</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Kecskemét</a> ·
                 <a href="weboldal-keszites-szekesfehervar.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Székesfehérvár</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Székesfehérvár</a> ·
                 <a href="weboldal-keszites-szombathely.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szombathely</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Szombathely</a> ·
                 <a href="weboldal-keszites-sopron.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Sopron</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Sopron</a> ·
                 <a href="weboldal-keszites-szolnok.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szolnok</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Szolnok</a> ·
                 <a href="weboldal-keszites-eger.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Eger</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Eger</a> ·
                 <a href="weboldal-keszites-veszprem.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Veszprém</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Veszprém</a> ·
                 <a href="weboldal-keszites-zalaegerszeg.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Zalaegerszeg</a> ·
+                    style="color: var(--gold-text); text-decoration: none;">Zalaegerszeg</a> ·
                 <a href="weboldal-keszites-kaposvar.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kaposvár</a>
+                    style="color: var(--gold-text); text-decoration: none;">Kaposvár</a>
             </div>
             <div class="footer-copyright">
                 © 2026 ConenDigital. Chris Conen; a kivitelezésben AI-eszközöket is használunk emberi felügyelet
@@ -3945,70 +3883,6 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     </footer>
 
     <script>
-        // ============================================
-        // LOADER
-        // ============================================
-        const loader = document.getElementById('loader');
-        const lines = ['line1', 'line2', 'line3', 'line4'];
-
-        lines.forEach((id, index) => {
-            setTimeout(() => {
-                document.getElementById(id).classList.add('visible');
-            }, index * 400);
-        });
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loader.classList.add('hidden');
-            }, 2000);
-        });
-
-        // ============================================
-        // CURSOR
-        // ============================================
-        const cursor = document.getElementById('cursor');
-        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Cursor hover states
-        document.querySelectorAll('a, button, .service-card, .portfolio-item, input, textarea, select').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // Cursor trail
-        const trailContainer = document.getElementById('cursorTrailContainer');
-        const trails = [];
-        for (let i = 0; i < 15; i++) {
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            trailContainer.appendChild(trail);
-            trails.push({ el: trail });
-        }
-
-        let trailIndex = 0;
-        document.addEventListener('mousemove', (e) => {
-            trails[trailIndex].el.style.left = e.clientX + 'px';
-            trails[trailIndex].el.style.top = e.clientY + 'px';
-            trails[trailIndex].el.style.opacity = 0.6;
-            const current = trails[trailIndex].el;
-            setTimeout(() => { current.style.opacity = 0; }, 100);
-            trailIndex = (trailIndex + 1) % trails.length;
-        });
-
         // ============================================
         // NAVIGATION
         // ============================================
@@ -4596,6 +4470,23 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             });
             animFrameId = requestAnimationFrame(tick);
         })();
+    </script>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const expanded = btn.getAttribute('aria-expanded') === 'true';
+                // Close all
+                document.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded', 'false'));
+                document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+                // Open this one if it wasn't open
+                if (!expanded) {
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.nextElementSibling.classList.add('open');
+                }
+            });
+        });
     </script>
 
 <script src="/blog-widget.js" defer></script>

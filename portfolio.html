@@ -92,40 +92,31 @@
 
     <style>
         :root {
-            --black: #09090b;          /* Pure obsidian black */
-            --white: #ffffff;
-            --gray: #141416;           /* Premium charcoal */
-            --gray-light: #222225;
-            --cyan: #C9A962;           /* Champagne Gold */
-            --magenta: #8A8A8F;        /* Muted gold-glow/silver */
-            --orange: #C99566;         /* Warm copper */
+            --bg:          #09090b;
+            --surface:     #111113;
+            --surface-2:   #18181b;
+            --surface-3:   #1e1e22;
+            --border:      #27272a;
+            --border-hover: #3f3f46;
+            --text:        #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-tertiary:  #71717a;
+            --gold:        #C9A962;
+            --gold-glow:   rgba(201, 169, 98, 0.15);
+            --gold-text:   #e5d4a1;
+            --accent:      #8b7cf6;
+            --accent-glow: rgba(139, 124, 246, 0.12);
+            --success:     #4ade80;
+            --error:       #f87171;
+            --section-y:   clamp(80px, 12vw, 140px);
+            --section-x:   clamp(20px, 5vw, 80px);
+            --container:   1280px;
+            --radius-sm:   6px;
+            --radius-md:   12px;
+            --radius-lg:   20px;
+            --radius-full: 9999px;
             --font-main: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter Tight', -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-        body, p, li, a, td, th, input, textarea, select {
-            font-family: var(--font-body) !important;
-        }
-        h1, h2, h3, h4, h5, h6, .glitch, .nav-logo, .nav-logo-text, .hero-title-line, .hero-title-gradient, .hero-title-subline {
-            font-family: var(--font-main) !important;
-        }
-        .cursor, .cursor-trail, #cursorTrailContainer, .scanlines {
-            display: none !important;
-        }
-        body {
-            cursor: auto !important;
-        }
-
-        :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray: #1a1a1a;
-            --gray-light: #2a2a2a;
-            --cyan: #00f0ff;
-            --magenta: #bf00ff;
-            --orange: #ff6b00;
-            --gold: #C9A962;
-            --font-main: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter Tight', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
@@ -140,16 +131,13 @@
         }
 
         body {
-            background: var(--black);
-            color: var(--white);
+            background: var(--bg);
+            color: var(--text);
             font-family: var(--font-main);
             overflow-x: hidden;
         }
 
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: none;
-            }
+
         }
 
         @media (hover: none),
@@ -162,8 +150,8 @@
         }
 
         ::selection {
-            background: var(--cyan);
-            color: var(--black);
+            background: var(--gold);
+            color: var(--bg);
         }
 
         a {
@@ -230,7 +218,7 @@
             position: fixed;
             width: 20px;
             height: 20px;
-            border: 2px solid var(--cyan);
+            border: 2px solid var(--gold);
             border-radius: 50%;
             pointer-events: none;
             z-index: 99999;
@@ -246,7 +234,7 @@
             left: 50%;
             width: 4px;
             height: 4px;
-            background: var(--cyan);
+            background: var(--gold);
             border-radius: 50%;
             transform: translate(-50%, -50%);
         }
@@ -254,7 +242,7 @@
         .cursor.hover {
             width: 60px;
             height: 60px;
-            border-color: var(--magenta);
+            border-color: var(--accent);
             background: rgba(191, 0, 255, 0.1);
         }
 
@@ -262,7 +250,7 @@
         .loader {
             position: fixed;
             inset: 0;
-            background: var(--black);
+            background: var(--bg);
             z-index: 100000;
             display: flex;
             flex-direction: column;
@@ -279,7 +267,7 @@
         .loader-terminal {
             font-family: var(--font-mono);
             font-size: 0.9rem;
-            color: var(--cyan);
+            color: var(--gold);
             text-align: left;
         }
 
@@ -296,7 +284,7 @@
             display: inline-block;
             width: 10px;
             height: 1.2em;
-            background: var(--cyan);
+            background: var(--gold);
             margin-left: 2px;
             animation: blink 0.7s infinite;
         }
@@ -344,11 +332,11 @@
         }
 
         .nav-logo-bracket {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .nav-logo-text {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -372,7 +360,7 @@
         .nav-links a::before {
             content: '//';
             margin-right: 0.3rem;
-            color: var(--cyan);
+            color: var(--gold);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -384,7 +372,7 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .nav-right {
@@ -432,7 +420,7 @@
         .nav-hamburger span {
             width: 30px;
             height: 2px;
-            background: var(--white);
+            background: var(--text);
             transition: all 0.3s ease;
         }
 
@@ -493,8 +481,8 @@
             font-size: 0.9rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
             font-weight: 600;
         }
 
@@ -524,7 +512,7 @@
             position: absolute;
             inset: -2px;
             border-radius: 6px;
-            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, var(--gold) 48%, var(--gold-text) 50%, var(--gold) 52%, transparent 70%, transparent 100%);
             z-index: -2;
             animation: borderRotate 2.5s linear infinite;
             filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
@@ -571,13 +559,13 @@
         .hero-glow-1 {
             top: -200px;
             right: -200px;
-            background: var(--cyan);
+            background: var(--gold);
         }
 
         .hero-glow-2 {
             bottom: -200px;
             left: -200px;
-            background: var(--magenta);
+            background: var(--accent);
         }
 
         .hero-content {
@@ -594,7 +582,7 @@
             gap: 1rem;
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            color: var(--cyan);
+            color: var(--gold);
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.3s;
@@ -603,7 +591,7 @@
         .hero-label-dot {
             width: 8px;
             height: 8px;
-            background: var(--cyan);
+            background: var(--gold);
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
         }
@@ -633,7 +621,7 @@
         }
 
         .hero-title-gradient {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--orange));
+            background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -696,15 +684,15 @@
 
         .filter-btn:hover,
         .filter-btn.active {
-            border-color: var(--cyan);
-            color: var(--cyan);
+            border-color: var(--gold);
+            color: var(--gold);
         }
 
         /* Section Styles */
         .section-label {
             font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: var(--cyan);
+            color: var(--gold);
             letter-spacing: 0.2em;
             text-transform: uppercase;
             margin-bottom: 1rem;
@@ -717,7 +705,7 @@
         }
 
         .section-title span {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -746,7 +734,7 @@
 
         .featured-item {
             position: relative;
-            background: var(--gray);
+            background: var(--surface);
             border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
             transition: all 0.5s ease;
@@ -759,7 +747,7 @@
 
         .featured-image {
             aspect-ratio: 16/10;
-            background: linear-gradient(135deg, var(--gray-light), var(--gray));
+            background: linear-gradient(135deg, var(--gray-light), var(--surface));
             position: relative;
             overflow: hidden;
         }
@@ -809,7 +797,7 @@
         .featured-category {
             font-family: var(--font-mono);
             font-size: 0.7rem;
-            color: var(--cyan);
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.15em;
         }
@@ -850,7 +838,7 @@
             gap: 0.5rem;
             font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: var(--cyan);
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
@@ -927,7 +915,7 @@
         .flagship-case-highlight strong {
             display: block;
             font-size: 0.85rem;
-            color: var(--cyan);
+            color: var(--gold);
             font-family: var(--font-mono);
             text-transform: uppercase;
             letter-spacing: 0.08em;
@@ -990,7 +978,7 @@
             font-size: 0.7rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--cyan);
+            color: var(--gold);
             margin-bottom: 0.75rem;
         }
 
@@ -1024,7 +1012,7 @@
             display: block;
             font-family: var(--font-mono);
             font-size: 0.8rem;
-            color: var(--cyan);
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.08em;
             margin-bottom: 0.6rem;
@@ -1063,7 +1051,7 @@
         /* Portfolio Grid */
         .portfolio {
             padding: 6rem 4rem;
-            background: var(--gray);
+            background: var(--surface);
         }
 
         .portfolio-container {
@@ -1084,7 +1072,7 @@
 
         .portfolio-item {
             position: relative;
-            background: var(--black);
+            background: var(--bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
             overflow: hidden;
             transition: all 0.5s ease;
@@ -1097,7 +1085,7 @@
 
         .portfolio-image {
             aspect-ratio: 16/10;
-            background: linear-gradient(135deg, var(--gray-light), var(--gray));
+            background: linear-gradient(135deg, var(--gray-light), var(--surface));
             position: relative;
             overflow: hidden;
         }
@@ -1205,7 +1193,7 @@
         .portfolio-category {
             font-family: var(--font-mono);
             font-size: 0.65rem;
-            color: var(--cyan);
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.1em;
         }
@@ -1226,14 +1214,14 @@
         .portfolio-link {
             font-family: var(--font-mono);
             font-size: 0.7rem;
-            color: var(--magenta);
+            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             transition: all 0.3s ease;
         }
 
         .portfolio-link:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         /* Maintenance Section */
@@ -1267,7 +1255,7 @@
         }
 
         .maintenance-card {
-            background: var(--gray);
+            background: var(--surface);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 2rem;
             transition: all 0.4s ease;
@@ -1285,7 +1273,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .maintenance-icon svg {
@@ -1302,7 +1290,7 @@
         .maintenance-url {
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            color: var(--orange);
+            color: var(--gold);
             margin-bottom: 1rem;
         }
 
@@ -1334,14 +1322,14 @@
             padding: 0.3rem 0.6rem;
             background: rgba(255, 107, 0, 0.1);
             border: 1px solid rgba(255, 107, 0, 0.2);
-            color: var(--orange);
+            color: var(--gold);
             text-transform: uppercase;
         }
 
         /* Stats Section */
         .stats {
             padding: 6rem 4rem;
-            background: var(--gray);
+            background: var(--surface);
         }
 
         .stats-container {
@@ -1364,7 +1352,7 @@
             font-family: var(--font-mono);
             font-size: 4rem;
             font-weight: 700;
-            background: linear-gradient(180deg, var(--white), rgba(255, 255, 255, 0.5));
+            background: linear-gradient(180deg, var(--text), rgba(255, 255, 255, 0.5));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1412,7 +1400,7 @@
             right: -1rem;
             top: 3rem;
             font-size: 1.5rem;
-            color: var(--cyan);
+            color: var(--gold);
             opacity: 0.3;
         }
 
@@ -1458,7 +1446,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            background: linear-gradient(135deg, var(--gold), var(--accent));
             pointer-events: none;
         }
 
@@ -1477,7 +1465,7 @@
         }
 
         .cta-title span {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1499,8 +1487,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
             border: none;
             cursor: pointer;
             transition: all 0.4s ease;
@@ -1534,7 +1522,7 @@
         }
 
         .footer-logo span {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1552,7 +1540,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .footer-copyright {
@@ -1563,7 +1551,7 @@
         }
 
         .footer-copyright a {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .footer-social {
@@ -1590,7 +1578,7 @@
         }
 
         .footer-social-link:hover {
-            color: var(--cyan);
+            color: var(--gold);
             background: rgba(0, 240, 255, 0.12);
             transform: translateY(-2px);
         }
@@ -1877,19 +1865,7 @@
 
 <body>
     <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-terminal">
-            <div class="loader-line" id="line1">> Projektek betöltése...</div>
-            <div class="loader-line" id="line2">> 13 referencia renderelése...</div>
-            <div class="loader-line" id="line3">> 3 kontinens szinkronizálása...</div>
-            <div class="loader-line" id="line4">> Sikeres betöltés.<span class="loader-cursor"></span></div>
-        </div>
-    </div>
 
-    <!-- Effects -->
-    <div class="scanlines"></div>
-    <div class="grain"></div>
-    <div class="cursor" id="cursor"></div>
 
     <!-- Navigation -->
     <nav class="nav" id="nav">
@@ -1938,7 +1914,7 @@
                 (WP→Astro 5 + EAA), nemzetközi projektek Ausztráliától Ausztriáig, karbantartási referenciák.
                 A Mótyán case a flagship: a 3 fő pillérünkből (Ajánlatgeneráló weboldalak, Felújítás+EAA, AI Ops)
                 az első kettő ötvözve, mérhető eredménnyel. Működési alapokmány:
-                <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--cyan);">centaur-lang.dev</a>.
+                <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--gold);">centaur-lang.dev</a>.
             </p>
         </div>
     </section>
@@ -2398,7 +2374,7 @@
                         <p class="portfolio-desc">
                             WordPress oldal modernizálása Astro 5-re, ajánlatgeneráló konfigurátor + kosárlogika +
                             EAA WCAG 2.2 AA. PageSpeed mobil 57→99, LCP 13,5mp→1,8mp. Tata, Tatabánya, Komárom és
-                            környéke piacára. <a href="#arnyekolas-case" style="color: var(--cyan);">Részletes case →</a>
+                            környéke piacára. <a href="#arnyekolas-case" style="color: var(--gold);">Részletes case →</a>
                         </p>
                         <a href="https://motyanarnyekolas.hu/" class="portfolio-link" target="_blank" rel="noopener">
                             Élő projekt →
@@ -2536,7 +2512,7 @@
                 <p style="text-align: center; color: rgba(255,255,255,0.6); font-size: 1rem; margin-top: 1rem; max-width: 720px; margin-left: auto; margin-right: auto;">
                     A 4 fő lépést itt összefoglaljuk. A teljes 7-lépéses projektfolyamat (diagnosztika + AX-audit
                     opt. + scope + IA + UI + dev + átadás) a
-                    <a href="szolgaltatasok.html" style="color: var(--cyan);">szolgáltatások</a> oldalon olvasható.
+                    <a href="szolgaltatasok.html" style="color: var(--gold);">szolgáltatások</a> oldalon olvasható.
                 </p>
             </div>
 
@@ -2597,9 +2573,9 @@
     <!-- Vizualis konfigurator CTA -->
     <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
         <div style="max-width: 640px; margin: 0 auto;">
-            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--gold), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
             <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--gold); color: var(--bg); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--gold)';this.style.boxShadow='inset 0 0 0 1px var(--gold), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--gold)';this.style.color='var(--bg)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
@@ -2689,11 +2665,11 @@
             </div>
             <div style="width: 100%; margin-top: 15px; font-size: 0.8rem; color: rgba(255,255,255,0.4); text-align: center;">
                 Fő profilunk: Személyre szabott <a href="index.html"
-                    style="color: var(--cyan); text-decoration: none; font-weight: 500;">Weboldal készítés Győr</a> |
+                    style="color: var(--gold); text-decoration: none; font-weight: 500;">Weboldal készítés Győr</a> |
                 Professzionális <a href="webaruhaz-keszites.html"
-                    style="color: var(--magenta); text-decoration: none; font-weight: 500;">Webáruház készítés Győr</a>
+                    style="color: var(--accent); text-decoration: none; font-weight: 500;">Webáruház készítés Győr</a>
                 | Prémium <a href="webaruhaz-keszites.html"
-                    style="color: var(--orange); text-decoration: none; font-weight: 500;">Webshop készítés Győr</a>
+                    style="color: var(--gold); text-decoration: none; font-weight: 500;">Webshop készítés Győr</a>
             </div>
             <div
                 style="width: 100%; margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 2;">
@@ -2738,37 +2714,6 @@
     </footer>
 
     <script>
-        // Loader
-        const loader = document.getElementById('loader');
-        const lines = ['line1', 'line2', 'line3', 'line4'];
-        lines.forEach((id, index) => {
-            setTimeout(() => {
-                document.getElementById(id).classList.add('visible');
-            }, index * 400);
-        });
-        window.addEventListener('load', () => {
-            setTimeout(() => { loader.classList.add('hidden'); }, 2000);
-        });
-
-        // Cursor (only on desktop)
-        const cursor = document.getElementById('cursor');
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-            document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-            function animateCursor() {
-                cursorX += (mouseX - cursorX) * 0.1;
-                cursorY += (mouseY - cursorY) * 0.1;
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
-                requestAnimationFrame(animateCursor);
-            }
-            animateCursor();
-            document.querySelectorAll('a, button, .portfolio-item, .featured-item, .maintenance-card, .process-step').forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        }
-
         // Navigation
         const nav = document.getElementById('nav');
         const hamburger = document.getElementById('hamburger');

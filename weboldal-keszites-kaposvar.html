@@ -164,9 +164,9 @@
             --white: #ffffff;
             --gray: #1a1a1a;
             --gray-light: #2a2a2a;
-            --cyan: #00f0ff;
-            --magenta: #bf00ff;
-            --orange: #ff6b00;
+            --cyan: #C9A962;
+            --magenta: #8b7cf6;
+            --orange: #e5d4a1;
             --font-main: 'Space Grotesk', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -482,64 +482,6 @@
             letter-spacing: 0.08em;
         }
 
-        /* Grain Overlay */
-        .grain {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            pointer-events: none;
-            z-index: 9996;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            animation: grain 0.5s steps(1) infinite;
-        }
-
-        @keyframes grain {
-
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-
-            10% {
-                transform: translate(-5%, -10%);
-            }
-
-            20% {
-                transform: translate(-15%, 5%);
-            }
-
-            30% {
-                transform: translate(7%, -25%);
-            }
-
-            40% {
-                transform: translate(-5%, 25%);
-            }
-
-            50% {
-                transform: translate(-15%, 10%);
-            }
-
-            60% {
-                transform: translate(15%, 0%);
-            }
-
-            70% {
-                transform: translate(0%, 15%);
-            }
-
-            80% {
-                transform: translate(3%, 35%);
-            }
-
-            90% {
-                transform: translate(-10%, 10%);
-            }
-        }
-
         /* Custom Cursor */
         .cursor {
             position: fixed;
@@ -583,63 +525,6 @@
             opacity: 0;
             transform: translate(-50%, -50%);
             background: linear-gradient(135deg, var(--cyan), var(--magenta));
-        }
-
-        /* Loader */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--black);
-            z-index: 100000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-terminal {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--cyan);
-            text-align: left;
-            max-width: 500px;
-        }
-
-        .loader-line {
-            opacity: 0;
-            margin: 0.3rem 0;
-        }
-
-        .loader-line.visible {
-            opacity: 1;
-        }
-
-        .loader-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: var(--cyan);
-            margin-left: 2px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            50% {
-                opacity: 1;
-            }
-
-            51%,
-            100% {
-                opacity: 0;
-            }
         }
 
         /* Navigation */
@@ -851,7 +736,7 @@
             position: absolute;
             inset: -2px;
             border-radius: 6px;
-            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, var(--gold) 48%, var(--gold-text) 50%, var(--gold) 52%, transparent 70%, transparent 100%);
             z-index: -2;
             animation: borderRotate 2.5s linear infinite;
             filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
@@ -882,8 +767,8 @@
             position: absolute;
             inset: 0;
             background-image:
-                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(201, 169, 98, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 169, 98, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
         }
@@ -1119,8 +1004,8 @@
             align-items: center;
             gap: 0.6rem;
             padding: 0.5rem 0.85rem;
-            background: rgba(0, 240, 255, 0.08);
-            border: 1px solid rgba(0, 240, 255, 0.25);
+            background: rgba(201, 169, 98, 0.08);
+            border: 1px solid rgba(201, 169, 98, 0.25);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             font-family: var(--font-mono);
@@ -1271,7 +1156,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(201, 169, 98, 0.3);
         }
 
         .btn-secondary {
@@ -1433,7 +1318,7 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(0, 240, 255, 0.2);
+            border-color: rgba(201, 169, 98, 0.2);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
         }
 
@@ -1468,7 +1353,7 @@
             content: '';
             position: absolute;
             inset: -5px;
-            border: 1px solid rgba(0, 240, 255, 0.2);
+            border: 1px solid rgba(201, 169, 98, 0.2);
         }
 
         .service-title {
@@ -1581,7 +1466,7 @@
             content: '';
             position: absolute;
             inset: 5px;
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(201, 169, 98, 0.3);
         }
 
         .process-title {
@@ -1685,26 +1570,26 @@
         }
 
         .screenshot-window::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, rgba(0, 240, 255, 0.22), rgba(201, 169, 98, 0.18));
+            background: linear-gradient(180deg, rgba(201, 169, 98, 0.22), rgba(201, 169, 98, 0.18));
             border-radius: 8px;
             border: 2px solid rgba(0, 0, 0, 0.08);
             box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25);
         }
 
         .screenshot-window::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, rgba(0, 240, 255, 0.32), rgba(201, 169, 98, 0.28));
+            background: linear-gradient(180deg, rgba(201, 169, 98, 0.32), rgba(201, 169, 98, 0.28));
         }
 
         /* Firefox scrollbar */
         .screenshot-window {
             scrollbar-width: thin;
-            scrollbar-color: rgba(0, 240, 255, 0.22) rgba(0, 0, 0, 0.06);
+            scrollbar-color: rgba(201, 169, 98, 0.22) rgba(0, 0, 0, 0.06);
             -ms-overflow-style: auto;
         }
 
         /* Focus outline for keyboard users */
         .screenshot-window:focus {
-            outline: 3px solid rgba(0, 240, 255, 0.12);
+            outline: 3px solid rgba(201, 169, 98, 0.12);
             outline-offset: 4px;
         }
 
@@ -1993,7 +1878,7 @@
         .form-group select:focus {
             outline: none;
             border-color: var(--cyan);
-            background: rgba(0, 240, 255, 0.03);
+            background: rgba(201, 169, 98, 0.03);
         }
 
         .form-group textarea {
@@ -2004,7 +1889,7 @@
         .form-group select {
             appearance: none;
             cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2300f0ff' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23C9A962' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             background-size: 16px;
@@ -2031,7 +1916,7 @@
 
         .form-submit:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(201, 169, 98, 0.3);
         }
 
         /* Footer */
@@ -2115,7 +2000,7 @@
 
         .footer-social-link:hover {
             color: var(--cyan);
-            background: rgba(0, 240, 255, 0.12);
+            background: rgba(201, 169, 98, 0.12);
             transform: translateY(-2px);
         }
 
@@ -2585,20 +2470,8 @@
 
 <body>
 
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-terminal">
-            <div class="loader-line" id="line1">> Kaposvár · Somogy megye · digitális boot…</div>
-            <div class="loader-line" id="line2">> Rippl-Rónai hang · színek és tipográfia…</div>
-            <div class="loader-line" id="line3">> Mezőgazdaság + szolgáltatás modulok…</div>
-            <div class="loader-line" id="line4">> Kész — szezonra is felkészültünk.<span class="loader-cursor"></span>
-            </div>
-        </div>
-    </div>
-
     <!-- Effects -->
     <div class="scanlines"></div>
-    <div class="grain"></div>
     <div class="cursor" id="cursor"></div>
     <div id="cursorTrailContainer"></div>
 
@@ -2660,7 +2533,7 @@
 <div class="hero-cta">
                 <a href="https://app.conendigital.hu"
                 style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;"
-                onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'"
+                onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(201,169,98,0.4)'"
                 onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor
                 megnyitása →</a>
             </div>
@@ -2955,7 +2828,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <!-- Secret Weapon Mini Section -->
         <div class="reveal" style="text-align: center; padding: 2rem; max-width: 800px; margin: 0 auto;">
             <div
-                style="display: inline-block; padding: 1rem 2rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.2); border-radius: 8px;">
+                style="display: inline-block; padding: 1rem 2rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.2); border-radius: 8px;">
                 <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan);">🤖 A TITKOS
                     FEGYVERÜNK:</span>
                 <span style="margin-left: 0.5rem;">Vidék + szezon: a webnek is kell „aratás” üzemmód — előre tervezett
@@ -3193,37 +3066,37 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div
             style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 2rem; max-width: 1200px; margin: 0 auto;">
             <a href="index.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Győr</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Győr</a>
             <a href="weboldal-keszites-budapest.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Budapest</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Budapest</a>
             <a href="weboldal-keszites-debrecen.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Debrecen</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Debrecen</a>
             <a href="weboldal-keszites-szeged.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szeged</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szeged</a>
             <a href="weboldal-keszites-miskolc.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Miskolc</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Miskolc</a>
             <a href="weboldal-keszites-pecs.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Pécs</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Pécs</a>
             <a href="weboldal-keszites-nyiregyhaza.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Nyíregyháza</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Nyíregyháza</a>
             <a href="weboldal-keszites-kecskemet.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kecskemét</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kecskemét</a>
             <a href="weboldal-keszites-szekesfehervar.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Székesfehérvár</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Székesfehérvár</a>
             <a href="weboldal-keszites-szombathely.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szombathely</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szombathely</a>
             <a href="weboldal-keszites-sopron.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Sopron</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Sopron</a>
             <a href="weboldal-keszites-szolnok.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szolnok</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Szolnok</a>
             <a href="weboldal-keszites-eger.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Eger</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Eger</a>
             <a href="weboldal-keszites-veszprem.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Veszprém</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Veszprém</a>
             <a href="weboldal-keszites-zalaegerszeg.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.05); border: 1px solid rgba(0,240,255,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Zalaegerszeg</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.05); border: 1px solid rgba(201,169,98,0.15); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Zalaegerszeg</a>
             <a href="weboldal-keszites-kaposvar.html"
-                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(0,240,255,0.15); border: 1px solid var(--cyan); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kaposvár</a>
+                style="display: inline-flex; padding: 0.5rem 1.25rem; background: rgba(201,169,98,0.15); border: 1px solid var(--cyan); border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--cyan); transition: all 0.3s; text-decoration: none;">Kaposvár</a>
         </div>
     </section>
 
@@ -3351,7 +3224,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         <div style="max-width: 640px; margin: 0 auto;">
             <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
             <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(201,169,98,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
@@ -3452,35 +3325,35 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                 style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 2;">
                 Weboldal készítés:
                 <a href="weboldal-keszites-budapest.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Budapest</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Budapest</a> ·
                 <a href="weboldal-keszites-debrecen.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Debrecen</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Debrecen</a> ·
                 <a href="weboldal-keszites-szeged.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szeged</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Szeged</a> ·
                 <a href="weboldal-keszites-miskolc.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Miskolc</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Miskolc</a> ·
                 <a href="weboldal-keszites-pecs.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Pécs</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Pécs</a> ·
                 <a href="weboldal-keszites-nyiregyhaza.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Nyíregyháza</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Nyíregyháza</a> ·
                 <a href="weboldal-keszites-kecskemet.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kecskemét</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Kecskemét</a> ·
                 <a href="weboldal-keszites-szekesfehervar.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Székesfehérvár</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Székesfehérvár</a> ·
                 <a href="weboldal-keszites-szombathely.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szombathely</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Szombathely</a> ·
                 <a href="weboldal-keszites-sopron.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Sopron</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Sopron</a> ·
                 <a href="weboldal-keszites-szolnok.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szolnok</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Szolnok</a> ·
                 <a href="weboldal-keszites-eger.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Eger</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Eger</a> ·
                 <a href="weboldal-keszites-veszprem.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Veszprém</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Veszprém</a> ·
                 <a href="weboldal-keszites-zalaegerszeg.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Zalaegerszeg</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Zalaegerszeg</a> ·
                 <a href="weboldal-keszites-kaposvar.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kaposvár</a>
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Kaposvár</a>
             </div>
             <div class="footer-copyright">
                 © ConenDigital · <span style="color: var(--cyan)">Kaposvár</span> · Minden jog fenntartva.
@@ -3489,70 +3362,6 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     </footer>
 
     <script>
-        // ============================================
-        // LOADER
-        // ============================================
-        const loader = document.getElementById('loader');
-        const lines = ['line1', 'line2', 'line3', 'line4'];
-
-        lines.forEach((id, index) => {
-            setTimeout(() => {
-                document.getElementById(id).classList.add('visible');
-            }, index * 400);
-        });
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loader.classList.add('hidden');
-            }, 2000);
-        });
-
-        // ============================================
-        // CURSOR
-        // ============================================
-        const cursor = document.getElementById('cursor');
-        let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.1;
-            cursorY += (mouseY - cursorY) * 0.1;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Cursor hover states
-        document.querySelectorAll('a, button, .service-card, .portfolio-item, input, textarea, select').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // Cursor trail
-        const trailContainer = document.getElementById('cursorTrailContainer');
-        const trails = [];
-        for (let i = 0; i < 15; i++) {
-            const trail = document.createElement('div');
-            trail.className = 'cursor-trail';
-            trailContainer.appendChild(trail);
-            trails.push({ el: trail });
-        }
-
-        let trailIndex = 0;
-        document.addEventListener('mousemove', (e) => {
-            trails[trailIndex].el.style.left = e.clientX + 'px';
-            trails[trailIndex].el.style.top = e.clientY + 'px';
-            trails[trailIndex].el.style.opacity = 0.6;
-            const current = trails[trailIndex].el;
-            setTimeout(() => { current.style.opacity = 0; }, 100);
-            trailIndex = (trailIndex + 1) % trails.length;
-        });
-
         // ============================================
         // NAVIGATION
         // ============================================

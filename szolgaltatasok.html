@@ -127,39 +127,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #09090b;          /* Pure obsidian black */
-            --white: #ffffff;
-            --gray: #141416;           /* Premium charcoal */
-            --gray-light: #222225;
-            --cyan: #C9A962;           /* Champagne Gold */
-            --magenta: #8A8A8F;        /* Muted gold-glow/silver */
-            --orange: #C99566;         /* Warm copper */
+            --bg:          #09090b;
+            --surface:     #111113;
+            --surface-2:   #18181b;
+            --surface-3:   #1e1e22;
+            --border:      #27272a;
+            --border-hover: #3f3f46;
+            --text:        #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-tertiary:  #71717a;
+            --gold:        #C9A962;
+            --gold-glow:   rgba(201, 169, 98, 0.15);
+            --gold-text:   #e5d4a1;
+            --accent:      #8b7cf6;
+            --accent-glow: rgba(139, 124, 246, 0.12);
+            --success:     #4ade80;
+            --error:       #f87171;
+            --section-y:   clamp(80px, 12vw, 140px);
+            --section-x:   clamp(20px, 5vw, 80px);
+            --container:   1280px;
+            --radius-sm:   6px;
+            --radius-md:   12px;
+            --radius-lg:   20px;
+            --radius-full: 9999px;
             --font-main: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter Tight', -apple-system, sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
-        }
-        body, p, li, a, td, th, input, textarea, select {
-            font-family: var(--font-body) !important;
-        }
-        h1, h2, h3, h4, h5, h6, .glitch, .nav-logo, .nav-logo-text, .hero-title-line, .hero-title-gradient, .hero-title-subline {
-            font-family: var(--font-main) !important;
-        }
-        .cursor, .cursor-trail, #cursorTrailContainer, .scanlines {
-            display: none !important;
-        }
-        body {
-            cursor: auto !important;
-        }
-
-        :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray: #1a1a1a;
-            --gray-light: #2a2a2a;
-            --cyan: #00f0ff;
-            --magenta: #bf00ff;
-            --orange: #ff6b00;
-            --font-main: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter Tight', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
@@ -174,174 +166,28 @@
         }
 
         body {
-            background: var(--black);
-            color: var(--white);
+            background: var(--bg);
+            color: var(--text);
             font-family: var(--font-main);
             overflow-x: hidden;
         }
 
-        @media (hover: hover) and (pointer: fine) {
-            body {
-                cursor: none;
-            }
-        }
 
-        @media (hover: none),
-        (pointer: coarse) {
-            .cursor {
-                display: none !important;
-            }
-        }
 
-        ::selection {
-            background: var(--cyan);
-            color: var(--black);
-        }
+
 
         a {
             color: inherit;
             text-decoration: none;
         }
 
-        .scanlines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9997;
-            background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0px, rgba(0, 0, 0, 0.1) 1px, transparent 1px, transparent 2px);
-            opacity: 0.15;
-        }
 
-        .grain {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            pointer-events: none;
-            z-index: 9996;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            animation: grain 0.5s steps(1) infinite;
-        }
 
-        @keyframes grain {
 
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
 
-            10% {
-                transform: translate(-5%, -10%);
-            }
 
-            30% {
-                transform: translate(7%, -25%);
-            }
 
-            50% {
-                transform: translate(-15%, 10%);
-            }
 
-            70% {
-                transform: translate(0%, 15%);
-            }
-
-            90% {
-                transform: translate(-10%, 10%);
-            }
-        }
-
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--cyan);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 99999;
-            transform: translate(-50%, -50%);
-            transition: all 0.1s ease;
-            mix-blend-mode: difference;
-        }
-
-        .cursor::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 4px;
-            height: 4px;
-            background: var(--cyan);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            width: 60px;
-            height: 60px;
-            border-color: var(--magenta);
-            background: rgba(191, 0, 255, 0.1);
-        }
-
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--black);
-            z-index: 100000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-terminal {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--cyan);
-            text-align: left;
-        }
-
-        .loader-line {
-            opacity: 0;
-            margin: 0.3rem 0;
-        }
-
-        .loader-line.visible {
-            opacity: 1;
-        }
-
-        .loader-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: var(--cyan);
-            margin-left: 2px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            50% {
-                opacity: 1;
-            }
-
-            51%,
-            100% {
-                opacity: 0;
-            }
-        }
 
         .nav {
             position: fixed;
@@ -372,11 +218,11 @@
         }
 
         .nav-logo-bracket {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .nav-logo-text {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -400,7 +246,7 @@
         .nav-links a::before {
             content: '//';
             margin-right: 0.3rem;
-            color: var(--cyan);
+            color: var(--gold);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -412,7 +258,7 @@
 
         .nav-links a:hover,
         .nav-links a.active {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .nav-right {
@@ -460,7 +306,7 @@
         .nav-hamburger span {
             width: 30px;
             height: 2px;
-            background: var(--white);
+            background: var(--text);
             transition: all 0.3s ease;
         }
 
@@ -521,8 +367,8 @@
             font-size: 0.9rem;
             letter-spacing: 0.05em;
             text-transform: uppercase;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
             font-weight: 600;
         }
 
@@ -552,7 +398,7 @@
             position: absolute;
             inset: -2px;
             border-radius: 6px;
-            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, var(--gold) 48%, var(--gold-text) 50%, var(--gold) 52%, transparent 70%, transparent 100%);
             z-index: -2;
             animation: borderRotate 2.5s linear infinite;
             filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
@@ -599,13 +445,13 @@
         .hero-glow-1 {
             top: -200px;
             right: -200px;
-            background: var(--cyan);
+            background: var(--gold);
         }
 
         .hero-glow-2 {
             bottom: -200px;
             left: -200px;
-            background: var(--magenta);
+            background: var(--accent);
         }
 
         .hero-content {
@@ -622,7 +468,7 @@
             gap: 1rem;
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            color: var(--cyan);
+            color: var(--gold);
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeInUp 1s ease forwards 0.3s;
@@ -639,7 +485,7 @@
         }
 
         .hero-title-gradient {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--orange));
+            background: linear-gradient(90deg, var(--gold), var(--accent), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -759,7 +605,7 @@
 
         .service-features li::before {
             content: '→';
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .service-features li:last-child {
@@ -767,7 +613,7 @@
         }
 
         .service-visual {
-            background: var(--gray);
+            background: var(--surface);
             border: 1px solid rgba(255, 255, 255, 0.05);
             aspect-ratio: 4/3;
             display: flex;
@@ -805,7 +651,7 @@
         .service-price-value {
             font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -823,20 +669,20 @@
             letter-spacing: 0.05em;
             padding: 1rem 2rem;
             background: transparent;
-            border: 1px solid var(--cyan);
-            color: var(--cyan);
+            border: 1px solid var(--gold);
+            color: var(--gold);
             transition: all 0.3s ease;
             display: inline-block;
         }
 
         .service-cta:hover {
-            background: var(--cyan);
-            color: var(--black);
+            background: var(--gold);
+            color: var(--bg);
         }
 
         .pricing {
             padding: 8rem 4rem;
-            background: var(--gray);
+            background: var(--surface);
         }
 
         .pricing-header {
@@ -865,7 +711,7 @@
         }
 
         .pricing-card {
-            background: var(--black);
+            background: var(--bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 3rem;
             position: relative;
@@ -873,7 +719,7 @@
         }
 
         .pricing-card.featured {
-            border-color: var(--cyan);
+            border-color: var(--gold);
             transform: scale(1.05);
         }
 
@@ -886,8 +732,8 @@
             font-family: var(--font-mono);
             font-size: 0.7rem;
             padding: 0.4rem 1rem;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
             font-weight: 600;
         }
 
@@ -903,7 +749,7 @@
         .pricing-name {
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            color: var(--cyan);
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-bottom: 1rem;
@@ -944,7 +790,7 @@
 
         .pricing-features li::before {
             content: '✓';
-            color: var(--cyan);
+            color: var(--gold);
             font-weight: bold;
         }
 
@@ -957,7 +803,7 @@
             letter-spacing: 0.05em;
             border: 1px solid rgba(255, 255, 255, 0.2);
             background: transparent;
-            color: var(--white);
+            color: var(--text);
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -965,14 +811,14 @@
         }
 
         .pricing-btn:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
+            border-color: var(--gold);
+            color: var(--gold);
         }
 
         .pricing-card.featured .pricing-btn {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             border: none;
-            color: var(--black);
+            color: var(--bg);
         }
 
         .pricing-card.featured .pricing-btn:hover {
@@ -1010,7 +856,7 @@
             padding: 1.5rem 0;
             background: none;
             border: none;
-            color: var(--white);
+            color: var(--text);
             font-family: var(--font-main);
             font-size: 1.1rem;
             font-weight: 600;
@@ -1023,7 +869,7 @@
         }
 
         .faq-question:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .faq-icon {
@@ -1070,7 +916,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            background: linear-gradient(135deg, var(--gold), var(--accent));
             pointer-events: none;
         }
 
@@ -1089,7 +935,7 @@
         }
 
         .cta-title span {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1111,8 +957,8 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-            color: var(--black);
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            color: var(--bg);
             border: none;
             transition: all 0.4s ease;
         }
@@ -1144,7 +990,7 @@
         }
 
         .footer-logo span {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
+            background: linear-gradient(90deg, var(--gold), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1165,7 +1011,7 @@
         }
 
         .footer-links a:hover {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .footer-copyright {
@@ -1174,7 +1020,7 @@
         }
 
         .footer-copyright a {
-            color: var(--cyan);
+            color: var(--gold);
         }
 
         .footer-social {
@@ -1201,7 +1047,7 @@
         }
 
         .footer-social-link:hover {
-            color: var(--cyan);
+            color: var(--gold);
             background: rgba(0, 240, 255, 0.12);
             transform: translateY(-2px);
         }
@@ -1575,17 +1421,9 @@
 </head>
 
 <body>
-    <div class="loader" id="loader">
-        <div class="loader-terminal">
-            <div class="loader-line" id="line1">> Szolgáltatások betöltése...</div>
-            <div class="loader-line" id="line2">> Megoldások kalkulációja...</div>
-            <div class="loader-line" id="line3">> Sikeres betöltés.<span class="loader-cursor"></span></div>
-        </div>
-    </div>
 
-    <div class="scanlines"></div>
-    <div class="grain"></div>
-    <div class="cursor" id="cursor"></div>
+
+
 
     <nav class="nav" id="nav">
         <a href="index.html" class="nav-logo">
@@ -1622,7 +1460,7 @@
             <div class="hero-label">// CENTAUR ÜGYNÖKSÉG · SZOLGÁLTATÁSOK</div>
             <h1 class="hero-title">Három pillér, <span class="hero-title-gradient">audit-alapú árazás</span></h1>
             <p class="hero-description">
-                Nem csomagok, nem fix árak. <span style="color: var(--cyan)">Üzleti rendszereket</span> építünk
+                Nem csomagok, nem fix árak. <span style="color: var(--gold)">Üzleti rendszereket</span> építünk
                 szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak. Mindhárom pillér audittal indul,
                 és a tényleges scope-ra szabva épül.
             </p>
@@ -1631,7 +1469,7 @@
 
     <section class="services">
         <div class="services-intro reveal">
-            <h2>A <span style="color: var(--cyan)">három pillér</span></h2>
+            <h2>A <span style="color: var(--gold)">három pillér</span></h2>
             <p>
                 Egy rendszer, három belépési pont. Mindhárom pillér audit utáni egyedi árazással;
                 az alábbi tartományok tipikus referenciák, nem fix árajánlatok.
@@ -1651,7 +1489,7 @@
                 </p>
                 <p class="service-description" style="margin-top: 1rem;">
                     A pozícionálás, árazási logika és a WordPress vs. Astro választás részletei a dedikált
-                    <a href="weboldal-keszites.html" style="color: var(--cyan); text-decoration: underline;">weboldal készítés</a> landingen.
+                    <a href="weboldal-keszites.html" style="color: var(--gold); text-decoration: underline;">weboldal készítés</a> landingen.
                 </p>
                 <ul class="service-features">
                     <li>Termék- vagy szolgáltatás-konfigurátor</li>
@@ -1664,7 +1502,7 @@
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--cyan);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--gold);">
                         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                         <path d="M14 2v6h6"></path>
                         <path d="M9 13h6"></path>
@@ -1696,7 +1534,7 @@
                 </p>
                 <p class="service-description" style="margin-top: 1rem;">
                     Részletes megközelítés és case study a
-                    <a href="wordpress-weboldal-modernizalas.html" style="color: var(--magenta); text-decoration: underline;">WordPress modernizálás</a> oldalon.
+                    <a href="wordpress-weboldal-modernizalas.html" style="color: var(--accent); text-decoration: underline;">WordPress modernizálás</a> oldalon.
                 </p>
                 <ul class="service-features">
                     <li>WordPress / Elementor → Astro 5 migráció</li>
@@ -1709,7 +1547,7 @@
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--magenta);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--accent);">
                         <path d="M21 12a9 9 0 1 1-3.5-7.1"></path>
                         <path d="M21 4v5h-5"></path>
                         <path d="M9 12l2 2 4-4"></path>
@@ -1748,7 +1586,7 @@
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--cyan);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--gold);">
                         <rect x="3" y="3" width="6" height="6" rx="1"></rect>
                         <rect x="15" y="3" width="6" height="6" rx="1"></rect>
                         <rect x="9" y="15" width="6" height="6" rx="1"></rect>
@@ -1769,7 +1607,7 @@
 
         <!-- Section divider: kiegészítő szolgáltatások -->
         <div class="services-intro reveal" style="margin-top: 4rem;">
-            <h2>Kiegészítő <span style="color: var(--orange)">szolgáltatások</span></h2>
+            <h2>Kiegészítő <span style="color: var(--gold)">szolgáltatások</span></h2>
             <p>
                 Önállóan vagy a három pillér mellé választható elemek. Ezeket általában már létező rendszerre
                 telepítjük, vagy egy nagyobb projekt részeként.
@@ -1788,7 +1626,7 @@
                 </p>
                 <p class="service-description" style="margin-top: 1rem;">
                     Részletes megközelítés a
-                    <a href="webaruhaz-keszites.html" style="color: var(--cyan); text-decoration: underline;">webáruház készítés</a> landingen.
+                    <a href="webaruhaz-keszites.html" style="color: var(--gold); text-decoration: underline;">webáruház készítés</a> landingen.
                 </p>
                 <ul class="service-features">
                     <li>Shopify Storefront API + Astro 5</li>
@@ -1801,7 +1639,7 @@
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--orange);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--gold);">
                         <circle cx="9" cy="20" r="1.5"></circle>
                         <circle cx="17" cy="20" r="1.5"></circle>
                         <path d="M3 4h2l2.5 11.5a2 2 0 0 0 2 1.5h7a2 2 0 0 0 2-1.5L21 7H6"></path>
@@ -1839,7 +1677,7 @@
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--cyan);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--gold);">
                         <circle cx="11" cy="11" r="7"></circle>
                         <path d="M21 21l-4.35-4.35"></path>
                         <path d="M8 11h6"></path>
@@ -1877,7 +1715,7 @@
             </div>
             <div class="service-visual">
                 <span class="service-visual-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--magenta);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 56px; height: 56px; color: var(--accent);">
                         <circle cx="13.5" cy="6.5" r="1.5"></circle>
                         <circle cx="17.5" cy="10.5" r="1.5"></circle>
                         <circle cx="8.5" cy="7.5" r="1.5"></circle>
@@ -1899,7 +1737,7 @@
 
     <section class="pricing">
         <div class="pricing-header reveal">
-            <h2>Hogyan működik az <span style="color: var(--cyan)">audit-alapú árazás</span>?</h2>
+            <h2>Hogyan működik az <span style="color: var(--gold)">audit-alapú árazás</span>?</h2>
             <p>
                 Nem fix árcédula. Először megnézzük, hol tart a meglévő rendszer, és mire kell új réteg.
                 Onnan jön az írásos ajánlat — a tipikus tartomány csak referencia.
@@ -1909,7 +1747,7 @@
         <div class="pricing-grid">
             <div class="pricing-card reveal">
                 <div class="pricing-name">1. Diagnosztika</div>
-                <div class="pricing-price"><span style="color: var(--cyan)">Díjmentes</span> <span>~30 perc</span></div>
+                <div class="pricing-price"><span style="color: var(--gold)">Díjmentes</span> <span>~30 perc</span></div>
                 <p class="pricing-description">
                     Rövid videohívás. Megnézzük a meglévő oldalt, az ajánlatkérési folyamatot és a célt.
                     Itt eldönthető, hogy van-e értelme tovább menni.
@@ -1924,7 +1762,7 @@
 
             <div class="pricing-card featured reveal">
                 <div class="pricing-name">2. AX-audit (opt.)</div>
-                <div class="pricing-price"><span style="color: var(--magenta)">Egyedi ajánlat</span> <span>~2 hét</span></div>
+                <div class="pricing-price"><span style="color: var(--accent)">Egyedi ajánlat</span> <span>~2 hét</span></div>
                 <p class="pricing-description">
                     Ha a meglévő oldal AI-readiness szempontjából érdekes, ez egy önálló diagnosztikai termék.
                     Akkor van értelme, ha nem akarsz azonnal új projektet, csak tudni szeretnéd, hol tartasz.
@@ -1939,7 +1777,7 @@
 
             <div class="pricing-card reveal">
                 <div class="pricing-name">3. Scope + ajánlat</div>
-                <div class="pricing-price"><span style="color: var(--cyan)">Egyedi</span> <span>~1 hét</span></div>
+                <div class="pricing-price"><span style="color: var(--gold)">Egyedi</span> <span>~1 hét</span></div>
                 <p class="pricing-description">
                     A diagnosztika alapján megírjuk a tényleges scope-ot, ütemtervet és írásos ajánlatot.
                     Ez a tartalmas csomag — itt válik a "tipikus tartomány" konkrét számmá.
@@ -1956,7 +1794,7 @@
 
     <section class="pricing" style="padding-top: 0;">
         <div class="pricing-header reveal">
-            <h2>Így néz ki a gyakorlatban egy <span style="color: var(--cyan)">CENTAUR-projekt</span></h2>
+            <h2>Így néz ki a gyakorlatban egy <span style="color: var(--gold)">CENTAUR-projekt</span></h2>
             <p>
                 A Tata, Tatabánya, Komárom és környéke piacára készült árnyékolástechnikai projektben
                 egy régi WordPress oldalból gyorsabb, ajánlatgeneráló Astro 5.x rendszert építettünk
@@ -1967,7 +1805,7 @@
         <div class="pricing-grid">
             <div class="pricing-card reveal">
                 <div class="pricing-name">Migráció</div>
-                <div class="pricing-price"><span style="color: var(--cyan)">WP</span> <span>→ Astro 5.x</span></div>
+                <div class="pricing-price"><span style="color: var(--gold)">WP</span> <span>→ Astro 5.x</span></div>
                 <p class="pricing-description">A cél nem szépítés volt: a lassú, pluginhalmozott rendszer helyett
                     egy karbantartható, gyors front-end Astro 5 stackre.</p>
                 <ul class="pricing-features">
@@ -1980,7 +1818,7 @@
 
             <div class="pricing-card featured reveal">
                 <div class="pricing-name">Konfigurátor</div>
-                <div class="pricing-price"><span style="color: var(--magenta)">Kosár</span> <span>+ ajánlatkérés</span></div>
+                <div class="pricing-price"><span style="color: var(--accent)">Kosár</span> <span>+ ajánlatkérés</span></div>
                 <p class="pricing-description">A felhasználó nem vakon érdeklődik: összerakja a projektet, becslést
                     kap a beruházási sávról, majd strukturált ajánlatkérést küld.</p>
                 <ul class="pricing-features">
@@ -1993,7 +1831,7 @@
 
             <div class="pricing-card reveal">
                 <div class="pricing-name">Mért gyorsulás</div>
-                <div class="pricing-price"><span style="color: var(--cyan)">57 → 99</span> <span>mobil PSI</span></div>
+                <div class="pricing-price"><span style="color: var(--gold)">57 → 99</span> <span>mobil PSI</span></div>
                 <p class="pricing-description">A Core Web Vitals nem dekoráció: gyorsabb első benyomás, jobb mobilos
                     UX, erősebb konverziós alap. Az eredmény mérőszámmal igazolt.</p>
                 <ul class="pricing-features">
@@ -2059,7 +1897,7 @@
                         A Conen Digital-t Chris Conen alapította (Founder &amp; CEO). Nincsenek MI-társalapítók
                         — Chris egyedüli alapítóként vezeti az ügynökséget, és az AI-eszközöket (Claude, Gemini stb.)
                         munkaeszközként használja a tervezés, fejlesztés és stratégia során. Ez a
-                        <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--cyan);">CENTAUR-modell</a>
+                        <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--gold);">CENTAUR-modell</a>
                         lényege: ember + MI együttműködés, nem MI-vezetés.
                     </div>
                 </div>
@@ -2121,9 +1959,9 @@
     <!-- Vizualis konfigurator CTA -->
     <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
         <div style="max-width: 640px; margin: 0 auto;">
-            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--gold), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
             <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--gold); color: var(--bg); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--gold)';this.style.boxShadow='inset 0 0 0 1px var(--gold), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--gold)';this.style.color='var(--bg)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
@@ -2248,8 +2086,6 @@
     </footer>
 
     <script>
-        const loader = document.getElementById('loader'), lines = ['line1', 'line2', 'line3']; lines.forEach((id, i) => { setTimeout(() => { document.getElementById(id).classList.add('visible') }, i * 400) }); window.addEventListener('load', () => { setTimeout(() => { loader.classList.add('hidden') }, 1500) });
-        const cursor = document.getElementById('cursor'); let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0; document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY }); function animateCursor() { cursorX += (mouseX - cursorX) * 0.1; cursorY += (mouseY - cursorY) * 0.1; cursor.style.left = cursorX + 'px'; cursor.style.top = cursorY + 'px'; requestAnimationFrame(animateCursor) } animateCursor(); document.querySelectorAll('a,button,.pricing-card,.service-visual').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')) });
         const nav = document.getElementById('nav'), hamburger = document.getElementById('hamburger'), navLinks = document.getElementById('navLinks'); window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50) }); hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('active'); document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '' }); document.querySelectorAll('.nav-links a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('active'); document.body.style.overflow = '' }) }); document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navLinks.classList.contains('active')) { hamburger.classList.remove('active'); navLinks.classList.remove('active'); document.body.style.overflow = '' } });
         const reveals = document.querySelectorAll('.reveal'); function revealOnScroll() { reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active') }) } window.addEventListener('scroll', revealOnScroll); window.addEventListener('load', revealOnScroll);
         document.querySelectorAll('.faq-question').forEach(btn => { btn.addEventListener('click', () => { const item = btn.parentElement; document.querySelectorAll('.faq-item').forEach(i => { if (i !== item) i.classList.remove('active') }); item.classList.toggle('active') }) });

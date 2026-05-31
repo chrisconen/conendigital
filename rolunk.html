@@ -106,16 +106,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --black: #09090b;          /* Pure obsidian black */
-            --white: #ffffff;
-            --gray: #141416;           /* Premium charcoal */
-            --gray-light: #222225;
-            --cyan: #C9A962;           /* Champagne Gold */
-            --magenta: #8A8A8F;        /* Muted gold-glow/silver */
-            --orange: #C99566;         /* Warm copper */
+            /* === SURFACES === */
+            --bg:          #09090b;
+            --surface:     #111113;
+            --surface-2:   #18181b;
+            --surface-3:   #1e1e22;
+
+            /* === BORDERS === */
+            --border:      #27272a;
+            --border-hover: #3f3f46;
+
+            /* === TEXT === */
+            --text:        #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-tertiary:  #71717a;
+
+            /* === BRAND ACCENTS === */
+            --gold:        #C9A962;
+            --gold-glow:   rgba(201, 169, 98, 0.15);
+            --gold-text:   #e5d4a1;
+            --accent:      #8b7cf6;
+            --accent-glow: rgba(139, 124, 246, 0.12);
+
+            /* === SEMANTIC === */
+            --success:     #4ade80;
+            --error:       #f87171;
+
+            /* === SPACING === */
+            --section-y:   clamp(80px, 12vw, 140px);
+            --section-x:   clamp(20px, 5vw, 80px);
+            --container:   1280px;
+
+            /* === RADIUS === */
+            --radius-sm:   6px;
+            --radius-md:   12px;
+            --radius-lg:   20px;
+            --radius-full: 9999px;
+
+            /* === FONTS === */
             --font-main: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter Tight', -apple-system, sans-serif;
+            --font-body: 'Inter Tight', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+
+            /* === LEGACY (mapped to new scheme) === */
+            --black:       #09090b;
+            --white:       #ffffff;
+            --gray:        #111113;
+            --gray-light:  #18181b;
+            --cyan:        #C9A962;
+            --magenta:     #8b7cf6;
+            --orange:      #e5d4a1;
         }
         body, p, li, a, td, th, input, textarea, select {
             font-family: var(--font-body) !important;
@@ -128,19 +168,6 @@
         }
         body {
             cursor: auto !important;
-        }
-
-        :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray: #1a1a1a;
-            --gray-light: #2a2a2a;
-            --cyan: #00f0ff;
-            --magenta: #bf00ff;
-            --orange: #ff6b00;
-            --gold: #C9A962;
-            --font-main: 'Space Grotesk', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
         }
 
         * {
@@ -199,47 +226,6 @@
             opacity: 0.15;
         }
 
-        .grain {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            pointer-events: none;
-            z-index: 9996;
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            animation: grain 0.5s steps(1) infinite;
-        }
-
-        @keyframes grain {
-
-            0%,
-            100% {
-                transform: translate(0, 0);
-            }
-
-            10% {
-                transform: translate(-5%, -10%);
-            }
-
-            30% {
-                transform: translate(7%, -25%);
-            }
-
-            50% {
-                transform: translate(-15%, 10%);
-            }
-
-            70% {
-                transform: translate(0%, 15%);
-            }
-
-            90% {
-                transform: translate(-10%, 10%);
-            }
-        }
-
         /* Cursor */
         .cursor {
             position: fixed;
@@ -269,8 +255,8 @@
         .cursor.hover {
             width: 60px;
             height: 60px;
-            border-color: var(--magenta);
-            background: rgba(191, 0, 255, 0.1);
+            border-color: var(--accent);
+            background: var(--accent-glow);
         }
 
         .cursor-trail {
@@ -283,63 +269,6 @@
             opacity: 0;
             transform: translate(-50%, -50%);
             background: linear-gradient(135deg, var(--cyan), var(--magenta));
-        }
-
-        /* Loader */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--black);
-            z-index: 100000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
-        }
-
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-terminal {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--cyan);
-            text-align: left;
-            max-width: 500px;
-        }
-
-        .loader-line {
-            opacity: 0;
-            margin: 0.3rem 0;
-        }
-
-        .loader-line.visible {
-            opacity: 1;
-        }
-
-        .loader-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: var(--cyan);
-            margin-left: 2px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            50% {
-                opacity: 1;
-            }
-
-            51%,
-            100% {
-                opacity: 0;
-            }
         }
 
         /* Navigation */
@@ -445,8 +374,8 @@
         }
 
         .nav-konfigurator-btn:hover {
-            color: #d8b4fe;
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+            color: var(--gold-text);
+            box-shadow: 0 0 20px rgba(201, 169, 98, 0.4);
         }
 
         .nav-hamburger {
@@ -552,10 +481,10 @@
             position: absolute;
             inset: -2px;
             border-radius: 6px;
-            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, #a855f7 48%, #e879f9 50%, #a855f7 52%, transparent 70%, transparent 100%);
+            background: conic-gradient(from var(--border-angle), transparent 0%, transparent 30%, var(--gold) 48%, var(--gold-text) 50%, var(--gold) 52%, transparent 70%, transparent 100%);
             z-index: -2;
             animation: borderRotate 2.5s linear infinite;
-            filter: drop-shadow(0 0 6px #a855f7) drop-shadow(0 0 12px rgba(168, 85, 247, 0.5));
+            filter: drop-shadow(0 0 6px rgba(201, 169, 98, 0.6)) drop-shadow(0 0 12px rgba(201, 169, 98, 0.3));
         }
 
         .nav-konfigurator-btn::after {
@@ -581,7 +510,7 @@
         .hero-grid {
             position: absolute;
             inset: 0;
-            background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(201, 169, 98, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 169, 98, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
         }
@@ -661,7 +590,7 @@
         }
 
         .hero-title-gradient {
-            background: linear-gradient(90deg, var(--cyan), var(--magenta), var(--orange));
+            background: linear-gradient(135deg, var(--gold), var(--gold-text));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -752,7 +681,7 @@
         .origin-quote {
             padding: 2rem;
             border-left: 3px solid var(--cyan);
-            background: rgba(0, 240, 255, 0.03);
+            background: rgba(201, 169, 98, 0.03);
             margin: 2rem 0;
         }
 
@@ -776,7 +705,7 @@
         }
 
         .origin-image-frame {
-            aspect-ratio: 4/3;
+            aspect-ratio: 9:16;
             background: var(--gray);
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
@@ -787,7 +716,14 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(191, 0, 255, 0.1));
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1), rgba(139, 124, 246, 0.1));
+        }
+
+        .origin-video {
+            width: 80%;
+            object-fit: contain;
+            display: block;
+            background: #000;
         }
 
         .origin-image-placeholder {
@@ -837,7 +773,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background: linear-gradient(180deg, var(--cyan), var(--magenta), var(--orange));
+            background: linear-gradient(180deg, var(--gold), var(--accent));
             transform: translateX(-50%);
         }
 
@@ -908,120 +844,214 @@
             line-height: 1.8;
         }
 
-        /* Team Section */
-        .team {
-            padding: 8rem 4rem;
+        /* Founder Section */
+        .founder-section {
+            padding: 6rem 0;
+            background: var(--bg);
         }
 
-        .team-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .team-header {
+        .founder-header {
             text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .team-intro {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
+            padding: 0 2rem;
         }
 
-        .team-grid {
-            display: block;       
-            margin-top: 4rem;
+        .founder-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 2.5rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            padding: 2.5rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
         }
 
-        .team-grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .team-card {
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .team-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cyan), var(--magenta));
-        }
-
-        .team-card:nth-child(2)::before {
-            background: linear-gradient(90deg, var(--magenta), var(--orange));
-        }
-
-        .team-avatar {
-            width: 120px;
-            height: 120px;
+        .founder-card-avatar {
+            flex-shrink: 0;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            margin-bottom: 2rem;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+
+        .founder-card-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .founder-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .founder-card-name {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .founder-card-role {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .founder-card-skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem 2rem;
+            font-size: 0.8rem;
+            color: var(--text-tertiary);
+        }
+
+        .founder-cert-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .founder-cert-desc {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .founder-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .founder-card-avatar {
+                width: 120px;
+                height: 120px;
+            }
+
+            .founder-card-skills {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Certificate Gallery */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.25rem;
+        }
+        .cert-thumb {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.02);
+            cursor: pointer;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .cert-thumb:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+        .cert-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .cert-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0,0,0,0.88);
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .cert-modal.open {
+            display: flex;
+        }
+        .cert-modal-img {
+            max-width: 92vw;
+            max-height: 88vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+        }
+        .cert-modal-close {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 1.6rem;
+            cursor: pointer;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            background: var(--gray-light);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.2s;
+            z-index: 10000;
+            line-height: 1;
         }
-
-        .team-name {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
+        .cert-modal-close:hover {
+            background: rgba(255,255,255,0.18);
         }
-
-        .team-role {
-            font-family: var(--font-mono);
-            font-size: 0.85rem;
-            color: var(--cyan);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1.5rem;
-        }
-
-        .team-bio {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .team-skills {
+        .cert-modal-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border: none;
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border-radius: 50%;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, opacity 0.3s;
+            z-index: 10000;
+            opacity: 0.6;
+            line-height: 1;
         }
-
-        .team-skill {
+        .cert-modal-nav:hover {
+            background: rgba(255,255,255,0.16);
+            opacity: 1;
+        }
+        .cert-modal-prev { left: 1.25rem; }
+        .cert-modal-next { right: 1.25rem; }
+        .cert-modal-nav.hidden { opacity: 0; pointer-events: none; }
+        .cert-modal-counter {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
             font-family: var(--font-mono);
-            font-size: 0.75rem;
-            padding: 0.5rem 1rem;
-            background: var(--black);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.1em;
+            z-index: 10000;
         }
-
-        .team-skill:hover {
-            border-color: var(--cyan);
-            color: var(--cyan);
+        @media (max-width: 600px) {
+            .cert-thumb img { cursor: default; }
+            .cert-modal-nav { width: 40px; height: 40px; font-size: 1.4rem; }
+            .cert-modal-close { top: 0.75rem; right: 0.75rem; width: 40px; height: 40px; font-size: 1.4rem; }
         }
 
         /* Projects Section */
@@ -1055,7 +1085,7 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(0, 240, 255, 0.2);
+            border-color: rgba(201, 169, 98, 0.2);
         }
 
         .project-image {
@@ -1069,7 +1099,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(191, 0, 255, 0.1));
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.1), rgba(139, 124, 246, 0.1));
         }
 
         .project-icon {
@@ -1136,7 +1166,7 @@
 
         .global-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(0, 240, 255, 0.2);
+            border-color: rgba(201, 169, 98, 0.2);
         }
 
         .global-flag {
@@ -1207,7 +1237,7 @@
             align-items: center;
             gap: 1rem;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, rgba(74, 144, 164, 0.1), rgba(201, 169, 98, 0.15), rgba(155, 89, 182, 0.1));
+            background: linear-gradient(135deg, rgba(201, 169, 98, 0.15), rgba(229, 212, 161, 0.1), rgba(139, 124, 246, 0.1));
             border: 1px solid rgba(201, 169, 98, 0.3);
             border-radius: 60px;
             margin-bottom: 2rem;
@@ -1350,7 +1380,7 @@
 
         .value-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(0, 240, 255, 0.2);
+            border-color: rgba(201, 169, 98, 0.2);
         }
 
         .value-icon {
@@ -1478,7 +1508,7 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 240, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(201, 169, 98, 0.3);
         }
 
         /* Footer */
@@ -1558,8 +1588,8 @@
         }
 
         .footer-social-link:hover {
-            color: var(--cyan);
-            background: rgba(0, 240, 255, 0.12);
+            color: var(--gold);
+            background: rgba(201, 169, 98, 0.12);
             transform: translateY(-2px);
         }
 
@@ -1644,7 +1674,7 @@
             .hero,
             .origin,
             .timeline,
-            .team,
+            .founder-section,
             .projects,
             .global,
             .centaur,
@@ -1654,9 +1684,7 @@
                 padding: 5rem 2rem;
             }
 
-            .origin-grid,
-            .team-grid,
-            .team-grid-3 {
+            .origin-grid {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
@@ -1731,7 +1759,7 @@
 
             .origin,
             .timeline,
-            .team,
+            .founder-section,
             .projects,
             .global,
             .centaur,
@@ -1770,24 +1798,6 @@
             }
 
             .timeline-desc {
-                font-size: 0.9rem;
-            }
-
-            .team-card {
-                padding: 2rem;
-            }
-
-            .team-avatar {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
-            }
-
-            .team-name {
-                font-size: 1.4rem;
-            }
-
-            .team-bio {
                 font-size: 0.9rem;
             }
 
@@ -1888,19 +1898,8 @@
 </head>
 
 <body>
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-terminal">
-            <div class="loader-line" id="line1">> Történetünk betöltése...</div>
-            <div class="loader-line" id="line2">> Ember + MI szinkronizálás...</div>
-            <div class="loader-line" id="line3">> CENTAUR protokoll aktiválása...</div>
-            <div class="loader-line" id="line4">> Sikeres betöltés.<span class="loader-cursor"></span></div>
-        </div>
-    </div>
-
     <!-- Effects -->
     <div class="scanlines"></div>
-    <div class="grain"></div>
     <div class="cursor" id="cursor"></div>
     <div id="cursorTrailContainer"></div>
 
@@ -1979,302 +1978,106 @@
                         <p>
                             "A legtöbb ügynökség elrejti, hogy MI-vel dolgozik. Mi az ellenkezőjét csináljuk:
                             megnevezzük az MI-eszközöket, leírjuk a felelősség-megosztást, és publikáljuk az alapokmányt.
-                            A piacon nincs még ilyen kategória — ezt mi nyitottuk."
+                            A piacon nincs még ilyen kategória — ezt mi indítottuk."
                         </p>
                         <cite>— Chris Conen, Founder &amp; CEO</cite>
                     </div>
                     <p>
-                        2025. decemberében jelent meg a CENTAUR Manifesto — a működési alapokmány, ami
-                        rögzíti, hogy a Conen Digital alapítója Chris Conen, aki MI-eszközökkel támogatott munkavégzéssel dolgozik.
-                        A manifesto a <a href="https://centaur-lang.dev" target="_blank" rel="noopener" style="color: var(--cyan); text-decoration: none; border-bottom: 1px dashed rgba(0,240,255,0.4);">centaur-lang.dev</a>
+                        2026 május elején indítottuk el a NEXUS AI projektet, ahol mindenki számára elérhetővé tettük
+                        a Conen Digital fejlesztésében legtöbbet alkalmazott NEXUS mesterséges intelligencia eszközöket.
+                        A NEXUS Free modell tökéletes megoldást nyújt mindennapi feladatok, - munkvégzés, internetes kutatás- elvégzésére. A NEXUS Pro, amely egy előfizetéses mesterséges intelligencia modell, ezzel az AI modellel 
+                        tökéletes weboldalakat lehet összeállítani kódolás nélkül. A NEXUS Premium hamarosan elérhetővé válik, amely modell képes összetett weboldal struktúrákat programozni - mint például, egy egyedi webáruház - az ügyfél igényei szerint kialakított
+                        webshop funkciókkal. Nincs még egy olyan AI-alapú weboldal készítő eszköz a piacon, amely képes lenne ilyen komplexitású weboldalakat létrehozni, mint a NEXUS Premium. A NEXUS AI projekt teljesen nyílt forráskódú, a fejlesztés minden lépése
+                        dokumentált a GitHub-on.
+                        Az ingyenes mesterséges intelligencia modellünk a <a href="https://app.conendigital.hu" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: none; border-bottom: 1px dashed rgba(201,169,98,0.4);">NEXUS AI</a>
                         domainen publikus, és a teljes operatív protokollt is tartalmazza.
                     </p>
                 </div>
                 <div class="origin-visual reveal">
-                    <div class="origin-image-frame">
-                        <div class="origin-image-placeholder">
-                            <span class="origin-image-icon" aria-hidden="true">
-                                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="width: 80px; height: 80px;">
-                                    <defs>
-                                        <linearGradient id="origin-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#4A90A4" />
-                                            <stop offset="50%" style="stop-color:#C9A962" />
-                                            <stop offset="100%" style="stop-color:#9B59B6" />
-                                        </linearGradient>
-                                    </defs>
-                                    <g transform="translate(32, 32)">
-                                        <path d="M 0 -24 A 24 24 0 0 0 0 24" fill="none" stroke="#4A90A4" stroke-width="3" stroke-linecap="round" />
-                                        <path d="M 0 -24 A 24 24 0 0 1 0 24" fill="none" stroke="#9B59B6" stroke-width="3" stroke-linecap="round" />
-                                        <circle cx="0" cy="0" r="9" fill="url(#origin-grad)" />
-                                        <circle cx="0" cy="0" r="4" fill="#F5F5F0" />
-                                    </g>
-                                </svg>
-                            </span>
-                            <span class="origin-image-text">// EMBER + MI ALAPOKMÁNY</span>
-                        </div>
-                    </div>
+                    
+                        <video class="origin-video" autoplay muted loop playsinline poster="images/nexus-ingyenes-mesters%C3%A9ges-intelligencia-poster.jpg">
+                            <source src="images/ingyenes AI - mesters%C3%A9ges intelligencia weboldal.mp4" type="video/mp4">
+                        </video>www.app.conendigital.hu
+                    
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline Section -->
-    <section class="timeline">
-        <div class="timeline-container">
-            <div class="timeline-header reveal">
-                <div class="section-label">Időszalag</div>
-                <h2 class="section-title">Az <span>utazásunk</span></h2>
+    <!-- Founder Section -->
+    <section class="founder-section" id="centaur-model">
+        <div class="section-header reveal founder-header">
+            <div>
+                <div class="section-label">Alapító</div>
+                <h2 class="section-title">Chris Conen<br />
+                    <span style="color: var(--gold-text);">Senior Manager</span></h2>
             </div>
+            <p class="section-description">
+                21+ év weboldal készítő és webáruház tervező tapasztalat — stratégiától a technikai architektúráig.
+            </p>
+        </div>
 
-            <div class="timeline-list">
-                <div class="timeline-item reveal">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2020</div>
-                        <h3 class="timeline-title">Az első lépések</h3>
-                        <p class="timeline-desc">
-                            Chris elindítja első webfejlesztési projektjeit Magyarországon.
-                            ECO Clean takarítási szolgáltatás, SkyNetWeb és az első ügyfélprojektek.
-                            A digitális világ meghódítása elkezdődött.
-                        </p>
-                    </div>
-                    <div class="timeline-spacer"></div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-spacer"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">2023</div>
-                        <h3 class="timeline-title">Ausztrália meghódítása</h3>
-                        <p class="timeline-desc">
-                            Megalakul az Australian Web Agency Sydney-ben. A célpiac:
-                            prémium webdesign szolgáltatások ausztrál vállalkozásoknak.
-                            Luxury gold/black design, 90%+ PageSpeed score-ok.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2024</div>
-                        <h3 class="timeline-title">PIXELLA és az «élő weboldal» koncepció</h3>
-                        <p class="timeline-desc">
-                            Bécsben megalakul a PIXELLA.at — «élő weboldal» (Living Website) irányú, adaptív tartalommal
-                            kísérletező koncepció.
-                            Digital DNA technológia: weboldalak, amelyek valós időben alkalmazkodnak
-                            minden látogatóhoz. Kísérleti R&amp;D irány, nem piaci állítás „világelsőre”.
-                        </p>
-                    </div>
-                    <div class="timeline-spacer"></div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-spacer"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-year">2025</div>
-                        <h3 class="timeline-title">CENTAUR Manifesto publikálása</h3>
-                        <p class="timeline-desc">
-                            December 14-én jelent meg a CENTAUR Manifesto — a működési alapokmány,
-                            ami nyilvánossá teszi a CENTAUR-modellt: Chris Conen (Founder & CEO) MI-eszközökkel támogatott munkavégzéssel.
-                            Domain: centaur-lang.dev. Operatív protokoll, jogi keret, példák.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item reveal">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2026</div>
-                        <h3 class="timeline-title">Stratégiai pivot — Conen Digital mint CENTAUR-ügynökség</h3>
-                        <p class="timeline-desc">
-                            A Conen Digital homepage és teljes pozícionálás átáll: KKV-általánosság helyett
-                            szolgáltató cégek és ajánlat-alapú vállalkozások. Három pillér: Ajánlatgeneráló
-                            weboldalak, Felújítás + EAA, AI Ops. AX-readiness stack telepítve (/llms.txt,
-                            agents.txt, MCP-előkészítés). DACH-irány aktiválás.
-                        </p>
-                    </div>
-                    <div class="timeline-spacer"></div>
+        <!-- Chris Conen - Founder card -->
+        <div class="founder-card reveal">
+            <div class="founder-card-avatar">
+                <img src="images/chris_conen_weboldal_készítés_kreatív_igazgató.webp"
+                    alt="Chris Conen, Conen Digital alapító">
+            </div>
+            <div class="founder-card-body">
+                <h3 class="founder-card-name">Chris Conen</h3>
+                <div class="founder-card-role">Alapító &amp; Vezető igazgató</div>
+                <p class="service-description" style="font-size: 0.9rem; margin-bottom: 1rem;">
+                    44 éves német-magyar vállalkozó vagyok, 21+ év webfejlesztés és üzleti stratégia tapasztalattal. Weboldal készítés és webáruház tervezéstől a technikai architektúráig az üzleti stratégián át a kreatív irányításig, egyedül vezetem a Conen Digitalt — AI-eszközökkel támogatva.
+                </p>
+                <div class="founder-card-skills">
+                    <span>Stratégia &amp; vízió</span>
+                    <span>Architektúra &amp; kódbázis</span>
+                    <span>Ügyfélkapcsolatok</span>
+                    <span>MCP-szerverek, AX-stack</span>
+                    <span>Kreatív irányítás</span>
+                    <span>Technikai döntéshozatal</span>
+                    <span>Marketing-stratégia</span>
+                    <span>Piaci kutatás &amp; pozícionálás</span>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Team Section -->
-    <section class="team">
-        <div class="team-container">
-            <div class="team-header reveal">
-                <div class="section-label">Az alapító csapat</div>
-                <h2 class="section-title">Chris Conen · <span>Founder & CEO</span></h2>
-                <p class="team-intro">
-                    A Conen Digital mögött egy ember áll: Chris Conen. A CENTAUR-modellben MI-eszközökkel
-                    (Claude, Gemini stb.) támogatott, nyilvánosan dokumentált munkavégzéssel dolgozik.
-                    Minden jogi, üzleti és technikai döntést Chris hoz meg.
+        <!-- Certificates -->
+        <div class="reveal" style="max-width: 900px; margin: 3rem auto 0; padding: 0 2rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div class="section-label">Tanúsítványok</div>
+                <h3 class="founder-cert-title">Szaktudás &amp; Képzettség</h3>
+                <p class="founder-cert-desc">
+                    Google + szakmai certifikációk — kattints a képre a nagyításhoz
                 </p>
             </div>
-
-            <div class="team-grid team-grid-1" style="max-width: 480px; margin: 0 auto;">
-                <div class="team-card reveal">
-                    <div class="team-avatar"><img src="images\chris_conen_weboldal_készítés_kreatív_igazgató.webp"
-                            alt="Chris Conen — Conen Digital alapító, Founder & CEO"
-                            style="width: 100%; height: 100%; object-fit: cover;" /></div>
-                    <h3 class="team-name">Chris Conen</h3>
-                    <div class="team-role">Founder &amp; CEO</div>
-                    <p class="team-bio">
-                        44 éves német-magyar vállalkozó, három kontinens digitális tapasztalatával.
-                        Stratégia, ügyfélkapcsolat, architektúra, kódfejlesztés, technikai döntéshozatal,
-                        piaci kutatás és marketing-stratégia. MI-eszközökkel támogatva, de minden döntés
-                        végül itt köt ki.
-                    </p>
-                    <div class="team-skills">
-                        <span class="team-skill">Stratégia</span>
-                        <span class="team-skill">Ügyfélkapcsolat</span>
-                        <span class="team-skill">Architektúra & kódbázis</span>
-                        <span class="team-skill">MCP-szerverek/AX-stack</span>
-                        <span class="team-skill">Technikai döntéshozatal</span>
-                        <span class="team-skill">Piaci kutatás & pozícionálás</span>
-                        <span class="team-skill">Marketing-stratégia</span>
-                        <span class="team-skill">Üzletfejlesztés</span>
-                        <span class="team-skill">Kreatív irány</span>
-                        <span class="team-skill">Felelősségvállalás</span>
-                    </div>
+            <div class="cert-grid" id="certGrid">
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/UX Design.png" data-alt="UX Design tanúsítvány">
+                    <img src="images/UX Design-s.webp" alt="UX Design tanúsítvány" loading="lazy">
                 </div>
-            </div>
-
-            <!-- Disclosure box -->
-            <div class="reveal" style="max-width: 900px; margin: 3rem auto 0; padding: 1.5rem 2rem; background: rgba(201,169,98,0.05); border-left: 3px solid #C9A962; font-size: 0.85rem; line-height: 1.7; color: rgba(255,255,255,0.7);">
-                <strong style="color: #C9A962; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em;">NYILVÁNOSSÁGI NYILATKOZAT —</strong>
-                A Conen Digital MI-eszközöket (Claude, Gemini stb.) használ kiterjesztett gondolkodási
-                és kivitelezési kapacitásként — de minden jogi, üzleti és technikai döntést Chris Conen hoz meg.
-                Az MI nem társalapító, hanem eszköz a transzparens munkavégzésben.
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects / Portfolio Highlights -->
-    <section class="projects">
-        <div class="projects-container">
-            <div class="projects-header reveal">
-                <div class="section-label">Projektjeink</div>
-                <h2 class="section-title">Amin <span>dolgozunk</span></h2>
-            </div>
-
-            <div class="projects-grid">
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="project-icon">🌐</span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tag">Ausztrália</div>
-                        <h3 class="project-title">Australian Web Agency</h3>
-                        <p class="project-desc">
-                            Prémium webdesign Sydney piacára. Luxury gold/black esztétika,
-                            bento grid layout-ok, 90%+ PageSpeed eredmények.
-                        </p>
-                    </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Google Cyber Security - Foundations.png" data-alt="Google Cyber Security Foundations tanúsítvány">
+                    <img src="images/Google Cyber Security - Foundations-s.webp" alt="Google Cyber Security Foundations tanúsítvány" loading="lazy">
                 </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="project-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--magenta);">
-                                <path d="M4 12c0-4.5 3.5-8 8-8s8 3.5 8 8"></path>
-                                <path d="M20 12c0 4.5-3.5 8-8 8s-8-3.5-8-8"></path>
-                                <path d="M12 4v16"></path>
-                                <path d="M8 7c1.5 1 3 1 4 0"></path>
-                                <path d="M16 17c-1.5-1-3-1-4 0"></path>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tag">Ausztria</div>
-                        <h3 class="project-title">PIXELLA.at</h3>
-                        <p class="project-desc">
-                            «Living Website» irányú koncepció — Digital DNA technológia,
-                            ami valós időben alkalmazkodik minden látogatóhoz.
-                        </p>
-                    </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Front-End Dev.png" data-alt="Front-End Development tanúsítvány">
+                    <img src="images/Front-End Dev-s.webp" alt="Front-End Development tanúsítvány" loading="lazy">
                 </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="project-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 36px; height: 36px; color: var(--cyan);">
-                                <ellipse cx="6" cy="9" rx="2" ry="2.5"></ellipse>
-                                <ellipse cx="18" cy="9" rx="2" ry="2.5"></ellipse>
-                                <ellipse cx="9.5" cy="5.5" rx="1.6" ry="2.2"></ellipse>
-                                <ellipse cx="14.5" cy="5.5" rx="1.6" ry="2.2"></ellipse>
-                                <path d="M12 11c-3 0-5 2.5-5 5 0 2 1.5 3 3 3h4c1.5 0 3-1 3-3 0-2.5-2-5-5-5z"></path>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tag">Magyarország</div>
-                        <h3 class="project-title">kutyasetaltatok.hu</h3>
-                        <p class="project-desc">
-                            Magyar kutyasétáltatók piactere. Service Finder téma,
-                            Google Maps API, Stripe Connect integráció.
-                        </p>
-                    </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Cyber Security - Linux and SQL.png" data-alt="Cyber Security Linux and SQL tanúsítvány">
+                    <img src="images/Cyber Security - Linux and SQL-s.webp" alt="Cyber Security Linux and SQL tanúsítvány" loading="lazy">
                 </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="project-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--cyan);">
-                                <path d="M11 20A7 7 0 0 1 4 13c0-3 2-5 4-7l4-4 4 4c2 2 4 4 4 7a7 7 0 0 1-9 7"></path>
-                                <path d="M12 6v14"></path>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tag">EU</div>
-                        <h3 class="project-title">ECO Clean</h3>
-                        <p class="project-desc">
-                            Környezetbarát takarítási szolgáltatások. Vegyszermentes
-                            technológia, 12+ aloldal, többnyelvű tartalom.
-                        </p>
-                    </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Cyber Sec - Network Protection.png" data-alt="Cyber Security Network Protection tanúsítvány">
+                    <img src="images/Cyber Sec - Network Protection-s.webp" alt="Cyber Security Network Protection tanúsítvány" loading="lazy">
                 </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="project-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--magenta);">
-                                <path d="M9 2v6"></path>
-                                <path d="M15 2v6"></path>
-                                <path d="M7 8h10v3a5 5 0 0 1-3 4.6V22h-4v-6.4A5 5 0 0 1 7 11V8z"></path>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tag">WordPress</div>
-                        <h3 class="project-title">AI Web Upgrade Plugin</h3>
-                        <p class="project-desc">
-                            Saját WordPress plugin fejlesztés. Tier-based subscription,
-                            Ultimate Member integráció, automatizált AI funkciók.
-                        </p>
-                    </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Cyber Sec - Manage Security Rsiks.png" data-alt="Cyber Security Manage Security Risks tanúsítvány">
+                    <img src="images/Cyber Sec - Manage Security Rsiks-s.webp" alt="Cyber Security Manage Security Risks tanúsítvány" loading="lazy">
                 </div>
-
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="project-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width: 36px; height: 36px; color: var(--orange);">
-                                <rect x="2" y="7" width="14" height="10" rx="2"></rect>
-                                <path d="M16 11l6-3v8l-6-3z"></path>
-                            </svg>
-                        </span>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-tag">Szolgáltatás</div>
-                        <h3 class="project-title">AeroScan Drón</h3>
-                        <p class="project-desc">
-                            Professzionális drón videográfia. Légifelvételek
-                            ingatlanokhoz, rendezvényekhez, marketing célokra.
-                        </p>
-                    </div>
+                <div class="cert-thumb" role="button" tabindex="0" data-full="images/Build Wireframes an Low-Fidelity Prototypes.png" data-alt="Build Wireframes and Low-Fidelity Prototypes tanúsítvány">
+                    <img src="images/Build Wireframes an Low-Fidelity Prototypes-s.webp" alt="Build Wireframes and Low-Fidelity Prototypes tanúsítvány" loading="lazy">
                 </div>
             </div>
         </div>
+
     </section>
+
 
     <!-- Global Presence Section -->
     <section class="global">
@@ -2314,71 +2117,6 @@
                         conendigital.hu →
                     </a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CENTAUR Section -->
-    <section class="centaur">
-        <div class="centaur-container">
-            <div class="centaur-header reveal">
-                <div class="centaur-badge-large">
-                    <svg class="centaur-badge-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="cbg1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#4A90A4" />
-                                <stop offset="50%" style="stop-color:#C9A962" />
-                                <stop offset="100%" style="stop-color:#9B59B6" />
-                            </linearGradient>
-                        </defs>
-                        <g transform="translate(32, 32)">
-                            <path d="M 0 -24 A 24 24 0 0 0 0 24" fill="none" stroke="#4A90A4" stroke-width="4"
-                                stroke-linecap="round" />
-                            <path d="M 0 -24 A 24 24 0 0 1 0 24" fill="none" stroke="#9B59B6" stroke-width="4"
-                                stroke-linecap="round" />
-                            <circle cx="0" cy="0" r="7" fill="url(#cbg1)" />
-                            <circle cx="0" cy="0" r="3" fill="#F5F5F0" />
-                        </g>
-                    </svg>
-                    <div class="centaur-badge-text">
-                        <span class="centaur-badge-label">Hivatalos alapokmány</span>
-                        <span class="centaur-badge-title">CENTAUR Projekt</span>
-                    </div>
-                </div>
-                <h2 class="centaur-title">A <span>CENTAUR</span> Manifesto</h2>
-            </div>
-
-            <div class="reveal">
-                <p class="centaur-text">
-                    A CENTAUR nem csak egy projekt neve. Egy új ügynökségi kategória.
-                    A mitológiai kentaur — félig ember, félig ló — két különálló természet
-                    integrációja volt egy szervezetben. Mi ugyanezt az integrációt vállaljuk
-                    nyilvánosan: emberi alapító, MI-eszközökkel támogatva, egy ügynökségi struktúrában.
-                </p>
-                <p class="centaur-text">
-                    Nem arról van szó, hogy az MI helyettesíti az embert, és nem is arról,
-                    hogy az ember "használja" a háttérben. Arról van szó, hogy
-                    <strong>nyilvánosan dokumentált munkamegosztásban dolgozunk</strong>,
-                    és ezt a felelősség-megosztást szerződésszerűen rögzítjük az alapokmányban.
-                </p>
-
-                <div class="centaur-manifesto">
-                    <h4>A Manifesto operatív elvei</h4>
-                    <ul class="centaur-manifesto-list">
-                        <li>Az emberi alapító viseli a jogi és üzleti felelősséget — nincs MI-pajzs</li>
-                        <li>Az MI-eszközök használata nyilvánosan dokumentálva</li>
-                        <li>A működési protokoll nyilvános a centaur-lang.dev domainen</li>
-                        <li>Az MI eszköz, nem társalapító — Chris Conen hozza meg minden döntést</li>
-                        <li>Minden ügyfélkommunikáció átláthatóan jelzi a CENTAUR-modellt</li>
-                        <li>Az árazás emberi audit alapján készül, nem MI-generált sablonból</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="centaur-cta reveal">
-                <a href="https://centaur-lang.dev" class="centaur-btn" target="_blank" rel="noopener">
-                    Olvasd el a teljes Manifestót →
-                </a>
             </div>
         </div>
     </section>
@@ -2504,9 +2242,9 @@
     <!-- Vizualis konfigurator CTA -->
     <section style="padding: 4rem 2rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06);">
         <div style="max-width: 640px; margin: 0 auto;">
-            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(90deg, var(--cyan), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
+            <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">Próbáld ki a <span style="background: linear-gradient(135deg, var(--gold), var(--gold-text)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">vizuális tervezőt</span></h2>
             <p style="color: rgba(255,255,255,0.6); margin-bottom: 2rem; line-height: 1.6; font-size: 1rem;">8 lépésben összeállítod a projekted scope-ját — vizuális mockup-választó, funkció-kalkulátor, nagyságrendi tartomány a végén. Nem kötelez semmire.</p>
-            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--cyan); color: var(--black); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--cyan)';this.style.boxShadow='inset 0 0 0 1px var(--cyan), 0 0 24px rgba(0,240,255,0.4)'" onmouseout="this.style.background='var(--cyan)';this.style.color='var(--black)';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
+            <a href="https://app.conendigital.hu" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: var(--gold); color: #09090b; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; border-radius: 4px; letter-spacing: 0.05em; transition: all 0.2s; text-decoration: none;" onmouseover="this.style.background='transparent';this.style.color='var(--gold)';this.style.boxShadow='inset 0 0 0 1px var(--gold), 0 0 24px rgba(201,169,98,0.4)'" onmouseout="this.style.background='var(--gold)';this.style.color='#09090b';this.style.boxShadow='none'">Konfigurátor megnyitása →</a>
         </div>
     </section>
 
@@ -2520,15 +2258,15 @@
                         <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <linearGradient id="cfb1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#4A90A4" />
-                                    <stop offset="50%" style="stop-color:#C9A962" />
-                                    <stop offset="100%" style="stop-color:#9B59B6" />
+                                    <stop offset="0%" style="stop-color:#C9A962" />
+                                    <stop offset="50%" style="stop-color:#e5d4a1" />
+                                    <stop offset="100%" style="stop-color:#8b7cf6" />
                                 </linearGradient>
                             </defs>
                             <g transform="translate(32, 32)">
-                                <path d="M 0 -24 A 24 24 0 0 0 0 24" fill="none" stroke="#4A90A4" stroke-width="4"
+                                <path d="M 0 -24 A 24 24 0 0 0 0 24" fill="none" stroke="#C9A962" stroke-width="4"
                                     stroke-linecap="round" />
-                                <path d="M 0 -24 A 24 24 0 0 1 0 24" fill="none" stroke="#9B59B6" stroke-width="4"
+                                <path d="M 0 -24 A 24 24 0 0 1 0 24" fill="none" stroke="#8b7cf6" stroke-width="4"
                                     stroke-linecap="round" />
                                 <circle cx="0" cy="0" r="7" fill="url(#cfb1)" />
                                 <circle cx="0" cy="0" r="3" fill="#F5F5F0" />
@@ -2589,37 +2327,37 @@
             <div
                 style="margin-top: 12px; font-size: 0.7rem; color: rgba(255,255,255,0.3); text-align: center; line-height: 2;">
                 Weboldal készítés:
-                <a href="index.html" style="color: rgba(0,240,255,0.5); text-decoration: none;">Győr</a> ·
+                <a href="index.html" style="color: rgba(201,169,98,0.5); text-decoration: none;">Győr</a> ·
                 <a href="weboldal-keszites-budapest.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Budapest</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Budapest</a> ·
                 <a href="weboldal-keszites-debrecen.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Debrecen</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Debrecen</a> ·
                 <a href="weboldal-keszites-szeged.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szeged</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Szeged</a> ·
                 <a href="weboldal-keszites-miskolc.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Miskolc</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Miskolc</a> ·
                 <a href="weboldal-keszites-pecs.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Pécs</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Pécs</a> ·
                 <a href="weboldal-keszites-nyiregyhaza.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Nyíregyháza</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Nyíregyháza</a> ·
                 <a href="weboldal-keszites-kecskemet.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kecskemét</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Kecskemét</a> ·
                 <a href="weboldal-keszites-szekesfehervar.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Székesfehérvár</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Székesfehérvár</a> ·
                 <a href="weboldal-keszites-szombathely.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szombathely</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Szombathely</a> ·
                 <a href="weboldal-keszites-sopron.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Sopron</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Sopron</a> ·
                 <a href="weboldal-keszites-szolnok.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Szolnok</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Szolnok</a> ·
                 <a href="weboldal-keszites-eger.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Eger</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Eger</a> ·
                 <a href="weboldal-keszites-veszprem.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Veszprém</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Veszprém</a> ·
                 <a href="weboldal-keszites-zalaegerszeg.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Zalaegerszeg</a> ·
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Zalaegerszeg</a> ·
                 <a href="weboldal-keszites-kaposvar.html"
-                    style="color: rgba(0,240,255,0.5); text-decoration: none;">Kaposvár</a>
+                    style="color: rgba(201,169,98,0.5); text-decoration: none;">Kaposvár</a>
             </div>
             <div class="footer-copyright">
                 © 2025 ConenDigital. Chris Conen; a kivitelezésben AI-eszközöket is használunk emberi felügyelet
@@ -2628,56 +2366,16 @@
         </div>
     </footer>
 
+<!-- Certificate Modal -->
+<div class="cert-modal" id="certModal" role="dialog" aria-label="Tanúsítvány nagy kép" aria-modal="true">
+    <button class="cert-modal-close" id="certModalClose" aria-label="Bezárás">&times;</button>
+    <button class="cert-modal-nav cert-modal-prev" id="certModalPrev" aria-label="Előző kép">&#8249;</button>
+    <button class="cert-modal-nav cert-modal-next" id="certModalNext" aria-label="Következő kép">&#8250;</button>
+    <img class="cert-modal-img" id="certModalImg" src="" alt="">
+    <div class="cert-modal-counter" id="certModalCounter"></div>
+</div>
+
     <script>
-        // Loader
-        const loader = document.getElementById('loader');
-        const lines = ['line1', 'line2', 'line3', 'line4'];
-        lines.forEach((id, index) => {
-            setTimeout(() => {
-                document.getElementById(id).classList.add('visible');
-            }, index * 400);
-        });
-        window.addEventListener('load', () => {
-            setTimeout(() => { loader.classList.add('hidden'); }, 2000);
-        });
-
-        // Cursor (only on desktop)
-        const cursor = document.getElementById('cursor');
-        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-            let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-            document.addEventListener('mousemove', (e) => { mouseX = e.clientX; mouseY = e.clientY; });
-            function animateCursor() {
-                cursorX += (mouseX - cursorX) * 0.1;
-                cursorY += (mouseY - cursorY) * 0.1;
-                cursor.style.left = cursorX + 'px';
-                cursor.style.top = cursorY + 'px';
-                requestAnimationFrame(animateCursor);
-            }
-            animateCursor();
-            document.querySelectorAll('a, button, .team-card, .value-card, .tech-item, .project-card, .global-card').forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-
-            // Cursor trail
-            const trailContainer = document.getElementById('cursorTrailContainer');
-            const trails = [];
-            for (let i = 0; i < 15; i++) {
-                const trail = document.createElement('div');
-                trail.className = 'cursor-trail';
-                trailContainer.appendChild(trail);
-                trails.push({ el: trail });
-            }
-            let trailIndex = 0;
-            document.addEventListener('mousemove', (e) => {
-                trails[trailIndex].el.style.left = e.clientX + 'px';
-                trails[trailIndex].el.style.top = e.clientY + 'px';
-                trails[trailIndex].el.style.opacity = 0.6;
-                const current = trails[trailIndex].el;
-                setTimeout(() => { current.style.opacity = 0; }, 100);
-                trailIndex = (trailIndex + 1) % trails.length;
-            });
-        }
 
         // Navigation
         const nav = document.getElementById('nav');
@@ -2734,7 +2432,75 @@
                 }
             });
         });
+
+        // Certificate gallery modal
+        var modal = document.getElementById('certModal');
+        var img = document.getElementById('certModalImg');
+        var closeBtn = document.getElementById('certModalClose');
+        var prevBtn = document.getElementById('certModalPrev');
+        var nextBtn = document.getElementById('certModalNext');
+        var counter = document.getElementById('certModalCounter');
+
+        var thumbs = Array.prototype.slice.call(document.querySelectorAll('.cert-thumb'));
+        var currentIndex = -1;
+
+        function openModal(index) {
+            if (index < 0 || index >= thumbs.length) return;
+            currentIndex = index;
+            var thumb = thumbs[currentIndex];
+            img.src = thumb.getAttribute('data-full');
+            img.alt = thumb.getAttribute('data-alt') || '';
+            counter.textContent = (currentIndex + 1) + ' / ' + thumbs.length;
+            prevBtn.classList.toggle('hidden', currentIndex === 0);
+            nextBtn.classList.toggle('hidden', currentIndex === thumbs.length - 1);
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+            currentIndex = -1;
+        }
+
+        function prevImage() {
+            if (currentIndex > 0) openModal(currentIndex - 1);
+        }
+
+        function nextImage() {
+            if (currentIndex < thumbs.length - 1) openModal(currentIndex + 1);
+        }
+
+        // Click handlers on thumbs
+        thumbs.forEach(function(thumb, i) {
+            thumb.addEventListener('click', function() { openModal(i); });
+            thumb.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openModal(i);
+                }
+            });
+        });
+
+        // Close handlers
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+
+        // Navigation
+        prevBtn.addEventListener('click', prevImage);
+        nextBtn.addEventListener('click', nextImage);
+
+        // Keyboard
+        document.addEventListener('keydown', function(e) {
+            if (!modal.classList.contains('open')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
     </script>
+
 <script src="/blog-widget.js" defer></script>
 <script src="https://nexus.conendigital.hu/widget.js" defer></script>
 </body>

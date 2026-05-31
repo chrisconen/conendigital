@@ -28,27 +28,31 @@
 
     <style>
         :root {
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray: #1a1a1a;
-            --gray-light: #2a2a2a;
-            --cyan: #00f0ff;
-            --magenta: #bf00ff;
+            --bg: #09090b;
+            --surface: #111113;
+            --surface-2: #18181b;
+            --border: #27272a;
+            --text: #fafafa;
+            --text-secondary: #a1a1aa;
+            --gold: #C9A962;
+            --gold-glow: rgba(201, 169, 98, 0.15);
+            --accent: #8b7cf6;
             --font-main: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter Tight', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            background: var(--black);
-            color: var(--white);
+            background: var(--bg);
+            color: var(--text);
             font-family: var(--font-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
-        ::selection { background: var(--cyan); color: var(--black); }
-        a { color: var(--cyan); text-decoration: none; transition: opacity .2s; }
+        ::selection { background: var(--gold); color: var(--bg); }
+        a { color: var(--gold); text-decoration: none; transition: opacity .2s; }
         a:hover { opacity: 0.75; }
 
         .scanlines {
@@ -63,16 +67,16 @@
             padding: 1rem 2rem;
             background: rgba(10,10,10,0.85);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gray-light);
+            border-bottom: 1px solid var(--border);
         }
         .nav-logo {
             font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;
-            color: var(--white); letter-spacing: 0.02em;
+            color: var(--text); letter-spacing: 0.02em;
         }
-        .nav-logo span { color: var(--cyan); }
+        .nav-logo span { color: var(--gold); }
         .nav-links { display: flex; gap: 1.5rem; list-style: none; }
         .nav-links a { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--white); opacity: 1; }
+        .nav-links a:hover { color: var(--text); opacity: 1; }
         @media (max-width: 720px) { .nav-links { display: none; } }
 
         main { max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 6rem; }
@@ -80,7 +84,7 @@
         .header-label {
             font-family: var(--font-mono);
             font-size: 0.75rem;
-            color: var(--cyan);
+            color: var(--gold);
             letter-spacing: 0.2em;
             text-transform: uppercase;
             margin-bottom: 1rem;
@@ -91,7 +95,7 @@
             letter-spacing: -0.02em;
             margin-bottom: 0.5rem;
         }
-        h1 .accent { color: var(--cyan); }
+        h1 .accent { color: var(--gold); }
         .updated {
             font-family: var(--font-mono);
             font-size: 0.8rem;
@@ -104,15 +108,15 @@
             font-weight: 600;
             margin-top: 3rem;
             margin-bottom: 1rem;
-            color: var(--white);
+            color: var(--text);
             padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--gray-light);
+            border-bottom: 1px solid var(--border);
         }
         h2 .num {
             display: inline-block;
             font-family: var(--font-mono);
             font-size: 0.85rem;
-            color: var(--cyan);
+            color: var(--gold);
             margin-right: 0.5rem;
             opacity: 0.8;
         }
@@ -130,19 +134,19 @@
         li { margin-bottom: 0.4rem; }
 
         .info-block {
-            background: var(--gray);
-            border-left: 2px solid var(--cyan);
+            background: var(--surface);
+            border-left: 2px solid var(--gold);
             padding: 1rem 1.2rem;
             margin: 1rem 0 1.5rem;
             border-radius: 4px;
             font-size: 0.95rem;
         }
-        .info-block strong { color: var(--white); }
+        .info-block strong { color: var(--text); }
         .info-block p { margin-bottom: 0.3rem; }
         .info-block p:last-child { margin-bottom: 0; }
 
         .footer {
-            border-top: 1px solid var(--gray-light);
+            border-top: 1px solid var(--border);
             padding: 2rem 1.5rem;
             text-align: center;
             font-size: 0.85rem;
