@@ -3,15 +3,7 @@
   if (window.__conenChatLoaded) return
   window.__conenChatLoaded = true
 
-  var WIDGET_HOST = (function () {
-    var script = document.currentScript
-    if (script && script.src) {
-      try {
-        return new URL(script.src).origin
-      } catch (e) {}
-    }
-    return ""
-  })()
+  var WIDGET_HOST = 'https://nexus.conendigital.hu';
 
   var COLORS = ["#00f0ff", "#bf00ff", "#ff6b00", "#00ff88", "#ff3366", "#4488ff", "#ffcc00", "#00ffcc", "#ff00aa"]
 
