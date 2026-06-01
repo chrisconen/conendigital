@@ -1,55 +1,35 @@
-# Conen Digital — CENTAUR ügynökség
+# Conen Digital
 
-> Weboldal és webáruház készítés Győr. Ajánlatgeneráló weboldalak, WordPress felújítás + EAA-megfelelés, AI Ops.
+> Ajánlatgeneráló weboldalak, WordPress → Astro 5 migráció és AI Ops automatizáció
+> szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak. Alapító: Chris Conen (Győr, Magyarország).
 
-## Cím
-https://conendigital.hu
+## Szolgáltatások
 
-## Alapítás
-Chris Conen (Founder & CEO), 21+ év digitális tapasztalat. Német-magyar vállalkozó.
+- [Ajánlatgeneráló weboldalak](https://conendigital.hu/szolgaltatasok.html): Konfigurátor, kalkulátor, lead-szűrő flow Astro 5 stackre.
+- [WordPress felújítás + EAA-megfelelés](https://conendigital.hu/wordpress-weboldal-modernizalas.html): Astro 5 migráció, WCAG 2.2 AA, Core Web Vitals.
+- [AI Ops — folyamat-automatizáció](https://conendigital.hu/szolgaltatasok.html#ai-ops): n8n / Make flow-k, lead-qualification, CRM-integráció.
+- [Webáruház készítés](https://conendigital.hu/webaruhaz-keszites.html): Shopify Storefront API + Astro 5 headless frontend.
+- [AX-audit (Agent Experience)](https://conendigital.hu/szolgaltatasok.html#ax-audit): AI-asszisztens-kompatibilitás diagnosztika, JSON-LD, llms.txt, MCP-feasibility.
 
-## Fő szolgáltatások
+## Portfólió / Esettanulmányok
 
-### 1. Ajánlatgeneráló weboldalak
-Konfigurátor, kalkulátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve.
-- Termék- vagy szolgáltatás-konfigurátor
-- Árkalkulátor + ajánlatkérő űrlap
-- JSON-LD strukturált adatok (SEO + AX)
-- Core Web Vitals zöld
+- [Mótyán Árnyékolás — Astro 5 migráció](https://conendigital.hu/portfolio.html#arnyekolas-case): WordPress → Astro 5, LCP 13,5 mp → 1,8 mp, PSI 57 → 99.
+- [ECO Clean — foglalási rendszer](https://ecocleantisztito.hu): Kárpittisztítás, n8n geo-cluster automatizáció.
+- [Pannonia Personal](https://pannonia-personal.at): Álláskereső weboldal AI CV-parserlel.
 
-### 2. Felújítás + EAA-megfelelés
-WordPress / Elementor → Astro 5 migráció. European Accessibility Act audit + WCAG 2.2 AA.
-- WordPress → Astro 5 migráció
-- EAA-audit + WCAG 2.2 AA javítás
-- PageSpeed: LCP / CLS / INP zöldbe
-- 301-redirect térkép, SEO-megőrzés
+## Blog
 
-### 3. AI Ops
-Folyamat-automatizáció: ChatBot, lead-qualification, ajánlat-automatizáció, n8n / Make flow-k, CRM-integráció.
-- Custom ChatBot (GPT)
-- Lead-qualification flow + email
-- n8n / Make integrációk, CRM-szinkron
-- Havi mérőriport és iteráció
+- [Blog főoldal](https://conendigital.hu/blog/): Webfejlesztés, EAA-megfelelés, AI Ops, AX-stack témájú cikkek.
+- [Az EAA 2025 — mi kötelező és kinek](https://conendigital.hu/blog/eaa-2025-kinek-kotelezo/): European Accessibility Act összefoglaló.
+- [WordPress vs Astro 5 — mikor érdemes váltani](https://conendigital.hu/blog/wordpress-astro-5-mikor-erdemes-valtani/): Migráció döntési szempontok.
 
-## Technológiai partnerek
-- Google (Gemini, Ads, GA4, Search Console)
-- n8n (adat-folyamok)
-- Make (SaaS integráció)
-- Astro 5, JSON-LD, MCP
+## Weboldal készítés — városonkénti landings
 
-## Referencia projektek
-- Mótyán Árnyékolás: WordPress → Astro 5 migráció, LCP 13.5 mp → 1.8 mp, PSI 57 → 99
-- Pannonia Personal: álláskereső weboldal AI támogatással
-- ECO Clean kárpittisztítás: foglalási rendszer n8n automatizációval
-- Tophome24: prémium ingatlan értékesítő weboldal
-
-## Városok
-Győr (központ), Budapest, Debrecen, Szeged, Miskolc, Pécs, Nyíregyháza, Kecskemét, Székesfehérvár, Szombathely, Sopron, Szolnok, Eger, Veszprém, Zalaegerszeg, Kaposvár + Ausztria.
+- [Weboldal készítés Győr](https://conendigital.hu/): Helyi centrum.
+- [Weboldal készítés Budapest](https://conendigital.hu/weboldal-keszites-budapest.html)
+- [Weboldal készítés Sopron](https://conendigital.hu/weboldal-keszites-sopron.html)
 
 ## Kapcsolat
+
+- [Kapcsolatfelvétel](https://conendigital.hu/kapcsolat.html)
 - Email: info@conendigital.hu
-- Facebook: https://www.facebook.com/weboldal.keszites.gyor.conen.digital
-- LinkedIn: https://www.linkedin.com/in/chris-conen/
-- YouTube: https://www.youtube.com/@weboldal-webaruhaz-keszites
-- x.com: https://x.com/weboldal_honlap
-- CENTAUR: https://centaur-lang.dev

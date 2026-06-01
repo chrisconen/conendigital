@@ -1,20 +1,13 @@
 # robots.txt — Conen Digital
 # CENTAUR-ügynökség, Győr + DACH
-# Verzió: 2026-05-03
+# Verzió: 2026-06-01
 #
-# Ez a fájl a klasszikus search engine és web-crawler szabályokat
-# tartalmazza. AI-asszisztensekre és agentic browserekre vonatkozó
-# kiterjesztett direktívák külön fájlban: /.well-known/agents.txt
-# AI-olvasható oldal-összefoglaló: /.well-known/llms.txt
-
+# AI-olvasható oldal-összefoglaló: /llms.txt
 # ============================================================
-# Általános crawler szabályok (minden user-agent)
+# Általános crawler szabályok
 # ============================================================
 User-agent: *
 Allow: /
-
-# Megelőző tiltások: WordPress örökségből és általános admin-path-okból
-# (akkor is biztonságos, ha nincs WP a deployon)
 Disallow: /wp-admin/
 Disallow: /wp-includes/
 Disallow: /wp-json/wp/v2/users/
@@ -23,19 +16,30 @@ Disallow: /readme.html
 Disallow: /license.txt
 Disallow: /?s=
 Disallow: /search/
-
-# Crawl udvariasság
 Crawl-delay: 1
 
 # ============================================================
-# AI-asszisztensek és agentic browserek
+# AI-asszisztensek és LLM crawlerek — explicit engedély
 # ============================================================
-# Lásd: /.well-known/agents.txt (részletes ágens-direktívák)
-# Lásd: /.well-known/llms.txt (oldal-összefoglaló AI-knak)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GoogleExtendedBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
 
 # ============================================================
 # Sitemap
 # ============================================================
-# Sitemap: https://conendigital.hu/sitemap.xml
-# (Hozzáadás akkor, amikor a sitemap.xml deployolva van.
-#  Astro 5 migráció után az @astrojs/sitemap automatikus.)
+Sitemap: https://conendigital.hu/sitemap.xml
