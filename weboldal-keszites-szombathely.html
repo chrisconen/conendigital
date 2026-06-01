@@ -173,6 +173,8 @@
             --cyan: #C9A962;           /* Champagne Gold */
             --magenta: #8A8A8F;        /* Muted gold-glow/silver */
             --orange: #C99566;         /* Warm copper */
+            --gold: #C9A962;
+            --gold-text: #e5d4a1;
             --font-main: 'Space Grotesk', sans-serif;
             --font-body: 'Inter Tight', -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
@@ -198,6 +200,8 @@
             --cyan: #C9A962;
             --magenta: #8b7cf6;
             --orange: #e5d4a1;
+            --gold: #C9A962;
+            --gold-text: #e5d4a1;
             --font-main: 'Space Grotesk', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -1359,7 +1363,6 @@
             padding: 3rem;
             position: relative;
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            transform-style: preserve-3d;
             perspective: 1000px;
         }
 
@@ -1541,252 +1544,156 @@
             line-height: 1.7;
         }
 
-        /* Portfolio Section */
+        /* Portfolio Section - 250x250 Carousel */
         .portfolio {
             padding: 10rem 4rem;
             position: relative;
-        }
-
-        .portfolio-grid {
-            max-width: 1600px;
-            margin: 6rem auto 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-        }
-
-        .portfolio-item {
-            position: relative;
-            aspect-ratio: 16/10;
             overflow: hidden;
-            background: var(--gray);
-            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .portfolio-item:nth-child(1) {
-            grid-column: span 2;
-            aspect-ratio: 21/9;
-        }
-
-        .portfolio-item:nth-child(4) {
-            grid-column: span 2;
-            aspect-ratio: 21/9;
-        }
-
-        .portfolio-image {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--gray-light), var(--gray));
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.2);
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        /* Scrollable full-page screenshot window */
-        .screenshot-window {
-            width: 100%;
-            /* fit to the portfolio item's available height, but cap at desired viewport */
-            height: 100%;
-            max-height: 683px;
-            overflow-x: hidden;
-            overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            background: rgba(0, 0, 0, 0.03);
-            -webkit-overflow-scrolling: touch;
+        .portfolio-slider-wrapper {
+            max-width: calc(350px * 3 + 3rem * 4);
+            margin: 6rem auto 0;
             position: relative;
-            z-index: 1;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+            padding: 0 3.5rem;
         }
 
-        .screenshot-window img {
+        .portfolio-slider {
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .portfolio-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        .portfolio-slide {
+            min-width: 350px;
+            width: 350px;
+            height: 350px;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            cursor: pointer;
+        }
+
+        .portfolio-slide img {
+            width: 350px;
+            height: 350px;
+            object-fit: cover;
             display: block;
-            width: 100%;
-            height: auto;
-            transition: filter 0.5s ease, opacity 0.5s ease;
+            transition: transform 0.5s ease;
         }
 
-        .screenshot-img.lazy {
-            filter: blur(10px) saturate(0.9);
-            opacity: 0.9;
+        .portfolio-slide:hover img {
+            transform: scale(1.08);
         }
 
-        .screenshot-img.loaded {
-            filter: none;
-            opacity: 1;
-        }
-
-        .screenshot-window::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        .screenshot-window::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.06);
-        }
-
-        .screenshot-window::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, rgba(201, 169, 98, 0.22), rgba(201, 169, 98, 0.18));
-            border-radius: 8px;
-            border: 2px solid rgba(0, 0, 0, 0.08);
-            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.25);
-        }
-
-        .screenshot-window::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, rgba(201, 169, 98, 0.32), rgba(201, 169, 98, 0.28));
-        }
-
-        /* Firefox scrollbar */
-        .screenshot-window {
-            scrollbar-width: thin;
-            scrollbar-color: rgba(201, 169, 98, 0.22) rgba(0, 0, 0, 0.06);
-            -ms-overflow-style: auto;
-        }
-
-        /* Focus outline for keyboard users */
-        .screenshot-window:focus {
-            outline: 3px solid rgba(201, 169, 98, 0.12);
-            outline-offset: 4px;
-        }
-
-        .portfolio-overlay {
+        .portfolio-slide .portfolio-overlay {
             position: absolute;
             inset: 0;
-            /* lighter overlay so screenshot remains visible */
-            background: linear-gradient(to top, rgba(10, 10, 10, 0.55), transparent 60%);
-            padding: 3rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 25%, rgba(0, 0, 0, 0.65) 50%, transparent 70%);
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
+            transition: opacity 0.35s ease;
             z-index: 2;
         }
 
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        .portfolio-item:focus-within .portfolio-overlay {
+        .portfolio-slide:hover .portfolio-overlay,
+        .portfolio-slide:focus-within .portfolio-overlay {
             opacity: 1;
         }
 
-        /* Allow clicks only on overlay controls, keep overlay itself pointer-events none so scrolling works */
-        .portfolio-overlay>* {
-            pointer-events: auto;
+        .portfolio-slide:focus-within {
+            outline: 2px solid var(--cyan);
+            outline-offset: 3px;
         }
 
-        .portfolio-category {
+        .portfolio-slide .portfolio-category {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--cyan);
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.12em;
+            margin-bottom: 0.3rem;
         }
 
-        .portfolio-title {
-            font-size: 1.75rem;
+        .portfolio-slide .portfolio-title {
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
         }
 
-        .portfolio-description {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
+        .portfolio-slide .portfolio-title a {
+            color: #fff;
+            text-decoration: none;
         }
 
-        .portfolio-link {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            border: 1px solid var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: all 0.4s ease;
-        }
-
-        .portfolio-item:hover .portfolio-link {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .portfolio-link:hover {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        /* Testimonial Section */
-        .testimonial {
-            padding: 10rem 4rem;
-            background: var(--gray);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-quote {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 400;
-            line-height: 1.5;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .testimonial-quote::before {
-            content: '"';
-            position: absolute;
-            top: -2rem;
-            left: -2rem;
-            font-size: 8rem;
+        .portfolio-slide .portfolio-title a:hover {
             color: var(--cyan);
-            opacity: 0.1;
-            font-family: Georgia, serif;
-            line-height: 1;
         }
 
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
+        .portfolio-slide .portfolio-description {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.3;
         }
 
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
+        /* Navigation arrows */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--cyan), var(--magenta));
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: var(--gray);
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-size: 1.25rem;
+            z-index: 5;
+            transition: all 0.25s ease;
+            line-height: 1;
+            padding: 0;
         }
 
-        .testimonial-name {
-            font-size: 1.1rem;
-            font-weight: 600;
+        .slider-btn:hover {
+            background: var(--cyan);
+            color: #09090b;
+            border-color: var(--cyan);
         }
 
-        .testimonial-role {
-            font-size: 0.85rem;
-            color: var(--cyan);
+        .slider-btn:focus-visible {
+            outline: 2px solid var(--cyan);
+            outline-offset: 3px;
+        }
+
+        .slider-btn:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        .slider-prev {
+            left: 0;
+        }
+
+        .slider-next {
+            right: 0;
         }
 
         /* CTA Section */
@@ -2157,7 +2064,6 @@
             .services,
             .process,
             .portfolio,
-            .testimonial,
             .cta,
             .contact {
                 padding: 5rem 2rem;
@@ -2177,12 +2083,13 @@
                 gap: 4rem;
             }
 
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+            .portfolio-slider-wrapper {
+                max-width: calc(250px * 2 + 1rem);
+                padding: 0 3rem;
             }
 
-            .portfolio-item:nth-child(1) {
-                grid-column: span 1;
+            .portfolio-track {
+                gap: 1rem;
             }
 
             .contact-grid {
@@ -2272,7 +2179,6 @@
             .services,
             .process,
             .portfolio,
-            .testimonial,
             .cta,
             .contact {
                 padding: 3.5rem 1.25rem;
@@ -2328,21 +2234,20 @@
                 font-size: 0.85rem;
             }
 
-            .portfolio-item {
-                padding: 1.25rem;
+            .portfolio-slide {
+                width: 200px;
+                height: 200px;
+            }
+
+            .portfolio-slide img {
+                width: 200px;
+                height: 200px;
             }
 
             .portfolio-title {
                 font-size: 1.1rem;
             }
 
-            .testimonial-text {
-                font-size: 1.1rem;
-            }
-
-            .testimonial-author {
-                font-size: 0.85rem;
-            }
 
             .cta-title {
                 font-size: 1.75rem;
@@ -2717,7 +2622,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
         <div class="services-grid">
             <div class="service-card reveal" style="border-top: 3px solid var(--orange);">
-                <div class="service-icon">⏰</div>
+                <div class="service-icon"><img src="images\weboldal_automatizálás_időmegtakarítás.webp" width="60" height="60" alt="Weboldal készítés és webáruház programozás"></div>
                 <h3 class="service-title">Nincs időd</h3>
                 <p class="service-description">
                     A <span style="color: var(--cyan)">kétlaki ügyfélszolgálat</span> időzónák és nyelvek miatt
@@ -2729,7 +2634,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
 
             <div class="service-card reveal" style="border-top: 3px solid var(--magenta);">
-                <div class="service-icon">👤</div>
+                <div class="service-icon"><img src="images\webáruház_automatizálás.webp" width="60" height="60" alt="Weboldal készítés és webáruház automatizációs megoldások"></div>
                 <h3 class="service-title">Elvesztett vevők?</h3>
                 <p class="service-description">
                     Ha <span style="color: var(--magenta)">nem vagy elérhető</span> este, a lead máshova megy. AI első
@@ -2741,7 +2646,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </div>
 
             <div class="service-card reveal" style="border-top: 3px solid var(--cyan);">
-                <div class="service-icon">📉</div>
+                <div class="service-icon"><img src="images\weboldal_webáruház_keresőoptimalizálás.webp" width="60" height="60" alt="Weboldal készítés és webáruház keresőoptimalizálás"></div>
                 <h3 class="service-title">Láthatatlan vagy online?</h3>
                 <p class="service-description">
                     A <strong>weboldal készítés Szombathely</strong> kulcsszó mögött gyakran elavult motor áll.
@@ -2771,7 +2676,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             <!-- Pillar 1: Digital Foundation -->
             <div class="service-card reveal">
                 <span class="service-number">01</span>
-                <div class="service-icon">🏗️</div>
+                <div class="service-icon"><img src="images/weboldal_webáruház.webp" width="60" height="60" alt="Weboldal készítés és webáruház modernizálás AI támogatással"></div>
                 <h3 class="service-title">Digitális jelenlét · Szombathely határmenti üzleteinek</h3>
                 <p class="service-description">
                     <strong>Weboldal készítés Szombathely</strong> és <strong>webáruház készítés Szombathely</strong>:
@@ -2803,7 +2708,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
                     style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--cyan), var(--magenta)); padding: 4px 16px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--black); font-weight: 600;">
                     HATÁR TOP · NYUGAT</div>
                 <span class="service-number">02</span>
-                <div class="service-icon">🤖</div>
+                <div class="service-icon"><img src="images/weboldal_ai_automtizáció.webp" width="60" height="60" alt="Weboldal készítés és webáruház fejlesztés AI támogatással"></div>
                 <h3 class="service-title">Automaták · két ország időzónája</h3>
                 <p class="service-description">
                     <span style="color: var(--magenta)">Chatbot</span> válaszol éjszaka is; <span
@@ -2831,7 +2736,7 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             <!-- Pillar 3: Growth Engine -->
             <div class="service-card reveal">
                 <span class="service-number">03</span>
-                <div class="service-icon">🚀</div>
+                <div class="service-icon"><img src="images/weboldal_webáruház_modernizálás.webp" width="60" height="60" alt="Weboldal készítés és webáruház tervezés és fejlesztés AI támogatással"></div>
                 <h3 class="service-title">Marketing · Szombathely + szomszédos piac</h3>
                 <p class="service-description">
                     <span style="color: var(--orange)">Hirdetés és tartalom</span> Szombathelyre, Vas megyére és
@@ -2922,36 +2827,48 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         </div>
 
         <div
-            style="display: flex; justify-content: center; align-items: center; gap: 4rem; flex-wrap: wrap; padding: 3rem 2rem; max-width: 1000px; margin: 0 auto;">
-            <!-- OpenAI -->
+            style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; padding: 3rem 2rem; max-width: 100%; margin: 0 auto;">
+            <!-- Anthropic -->
             <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🧠</div>
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;"><img src="images/weboldal_fejlesztés_partner_1.webp" alt="weboldal és webáruház készítés technológiai partnerek"></div>
                 <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">
-                    OpenAI</div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">OpenAI · többnyelvű szöveg és chat</div>
+                    Anthropic Developer</div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Claude Code · programozás</div>
             </div>
             <!-- Google -->
             <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;"><img src="images/weboldal_fejlesztés_partner_2.webp" alt="weboldal és webáruház készítés technológiai partnerek"></div>
                 <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--magenta);">
-                    Google</div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Google · helyi és nemzetközi Ads,
-                    Analytics</div>
+                    Google Search</div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Google · Marketing & đÄ</div>
+            </div>
+            <!-- Meta -->
+            <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;"><img src="images/weboldal_fejlesztés_partner_3.webp" alt="weboldal és webáruház készítés technológiai partnerek"></div>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--orange);">Közösségi média oldalak
+                </div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">META AI</div>
             </div>
             <!-- n8n -->
             <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚡</div>
-                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--orange);">n8n
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;"><img src="images/weboldal_fejlesztés_partner_4.webp" alt="weboldal és webáruház készítés technológiai partnerek"></div>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">n8n
                 </div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">n8n · rendelés és raktár folyamatok</div>
-            </div>
-            <!-- Make -->
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Automatizáció</div>
+            </div>            
+            <!-- Antigravity -->
             <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔗</div>
-                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">Make
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;"><img src="images/weboldal_fejlesztés_partner_5.webp" alt="weboldal és webáruház készítés technológiai partnerek"></div>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">Programozás
                 </div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Make · e-mail, shop és CRM integráció
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Kódolás & hibakeresés</div>
+            </div>
+            <!-- Cyber Security - biztonság -->
+            <div class="reveal" style="text-align: center; opacity: 0.8; transition: all 0.3s ease;">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;"><img src="images/weboldal_fejlesztés_partner_6.webp" alt="weboldal és webáruház készítés technológiai partnerek"></div>
+                <div style="font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--cyan);">Cyber Security
                 </div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Conen DIGITAL CyberSec</div>
             </div>
         </div>
 
@@ -3059,108 +2976,100 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
             </p>
         </div>
 
-        <div class="portfolio-grid">
-            <div class="portfolio-item reveal">
-                <div class="portfolio-image">
-                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
-                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                            data-src="images/ausztriai-allasok-mukalehetosegek.webp"
-                            alt="Ausztriai állások és munkalehetőségek | weboldal készítés Szombathely" width="1598"
-                            height="4481" class="screenshot-img lazy" loading="lazy">
+        <div class="portfolio-slider-wrapper">
+            <div class="portfolio-slider">
+                <div class="portfolio-track" id="portfolioTrack">
+                    <div class="portfolio-slide">
+                        <img src="images/pannonia-personal-ausztriai-állások-referencia-munka.webp"
+                            alt="Pannonia Personal - Ausztriai állások és munkalehetőségek"
+                            width="350" height="350" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category">Ausztriai állások - munkakereső</span>
+                            <h3 class="portfolio-title">
+                                <a href="https://pannonia-personal.at/hu/ausztriai-allasok/"
+                                    title="Ausztriai állások">Pannonia Personal</a>
+                            </h3>
+                            <p class="portfolio-description">Álláskereső weboldal AI támogatással</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-slide">
+                        <img src="images/eco-clean-kárpittisztítás-referencia-munka.webp"
+                            alt="ECO Clean kárpittisztítás Győr"
+                            width="350" height="350" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category">Kárpittisztítás weboldal</span>
+                            <h3 class="portfolio-title">
+                                <a href="https://ecocleantisztito.hu" target="_blank"
+                                    title="ECO Clean kárpittisztítás Győr">ECO Clean</a>
+                            </h3>
+                            <p class="portfolio-description">Vegyszermentes kárpittisztítás AI automatizációval</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-slide">
+                        <img src="images/kutyasétáltatás-kutya-szitter-referencia-munka.webp"
+                            alt="Kutyasétáltatók kereső"
+                            width="350" height="350" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category">Kutyasétáltató kereső</span>
+                            <h3 class="portfolio-title">
+                                <a href="https://kutyasetaltatok.hu" target="_blank"
+                                    title="Kutyasétáltatók, szitterek">Kutyasétáltatók</a>
+                            </h3>
+                            <p class="portfolio-description">Kereső weboldal &amp; applikáció</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-slide">
+                        <img src="images/eladó-lakások-ingatlanok-referencia-munka.webp"
+                            alt="Eladó lakások, új építésű ingatlanok"
+                            width="350" height="350" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category">Ingatlan értékesítés</span>
+                            <h3 class="portfolio-title">
+                                <a href="https://tophome24.com" title="Eladó lakások">TopHome24</a>
+                            </h3>
+                            <p class="portfolio-description">PRÉMIUM ingatlan értékesítő weboldal</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-slide">
+                        <img src="images/zephyr-webáruház-referencia-munka.webp"
+                            alt="Webáruház készítés – Shopify integráció"
+                            width="350" height="350" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category">Webáruház – Shopify API</span>
+                            <h3 class="portfolio-title">Astro webáruház – ASTRO 5.X</h3>
+                            <p class="portfolio-description">Headless webáruház Shopify integrációval</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-slide">
+                        <img src="images/drónos-fotó-videó-referencia-munka.webp"
+                            alt="4K drónos fotózás és videózás – drónos épületfelmérés, keresés, mentés és járőrözés"
+                            width="350" height="350" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category">Weboldal – város landing oldalakkal</span>
+                            <h3 class="portfolio-title">Ajánlatkérő űrlap – ASTRO 5.X</h3>
+                            <p class="portfolio-description">Teljes körű portfólió weboldal megoldás</p>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-slide">
+                        <img src="images/webdesign-wien-referencia-munka.webp"
+                            alt="Webdizájn Wien - PIXELLA weboldal készítés és webáruház tervezés Bécsben"
+                            width="350" height="350" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-category">Weboldal – webáruház készítés Ausztriában</span>
+                            <h3 class="portfolio-title">Viselkedésre átalakuló weboldal</h3>
+                            <p class="portfolio-description">Pioneer living website weboldal megoldás</p>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-category">n8n ügyfélút · rendeléstől számláig</span>
-                    <h3 class="portfolio-title"><a href="https://pannonia-personal.at/hu/ausztriai-allasok/"
-                        title="Ausztriai állások és munkalehetőségek">Pannonia Personal</a></h3>
-                    <p class="portfolio-description">Teljes ügyfélút logolva n8n-ben — átlátható, mi történt a
-                        rendeléssel.</p>
-                </div>
             </div>
-
-            <div class="portfolio-item reveal">
-                <div class="portfolio-image">
-                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
-                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
-                        <img src="images/karpittisztitas.webp" alt="ECO Clean kárpittisztítás Győr" width="774"
-                            height="2035" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-category">Kárpittisztítás weboldal</span>
-                    <h3 class="portfolio-title"><a href="https://ecocleantisztito.hu" target="_blank" title="ECO Clean kárpittisztítás Győr">ECO Clean kárpittisztítás Győr</a></h3>
-                    <p class="portfolio-description">Vegyszermentes kárpittisztítás, foglalási rendszer AI és n8n
-                        automatizációval</p>
-                </div>
-            </div>
-
-            <div class="portfolio-item reveal">
-                <div class="portfolio-image">
-                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
-                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
-                        <img src="images/kutyasetaltatok-kutya-cica-szitterek-weboldal.webp"
-                            alt="Kutyasétáltatók, kutya-cica szitterek weboldal" width="774" height="3327"
-                            loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-category">Kutyasétáltatók, kutya-cica szitterek kereső weboldal &
-                        applikáció</span>
-                    <h3 class="portfolio-title"><a href="https://aeroscan.hu" target="_blank" title="Drónos fotó & videó, épületfelmérés">Kutyasétáltatók, kutya-cica szitterek kereső weboldal & applikáció</a></h3>
-                    <p class="portfolio-description">Kutyasétáltatók, kutya-cica szitterek kereső weboldal & applikáció
-                    </p>
-                </div>
-            </div>
-
-            <div class="portfolio-item reveal">
-                <div class="portfolio-image">
-                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
-                        <!-- Lazy-loaded screenshot: actual image kept in data-src -->
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-                            data-src="images/elado-ingatlanok-lakasok.webp" alt="Eladó lakások, új építésű ingatlanok"
-                            width="1598" height="4481" class="screenshot-img lazy" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-category">Ingatlan, lakás értékesítő weboldal</span>
-                    <h3 class="portfolio-title"><a href="https://tophome24.com" title="Eladó lakások, új építésű ingatlanok">Eladó PRÉMIUM lakások, ingatlanok</a></h3>
-                    <p class="portfolio-description">PRÉMIUM ingatlan értékesítő weboldal</p>
-                </div>
-            </div>
-
-            <div class="portfolio-item reveal">
-                <div class="portfolio-image">
-                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
-                        <img src="images/webaruhaz-keszites-gyor_1.webp"
-                            alt="Webáruház készítés Szombathely – Shopify API integráció, ASTRO 5.X keretrendszer"
-                            width="774" height="2621" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-category">Webáruház készítés – Shopify API integráció</span>
-                    <h3 class="portfolio-title">Demó webáruház – ASTRO 5.X</h3>
-                    <p class="portfolio-description">Headless webáruház Shopify API integrációval és ASTRO 5.X
-                        keretrendszerrel – villámgyors, SEO-optimalizált frontend</p>
-                </div>
-            </div>
-
-            <div class="portfolio-item reveal">
-                <div class="portfolio-image">
-                    <div class="screenshot-window" aria-label="Scrollable full-page screenshot">
-                        <img src="images/webaruhaz-keszites-gyor_2.webp"
-                            alt="Webáruház készítés Szombathely – Shopify API integráció, ASTRO 5.X keretrendszer"
-                            width="774" height="3005" loading="lazy">
-                    </div>
-                </div>
-                <div class="portfolio-overlay">
-                    <span class="portfolio-category">Webáruház készítés – Shopify API integráció</span>
-                    <h3 class="portfolio-title">Demó webáruház – ASTRO 5.X</h3>
-                    <p class="portfolio-description">Teljes körű e-commerce megoldás Shopify backend és ASTRO 5.X
-                        frontend kombinációjával – dinamikus termékkezelés, gyors betöltés</p>
-                </div>
-            </div>
-
+            <button class="slider-btn slider-prev" aria-label="Előző projekt">‹</button>
+            <button class="slider-btn slider-next" aria-label="Következő projekt">›</button>
         </div>
     </section>
 
@@ -3222,30 +3131,11 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
         </div>
     </section>
 
-    <!-- Testimonial -->
-    <section class="testimonial">
-        <div class="testimonial-content reveal">
-            <blockquote class="testimonial-quote">
-                "Jellemző cél: tiszta ajánlat, nyitvatartás és árak egy helyen, gyors űrlap vagy foglalás, kevesebb
-                ismétlődő kérdés telefonon vagy chaten. Nem valós ügyfélvélemény, hanem tipikus projekthelyzet
-                összefoglalva (példa)."
-            </blockquote>
-            <div class="testimonial-author">
-                <div class="testimonial-avatar">TP</div>
-                <div>
-                    <div class="testimonial-name">Tipikus projekthelyzet</div>
-                    <div class="testimonial-role">Határmenti kereskedelem, ipar, szolgáltatás — nyugat-magyarországi szolgáltató cég
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA -->
     <section class="cta">
         <div class="cta-glow"></div>
         <div class="cta-content reveal">
-            <h2 class="cta-title">Rövid egyeztetés és <span>átnézet</span> a jelenlegi oldalról</h2>
+            <h2 class="cta-title">Rövid egyeztetés és <span>analitika</span> a jelenlegi oldalról</h2>
             <p class="cta-description">
                 Írd le röviden a célokat, és ha van, küldd a jelenlegi oldal címét — <span
                     style="color: var(--cyan)">első visszajelzés díjmentes</span>, konkrét megjegyzésekkel,
@@ -3548,26 +3438,6 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
-
-        // ============================================
-        // 3D CARD TILT
-        // ============================================
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
 
         // ============================================
         // FORM
@@ -4090,6 +3960,160 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
     <img class="cert-modal-img" id="certModalImg" src="" alt="">
     <div class="cert-modal-counter" id="certModalCounter"></div>
 </div>
+
+<script>
+(function() {
+    'use strict';
+
+    var track = document.getElementById('portfolioTrack');
+    if (!track || !track.children.length) return;
+
+    var originalSlides = Array.prototype.slice.call(track.children);
+    var realCount = originalSlides.length;
+    var cloneCount = Math.min(3, realCount);
+
+    // Clone cloneCount slides at each end for seamless infinite loop (covers multi-column view)
+    for (var ci = 0; ci < cloneCount; ci++) {
+        track.appendChild(originalSlides[ci].cloneNode(true));
+    }
+    for (var ci = 0; ci < cloneCount; ci++) {
+        track.insertBefore(originalSlides[realCount - 1 - ci].cloneNode(true), track.firstChild);
+    }
+
+    var slides = Array.prototype.slice.call(track.children);
+    var container = track.closest('.portfolio-slider');
+    var wrapper = track.closest('.portfolio-slider-wrapper');
+    var prevBtn = wrapper.querySelector('.slider-prev');
+    var nextBtn = wrapper.querySelector('.slider-next');
+
+    var current = cloneCount;
+    var autoInterval = null;
+    var isDragging = false;
+    var startX = 0;
+    var dragOffset = 0;
+    var moving = false;
+
+    function getSlideWidth() {
+        return slides[0].offsetWidth;
+    }
+
+    function getGap() {
+        if (slides.length < 2) return 0;
+        return slides[1].offsetLeft - slides[0].offsetLeft - slides[0].offsetWidth;
+    }
+
+    function getVisibleCount() {
+        var cw = container.offsetWidth;
+        var sw = getSlideWidth();
+        var gap = getGap();
+        if (sw + gap <= 0) return 1;
+        return Math.max(1, Math.min(Math.floor((cw + gap) / (sw + gap)), realCount));
+    }
+
+    function computeOffset(index) {
+        var offset = 0;
+        for (var i = 0; i < index; i++) {
+            offset += slides[i].offsetWidth + getGap();
+        }
+        return offset;
+    }
+
+    function goTo(index, instant) {
+        current = index;
+        track.style.transition = instant ? 'none' : 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        track.style.transform = 'translateX(-' + computeOffset(current) + 'px)';
+    }
+
+    function snapToReal() {
+        if (current < cloneCount) {
+            goTo(realCount + cloneCount - 1 - current, true);
+        } else if (current >= realCount + cloneCount) {
+            goTo(current - realCount, true);
+        }
+    }
+
+    function next() {
+        if (moving) return;
+        moving = true;
+        goTo(current + 1);
+    }
+
+    function prev() {
+        if (moving) return;
+        moving = true;
+        goTo(current - 1);
+    }
+
+    function startAuto() {
+        stopAuto();
+        autoInterval = setInterval(next, 6000);
+    }
+
+    function stopAuto() {
+        if (autoInterval) {
+            clearInterval(autoInterval);
+            autoInterval = null;
+        }
+    }
+
+    goTo(1, true);
+    startAuto();
+
+    track.addEventListener('transitionend', function() {
+        moving = false;
+        snapToReal();
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        stopAuto(); prev(); startAuto();
+    });
+    if (nextBtn) nextBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        stopAuto(); next(); startAuto();
+    });
+
+    wrapper.addEventListener('mouseenter', stopAuto);
+    wrapper.addEventListener('mouseleave', startAuto);
+    wrapper.addEventListener('focusin', stopAuto);
+    wrapper.addEventListener('focusout', function(e) {
+        if (!wrapper.contains(e.relatedTarget)) startAuto();
+    });
+
+    track.addEventListener('touchstart', function(e) {
+        startX = e.changedTouches[0].screenX;
+        isDragging = true;
+        stopAuto();
+        track.style.transition = 'none';
+        dragOffset = 0;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', function(e) {
+        if (!isDragging) return;
+        dragOffset = e.changedTouches[0].screenX - startX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', function(e) {
+        isDragging = false;
+        moving = false;
+        track.style.transition = '';
+        if (Math.abs(dragOffset) > 50) {
+            if (dragOffset < 0) next();
+            else prev();
+        } else {
+            snapToReal();
+        }
+        startAuto();
+    }, { passive: true });
+
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() { snapToReal(); }, 150);
+    });
+
+})();
+</script>
 
 </body>
 
