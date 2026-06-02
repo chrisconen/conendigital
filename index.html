@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajánlatgeneráló weboldalak & WordPress felújítás Győr | Conen Digital</title>
+    <title>WEBoldal & WEBáruház készítés, tervezés, modernizálás Győr | Conen Digital</title>
     <meta name="description"
         content="Weboldal és webáruház készítés Győr | a tegnapi webfejlesztés a múlt, a mai weboldal készítés a jelen, mi a jövő weboldalait készítjük! ">
     <meta name="author" content="Chris Conen">
@@ -2875,8 +2875,8 @@
                 </div>
 
                 <h1 class="hero-title">
-                    <span class="hero-title-line">AI automatizált weboldalak</span>
-                    <span class="hero-title-line"><span class="hero-title-gradient">& WordPress felújítás</span></span>
+                    <span class="hero-title-line">Weboldal & webáruház Győr</span>
+                    <span class="hero-title-line"><span class="hero-title-gradient">tervezés, készítés, modernizálás</span></span>
                     <span class="hero-title-subline">Mérésekkel igazolt eredmények, audit-alapú árazás | weboldal készítés, webáruház tervezés, fejlesztés és modernizálás - Cyber Security analitika</span>
                 </h1>
                 <p class="hero-description">
@@ -3943,26 +3943,6 @@ Nem ígéreteket árulunk, hanem méréseket, valós számokkal. Ha van egy ötl
 
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
-
-        // ============================================
-        // 3D CARD TILT
-        // ============================================
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
 
         // ============================================
         // FORM
