@@ -61,9 +61,13 @@
         var d = new Date(pubDate);
         var dateStr = d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + String(d.getDate()).padStart(2,'0');
 
-        // Slug kinyerése a linkből, kép path összerakása
-        var slug = link.replace(/\/$/, '').split('/').pop();
-        var img = slug ? '/blog/blog-images/' + slug + '.png' : '';
+        // Kép: enclosure-ból vagy media:content-ből, fallback slug-alapú
+        var enclosure = item.querySelector('enclosure');
+        var img = enclosure ? enclosure.getAttribute('url') : '';
+        if (!img) {
+          var slug = link.replace(/\/$/, '').split('/').pop();
+          if (slug) img = '/blog/blog-images/' + slug + '.png';
+        }
 
         // Link relatívvá
         var u = link;
