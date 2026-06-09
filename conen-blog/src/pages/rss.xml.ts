@@ -6,6 +6,8 @@ export async function GET(context: APIContext) {
   const posts = (await getCollection('blog', ({ data }) => !data.draft))
     .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
 
+  const site = context.site!.toString().replace(/\/$/, '');
+
   return rss({
     title: 'Conen Digital Blog',
     description:
@@ -18,6 +20,9 @@ export async function GET(context: APIContext) {
       link: `/blog/${post.id.replace(/\.md$/, '')}/`,
       categories: [post.data.category, ...post.data.tags],
       author: post.data.author,
+      enclosure: post.data.image
+        ? { url: `${site}${post.data.image}`, length: 0, type: 'image/png' }
+        : undefined,
     })),
     customData: '<language>hu-hu</language>',
     stylesheet: false,
