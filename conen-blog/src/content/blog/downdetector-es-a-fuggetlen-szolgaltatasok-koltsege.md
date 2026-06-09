@@ -23,7 +23,7 @@ A Downdetector szolgáltatás egy olyan platform, amely a felhasználók számá
 A Downdetector szolgáltatásnak komoly költségei vannak a Cloudflare használatával kapcsolatban. Ha a Downdetector elhagyná a Cloudflare-t, akkor **nagyon magas költségekkel** kellene szembenéznie, **a weboldal betöltési ideje lassabb** lenne, és **a bevételek nem változnának**.
 
 ## A Downdetector tervezési döntései
-A Downdetector csapata elmondta, hogy a **redundancia építése a DNS és a CDN rétegekben** **nagyon nagy terhelést** jelentene. A Cloudflare botvédelme **világszínvonalú**, és hasonló funkciók építése **nagyon sok erőfeszítést** igényelne. A csapat hangsúlyozta, hogy **több dolgot is lehetne javítani**, például a [felhőalapú infrastruktúra](https://blog.conendigital.hu/centaur-modell) használatával.
+A Downdetector csapata elmondta, hogy a **redundancia építése a DNS és a CDN rétegekben** **nagyon nagy terhelést** jelentene. A Cloudflare botvédelme **világszínvonalú**, és hasonló funkciók építése **nagyon sok erőfeszítést** igényelne. A csapat hangsúlyozta, hogy **több dolgot is lehetne javítani**, például a [felhőalapú infrastruktúra](https://conendigital.hu/blog/centaur-modell) használatával.
 
 ## Következtetés
 A Downdetector szolgáltatás függősége a Cloudflare-től egy érdekes példa arra, hogyan lehet egy szolgáltatás függősége egy másik szolgáltatástól komoly következményekkel járni. A cikk elemzi a függőség nélküli szolgáltatások előnyeit és hátrányait, és hangsúlyozza a **tervezési döntések fontosságát** a szolgáltatások tervezése során.
