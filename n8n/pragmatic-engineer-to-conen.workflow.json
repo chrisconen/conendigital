@@ -1,5 +1,5 @@
 {
-  "name": "Pragmatic Engineer → Conen Blog (magyar feldolgozás, draft)",
+  "name": "Pragmatic Engineer → Conen Blog (Telegram jóváhagyással)",
   "nodes": [
     {
       "parameters": {
@@ -162,7 +162,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Az LLM JSON válaszának kibontása és a .md fájl tartalom összeállítása.\n\nconst resp = $input.first().json;\n\n// OpenAI-kompatibilis válaszstruktúra: choices[0].message.content (string, ami JSON)\nlet raw = resp?.choices?.[0]?.message?.content ?? '';\nlet ai;\ntry {\n  ai = JSON.parse(raw);\n} catch (e) {\n  // Néha kódblokkba csomagolja – próbáljuk kivágni a { ... } részt\n  const m = raw.match(/\\{[\\s\\S]*\\}/);\n  if (!m) throw new Error('Az AI válasza nem értelmezhető JSON: ' + raw.slice(0, 300));\n  ai = JSON.parse(m[0]);\n}\n\nconst source = $('Slug lista összeállítás').first().json;\n\n// --- validáció / fallback ---\nconst VALID_CATEGORIES = ['EAA', 'AX-readiness', 'AI Ops', 'Site Factory', 'MCP-Commerce', 'Case Study', 'CENTAUR'];\nlet category = VALID_CATEGORIES.includes(ai.category) ? ai.category : 'AI Ops';\n\nfunction slugify(s) {\n  return String(s)\n    .toLowerCase()\n    .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^a-z0-9]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .slice(0, 80);\n}\n\nlet slug = ai.slug ? slugify(ai.slug) : slugify(ai.title || source.sourceTitle);\nif (!slug) slug = 'pragmatic-' + Date.now();\n\nconst tags = Array.isArray(ai.tags) ? ai.tags : [];\nconst today = new Date().toISOString().slice(0, 10); // YYYY-MM-DD\nconst readingTime = Number.isFinite(ai.readingTime) ? ai.readingTime : 6;\n\n// YAML-biztos string escape (idézőjelek)\nfunction yq(s) {\n  return '\"' + String(s).replace(/\\\\/g, '\\\\\\\\').replace(/\"/g, '\\\\\"') + '\"';\n}\n\nconst tagsYaml = tags.map(t => '  - ' + yq(t)).join('\\n');\n\nconst frontmatter = [\n  '---',\n  'title: ' + yq(ai.title || source.sourceTitle),\n  'summary: ' + yq(ai.summary || ''),\n  'publishedAt: ' + today,\n  'category: ' + yq(category),\n  'tags:',\n  tagsYaml,\n  'author: \"Chris Conen\"',\n  'readingTime: ' + readingTime,\n  'draft: true',\n  '---',\n  ''\n].join('\\n');\n\nconst body = (ai.body_markdown || '').trim() + '\\n';\nconst fileContent = frontmatter + '\\n' + body;\n\nreturn [\n  {\n    json: {\n      slug,\n      filePath: 'conen-blog/src/content/blog/' + slug + '.md',\n      fileContent,\n      commitMessage: 'blog: új draft – ' + (ai.title || source.sourceTitle),\n      guid: source.guid\n    }\n  }\n];\n"
+        "jsCode": "// Az LLM JSON válaszának kibontása + a .md fájl tartalom (draft ÉS publikált verzió).\nconst resp = $input.first().json;\nlet raw = resp && resp.choices && resp.choices[0] && resp.choices[0].message ? resp.choices[0].message.content : '';\nlet ai;\ntry {\n  ai = JSON.parse(raw);\n} catch (e) {\n  const m = String(raw).match(/\\{[\\s\\S]*\\}/);\n  if (!m) throw new Error('Az AI válasza nem értelmezhető JSON: ' + String(raw).slice(0, 300));\n  ai = JSON.parse(m[0]);\n}\n\nconst source = $('Slug lista összeállítás').first().json;\n\nconst VALID_CATEGORIES = ['EAA', 'AX-readiness', 'AI Ops', 'Site Factory', 'MCP-Commerce', 'Case Study', 'CENTAUR'];\nconst category = VALID_CATEGORIES.includes(ai.category) ? ai.category : 'AI Ops';\n\nfunction slugify(s) {\n  return String(s)\n    .toLowerCase()\n    .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^a-z0-9]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .slice(0, 80);\n}\n\nlet slug = ai.slug ? slugify(ai.slug) : slugify(ai.title || source.sourceTitle);\nif (!slug) slug = 'pragmatic-' + Date.now();\n\nconst tags = Array.isArray(ai.tags) ? ai.tags : [];\nconst today = new Date().toISOString().slice(0, 10);\nconst readingTime = Number.isFinite(ai.readingTime) ? ai.readingTime : 6;\nconst title = ai.title || source.sourceTitle;\nconst summary = ai.summary || '';\n\nfunction yq(s) {\n  return '\"' + String(s).replace(/\\\\/g, '\\\\\\\\').replace(/\"/g, '\\\\\"') + '\"';\n}\nconst tagsYaml = tags.map(t => '  - ' + yq(t)).join('\\n');\n\nfunction buildFile(draftVal) {\n  const fm = [\n    '---',\n    'title: ' + yq(title),\n    'summary: ' + yq(summary),\n    'publishedAt: ' + today,\n    'category: ' + yq(category),\n    'tags:',\n    tagsYaml,\n    'author: \"Chris Conen\"',\n    'readingTime: ' + readingTime,\n    'draft: ' + draftVal,\n    '---',\n    ''\n  ].join('\\n');\n  return fm + '\\n' + String(ai.body_markdown || '').trim() + '\\n';\n}\n\nconst filePath = 'conen-blog/src/content/blog/' + slug + '.md';\n\nreturn [\n  {\n    json: {\n      slug,\n      filePath,\n      fileContent: buildFile('true'),\n      fileContentPublished: buildFile('false'),\n      commitMessage: 'blog: új draft – ' + title,\n      publishCommitMessage: 'blog: publikálás – ' + title,\n      rejectCommitMessage: 'blog: draft elutasítva, törölve – ' + title,\n      title,\n      summary,\n      category,\n      tagsText: tags.join(', '),\n      sourceUrl: source.sourceUrl,\n      githubFileUrl: 'https://github.com/chrisconen/conendigital/blob/main/' + filePath,\n      liveUrl: 'https://conendigital.hu/blog/' + slug,\n      guid: source.guid\n    }\n  }\n];\n"
       },
       "id": "a8888888-8888-4888-8888-888888888888",
       "name": ".md fájl összeállítás",
@@ -220,9 +220,200 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        940,
+        1820,
         320
       ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendAndWait",
+        "chatId": "REPLACE_CHAT_ID",
+        "message": "🆕 *Új blog draft jóváhagyásra*\n\n📝 Cím: {{ $json.title }}\n🗂️ Kategória: {{ $json.category }}\n🏷️ Tagek: {{ $json.tagsText }}\n\n🧷 Összefoglaló: {{ $json.summary }}\n\n📄 Teljes cikk átnézése (GitHub): {{ $json.githubFileUrl }}\n🔗 Eredeti forrás: {{ $json.sourceUrl }}\n\nJóváhagyás → publikálás a blogra (draft:false). Elutasítás → a draft törlése.",
+        "responseType": "approval",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "approveLabel": "✅ Jóváhagyom",
+            "buttonApprovalStyle": "primary",
+            "disapproveLabel": "🗑️ Elutasítom",
+            "buttonDisapprovalStyle": "secondary"
+          }
+        },
+        "options": {}
+      },
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "name": "Telegram jóváhagyás",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        940,
+        320
+      ],
+      "webhookId": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_TELEGRAM_CRED_ID",
+          "name": "Telegram – Conen bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+      "name": "Jóváhagyva?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1160,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "value": "chrisconen",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "conendigital",
+          "mode": "name"
+        },
+        "filePath": "={{ $('.md fájl összeállítás').item.json.filePath }}",
+        "fileContent": "={{ $('.md fájl összeállítás').item.json.fileContentPublished }}",
+        "commitMessage": "={{ $('.md fájl összeállítás').item.json.publishCommitMessage }}",
+        "additionalParameters": {
+          "branch": {
+            "branch": "main"
+          }
+        }
+      },
+      "id": "ffffffff-ffff-4fff-8fff-ffffffffffff",
+      "name": "GitHub publikálás (draft:false)",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        200
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_GITHUB_CRED_ID",
+          "name": "GitHub – conendigital"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "REPLACE_CHAT_ID",
+        "text": "✅ Publikálva a blogra:\n{{ $('.md fájl összeállítás').item.json.title }}\n\n🔗 {{ $('.md fájl összeállítás').item.json.liveUrl }}\n\n(A Cloudflare build ~30 mp múlva élesít.)",
+        "additionalFields": {}
+      },
+      "id": "11111111-aaaa-4aaa-8aaa-111111111111",
+      "name": "Telegram: publikálva",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1600,
+        200
+      ],
+      "webhookId": "22222222-aaaa-4aaa-8aaa-222222222222",
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_TELEGRAM_CRED_ID",
+          "name": "Telegram – Conen bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "delete",
+        "owner": {
+          "__rl": true,
+          "value": "chrisconen",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "conendigital",
+          "mode": "name"
+        },
+        "filePath": "={{ $('.md fájl összeállítás').item.json.filePath }}",
+        "commitMessage": "={{ $('.md fájl összeállítás').item.json.rejectCommitMessage }}",
+        "additionalParameters": {
+          "branch": {
+            "branch": "main"
+          }
+        }
+      },
+      "id": "33333333-aaaa-4aaa-8aaa-333333333333",
+      "name": "GitHub draft törlése",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        440
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_GITHUB_CRED_ID",
+          "name": "GitHub – conendigital"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "REPLACE_CHAT_ID",
+        "text": "🗑️ Elutasítva és törölve:\n{{ $('.md fájl összeállítás').item.json.title }}",
+        "additionalFields": {}
+      },
+      "id": "44444444-aaaa-4aaa-8aaa-444444444444",
+      "name": "Telegram: elutasítva",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1600,
+        440
+      ],
+      "webhookId": "55555555-aaaa-4aaa-8aaa-555555555555",
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_TELEGRAM_CRED_ID",
+          "name": "Telegram – Conen bot"
+        }
+      }
     }
   ],
   "connections": {
@@ -315,6 +506,79 @@
       ]
     },
     "GitHub commit (draft .md)": {
+      "main": [
+        [
+          {
+            "node": "Telegram jóváhagyás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram jóváhagyás": {
+      "main": [
+        [
+          {
+            "node": "Jóváhagyva?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jóváhagyva?": {
+      "main": [
+        [
+          {
+            "node": "GitHub publikálás (draft:false)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GitHub draft törlése",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub publikálás (draft:false)": {
+      "main": [
+        [
+          {
+            "node": "Telegram: publikálva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram: publikálva": {
+      "main": [
+        [
+          {
+            "node": "Guid mentése (feldolgozva)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub draft törlése": {
+      "main": [
+        [
+          {
+            "node": "Telegram: elutasítva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram: elutasítva": {
       "main": [
         [
           {

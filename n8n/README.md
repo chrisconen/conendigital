@@ -1,8 +1,19 @@
 # Pragmatic Engineer → Conen Blog automatizáció (n8n)
 
-Ez a workflow figyeli a [The Pragmatic Engineer](https://blog.pragmaticengineer.com/) blog RSS feedjét, és amikor új poszt jelenik meg, **egy AI-modellel magyar nyelvű, eredeti feldolgozást** készít belőle (forrásmegjelöléssel, belső linkekkel, SEO-frontmatterrel), majd **draftként commitolja** a `conen-blog` Astro tartalomgyűjteményébe.
+Ez a workflow figyeli a [The Pragmatic Engineer](https://blog.pragmaticengineer.com/) blog RSS feedjét, és amikor új poszt jelenik meg, **egy AI-modellel magyar nyelvű, eredeti feldolgozást** készít belőle (forrásmegjelöléssel, belső linkekkel, SEO-frontmatterrel), draftként commitolja, majd **Telegramon jóváhagyásra küldi**. A te döntésed alapján:
+- **Jóváhagyás** → a poszt `draft: false`-ra vált és kimegy az élő blogra,
+- **Elutasítás** → a draft fájl törlődik a repóból.
 
-A publikálás `git commit` egy új `.md` fájllal a `conen-blog/src/content/blog/` mappába → Cloudflare Pages buildeli.
+A publikálás `git commit` egy `.md` fájllal a `conen-blog/src/content/blog/` mappába → Cloudflare Pages buildeli.
+
+### Folyamat-áttekintés
+
+```
+RSS → új poszt? → AI magyar feldolgozás → GitHub draft commit
+   → 📱 Telegram jóváhagyás (Jóváhagyom / Elutasítom)
+        ├─ Jóváhagyom → GitHub edit (draft:false) → 📱 "Publikálva" → blog élő
+        └─ Elutasítom → GitHub delete (draft törlése) → 📱 "Elutasítva"
+```
 
 ---
 
@@ -21,8 +32,8 @@ Ha mégis 1:1 fordítást szeretnél: **előbb szerezz írásos engedélyt** a s
 ### 2. Paywall
 A friss Pragmatic Engineer cikkek nagy része fizetős. Az RSS feed ilyenkor **csak egy teasert** ad, nem a teljes szöveget. A workflow ezzel számol (a teaserből is tud összefoglalót írni), de a minőség jobb a nyilvános cikkeknél.
 
-### 3. Minden poszt `draft: true`-val készül
-A workflow **nem** publikál automatikusan élesben. Minden generált cikk `draft: true` frontmatterrel commitolódik → te átnézed, javítod, és csak utána állítod `false`-ra. **Erősen ajánlott így hagyni**, amíg be nem áll a minőség. (Élesítéshez lásd lent.)
+### 3. Jóváhagyás-alapú publikálás (human-in-the-loop)
+A workflow **nem** publikál automatikusan. Minden cikk először `draft: true`-ként commitolódik, és **Telegramon kapsz egy üzenetet két gombbal** (Jóváhagyom / Elutasítom). Csak a Te jóváhagyásod után vált `draft: false`-ra és kerül ki élesben. Elutasításnál a draft fájl törlődik. Így a Groq+Llama kimenetét mindig ellenőrzöd, mielőtt bármi élesedik.
 
 ---
 
@@ -32,6 +43,7 @@ A workflow **nem** publikál automatikusan élesben. Minden generált cikk `draf
 - Self-hosted n8n (Docker) **vagy** n8n Cloud — nálad mindkettő szinkronban (hub.centaur-lang.dev).
 - Egy LLM API kulcs. Alapból **Groq + Llama 3.3 70B** (`api.groq.com`, `llama-3.3-70b-versatile` – ingyenes tier, OpenAI-kompatibilis). Bármilyen OpenAI-kompatibilis végpontra átállítható (lásd lent).
 - Egy **GitHub Personal Access Token** a `chrisconen/conendigital` repóhoz (`repo` / `Contents: Read and write` jog).
+- Egy **Telegram bot token** (@BotFather) és a saját **chat ID**-d a jóváhagyó üzenetekhez.
 
 ### 1. Workflow importálása
 n8n UI → bal felső menü → **Import from File** → válaszd a
@@ -42,9 +54,22 @@ n8n UI → bal felső menü → **Import from File** → válaszd a
 2. Server: `https://api.github.com` (vagy a GitHub Enterprise URL-ed).
 3. Access Token: a PAT-od.
 4. Mentsd `GitHub – conendigital` néven.
-5. A workflow két GitHub node-jánál (`Meglévő posztok`, `GitHub commit`) válaszd ki ezt a credentialt.
+5. A workflow **négy** GitHub node-jánál (`Meglévő posztok`, `GitHub commit`, `GitHub publikálás`, `GitHub draft törlése`) válaszd ki ezt a credentialt.
 
-> A JSON-ben `REPLACE_GITHUB_CRED_ID` helyőrző van — import után egyszerűen kattints a node-ra és válaszd ki a credentialt a legördülőből.
+> A JSON-ben `REPLACE_GITHUB_CRED_ID` helyőrző van — import után egyszerűen kattints minden GitHub node-ra és válaszd ki a credentialt a legördülőből.
+
+### 2/b. Telegram credential
+1. **Bot létrehozása:** Telegramban írj a [@BotFather](https://t.me/BotFather)-nek → `/newbot` → kapsz egy **bot tokent** (`123456:ABC...`).
+2. **Chat ID megszerzése:** írj egy üzenetet a saját botodnak, majd nyisd meg böngészőben:
+   `https://api.telegram.org/bot<BOT_TOKEN>/getUpdates` → a `chat.id` mező a te chat ID-d (pozitív szám privát chatnél).
+3. n8n → **Credentials** → **New** → *Telegram API* → illeszd be a bot tokent → mentsd `Telegram – Conen bot` néven.
+4. A három Telegram node-on (`Telegram jóváhagyás`, `Telegram: publikálva`, `Telegram: elutasítva`) válaszd ki ezt a credentialt, és a **`chatId` mezőbe** írd be a saját chat ID-d (a JSON-ben `REPLACE_CHAT_ID` helyőrző van mindháromban).
+
+> **⚠️ WEBHOOK_URL (self-hosted!):** a „Telegram jóváhagyás" (Send and Wait) node a folyamatot megállítja, és egy webhook-linken keresztül folytatja, amikor a gombra kattintasz. Ehhez a self-hosted n8n-nek tudnia kell a **publikus URL-jét**. Állítsd be a Docker környezeti változót:
+> ```
+> WEBHOOK_URL=https://hub.centaur-lang.dev/
+> ```
+> Enélkül a gombok „Invalid token" hibát adnak, vagy a workflow nem folytatódik.
 
 ### 3. LLM credential (Groq + Llama 3.3 alapból)
 1. n8n → **Credentials** → **New** → *Header Auth*.
@@ -73,10 +98,12 @@ A Header Auth mindegyiknél `Authorization: Bearer <kulcs>`.
    - `Új poszt szűrés` → kijön-e 1 elem?
    - `AI – magyar feldolgozás` → valid JSON-e a `choices[0].message.content`?
    - `.md fájl összeállítás` → nézd meg a `fileContent`-et, hogy jó-e a frontmatter.
-3. Ha a `GitHub commit` lefut, nézd meg a repóban az új draft `.md`-t, és olvasd át.
+   - `GitHub commit` → létrejön a draft `.md`.
+   - `Telegram jóváhagyás` → megkapod-e az üzenetet a két gombbal? Kattints **Jóváhagyom** → a `GitHub publikálás` átírja `draft: false`-ra és jön a „Publikálva" üzenet. Vagy **Elutasítom** → a draft törlődik.
+3. Ellenőrizd a repóban / az élő blogon (`https://conendigital.hu/blog/<slug>`) az eredményt.
 
 ### 5. Élesítés
-Ha jó a minőség: kapcsold be a workflow-t (jobb fent **Active** kapcsoló). Ettől kezdve **óránként** fut. Futásonként **egy** új posztot dolgoz fel (hogy az első indításkor ne posztoljon be 10 cikket egyszerre).
+Ha jó a minőség: kapcsold be a workflow-t (jobb fent **Active** kapcsoló). Ettől kezdve **óránként** fut. Futásonként **egy** új posztot dolgoz fel (hogy az első indításkor ne posztoljon be 10 cikket egyszerre). Minden poszt a Telegram-jóváhagyáson megy keresztül, mielőtt élesedne.
 
 ---
 
@@ -91,9 +118,15 @@ Ha jó a minőség: kapcsold be a workflow-t (jobb fent **Active** kapcsoló). E
 | 5 | **Meglévő posztok** | Lekéri a `conen-blog/src/content/blog/` fájllistát → ezekből lesznek a belső link-jelöltek. |
 | 6 | **Slug lista összeállítás** | A meglévő slug-okat átadja az AI-nak. |
 | 7 | **AI – magyar feldolgozás** | LLM-hívás: magyar feldolgozás + frontmatter mezők JSON-ban. |
-| 8 | **.md fájl összeállítás** | Validálja a kategóriát, slugot képez, összerakja a `---` frontmattert + a body markdownt, `draft: true`. |
-| 9 | **GitHub commit** | Létrehozza a `.md` fájlt a repóban (main branch). |
-| 10 | **Guid mentése** | A sikeresen feldolgozott posztot megjelöli, hogy ne ismétlődjön. |
+| 8 | **.md fájl összeállítás** | Validálja a kategóriát, slugot képez, összerakja a frontmattert + body markdownt. Két verziót gyárt: `fileContent` (draft:true) és `fileContentPublished` (draft:false). |
+| 9 | **GitHub commit (draft .md)** | Létrehozza a draft `.md` fájlt a repóban (main branch). |
+| 10 | **Telegram jóváhagyás** | „Send and Wait": elküldi a cím/kategória/összefoglaló + GitHub-link üzenetet két gombbal, és **megállítja a workflow-t**, amíg nem döntesz. |
+| 11 | **Jóváhagyva?** | IF node: `{{ $json.data.approved }}` alapján ágazik. |
+| 12 | **GitHub publikálás (draft:false)** | (Jóváhagyás ág) felülírja a fájlt `draft: false`-ra → a poszt élesedik. |
+| 13 | **Telegram: publikálva** | Visszajelzés a live URL-lel. |
+| 14 | **GitHub draft törlése** | (Elutasítás ág) törli a draft fájlt a repóból. |
+| 15 | **Telegram: elutasítva** | Visszajelzés az elutasításról. |
+| 16 | **Guid mentése** | A feldolgozott posztot megjelöli (mindkét ág után), hogy ne ismétlődjön. |
 
 ---
 
@@ -123,8 +156,8 @@ draft: true                  # te állítod false-ra jóváhagyás után
 
 - **Gyakoriság:** `Óránkénti ütemezés` node → állítsd pl. 6 órára vagy napi 1-re.
 - **Több poszt egyszerre:** az `Új poszt szűrés` Code node-ban a `freshOnes[0]` helyett `return freshOnes.map(...)`-ra váltva több cikket is feldolgozhat (de a downstream node-ok ekkor több itemmel futnak — teszteld).
-- **Hangnem / hossz / belső linkek száma:** az `AI – magyar feldolgozás` node `system` promptjában szerkeszthető.
-- **Értesítés:** a `Guid mentése` után fűzhetsz egy e-mail/Slack node-ot („új draft kész: {{ $json.savedGuid }}").
+- **Hangnem / hossz / belső linkek száma:** az `AI – magyar feldolgozás` node `system` promptjában szerkeszthető (a `Slug lista összeállítás` Code node-ban).
+- **Jóváhagyás kihagyása (full-auto):** ha mégis automata publikálást akarsz, töröld a `Telegram jóváhagyás` + `Jóváhagyva?` node-okat, és a `GitHub commit`-ban a `fileContent` helyett a `fileContentPublished` mezőt használd (vagy kösd közvetlenül a `GitHub publikálás`-t). **Nem ajánlott**, amíg a minőség nem stabil.
 - **Featured kép:** a séma `image` mezője opcionális; bővíthető egy kép-generáló/-kereső lépéssel.
 
 ---
@@ -142,3 +175,9 @@ draft: true                  # te állítod false-ra jóváhagyás után
 **A build elhasal a commit után** (`InvalidContentEntryFrontmatterError`) — szinte mindig rossz `category` érték. Ezért van a node-ban kategória-validáció `AI Ops` fallbackkel; ha bővíted az enumot, frissítsd a `VALID_CATEGORIES` listát a Code node-ban is.
 
 **Duplikált posztok** — a dedup a workflow *static data*-ra épül. Ha újraimportálod a workflow-t, a static data nullázódhat; ekkor egyszer lefuthat egy már látott posztra.
+
+**Telegram gombok nem működnek / „Invalid token" / a workflow nem folytatódik** — szinte mindig a `WEBHOOK_URL` hiányzik vagy rossz a self-hosted n8n-en. Állítsd be: `WEBHOOK_URL=https://hub.centaur-lang.dev/` és indítsd újra a konténert. Ellenőrizd azt is, hogy a `chatId` mindhárom Telegram node-on a saját chat ID-d.
+
+**Nem jön a Telegram üzenet** — a botnak előbb írnod kell egyszer (a bot nem tud elsőként üzenetet küldeni ismeretlen chatnek), és a `chatId`-nak helyesnek kell lennie (lásd `getUpdates`).
+
+**`GitHub publikálás` hibázik** — az `edit` művelet meglévő fájlt frissít; ha a draft commit valamiért nem jött létre, nincs mit szerkeszteni. Előbb a `GitHub commit`-nak le kell futnia.
