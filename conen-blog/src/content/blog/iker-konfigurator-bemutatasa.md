@@ -4,7 +4,7 @@ summary: "10 lépés, élő preview, variant-compare, three-axis scoring. Az IKE
 publishedAt: 2026-05-10
 category: "CENTAUR"
 tags: ["IKER", "konfigurátor", "variant-compare", "weboldal tervezés"]
-image"/blog/blog-images/weboldal-tervezo-webaruhaz-keszito.webp"
+image: "/blog/blog-images/weboldal-tervezo-webaruhaz-keszito.webp"
 imageAlt: "weboldal tervező és webáruház készítő alkalmazás"
 author: "Chris Conen"
 readingTime: 5
