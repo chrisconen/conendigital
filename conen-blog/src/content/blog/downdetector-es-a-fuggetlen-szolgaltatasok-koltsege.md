@@ -10,7 +10,7 @@ tags:
   - "költségek"
 author: "Chris Conen"
 readingTime: 10
-draft: true
+draft: false
 ---
 
 ## Bevezetés
