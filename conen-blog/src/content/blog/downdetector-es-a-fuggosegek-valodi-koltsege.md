@@ -14,7 +14,7 @@ tags:
   - "distributed systems"
   - "skálázhatóság"
   - "resilience"
-image: "blog/blog-images/downdetector-es-a-fuggosegek-valodi-koltsege.png"
+image: "/blog/blog-images/downdetector-es-a-fuggosegek-valodi-koltsege.png"
 imageAlt: "A függőségek valódi költsége: mit tanít a Downdetector és a Cloudflare esete?"
 author: "Chris Conen"
 readingTime: 10
