@@ -30,7 +30,7 @@ A workflow **nem** publikál automatikusan élesben. Minden generált cikk `draf
 
 ### Előfeltételek
 - Self-hosted n8n (Docker) **vagy** n8n Cloud — nálad mindkettő szinkronban (hub.centaur-lang.dev).
-- Egy LLM API kulcs. Alapból **DeepSeek**-re van állítva (`api.deepseek.com`, `deepseek-chat` modell – olcsó, jó magyar), de bármilyen OpenAI-kompatibilis végpont megy (lásd lent).
+- Egy LLM API kulcs. Alapból **Groq + Llama 3.3 70B** (`api.groq.com`, `llama-3.3-70b-versatile` – ingyenes tier, OpenAI-kompatibilis). Bármilyen OpenAI-kompatibilis végpontra átállítható (lásd lent).
 - Egy **GitHub Personal Access Token** a `chrisconen/conendigital` repóhoz (`repo` / `Contents: Read and write` jog).
 
 ### 1. Workflow importálása
@@ -46,22 +46,24 @@ n8n UI → bal felső menü → **Import from File** → válaszd a
 
 > A JSON-ben `REPLACE_GITHUB_CRED_ID` helyőrző van — import után egyszerűen kattints a node-ra és válaszd ki a credentialt a legördülőből.
 
-### 3. LLM credential (DeepSeek alapból)
+### 3. LLM credential (Groq + Llama 3.3 alapból)
 1. n8n → **Credentials** → **New** → *Header Auth*.
 2. **Name:** `Authorization`
-3. **Value:** `Bearer SK_A_TE_DEEPSEEK_KULCSOD`
-4. Mentsd `DeepSeek / OpenAI API key` néven, és rendeld az `AI – magyar feldolgozás` node-hoz.
+3. **Value:** `Bearer gsk_A_TE_GROQ_KULCSOD`
+4. Mentsd `Groq API key` néven, és rendeld az `AI – magyar feldolgozás` node-hoz.
 
-#### Másik szolgáltató (OpenAI / Anthropic / Gemini)?
+> Groq ingyenes kulcsot a [console.groq.com](https://console.groq.com) → API Keys alatt kapsz.
+
+#### Másik szolgáltató (DeepSeek / OpenAI / Anthropic)?
 Az `AI – magyar feldolgozás` HTTP node-ban cseréld:
 
 | Szolgáltató | URL | `model` mező |
 |---|---|---|
-| **DeepSeek** (alap) | `https://api.deepseek.com/chat/completions` | `deepseek-chat` |
-| **OpenAI** | `https://api.openai.com/v1/chat/completions` | `gpt-4o` |
-| OpenAI-kompatibilis egyéb | a szolgáltató végpontja | a saját modellnév |
+| **Groq** (alap) | `https://api.groq.com/openai/v1/chat/completions` | `llama-3.3-70b-versatile` |
+| DeepSeek | `https://api.deepseek.com/chat/completions` | `deepseek-chat` |
+| OpenAI | `https://api.openai.com/v1/chat/completions` | `gpt-4o` |
 
-A Header Auth ugyanúgy `Authorization: Bearer <kulcs>` mindháromnál.
+A Header Auth mindegyiknél `Authorization: Bearer <kulcs>`.
 (Anthropic Claude esetén más a body-séma — szólj, és átírom Claude-ra.)
 
 ### 4. Tesztelés (élesítés ELŐTT)
@@ -134,6 +136,8 @@ draft: true                  # te állítod false-ra jóváhagyás után
 - vagy a Substack feed: `https://newsletter.pragmaticengineer.com/feed`.
 
 **Az AI válasza nem JSON** — a `.md fájl összeállítás` node hibát dob. A node tartalmaz egy fallbacket (kivágja a `{...}` részt), de ha makacs, emeld a prompt szigorát vagy válts erősebb modellre.
+
+**Groq rate limit (429)** — az ingyenes tieren van perc-/napi tokenkorlát. Mivel a workflow futásonként csak 1 posztot dolgoz fel, ez ritkán üt be; ha mégis, ritkítsd az ütemezést, vagy tedd be egy „Wait" node-ot retmyval. A `llama-3.3-70b-versatile` támogatja a JSON módot, és a prompt tartalmazza a „JSON" szót (ezt a Groq megköveteli a `response_format`-hoz).
 
 **A build elhasal a commit után** (`InvalidContentEntryFrontmatterError`) — szinte mindig rossz `category` érték. Ezért van a node-ban kategória-validáció `AI Ops` fallbackkel; ha bővíted az enumot, frissítsd a `VALID_CATEGORIES` listát a Code node-ban is.
 
