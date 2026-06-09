@@ -69,7 +69,7 @@ const postUrl = `${siteUrl}${base}/${post.id.replace(/\.md$/, '')}`;
       <h1 class="post__title">{title}</h1>
       <p class="post__summary">{summary}</p>
       <div class="post__author">
-        <div class="post__author-avatar">{(author || 'C')[0]}</div>
+        <img class="post__author-avatar" src="/blog/blog-images/chris-conen.webp" alt={author || 'Chris Conen'} loading="lazy" />
         <div>
           <div class="post__author-name">{author || 'Chris Conen'}</div>
           <div class="post__author-role">Founder · CENTAUR</div>
@@ -160,10 +160,8 @@ const postUrl = `${siteUrl}${base}/${post.id.replace(/\.md$/, '')}`;
   }
   .post__author-avatar {
     width: 40px; height: 40px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--cyan), var(--magenta));
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-mono); font-weight: 700; font-size: .85rem;
-    color: var(--black);
+    object-fit: cover;
+    border: 2px solid rgba(201,169,98,.3);
   }
   .post__author-name { font-weight: 600; font-size: .9rem; }
   .post__author-role {

@@ -8,7 +8,7 @@ const { name = 'Chris Conen' } = Astro.props;
 
 <aside class="ac" aria-label="Szerzo">
   <div class="ac__inner">
-    <div class="ac__avatar">{name[0]}</div>
+    <img class="ac__avatar" src="/blog/blog-images/chris-conen.webp" alt={name} loading="lazy" />
     <div class="ac__body">
       <div class="ac__label">A szerzorul</div>
       <div class="ac__name">{name}</div>
@@ -47,10 +47,8 @@ const { name = 'Chris Conen' } = Astro.props;
   .ac__avatar {
     flex-shrink: 0;
     width: 52px; height: 52px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--cyan), var(--magenta));
-    display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;
-    color: var(--black);
+    object-fit: cover;
+    border: 2px solid rgba(201,169,98,.3);
   }
   .ac__label {
     font-family: var(--font-mono); font-size: .6rem;
