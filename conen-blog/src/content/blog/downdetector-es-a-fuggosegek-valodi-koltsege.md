@@ -8,7 +8,7 @@ tags:
   - "Cloudflare"
   - "függőségek"
   - "skálázhatóság"
-image: "/blog-images/downdetector-es-a-fuggosegek-valodi-koltsege.png"
+image: "/blog/blog-images/downdetector-es-a-fuggosegek-valodi-koltsege.png"
 imageAlt: "A függőségek valódi költsége: a Downdetector esete"
 author: "Chris Conen"
 readingTime: 10
