@@ -44,15 +44,20 @@ const related = scored.map(s => s.post);
         const reading = post.data.readingTime || 4;
         return (
           <a href={href} class="rp__card">
-            <div class="rp__meta">
-              <span class="rp__cat">{post.data.category}</span>
-              <span aria-hidden="true">&middot;</span>
-              <time datetime={post.data.publishedAt.toISOString()}>{dateStr}</time>
-              <span aria-hidden="true">&middot;</span>
-              <span>{reading} perc</span>
+            {post.data.image && (
+              <img class="rp__img" src={post.data.image} alt={post.data.imageAlt || post.data.title} loading="lazy" />
+            )}
+            <div class="rp__card-body">
+              <div class="rp__meta">
+                <span class="rp__cat">{post.data.category}</span>
+                <span aria-hidden="true">&middot;</span>
+                <time datetime={post.data.publishedAt.toISOString()}>{dateStr}</time>
+                <span aria-hidden="true">&middot;</span>
+                <span>{reading} perc</span>
+              </div>
+              <h3 class="rp__card-title">{post.data.title}</h3>
+              <p class="rp__summary">{post.data.summary}</p>
             </div>
-            <h3 class="rp__card-title">{post.data.title}</h3>
-            <p class="rp__summary">{post.data.summary}</p>
           </a>
         );
       })}
@@ -81,12 +86,20 @@ const related = scored.map(s => s.post);
     display: grid; gap: 1rem;
   }
   .rp__card {
-    display: block; padding: 1.25rem 1.5rem;
+    display: flex; flex-direction: row;
     background: rgba(255,255,255,.02);
     border: 1px solid rgba(255,255,255,.05);
     border-radius: 2px;
     transition: all .35s cubic-bezier(.4,0,.2,1);
     position: relative; overflow: hidden;
+  }
+  .rp__img {
+    flex-shrink: 0; width: 140px;
+    object-fit: cover;
+    border-right: 1px solid rgba(255,255,255,.04);
+  }
+  .rp__card-body {
+    padding: 1rem 1.25rem; flex: 1;
   }
   .rp__card::before {
     content: '';
@@ -124,6 +137,12 @@ const related = scored.map(s => s.post);
   }
 
   @media (max-width: 480px) {
-    .rp__card { padding: 1rem; }
+    .rp__card { flex-direction: column; }
+    .rp__img {
+      width: 100%; height: 120px;
+      border-right: none;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .rp__card-body { padding: .85rem 1rem; }
   }
 </style>
