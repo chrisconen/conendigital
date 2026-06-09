@@ -11,7 +11,7 @@ readingTime: 5
 draft: false
 ---
 
-# Nem űrlap. Sales-tool.
+## Nem űrlap. Sales-tool.
 
 A legtöbb webfejlesztő cég weboldalán ugyanaz a flow vár.
 
@@ -37,9 +37,7 @@ Hanem élő rendszer.
 
 Az IKER pontosan ezt próbálja újragondolni.
 
----
-
-# Az IKER nem konfigurátor. Hanem döntési rendszer.
+## Az IKER nem konfigurátor. Hanem döntési rendszer.
 
 Az IKER-t sokan első pillantásra weboldal-konfigurátornak nevezik.
 
@@ -70,9 +68,7 @@ Ezért született meg a variant-compare rendszer.
 
 És ezért lett az egész platform preview-first architektúrára építve.
 
----
-
-# A weboldal-tervezés legnagyobb problémája
+## A weboldal-tervezés legnagyobb problémája
 
 A legtöbb ügyfél nem tud wireframe-ben gondolkodni.
 
@@ -107,9 +103,7 @@ A web viszont igen.
 
 Az IKER ebből a felismerésből született.
 
----
-
-# A 10 lépés — de valójában nem form flow
+## A 10 lépés — de valójában nem form flow
 
 Papíron az IKER egy 10 lépéses rendszer.
 
@@ -165,8 +159,6 @@ Ez nem skin-csere.
 
 Hanem struktúra-váltás.
 
----
-
 ## 2. Stílus
 
 A legtöbb builder itt megáll a „válassz színt” szinten.
@@ -193,8 +185,6 @@ Mert a döntés így nem absztrakt.
 
 Hanem érzékszervi.
 
----
-
 ## 3–4. Navigáció és Hero
 
 Itt válik igazán láthatóvá az IKER cinematic engine-je.
@@ -218,9 +208,7 @@ Az ügyfél nem „beállítást” lát.
 
 Hanem élményt.
 
----
-
-# A killer feature: variant-compare
+## A killer feature: variant-compare
 
 Ez az a pont, ahol az IKER teljesen kilép a klasszikus website builder kategóriából.
 
@@ -248,9 +236,7 @@ Az agy ugyanis összehasonlításban gondolkodik.
 
 Nem memóriából rekonstruál.
 
----
-
-# Nem A/B teszt. Hanem pre-decision architecture.
+## Nem A/B teszt. Hanem pre-decision architecture.
 
 A variant-compare nem marketing gimmick.
 
@@ -276,9 +262,7 @@ Hanem jövőket hasonlít össze.
 
 És ez pszichológiailag sokkal erősebb.
 
----
-
-# Oldalak és szekciók — a modularitás új szintje
+## Oldalak és szekciók — a modularitás új szintje
 
 Az IKER nem page-builder.
 
@@ -309,9 +293,7 @@ A cél nem a pixel-perfect design editor.
 
 Hanem a gyors scope-kristályosítás.
 
----
-
-# Funkciók és extrák — transzparens scope
+## Funkciók és extrák — transzparens scope
 
 A legtöbb ügynökségi ajánlat legnagyobb problémája:
 
@@ -342,9 +324,7 @@ Ez két dolgot változtat meg:
 1. Az ügyfél jobban érti a projektet
 2. A sales-beszélgetés sokkal magasabb szintre kerül
 
----
-
-# Three-axis scoring
+## Three-axis scoring
 
 A legtöbb configurator végén egy ár jelenik meg.
 
@@ -378,9 +358,7 @@ Ez a három scoring-rendszer már nem egyszerű weboldal-logika.
 
 Hanem digitális infrastruktúra-logika.
 
----
-
-# Nem quote generator. Hanem sales acceleration engine.
+## Nem quote generator. Hanem sales acceleration engine.
 
 Az IKER egyik legérdekesebb hatása nem technológiai.
 
@@ -408,9 +386,7 @@ A beszélgetés így nem nulláról indul.
 
 Hanem egy közösen látható vászonról.
 
----
-
-# CENTAUR-modell — ember + AI co-founder architektúra
+## CENTAUR-modell — ember + AI co-founder architektúra
 
 Az IKER maga is a CENTAUR-modell terméke.
 
@@ -435,9 +411,7 @@ Mert az IKER nem csak egy AI-val készült projekt.
 
 Hanem egy AI-native működési modell demonstrációja.
 
----
-
-# A jövő: MCP és AI-to-business interfészek
+## A jövő: MCP és AI-to-business interfészek
 
 Az IKER roadmapjének legfontosabb eleme a saját MCP endpoint.
 
@@ -466,9 +440,7 @@ Hanem AI-agentek is.
 
 Az IKER erre készül.
 
----
-
-# Nem a jövő. Hanem a következő logikus lépés.
+## Nem a jövő. Hanem a következő logikus lépés.
 
 A weboldal-iparág hosszú ideig statikus prezentációs logikára épült.
 
