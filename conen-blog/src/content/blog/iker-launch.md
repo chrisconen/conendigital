@@ -4,6 +4,8 @@ summary: "Bemutatjuk az IKER-t — a világ első weboldal-konfigurátor-át, am
 publishedAt: 2026-05-11
 category: "CENTAUR"
 tags: ["IKER", "konfigurátor", "variant-compare", "CENTAUR", "weboldal tervezés", "launch"]
+image: "/blog/blog-images/weboldal-webaruhaz-keszito-alkalmazas.webp"
+imageAlt: "Weboldal és webáruház készítő alkalmazás - weboldal konfigurátor"
 author: "Chris Conen"
 readingTime: 7
 draft: false
