@@ -1,12 +1,17 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import AuthorCard from '../components/AuthorCard.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 interface Props {
   post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
+const allPosts = await getCollection('blog');
 const { title, summary, publishedAt, updatedAt, category, tags, image, imageAlt, author, readingTime } = post.data;
 const base = import.meta.env.BASE_URL;
 
@@ -17,6 +22,8 @@ const updatedStr = updatedAt
   ? updatedAt.toLocaleDateString('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' })
   : null;
 const reading = readingTime || 4;
+const siteUrl = 'https://conendigital.hu';
+const postUrl = `${siteUrl}${base}/${post.id.replace(/\.md$/, '')}`;
 ---
 
 <BaseLayout
@@ -92,6 +99,12 @@ const reading = readingTime || 4;
           </div>
         </footer>
       )}
+
+      <ShareButtons title={title} url={postUrl} />
+
+      <AuthorCard name={author} />
+
+      <RelatedPosts current={post} allPosts={allPosts} />
 
       <!-- Back -->
       <div class="post__back reveal">
@@ -256,6 +269,7 @@ const reading = readingTime || 4;
   /* Back link */
   .post__back {
     max-width: 700px; margin: 3rem auto 0; padding-top: 2rem;
+    padding-bottom: 4rem;
   }
   .post__back-link {
     font-family: var(--font-mono); font-size: .75rem;

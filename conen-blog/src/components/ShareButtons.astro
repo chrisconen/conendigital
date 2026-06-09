@@ -1,0 +1,48 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+const encoded = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+
+const links = [
+  { name: 'X', href: `https://x.com/intent/tweet?text=${encodedTitle}&url=${encoded}`, label: 'Megosztás X-en' },
+  { name: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${encoded}`, label: 'Megosztás LinkedInen' },
+  { name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${encoded}`, label: 'Megosztás Facebookon' },
+];
+---
+
+<div class="sb">
+  <span class="sb__label">Megosztás</span>
+  {links.map(l => (
+    <a href={l.href} target="_blank" rel="noopener noreferrer" class="sb__btn" aria-label={l.label}>
+      {l.name}
+    </a>
+  ))}
+</div>
+
+<style>
+  .sb {
+    max-width: 700px; margin: 2.5rem auto 0;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .sb__label {
+    font-family: var(--font-mono); font-size: .62rem;
+    text-transform: uppercase; letter-spacing: .15em;
+    color: rgba(255,255,255,.3); margin-right: .25rem;
+  }
+  .sb__btn {
+    font-family: var(--font-mono); font-size: .68rem;
+    letter-spacing: .06em; padding: .4rem .85rem;
+    border: 1px solid rgba(255,255,255,.08);
+    color: rgba(255,255,255,.45); border-radius: 2px;
+    transition: all .25s;
+  }
+  .sb__btn:hover {
+    border-color: var(--cyan); color: var(--cyan);
+    background: rgba(201,169,98,.04);
+  }
+</style>

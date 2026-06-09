@@ -1,0 +1,129 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  current: CollectionEntry<'blog'>;
+  allPosts: CollectionEntry<'blog'>[];
+  max?: number;
+}
+
+const { current, allPosts, max = 3 } = Astro.props;
+const base = import.meta.env.BASE_URL;
+
+// Score each post by relevance: same category > shared tags > recency
+const scored = allPosts
+  .filter(p => p.id !== current.id && !p.data.draft)
+  .map(p => {
+    let score = 0;
+    if (p.data.category === current.data.category) score += 5;
+    const shared = p.data.tags.filter(t => current.data.tags.includes(t)).length;
+    score += shared * 2;
+    // Small recency bonus (newer = higher)
+    score += Math.max(0, 1 - (Date.now() - p.data.publishedAt.getTime()) / (365 * 24 * 3600 * 1000));
+    return { post: p, score };
+  })
+  .sort((a, b) => b.score - a.score)
+  .slice(0, max);
+
+const related = scored.map(s => s.post);
+---
+
+{related.length > 0 && (
+  <section class="rp" aria-label="Kapcsolodo cikkek">
+    <div class="rp__header">
+      <div class="rp__line" aria-hidden="true"></div>
+      <h2 class="rp__title">Kapcsolodo cikkek</h2>
+      <div class="rp__line" aria-hidden="true"></div>
+    </div>
+    <div class="rp__grid">
+      {related.map(post => {
+        const href = `${base}/${post.id.replace(/\.md$/, '')}`;
+        const dateStr = post.data.publishedAt.toLocaleDateString('hu-HU', {
+          year: 'numeric', month: 'short', day: 'numeric',
+        });
+        const reading = post.data.readingTime || 4;
+        return (
+          <a href={href} class="rp__card">
+            <div class="rp__meta">
+              <span class="rp__cat">{post.data.category}</span>
+              <span aria-hidden="true">&middot;</span>
+              <time datetime={post.data.publishedAt.toISOString()}>{dateStr}</time>
+              <span aria-hidden="true">&middot;</span>
+              <span>{reading} perc</span>
+            </div>
+            <h3 class="rp__card-title">{post.data.title}</h3>
+            <p class="rp__summary">{post.data.summary}</p>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+)}
+
+<style>
+  .rp {
+    max-width: 700px; margin: 3.5rem auto 0;
+  }
+  .rp__header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .rp__line {
+    flex: 1; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  }
+  .rp__title {
+    font-family: var(--font-mono); font-size: .72rem;
+    text-transform: uppercase; letter-spacing: .15em;
+    color: var(--cyan); white-space: nowrap;
+  }
+  .rp__grid {
+    display: grid; gap: 1rem;
+  }
+  .rp__card {
+    display: block; padding: 1.25rem 1.5rem;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: 2px;
+    transition: all .35s cubic-bezier(.4,0,.2,1);
+    position: relative; overflow: hidden;
+  }
+  .rp__card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
+    opacity: 0; transition: opacity .35s;
+  }
+  .rp__card:hover {
+    border-color: rgba(201,169,98,.15);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -10px rgba(201,169,98,.06);
+  }
+  .rp__card:hover::before { opacity: 1; }
+
+  .rp__meta {
+    display: flex; gap: .5rem; align-items: center; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: .62rem;
+    text-transform: uppercase; letter-spacing: .08em;
+    color: var(--gray-text); margin-bottom: .6rem;
+  }
+  .rp__cat { color: var(--cyan); }
+
+  .rp__card-title {
+    font-size: 1.05rem; font-weight: 600; line-height: 1.3;
+    margin-bottom: .4rem;
+    transition: color .25s;
+  }
+  .rp__card:hover .rp__card-title { color: var(--cyan); }
+
+  .rp__summary {
+    font-size: .82rem; color: rgba(255,255,255,.4);
+    line-height: 1.55;
+    display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  @media (max-width: 480px) {
+    .rp__card { padding: 1rem; }
+  }
+</style>

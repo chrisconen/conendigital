@@ -1,0 +1,80 @@
+---
+interface Props {
+  name?: string;
+}
+
+const { name = 'Chris Conen' } = Astro.props;
+---
+
+<aside class="ac" aria-label="Szerzo">
+  <div class="ac__inner">
+    <div class="ac__avatar">{name[0]}</div>
+    <div class="ac__body">
+      <div class="ac__label">A szerzorul</div>
+      <div class="ac__name">{name}</div>
+      <p class="ac__bio">
+        Founder @ Conen Digital. A CENTAUR keretrendszer megalkotoja:
+        1 ember + 2 MI co-founder. Webfejlesztes, AI-integracio, EAA-megfeleles
+        &mdash; meselj, ha segithetunk.
+      </p>
+      <div class="ac__links">
+        <a href="https://conendigital.hu" target="_blank" rel="noopener">conendigital.hu</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="https://www.linkedin.com/company/conen-digital" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<style>
+  .ac {
+    max-width: 700px; margin: 3rem auto 0;
+    padding: 2rem;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 2px;
+    position: relative; overflow: hidden;
+  }
+  .ac::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
+    opacity: .5;
+  }
+  .ac__inner {
+    display: flex; gap: 1.25rem; align-items: flex-start;
+  }
+  .ac__avatar {
+    flex-shrink: 0;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--cyan), var(--magenta));
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem;
+    color: var(--black);
+  }
+  .ac__label {
+    font-family: var(--font-mono); font-size: .6rem;
+    text-transform: uppercase; letter-spacing: .15em;
+    color: var(--cyan); margin-bottom: .25rem;
+  }
+  .ac__name {
+    font-weight: 700; font-size: 1.05rem; margin-bottom: .5rem;
+  }
+  .ac__bio {
+    font-size: .88rem; color: rgba(255,255,255,.55);
+    line-height: 1.65; margin: 0 0 .75rem;
+  }
+  .ac__links {
+    display: flex; gap: .5rem; align-items: center;
+    font-family: var(--font-mono); font-size: .68rem;
+    letter-spacing: .04em;
+  }
+  .ac__links a { color: var(--cyan); }
+  .ac__links a:hover { text-decoration: underline; }
+  .ac__links span { color: rgba(255,255,255,.2); }
+
+  @media (max-width: 480px) {
+    .ac__inner { flex-direction: column; align-items: center; text-align: center; }
+    .ac__links { justify-content: center; }
+  }
+</style>
