@@ -4303,7 +4303,7 @@
                 analyser.smoothingTimeConstant = 0.7;
                 audioData = new Uint8Array(analyser.frequencyBinCount);
 
-                introAudio = new Audio('/chris-bemutatkozas.mp3');
+                introAudio = new Audio('/chris-conen-bemutatkozas.mp3');
                 introAudio.preload = 'metadata';
                 introAudio.crossOrigin = 'anonymous';
 
@@ -4578,30 +4578,7 @@
     <img class="cert-modal-img" id="certModalImg" src="" alt="">
     <div class="cert-modal-counter" id="certModalCounter"></div>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        try {
-            const ann = document.querySelector('.centaur-announcement');
-            const nav = document.querySelector('.nav');
-            const isHidden = !ann || ann.classList.contains('hidden') || (ann && getComputedStyle(ann).display === 'none');
-
-            if (isHidden) {
-                // Remove any class that added top padding for the announcement
-                document.body.classList.remove('announcement-visible', 'announcement-closed');
-                document.body.classList.add('announcement-hidden');
-
-                // Ensure nav is flush to the top
-                if (nav) {
-                    nav.style.top = '0';
-                }
-            }
-        } catch (e) {
-            // silent fail — announcement bar may not exist
-        }
-    });
-</script>
-
+    
 <script>
 (function() {
     'use strict';
