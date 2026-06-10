@@ -1,0 +1,602 @@
+{
+  "name": "Pragmatic Engineer → Conen Blog (Telegram jóváhagyással)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 1
+            }
+          ]
+        }
+      },
+      "id": "a1111111-1111-4111-8111-111111111111",
+      "name": "Óránkénti ütemezés",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1040,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://blog.pragmaticengineer.com/rss/",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (compatible; ConenDigitalBot/1.0; +https://conendigital.hu)"
+            },
+            {
+              "name": "Accept",
+              "value": "application/rss+xml, application/xml, text/xml"
+            }
+          ]
+        }
+      },
+      "id": "a2222222-2222-4222-8222-222222222222",
+      "name": "RSS feed letöltése",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -820,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "dataPropertyName": "data",
+        "options": {}
+      },
+      "id": "a3333333-3333-4333-8333-333333333333",
+      "name": "XML → JSON",
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        -600,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// A feed item-ek kinyerése + dedup a workflow static data alapján.\n// Csak az ELSŐ még nem látott (legfrissebb) posztot engedi tovább futásonként,\n// hogy ne posztoljon egyszerre 10 cikket az első indításkor.\n\nconst input = $input.first().json;\n\n// Ghost/Substack RSS struktúra: rss.channel.item (lehet tömb vagy egyetlen objektum)\nlet items = input?.rss?.channel?.item ?? [];\nif (!Array.isArray(items)) items = [items];\n\nif (items.length === 0) {\n  return [];\n}\n\nconst store = $getWorkflowStaticData('global');\nstore.seenGuids = store.seenGuids || [];\n\n// A feed legfrissebb elöl jön. Megfordítjuk, hogy időrendben dolgozzuk fel.\nconst chronological = [...items].reverse();\n\nconst freshOnes = [];\nfor (const it of chronological) {\n  const guid = (it.guid && (it.guid['_'] || it.guid)) || it.link;\n  if (!guid) continue;\n  if (!store.seenGuids.includes(guid)) {\n    freshOnes.push({ item: it, guid });\n  }\n}\n\nif (freshOnes.length === 0) {\n  return [];\n}\n\n// Csak egyet dolgozunk fel futásonként (a legrégebbi még feldolgozatlant).\nconst next = freshOnes[0];\nconst it = next.item;\n\nconst title = (it.title && (it.title['_'] || it.title)) || '';\nconst link = it.link || '';\nconst pubDate = it.pubDate || '';\n// content:encoded vagy description tartalmazza a HTML törzset (paywallnál csak teaser!)\nconst html = it['content:encoded'] || it.description || '';\n\nreturn [\n  {\n    json: {\n      guid: next.guid,\n      sourceTitle: String(title).trim(),\n      sourceUrl: String(link).trim(),\n      sourcePubDate: String(pubDate).trim(),\n      sourceHtml: String(html)\n    }\n  }\n];\n"
+      },
+      "id": "a4444444-4444-4444-8444-444444444444",
+      "name": "Új poszt szűrés (dedup)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -380,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "list",
+        "owner": {
+          "__rl": true,
+          "value": "chrisconen",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "conendigital",
+          "mode": "name"
+        },
+        "filePath": "conen-blog/src/content/blog"
+      },
+      "id": "a5555555-5555-4555-8555-555555555555",
+      "name": "Meglévő posztok (belső link)",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        320
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_GITHUB_CRED_ID",
+          "name": "GitHub – conendigital"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Slug-lista + a TELJES LLM kérés-body összeállítása JSON.stringify-jal.\n// Template literal (backtick) valódi sortörésekkel - copy-paste biztos.\n\nconst files = $input.all();\nconst slugs = files\n  .map(f => f.json.name)\n  .filter(n => typeof n === 'string' && n.endsWith('.md'))\n  .map(n => n.replace(/\\.md$/, ''));\n\nconst source = $('Új poszt szűrés (dedup)').first().json;\n\nconst system = `Te a Conen Digital (conendigital.hu) magyar szakmai blogjának szerkesztője vagy. A feladatod, hogy egy angol nyelvű szoftverfejlesztői/tech cikk alapján EREDETI, magyar nyelvű FELDOLGOZÁST írj – NEM szó szerinti fordítást. Ez jogilag (szerzői jog) és SEO szempontból (duplikált tartalom elkerülése) is kötelező. A cikk Gergely Orosz 'The Pragmatic Engineer' blogjából származik.\n\nSZABÁLYOK:\n1. Írj egy önálló, magyar nyelvű elemző-összefoglaló cikket (600-1000 szó), ami a forrás fő gondolatait ismerteti, ÉS hozzáteszi a magyar/KKV piaci kontextust vagy a Conen Digital nézőpontját.\n2. KÖTELEZŐ forrásmegjelölés: a cikk elején egy bevezető mondat, a végén pedig egy 'Forrás' szekció a teljes eredeti címmel és linkkel: [eredeti cím](forrás URL).\n3. Ne másolj le 30 egymást követő szónál többet az eredetiből. Parafrazeálj.\n4. Szúrj be 1-3 RELEVÁNS belső linket a megadott meglévő slug-listából, markdown formátumban: [horgonyszöveg](/blog/slug). Csak akkor linkelj, ha tényleg releváns.\n5. A 'category' mező ÉRTÉKE KIZÁRÓLAG ezek egyike lehet: EAA, AX-readiness, AI Ops, Site Factory, MCP-Commerce, Case Study, CENTAUR. Válaszd a témához legközelebbit (tech/fejlesztői témánál általában 'AI Ops' vagy 'CENTAUR').\n6. A 'tags' 3-6 magyar/angol kulcsszó tömbje.\n7. A 'slug' kötőjeles, ékezet nélküli, csak [a-z0-9-], magyar nyelvű.\n8. A 'summary' 1-2 mondat, max 155 karakter (meta description).\n9. A body markdown legyen: H2 (##) szekciók, **bold**, listák. NE tegyél bele H1-et (a title adja).\n\nKIMENET: KIZÁRÓLAG egy JSON objektum, mezők: title (string), summary (string), category (string), tags (string tömb), slug (string), readingTime (szám, perc), body_markdown (string).`;\n\nconst user = `EREDETI CÍM: ${source.sourceTitle || ''}\n\nFORRÁS URL: ${source.sourceUrl || ''}\n\nMEGLÉVŐ POSZT SLUG-OK (belső linkeléshez): ${JSON.stringify(slugs)}\n\nEREDETI TARTALOM (HTML, lehet csak részlet/teaser ha fizetős):\n${source.sourceHtml || ''}`;\n\nconst payload = {\n  model: \"llama-3.3-70b-versatile\",\n  temperature: 0.4,\n  response_format: { type: \"json_object\" },\n  messages: [\n    { role: \"system\", content: system },\n    { role: \"user\", content: user }\n  ]\n};\n\nreturn [\n  {\n    json: {\n      ...source,\n      existingSlugs: slugs,\n      llmBody: JSON.stringify(payload)\n    }\n  }\n];\n"
+      },
+      "id": "a6666666-6666-4666-8666-666666666666",
+      "name": "Slug lista összeállítás",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        60,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.llmBody }}",
+        "options": {}
+      },
+      "id": "a7777777-7777-4777-8777-777777777777",
+      "name": "AI – magyar feldolgozás",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        280,
+        320
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE_LLM_CRED_ID",
+          "name": "Groq API key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Az LLM JSON válaszának kibontása + a .md fájl tartalom (draft ÉS publikált verzió).\nconst resp = $input.first().json;\nlet raw = resp && resp.choices && resp.choices[0] && resp.choices[0].message ? resp.choices[0].message.content : '';\nlet ai;\ntry {\n  ai = JSON.parse(raw);\n} catch (e) {\n  const m = String(raw).match(/\\{[\\s\\S]*\\}/);\n  if (!m) throw new Error('Az AI válasza nem értelmezhető JSON: ' + String(raw).slice(0, 300));\n  ai = JSON.parse(m[0]);\n}\n\nconst source = $('Slug lista összeállítás').first().json;\n\nconst VALID_CATEGORIES = ['EAA', 'AX-readiness', 'AI Ops', 'Site Factory', 'MCP-Commerce', 'Case Study', 'CENTAUR'];\nconst category = VALID_CATEGORIES.includes(ai.category) ? ai.category : 'AI Ops';\n\nfunction slugify(s) {\n  return String(s)\n    .toLowerCase()\n    .normalize('NFD').replace(/[\\u0300-\\u036f]/g, '')\n    .replace(/[^a-z0-9]+/g, '-')\n    .replace(/^-+|-+$/g, '')\n    .slice(0, 80);\n}\n\nlet slug = ai.slug ? slugify(ai.slug) : slugify(ai.title || source.sourceTitle);\nif (!slug) slug = 'pragmatic-' + Date.now();\n\nconst tags = Array.isArray(ai.tags) ? ai.tags : [];\nconst today = new Date().toISOString().slice(0, 10);\nconst readingTime = Number.isFinite(ai.readingTime) ? ai.readingTime : 6;\nconst title = ai.title || source.sourceTitle;\nconst summary = ai.summary || '';\n\nfunction yq(s) {\n  return '\"' + String(s).replace(/\\\\/g, '\\\\\\\\').replace(/\"/g, '\\\\\"') + '\"';\n}\nconst tagsYaml = tags.map(t => '  - ' + yq(t)).join('\\n');\n\nfunction buildFile(draftVal) {\n  const fm = [\n    '---',\n    'title: ' + yq(title),\n    'summary: ' + yq(summary),\n    'publishedAt: ' + today,\n    'category: ' + yq(category),\n    'tags:',\n    tagsYaml,\n    'author: \"Chris Conen\"',\n    'readingTime: ' + readingTime,\n    'draft: ' + draftVal,\n    '---',\n    ''\n  ].join('\\n');\n  return fm + '\\n' + String(ai.body_markdown || '').trim() + '\\n';\n}\n\nconst filePath = 'conen-blog/src/content/blog/' + slug + '.md';\n\nreturn [\n  {\n    json: {\n      slug,\n      filePath,\n      fileContent: buildFile('true'),\n      fileContentPublished: buildFile('false'),\n      commitMessage: 'blog: új draft – ' + title,\n      publishCommitMessage: 'blog: publikálás – ' + title,\n      rejectCommitMessage: 'blog: draft elutasítva, törölve – ' + title,\n      title,\n      summary,\n      category,\n      tagsText: tags.join(', '),\n      sourceUrl: source.sourceUrl,\n      githubFileUrl: 'https://github.com/chrisconen/conendigital/blob/main/' + filePath,\n      liveUrl: 'https://conendigital.hu/blog/' + slug,\n      guid: source.guid\n    }\n  }\n];\n"
+      },
+      "id": "a8888888-8888-4888-8888-888888888888",
+      "name": ".md fájl összeállítás",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "create",
+        "owner": {
+          "__rl": true,
+          "value": "chrisconen",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "conendigital",
+          "mode": "name"
+        },
+        "filePath": "={{ $json.filePath }}",
+        "fileContent": "={{ $json.fileContent }}",
+        "commitMessage": "={{ $json.commitMessage }}",
+        "additionalParameters": {
+          "branch": {
+            "branch": "main"
+          }
+        }
+      },
+      "id": "a9999999-9999-4999-8999-999999999999",
+      "name": "GitHub commit (draft .md)",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        720,
+        320
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_GITHUB_CRED_ID",
+          "name": "GitHub – conendigital"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Sikeres commit után elmentjük a guid-ot, hogy ne dolgozzuk fel újra.\nconst guid = $('.md fájl összeállítás').first().json.guid;\nconst store = $getWorkflowStaticData('global');\nstore.seenGuids = store.seenGuids || [];\nif (guid && !store.seenGuids.includes(guid)) {\n  store.seenGuids.push(guid);\n  // memóriahatár: csak az utolsó 500-at tartjuk meg\n  if (store.seenGuids.length > 500) {\n    store.seenGuids = store.seenGuids.slice(-500);\n  }\n}\nreturn [{ json: { ok: true, savedGuid: guid, totalSeen: store.seenGuids.length } }];\n"
+      },
+      "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "name": "Guid mentése (feldolgozva)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1820,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendAndWait",
+        "chatId": "REPLACE_CHAT_ID",
+        "message": "🆕 *Új blog draft jóváhagyásra*\n\n📝 Cím: {{ $json.title }}\n🗂️ Kategória: {{ $json.category }}\n🏷️ Tagek: {{ $json.tagsText }}\n\n🧷 Összefoglaló: {{ $json.summary }}\n\n📄 Teljes cikk átnézése (GitHub): {{ $json.githubFileUrl }}\n🔗 Eredeti forrás: {{ $json.sourceUrl }}\n\nJóváhagyás → publikálás a blogra (draft:false). Elutasítás → a draft törlése.",
+        "responseType": "approval",
+        "approvalOptions": {
+          "values": {
+            "approvalType": "double",
+            "approveLabel": "✅ Jóváhagyom",
+            "buttonApprovalStyle": "primary",
+            "disapproveLabel": "🗑️ Elutasítom",
+            "buttonDisapprovalStyle": "secondary"
+          }
+        },
+        "options": {}
+      },
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "name": "Telegram jóváhagyás",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        940,
+        320
+      ],
+      "webhookId": "cccccccc-cccc-4ccc-8ccc-cccccccccccc",
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_TELEGRAM_CRED_ID",
+          "name": "Telegram – Conen bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+              "leftValue": "={{ $json.data.approved }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+      "name": "Jóváhagyva?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1160,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": {
+          "__rl": true,
+          "value": "chrisconen",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "conendigital",
+          "mode": "name"
+        },
+        "filePath": "={{ $('.md fájl összeállítás').item.json.filePath }}",
+        "fileContent": "={{ $('.md fájl összeállítás').item.json.fileContentPublished }}",
+        "commitMessage": "={{ $('.md fájl összeállítás').item.json.publishCommitMessage }}",
+        "additionalParameters": {
+          "branch": {
+            "branch": "main"
+          }
+        }
+      },
+      "id": "ffffffff-ffff-4fff-8fff-ffffffffffff",
+      "name": "GitHub publikálás (draft:false)",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        200
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_GITHUB_CRED_ID",
+          "name": "GitHub – conendigital"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "REPLACE_CHAT_ID",
+        "text": "✅ Publikálva a blogra:\n{{ $('.md fájl összeállítás').item.json.title }}\n\n🔗 {{ $('.md fájl összeállítás').item.json.liveUrl }}\n\n(A Cloudflare build ~30 mp múlva élesít.)",
+        "additionalFields": {}
+      },
+      "id": "11111111-aaaa-4aaa-8aaa-111111111111",
+      "name": "Telegram: publikálva",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1600,
+        200
+      ],
+      "webhookId": "22222222-aaaa-4aaa-8aaa-222222222222",
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_TELEGRAM_CRED_ID",
+          "name": "Telegram – Conen bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "delete",
+        "owner": {
+          "__rl": true,
+          "value": "chrisconen",
+          "mode": "name"
+        },
+        "repository": {
+          "__rl": true,
+          "value": "conendigital",
+          "mode": "name"
+        },
+        "filePath": "={{ $('.md fájl összeállítás').item.json.filePath }}",
+        "commitMessage": "={{ $('.md fájl összeállítás').item.json.rejectCommitMessage }}",
+        "additionalParameters": {
+          "branch": {
+            "branch": "main"
+          }
+        }
+      },
+      "id": "33333333-aaaa-4aaa-8aaa-333333333333",
+      "name": "GitHub draft törlése",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        1380,
+        440
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_GITHUB_CRED_ID",
+          "name": "GitHub – conendigital"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "REPLACE_CHAT_ID",
+        "text": "🗑️ Elutasítva és törölve:\n{{ $('.md fájl összeállítás').item.json.title }}",
+        "additionalFields": {}
+      },
+      "id": "44444444-aaaa-4aaa-8aaa-444444444444",
+      "name": "Telegram: elutasítva",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1600,
+        440
+      ],
+      "webhookId": "55555555-aaaa-4aaa-8aaa-555555555555",
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_TELEGRAM_CRED_ID",
+          "name": "Telegram – Conen bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Óránkénti ütemezés": {
+      "main": [
+        [
+          {
+            "node": "RSS feed letöltése",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS feed letöltése": {
+      "main": [
+        [
+          {
+            "node": "XML → JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML → JSON": {
+      "main": [
+        [
+          {
+            "node": "Új poszt szűrés (dedup)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Új poszt szűrés (dedup)": {
+      "main": [
+        [
+          {
+            "node": "Meglévő posztok (belső link)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Meglévő posztok (belső link)": {
+      "main": [
+        [
+          {
+            "node": "Slug lista összeállítás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slug lista összeállítás": {
+      "main": [
+        [
+          {
+            "node": "AI – magyar feldolgozás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI – magyar feldolgozás": {
+      "main": [
+        [
+          {
+            "node": ".md fájl összeállítás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    ".md fájl összeállítás": {
+      "main": [
+        [
+          {
+            "node": "GitHub commit (draft .md)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub commit (draft .md)": {
+      "main": [
+        [
+          {
+            "node": "Telegram jóváhagyás",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram jóváhagyás": {
+      "main": [
+        [
+          {
+            "node": "Jóváhagyva?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jóváhagyva?": {
+      "main": [
+        [
+          {
+            "node": "GitHub publikálás (draft:false)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GitHub draft törlése",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub publikálás (draft:false)": {
+      "main": [
+        [
+          {
+            "node": "Telegram: publikálva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram: publikálva": {
+      "main": [
+        [
+          {
+            "node": "Guid mentése (feldolgozva)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub draft törlése": {
+      "main": [
+        [
+          {
+            "node": "Telegram: elutasítva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram: elutasítva": {
+      "main": [
+        [
+          {
+            "node": "Guid mentése (feldolgozva)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "meta": {
+    "templateId": "conen-pragmatic-engineer-sync"
+  },
+  "tags": []
+}
