@@ -14,7 +14,7 @@ cd ..
 
 echo "=== 2. Root fájlok másolása ==="
 # Statikus HTML, CSS, JS, képek, stb. a gyökérbe
-for f in *.html *.js *.ico *.txt *.xml *.json *.webp *.png *.jpg *.svg *.mp4 *.wfp; do
+for f in *.html *.js *.ico *.txt *.xml *.json *.webp *.png *.jpg *.svg *.mp3 *.mp4 *.wfp; do
   if [ -f "$f" ]; then
     cp "$f" dist/
   fi
