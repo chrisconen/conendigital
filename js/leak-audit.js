@@ -25,6 +25,23 @@
   injectStyles();
   renderInput();
 
+  // Globális indító — a hero-ba épített input innen tudja elindítani az auditot.
+  window.startLeakAudit = function (url) {
+    var sec = document.getElementById('szivargas-audit');
+    if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (url && url.trim()) runAudit(url.trim());
+  };
+
+  // Hero-ba épített audit-form bekötése (ha van).
+  var heroForm = document.getElementById('heroAuditForm');
+  if (heroForm) {
+    heroForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var u = (document.getElementById('heroAuditUrl') || {}).value || '';
+      window.startLeakAudit(u);
+    });
+  }
+
   // ---- állapot ----
   var lastResult = null;
 
