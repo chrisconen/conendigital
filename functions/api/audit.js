@@ -32,6 +32,18 @@ function fail(error, message) {
   return json({ ok: false, error, message });
 }
 
+// Origin-allowlist: böngészőből csak a saját oldalunkról indítható (CORS-abuse ellen).
+// Origin nélküli kérés (pl. curl) átmegy, de a rate-limit fékezi.
+const ALLOWED_ORIGINS = [
+  'https://conendigital.hu',
+  'https://www.conendigital.hu',
+  'http://localhost:8788',
+  'http://127.0.0.1:8788',
+];
+function originAllowed(origin) {
+  return !origin || ALLOWED_ORIGINS.includes(origin);
+}
+
 /** http/https-re normalizál és blokkolja a nyilvánvalóan belső célokat (SSRF/abúzus ellen). */
 function normalizeUrl(raw) {
   if (!raw || typeof raw !== 'string') return null;
@@ -203,6 +215,10 @@ export async function onRequestOptions() {
 }
 
 export async function onRequestPost({ request, env, waitUntil }) {
+  if (!originAllowed(request.headers.get('Origin'))) {
+    return fail('FORBIDDEN', 'Ez az audit csak a conendigital.hu-ról indítható.');
+  }
+
   const key = env && env.PAGESPEED_API_KEY;
   if (!key) {
     return fail('SERVER_ERROR', 'Az audit-szolgáltatás épp nem elérhető. Próbáld újra később, vagy hívj minket.');
