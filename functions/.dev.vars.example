@@ -1,0 +1,4 @@
+# Lokális teszthez másold .dev.vars néven, és írd be a valódi kulcsot.
+# Élesben: Cloudflare Pages → Settings → Environment variables → PAGESPEED_API_KEY
+# Google PageSpeed Insights API kulcs: https://developers.google.com/speed/docs/insights/v5/get-started
+PAGESPEED_API_KEY=AIza...

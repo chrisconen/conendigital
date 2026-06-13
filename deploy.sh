@@ -27,5 +27,12 @@ for d in js images heightmaps .well-known; do
   fi
 done
 
+# Cloudflare Pages Functions (szivárgás-audit backend: /api/audit)
+if [ -d "functions" ]; then
+  cp -r functions dist/
+  rm -f dist/functions/.dev.vars            # lokális titkok soha ne kerüljenek deployra
+  rm -f dist/functions/api/AUDIT_CONTRACT.md # dokumentáció, nem kell a kimenetbe
+fi
+
 echo "=== 3. Kész ==="
 ls -la dist/

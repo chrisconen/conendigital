@@ -1,6 +1,13 @@
 node_modules/
 __pycache__/
 .claude/
+
+# Cloudflare Pages Functions — lokális titkok (PAGESPEED_API_KEY)
+functions/.dev.vars
+.dev.vars
+.wrangler/
+.wrangler-dev.log
+scratch/*.png
 *.mp4
 *.wfp
 *.mp3
