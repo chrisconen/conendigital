@@ -147,6 +147,8 @@ export async function onRequestGet({ env }) {
     keyPresent: !!k,
     keyLength: k.length,
     boundVars,
+    pagesUrl: (env && env.CF_PAGES_URL) || null,
+    branch: (env && env.CF_PAGES_BRANCH) || null,
     referer: (env && env.PSI_REFERER) || 'https://www.conendigital.hu/',
   });
 }
