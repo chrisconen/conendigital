@@ -937,6 +937,13 @@
             box-shadow: 0 0 20px rgba(201, 169, 98, 0.4);
         }
 
+        /* Mobilon a header CTA elrejtve — csak logó + hamburger marad (az audit a heróban + a menüben elérhető) */
+        @media (max-width: 768px) {
+            .nav-konfigurator-btn {
+                display: none;
+            }
+        }
+
         .nav-hamburger {
             display: flex;
             flex-direction: column;
