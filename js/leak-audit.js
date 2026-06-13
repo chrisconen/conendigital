@@ -109,7 +109,7 @@
   function renderResult(data) {
     var m = data.mobile;
     var d = data.desktop;
-    var verdict = verdictFor(m.performanceScore);
+    var verdict = verdictFor(m);
 
     var html =
       '<div class="la-result">' +
@@ -203,10 +203,46 @@
     return out;
   }
 
-  function verdictFor(score) {
-    if (score >= 90) return { tone: 'good', text: 'Ez az oldal gyors. Itt nincs nagy sebesség-szivárgás — a bevétel máshol csorog (checkout, mobil-flow). Nézzük meg együtt.' };
-    if (score >= 50) return { tone: 'mid', text: 'Van mit behozni. Az oldal a középmezőnyben van — minden lassú másodperc vásárlókat visz el némán.' };
-    return { tone: 'bad', text: 'Itt komoly, néma szivárgás van. Ezen a sebességen a mobil látogatók jelentős része elhagyja az oldalt, mielőtt betöltene.' };
+  // Minden metrika sima nyelven + következmény. A `speed` jelzi a sebesség-tengelyt.
+  var METRIC_INFO = {
+    lcp: { speed: true,  plain: function (v) { return 'lassan tölt be a fő tartalom (LCP ' + hu(v) + ' mp)'; }, cons: 'a vásárló elmegy, mielőtt betöltene' },
+    fcp: { speed: true,  plain: function (v) { return 'sokáig üres marad a képernyő (FCP ' + hu(v) + ' mp)'; }, cons: 'a látogató azt hiszi, nem tölt, és kilép' },
+    si:  { speed: true,  plain: function (v) { return 'lassan áll össze a kép (SI ' + hu(v) + ' mp)'; }, cons: 'a használható oldalra sokat kell várni' },
+    tbt: { speed: false, plain: function (v) { return 'akad és fagy a kattintásra (TBT ' + v + ' ms)'; }, cons: 'a vásárló frusztrálódik és elkattint' },
+    cls: { speed: false, plain: function (v) { return 'ugrál az elrendezés (CLS ' + hu(v) + ')'; }, cons: 'félrekattintás és bizalomvesztés' },
+  };
+
+  // A ténylegesen legrosszabb metrikát adja vissza (poor előbb, mint needs-improvement),
+  // prioritási sorrenddel a holtversenyre. Ez vezeti az összegzést — nem a nyers pontszám.
+  function worstLeak(metrics) {
+    var order = ['lcp', 'cls', 'tbt', 'fcp', 'si'];
+    var poor = null, ni = null;
+    order.forEach(function (k) {
+      var mm = metrics[k];
+      if (!mm) return;
+      if (mm.rating === 'poor' && !poor) poor = { key: k, m: mm };
+      if (mm.rating === 'needs-improvement' && !ni) ni = { key: k, m: mm };
+    });
+    return poor || ni || null;
+  }
+
+  // Az összegzés a valódi legrosszabb szivárgást nevezi meg sima nyelven (nem a pontszámot).
+  function verdictFor(m) {
+    var w = worstLeak(m.metrics);
+    if (!w) {
+      return { tone: 'good', text: 'Ez az oldal gyors és stabil — a nagy, mérhető szivárgások itt nincsenek. Ha mégis kevés a vásárlás, az a checkout-flow vagy a tartalom; azt nézzük meg együtt.' };
+    }
+    var info = METRIC_INFO[w.key];
+    var plain = info.plain(w.m.value);
+    if (w.m.rating === 'poor') {
+      if (info.speed) {
+        return { tone: 'bad', text: 'Itt komoly, néma szivárgás van: ' + plain + ' — ' + info.cons + '. Ezen a sebességen a mobil vásárlók jelentős része kilép.' };
+      }
+      // Sebesség rendben, de nem-sebesség metrika a baj (pl. CLS): ezt KI KELL mondani.
+      return { tone: 'bad', text: 'A sebesség rendben — DE ' + plain + ', ami ' + info.cons + '. Itt a szivárgás, nem a töltésnél.' };
+    }
+    // needs-improvement: enyhébb
+    return { tone: 'mid', text: 'Van mit behozni: ' + plain + ' — ' + info.cons + '. Még nem kritikus, de már némán visz vásárlót.' };
   }
 
   // ---- őszinte becslés ----
@@ -215,13 +251,29 @@
     var excess = lcp != null ? Math.max(0, lcp - GOOD_LCP) : 0;
     var dragPct = Math.round(Math.min(excess * CONV_PER_SECOND, DRAG_CAP) * 100);
 
-    var principle =
-      lcp != null
-        ? 'A te oldaladnál a mobil LCP <strong>' + hu(lcp) + ' mp</strong>' +
-          (excess > 0
-            ? ', ami <strong>' + hu(round1(excess)) + ' mp-cel</strong> van a jó tartomány (2,5 mp) felett. Az iparági kutatások szerint nagyjából minden plusz másodperc ~7% konverzióvesztéssel jár.'
-            : ' — ez a jó tartományban van. A sebesség itt nem a fő szivárgás.')
-        : 'Az iparági kutatások szerint nagyjából minden plusz töltési másodperc ~7% konverzióvesztéssel jár.';
+    var principle;
+    if (excess > 0) {
+      // A sebesség a (számszerűsíthető) szivárgás — ~7%/mp heurisztika + kalkulátor.
+      principle =
+        'A te oldaladnál a mobil LCP <strong>' + hu(lcp) + ' mp</strong>, ami <strong>' +
+        hu(round1(excess)) + ' mp-cel</strong> van a jó tartomány (2,5 mp) felett. Az iparági kutatások szerint nagyjából minden plusz másodperc ~7% konverzióvesztéssel jár.';
+    } else {
+      // A sebesség rendben — ha más metrika a baj (pl. CLS), AZT nevezzük meg, nem siklunk át fölötte.
+      var w = worstLeak(m.metrics);
+      if (w && (w.m.rating === 'poor' || w.m.rating === 'needs-improvement') && !METRIC_INFO[w.key].speed) {
+        var info = METRIC_INFO[w.key];
+        principle =
+          'A sebesség rendben' + (lcp != null ? ' (LCP <strong>' + hu(lcp) + ' mp</strong>)' : '') +
+          ' — a szivárgás itt nem a töltés, hanem hogy <strong>' + info.plain(w.m.value) + '</strong>: ' + info.cons +
+          '. Forintban ezt nem találgatjuk: a te számaidon, közös méréssel mutatjuk meg, mennyit ér a javítása.';
+      } else if (w) {
+        principle =
+          'A sebesség a jó tartományban van, de van mit csiszolni (' + METRIC_INFO[w.key].plain(w.m.value) + '). ' +
+          'A nagy, mérhető szivárgás itt nem a töltés.';
+      } else {
+        principle = 'A mért értékek a jó tartományban vannak — a sebesség itt nem szivárog. Ha mégis kevés a vásárlás, a checkout-flow-t és a tartalmat érdemes nézni.';
+      }
+    }
 
     return (
       '<div class="la-est">' +
