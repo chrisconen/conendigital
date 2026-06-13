@@ -210,6 +210,24 @@ async function rateLimited(ip, cache) {
   return false;
 }
 
+// Friction-mentes napi cap per IP: korlátozza, hány KÜLÖNBÖZŐ oldalt auditálhat egy IP naponta
+// (a PSI-kvóta/költség védelme abúzus ellen — captcha NÉLKÜL, hogy a wedge UX ne sérüljön).
+const DAILY_CAP = 25;
+async function dayCapExceeded(ip, cache) {
+  if (!ip) return false;
+  const key = new Request(`https://rl.audit.local/day?ip=${encodeURIComponent(ip)}`);
+  let count = 0;
+  const hit = await cache.match(key);
+  if (hit) {
+    try { count = (await hit.json()).c || 0; } catch { count = 0; }
+  }
+  if (count >= DAILY_CAP) return true;
+  await cache
+    .put(key, new Response(JSON.stringify({ c: count + 1 }), { headers: { 'Cache-Control': 'max-age=86400', 'Content-Type': 'application/json' } }))
+    .catch(() => {});
+  return false;
+}
+
 export async function onRequestOptions() {
   return new Response(null, { status: 204, headers: CORS });
 }
@@ -251,6 +269,9 @@ export async function onRequestPost({ request, env, waitUntil }) {
   const ip = request.headers.get('CF-Connecting-IP') || '';
   if (await rateLimited(ip, cache)) {
     return fail('RATE_LIMITED', 'Pillanat — egyszerre egy auditot futtatunk. Próbáld újra pár másodperc múlva.');
+  }
+  if (await dayCapExceeded(ip, cache)) {
+    return fail('RATE_LIMITED', 'Mára elérted az ingyenes auditok számát. Holnap folytathatod, vagy hívj minket: +36 30 569 6550.');
   }
 
   const referer = (env && env.PSI_REFERER) || 'https://www.conendigital.hu/';

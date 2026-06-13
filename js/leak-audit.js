@@ -14,6 +14,10 @@
   'use strict';
 
   var FORMSPREE = 'https://formspree.io/f/movgkdoz';
+  var PHONE = '+36305696550';
+  // Önkiszolgáló időpontfoglaló (Cal.com/Calendly). Üresen a telefonra esik vissza.
+  // Chris: ide jöhet a valódi naptár-link, és máris self-serve booking lesz.
+  var BOOKING_URL = '';
   var CONV_PER_SECOND = 0.07; // iparági heurisztika: ~7% konverzióvesztés / +1 mp
   var DRAG_CAP = 0.35; // hihetőségi plafon
   var ASSUMED_CONV = 0.015; // ha a látogató nem ad konverziót: óvatos 1,5% feltevés
@@ -185,8 +189,16 @@
       html += '<p class="la-note">Megjegyzés: az egyik nézet mérése most nem sikerült, a mobil eredményt mutatjuk.</p>';
     }
 
-    // Lead capture
+    // Booking/hívás CTA — a leggyorsabb út a beszélgetésig (audit→konzultáció rés zárása)
+    var bookHref = BOOKING_URL || ('tel:' + PHONE);
+    var bookExternal = BOOKING_URL ? ' target="_blank" rel="noopener"' : '';
+    var bookLabel = BOOKING_URL ? 'Foglalj egy ingyenes 15 perces konzultációt →' : 'Beszéljünk a javításról — hívj most: +36 30 569 6550';
     html +=
+      '  <div class="la-book">' +
+      '    <div class="la-book-title">Találtunk szivárgást? Állítsuk el — beszéljünk.</div>' +
+      '    <a class="la-book-btn" href="' + esc(bookHref) + '"' + bookExternal + ' onclick="try{window.gtag&&gtag(\'event\',\'leak_audit_book\')}catch(e){}">' + esc(bookLabel) + '</a>' +
+      '    <span class="la-book-or">vagy kérd e-mailben a részletes tervet ↓</span>' +
+      '  </div>' +
       '  <div class="la-lead" id="la-lead">' +
       '    <div class="la-lead-title">Kérd a konkrét javítási tervet</div>' +
       '    <p class="la-lead-sub">Átküldöm e-mailben, mit és milyen sorrendben érdemes javítani ezen az oldalon — és mennyi időt/sebességet nyersz vele. Nincs kötelezettség.</p>' +
@@ -593,7 +605,12 @@
       '.la-sec-list{list-style:none;padding:0;margin:.8rem 0 0}.la-sec-list li{font-size:.84rem;color:var(--text-secondary,#a1a1aa);padding:.35rem 0 .35rem 1.1rem;position:relative;line-height:1.4}.la-sec-list li:before{content:"›";position:absolute;left:0;color:var(--la-bad)}' +
       '.la-sec-ok{font-size:.85rem;color:var(--la-good);margin:.8rem 0 0}' +
       '.la-sec-foot{font-size:.72rem;color:var(--text-tertiary,#8a8a94);margin:.9rem 0 0;font-family:var(--font-mono,monospace)}' +
-      '.la-lead{margin-top:1.5rem;padding:1.4rem;border:1px solid var(--la-gold);border-radius:var(--radius-md,12px);background:var(--surface-2,#18181b)}' +
+      '.la-book{margin-top:1.5rem;padding:1.4rem;border-radius:var(--radius-md,12px);background:linear-gradient(135deg,rgba(201,169,98,.16),rgba(201,169,98,.05));border:1px solid var(--la-gold);text-align:center}' +
+      '.la-book-title{font-size:1.15rem;font-weight:700;color:var(--text,#fafafa);font-family:var(--font-main,sans-serif);margin-bottom:.9rem}' +
+      '.la-book-btn{display:inline-block;background:var(--la-gold);color:#0b0b0d;padding:.95rem 1.6rem;border-radius:var(--radius-full,9999px);font-weight:700;font-family:var(--font-main,sans-serif);font-size:1.02rem;text-decoration:none;transition:transform .15s,filter .15s}' +
+      '.la-book-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}' +
+      '.la-book-or{display:block;margin-top:.8rem;font-size:.8rem;color:var(--text-tertiary,#8a8a94);font-family:var(--font-mono,monospace)}' +
+      '.la-lead{margin-top:1rem;padding:1.4rem;border:1px solid var(--la-gold);border-radius:var(--radius-md,12px);background:var(--surface-2,#18181b)}' +
       '.la-lead-title{font-size:1.1rem;font-weight:700;color:var(--text,#fafafa);font-family:var(--font-main,sans-serif)}' +
       '.la-lead-sub{font-size:.88rem;color:var(--text-secondary,#a1a1aa);margin:.4rem 0 1rem;line-height:1.5}' +
       '.la-lead-form{display:flex;gap:.6rem;flex-wrap:wrap}.la-lead-input{flex:1;min-width:160px;padding:.85rem 1rem;background:var(--surface,#111113);border:1px solid var(--border,#27272a);border-radius:var(--radius-sm,6px);color:var(--text,#fafafa)}' +
