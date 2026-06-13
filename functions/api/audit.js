@@ -139,11 +139,14 @@ export async function onRequestOptions() {
 // csak presence + hossz, hogy a Cloudflare env-beállítást ellenőrizni lehessen böngészőből.
 export async function onRequestGet({ env }) {
   const k = (env && env.PAGESPEED_API_KEY) || '';
+  // Csak NEVEK, értékek nélkül — a rendszer CF_* változókat kiszűrjük.
+  const boundVars = Object.keys(env || {}).filter((n) => !n.startsWith('CF_') && typeof env[n] === 'string');
   return json({
     ok: true,
     debug: true,
     keyPresent: !!k,
     keyLength: k.length,
+    boundVars,
     referer: (env && env.PSI_REFERER) || 'https://www.conendigital.hu/',
   });
 }
