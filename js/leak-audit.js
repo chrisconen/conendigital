@@ -42,6 +42,20 @@
     });
   }
 
+  // Megosztott link: ?audit=<url> → automatikus audit (pl. Chris elküldi az ügyfélnek a saját szivárgását).
+  var sharedAudit = null;
+  try {
+    sharedAudit = new URLSearchParams(window.location.search).get('audit');
+  } catch (e) {
+    /* no URLSearchParams */
+  }
+  if (sharedAudit) {
+    window.__laShared = true;
+    setTimeout(function () {
+      window.startLeakAudit(sharedAudit);
+    }, 500);
+  }
+
   // ---- állapot ----
   var lastResult = null;
 
@@ -130,12 +144,18 @@
 
     var html =
       '<div class="la-result">' +
+      (window.__laShared
+        ? '  <div class="la-shared-banner">Ezt a szivárgás-auditot megosztották veled. Lentebb a saját oldalad mért eredménye — a Conen Digitaltól.</div>'
+        : '') +
       '  <div class="la-result-head">' +
       '    <div>' +
       '      <div class="la-result-label">Szivárgás-audit eredménye</div>' +
       '      <h3 class="la-result-url">' + esc(stripScheme(data.finalUrl || data.url)) + '</h3>' +
       '    </div>' +
-      '    <button class="la-again" id="la-again" type="button">Másik oldal →</button>' +
+      '    <div class="la-result-actions">' +
+      '      <button class="la-share" id="la-share" type="button">🔗 Megosztható link</button>' +
+      '      <button class="la-again" id="la-again" type="button">Másik oldal →</button>' +
+      '    </div>' +
       '  </div>' +
       '  <div class="la-verdict la-verdict--' + verdict.tone + '">' + esc(verdict.text) + '</div>' +
       '  <div class="la-scores">' +
@@ -181,10 +201,27 @@
       '</div>';
 
     root.innerHTML = html;
+    window.__laShared = false; // a banner csak a megosztott audit első renderénél jelenjen meg
 
     document.getElementById('la-again').addEventListener('click', function () {
       renderInput();
     });
+    var shareBtn = document.getElementById('la-share');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function () {
+        var shareUrl = window.location.origin + '/?audit=' + encodeURIComponent(stripScheme(data.finalUrl || data.url));
+        var done = function () {
+          shareBtn.textContent = '✓ Link másolva';
+          track('leak_audit_share');
+          setTimeout(function () { shareBtn.textContent = '🔗 Megosztható link'; }, 2500);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(shareUrl).then(done, function () { window.prompt('Másold ki a megosztható linket:', shareUrl); });
+        } else {
+          window.prompt('Másold ki a megosztható linket:', shareUrl);
+        }
+      });
+    }
     wireEstimate(m);
     document.getElementById('la-lead-form').addEventListener('submit', submitLead);
   }
@@ -507,6 +544,10 @@
       '.la-result-label{font-family:var(--font-mono,monospace);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--la-gold)}' +
       '.la-result-url{margin:.2rem 0 0;font-size:1.25rem;color:var(--text,#fafafa);word-break:break-all}' +
       '.la-again,.la-est-btn{background:transparent;border:1px solid var(--border-hover,#3f3f46);color:var(--text-secondary,#a1a1aa);padding:.5rem .9rem;border-radius:var(--radius-full,9999px);font-size:.82rem;cursor:pointer;font-family:var(--font-mono,monospace)}' +
+      '.la-result-actions{display:flex;gap:.5rem;flex-wrap:wrap}' +
+      '.la-share{background:rgba(201,169,98,.1);border:1px solid var(--la-gold);color:var(--la-gold);padding:.5rem .9rem;border-radius:var(--radius-full,9999px);font-size:.82rem;cursor:pointer;font-family:var(--font-mono,monospace);white-space:nowrap}' +
+      '.la-share:hover{background:rgba(201,169,98,.18)}' +
+      '.la-shared-banner{margin-bottom:1.1rem;padding:.8rem 1.1rem;border:1px solid var(--la-gold);border-left-width:3px;border-radius:var(--radius-sm,6px);background:rgba(201,169,98,.06);color:var(--text,#fafafa);font-size:.9rem;line-height:1.5}' +
       '.la-again:hover,.la-est-btn:hover{border-color:var(--la-gold);color:var(--la-gold)}' +
       '.la-verdict{margin:1.3rem 0;padding:1rem 1.2rem;border-radius:var(--radius-md,12px);font-size:1.02rem;line-height:1.5;border-left:3px solid}' +
       '.la-verdict--good{background:rgba(74,222,128,.08);border-color:var(--la-good)}' +
