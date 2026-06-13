@@ -1643,6 +1643,71 @@
             gap: 1.5rem;
         }
 
+        .contrast-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .contrast-col {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            background: var(--surface);
+        }
+        .contrast-col--bad {
+            border-left: 3px solid var(--error);
+        }
+        .contrast-col--good {
+            border-left: 3px solid var(--gold);
+            background: var(--surface-2);
+        }
+        .contrast-head {
+            font-family: var(--font-main);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.3rem;
+            color: var(--text);
+        }
+        .contrast-col--bad .contrast-head { color: var(--error); }
+        .contrast-col--good .contrast-head { color: var(--gold-text); }
+        .contrast-head span {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 400;
+            color: var(--text-tertiary);
+            margin-top: 0.3rem;
+        }
+        .contrast-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .contrast-list li {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            padding: 0.6rem 0 0.6rem 1.6rem;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+        .contrast-list li:last-child { border-bottom: none; }
+        .contrast-list li strong { color: var(--text); }
+        .contrast-col--bad .contrast-list li:before {
+            content: "✕";
+            position: absolute;
+            left: 0;
+            color: var(--error);
+        }
+        .contrast-col--good .contrast-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
         .service-card {
             background: var(--surface-2);
             border: 1px solid var(--border);
@@ -3112,6 +3177,48 @@
                 <p style="text-align:center;color:var(--text-secondary);">A szivárgás-audithoz kapcsold be a JavaScriptet,
                     vagy hívj minket: <a href="tel:+36305696550" style="color:var(--gold-text);">+36 30 569 6550</a>.</p>
             </noscript>
+        </div>
+    </section>
+
+    <!-- Why plugin-shops bleed (contrast) -->
+    <section class="services" id="miert-verzik" style="background: var(--bg);">
+        <div class="section-header reveal">
+            <div>
+                <div class="section-label">A gyökér-ok</div>
+                <h2 class="section-title">Miért vérzik a <span class="gold-text">plugin-halmos</span> webshop?</h2>
+            </div>
+            <p class="section-description">
+                Nem a WordPress a baj önmagában — a sablon + page builder + 15-20 plugin kombináció az.
+                Egy gyökér, két sebzés: <strong>lassít</strong> (némán viszi a vevőt) <strong>és sebezhetővé tesz</strong>
+                (minden elavult plugin egy nyitott ajtó). A szivárgás-audit mindkettőt megméri.
+            </p>
+        </div>
+
+        <div class="contrast-grid reveal">
+            <div class="contrast-col contrast-col--bad">
+                <div class="contrast-head">A plugin-út <span>— „banánnal fizetsz, majmot kapsz"</span></div>
+                <ul class="contrast-list">
+                    <li>15-20 plugin, mindegyik külön JS/CSS-t tölt — <strong>lassú mobilon</strong></li>
+                    <li>Minden plugin egy lehetséges <strong>sérülékenység</strong>; ha nem frissül, nyitott ajtó</li>
+                    <li>Sablon + page builder kód, amit senki sem ért végig — <strong>törékeny</strong></li>
+                    <li>Frissítéskor elromlik, mobilon szétesik</li>
+                    <li>Olcsón indul, aztán üzletileg drága: gyenge konverzió, kockázat</li>
+                </ul>
+            </div>
+            <div class="contrast-col contrast-col--good">
+                <div class="contrast-head">A mérnöki út <span>— ahogy mi építünk</span></div>
+                <ul class="contrast-list">
+                    <li>Tiszta, egyedi kód (Astro / headless) — <strong>villámgyors</strong>, zöld Core Web Vitals</li>
+                    <li>Minimális támadási felület, <strong>keményített biztonsági headerek alapból</strong></li>
+                    <li>Átlátható, dokumentált kódbázis — <strong>karbantartható</strong></li>
+                    <li>EAA / WCAG 2.2 AA megfelelés, mobilon is stabil</li>
+                    <li>Mért eredmény: betöltés <strong>13,5 mp → 1,8 mp</strong>, PageSpeed 57 → 99</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="reveal" style="text-align: center; margin-top: 2.5rem;">
+            <a href="#szivargas-audit" class="btn btn-primary">Nézd meg, a tiéd melyik úton van →</a>
         </div>
     </section>
 
