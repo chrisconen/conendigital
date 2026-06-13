@@ -135,24 +135,6 @@ export async function onRequestOptions() {
   return new Response(null, { status: 204, headers: CORS });
 }
 
-// Diagnosztika: GET /api/audit — megmondja, látja-e a Function a kulcsot. Titkot NEM ad ki,
-// csak presence + hossz, hogy a Cloudflare env-beállítást ellenőrizni lehessen böngészőből.
-export async function onRequestGet({ env }) {
-  const k = (env && env.PAGESPEED_API_KEY) || '';
-  // Csak NEVEK, értékek nélkül — a rendszer CF_* változókat kiszűrjük.
-  const boundVars = Object.keys(env || {}).filter((n) => !n.startsWith('CF_') && typeof env[n] === 'string');
-  return json({
-    ok: true,
-    debug: true,
-    keyPresent: !!k,
-    keyLength: k.length,
-    boundVars,
-    pagesUrl: (env && env.CF_PAGES_URL) || null,
-    branch: (env && env.CF_PAGES_BRANCH) || null,
-    referer: (env && env.PSI_REFERER) || 'https://www.conendigital.hu/',
-  });
-}
-
 export async function onRequestPost({ request, env, waitUntil }) {
   const key = env && env.PAGESPEED_API_KEY;
   if (!key) {
