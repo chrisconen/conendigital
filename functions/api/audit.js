@@ -131,6 +131,73 @@ async function runPSI(url, strategy, key, signal, referer) {
   return { shaped: shapeResult(data), finalUrl: data && data.id ? data.id : url };
 }
 
+/**
+ * MÁSODLAGOS biztonsági jel — NEM a fő eredmény. Ugyanaz az ellenség (plugin-bloat),
+ * ami lassít, ki is tesz: egy gyökér, két sebzés. Valós, ellenőrizhető header-higiénia.
+ */
+async function checkSecurity(url) {
+  // Saját, rövid timeout — a fő (PSI) eredménytől függetlenül, gyorsan elenged.
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 12000);
+  let res;
+  try {
+    res = await fetch(url, { method: 'GET', redirect: 'follow', signal: ctrl.signal, headers: { 'User-Agent': 'Mozilla/5.0 (compatible; ConenDigital-LeakAudit/1.0; +https://conendigital.hu)' } });
+  } catch {
+    clearTimeout(t);
+    return null;
+  }
+  const h = res.headers;
+  const val = (n) => (h.get(n) || '').trim();
+  const has = (n) => !!val(n);
+
+  const https = (res.url || url).startsWith('https://');
+  const hsts = has('strict-transport-security');
+  const csp = has('content-security-policy');
+  const xcto = val('x-content-type-options').toLowerCase().includes('nosniff');
+  const refpol = has('referrer-policy');
+  const permpol = has('permissions-policy') || has('feature-policy');
+  const frameProtection = has('x-frame-options') || /frame-ancestors/i.test(val('content-security-policy'));
+
+  const leak = [val('server'), val('x-powered-by')].filter(Boolean).join(' · ');
+  const serverLeak = /\d/.test(leak) || val('x-powered-by') ? leak : null;
+
+  let wordpress = false;
+  try {
+    const body = await res.text();
+    wordpress = /wp-content|wp-json|wp-includes|content="WordPress/i.test(body.slice(0, 60000));
+  } catch {
+    /* ignore body read errors */
+  }
+  clearTimeout(t);
+
+  const checks = { https, hsts, csp, xContentType: xcto, referrerPolicy: refpol, frameProtection, permissionsPolicy: permpol };
+  const passed = Object.values(checks).filter(Boolean).length;
+  const total = Object.keys(checks).length;
+  const grade = passed >= 7 ? 'A' : passed >= 5 ? 'B' : passed >= 3 ? 'C' : passed >= 1 ? 'D' : 'F';
+
+  const findings = [];
+  if (!https) findings.push('Nem mindenhol HTTPS — a kapcsolat lehallgatható.');
+  if (!hsts) findings.push('Nincs HSTS — a böngésző http-re is rácsatlakozhat.');
+  if (!csp) findings.push('Nincs Content-Security-Policy — gyengébb XSS-védelem.');
+  if (!xcto) findings.push('Nincs X-Content-Type-Options — MIME-sniffing kockázat.');
+  if (!frameProtection) findings.push('Nincs clickjacking-védelem (X-Frame-Options / frame-ancestors).');
+  if (!refpol) findings.push('Nincs Referrer-Policy.');
+  if (!permpol) findings.push('Nincs Permissions-Policy.');
+  if (serverLeak) findings.push('A szerver kiírja a szoftver/verzió adatát (' + serverLeak + ') — támadónak ingyen infó.');
+
+  return { ok: true, grade, https, wordpress, serverLeak, checks, passed, total, findings: findings.slice(0, 6) };
+}
+
+/** Könnyű, best-effort per-IP rate-limit (Cache API, ~6s ablak). Nem bulletproof — a valódi
+ *  megoldás Turnstile/KV; ez csak a durva hammering-et fékezi. */
+async function rateLimited(ip, cache) {
+  if (!ip) return false;
+  const key = new Request(`https://rl.audit.local/?ip=${encodeURIComponent(ip)}`);
+  if (await cache.match(key)) return true;
+  await cache.put(key, new Response('1', { headers: { 'Cache-Control': 'max-age=6' } })).catch(() => {});
+  return false;
+}
+
 export async function onRequestOptions() {
   return new Response(null, { status: 204, headers: CORS });
 }
@@ -164,6 +231,12 @@ export async function onRequestPost({ request, env, waitUntil }) {
     return json(body);
   }
 
+  // Csak a drága (cache-miss) ágat korlátozzuk; a cache-elt eredmény olcsó és átmegy.
+  const ip = request.headers.get('CF-Connecting-IP') || '';
+  if (await rateLimited(ip, cache)) {
+    return fail('RATE_LIMITED', 'Pillanat — egyszerre egy auditot futtatunk. Próbáld újra pár másodperc múlva.');
+  }
+
   const referer = (env && env.PSI_REFERER) || 'https://www.conendigital.hu/';
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), PSI_TIMEOUT_MS);
@@ -172,11 +245,15 @@ export async function onRequestPost({ request, env, waitUntil }) {
     const wantMobile = strategy === 'mobile' || strategy === 'both';
     const wantDesktop = strategy === 'desktop' || strategy === 'both';
 
+    // A biztonsági jel a PSI-vel PÁRHUZAMOSAN fut, és sosem blokkolja a fő eredményt.
+    const secPromise = checkSecurity(url).catch(() => null);
+
     const tasks = [];
     if (wantMobile) tasks.push(runPSI(url, 'mobile', key, controller.signal, referer).then((r) => ['mobile', r]));
     if (wantDesktop) tasks.push(runPSI(url, 'desktop', key, controller.signal, referer).then((r) => ['desktop', r]));
 
     const settled = await Promise.allSettled(tasks);
+    const security = await secPromise;
     clearTimeout(timer);
 
     let mobile = null;
@@ -213,6 +290,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
       cached: false,
       mobile,
       desktop,
+      security,
       estimate: null,
       partial: anyError || anyTimeout,
     };

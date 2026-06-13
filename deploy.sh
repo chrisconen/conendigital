@@ -14,11 +14,15 @@ cd ..
 
 echo "=== 2. Root fájlok másolása ==="
 # Statikus HTML, CSS, JS, képek, stb. a gyökérbe
-for f in *.html *.js *.ico *.txt *.xml *.json *.webp *.png *.jpg *.svg *.mp3 *.mp4 *.wfp; do
+for f in *.html *.js *.ico *.txt *.xml *.json *.webmanifest *.webp *.png *.jpg *.svg *.mp3 *.mp4 *.wfp; do
   if [ -f "$f" ]; then
     cp "$f" dist/
   fi
 done
+
+# Cloudflare Pages speciális fájlok (extension nélkül, a glob nem fogja)
+[ -f _headers ] && cp _headers dist/
+[ -f _redirects ] && cp _redirects dist/
 
 # Mappák
 for d in js images heightmaps .well-known; do

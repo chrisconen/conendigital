@@ -10,7 +10,7 @@
         content="A lassú töltés, az akadó checkout és a mobil-hibák némán viszik a vevőidet. Valós méréssel megmutatjuk, hol szivárog a bevétel a webshopodban — és befoltozzuk. Ingyenes szivárgás-audit, fix javítási ár. Győrből, országosan.">
     <meta name="author" content="Chris Conen">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://conendigital.hu">
+    <link rel="canonical" href="https://conendigital.hu/">
     <meta name="google-site-verification" content="URCJJL4cJHLR4KctZDNQsZmBO5B9UvjTvwSn-nLlgxo" />
     <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
@@ -51,12 +51,12 @@
         content="Lassú töltés, akadó checkout, mobil-hibák = csendben elvesztett vásárlók. Valós méréssel megmutatjuk, hol szivárog a bevétel — és befoltozzuk. Ingyenes szivárgás-audit. Chris Conen, Győr.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://conendigital.hu">
-    <meta property="og:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <meta property="og:image" content="https://conendigital.hu/images/og-conen-digital.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Conen Digital — webshop-szivárgás audit és javítás, Győr">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://conendigital.hu/images/weboldal-webaruhaz-keszites-modernizalas.jpg">
+    <meta name="twitter:image" content="https://conendigital.hu/images/og-conen-digital.jpg">
 
     <!-- CENTAUR PROTOCOL SCHEMA -->
     <script type="application/ld+json">
@@ -69,7 +69,7 @@
           "name": "Conen Digital",
           "alternateName": "ConenDigital",
           "url": "https://conendigital.hu",
-          "logo": "https://conendigital.hu/assets/logo.png",
+          "logo": "https://conendigital.hu/android-chrome-512x512.png",
           "founder": [
             {
               "@type": "Person",
@@ -89,7 +89,7 @@
             "WordPress modernizálás",
             "European Accessibility Act",
             "AI Ops",
-            "Astro 6",
+            "Astro 5",
             "SEO"
           ],
           "sameAs": [
@@ -123,7 +123,7 @@
             "@id": "https://conendigital.hu/#organization"
           },
           "name": "Conen Digital Győr",
-          "image": "https://conendigital.hu/assets/office.jpg",
+          "image": "https://conendigital.hu/images/og-conen-digital.jpg",
           "priceRange": "$$-$$$",
           "address": {
             "@type": "PostalAddress",
@@ -144,7 +144,7 @@
           "name": "Ajánlatgeneráló weboldalak",
           "provider": { "@id": "https://conendigital.hu/#organization" },
           "serviceType": "Weboldal és konfigurátor fejlesztés",
-          "description": "Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak: kalkulátor, konfigurátor és lead-szűrő ajánlatkérő-flow Astro 6 stackre építve.",
+          "description": "Szolgáltató cégeknek és ajánlat-alapú vállalkozásoknak: kalkulátor, konfigurátor és lead-szűrő ajánlatkérő-flow Astro 5 stackre építve.",
           "areaServed": ["HU", "AT", "DE"],
           "offers": {
             "@type": "AggregateOffer",
@@ -160,7 +160,7 @@
           "name": "Felújítás + EAA-megfelelés",
           "provider": { "@id": "https://conendigital.hu/#organization" },
           "serviceType": "WordPress migráció és akadálymentesítés",
-          "description": "Meglévő WordPress / Elementor oldalak migrálása Astro 6-ra. European Accessibility Act (EAA) audit és WCAG 2.2 AA megfelelés. Core Web Vitals javítás, SEO-megőrzés.",
+          "description": "Meglévő WordPress / Elementor oldalak migrálása Astro 5-ra. European Accessibility Act (EAA) audit és WCAG 2.2 AA megfelelés. Core Web Vitals javítás, SEO-megőrzés.",
           "areaServed": ["HU", "AT", "DE"],
           "offers": {
             "@type": "AggregateOffer",
@@ -236,7 +236,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
+    <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"
         as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
@@ -255,7 +255,7 @@
             /* === TEXT === */
             --text:        #fafafa;
             --text-secondary: #a1a1aa;
-            --text-tertiary:  #71717a;
+            --text-tertiary:  #8a8a94;
 
             /* === BRAND ACCENTS === */
             --gold:        #C9A962;
@@ -943,6 +943,9 @@
             gap: 6px;
             cursor: pointer;
             z-index: 1001;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         .nav-hamburger span {
@@ -2894,11 +2897,11 @@
             <li><a href="#contact" class="mobile-cta">Ajánlatkérés →</a></li>
         </ul>
         <div class="nav-right">
-            <div class="nav-hamburger" id="hamburger">
+            <button type="button" class="nav-hamburger" id="hamburger" aria-label="Menü megnyitása" aria-controls="navLinks" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <a href="#szivargas-audit" class="nav-konfigurator-btn">Ingyenes szivárgás-audit →</a>
             </div>
     </nav>
@@ -3596,7 +3599,7 @@
                             <h3 class="portfolio-title">
                                 <a href="https://motyanarnyekolas.hu" target="_blank" title="Redőny Tata, Tatabánya és Komárom">Redőny Tata</a>
                             </h3>
-                            <p class="portfolio-description">Astro 6 — villámgyors és ultramodern weboldal</p>
+                            <p class="portfolio-description">Astro 5 — villámgyors és ultramodern weboldal</p>
                         </div>
                     </div>
                 </div>
@@ -3978,7 +3981,9 @@
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
-            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            const open = navLinks.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            document.body.style.overflow = open ? 'hidden' : '';
         });
 
         // Close mobile menu on link click
@@ -3986,6 +3991,7 @@
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
             });
         });
@@ -3995,6 +4001,7 @@
             if (e.key === 'Escape' && navLinks.classList.contains('active')) {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
                 document.body.style.overflow = '';
             }
         });
@@ -4085,8 +4092,10 @@
         // ============================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return; // üres horgony (pl. obfuszkált email-link) — ne fusson rá
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }

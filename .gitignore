@@ -7,7 +7,9 @@ functions/.dev.vars
 .dev.vars
 .wrangler/
 .wrangler-dev.log
-scratch/*.png
+scratch/
+BACKUP_*.zip
+BACKUP_*/
 *.mp4
 *.wfp
 *.mp3

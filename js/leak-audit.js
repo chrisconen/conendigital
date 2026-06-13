@@ -141,6 +141,9 @@
     // Becslés-blokk (kliensoldali, őszinte)
     html += estimateBlock(m);
 
+    // Másodlagos biztonsági jel — ugyanaz a plugin-bloat: lassít ÉS kitesz.
+    if (data.security) html += securityStrip(data.security);
+
     if (data.partial) {
       html += '<p class="la-note">Megjegyzés: az egyik nézet mérése most nem sikerült, a mobil eredményt mutatjuk.</p>';
     }
@@ -167,6 +170,33 @@
     });
     wireEstimate(m);
     document.getElementById('la-lead-form').addEventListener('submit', submitLead);
+  }
+
+  // Másodlagos biztonsági csík — NEM a fő eredmény. Könnyű, a sebesség-szivárgás alatt.
+  function securityStrip(sec) {
+    var grade = sec.grade || 'F';
+    var tone = grade === 'A' || grade === 'B' ? 'good' : grade === 'C' ? 'mid' : 'bad';
+    var html =
+      '<div class="la-sec">' +
+      '  <div class="la-sec-head">' +
+      '    <span class="la-sec-grade la-sec-grade--' + tone + '">' + esc(grade) + '</span>' +
+      '    <div><div class="la-sec-title">Biztonsági jelek <span>· másodlagos</span></div>' +
+      '    <div class="la-sec-sub">Ugyanaz a plugin-bloat, ami lassít, támadási felületet is nyit — egy gyökér, két sebzés.</div></div>' +
+      '  </div>';
+    if (sec.wordpress) {
+      html += '<p class="la-sec-wp">WordPress + plugin-réteg észlelve — ez lassít ÉS bővíti a támadási felületet (elavult pluginek, ismert sérülékenységek).</p>';
+    }
+    if (sec.findings && sec.findings.length) {
+      html += '<ul class="la-sec-list">';
+      sec.findings.forEach(function (f) {
+        html += '<li>' + esc(f) + '</li>';
+      });
+      html += '</ul>';
+    } else {
+      html += '<p class="la-sec-ok">A vizsgált alap-headerek rendben — ez ritka és jó jel.</p>';
+    }
+    html += '<p class="la-sec-foot">' + sec.passed + '/' + sec.total + ' alap biztonsági header rendben. A teljes vizsgálat (függőségek, konfiguráció) a javítási tervben.</p>';
+    return html + '</div>';
   }
 
   function scoreCard(label, score) {
@@ -493,6 +523,18 @@
       '.la-est-cap{font-family:var(--font-mono,monospace);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-tertiary,#71717a);margin-top:.2rem}' +
       '.la-est-detail{font-size:.82rem;color:var(--text-secondary,#a1a1aa);margin-top:.6rem;line-height:1.5}' +
       '.la-note{font-size:.8rem;color:var(--text-tertiary,#71717a);margin:0 0 1rem}' +
+      '.la-sec{margin:1.3rem 0;padding:1.1rem 1.3rem;border:1px solid var(--border,#27272a);border-radius:var(--radius-md,12px);background:var(--surface,#111113)}' +
+      '.la-sec-head{display:flex;gap:.9rem;align-items:center}' +
+      '.la-sec-grade{flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-sm,6px);font-family:var(--font-main,sans-serif);font-weight:800;font-size:1.4rem;border:1px solid}' +
+      '.la-sec-grade--good{color:var(--la-good);border-color:var(--la-good);background:rgba(74,222,128,.08)}' +
+      '.la-sec-grade--mid{color:var(--la-mid);border-color:var(--la-mid);background:rgba(251,191,36,.08)}' +
+      '.la-sec-grade--bad{color:var(--la-bad);border-color:var(--la-bad);background:rgba(248,113,113,.08)}' +
+      '.la-sec-title{font-size:.95rem;font-weight:700;color:var(--text,#fafafa)}.la-sec-title span{font-family:var(--font-mono,monospace);font-size:.68rem;color:var(--text-tertiary,#8a8a94);font-weight:400;text-transform:uppercase;letter-spacing:.06em}' +
+      '.la-sec-sub{font-size:.8rem;color:var(--text-secondary,#a1a1aa);margin-top:.15rem;line-height:1.4}' +
+      '.la-sec-wp{font-size:.85rem;color:var(--la-mid);margin:.9rem 0 0;line-height:1.5}' +
+      '.la-sec-list{list-style:none;padding:0;margin:.8rem 0 0}.la-sec-list li{font-size:.84rem;color:var(--text-secondary,#a1a1aa);padding:.35rem 0 .35rem 1.1rem;position:relative;line-height:1.4}.la-sec-list li:before{content:"›";position:absolute;left:0;color:var(--la-bad)}' +
+      '.la-sec-ok{font-size:.85rem;color:var(--la-good);margin:.8rem 0 0}' +
+      '.la-sec-foot{font-size:.72rem;color:var(--text-tertiary,#8a8a94);margin:.9rem 0 0;font-family:var(--font-mono,monospace)}' +
       '.la-lead{margin-top:1.5rem;padding:1.4rem;border:1px solid var(--la-gold);border-radius:var(--radius-md,12px);background:var(--surface-2,#18181b)}' +
       '.la-lead-title{font-size:1.1rem;font-weight:700;color:var(--text,#fafafa);font-family:var(--font-main,sans-serif)}' +
       '.la-lead-sub{font-size:.88rem;color:var(--text-secondary,#a1a1aa);margin:.4rem 0 1rem;line-height:1.5}' +

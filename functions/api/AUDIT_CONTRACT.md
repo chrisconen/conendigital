@@ -51,9 +51,24 @@ a két oldal együtt változik.
     ]
   },
   "desktop": { "...": "ugyanaz a forma, vagy null, ha best-effort elhasalt" },
+  "security": {
+    "ok": true,
+    "grade": "A|B|C|D|F",
+    "https": true,
+    "wordpress": false,
+    "serverLeak": "Apache/2.4.1 · PHP/7.2 | null",
+    "checks": { "https": true, "hsts": false, "csp": false, "xContentType": true, "referrerPolicy": true, "frameProtection": false, "permissionsPolicy": false },
+    "passed": 3,
+    "total": 7,
+    "findings": ["Nincs HSTS — ...", "..."]
+  },
   "estimate": null
 }
 ```
+
+**`security` (MÁSODLAGOS jel, nem a fő eredmény):** valós, ellenőrizhető header-higiénia +
+WordPress/plugin-bloat detektálás. A wedge-narratíva: ugyanaz a plugin-bloat, ami lassít,
+ki is tesz. `null`, ha a cél-oldal lekérése nem sikerült (a fő sebesség-eredményt nem blokkolja).
 
 **Fontos (integritás-szabály):** a backend **soha nem** ad vissza Ft-veszteség-számot.
 Az `estimate` mindig `null` a szerver felől. A pénzbecslés **kizárólag kliensoldalon**
