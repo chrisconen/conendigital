@@ -1,6 +1,6 @@
 # robots.txt — Conen Digital
-# CENTAUR-ügynökség, Győr + DACH
-# Verzió: 2026-06-01
+# Webshop-szivárgás audit és javítás — gyors weboldal/webáruház, Győr
+# Verzió: 2026-06-13
 #
 # AI-olvasható oldal-összefoglaló: /llms.txt
 # ============================================================
