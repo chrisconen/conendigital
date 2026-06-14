@@ -251,7 +251,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   const url = normalizeUrl(payload && payload.url);
   if (!url) {
-    return fail('INVALID_URL', 'Ez nem tűnik valódi, nyilvános webcímnek. Pl.: pelda-webshop.hu');
+    return fail('INVALID_URL', 'Ez nem tűnik valódi, nyilvános webcímnek. Pl.: pelda-webáruház.hu');
   }
   const strategy = ['mobile', 'desktop', 'both'].includes(payload && payload.strategy) ? payload.strategy : 'both';
 

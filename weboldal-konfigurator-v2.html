@@ -531,7 +531,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
 
 .pv-hero-slider-dots { position:absolute; bottom:14px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; }
 
-/* === Webshop section styles === */
+/* === Webáruház section styles === */
 .pv-product-card { position:relative; transition:transform .25s, box-shadow .25s; cursor:pointer; }
 .pv-product-card:hover { transform:translateY(-3px); }
 .pv-product-img { position:relative; overflow:hidden; }
@@ -781,7 +781,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outli
             <div class="g g3" id="typeGrid">
               <button class="c" data-v="brochure" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Bemutatkozó</div><div class="cd">Céges weboldal</div></button>
               <button class="c" data-v="quote-engine" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Ajánlatgeneráló</div><div class="cd">Kalkulátor, funnel</div></button>
-              <button class="c" data-v="webshop" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Webáruház</div><div class="cd">Termékek, kosár</div></button>
+              <button class="c" data-v="webáruház" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Webáruház</div><div class="cd">Termékek, kosár</div></button>
               <button class="c" data-v="booking" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Foglalós</div><div class="cd">Időpontfoglalás</div></button>
               <button class="c" data-v="content" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Blog/tartalom</div><div class="cd">Cikkek, SEO</div></button>
               <button class="c" data-v="portfolio" aria-pressed="false"><span class="ck" aria-hidden="true"></span><div class="cn">Portfólió</div><div class="cd">Munkák, galéria</div></button>
@@ -1129,14 +1129,14 @@ const SEC = {
   map: {n:'Térkép', types:['all'], cfg:{layout:['full','split'],theme:['dark','light']}, def:{layout:'split',theme:'dark'}},
   newsletter: {n:'Hírlevél', types:['all'], cfg:{layout:['inline','card']}, def:{layout:'inline'}},
 
-  // ============ WEBSHOP ============
-  'product-slider': {n:'Termék carousel', types:['webshop'], badge:'shop', cfg:{visible:['3','4','5'],autoplay:['on','off'],arrows:['on','off']}, def:{visible:'4',autoplay:'on',arrows:'on'}},
-  'featured-products': {n:'Kiemelt termékek', types:['webshop'], badge:'shop', cfg:{cols:['2','3','4'],price_style:['large','inline','hidden'],cta:['add-cart','buy-now','wishlist','quick-view']}, def:{cols:'3',price_style:'large',cta:'add-cart'}},
-  'single-product-spotlight': {n:'Termék spotlight', types:['webshop'], badge:'shop', cfg:{layout:['left-img','right-img'],variants:['size','color','hidden'],reviews:['show','hidden']}, def:{layout:'left-img',variants:'size',reviews:'show'}},
-  'category-tiles': {n:'Kategória csempék', types:['webshop'], badge:'shop', cfg:{cols:['3','4','6'],style:['photo-bg','flat'],shape:['square','wide']}, def:{cols:'4',style:'photo-bg',shape:'square'}},
-  'sale-banner': {n:'Akció banner', types:['webshop'], badge:'shop', cfg:{countdown:['on','off'],style:['gradient','solid','outline']}, def:{countdown:'on',style:'gradient'}},
-  'shipping-trust-bar': {n:'Bizalmi sáv', types:['webshop'], badge:'shop', cfg:{items:['3','4','5'],icon:['emoji','dot','none']}, def:{items:'4',icon:'emoji'}},
-  'product-reviews': {n:'Termék-vélemények', types:['webshop'], badge:'shop', cfg:{layout:['list','card'],count:['3','5','8']}, def:{layout:'list',count:'5'}},
+  // ============ WEBÁRUHÁZ ============
+  'product-slider': {n:'Termék carousel', types:['webáruház'], badge:'shop', cfg:{visible:['3','4','5'],autoplay:['on','off'],arrows:['on','off']}, def:{visible:'4',autoplay:'on',arrows:'on'}},
+  'featured-products': {n:'Kiemelt termékek', types:['webáruház'], badge:'shop', cfg:{cols:['2','3','4'],price_style:['large','inline','hidden'],cta:['add-cart','buy-now','wishlist','quick-view']}, def:{cols:'3',price_style:'large',cta:'add-cart'}},
+  'single-product-spotlight': {n:'Termék spotlight', types:['webáruház'], badge:'shop', cfg:{layout:['left-img','right-img'],variants:['size','color','hidden'],reviews:['show','hidden']}, def:{layout:'left-img',variants:'size',reviews:'show'}},
+  'category-tiles': {n:'Kategória csempék', types:['webáruház'], badge:'shop', cfg:{cols:['3','4','6'],style:['photo-bg','flat'],shape:['square','wide']}, def:{cols:'4',style:'photo-bg',shape:'square'}},
+  'sale-banner': {n:'Akció banner', types:['webáruház'], badge:'shop', cfg:{countdown:['on','off'],style:['gradient','solid','outline']}, def:{countdown:'on',style:'gradient'}},
+  'shipping-trust-bar': {n:'Bizalmi sáv', types:['webáruház'], badge:'shop', cfg:{items:['3','4','5'],icon:['emoji','dot','none']}, def:{items:'4',icon:'emoji'}},
+  'product-reviews': {n:'Termék-vélemények', types:['webáruház'], badge:'shop', cfg:{layout:['list','card'],count:['3','5','8']}, def:{layout:'list',count:'5'}},
 
   // ============ BOOKING ============
   'service-selector': {n:'Szolgáltatás-választó', types:['booking'], badge:'book', cfg:{cols:['2','3'],style:['cards','rows']}, def:{cols:'2',style:'cards'}},
@@ -1255,7 +1255,7 @@ const INDUSTRY_OVERRIDES = {
   ecommerce: {
     testimonials:[
       {q:'Konverzió +40% a Headless Shopify-ra váltás után.',n:'Farkas Dóra',t:'E-commerce vezető'},
-      {q:'A checkout-flow egyszerűsítés 22%-kal csökkentette a kosárelhagyást.',n:'Varga Tamás',t:'Webshop tulajdonos'},
+      {q:'A checkout-flow egyszerűsítés 22%-kal csökkentette a kosárelhagyást.',n:'Varga Tamás',t:'Webáruház tulajdonos'},
     ],
     faq:[
       {q:'Headless Shopify vagy WooCommerce?',a:'A diagnosztika alapján döntünk — SKU-szám, integráció-igény és budget határozza meg.'},
@@ -1289,7 +1289,7 @@ const TYPE_INDUSTRY = {
   brochure: 'b2b-service',
   'quote-engine': 'b2b-service',
   saas: 'b2b-service',
-  webshop: 'ecommerce',
+  webáruház: 'ecommerce',
   booking: 'professional',
   content: 'creative',
   portfolio: 'creative',
@@ -1306,11 +1306,11 @@ function getRealisticContent(site, sectionType) {
   return REALISTIC;
 }
 
-// Típus-alapú default page-ek (PHASE I — webshop + booking új szekciókkal)
+// Típus-alapú default page-ek (PHASE I — webáruház + booking új szekciókkal)
 const TYPE_DEFAULTS = {
   brochure:     {pages:['home','contact','about','services'], page_sections:{home:['testimonials','stats','process','cta'],contact:['map','faq'],about:['team','process','stats','cta'],services:['process','pricing','testimonials','faq','cta']}},
   'quote-engine':{pages:['home','contact'], page_sections:{home:['process','stats','testimonials','cta'],contact:['map','faq']}},
-  webshop:      {pages:['home','contact'], page_sections:{home:['sale-banner','category-tiles','featured-products','product-slider','shipping-trust-bar','testimonials','cta'],contact:['map','faq']}},
+  webáruház:      {pages:['home','contact'], page_sections:{home:['sale-banner','category-tiles','featured-products','product-slider','shipping-trust-bar','testimonials','cta'],contact:['map','faq']}},
   booking:      {pages:['home','contact','services'], page_sections:{home:['service-selector','staff-cards','calendar-availability','time-slot-grid','testimonials','cta'],contact:['map','faq'],services:['service-selector','pricing','faq','cta']}},
   content:      {pages:['home','contact','blog'], page_sections:{home:['stats','newsletter','cta'],contact:['map','faq'],blog:['newsletter','cta']}},
   portfolio:    {pages:['home','contact'], page_sections:{home:['gallery','testimonials','cta'],contact:['map','faq']}},
@@ -1663,7 +1663,7 @@ function renderSection(sid, def, DATA, cfg, ctx) {
     h += `<div data-role="section" data-sid="${sid}" style="${pad}${sep};text-align:center"><div style="font-size:${fs(mob?14:18)};font-weight:700;margin-bottom:12px">Iratkozz fel a hírlevélre</div><div style="display:flex;gap:8px;max-width:360px;margin:0 auto"><div style="flex:1;height:32px;background:${subtle};border:1px solid ${bd};border-radius:${br}px"></div><div style="padding:0 16px;background:${a};color:${il?'#fff':c.bg};border-radius:${br}px;font-size:${fs(10)};font-weight:600;display:flex;align-items:center">Feliratkozás</div></div></div>`;
   }
 
-  // ===== PHASE I: WEBSHOP szekciók =====
+  // ===== PHASE I: WEBÁRUHÁZ szekciók =====
   else if (sid === 'product-slider') {
     const visible = parseInt(cfg.visible) || 4;
     const shown = mob ? 2 : (tab ? 3 : visible);
@@ -2327,7 +2327,7 @@ const liveCursorDemo = (function() {
         await wait(800);
       }
 
-      if (type === 'webshop') {
+      if (type === 'webáruház') {
         // Scroll to product
         const product = pv.querySelector('[data-sid="featured-products"] .pv-product-card') ||
                        pv.querySelector('[data-sid="product-slider"] .pv-product-card');
@@ -2992,8 +2992,8 @@ function buildPageUI() {
   };
 
   if (typeSpec.length) {
-    const typeLabel = s.type === 'webshop' ? 'WEBÁRUHÁZ-SPECIFIKUS SZEKCIÓK' : s.type === 'booking' ? 'FOGLALÁS-SPECIFIKUS SZEKCIÓK' : 'TÍPUS-SPECIFIKUS SZEKCIÓK';
-    const groupClass = s.type === 'webshop' ? 'shop' : s.type === 'booking' ? 'book' : '';
+    const typeLabel = s.type === 'webáruház' ? 'WEBÁRUHÁZ-SPECIFIKUS SZEKCIÓK' : s.type === 'booking' ? 'FOGLALÁS-SPECIFIKUS SZEKCIÓK' : 'TÍPUS-SPECIFIKUS SZEKCIÓK';
+    const groupClass = s.type === 'webáruház' ? 'shop' : s.type === 'booking' ? 'book' : '';
     renderGroup(typeSpec, typeLabel, groupClass);
   }
   renderGroup(generic, typeSpec.length ? 'ÁLTALÁNOS SZEKCIÓK' : '');
@@ -3005,7 +3005,7 @@ function buildPageUI() {
 const FEAT_DEFAULTS = {
   brochure: ['contact-form','eaa'],
   'quote-engine': ['contact-form','eaa','analytics','multilang'],
-  webshop: ['contact-form','eaa','analytics','cart','payment','shipping'],
+  webáruház: ['contact-form','eaa','analytics','cart','payment','shipping'],
   booking: ['contact-form','eaa','multilang','booking'],
   content: ['contact-form','eaa','analytics','search'],
   portfolio: ['contact-form','eaa'],
@@ -3060,7 +3060,7 @@ initSingleGrid('timelineGrid', 'timeline');
 /* ==============================
    Step 10 — Pricing + Scope + Scoring
    ============================== */
-const BASE = {brochure:{l:400,h:900},'quote-engine':{l:600,h:1500},webshop:{l:800,h:1800},booking:{l:500,h:1200},content:{l:450,h:1100},portfolio:{l:350,h:800},landing:{l:250,h:600},saas:{l:500,h:1400}};
+const BASE = {brochure:{l:400,h:900},'quote-engine':{l:600,h:1500},webáruház:{l:800,h:1800},booking:{l:500,h:1200},content:{l:450,h:1100},portfolio:{l:350,h:800},landing:{l:250,h:600},saas:{l:500,h:1400}};
 const FC = {'contact-form':.02,booking:.15,multilang:.25,eaa:.12,analytics:.08,crm:.15,search:.1,chat:.1,social:.03,cart:.18,payment:.12,shipping:.10,inventory:.15,'customer-area':.20};
 const EC = {'scroll-anim':.05,'dark-mode':.08,micro:.06,'ai-chat':.05,mcp:.05,pwa:.12,perf:.05,'ax-ready':.03};
 const PC = {about:.03,services:.05,faq:.03,blog:.1,'portfolio-page':.08,configurator:.25,'client-portal':.3,knowledge:.15};
@@ -3109,8 +3109,8 @@ function computeScores(site) {
 }
 
 function buildScopeText(s) {
-  const LB = {brochure:'bemutatkozó weboldal','quote-engine':'ajánlatgeneráló sales-eszköz',webshop:'webáruház',booking:'foglalós oldal',content:'tartalom-fókuszú',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
-  const PILLAR = {brochure:'egyéb scope (bemutatkozó site)','quote-engine':'#service-quote-engine',webshop:'#service-webshop',booking:'egyéb scope',content:'egyéb scope',portfolio:'egyéb scope',landing:'egyéb scope',saas:'egyéb scope'};
+  const LB = {brochure:'bemutatkozó weboldal','quote-engine':'ajánlatgeneráló sales-eszköz',webáruház:'webáruház',booking:'foglalós oldal',content:'tartalom-fókuszú',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
+  const PILLAR = {brochure:'egyéb scope (bemutatkozó site)','quote-engine':'#service-quote-engine',webáruház:'#service-webáruház',booking:'egyéb scope',content:'egyéb scope',portfolio:'egyéb scope',landing:'egyéb scope',saas:'egyéb scope'};
   const r = calcP(s);
   const sc = computeScores(s);
   const aiOps = [];
@@ -3149,8 +3149,8 @@ function buildScopeText(s) {
 
 function buildResults() {
   const s = active();
-  const LB = {brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webshop:'webáruház',booking:'foglalós',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
-  const PILLAR = {brochure:'egyéb scope (bemutatkozó site)','quote-engine':'#service-quote-engine — ajánlatgeneráló sales-eszköz',webshop:'#service-webshop',booking:'egyéb scope (foglalós oldal)',content:'egyéb scope (tartalom-oldal)',portfolio:'egyéb scope (portfolio)',landing:'egyéb scope (landing page)',saas:'egyéb scope (SaaS landing)'};
+  const LB = {brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webáruház:'webáruház',booking:'foglalós',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
+  const PILLAR = {brochure:'egyéb scope (bemutatkozó site)','quote-engine':'#service-quote-engine — ajánlatgeneráló sales-eszköz',webáruház:'#service-webáruház',booking:'egyéb scope (foglalós oldal)',content:'egyéb scope (tartalom-oldal)',portfolio:'egyéb scope (portfolio)',landing:'egyéb scope (landing page)',saas:'egyéb scope (SaaS landing)'};
   const r = calcP(s);
   document.getElementById('rAmt').textContent = 'Egyedi scope alapján';
   let sum = `<p><strong>Pillér:</strong> ${PILLAR[s.type]||'—'}</p><p><strong>Típus:</strong> ${LB[s.type]||s.type}</p><p><strong>Oldalak:</strong> ${s.pages.length} db</p>`;
@@ -3234,7 +3234,7 @@ function buildRoadmapData(s, r) {
 
   // Phase 2 deliverables: depends on type, features, extras
   const p2 = [];
-  if (s.type === 'webshop') p2.push('Shopify Storefront / WooCommerce headless integráció');
+  if (s.type === 'webáruház') p2.push('Shopify Storefront / WooCommerce headless integráció');
   else if (s.type === 'quote-engine') p2.push('Egyedi konfigurátor + ár-kalkulátor logika');
   else if (s.type === 'booking') p2.push('Foglalós rendszer + naptár-integráció');
   else if (s.type === 'saas') p2.push('SaaS landing + pricing-tábla + onboarding flow');
@@ -3267,7 +3267,7 @@ function populateRoadmap(s, r, sc) {
   document.getElementById('s10RmList2').innerHTML = rm.p2.map(x => `<li>${x}</li>`).join('');
   document.getElementById('s10RmList3').innerHTML = rm.p3.map(x => `<li>${x}</li>`).join('');
   const sub = document.getElementById('s10RmSub');
-  const LB = {brochure:'bemutatkozó',webshop:'webáruház',booking:'foglalós','quote-engine':'ajánlatgeneráló',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
+  const LB = {brochure:'bemutatkozó',webáruház:'webáruház',booking:'foglalós','quote-engine':'ajánlatgeneráló',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
   sub.textContent = `${LB[s.type]||s.type} projekt · teljes átfutás ~${rm.phases.total} · A választásaid alapján generált ütemterv konkrét deliverable-ekkel.`;
 }
 
@@ -3276,8 +3276,8 @@ function buildPDFContent(s) {
   const r = calcP(s);
   const sc = computeScores(s);
   const rm = buildRoadmapData(s, r);
-  const LB = {brochure:'bemutatkozó weboldal','quote-engine':'ajánlatgeneráló sales-eszköz',webshop:'webáruház',booking:'foglalós oldal',content:'tartalom-oldal',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
-  const PILLAR = {brochure:'egyéb scope','quote-engine':'#service-quote-engine',webshop:'#service-webshop',booking:'egyéb scope',content:'egyéb scope',portfolio:'egyéb scope',landing:'egyéb scope',saas:'egyéb scope'};
+  const LB = {brochure:'bemutatkozó weboldal','quote-engine':'ajánlatgeneráló sales-eszköz',webáruház:'webáruház',booking:'foglalós oldal',content:'tartalom-oldal',portfolio:'portfólió',landing:'landing page',saas:'SaaS landing'};
+  const PILLAR = {brochure:'egyéb scope','quote-engine':'#service-quote-engine',webáruház:'#service-webáruház',booking:'egyéb scope',content:'egyéb scope',portfolio:'egyéb scope',landing:'egyéb scope',saas:'egyéb scope'};
   const today = new Date().toLocaleDateString('hu-HU');
   const brand = s.brand || 'Projekt';
   const aiOps = [];
@@ -3360,7 +3360,7 @@ document.getElementById('scopeForm').addEventListener('submit', function() {
   delete sClean.logo; delete sClean.hero_img;
   sClean.has_logo = !!s.logo; sClean.has_hero_img = !!s.hero_img;
   document.getElementById('scopeJson').value = JSON.stringify(sClean, null, 0);
-  const LB = {brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webshop:'webáruház',booking:'foglalós',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
+  const LB = {brochure:'bemutatkozó','quote-engine':'ajánlatgeneráló',webáruház:'webáruház',booking:'foglalós',content:'tartalom',portfolio:'portfólió',landing:'landing',saas:'SaaS'};
   const r = calcP(s);
   const nm = (this.querySelector('[name=name]').value || 'névtelen').trim();
   this.querySelector('[name=_subject]').value = '[Conen Digital] Scope: ' + (LB[s.type] || '?') + ' · ' + fmtHUF(r.l) + '–' + fmtHUF(r.h) + ' · ' + nm;

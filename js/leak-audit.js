@@ -66,9 +66,9 @@
   function renderInput(prefillError) {
     root.innerHTML =
       '<form class="la-inputbar" id="la-form" novalidate>' +
-      '  <label class="la-sronly" for="la-url">Webshop címe</label>' +
+      '  <label class="la-sronly" for="la-url">Webáruház címe</label>' +
       '  <input class="la-url" id="la-url" type="text" inputmode="url" autocomplete="url" ' +
-      '         placeholder="pl. pelda-webshop.hu" aria-label="Webshop címe" />' +
+      '         placeholder="pl. pelda-webáruház.hu" aria-label="Webáruház címe" />' +
       '  <button class="la-btn" id="la-go" type="submit">Megnézem, hol szivárog →</button>' +
       '</form>' +
       '<p class="la-hint">Valós mérés a Google PageSpeed Insights motorjával — nincs regisztráció, ~20–40 mp.</p>' +
