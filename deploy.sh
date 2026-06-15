@@ -24,8 +24,8 @@ done
 [ -f _headers ] && cp _headers dist/
 [ -f _redirects ] && cp _redirects dist/
 
-# Mappák
-for d in js images heightmaps .well-known; do
+# Mappák (almappás landing-oldalak is, pl. speedyclean, sablonok)
+for d in js images heightmaps .well-known speedyclean sablonok; do
   if [ -d "$d" ]; then
     cp -r "$d" dist/
   fi
