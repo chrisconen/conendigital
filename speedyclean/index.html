@@ -19,6 +19,9 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://conendigital.hu/speedyclean/img/og-speedyclean.jpg" />
 
+<!-- LCP hero-kép korai felfedezése -->
+<link rel="preload" as="image" href="img/speedyclean-mosoda.webp" fetchpriority="high" />
+
 <!-- Fonts (eddig hiányoztak — a tipográfia system-fontra esett vissza) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -222,12 +225,9 @@ header {
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(180deg, rgba(245, 241, 234, 0.9) 0%, rgba(245, 241, 234, 0.84) 45%, rgba(237, 230, 217, 0.88) 100%),
-    url('img/mosoda_keszthely_csarnok.webp');
-  background-size: cover, cover;
-  background-position: center, center;
-  background-repeat: no-repeat, no-repeat;
+  /* A nehéz csarnok-háttérkép (~115KB, fold fölött, 90% krém-overlay alatt alig látszott)
+     eltávolítva — felszabadítja a sávszélességet az LCP-nek. Tiszta krém gradiens marad. */
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
 }
 .hero > .container {
   position: relative;
