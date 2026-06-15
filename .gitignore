@@ -23,3 +23,6 @@ AXR/
 
 # Stray scratch HTML, not a real page
 hero-section.html
+
+# Cloudflare Pages build output (CI builds it; never commit)
+dist/
