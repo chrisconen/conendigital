@@ -22,7 +22,9 @@
 <!-- Fonts (eddig hiányoztak — a tipográfia system-fontra esett vissza) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+<!-- Nem-blokkoló font-betöltés + szűkített készlet (opsz tengely elhagyva → jóval kisebb payload) -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter+Tight:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter+Tight:wght@400;500;600&display=swap" /></noscript>
 
 <!-- LocalBusiness / DryCleaningOrLaundry — lokális SEO -->
 <script type="application/ld+json">
